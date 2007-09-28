@@ -1,0 +1,29 @@
+short term:
+* Escape button promt to exit the game
+* pause when losing focus
+* refactor code:
+  - is the static stuff in Item really in the best place?
+  - put information about num of bricks in Brick etc... (or not?)
+  - remove magic numbers
+  - maybe the coords translation when moving the bar should be done by the bar itself??? I could have a function move() or so...
+* to many resizes..
+* fix total brick count
+* add some more gifts: glue
+
+mid term
+* add a border
+* hide cursor when over the CanvasWidget
+* make the bouncing algorithm better
+* add theming support
+* add support for more levelsets
+* configurable keys
+* profiling
+* add documentation
+
+long term:
+* add sound
+* add gifts to be able to shoot at the bricks
+* add nice effects
+* full screen mode
+* mouse sensibility option (when in full screen mode)
+* add demo mode with AI playing

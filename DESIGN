@@ -1,0 +1,5 @@
+The game logic is all done by the GameEngine object, it has slots to start/pause/resume the game and signals when the game ends, and it has slots to get the user input: one to move the bar, one to "fire" (to launch the ball at the start, and maybe later more actions), the events received by the CanvasWidget are connected to those.
+The CanvasWidget does all the painting and receives the input from the user. All the Items add themself tho the Canvas when created. The Item objects are derived from KGameCanvasItem but do their own resizing and translation from screen coordinates to game logic coordinates.
+The MainWindow class works as wrapper around the GameEngine and the CanvasWidget connecting them together and contains the rest of the user interface.
+
+Most constants should be in consts.h.
