@@ -17,7 +17,7 @@ int main (int argc, char *argv[])
     aboutData.setBugAddress("nimatar@gmail.com");
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
-                        "nimatar@gmail.com");
+                        "fela.kde@gmail.com");
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
