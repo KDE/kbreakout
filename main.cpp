@@ -14,7 +14,6 @@ int main (int argc, char *argv[])
     aboutData.setShortDescription(ki18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutData::License_GPL);
     aboutData.setCopyrightStatement(ki18n("(c) 2007 Fela Winkelmolen"));
-    aboutData.setBugAddress("nimatar@gmail.com");
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
                         "fela.kde@gmail.com");
