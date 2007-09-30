@@ -38,7 +38,10 @@ private:
     
     // auxiliary functions
     void handleGift(Gift *gift);
-    //handleBrickCollision() TODO
+    void handleBrickCollisions(Ball *ball);
+    void addBrick(char type, int xCoordinate, int yCoordinate);
+    // adds the a gift to a brick without a gift
+    //void addGift(const QString &type, QList <Brick *> *bricks);
     
     // convenience functions
     void loadNextLevel();

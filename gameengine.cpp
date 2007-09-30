@@ -107,8 +107,8 @@ void GameEngine::fire()
         // else
         ball->toBeFired = false;
         
-        qreal ballCenter = ball->getRect().left() + (ball->getRect().width()) / 2;
-        qreal barCenter  = m_bar.getRect().left() + (m_bar.getRect().width()) / 2;
+        qreal ballCenter= ball->getRect().left() + (ball->getRect().width())/2;
+        qreal barCenter = m_bar.getRect().left() + (m_bar.getRect().width())/2;
         qreal angle = M_PI / 3;
         angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
         angle += M_PI_2;
@@ -124,7 +124,6 @@ void GameEngine::fire()
 // TODO: external level loarder?? (just an idea...)
 void GameEngine::loadLevel()
 {
-    deleteAllObjects();
     
     QString path = "levelsets/" + levelSet + ".desktop";
     path =  KStandardDirs::locate("appdata", path);
@@ -147,6 +146,7 @@ void GameEngine::loadLevel()
     int y = 1;
     QString key("line" + QString::number(y));
     
+    deleteAllObjects();
     remainingBricks = 0;
     
     while(lvl.hasKey(key)) {
@@ -159,55 +159,14 @@ void GameEngine::loadLevel()
         
         kDebug() << line << endl;
         
-        // convert the string, each char represents a brick
         if (line.size() > WIDTH) {
             kError() << "Invalid file: to many bricks\n";
         }
         
+        // convert the string, each char represents a brick
         for (int x = 0; x < line.size(); ++x) {
-            char typeChar = line[x].toAscii();
-            if (typeChar == '-') continue;
-            
-            Brick *brick = new Brick;
-            brick->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-            
-            switch (typeChar) {
-                case '1': brick->setType("PlainBrick1"); break;
-                case '2': brick->setType("PlainBrick2"); break;
-                case '3': brick->setType("PlainBrick3"); break;
-                case '4': brick->setType("PlainBrick4"); break;
-                case '5': brick->setType("PlainBrick5"); break;
-                case '6': brick->setType("PlainBrick6"); break;
-                case 'u': brick->setType("UnbreakableBrick"); break;
-                case 'h': 
-                    brick->setType("HiddenBrick");
-                    brick->hide();
-                    break;
-                case 'm': 
-                {
-                    brick->setType("MultipleBrick");
-                    // create a copy
-                    Brick *copy = new Brick;
-                    copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-                    copy->setType("MultipleBrick");
-                    m_bricks.append(copy);
-                    ++remainingBricks;
-                    // create another copy
-                    copy = new Brick;
-                    copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-                    copy->setType("MultipleBrick");
-                    m_bricks.append(copy);
-                    ++remainingBricks;
-                    
-                    break;
-                }
-                default:
-                    kError() << "Invalid File: unknown character '" 
-                             << typeChar << "'\n";
-                    brick->setType("PlainBrick1");
-            }
-            m_bricks.append(brick);
-            if (brick->type() != "UnbreakableBrick") ++remainingBricks;
+            char type = line[x].toAscii();
+            addBrick(type, x, y);
         }
         
         ++y;
@@ -232,7 +191,7 @@ void GameEngine::loadLevel()
         
         QString line = lvl.readEntry(key.toAscii(), "error");
         if (line == "error") {
-            kError() << "Something strange happened!!\n";
+            kError() << "Impossible Reading " << level << ":" << key << endl;
             return;
         }
         bool ok;
@@ -347,66 +306,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
     }
     // bounce against the bricks (and optionally break them)
     else {
-        QMutableListIterator<Brick *> i(m_bricks);
-        while (i.hasNext()) {
-            Brick *brick = i.next();
-            QRect brickRect = brick->getRect();
-            if (!brickRect.intersects(rect)) continue;
-            
-            if (ball->type() != "UnstoppableBall"
-                    && ball->type() != "UstoppableBurningBall") {
-                // TODO: handleBrickCollision()
-                // else: the ball has hit the brick
-                // find out in which direction to bounce
-                int top = brickRect.top() - rect.top();
-                int bottom = rect.bottom() - brickRect.bottom();
-                int left = brickRect.left() - rect.left();
-                int right = rect.right() - brickRect.right();
-                int max = qMax(qMax(top, bottom), qMax(left, right));
-                
-                // bounce
-                // TODO: check this stuff
-                if (max == top && ball->directionY > 0)
-                    ball->directionY *= -1;
-                else if (max == bottom && ball->directionY < 0)
-                    ball->directionY *= -1;
-                else if (max == left && ball->directionX > 0)
-                    ball->directionX *= -1;
-                else if (max == right && ball->directionX < 0)
-                    ball->directionX *= -1;
-                else
-                    break;
-                
-                if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
-                    brick->show();
-                    break;
-                }
-                if (brick->type() == "UnbreakableBrick") break;
-            }
-            // delete the brick
-            i.remove();
-            
-            // FIXME: fix!!!!!!!
-            if (!(brick->type() == "HiddenBrick" && !brick->isVisible()
-                    && ball->type() == "UnstoppableBall")) {
-                --remainingBricks;
-            }
-            if (brick->gift != 0) {
-                brick->gift->moveTo(brick->getRect().left(), 
-                                    brick->getRect().top());
-                brick->gift->show();
-                m_gifts.append(brick->gift);
-            }
-            
-            delete brick;
-            
-            addScore(qRound(dScore));
-            dScore = BRICK_SCORE;
-            if (remainingBricks == 0) {
-                loadNextLevel();
-                return;
-            }
-        }
+        handleBrickCollisions(ball);
     }
     
     // never run this function more than two time recursively
@@ -428,6 +328,53 @@ void GameEngine::detectBallCollisions(Ball *ball)
     }
 }
 
+void GameEngine::addBrick(char type, int x, int y) 
+{
+    if (type == '-') return;
+    
+    Brick *brick = new Brick;
+    brick->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
+    
+    switch (type) {
+    case '1': brick->setType("PlainBrick1"); break;
+    case '2': brick->setType("PlainBrick2"); break;
+    case '3': brick->setType("PlainBrick3"); break;
+    case '4': brick->setType("PlainBrick4"); break;
+    case '5': brick->setType("PlainBrick5"); break;
+    case '6': brick->setType("PlainBrick6"); break;
+    case 'u': brick->setType("UnbreakableBrick"); break;
+    case 'h': 
+        brick->setType("HiddenBrick");
+        brick->hide();
+        break;
+    case 'm': 
+    {
+        brick->setType("MultipleBrick");
+        // create a copy
+        Brick *copy = new Brick;
+        copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
+        copy->setType("MultipleBrick");
+        m_bricks.append(copy);
+        ++remainingBricks;
+        // create another copy
+        copy = new Brick;
+        copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
+        copy->setType("MultipleBrick");
+        m_bricks.append(copy);
+        ++remainingBricks;
+        
+        break;
+    }
+    default:
+        kError() << "Invalid File: unknown character '" 
+                    << type << "'\n";
+        brick->setType("PlainBrick1");
+    }
+    m_bricks.append(brick);
+    if (brick->type() != "UnbreakableBrick") ++remainingBricks;
+}
+
+
 void GameEngine::handleDeath()
 {
     deleteMovingObjects();
@@ -441,7 +388,73 @@ void GameEngine::handleDeath()
     }
 }
 
-//TODO: void GameEngine::handleBrick() ??????
+
+void GameEngine::handleBrickCollisions(Ball *ball)
+{
+    // TODO: rect->left() and -> bottom() may be one pixel wrong
+    QRect rect = ball->getRect();
+
+    QMutableListIterator<Brick *> i(m_bricks);
+    while (i.hasNext()) {
+        Brick *brick = i.next();
+        QRect brickRect = brick->getRect();
+        if (!brickRect.intersects(rect)) continue;
+        
+        if (ball->type() != "UnstoppableBall"
+                && ball->type() != "UstoppableBurningBall") {
+            // TODO: handleBrickCollision()
+            // else: the ball has hit the brick
+            // find out in which direction to bounce
+            int top = brickRect.top() - rect.top();
+            int bottom = rect.bottom() - brickRect.bottom();
+            int left = brickRect.left() - rect.left();
+            int right = rect.right() - brickRect.right();
+            int max = qMax(qMax(top, bottom), qMax(left, right));
+            
+            // bounce
+            // TODO: check this stuff
+            if (max == top && ball->directionY > 0)
+                ball->directionY *= -1;
+            else if (max == bottom && ball->directionY < 0)
+                ball->directionY *= -1;
+            else if (max == left && ball->directionX > 0)
+                ball->directionX *= -1;
+            else if (max == right && ball->directionX < 0)
+                ball->directionX *= -1;
+            else
+                break;
+            
+            if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
+                brick->show();
+                break;
+            }
+            if (brick->type() == "UnbreakableBrick") break;
+        }
+        // delete the brick
+        i.remove();
+        
+        // FIXME: fix!!!!!!!
+        if (!(brick->type() == "HiddenBrick" && !brick->isVisible()
+                && ball->type() == "UnstoppableBall")) {
+            --remainingBricks;
+        }
+        if (brick->gift != 0) {
+            brick->gift->moveTo(brick->getRect().left(), 
+                                brick->getRect().top());
+            brick->gift->show();
+            m_gifts.append(brick->gift);
+        }
+        
+        delete brick;
+        
+        addScore(qRound(dScore));
+        dScore = BRICK_SCORE;
+        if (remainingBricks == 0) {
+            loadNextLevel();
+            return;
+        }
+    }
+}
 
 void GameEngine::handleGift(Gift *gift)
 {
