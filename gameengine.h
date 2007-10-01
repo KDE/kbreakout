@@ -72,7 +72,7 @@ private:
     QList<Life *> m_lives;
     Score scoreCanvas;
     QList<Brick *> m_bricks;
-    QList<Gift *> m_gifts;
+    QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
     Bar m_bar;
     

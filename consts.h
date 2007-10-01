@@ -31,6 +31,9 @@ const int BAR_MOVEMENT = 5;
 // points when breaking a brick
 // decreases over time since last brick was hit
 const int BRICK_SCORE = 20;
+// score when i brick gets "autoremoved" 
+// (for example becouse of a gift, of fire)
+const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
 const int LEVEL_SCORE = 2000;
 const int GIFT_SCORE = 50;

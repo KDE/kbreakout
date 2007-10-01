@@ -332,6 +332,7 @@ void GameEngine::addBrick(char type, int x, int y)
 {
     if (type == '-') return;
     
+    ++remainingBricks;
     Brick *brick = new Brick;
     brick->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     
@@ -342,27 +343,18 @@ void GameEngine::addBrick(char type, int x, int y)
     case '4': brick->setType("PlainBrick4"); break;
     case '5': brick->setType("PlainBrick5"); break;
     case '6': brick->setType("PlainBrick6"); break;
-    case 'u': brick->setType("UnbreakableBrick"); break;
+    case 'u': 
+        brick->setType("UnbreakableBrick");
+        --remainingBricks;
+        break;
     case 'h': 
         brick->setType("HiddenBrick");
         brick->hide();
+        --remainingBricks;
         break;
     case 'm': 
     {
-        brick->setType("MultipleBrick");
-        // create a copy
-        Brick *copy = new Brick;
-        copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-        copy->setType("MultipleBrick");
-        m_bricks.append(copy);
-        ++remainingBricks;
-        // create another copy
-        copy = new Brick;
-        copy->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-        copy->setType("MultipleBrick");
-        m_bricks.append(copy);
-        ++remainingBricks;
-        
+        brick->setType("MultipleBrick3");        
         break;
     }
     default:
@@ -371,7 +363,6 @@ void GameEngine::addBrick(char type, int x, int y)
         brick->setType("PlainBrick1");
     }
     m_bricks.append(brick);
-    if (brick->type() != "UnbreakableBrick") ++remainingBricks;
 }
 
 
@@ -399,11 +390,10 @@ void GameEngine::handleBrickCollisions(Ball *ball)
         Brick *brick = i.next();
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
+        // else: the ball has hit the brick
         
         if (ball->type() != "UnstoppableBall"
                 && ball->type() != "UstoppableBurningBall") {
-            // TODO: handleBrickCollision()
-            // else: the ball has hit the brick
             // find out in which direction to bounce
             int top = brickRect.top() - rect.top();
             int bottom = rect.bottom() - brickRect.bottom();
@@ -426,18 +416,31 @@ void GameEngine::handleBrickCollisions(Ball *ball)
             
             if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
                 brick->show();
-                break;
+                ++remainingBricks;
+                return;
             }
-            if (brick->type() == "UnbreakableBrick") break;
+            if (brick->type() == "UnbreakableBrick") return;
+            if (brick->type() == "MultipleBrick3") {
+                brick->setType("MultipleBrick2");
+                addScore(qRound(dScore));
+                dScore = BRICK_SCORE;
+                return;
+            }
+            if (brick->type() == "MultipleBrick2") {
+                brick->setType("MultipleBrick1");
+                addScore(qRound(dScore));
+                dScore = BRICK_SCORE;
+                return;
+            }
         }
         // delete the brick
         i.remove();
         
         // FIXME: fix!!!!!!!
-        if (!(brick->type() == "HiddenBrick" && !brick->isVisible()
-                && ball->type() == "UnstoppableBall")) {
-            --remainingBricks;
-        }
+        if (not (brick->type() == "HiddenBrick" && not brick->isVisible()
+            || brick->type() == "UnbreakableBrick"))
+                --remainingBricks;
+        
         if (brick->gift != 0) {
             brick->gift->moveTo(brick->getRect().left(), 
                                 brick->getRect().top());
@@ -480,13 +483,46 @@ void GameEngine::handleGift(Gift *gift)
         handleDeath();
     } 
     else if (gift->type() == "GiftNextLevel") {
+        // assign points for each remaining brick
+        foreach (Brick *brick, m_bricks) {
+            // don't assign points for Unbreakable Bricks
+            if (brick->type() == "UnbreakableBrick") continue;
+            
+            addScore(AUTOBRICK_SCORE);
+            
+            // add extra points for Multiple Bricks
+            if (brick->type() == "MultipleBrick3")
+                addScore(AUTOBRICK_SCORE*2);
+            if (brick->type() == "MultipleBrick2")
+                addScore(AUTOBRICK_SCORE);
+        }
         loadNextLevel();
     } 
-    else if (gift->type() == "GiftMagicWant") {
+    else if (gift->type() == "GiftMagicEye") {
+        // make all hidden bricks visible
         foreach (Brick *brick, m_bricks) {
+            if (!brick->isVisible()) {
+                brick->show();
+                ++remainingBricks;
+            }
+        }
+    }
+    else if (gift->type() == "GiftMagicWand") {
+        foreach (Brick *brick, m_bricks) {
+            // make Unbreakbable Bricks Breakable
             if (brick->type() == "UnbreakableBrick") {
                 brick->setType("BreakableBrick");
                 ++remainingBricks;
+            }
+            
+            // Make Multiple Bricks single
+            if (brick->type() == "MultipleBrick3") {
+                brick->setType("MultipleBrick1");
+                addScore(AUTOBRICK_SCORE * 2);
+            }
+            if (brick->type() == "MultipleBrick2") {
+                brick->setType("MultipleBrick1");
+                addScore(AUTOBRICK_SCORE);
             }
         }
         // TODO: make multiple bricks single
