@@ -1,14 +1,10 @@
 short term:
 * Escape button promt to exit the game
 * pause when losing focus
-* refactor code:
-  - is the static stuff in Item really in the best place?
-  - put information about num of bricks in Brick etc... (or not?)
-  - remove magic numbers
-  - maybe the coords translation when moving the bar should be done by the bar itself??? I could have a function move() or so...
 * to many resizes..
 * fix total brick count
-* add some more gifts: glue
+* add some more gifts: glue, burning ball
+* add exploding bricks
 
 mid term
 * add a border

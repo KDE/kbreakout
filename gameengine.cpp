@@ -369,6 +369,7 @@ void GameEngine::addBrick(char type, int x, int y)
 void GameEngine::handleDeath()
 {
     deleteMovingObjects();
+    m_bar.reset();
     if (m_lives.isEmpty()) {
         emit gameEnded(score, level, elapsedTime);
     } else {

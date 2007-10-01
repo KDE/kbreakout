@@ -38,7 +38,7 @@ const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 const int LEVEL_SCORE = 2000;
 const int GIFT_SCORE = 50;
 const int LOSE_LIFE_SCORE = -500;
-const int INITIAL_LIVES = 3;
+const int INITIAL_LIVES = 2;
 const int MAX_LIVES = 8;
 
 // IMPORTANT: keep giftTypesCount in sync!!!!!!!
