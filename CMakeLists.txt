@@ -17,4 +17,5 @@ target_link_libraries(kbreakout  ${KDE4_KIO_LIBS} kdegames )
 
 install(TARGETS kbreakout  DESTINATION ${BIN_INSTALL_DIR} )
 install(FILES tmp.svg DESTINATION ${DATA_INSTALL_DIR}/kbreakout)
+install(FILES default.svg DESTINATION ${DATA_INSTALL_DIR}/kbreakout)
 install(FILES levelsets/default.desktop DESTINATION ${DATA_INSTALL_DIR}/kbreakout/levelsets)

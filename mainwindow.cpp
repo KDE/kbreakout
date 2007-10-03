@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     canvasWidget = new CanvasWidget(this);
 
     QSvgRenderer *svg = new QSvgRenderer(
-            KStandardDirs::locate("appdata", "tmp.svg"));
+            KStandardDirs::locate("appdata", "default.svg"));
     Item::setSvgRenderer(svg);
     Item::setCanvas(canvasWidget);
     new Background;
@@ -81,9 +81,9 @@ void MainWindow::handleEndedGame(int score, int level, int time)
                           | KScoreDialog::Time, this);
     ksdialog.addScore(scoreInfo);
     
-    canvasWidget->releaseKeyboard();
+    canvasWidget->releaseKeyboard(); // TODO: ???
     ksdialog.exec();
-    canvasWidget->grabKeyboard();
+    canvasWidget->grabKeyboard(); // TODO: ???
     
     gameEngine->start("default");
 }

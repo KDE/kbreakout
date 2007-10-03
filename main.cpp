@@ -17,6 +17,9 @@ int main (int argc, char *argv[])
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
                         "fela.kde@gmail.com");
+    aboutData.addAuthor(ki18n("Eugene Trounev"), 
+                        ki18n("default artwork"),
+                        "eugene.trounev@gmail.com");
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
