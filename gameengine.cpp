@@ -4,7 +4,8 @@
 
 #include <KConfig>
 #include <KStandardDirs>
-
+#include <kconfiggroup.h>
+#include <kdebug.h>
 #include "gameengine.h"
 
 GameEngine::GameEngine()
