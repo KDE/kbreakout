@@ -128,7 +128,7 @@ void GameEngine::loadLevel()
     
     QString path = "levelsets/" + levelSet + ".desktop";
     path =  KStandardDirs::locate("appdata", path);
-    KConfig file(path, KConfig::OnlyLocal);
+    KConfig file(path, KConfig::SimpleConfig);
     
     QString levelName("level" + QString::number(level));
     
