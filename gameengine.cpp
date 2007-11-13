@@ -152,7 +152,7 @@ void GameEngine::loadLevel()
     
     while(lvl.hasKey(key)) {
         // one line of bricks, to be converted
-        QString line = lvl.readEntry(key.toAscii(), "error");
+        QString line = lvl.readEntry(key, "error");
         if (line == "error") {
             kError() << "Something strange happened!!\n";
             return;
@@ -190,7 +190,7 @@ void GameEngine::loadLevel()
         key = giftTypes[i];
         if (!lvl.hasKey(key)) continue;
         
-        QString line = lvl.readEntry(key.toAscii(), "error");
+        QString line = lvl.readEntry(key, "error");
         if (line == "error") {
             kError() << "Impossible Reading " << level << ":" << key << endl;
             return;
