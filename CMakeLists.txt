@@ -13,7 +13,7 @@ set(kbreakout_SRCS
 
 kde4_add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout  ${KDE4_KIO_LIBS} kdegames )
+target_link_libraries(kbreakout  ${KDE4_KIO_LIBS} ${KDEGAMES_LIBRARY} )
 
 install(TARGETS kbreakout  DESTINATION ${BIN_INSTALL_DIR} )
 install(FILES tmp.svg DESTINATION ${DATA_INSTALL_DIR}/kbreakout)
