@@ -68,6 +68,9 @@ void Item::loadSprite()
 {
     updateScale();
     
+    //TODO: should not be needed, or at least I should have a closer look at it
+    if (qRound(m_scale*width) == 0 || qRound(m_scale*height) == 0) return;
+    
     QPixmap pixmap(qRound(m_scale*width), qRound(m_scale*height));
     pixmap.fill(Qt::transparent);
     QPainter p(&pixmap);
