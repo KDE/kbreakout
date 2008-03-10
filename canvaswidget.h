@@ -3,7 +3,7 @@
 
 #include <QTimer>
 
-#include <KGameCanvas>
+#include <KDE/KGameCanvas>
 
 class CanvasWidget : public KGameCanvasWidget
 {

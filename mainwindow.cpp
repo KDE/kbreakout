@@ -8,7 +8,7 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <KMessageBox>
-#include <KScoreDialog>
+#include <KDE/KScoreDialog>
 
 #include "mainwindow.h"
 #include "gameengine.h"

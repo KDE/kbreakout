@@ -1,7 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <KGameCanvas>
+#include <KDE/KGameCanvas>
 
 #include "consts.h"
 
