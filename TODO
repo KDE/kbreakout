@@ -1,25 +1,35 @@
-short term:
+BUGS:
+=====
+
+* When the ball is goint up or down (exactly) sometimes in passes through a wall
+* Sometimes ti bounces twice when it shouldn't
+* Unneeded resizes and repaints on startup
+
+
+TODO:
+=====
+
+== Short Term ==
+* Add documentation
+* Add theming support
+* Add more levels
 * Escape button promt to exit the game
-* pause when losing focus
-* to many resizes..
-* fix total brick count
-* add some more gifts: glue, burning ball
-* add exploding bricks
+* Pause when losing focus
+* Fix total brick count (already done I think??)
+* Add some more gifts: glue, burning ball, exploding ball
 
-mid term
-* add a border
-* hide cursor when over the CanvasWidget
-* make the bouncing algorithm better
-* add theming support
-* add support for more levelsets
-* configurable keys
-* profiling
-* add documentation
+== Mid Term ==
+* Add gui to load new levesets
+* Add sound
+* Improve the performance using only one QTimer for repaint
+* Hide cursor when over the CanvasWidget
+* Configurable keys
+* Add nice effects
 
-long term:
-* add sound
-* add gifts to be able to shoot at the bricks
-* add nice effects
-* full screen mode
-* mouse sensibility option (when in full screen mode)
-* add demo mode with AI playing
+== Long Term ==
+* Profiling
+* Add a border
+* Add gifts to be able to shoot at the bricks
+* Full screen mode
+  - mouse sensibility option (when in full screen mode)
+* Add demo mode with AI playing
