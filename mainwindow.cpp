@@ -14,6 +14,7 @@
 #include "gameengine.h"
 #include "canvasitems.h"
 #include "canvaswidget.h"
+#include "renderer.h"
 
 MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
 {
@@ -51,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     
     setupActions();
     
+    Renderer::self()->loadTheme("default");
     gameEngine->start("default");
 }
  

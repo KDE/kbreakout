@@ -60,6 +60,7 @@ protected:
     // canvas container of all Items
     static KGameCanvasWidget *canvas;
     
+    // TODO: rename to m_scaleRatio
     static qreal m_scale;
     static int m_borderLeft;
     static int m_borderTop;

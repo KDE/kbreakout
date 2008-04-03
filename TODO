@@ -10,13 +10,15 @@ TODO:
 =====
 
 == Short Term ==
+* Rename to KBreakOut
 * Add documentation
 * Add theming support
 * Add more levels
-* Escape button promt to exit the game
+* Add GUI elements
 * Pause when losing focus
 * Fix total brick count (already done I think??)
 * Add some more gifts: glue, burning ball, exploding ball
+* Give some feedback when he game is paused
 
 == Mid Term ==
 * Add gui to load new levesets

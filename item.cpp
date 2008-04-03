@@ -6,6 +6,7 @@
 #include <KDebug>
 
 #include "item.h"
+#include "renderer.h"
 
 // static
 QSvgRenderer *Item::svg = 0;
@@ -40,7 +41,7 @@ Item::Item()
         return;
     }
     
-    connect (canvas, SIGNAL(sizeChanged()), SLOT(loadSprite()));
+    connect(canvas, SIGNAL(sizeChanged()), SLOT(loadSprite()));
     
     show();
 }
@@ -71,21 +72,17 @@ void Item::loadSprite()
     //TODO: should not be needed, or at least I should have a closer look at it
     if (qRound(m_scale*width) == 0 || qRound(m_scale*height) == 0) return;
     
-    QPixmap pixmap(qRound(m_scale*width), qRound(m_scale*height));
-    pixmap.fill(Qt::transparent);
-    QPainter p(&pixmap);
-    if (!svg->elementExists(elementId))
-        kDebug() << "Invalid elementId: " << elementId << endl;
-    svg->render(&p, elementId);
-    setPixmap(pixmap);
+    QSize size(qRound(m_scale*width), qRound(m_scale*height));
+    setPixmap(Renderer::self()->renderedSvgElement(elementId, size));
     
     updatePosition(); //TODO: needed??????
 }
 
 Item::~Item()
 {
-    // should already be called, really... but somehow without this the whole
-    // scene is repainted when an Item is deleted...
+    // shouldn't already be called, really... but somehow without this the whole
+    // scene is repainted when an Item is deleted... 
+    // (TODO: maybe because the destructor should be virtual?)
 }
 
 void Item::setType(const QString &type)
