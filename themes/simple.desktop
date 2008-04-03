@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Default
+Description=Simple KBreakout theme
+VersionFormat=1
+Author=Fela Winkelmolen
+AuthorEmail=fela.kde@gmail.com
+Type=SVG
+FileName=default.svgz
+#Preview=simple_preview.png

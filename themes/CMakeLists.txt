@@ -1,1 +1,1 @@
-install( FILES default.svgz default.desktop DESTINATION  ${DATA_INSTALL_DIR}/kbreakout/themes )
+install( FILES default.svgz default.desktop simple.svgz simple.desktop DESTINATION  ${DATA_INSTALL_DIR}/kbreakout/themes )
