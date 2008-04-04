@@ -8,13 +8,16 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <KMessageBox>
+#include <KConfigDialog>
 #include <KDE/KScoreDialog>
+#include <KDE/KGameThemeSelector>
 
 #include "mainwindow.h"
 #include "gameengine.h"
 #include "canvasitems.h"
 #include "canvaswidget.h"
 #include "renderer.h"
+#include "settings.h"
 
 MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
 {
@@ -52,7 +55,6 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     
     setupActions();
     
-    Renderer::self()->loadTheme("default");
     gameEngine->start("default");
 }
  
@@ -61,7 +63,43 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
 void MainWindow::setupActions()
 {
     KStandardAction::quit(this, SLOT(close()), actionCollection());
+    
+    KStandardAction::preferences(this, SLOT(configureSettings()), 
+                                actionCollection());
+
     setupGUI();
+}
+
+void MainWindow::configureSettings()
+{
+    if (KConfigDialog::showDialog("settings")) {
+        return;
+    }
+    
+    KConfigDialog *dialog = new KConfigDialog(this, "settings", 
+                                              Settings::self());
+    
+    dialog->addPage(new KGameThemeSelector( dialog, Settings::self(), 
+                    KGameThemeSelector::NewStuffDisableDownload ), 
+                    i18n("Theme"), "games-config-theme" );
+
+    connect(dialog, SIGNAL( settingsChanged(const QString&)), this, 
+            SLOT(loadSettings()));
+    
+    dialog->setHelp(QString(), "knetwalk");
+    dialog->show();
+}
+
+void MainWindow::loadSettings() 
+{
+    if (!Renderer::self()->loadTheme(Settings::theme())) {
+        KMessageBox::error(this,  
+           i18n( "Failed to load \"%1\" theme. Please check your installation.",
+           Settings::theme()));
+        return;
+    }
+    
+    canvasWidget->loadSprite();
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

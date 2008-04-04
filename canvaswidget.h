@@ -11,8 +11,11 @@ class CanvasWidget : public KGameCanvasWidget
 public:
     CanvasWidget(QWidget *parent=0);
 
+    // reloads the sprite
+    void loadSprite();
+    
 signals:
-    void sizeChanged();
+    void spriteReloaded();
     // the position is in game coordinates not screen coordinates
     void mouseMoved(int positionX); // TODO: rename
     void ballFired();

@@ -41,7 +41,7 @@ Item::Item()
         return;
     }
     
-    connect(canvas, SIGNAL(sizeChanged()), SLOT(loadSprite()));
+    connect(canvas, SIGNAL(spriteReloaded()), SLOT(loadSprite()));
     
     show();
 }

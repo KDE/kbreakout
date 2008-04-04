@@ -6,6 +6,7 @@
 
 #include "canvaswidget.h"
 #include "item.h"
+#include "renderer.h"
 
 CanvasWidget::CanvasWidget(QWidget *parent) 
     : KGameCanvasWidget(parent) 
@@ -33,19 +34,19 @@ void CanvasWidget::moveBar()
     if (barDirection == -1) emit barMovedLeft();
 }
 
+void CanvasWidget::loadSprite()
+{
+    QSize size(width(), height());
+    QPixmap pixmap = Renderer::self()->renderedSvgElement("Background", size);
+    background.setPixmap(pixmap);
+    
+    emit spriteReloaded();
+}
+
 void CanvasWidget::resizeEvent (QResizeEvent */*event*/)
 {
-    emit sizeChanged();
     kDebug() << "resized!\n";
-    
-    QPixmap pixmap(width(), height());
-    pixmap.fill(Qt::transparent);
-    QPainter p(&pixmap);
-    QSvgRenderer *svg = Item::getSvg();
-    if (!svg->elementExists("Background"))
-        kDebug() << "Invalid elementId: Background" << endl;
-    svg->render(&p, "Background");
-    background.setPixmap(pixmap);
+    loadSprite();
 }
 
 /*void CanvasWidget::mouseMoveEvent(QMouseEvent *event)
