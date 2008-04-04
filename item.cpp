@@ -9,17 +9,10 @@
 #include "renderer.h"
 
 // static
-QSvgRenderer *Item::svg = 0;
 KGameCanvasWidget *Item::canvas = 0;
 qreal Item::m_scale = 1.0;
 int Item::m_borderLeft = 0;
 int Item::m_borderTop = 0;
-
-// static
-void Item::setSvgRenderer(QSvgRenderer *svgRenderer)
-{
-    svg = svgRenderer;
-}
 
 // static
 void Item::setCanvas(KGameCanvasWidget *c)
@@ -30,11 +23,6 @@ void Item::setCanvas(KGameCanvasWidget *c)
 Item::Item()
     :KGameCanvasPixmap(canvas), width(0), height(0)
 {
-    if (svg == 0) {
-        kError() << "Item::Item(): a svgRenderer must be set "
-                    "before calling the constructor!!" << endl;
-        return;
-    }
     if (canvas == 0) {
         kError() << "Item::Item(): a scene must be set "
                     "before calling the constructor!!" << endl;

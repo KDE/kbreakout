@@ -15,6 +15,7 @@ class MainWindow : public KXmlGuiWindow
     Q_OBJECT
 public:
     MainWindow(QWidget *parent=0);
+    ~MainWindow();
 
 public slots:
     void handleEndedGame(int score, int level, int time);

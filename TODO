@@ -3,6 +3,8 @@ BUGS:
 
 * When the ball is goint up or down (exactly) sometimes in passes through a wall
 * Sometimes ti bounces twice when it shouldn't
+* When the balls is very fast it goes trough bricks
+* The pause button needs to be pressed twice..
 * Unneeded resizes and repaints on startup
 
 
@@ -17,13 +19,14 @@ TODO:
 * Add GUI elements
 * Pause when losing focus
 * Fix total brick count (already done I think??)
-* Add some more gifts: glue, burning ball, exploding ball
+* Add some more gifts: glue, burning ball
+* Exploding brick
 * Give some feedback when he game is paused
 
 == Mid Term ==
 * Add gui to load new levesets
 * Add sound
-* Improve the performance using only one QTimer for repaint
+* Improve the performance using only one QTimer for repaints
 * Hide cursor when over the CanvasWidget
 * Configurable keys
 * Add nice effects

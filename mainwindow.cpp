@@ -22,12 +22,9 @@
 MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
 {
     canvasWidget = new CanvasWidget(this);
-
-    QSvgRenderer *svg = new QSvgRenderer(
-            KStandardDirs::locate("appdata", "default.svg"));
-    Item::setSvgRenderer(svg);
     Item::setCanvas(canvasWidget);
     new Background;
+    
     gameEngine = new GameEngine;
     
     connect(canvasWidget, SIGNAL(mouseMoved(int)),
@@ -58,7 +55,11 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     gameEngine->start("default");
 }
  
-//FIXME: add ~MainWindow
+MainWindow::~MainWindow()
+{
+    delete gameEngine;
+    delete canvasWidget;
+}
  
 void MainWindow::setupActions()
 {

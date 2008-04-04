@@ -18,14 +18,12 @@ public:
     Item();
     ~Item();
     
-    // TODO: change to load file: setSvgRenderer(const QString &themeFileName)
-    static void setSvgRenderer(QSvgRenderer *);
     static void setCanvas(KGameCanvasWidget *);
 
     static qreal scale() {return m_scale;}
     static int borderLeft() {return m_borderLeft;}
     //TODO: change the following
-    static QSvgRenderer *getSvg() {return svg;}
+    //static QSvgRenderer *getSvg() {return svg;}
     
     // make parent functions accessible
     void hide() {KGameCanvasPixmap::hide();}
@@ -56,7 +54,6 @@ public slots:
 protected:
     static void updateScale();
     
-    static QSvgRenderer *svg;
     // canvas container of all Items
     static KGameCanvasWidget *canvas;
     

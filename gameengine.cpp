@@ -314,12 +314,25 @@ void GameEngine::detectBallCollisions(Ball *ball)
     if (firstTime) {
         // add some randomness to the mix...
         // (the ball will slowly go faster...)
-        ball->directionX *= 1 + 0.01 * (qrand() % 256 == 0);
-        ball->directionY *= 1 + 0.01 * (qrand() % 256 == 0);
+        if (qrand() % 256 == 0) {
+            if (ball->directionX > 0) {
+                ball->directionX += DEFAULT_SPEED * 0.01;
+            } else {
+                ball->directionX -= DEFAULT_SPEED * 0.01;
+            }
+            
+            if (ball->directionY > 0) {
+                ball->directionY += DEFAULT_SPEED * 0.01;
+            } else {
+                ball->directionY -= DEFAULT_SPEED * 0.01;
+            }
+        }
+        
         if (ball->directionX > BRICK_HEIGHT)
             ball->directionX = BRICK_HEIGHT;
         if (ball->directionY > BRICK_HEIGHT)
             ball->directionY = BRICK_HEIGHT;
+            
         firstTime = false;
         // check if there is another collision
         detectBallCollisions(ball);
