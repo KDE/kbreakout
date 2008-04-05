@@ -400,15 +400,14 @@ void GameEngine::handleBrickCollisions(Ball *ball)
     // TODO: rect->left() and -> bottom() may be one pixel wrong
     QRect rect = ball->getRect();
 
-    QMutableListIterator<Brick *> i(m_bricks);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
+    QSet<Brick *> bricksMarkedForDeletion;
+    foreach(Brick *brick, m_bricks) {
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
         // else: the ball has hit the brick
         
         if (ball->type() != "UnstoppableBall"
-                && ball->type() != "UstoppableBurningBall") {
+                && ball->type() != "UnstoppableBurningBall") {
             // find out in which direction to bounce
             int top = brickRect.top() - rect.top();
             int bottom = rect.bottom() - brickRect.bottom();
@@ -428,49 +427,96 @@ void GameEngine::handleBrickCollisions(Ball *ball)
                 ball->directionX *= -1;
             else
                 break;
-            
-            if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
-                brick->show();
-                ++remainingBricks;
-                return;
-            }
-            if (brick->type() == "UnbreakableBrick") return;
-            if (brick->type() == "MultipleBrick3") {
-                brick->setType("MultipleBrick2");
-                addScore(qRound(dScore));
-                dScore = BRICK_SCORE;
-                return;
-            }
-            if (brick->type() == "MultipleBrick2") {
-                brick->setType("MultipleBrick1");
-                addScore(qRound(dScore));
-                dScore = BRICK_SCORE;
-                return;
-            }
-        }
-        // delete the brick
-        i.remove();
-        
-        // FIXME: fix!!!!!!!
-        if (not (brick->type() == "HiddenBrick" && not brick->isVisible()
-            || brick->type() == "UnbreakableBrick"))
-                --remainingBricks;
-        
-        if (brick->gift != 0) {
-            brick->gift->moveTo(brick->getRect().left(), 
-                                brick->getRect().top());
-            brick->gift->show();
-            m_gifts.append(brick->gift);
         }
         
-        delete brick;
-        
-        addScore(qRound(dScore));
-        dScore = BRICK_SCORE;
-        if (remainingBricks == 0) {
-            loadNextLevel();
-            return;
+        if (ball->type() == "BurningBall" 
+                || ball->type() == "UnstoppableBurningBall") {
+            bricksMarkedForDeletion.insert(brick);
+            bricksMarkedForDeletion.unite(nearbyBricks(brick));
+        }  else if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
+            brick->show();
+            ++remainingBricks;
+        } else if (brick->type() == "MultipleBrick3") {
+            brick->setType("MultipleBrick2");
+            addScore(qRound(dScore));
+            dScore = BRICK_SCORE;
+        } else if (brick->type() == "MultipleBrick2") {
+            brick->setType("MultipleBrick1");
+            addScore(qRound(dScore));
+            dScore = BRICK_SCORE;
+        } else if (brick->type() != "UnbreakableBrick") {
+            bricksMarkedForDeletion.insert(brick);
         }
+    }
+    
+    // remove the bricks from m_bricks
+    QMutableListIterator<Brick *> i(m_bricks);
+    while (i.hasNext()) {
+        Brick *brick = i.next();
+        if (bricksMarkedForDeletion.contains(brick)) {
+            i.remove();
+        }
+    }
+    
+    // really remove them
+    foreach(Brick *brick, bricksMarkedForDeletion) {
+        deleteBrick(brick);
+    }
+}
+
+QSet<Brick *> GameEngine::nearbyBricks(Brick *brick)
+{
+    
+    QSet<Brick *> result;
+    QRect brickRect = brick->getRect();
+    // coordinates of the center of the brick
+    int x = brickRect.x() + BRICK_WIDTH / 2;
+    int y = brickRect.y() + BRICK_HEIGHT / 2; 
+    
+    // points to the left, right, top and bottom of the brick
+    QList<QPoint> nearbyPoints;
+    nearbyPoints.append(QPoint(x - BRICK_WIDTH, y));
+    nearbyPoints.append(QPoint(x + BRICK_WIDTH, y));
+    nearbyPoints.append(QPoint(x, y - BRICK_HEIGHT));
+    nearbyPoints.append(QPoint(x, y + BRICK_HEIGHT));
+    
+    foreach(Brick *b, m_bricks) {
+        foreach (QPoint p, nearbyPoints) {
+            if (b->getRect().contains(p)) {
+                result.insert(b);
+            }
+        }
+    }
+    
+    return result;
+}
+
+void GameEngine::deleteBrick(Brick *brick)
+{
+    // these two kind of bricks aren't counted in the remainingBricks
+    if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
+        ++remainingBricks;
+    }
+    if (brick->type() == "UnbreakableBrick") {
+        ++remainingBricks;
+    }
+
+    if (brick->gift != 0) {
+        brick->gift->moveTo(brick->getRect().left(), 
+                            brick->getRect().top());
+        brick->gift->show();
+        m_gifts.append(brick->gift);
+    }
+    
+    delete brick;
+    --remainingBricks;
+    
+    addScore(qRound(dScore));
+    dScore = BRICK_SCORE;
+    
+    if (remainingBricks == 0) {
+        loadNextLevel();
+        return;
     }
 }
 
@@ -540,7 +586,6 @@ void GameEngine::handleGift(Gift *gift)
                 addScore(AUTOBRICK_SCORE);
             }
         }
-        // TODO: make multiple bricks single
     }
     else if (gift->type() == "GiftSplitBall") {
         // TODO: better copy (type, speed, etc...)
@@ -556,7 +601,7 @@ void GameEngine::handleGift(Gift *gift)
                 newBall->directionX *= -1;
           
             newBall->toBeFired = false;
-            newBall->moveTo(ball->pos());
+            newBall->moveTo(ball->position());
             newBalls.append(newBall);
         }
         m_balls += newBalls;
@@ -565,8 +610,22 @@ void GameEngine::handleGift(Gift *gift)
         m_balls.append(new Ball);
     } 
     else if (gift->type() == "GiftUnstoppableBall") {
-        foreach(Ball *ball, m_balls)
-            ball->setType("UnstoppableBall");
+        foreach(Ball *ball, m_balls) {
+            if (ball->type() == "BurningBall") {
+                ball->setType("UnstoppableBurningBall");
+            } else if (ball->type() != "UnstoppableBurningBall") {
+                ball->setType("UnstoppableBall");
+            }
+        }
+    }
+    else if (gift->type() == "GiftBurningBall") {
+        foreach(Ball *ball, m_balls) {
+            if (ball->type() == "UnstoppableBall") {
+                ball->setType("UnstoppableBurningBall");
+            } else if (ball->type() != "UnstoppableBurningBall") {
+                ball->setType("BurningBall");
+            }
+        }
     }
     else if (gift->type() == "GiftDecreaseBallSpeed") {
         foreach(Ball *ball, m_balls)

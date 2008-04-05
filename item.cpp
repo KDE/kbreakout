@@ -90,21 +90,21 @@ void Item::setRect(const QRectF &/*newRect*/)
 
 QRect Item::getRect() const
 {
-    return QRect(static_cast<int>(position.x()),
-                 static_cast<int>(position.y()),
+    return QRect(static_cast<int>(m_position.x()),
+                 static_cast<int>(m_position.y()),
                  width, height);
 }
 
 void Item::moveTo(qreal x, qreal y)
 {
-    position = QPointF(x, y);
+    m_position = QPointF(x, y);
     updatePosition();
 }
 
-void Item::moveTo(int x, int y)
+/*void Item::moveTo(int x, int y)
 {
     moveTo(static_cast<qreal>(x), static_cast<qreal>(y));
-}
+}*/
 
 void Item::moveTo(const QPointF &point) {
     moveTo(point.x(), point.y());
@@ -112,7 +112,7 @@ void Item::moveTo(const QPointF &point) {
 
 void Item::moveBy(qreal dx, qreal dy)
 {
-    position += QPointF(dx, dy);
+    m_position += QPointF(dx, dy);
     updatePosition();
 }
 
@@ -120,6 +120,6 @@ void Item::updatePosition()
 {
     //kDebug() << elementId << ": (" << " ," << ")\n";
     KGameCanvasPixmap::moveTo(
-      static_cast<int>(m_scale * position.x()) + m_borderLeft,
-      static_cast<int>(m_scale * position.y()) + m_borderTop);
+      static_cast<int>(m_scale * m_position.x()) + m_borderLeft,
+      static_cast<int>(m_scale * m_position.y()) + m_borderTop);
 }

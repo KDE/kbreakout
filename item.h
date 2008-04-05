@@ -22,14 +22,16 @@ public:
 
     static qreal scale() {return m_scale;}
     static int borderLeft() {return m_borderLeft;}
-    //TODO: change the following
-    //static QSvgRenderer *getSvg() {return svg;}
     
-    // make parent functions accessible
-    void hide() {KGameCanvasPixmap::hide();}
-    void show() {KGameCanvasPixmap::show();}
+    // make superclass functions accessible
+    using KGameCanvasPixmap::hide;
+    using KGameCanvasPixmap::show;
+    //using KGameCanvasPixmap::visible;
+    using KGameCanvasPixmap::setPixmap;
+    //void hide() {KGameCanvasPixmap::hide();}
+    //void show() {KGameCanvasPixmap::show();}
     bool isVisible() {return KGameCanvasItem::visible();}
-    void setPixmap(const QPixmap &p) {KGameCanvasPixmap::setPixmap(p);}
+    //void setPixmap(const QPixmap &p) {KGameCanvasPixmap::setPixmap(p);}
     
     void setType(const QString &type);
     QString type() const {return elementId;}
@@ -38,11 +40,10 @@ public:
     
     //rect() const is virtual so DON'T use that name!!!
     QRect getRect() const;
-    // TODO: pos->position position->m_position
-    QPoint pos() const {return position.toPoint();}
+    QPoint position() const {return m_position.toPoint();}
     
     void moveTo(qreal x, qreal y);
-    void moveTo(int x, int y);
+    //void moveTo(int x, int y);
     void moveTo(const QPointF &point);
     void moveBy(qreal dx, qreal dy);
     void updatePosition();
@@ -64,7 +65,7 @@ protected:
     
     int width;
     int height;
-    QPointF position;
+    QPointF m_position;
     QString elementId;
 };
 

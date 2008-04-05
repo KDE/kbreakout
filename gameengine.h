@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QRect>
 #include <QList>
+#include <QSet>
 #include <QTimer>
 #include <QRegion>
 
@@ -40,6 +41,12 @@ private:
     void handleGift(Gift *gift);
     void handleBrickCollisions(Ball *ball);
     void addBrick(char type, int xCoordinate, int yCoordinate);
+    void deleteBrick(Brick *brick);
+    /**
+     * returns the bricks to the left, right, top and bottom of the given one
+     * if present
+     */
+    QSet<Brick *> nearbyBricks(Brick *brick);
     // adds the a gift to a brick without a gift
     //void addGift(const QString &type, QList <Brick *> *bricks);
     
