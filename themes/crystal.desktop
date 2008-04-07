@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Crystal clear
+Description=Crystal-like theme for KBreakout
+VersionFormat=1
+Author=Eugene Trounev
+AuthorEmail=eugene.trounev@gmail.com
+Type=SVG
+FileName=crystal.svgz
+#Preview=crystal_preview.png
