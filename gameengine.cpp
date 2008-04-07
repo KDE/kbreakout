@@ -314,7 +314,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
     if (firstTime) {
         // add some randomness to the mix...
         // (the ball will slowly go faster...)
-        if (qrand() % 256 == 0) {
+        if (qrand() % 1024 == 0) {
             if (ball->directionX > 0) {
                 ball->directionX += DEFAULT_SPEED * 0.01;
             } else {
@@ -433,7 +433,10 @@ void GameEngine::handleBrickCollisions(Ball *ball)
                 || ball->type() == "UnstoppableBurningBall") {
             bricksMarkedForDeletion.insert(brick);
             bricksMarkedForDeletion.unite(nearbyBricks(brick));
-        }  else if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
+        } else if (ball->type() == "UnstoppableBall") {
+            // regardless of the type of ball
+            bricksMarkedForDeletion.insert(brick);
+        } else if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
             brick->show();
             ++remainingBricks;
         } else if (brick->type() == "MultipleBrick3") {
