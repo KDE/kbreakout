@@ -4,7 +4,7 @@
 #include <KDE/KGameCanvas>
 
 #include "item.h"
-#include "consts.h"
+#include "globals.h"
 
 class Ball : public Item
 {

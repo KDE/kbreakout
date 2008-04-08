@@ -15,8 +15,7 @@ TODO:
 * Add documentation
 * Add more levels
 * Move the bar to where the bar is when resuming after pause
-* Better pause feedback
-* Better new level feedback
+* Add message boxes for new levels, pause, etc..
 * Add sticky bar support
 * Exploding brick
 * Restrucure file hirarchy

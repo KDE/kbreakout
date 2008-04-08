@@ -58,6 +58,8 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     canvasWidget->setCursor(QCursor(Qt::BlankCursor));
     
     setupActions();
+    setupGUI();
+    setStatusBar(0);
     
     gameEngine->start("default");
     setFocus();
@@ -75,8 +77,6 @@ void MainWindow::setupActions()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
-
-    setupGUI();
 }
 
 void MainWindow::configureSettings()
@@ -95,7 +95,6 @@ void MainWindow::configureSettings()
     connect(dialog, SIGNAL( settingsChanged(const QString&)), this, 
             SLOT(loadSettings()));
     
-    dialog->setHelp(QString(), "knetwalk");
     dialog->show();
 }
 

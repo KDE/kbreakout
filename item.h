@@ -3,7 +3,7 @@
 
 #include <KDE/KGameCanvas>
 
-#include "consts.h"
+#include "globals.h"
 
 class QSvgRenderer;
 

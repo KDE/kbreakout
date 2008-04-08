@@ -283,16 +283,16 @@ void GameEngine::detectBallCollisions(Ball *ball)
     rect.translate(qRound(ball->directionX/2), qRound(ball->directionY/2));
     
     // bounce against the wall
-    if (rect.left() < 0 && ball->directionX < 0)
+    if (rect.left() < 0 && ball->directionX < 0) {
         ball->directionX *= -1;
-    else if (rect.right() + 1 > BRICK_WIDTH * WIDTH
-             && ball->directionX > 0)
+    } else if (rect.right() + 1 > BRICK_WIDTH * WIDTH
+             && ball->directionX > 0) {
         ball->directionX *= -1;
-    else if (rect.top() < 0 && ball->directionY < 0)
+    } else if (rect.top() < 0 && ball->directionY < 0) {
         ball->directionY *= -1;
-    else if (rect.bottom()+1 > ( HEIGHT) * BRICK_HEIGHT 
+    } else if (rect.bottom()+1 > ( HEIGHT) * BRICK_HEIGHT 
              && ball->directionY > 0) {
-        // delete a ball
+        // delete the ball
         m_balls.removeAll(ball);
         delete ball;
         itemsGotDeleted = true;
@@ -434,16 +434,17 @@ void GameEngine::handleBrickCollisions(Ball *ball)
             
             // bounce
             // TODO: check this stuff
-            if (max == top && ball->directionY > 0)
+            if (max == top && ball->directionY > 0) {
                 ball->directionY *= -1;
-            else if (max == bottom && ball->directionY < 0)
+            } else if (max == bottom && ball->directionY < 0) {
                 ball->directionY *= -1;
-            else if (max == left && ball->directionX > 0)
+            } else if (max == left && ball->directionX > 0) {
                 ball->directionX *= -1;
-            else if (max == right && ball->directionX < 0)
+            } else if (max == right && ball->directionX < 0) {
                 ball->directionX *= -1;
-            else
+            } else {
                 break;
+            }
         }
         
         if (ball->type() == "BurningBall" 
