@@ -59,10 +59,19 @@ void CanvasWidget::handleGamePaused()
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
-void CanvasWidget::handleGameResumed(int /*barPosition*/)
+void CanvasWidget::handleGameResumed(int barPosition)
 {
-    setCursor(QCursor(Qt::BlankCursor));
+    // give feedback
+    QCursor newCursor(Qt::BlankCursor);
+    setCursor(newCursor);
     pauseOverlay.hide();
+    
+    // move the mouse cursor to where the bar is
+    int screenY = mapFromGlobal(cursor().pos()).y();
+    int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
+    QPoint p = mapToGlobal(QPoint(screenX, screenY));
+    newCursor.setPos(p.x(), p.y());
+    setCursor(newCursor);
     updateBarTimer.start();
 }
 

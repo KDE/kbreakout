@@ -69,7 +69,8 @@ void GameEngine::resume()
     }
     if (movingObjects) gameTimer.start();
     
-    emit gameResumed(0);
+    int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
+    emit gameResumed(barPosition);
 }
 
 void GameEngine::togglePause()
