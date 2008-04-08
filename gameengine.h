@@ -56,6 +56,8 @@ private:
     void setScore(int score);
     void deleteMovingObjects();
     void deleteAllObjects();
+    
+    bool isGamePaused();
 
     QString levelSet;
     int level;
