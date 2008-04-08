@@ -11,11 +11,11 @@ class CanvasWidget : public KGameCanvasWidget
 public:
     CanvasWidget(QWidget *parent=0);
 
-    // reloads the sprite
-    void loadSprite();
+    // reloads the sprites
+    void reloadSprites();
     
 signals:
-    void spriteReloaded();
+    void spritesReloaded();
     // the position is in game coordinates not screen coordinates
     void mouseMoved(int positionX); // TODO: rename
     void ballFired();
@@ -30,6 +30,8 @@ signals:
 private slots:
     void moveBar();
     void updateBar();
+    void handleGamePaused();
+    void handleGameResumed(int barPosition);
 
 protected:
     void resizeEvent(QResizeEvent *event);
@@ -44,6 +46,7 @@ protected:
     QPoint lastMousePosition;
     
     KGameCanvasPixmap background;
+    KGameCanvasPixmap pauseOverlay;
     
     // used when moving the bar with the keys
     int barDirection;

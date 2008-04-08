@@ -29,7 +29,7 @@ Item::Item()
         return;
     }
     
-    connect(canvas, SIGNAL(spriteReloaded()), SLOT(loadSprite()));
+    connect(canvas, SIGNAL(spritesReloaded()), SLOT(loadSprite()));
     
     show();
 }

@@ -80,7 +80,7 @@ void GameEngine::togglePause()
 
 void GameEngine::moveBar(int newPos) 
 {
-    if (gameIsPaused()) return;
+    //if (gameIsPaused()) return;
     
     // width of the game
     int width = BRICK_WIDTH * WIDTH;

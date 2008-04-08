@@ -19,8 +19,6 @@ public:
 
 public slots:
     void handleEndedGame(int score, int level, int time);
-    void handleGamePaused();
-    void handleGameResumed(int barPosition);
     void configureSettings();
     void loadSettings();
 

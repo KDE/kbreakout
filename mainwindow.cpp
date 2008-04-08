@@ -42,10 +42,11 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
+    
     connect(gameEngine, SIGNAL(gamePaused()), 
-            SLOT(handleGamePaused()));
+            canvasWidget, SLOT(handleGamePaused()));
     connect(gameEngine, SIGNAL(gameResumed(int)), 
-            SLOT(handleGameResumed(int)));
+            canvasWidget, SLOT(handleGameResumed(int)));
     
     // cheating keys, debugging and testing only TODO: REMOVE
     connect(canvasWidget, SIGNAL(cheatSkipLevel()),
@@ -107,17 +108,7 @@ void MainWindow::loadSettings()
         return;
     }
     
-    canvasWidget->loadSprite();
-}
-
-void MainWindow::handleGamePaused()
-{
-    canvasWidget->setCursor(QCursor(Qt::ArrowCursor));
-}
-
-void MainWindow::handleGameResumed(int)
-{
-    canvasWidget->setCursor(QCursor(Qt::BlankCursor));
+    canvasWidget->reloadSprites();
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

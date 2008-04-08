@@ -1,6 +1,7 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QSvgRenderer>
+#include <QCursor>
 
 #include <KDebug>
 
@@ -17,6 +18,7 @@ CanvasWidget::CanvasWidget(QWidget *parent)
     
     background.putInCanvas(this);
     background.show();
+    pauseOverlay.putInCanvas(this);
     
     moveBarTimer.setInterval(UPDATE_INTERVAL);
     connect(&moveBarTimer, SIGNAL(timeout()), SLOT(moveBar()));
@@ -25,7 +27,8 @@ CanvasWidget::CanvasWidget(QWidget *parent)
     connect(&updateBarTimer, SIGNAL(timeout()), SLOT(updateBar()));
     lastMousePosition = QPoint(0, 0);
     
-    updateBarTimer.start(); // TODO: stop() when in pause
+    updateBarTimer.start();
+    setCursor(QCursor(Qt::BlankCursor));
 }
 
 void CanvasWidget::moveBar()
@@ -34,19 +37,39 @@ void CanvasWidget::moveBar()
     if (barDirection == -1) emit barMovedLeft();
 }
 
-void CanvasWidget::loadSprite()
+void CanvasWidget::reloadSprites()
 {
     QSize size(width(), height());
     QPixmap pixmap = Renderer::self()->renderedSvgElement("Background", size);
     background.setPixmap(pixmap);
     
-    emit spriteReloaded();
+    // pause overlay
+    pixmap = QPixmap(size);
+    pixmap.fill(QColor(100, 100, 100, 150));
+    pauseOverlay.setPixmap(pixmap);
+    
+    emit spritesReloaded();
+}
+
+void CanvasWidget::handleGamePaused()
+{
+    updateBarTimer.stop();
+    pauseOverlay.raise();
+    pauseOverlay.show();
+    setCursor(QCursor(Qt::ArrowCursor));
+}
+
+void CanvasWidget::handleGameResumed(int /*barPosition*/)
+{
+    setCursor(QCursor(Qt::BlankCursor));
+    pauseOverlay.hide();
+    updateBarTimer.start();
 }
 
 void CanvasWidget::resizeEvent (QResizeEvent */*event*/)
 {
     kDebug() << "resized!\n";
-    loadSprite();
+    reloadSprites();
 }
 
 /*void CanvasWidget::mouseMoveEvent(QMouseEvent *event)
