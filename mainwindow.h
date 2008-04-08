@@ -30,6 +30,9 @@ private:
     GameEngine *gameEngine;
     
     void setupActions();
+    
+protected:
+    void focusOutEvent(QFocusEvent * event);
 };
  
 #endif

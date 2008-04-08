@@ -4,7 +4,6 @@ BUGS:
 * When the ball is goint up or down (exactly) sometimes in passes through a wall
 * Sometimes ti bounces twice when it shouldn't
 * When the balls is very fast it goes trough bricks
-* The pause button needs to be pressed twice.. (sometimes?)
 * Unneeded resizes and repaints on startup
 
 
@@ -15,7 +14,6 @@ TODO:
 * Rename to KBreakOut
 * Add documentation
 * Add more levels
-* Pause when losing focus
 * Move the bar to where the bar is when resuming after pause
 * Better pause feedback
 * Better new level feedback
@@ -36,5 +34,6 @@ TODO:
 * Add gifts to be able to shoot at the bricks
 * Full screen mode
   - mouse sensibility option (when in full screen mode)
+  - screen resolution option (when in full screen mode)
 * Add demo mode with AI playing
 * Add the optional use of openGL

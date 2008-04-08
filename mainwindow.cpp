@@ -59,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     setupActions();
     
     gameEngine->start("default");
+    setFocus();
 }
  
 MainWindow::~MainWindow()
@@ -143,4 +144,10 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     canvasWidget->grabKeyboard(); // TODO: ???
     
     gameEngine->start("default");
+}
+
+void MainWindow::focusOutEvent(QFocusEvent *event)
+{
+    gameEngine->pause();
+    KXmlGuiWindow::focusOutEvent(event);
 }
