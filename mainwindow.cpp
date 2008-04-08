@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QGraphicsScene>
 #include <QSvgRenderer>
+#include <QCursor>
 
 #include <KIcon>
 #include <KStandardAction>
@@ -22,6 +23,7 @@
 MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
 {
     canvasWidget = new CanvasWidget(this);
+    // TODO: find a better way..
     Item::setCanvas(canvasWidget);
     new Background;
     
@@ -40,7 +42,10 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
-            
+    connect(gameEngine, SIGNAL(gamePaused()), 
+            SLOT(handleGamePaused()));
+    connect(gameEngine, SIGNAL(gameResumed(int)), 
+            SLOT(handleGameResumed(int)));
     
     // cheating keys, debugging and testing only TODO: REMOVE
     connect(canvasWidget, SIGNAL(cheatSkipLevel()),
@@ -49,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
             gameEngine, SLOT(cheatAddLife()));
     
     setCentralWidget(canvasWidget);
+    canvasWidget->setCursor(QCursor(Qt::BlankCursor));
     
     setupActions();
     
@@ -101,6 +107,16 @@ void MainWindow::loadSettings()
     }
     
     canvasWidget->loadSprite();
+}
+
+void MainWindow::handleGamePaused()
+{
+    canvasWidget->setCursor(QCursor(Qt::ArrowCursor));
+}
+
+void MainWindow::handleGameResumed(int)
+{
+    canvasWidget->setCursor(QCursor(Qt::BlankCursor));
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

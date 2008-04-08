@@ -39,19 +39,24 @@ void GameEngine::start(QString l)
     gameTimer.start();
 }
 
-bool GameEngine::isGamePaused()
+bool GameEngine::gameIsPaused()
 {
-    return elapsedTimeTimer.isActive();
+    return !elapsedTimeTimer.isActive();
 }
 
 void GameEngine::pause()
 {
+    if (gameIsPaused()) return;
+    
     elapsedTimeTimer.stop();
     gameTimer.stop();
+    emit gamePaused();
 }
 
 void GameEngine::resume()
 {
+    if (!gameIsPaused()) return;
+    
     elapsedTimeTimer.start();
     
     // only restart the gameTimer if there are objects moving
@@ -63,17 +68,19 @@ void GameEngine::resume()
         }
     }
     if (movingObjects) gameTimer.start();
+    
+    emit gameResumed(0);
 }
 
 void GameEngine::togglePause()
 {
-    if (isGamePaused()) pause();
-    else resume();
+    if (gameIsPaused()) resume();
+    else pause();
 }
 
 void GameEngine::moveBar(int newPos) 
 {
-    if (!isGamePaused()) return;
+    if (gameIsPaused()) return;
     
     // width of the game
     int width = BRICK_WIDTH * WIDTH;
@@ -110,7 +117,7 @@ void GameEngine::moveBarRight()
 
 void GameEngine::fire()
 {
-    if (!isGamePaused()) resume();
+    if (gameIsPaused()) resume();
 
     foreach(Ball *ball, m_balls) {
         if (!ball->toBeFired) continue;

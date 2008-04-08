@@ -32,6 +32,8 @@ public slots:
     void cheatAddLife() {m_lives.append(new Life);}
 
 signals:
+    void gamePaused();
+    void gameResumed(int barPosition);
     void gameEnded(int score, int level, int time);
 
 private:
@@ -57,7 +59,7 @@ private:
     void deleteMovingObjects();
     void deleteAllObjects();
     
-    bool isGamePaused();
+    bool gameIsPaused();
 
     QString levelSet;
     int level;

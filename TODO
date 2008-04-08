@@ -16,6 +16,7 @@ TODO:
 * Add documentation
 * Add more levels
 * Pause when losing focus
+* Move the bar to where the bar is when resuming after pause
 * Better pause feedback
 * Better new level feedback
 * Add sticky bar support
@@ -25,7 +26,6 @@ TODO:
 == Mid Term ==
 * Add gui to load new levesets
 * Add sound
-* Hide cursor when over the CanvasWidget
 * Configurable keys
 * Add nice effects
 
