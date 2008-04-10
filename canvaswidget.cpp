@@ -7,11 +7,15 @@
 #include "canvaswidget.h"
 #include "item.h"
 #include "renderer.h"
+#include "globals.h"
 
 CanvasWidget::CanvasWidget(QWidget *parent) 
     : KGameCanvasWidget(parent) 
 {
     setFocus();
+    
+    setMinimumWidth(MINIMUM_WIDTH);
+    setMinimumHeight(MINIMUM_HEIGHT);
     
     background.putInCanvas(this);
     background.show();

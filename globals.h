@@ -41,6 +41,10 @@ const int LOSE_LIFE_SCORE = -500;
 const int INITIAL_LIVES = 2;
 const int MAX_LIVES = 8;
 
+// minimum with and height of the game widget (CanvasWidget)
+const int MINIMUM_WIDTH = 700;
+const int MINIMUM_HEIGHT = 400;
+
 // IMPORTANT: keep giftTypesCount in sync!!!!!!!
 // TODO: see if I can use somthing different
 const QString giftTypes[] = {
