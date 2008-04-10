@@ -36,14 +36,13 @@ private slots:
 
 protected:
     void resizeEvent(QResizeEvent *event);
-    void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void focusOutEvent(QFocusEvent *event);
     
     // TODO: use QTimeLine
-    QTimer moveBarTimer;
-    QTimer updateBarTimer;
+    QTimer moveBarTimer; // when using the keyboard
+    QTimer updateBarTimer; // when using the mouse
     QPoint lastMousePosition;
     
     KGameCanvasPixmap background;

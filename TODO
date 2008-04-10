@@ -1,7 +1,7 @@
 BUGS:
 =====
 
-* Settings->statusbar is unneeded
+* Pause the game when you just lose, when the ball shows up it's on top of the canvas...
 * When the ball is goint up or down (exactly) sometimes in passes through a wall
 * Sometimes ti bounces twice when it shouldn't
 * When the balls is very fast it goes trough bricks
@@ -12,7 +12,6 @@ TODO:
 =====
 
 == Short Term ==
-* The default window size should be as the current one, but the minimum smaller
 * Ask confirmation on close if a game is running
 * Rename to KBreakOut (?)
 * Add documentation
@@ -22,7 +21,6 @@ TODO:
 * Add sticky bar support
 * Exploding brick
 * Restrucure file hirarchy
-* Configurable keys
 
 == Mid Term ==
 * Add gui to load new levesets

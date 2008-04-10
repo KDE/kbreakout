@@ -118,7 +118,10 @@ void GameEngine::moveBarRight()
 
 void GameEngine::fire()
 {
-    if (gameIsPaused()) resume();
+    if (gameIsPaused()) {
+        resume();
+        return;
+    }
 
     foreach(Ball *ball, m_balls) {
         if (!ball->toBeFired) continue;

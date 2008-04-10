@@ -15,17 +15,20 @@ public:
     MainWindow(QWidget *parent=0);
     ~MainWindow();
 
-public slots:
+private slots:
     void handleEndedGame(int score, int level, int time);
     void configureSettings();
     void showHighscores();
     void loadSettings();
     
 private:
+    void setupActions();
+    
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     
-    void setupActions();
+protected:
+    void mousePressEvent(QMouseEvent *event);
 };
  
 #endif

@@ -4,6 +4,7 @@
 #include <QCursor>
 
 #include <KIcon>
+#include <KAction>
 #include <KStandardAction>
 #include <KActionCollection>
 #include <KLocale>
@@ -32,14 +33,10 @@ MainWindow::MainWindow(QWidget *parent)
     
     connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));
-    connect(canvasWidget, SIGNAL(ballFired()),
-            gameEngine, SLOT(fire()));
     connect(canvasWidget, SIGNAL(barMovedLeft()),
             gameEngine, SLOT(moveBarLeft()));
     connect(canvasWidget, SIGNAL(barMovedRight()),
             gameEngine, SLOT(moveBarRight()));
-    connect(canvasWidget, SIGNAL(pausePressed()),
-            gameEngine, SLOT(togglePause()));
     connect(canvasWidget, SIGNAL(focusLost()),
             gameEngine, SLOT(pause()));
     
@@ -84,6 +81,20 @@ void MainWindow::setupActions()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
+    
+    KAction *fireAction = actionCollection()->addAction("");
+    fireAction->setText(i18n("Fire Ball"));
+    fireAction->setShortcut(Qt::Key_Space);
+    connect(fireAction, SIGNAL(triggered()), gameEngine, SLOT(fire()));
+    
+    KAction *pauseAction = actionCollection()->addAction("pause");
+    pauseAction->setText(i18n("Pause"));
+    pauseAction->setIcon(KIcon("media-playback-pause"));
+    QList<QKeySequence> keys;
+    keys.append(Qt::Key_P);
+    keys.append(Qt::Key_Pause);
+    pauseAction->setShortcut(KShortcut(keys));
+    connect(pauseAction, SIGNAL(triggered()), gameEngine, SLOT(togglePause()));
 }
 
 void MainWindow::configureSettings()
@@ -145,4 +156,12 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     ksdialog.exec();
     
     gameEngine->start("default");
+}
+
+
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    gameEngine->fire();
+    KXmlGuiWindow::mousePressEvent(event);
 }

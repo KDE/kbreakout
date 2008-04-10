@@ -52,6 +52,7 @@ void CanvasWidget::reloadSprites()
 void CanvasWidget::handleGamePaused()
 {
     updateBarTimer.stop();
+    moveBarTimer.stop();
     pauseOverlay.raise();
     pauseOverlay.show();
     setCursor(QCursor(Qt::ArrowCursor));
@@ -71,6 +72,7 @@ void CanvasWidget::handleGameResumed(int barPosition)
     newCursor.setPos(p.x(), p.y());
     setCursor(newCursor);
     updateBarTimer.start();
+    moveBarTimer.start();
 }
 
 void CanvasWidget::resizeEvent (QResizeEvent */*event*/)
@@ -90,11 +92,6 @@ void CanvasWidget::updateBar()
     emit mouseMoved(posX);
 }
 
-void CanvasWidget::mousePressEvent(QMouseEvent */*event*/)
-{
-    emit ballFired();
-}
-
 void CanvasWidget::keyPressEvent(QKeyEvent *event)
 {
     if (event->isAutoRepeat()) {
@@ -108,16 +105,6 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
         break;
     case Qt::Key_L:
         emit cheatAddLife();
-        break;
-    case Qt::Key_Escape:
-        emit escPressed();
-        break;
-    case Qt::Key_Pause:
-    case Qt::Key_P:
-        emit pausePressed();
-        break;
-    case Qt::Key_Space:
-        emit ballFired();
         break;
     case Qt::Key_Right:
         barDirection = 1;
