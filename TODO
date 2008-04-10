@@ -1,6 +1,7 @@
 BUGS:
 =====
 
+* Sometimes it steals the keyboard
 * When the ball is goint up or down (exactly) sometimes in passes through a wall
 * Sometimes ti bounces twice when it shouldn't
 * When the balls is very fast it goes trough bricks

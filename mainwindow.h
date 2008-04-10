@@ -20,6 +20,7 @@ public:
 public slots:
     void handleEndedGame(int score, int level, int time);
     void configureSettings();
+    void showHighscores();
     void loadSettings();
 
 

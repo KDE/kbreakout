@@ -12,6 +12,7 @@
 #include <KConfigDialog>
 #include <KDE/KScoreDialog>
 #include <KDE/KGameThemeSelector>
+#include <KDE/KStandardGameAction>
 
 #include "mainwindow.h"
 #include "gameengine.h"
@@ -73,7 +74,10 @@ MainWindow::~MainWindow()
  
 void MainWindow::setupActions()
 {
-    KStandardAction::quit(this, SLOT(close()), actionCollection());
+    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+    
+    KStandardGameAction::highscores(this, SLOT(showHighscores()), 
+                                actionCollection());
     
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
@@ -110,6 +114,13 @@ void MainWindow::loadSettings()
     canvasWidget->reloadSprites();
 }
 
+void MainWindow::showHighscores()
+{
+    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
+                          | KScoreDialog::Time, this);
+    ksdialog.exec();
+}
+
 void MainWindow::handleEndedGame(int score, int level, int time)
 {
     
@@ -138,6 +149,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
 void MainWindow::focusOutEvent(QFocusEvent *event)
 {
+    kDebug() << "Focus lost!!!!!!!!!!!!!!!!!!!";
     gameEngine->pause();
     KXmlGuiWindow::focusOutEvent(event);
 }
