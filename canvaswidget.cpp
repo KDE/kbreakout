@@ -1,6 +1,5 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include <QSvgRenderer>
 #include <QCursor>
 
 #include <KDebug>
@@ -12,9 +11,7 @@
 CanvasWidget::CanvasWidget(QWidget *parent) 
     : KGameCanvasWidget(parent) 
 {
-    //setMouseTracking(true);
-    grabKeyboard();
-    //grabMouse();
+    setFocus();
     
     background.putInCanvas(this);
     background.show();
@@ -80,14 +77,6 @@ void CanvasWidget::resizeEvent (QResizeEvent */*event*/)
     kDebug() << "resized!\n";
     reloadSprites();
 }
-
-/*void CanvasWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    // convert the screen position to scene position
-    // TODO: put scaling somewhere else... (???)
-    int posX = qRound((event->x() - Item::borderLeft()) / Item::scale());
-    emit mouseMoved(posX);
-}*/
 
 void CanvasWidget::updateBar()
 {
@@ -157,4 +146,10 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
     default:
         KGameCanvasWidget::keyReleaseEvent(event);
     }
+}
+
+void CanvasWidget::focusOutEvent(QFocusEvent *event)
+{
+    emit focusLost();
+    KGameCanvasWidget::focusOutEvent(event);
 }

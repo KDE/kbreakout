@@ -23,6 +23,7 @@ signals:
     void barMovedRight();
     void pausePressed();
     void escPressed();
+    void focusLost();
     // cheating keys, debugging and testing only TODO: REMOVE
     void cheatSkipLevel();
     void cheatAddLife();
@@ -35,10 +36,10 @@ private slots:
 
 protected:
     void resizeEvent(QResizeEvent *event);
-    //void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
+    void focusOutEvent(QFocusEvent *event);
     
     // TODO: use QTimeLine
     QTimer moveBarTimer;

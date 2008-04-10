@@ -21,14 +21,14 @@
 #include "renderer.h"
 #include "settings.h"
 
-MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
+MainWindow::MainWindow(QWidget *parent) 
+    : KXmlGuiWindow(parent),
+      canvasWidget(new CanvasWidget(this))
 {
-    canvasWidget = new CanvasWidget(this);
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
-    new Background;
-    
-    gameEngine = new GameEngine;
+    gameEngine = new GameEngine; // must be called after Item::setCanvas()
+    new Background; // the background put's itself into the canvasWidget
     
     connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));
@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
             gameEngine, SLOT(moveBarRight()));
     connect(canvasWidget, SIGNAL(pausePressed()),
             gameEngine, SLOT(togglePause()));
+    connect(canvasWidget, SIGNAL(focusLost()),
+            gameEngine, SLOT(pause()));
     
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
@@ -58,12 +60,12 @@ MainWindow::MainWindow(QWidget *parent) : KXmlGuiWindow(parent)
     setCentralWidget(canvasWidget);
     canvasWidget->setCursor(QCursor(Qt::BlankCursor));
     
+    setStatusBar(0);
     setupActions();
     setupGUI();
     setStatusBar(0);
     
     gameEngine->start("default");
-    setFocus();
 }
  
 MainWindow::~MainWindow()
@@ -139,17 +141,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
                           | KScoreDialog::Time, this);
     ksdialog.addScore(scoreInfo);
-    
-    canvasWidget->releaseKeyboard(); // TODO: ???
     ksdialog.exec();
-    canvasWidget->grabKeyboard(); // TODO: ???
     
     gameEngine->start("default");
-}
-
-void MainWindow::focusOutEvent(QFocusEvent *event)
-{
-    kDebug() << "Focus lost!!!!!!!!!!!!!!!!!!!";
-    gameEngine->pause();
-    KXmlGuiWindow::focusOutEvent(event);
 }

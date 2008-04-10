@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <KXmlGuiWindow>
-#include <KTextEdit>
-#include <KDebug>
 
 class GameEngine;
 //class Scene; 
@@ -22,16 +20,12 @@ public slots:
     void configureSettings();
     void showHighscores();
     void loadSettings();
-
-
+    
 private:
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     
     void setupActions();
-    
-protected:
-    void focusOutEvent(QFocusEvent * event);
 };
  
 #endif

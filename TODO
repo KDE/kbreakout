@@ -1,7 +1,7 @@
 BUGS:
 =====
 
-* Sometimes it steals the keyboard
+* Settings->statusbar is unneeded
 * When the ball is goint up or down (exactly) sometimes in passes through a wall
 * Sometimes ti bounces twice when it shouldn't
 * When the balls is very fast it goes trough bricks
@@ -12,7 +12,8 @@ TODO:
 =====
 
 == Short Term ==
-* Rename to KBreakOut
+* Ask confirmation on close if a game is running
+* Rename to KBreakOut (?)
 * Add documentation
 * Add more levels
 * Move the bar to where the bar is when resuming after pause
