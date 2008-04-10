@@ -27,8 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
-    gameEngine = new GameEngine; // must be called after Item::setCanvas()
     new Background; // the background put's itself into the canvasWidget
+    gameEngine = new GameEngine; // must be called after Item::setCanvas()
     
     connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));
