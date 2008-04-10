@@ -60,10 +60,11 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(canvasWidget);
     canvasWidget->setCursor(QCursor(Qt::BlankCursor));
     
-    setStatusBar(0);
     setupActions();
-    setupGUI();
-    setStatusBar(0);
+    
+    QSize defaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    setupGUI(defaultSize, 
+        KXmlGuiWindow::Keys | KXmlGuiWindow::Save| KXmlGuiWindow::Create);
     
     gameEngine->start("default");
 }

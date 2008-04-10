@@ -14,9 +14,6 @@ CanvasWidget::CanvasWidget(QWidget *parent)
 {
     setFocus();
     
-    setMinimumWidth(MINIMUM_WIDTH);
-    setMinimumHeight(MINIMUM_HEIGHT);
-    
     background.putInCanvas(this);
     background.show();
     pauseOverlay.putInCanvas(this);
