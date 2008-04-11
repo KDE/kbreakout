@@ -66,6 +66,7 @@ void GameEngine::resume()
     if (!gameIsPaused()) return;
     
     elapsedTimeTimer.start();
+    repaintTimer.start();
     
     // only restart the gameTimer if there are objects moving
     bool movingObjects = false;
@@ -77,7 +78,6 @@ void GameEngine::resume()
     }
     if (movingObjects) {
         gameTimer.start();
-        repaintTimer.start();
     }
     
     int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
@@ -261,7 +261,7 @@ void GameEngine::step()
     itemsGotDeleted = false;
     
     // TODO: don't use magick numbers
-    dScore *= 0.999;
+    dScore *= SCORE_AUTO_DECREASE;
     foreach (Ball *ball, m_balls) {
         if (ball->toBeFired) continue;
         
@@ -370,7 +370,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
             }
             
             // increase the speed a little
-            setUpdateInterval(updateInterval - UPDATE_INTERVAL_DECREASE);
+            setUpdateInterval(updateInterval*UPDATE_INTERVAL_DECREASE);
         }
         
         firstTime = false;
@@ -430,7 +430,7 @@ void GameEngine::handleDeath()
         delete m_lives.takeLast();
         Ball *ball = new Ball;
         m_balls.append(ball);
-        moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2); //TODO: ???
+        setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
     }
 }
 

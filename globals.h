@@ -5,16 +5,16 @@
 
 // how many pixels it moves each step
 // should be less than the half of BALL_SIZE
-const int BALL_SPEED = 4;
+const int BALL_SPEED = 3;
 const int MINIMUM_GIFT_SPEED = 1;
-const int MAXIMUM_GIFT_SPEED = 5;
-const int REPAINT_INTERVAL = 20;
+const int MAXIMUM_GIFT_SPEED = 3;
+const int REPAINT_INTERVAL = 18;
 // how ofter the position of the item is updated (but not repainted)
-const int DEFAULT_UPDATE_INTERVAL = 8;
-const int MINIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
-const int MAXIMUM_UPDATE_INTERVAL = 3;
-// the slower this number the more the game becomes faster over time
-const qreal UPDATE_INTERVAL_DECREASE = 0.1;
+const int DEFAULT_UPDATE_INTERVAL = 13;
+const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
+const int MINIMUM_UPDATE_INTERVAL = 5;
+// the lower this number the more the game becomes faster over time
+const qreal UPDATE_INTERVAL_DECREASE = 0.99;
 
 //const int USE_ANTIALIASING = true;
 
@@ -28,11 +28,10 @@ const int MIN_BAR_WIDTH = 30;
 const int MAX_BAR_WIDTH = 250;
 const int GIFT_WIDTH = 25;
 const int GIFT_HEIGHT = 18;
-const qreal BACKGROUND_BORDER = 0.01;
 
 // used to enlarge and shrink the bar
 const qreal RESIZE_BAR_RATIO = 1.3;
-const qreal CHANGE_SPEED_RATIO = 1.4;
+const qreal CHANGE_SPEED_RATIO = 1.3;
 
 // pixels to move the bar each "tick", when using the keyboard
 const int BAR_MOVEMENT = 5;
@@ -40,6 +39,8 @@ const int BAR_MOVEMENT = 5;
 // points when breaking a brick
 // decreases over time since last brick was hit
 const int BRICK_SCORE = 20;
+// relative score w.r.t the old score each step
+const qreal SCORE_AUTO_DECREASE = 0.998;
 // score when i brick gets "autoremoved" 
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
