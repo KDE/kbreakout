@@ -17,16 +17,9 @@ public:
     
     bool toBeFired;
     qreal barPosition;
-    
-    void decreaseSpeed();
-    void increaseSpeed();
 };
 
-class Gift : public Item
-{
-public:
-    Gift();
-};
+class Gift;
 
 class Brick : public Item
 {

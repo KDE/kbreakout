@@ -18,10 +18,10 @@ CanvasWidget::CanvasWidget(QWidget *parent)
     background.show();
     pauseOverlay.putInCanvas(this);
     
-    moveBarTimer.setInterval(UPDATE_INTERVAL);
+    moveBarTimer.setInterval(DEFAULT_UPDATE_INTERVAL);
     connect(&moveBarTimer, SIGNAL(timeout()), SLOT(moveBar()));
     
-    updateBarTimer.setInterval(UPDATE_INTERVAL);
+    updateBarTimer.setInterval(DEFAULT_UPDATE_INTERVAL);
     connect(&updateBarTimer, SIGNAL(timeout()), SLOT(updateBar()));
     lastMousePosition = QPoint(0, 0);
     
@@ -72,7 +72,6 @@ void CanvasWidget::handleGameResumed(int barPosition)
     newCursor.setPos(p.x(), p.y());
     setCursor(newCursor);
     updateBarTimer.start();
-    moveBarTimer.start();
 }
 
 void CanvasWidget::resizeEvent (QResizeEvent */*event*/)

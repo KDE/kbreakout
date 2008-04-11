@@ -9,6 +9,7 @@ set(kbreakout_SRCS
    canvasitems.cpp
    canvaswidget.cpp
    item.cpp
+   gift.cpp
    gameengine.cpp
    renderer.cpp
 )

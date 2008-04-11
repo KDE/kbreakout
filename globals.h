@@ -3,11 +3,20 @@
 
 #include <QString>
 
-const double SPEED_FACTOR = 1.0;
-const double DEFAULT_SPEED = 2;
-const int GIFT_SPEED = 1;
-const int UPDATE_INTERVAL = 10;
-const int USE_ANTIALIASING = true;
+// how many pixels it moves each step
+// should be less than the half of BALL_SIZE
+const int BALL_SPEED = 4;
+const int MINIMUM_GIFT_SPEED = 1;
+const int MAXIMUM_GIFT_SPEED = 5;
+const int REPAINT_INTERVAL = 20;
+// how ofter the position of the item is updated (but not repainted)
+const int DEFAULT_UPDATE_INTERVAL = 8;
+const int MINIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
+const int MAXIMUM_UPDATE_INTERVAL = 3;
+// the slower this number the more the game becomes faster over time
+const qreal UPDATE_INTERVAL_DECREASE = 0.1;
+
+//const int USE_ANTIALIASING = true;
 
 const int WIDTH = 20; // how many bricks the game is wide
 const int HEIGHT = 24; // how many bricks the game is high
@@ -22,8 +31,8 @@ const int GIFT_HEIGHT = 18;
 const qreal BACKGROUND_BORDER = 0.01;
 
 // used to enlarge and shrink the bar
-const qreal RESIZE_BAR_RATIO = 1.2;
-const qreal CHANGE_BALL_SPEED_RATIO = 1.2;
+const qreal RESIZE_BAR_RATIO = 1.3;
+const qreal CHANGE_SPEED_RATIO = 1.4;
 
 // pixels to move the bar each "tick", when using the keyboard
 const int BAR_MOVEMENT = 5;
@@ -35,7 +44,7 @@ const int BRICK_SCORE = 20;
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
-const int LEVEL_SCORE = 2000;
+const int LEVEL_SCORE = 1000;
 const int GIFT_SCORE = 50;
 const int LOSE_LIFE_SCORE = -500;
 const int INITIAL_LIVES = 2;
@@ -58,9 +67,9 @@ const QString giftTypes[] = {
     "GiftNextLevel",
     "GiftSplitBall",
     "GiftAddBall",
-    "GiftDecreaseBallSpeed",
+    "GiftDecreaseSpeed",
     
-    "GiftIncreaseBallSpeed",
+    "GiftIncreaseSpeed",
     "GiftUnstoppableBall",
     "GiftBurningBall",
     "GiftMagicWand",
@@ -69,7 +78,8 @@ const QString giftTypes[] = {
     "GiftEnlargeBar",
     "GiftShrinkBar"
 };
-    
+
+// IMPORTANT: keep in sync with the above
 const int giftTypesCount = 17;
 
 #endif // CONSTS_H

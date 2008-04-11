@@ -46,7 +46,7 @@ public:
     //void moveTo(int x, int y);
     void moveTo(const QPointF &point);
     void moveBy(qreal dx, qreal dy);
-    void updatePosition();
+    void repaint();
 
 public slots:
     // load or reloads the sprite

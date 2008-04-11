@@ -16,17 +16,6 @@ Ball::Ball()
     loadSprite();
 }
 
-void Ball::decreaseSpeed()
-{
-    directionX /= CHANGE_BALL_SPEED_RATIO;
-    directionY /= CHANGE_BALL_SPEED_RATIO;
-}
-
-void Ball::increaseSpeed()
-{
-    // FIXME
-}
-
 Brick::Brick()
 {
     width = BRICK_WIDTH;
@@ -34,13 +23,6 @@ Brick::Brick()
     elementId = "Unset";
     
     gift = 0;
-}
-
-Gift::Gift()
-{
-    width = GIFT_WIDTH;
-    height = GIFT_HEIGHT;
-    elementId = "Unset";
 }
 
 Bar::Bar()
@@ -155,7 +137,7 @@ void Score::loadSprite()
     p.drawText(QPoint(0, qRound(m_scale*height * 0.8)), scoreString);
     setPixmap(pixmap);
     
-    updatePosition(); //TODO: needed?????
+    repaint(); //TODO: needed?????
 }
 
 void Score::setScore(int newScore)

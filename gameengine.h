@@ -10,6 +10,10 @@
 
 #include "canvasitems.h"
 
+class Gift;
+
+// TODO: add m_ to all members
+
 class GameEngine : public QObject
 {
     Q_OBJECT
@@ -40,7 +44,6 @@ private:
     void detectBallCollisions(Ball *ball);
     
     // auxiliary functions
-    void handleGift(Gift *gift);
     void handleBrickCollisions(Ball *ball);
     void addBrick(char type, int xCoordinate, int yCoordinate);
     void deleteBrick(Brick *brick);
@@ -56,6 +59,7 @@ private:
     void loadNextLevel();
     void addScore(int points);
     void setScore(int score);
+    void setUpdateInterval(qreal newUpdateInterval);
     void deleteMovingObjects();
     void deleteAllObjects();
     
@@ -71,13 +75,17 @@ private:
     // count of remaining bricks
     // (not counting the unbreakable ones)
     int remainingBricks;
-    qreal speed;
+    qreal updateInterval;
     
-    // moves the objects at every tick
-    QTimer gameTimer;
+    // moves the objects at every tick (but avoiding to repaint them)
+    QTimer gameTimer; // TODO: rename to updateTimer
     // increases elapsed time every second
     // also used to check whether the game is paused
+    // TODO: use KGameTimer, maybe has to start up as soon as the game starts?
+    //       (because it's used to check if the game is paused...)
     QTimer elapsedTimeTimer;
+    // repaints all moving objects
+    QTimer repaintTimer;
     
     // Canvas Items
     QList<Life *> m_lives;
@@ -92,10 +100,13 @@ private:
 
 private slots:
     void step();
+    void repaintMovingObjects();
     void loadLevel();
     // takes a life and gives you a new ball if there are any lives left
     void handleDeath();
     void increaseElapsedTime() {++elapsedTime;}
+    
+    friend class Gift;
 };
 
 #endif // GAMEENGINE_H

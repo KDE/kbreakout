@@ -41,12 +41,12 @@ void Item::updateScale()
     qreal scaleY = static_cast<double>(canvas->height())
                    / ((BRICK_HEIGHT + 1) * HEIGHT);
     m_scale = qMin(scaleX, scaleY);
-    //kDebug() << "m_scale: " << m_scale << endl;
+    //kDebug() << "m_scale: " << m_scale;
     // assure the m_scaled height of bricks is an int
     // making the m_scale a little smaller if needed
     m_scale = static_cast<qreal>(floor(m_scale*BRICK_HEIGHT))/BRICK_HEIGHT;
     if (m_scale <= 0) m_scale = 1.0 / BRICK_HEIGHT;
-    //kDebug() << "m_scale: " << m_scale << endl;
+    //kDebug() << "m_scale: " << m_scale;
     m_borderLeft = qRound( (static_cast<qreal>(canvas->width()) 
                         - m_scale * (BRICK_WIDTH * WIDTH)) / 2 );
     m_borderTop = qRound( (static_cast<qreal>(canvas->height()) 
@@ -63,7 +63,7 @@ void Item::loadSprite()
     QSize size(qRound(m_scale*width), qRound(m_scale*height));
     setPixmap(Renderer::self()->renderedSvgElement(elementId, size));
     
-    updatePosition(); //TODO: needed??????
+    repaint(); //TODO: needed??????
 }
 
 Item::~Item()
@@ -98,13 +98,7 @@ QRect Item::getRect() const
 void Item::moveTo(qreal x, qreal y)
 {
     m_position = QPointF(x, y);
-    updatePosition();
 }
-
-/*void Item::moveTo(int x, int y)
-{
-    moveTo(static_cast<qreal>(x), static_cast<qreal>(y));
-}*/
 
 void Item::moveTo(const QPointF &point) {
     moveTo(point.x(), point.y());
@@ -113,12 +107,10 @@ void Item::moveTo(const QPointF &point) {
 void Item::moveBy(qreal dx, qreal dy)
 {
     m_position += QPointF(dx, dy);
-    updatePosition();
 }
 
-void Item::updatePosition()
+void Item::repaint()
 {
-    //kDebug() << elementId << ": (" << " ," << ")\n";
     KGameCanvasPixmap::moveTo(
       static_cast<int>(m_scale * m_position.x()) + m_borderLeft,
       static_cast<int>(m_scale * m_position.y()) + m_borderTop);

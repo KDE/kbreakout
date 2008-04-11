@@ -6,12 +6,18 @@
 #include <KStandardDirs>
 #include <kconfiggroup.h>
 #include <kdebug.h>
+
 #include "gameengine.h"
+#include "gift.h"
 
 GameEngine::GameEngine()
+    : updateInterval(DEFAULT_UPDATE_INTERVAL)
 {
-    gameTimer.setInterval(UPDATE_INTERVAL);
+    gameTimer.setInterval(qRound(updateInterval));
     connect(&gameTimer, SIGNAL(timeout()), SLOT(step()));
+    
+    repaintTimer.setInterval(REPAINT_INTERVAL);
+    connect(&repaintTimer, SIGNAL(timeout()), SLOT(repaintMovingObjects()));
     
     elapsedTimeTimer.setInterval(1000);
     connect(&elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
@@ -37,6 +43,7 @@ void GameEngine::start(QString l)
     
     elapsedTimeTimer.start();
     gameTimer.start();
+    repaintTimer.start();
 }
 
 bool GameEngine::gameIsPaused()
@@ -50,6 +57,7 @@ void GameEngine::pause()
     
     elapsedTimeTimer.stop();
     gameTimer.stop();
+    repaintTimer.stop();
     emit gamePaused();
 }
 
@@ -67,7 +75,10 @@ void GameEngine::resume()
             continue;
         }
     }
-    if (movingObjects) gameTimer.start();
+    if (movingObjects) {
+        gameTimer.start();
+        repaintTimer.start();
+    }
     
     int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
     emit gameResumed(barPosition);
@@ -75,13 +86,16 @@ void GameEngine::resume()
 
 void GameEngine::togglePause()
 {
-    if (gameIsPaused()) resume();
-    else pause();
+    if (gameIsPaused()) {
+        resume();
+    } else {
+        pause();
+    }
 }
 
 void GameEngine::moveBar(int newPos) 
 {
-    //if (gameIsPaused()) return;
+    if (gameIsPaused()) return;
     
     // width of the game
     int width = BRICK_WIDTH * WIDTH;
@@ -134,15 +148,15 @@ void GameEngine::fire()
         angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
         angle += M_PI_2;
         
-        ball->directionX =  cos(angle) * DEFAULT_SPEED;
-        ball->directionY = -sin(angle) * DEFAULT_SPEED;
+        ball->directionX =  cos(angle) * BALL_SPEED;
+        ball->directionY = -sin(angle) * BALL_SPEED;
     }
     
     dScore = BRICK_SCORE;
     if (!gameTimer.isActive()) gameTimer.start();
 }
 
-// TODO: external level loarder?? (just an idea...)
+// TODO: external level loarder???
 void GameEngine::loadLevel()
 {
     
@@ -205,7 +219,6 @@ void GameEngine::loadLevel()
             i.remove();
     }
     
-    key = "GiftAddLife";
     for (int i = 0; i < giftTypesCount; ++i) {
         key = giftTypes[i];
         if (!lvl.hasKey(key)) continue;
@@ -226,8 +239,7 @@ void GameEngine::loadLevel()
             break;
         }
         for (int i = 0; i < n; ++i) {
-            Gift *gift = new Gift;
-            gift->setType(key);
+            Gift *gift = Gift::newGift(key); // key is the gift type
             gift->hide();
             
             int index = qrand() % bricksLeft.count();
@@ -239,6 +251,7 @@ void GameEngine::loadLevel()
     m_balls.append(new Ball);
     moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2);
     m_bar.reset();
+    setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
 }
 
 void GameEngine::step()
@@ -247,7 +260,8 @@ void GameEngine::step()
     // change (items get deleted)    
     itemsGotDeleted = false;
     
-    dScore *= 0.998;
+    // TODO: don't use magick numbers
+    dScore *= 0.999;
     foreach (Ball *ball, m_balls) {
         if (ball->toBeFired) continue;
         
@@ -262,17 +276,32 @@ void GameEngine::step()
         Gift *gift = i.next();
         if (!gift->isVisible()) continue;
         
-        gift->moveBy(0, GIFT_SPEED);
+        gift->move();
         if (gift->getRect().bottom() > BRICK_HEIGHT * HEIGHT) {
             i.remove();
             delete gift;
         }
         else if (m_bar.getRect().intersects(gift->getRect())) {
-            handleGift(gift);
+            gift->execute(this);
             if (itemsGotDeleted) return;
             i.remove();
             delete gift;
         }
+    }
+}
+
+void GameEngine::repaintMovingObjects()
+{
+    m_bar.repaint();
+    
+    foreach (Ball *ball, m_balls) {
+        ball->repaint();
+    }
+    
+    foreach (Gift *gift, m_gifts) {
+        if (!gift->isVisible()) continue;
+        
+        gift->repaint();
     }
 }
 
@@ -333,26 +362,17 @@ void GameEngine::detectBallCollisions(Ball *ball)
     // never run this function more than two time recursively
     if (firstTime) {
         // add some randomness to the mix...
-        // (the ball will slowly go faster...)
-        if (qrand() % 1024 == 0) {
-            if (ball->directionX > 0) {
-                ball->directionX += DEFAULT_SPEED * 0.01;
+        if (qrand() % 512 == 0) {
+            if (qrand() % 2) {
+                ball->directionX += 0.01;
             } else {
-                ball->directionX -= DEFAULT_SPEED * 0.01;
+                ball->directionY += 0.01;
             }
             
-            if (ball->directionY > 0) {
-                ball->directionY += DEFAULT_SPEED * 0.01;
-            } else {
-                ball->directionY -= DEFAULT_SPEED * 0.01;
-            }
+            // increase the speed a little
+            setUpdateInterval(updateInterval - UPDATE_INTERVAL_DECREASE);
         }
         
-        if (ball->directionX > BRICK_HEIGHT)
-            ball->directionX = BRICK_HEIGHT;
-        if (ball->directionY > BRICK_HEIGHT)
-            ball->directionY = BRICK_HEIGHT;
-            
         firstTime = false;
         // check if there is another collision
         detectBallCollisions(ball);
@@ -410,7 +430,7 @@ void GameEngine::handleDeath()
         delete m_lives.takeLast();
         Ball *ball = new Ball;
         m_balls.append(ball);
-        moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2);
+        moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2); //TODO: ???
     }
 }
 
@@ -544,132 +564,6 @@ void GameEngine::deleteBrick(Brick *brick)
     }
 }
 
-void GameEngine::handleGift(Gift *gift)
-{
-    // TODO: put in a virtual function of gift (???)
-    addScore(GIFT_SCORE);
-    
-    if (gift->type() == "Gift100Points") {
-        addScore(100 - GIFT_SCORE);
-    } 
-    else if (gift->type() == "Gift200Points") {
-        addScore(200 - GIFT_SCORE);
-    } 
-    else if (gift->type() == "Gift500Points") {
-        addScore(500 - GIFT_SCORE);
-    } 
-    else if (gift->type() == "Gift1000Points") {
-        addScore(1000 - GIFT_SCORE);
-    } 
-    else if (gift->type() == "GiftAddLife") {
-        if (m_lives.count() < MAX_LIVES) m_lives.append(new Life);
-    } 
-    else if (gift->type() == "GiftLoseLife") {
-        handleDeath();
-    } 
-    else if (gift->type() == "GiftNextLevel") {
-        // assign points for each remaining brick
-        foreach (Brick *brick, m_bricks) {
-            // don't assign points for Unbreakable Bricks
-            if (brick->type() == "UnbreakableBrick") continue;
-            
-            addScore(AUTOBRICK_SCORE);
-            
-            // add extra points for Multiple Bricks
-            if (brick->type() == "MultipleBrick3")
-                addScore(AUTOBRICK_SCORE*2);
-            if (brick->type() == "MultipleBrick2")
-                addScore(AUTOBRICK_SCORE);
-        }
-        loadNextLevel();
-    } 
-    else if (gift->type() == "GiftMagicEye") {
-        // make all hidden bricks visible
-        foreach (Brick *brick, m_bricks) {
-            if (!brick->isVisible()) {
-                brick->show();
-                ++remainingBricks;
-            }
-        }
-    }
-    else if (gift->type() == "GiftMagicWand") {
-        foreach (Brick *brick, m_bricks) {
-            // make Unbreakbable Bricks Breakable
-            if (brick->type() == "UnbreakableBrick") {
-                brick->setType("BreakableBrick");
-                ++remainingBricks;
-            }
-            
-            // Make Multiple Bricks single
-            if (brick->type() == "MultipleBrick3") {
-                brick->setType("MultipleBrick1");
-                addScore(AUTOBRICK_SCORE * 2);
-            }
-            if (brick->type() == "MultipleBrick2") {
-                brick->setType("MultipleBrick1");
-                addScore(AUTOBRICK_SCORE);
-            }
-        }
-    }
-    else if (gift->type() == "GiftSplitBall") {
-        // TODO: better copy (type, speed, etc...)
-        QList<Ball *> newBalls;
-        foreach(Ball *ball, m_balls) {
-            Ball *newBall = new Ball;
-            // give it a nice direction...
-            newBall->directionX = ball->directionX;
-            newBall->directionY = ball->directionY;
-            if (ball->directionY > 0)
-                newBall->directionY *= -1;
-            else
-                newBall->directionX *= -1;
-          
-            newBall->toBeFired = false;
-            newBall->moveTo(ball->position());
-            newBalls.append(newBall);
-        }
-        m_balls += newBalls;
-    }
-    else if (gift->type() == "GiftAddBall") {
-        m_balls.append(new Ball);
-    } 
-    else if (gift->type() == "GiftUnstoppableBall") {
-        foreach(Ball *ball, m_balls) {
-            if (ball->type() == "BurningBall") {
-                ball->setType("UnstoppableBurningBall");
-            } else if (ball->type() != "UnstoppableBurningBall") {
-                ball->setType("UnstoppableBall");
-            }
-        }
-    }
-    else if (gift->type() == "GiftBurningBall") {
-        foreach(Ball *ball, m_balls) {
-            if (ball->type() == "UnstoppableBall") {
-                ball->setType("UnstoppableBurningBall");
-            } else if (ball->type() != "UnstoppableBurningBall") {
-                ball->setType("BurningBall");
-            }
-        }
-    }
-    else if (gift->type() == "GiftDecreaseBallSpeed") {
-        foreach(Ball *ball, m_balls)
-            ball->decreaseSpeed();
-    }
-    else if (gift->type() == "GiftIncreaseBallSpeed") {
-        foreach(Ball *ball, m_balls)
-            ball->increaseSpeed();
-    }
-    else if (gift->type() == "GiftEnlargeBar") {
-        m_bar.enlarge();
-    }
-    else if (gift->type() == "GiftShrinkBar") {
-        m_bar.shrink();
-    }
-    else {
-        kError() << "Unrecognized gift!!!\n";
-    }
-}
-
 //======= convenience functions =================//
 void GameEngine::loadNextLevel()
 {
@@ -689,6 +583,22 @@ inline void GameEngine::setScore(int newScore)
 {
     score = newScore;
     scoreCanvas.setScore(score);
+}
+
+void GameEngine::setUpdateInterval(qreal newUpdateInterval)
+{
+    if (newUpdateInterval > MAXIMUM_UPDATE_INTERVAL) {
+        newUpdateInterval = MAXIMUM_UPDATE_INTERVAL;
+    }
+    if (newUpdateInterval < MINIMUM_UPDATE_INTERVAL) {
+        newUpdateInterval = MINIMUM_UPDATE_INTERVAL;
+    }
+    updateInterval = newUpdateInterval;
+    
+    int roundedValue = qRound(updateInterval);
+    if (roundedValue != gameTimer.interval()) {
+        gameTimer.setInterval(roundedValue);
+    } 
 }
 
 // TODO: check (in debugger?) why this function is called so much...
