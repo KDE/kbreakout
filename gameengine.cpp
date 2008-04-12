@@ -110,14 +110,7 @@ void GameEngine::moveBar(int newPos)
     m_bar.moveTo(x, y);
     
     // move attached balls if needed
-    foreach(Ball *ball, m_balls) {
-        if (!ball->toBeFired) continue;
-        // else
-        int ballX = x + qRound(ball->barPosition * w);
-        ball->moveTo(ballX, y - BALL_SIZE);
-    }
-    
-    // TODO: maybe do some collision detection...
+    updateAttachedBalls();
 }
 
 void GameEngine::moveBarLeft()
@@ -239,7 +232,7 @@ void GameEngine::loadLevel()
             break;
         }
         for (int i = 0; i < n; ++i) {
-            Gift *gift = Gift::newGift(key); // key is the gift type
+            Gift *gift = new Gift(key); // key is the gift type
             gift->hide();
             
             int index = qrand() % bricksLeft.count();
@@ -251,6 +244,7 @@ void GameEngine::loadLevel()
     m_balls.append(new Ball);
     moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2);
     m_bar.reset();
+    updateAttachedBalls();
     setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
 }
 
@@ -328,7 +322,6 @@ void GameEngine::detectBallCollisions(Ball *ball)
         m_balls.removeAll(ball);
         delete ball;
         itemsGotDeleted = true;
-        // TODO: go on moving the other balls
         if (m_balls.isEmpty()) {
             addScore(LOSE_LIFE_SCORE);
         
@@ -341,17 +334,33 @@ void GameEngine::detectBallCollisions(Ball *ball)
     }
     // bounce against the bar
     else if (m_bar.getRect().intersects(rect) && ball->directionY > 0) {
-        qreal speed = sqrt(pow(ball->directionX, 2)+pow(ball->directionY, 2));
         
-        qreal ballCenter = ball->getRect().left() + (ball->getRect().width()) / 2;
-        qreal barCenter  = m_bar.getRect().left() + (m_bar.getRect().width()) / 2;
-        qreal angle = M_PI / 3;
-        angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
-        angle += M_PI_2;
+        qreal ballCenter = ball->getRect().left() + (ball->getRect().width())/2;
+        qreal barCenter  = m_bar.getRect().left() + (m_bar.getRect().width())/2;
         
-        if (angle > 0 && angle < M_PI) {
-            ball->directionX =  cos(angle) * speed;
-            ball->directionY = -sin(angle) * speed;
+        if (ballCenter > m_bar.getRect().left() &&
+                ballCenter < m_bar.getRect().right()) {
+            // the bar has been hit
+            
+            if (m_bar.type() == "StickyBar") {
+                ball->toBeFired = true;
+                
+                qreal diff = ball->getRect().left() - m_bar.getRect().left();
+                
+                ball->barPosition = diff / m_bar.getRect().width();
+                updateAttachedBalls();
+            }
+            
+            qreal angle = M_PI / 3;
+            angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
+            angle += M_PI_2;
+            
+            qreal speed = sqrt(pow(ball->directionX, 2) + 
+                           pow(ball->directionY, 2));
+            if (angle > 0 && angle < M_PI) {
+                ball->directionX =  cos(angle) * speed;
+                ball->directionY = -sin(angle) * speed;
+            }
         }
     }
     // bounce against the bricks (and optionally break them)
@@ -419,11 +428,12 @@ void GameEngine::addBrick(char type, int x, int y)
     m_bricks.append(brick);
 }
 
-
+// TODO: why is it a slot??
 void GameEngine::handleDeath()
 {
     deleteMovingObjects();
     m_bar.reset();
+    updateAttachedBalls();
     if (m_lives.isEmpty()) {
         emit gameEnded(score, level, elapsedTime);
     } else {
@@ -599,6 +609,17 @@ void GameEngine::setUpdateInterval(qreal newUpdateInterval)
     if (roundedValue != gameTimer.interval()) {
         gameTimer.setInterval(roundedValue);
     } 
+}
+
+void GameEngine::updateAttachedBalls()
+{
+    foreach(Ball *ball, m_balls) {
+        if (!ball->toBeFired) continue;
+        // else
+        int ballX = m_bar.getRect().left() + 
+                qRound(ball->barPosition * m_bar.getRect().width());
+        ball->moveTo(ballX, m_bar.getRect().top() - BALL_SIZE);
+    }
 }
 
 // TODO: check (in debugger?) why this function is called so much...

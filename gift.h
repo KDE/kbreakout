@@ -9,18 +9,12 @@ class GameEngine;
 class Gift : public Item
 {
 public:
-    /**
-     * This is the function that should be used to create new gifts
-     */
-    // TODO: see if I should overload new instead
-    static Gift *newGift(const QString &type);
+    Gift(const QString &type);
     
     void move();
     void execute(GameEngine *engine);
     
 private:
-    Gift(const QString &type);
-    
     // convenience functions
     void giftNextLevel();
     void giftMagicEye();

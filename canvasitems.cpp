@@ -40,6 +40,7 @@ void Bar::reset()
 {
     int oldWidth = width;
     width = DEFAULT_BAR_WIDTH;
+    setType("PlainBar");
     loadSprite();
     
     // move the bar to retain it's center

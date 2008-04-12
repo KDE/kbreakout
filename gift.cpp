@@ -13,11 +13,6 @@ Gift::Gift(const QString &type)
     speed = MINIMUM_GIFT_SPEED + sp;
 }
 
-Gift *Gift::newGift(const QString &type) 
-{
-    return new Gift(type);
-}
-
 void Gift::move()
 {
     moveBy(0, speed);
@@ -82,6 +77,9 @@ void Gift::execute(GameEngine *e)
     }
     else if (type() == "GiftShrinkBar") {
         engine->m_bar.shrink();
+    }
+    else if (type() == "GiftStickyBar") {
+        engine->m_bar.setType("StickyBar");
     }
     else {
         kError() << "Unrecognized gift type!!!";

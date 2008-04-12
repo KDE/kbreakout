@@ -60,6 +60,7 @@ private:
     void addScore(int points);
     void setScore(int score);
     void setUpdateInterval(qreal newUpdateInterval);
+    void updateAttachedBalls(); // updates all balls attached to the bar
     void deleteMovingObjects();
     void deleteAllObjects();
     

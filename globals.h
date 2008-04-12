@@ -45,7 +45,7 @@ const qreal SCORE_AUTO_DECREASE = 0.998;
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
-const int LEVEL_SCORE = 1000;
+const int LEVEL_SCORE = 300;
 const int GIFT_SCORE = 50;
 const int LOSE_LIFE_SCORE = -500;
 const int INITIAL_LIVES = 2;
@@ -77,10 +77,11 @@ const QString giftTypes[] = {
     "GiftMagicEye",
     
     "GiftEnlargeBar",
-    "GiftShrinkBar"
+    "GiftShrinkBar",
+    "GiftStickyBar"
 };
 
 // IMPORTANT: keep in sync with the above
-const int giftTypesCount = 17;
+const int giftTypesCount = 18;
 
 #endif // CONSTS_H
