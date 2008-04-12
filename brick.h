@@ -17,13 +17,12 @@ public:
     void setDeleted();
     bool isDeleted() {return m_deleted;}
     
-    void burn();
-    
     // a ball collided against the brick
     // can acces the private GameEngine members so be carefull!!! (TODO: (??))
     //virtual void handleCollision();
 
 public slots:
+    void burn();
     void hide();
 
 private:
