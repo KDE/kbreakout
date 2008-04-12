@@ -11,6 +11,7 @@
 #include "canvasitems.h"
 
 class Gift;
+class Brick;
 
 // TODO: add m_ to all members
 
@@ -46,12 +47,11 @@ private:
     // auxiliary functions
     void handleBrickCollisions(Ball *ball);
     void addBrick(char type, int xCoordinate, int yCoordinate);
-    void deleteBrick(Brick *brick);
     /**
      * returns the bricks to the left, right, top and bottom of the given one
      * if present
      */
-    QSet<Brick *> nearbyBricks(Brick *brick);
+    QList<Brick *> nearbyBricks(Brick *brick);
     // adds the a gift to a brick without a gift
     //void addGift(const QString &type, QList <Brick *> *bricks);
     
@@ -108,6 +108,7 @@ private slots:
     void increaseElapsedTime() {++elapsedTime;}
     
     friend class Gift;
+    friend class Brick;
 };
 
 #endif // GAMEENGINE_H

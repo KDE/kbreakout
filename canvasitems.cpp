@@ -16,15 +16,6 @@ Ball::Ball()
     loadSprite();
 }
 
-Brick::Brick()
-{
-    width = BRICK_WIDTH;
-    height = BRICK_HEIGHT;
-    elementId = "Unset";
-    
-    gift = 0;
-}
-
 Bar::Bar()
 {
     width = DEFAULT_BAR_WIDTH;

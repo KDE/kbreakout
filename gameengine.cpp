@@ -9,6 +9,7 @@
 
 #include "gameengine.h"
 #include "gift.h"
+#include "brick.h"
 
 GameEngine::GameEngine()
     : updateInterval(DEFAULT_UPDATE_INTERVAL)
@@ -396,7 +397,7 @@ void GameEngine::addBrick(char type, int x, int y)
     if (type == '-') return;
     
     ++remainingBricks;
-    Brick *brick = new Brick;
+    Brick *brick = new Brick(this);
     brick->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     
     switch (type) {
@@ -450,8 +451,8 @@ void GameEngine::handleBrickCollisions(Ball *ball)
     // TODO: rect->left() and -> bottom() may be one pixel wrong
     QRect rect = ball->getRect();
 
-    QSet<Brick *> bricksMarkedForDeletion;
     foreach(Brick *brick, m_bricks) {
+        if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
         // else: the ball has hit the brick
@@ -482,11 +483,14 @@ void GameEngine::handleBrickCollisions(Ball *ball)
         
         if (ball->type() == "BurningBall" 
                 || ball->type() == "UnstoppableBurningBall") {
-            bricksMarkedForDeletion.insert(brick);
-            bricksMarkedForDeletion.unite(nearbyBricks(brick));
+            //QList<Brick *> nearby = nearbyBricks(brick);
+            foreach (Brick *b, nearbyBricks(brick)) {
+                b->burn();
+            }
+            brick->burn();
         } else if (ball->type() == "UnstoppableBall") {
             // regardless of the type of ball
-            bricksMarkedForDeletion.insert(brick);
+            brick->setDeleted();
         } else if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
             brick->show();
             ++remainingBricks;
@@ -499,29 +503,15 @@ void GameEngine::handleBrickCollisions(Ball *ball)
             addScore(qRound(dScore));
             dScore = BRICK_SCORE;
         } else if (brick->type() != "UnbreakableBrick") {
-            bricksMarkedForDeletion.insert(brick);
+            brick->setDeleted();
         }
-    }
-    
-    // remove the bricks from m_bricks
-    QMutableListIterator<Brick *> i(m_bricks);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (bricksMarkedForDeletion.contains(brick)) {
-            i.remove();
-        }
-    }
-    
-    // really remove them
-    foreach(Brick *brick, bricksMarkedForDeletion) {
-        deleteBrick(brick);
     }
 }
 
-QSet<Brick *> GameEngine::nearbyBricks(Brick *brick)
+QList<Brick *> GameEngine::nearbyBricks(Brick *brick)
 {
     
-    QSet<Brick *> result;
+    QList<Brick *> result;
     QRect brickRect = brick->getRect();
     // coordinates of the center of the brick
     int x = brickRect.x() + BRICK_WIDTH / 2;
@@ -537,41 +527,12 @@ QSet<Brick *> GameEngine::nearbyBricks(Brick *brick)
     foreach(Brick *b, m_bricks) {
         foreach (QPoint p, nearbyPoints) {
             if (b->getRect().contains(p)) {
-                result.insert(b);
+                result.append(b);
             }
         }
     }
     
     return result;
-}
-
-void GameEngine::deleteBrick(Brick *brick)
-{
-    // these two kind of bricks aren't counted in the remainingBricks
-    if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
-        ++remainingBricks;
-    }
-    if (brick->type() == "UnbreakableBrick") {
-        ++remainingBricks;
-    }
-
-    if (brick->gift != 0) {
-        brick->gift->moveTo(brick->getRect().left(), 
-                            brick->getRect().top());
-        brick->gift->show();
-        m_gifts.append(brick->gift);
-    }
-    
-    delete brick;
-    --remainingBricks;
-    
-    addScore(qRound(dScore));
-    dScore = BRICK_SCORE;
-    
-    if (remainingBricks == 0) {
-        loadNextLevel();
-        return;
-    }
 }
 
 //======= convenience functions =================//

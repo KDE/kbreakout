@@ -19,20 +19,6 @@ public:
     qreal barPosition;
 };
 
-class Gift;
-
-class Brick : public Item
-{
-public:
-    Brick();
-    
-    Gift *gift;
-
-    // a ball collided against the brick
-    // can acces the private GameEngine members so be carefull!!!
-    //virtual void handleCollision();
-};
-
 class Bar : public Item
 {
 public:

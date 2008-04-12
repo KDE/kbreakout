@@ -10,6 +10,7 @@ set(kbreakout_SRCS
    canvaswidget.cpp
    item.cpp
    gift.cpp
+   brick.cpp
    gameengine.cpp
    renderer.cpp
 )

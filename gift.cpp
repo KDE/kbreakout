@@ -1,4 +1,5 @@
 #include "gift.h"
+#include "brick.h"
 #include "gameengine.h"
 
 #include <KDebug>
