@@ -22,7 +22,7 @@
 #include <QPainter>
 
 #include <KSvgRenderer>
-#include <KGameTheme>
+#include <KDE/KGameTheme>
 #include <kpixmapcache.h>
 
 Renderer* Renderer::self()
