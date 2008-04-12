@@ -1,6 +1,8 @@
 #include "gift.h"
-#include "brick.h"
+
 #include "gameengine.h"
+#include "brick.h"
+#include "ball.h"
 
 #include <KDebug>
 
@@ -109,7 +111,7 @@ void Gift::giftMagicEye()
 {
     // make all hidden bricks visible
     foreach (Brick *brick, engine->m_bricks) {
-        if (!brick->isVisible()) {
+        if (!brick->isDeleted() && !brick->isVisible()) {
             brick->show();
             ++engine->remainingBricks;
         }

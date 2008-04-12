@@ -11,6 +11,7 @@ set(kbreakout_SRCS
    item.cpp
    gift.cpp
    brick.cpp
+   ball.cpp
    gameengine.cpp
    renderer.cpp
 )

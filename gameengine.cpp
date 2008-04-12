@@ -10,6 +10,7 @@
 #include "gameengine.h"
 #include "gift.h"
 #include "brick.h"
+#include "ball.h"
 
 GameEngine::GameEngine()
     : updateInterval(DEFAULT_UPDATE_INTERVAL)
@@ -195,7 +196,9 @@ void GameEngine::loadLevel()
         // convert the string, each char represents a brick
         for (int x = 0; x < line.size(); ++x) {
             char type = line[x].toAscii();
-            addBrick(type, x, y);
+            if (type != '-') {
+                m_bricks.append(new Brick(this, type, x, y));
+            }
         }
         
         ++y;
@@ -392,43 +395,6 @@ void GameEngine::detectBallCollisions(Ball *ball)
     }
 }
 
-void GameEngine::addBrick(char type, int x, int y) 
-{
-    if (type == '-') return;
-    
-    ++remainingBricks;
-    Brick *brick = new Brick(this);
-    brick->moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-    
-    switch (type) {
-    case '1': brick->setType("PlainBrick1"); break;
-    case '2': brick->setType("PlainBrick2"); break;
-    case '3': brick->setType("PlainBrick3"); break;
-    case '4': brick->setType("PlainBrick4"); break;
-    case '5': brick->setType("PlainBrick5"); break;
-    case '6': brick->setType("PlainBrick6"); break;
-    case 'u': 
-        brick->setType("UnbreakableBrick");
-        --remainingBricks;
-        break;
-    case 'h': 
-        brick->setType("HiddenBrick");
-        brick->hide();
-        --remainingBricks;
-        break;
-    case 'm': 
-    {
-        brick->setType("MultipleBrick3");        
-        break;
-    }
-    default:
-        kError() << "Invalid File: unknown character '" 
-                    << type << "'\n";
-        brick->setType("PlainBrick1");
-    }
-    m_bricks.append(brick);
-}
-
 // TODO: why is it a slot??
 void GameEngine::handleDeath()
 {
@@ -457,82 +423,8 @@ void GameEngine::handleBrickCollisions(Ball *ball)
         if (!brickRect.intersects(rect)) continue;
         // else: the ball has hit the brick
         
-        if (ball->type() != "UnstoppableBall"
-                && ball->type() != "UnstoppableBurningBall") {
-            // find out in which direction to bounce
-            int top = brickRect.top() - rect.top();
-            int bottom = rect.bottom() - brickRect.bottom();
-            int left = brickRect.left() - rect.left();
-            int right = rect.right() - brickRect.right();
-            int max = qMax(qMax(top, bottom), qMax(left, right));
-            
-            // bounce
-            // TODO: check this stuff
-            if (max == top && ball->directionY > 0) {
-                ball->directionY *= -1;
-            } else if (max == bottom && ball->directionY < 0) {
-                ball->directionY *= -1;
-            } else if (max == left && ball->directionX > 0) {
-                ball->directionX *= -1;
-            } else if (max == right && ball->directionX < 0) {
-                ball->directionX *= -1;
-            } else {
-                break;
-            }
-        }
-        
-        if (ball->type() == "BurningBall" 
-                || ball->type() == "UnstoppableBurningBall") {
-            //QList<Brick *> nearby = nearbyBricks(brick);
-            foreach (Brick *b, nearbyBricks(brick)) {
-                b->burn();
-            }
-            brick->burn();
-        } else if (ball->type() == "UnstoppableBall") {
-            // regardless of the type of ball
-            brick->setDeleted();
-        } else if (brick->type() == "HiddenBrick" && !brick->isVisible()) {
-            brick->show();
-            ++remainingBricks;
-        } else if (brick->type() == "MultipleBrick3") {
-            brick->setType("MultipleBrick2");
-            addScore(qRound(dScore));
-            dScore = BRICK_SCORE;
-        } else if (brick->type() == "MultipleBrick2") {
-            brick->setType("MultipleBrick1");
-            addScore(qRound(dScore));
-            dScore = BRICK_SCORE;
-        } else if (brick->type() != "UnbreakableBrick") {
-            brick->setDeleted();
-        }
+        ball->collideWithBrick(brick);
     }
-}
-
-QList<Brick *> GameEngine::nearbyBricks(Brick *brick)
-{
-    
-    QList<Brick *> result;
-    QRect brickRect = brick->getRect();
-    // coordinates of the center of the brick
-    int x = brickRect.x() + BRICK_WIDTH / 2;
-    int y = brickRect.y() + BRICK_HEIGHT / 2; 
-    
-    // points to the left, right, top and bottom of the brick
-    QList<QPoint> nearbyPoints;
-    nearbyPoints.append(QPoint(x - BRICK_WIDTH, y));
-    nearbyPoints.append(QPoint(x + BRICK_WIDTH, y));
-    nearbyPoints.append(QPoint(x, y - BRICK_HEIGHT));
-    nearbyPoints.append(QPoint(x, y + BRICK_HEIGHT));
-    
-    foreach(Brick *b, m_bricks) {
-        foreach (QPoint p, nearbyPoints) {
-            if (b->getRect().contains(p)) {
-                result.append(b);
-            }
-        }
-    }
-    
-    return result;
 }
 
 //======= convenience functions =================//

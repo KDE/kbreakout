@@ -1,20 +1,9 @@
-#include <cmath>
-
-#include <KDebug>
-
 #include "canvasitems.h"
 
-Ball::Ball()
-{   
-    width = BALL_SIZE;
-    height = BALL_SIZE;
-    elementId = "PlainBall";
-    
-    toBeFired = true;
-    barPosition = 0.6;
-    
-    loadSprite();
-}
+#include "globals.h"
+
+#include <cmath>
+#include <KDebug>
 
 Bar::Bar()
 {

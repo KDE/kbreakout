@@ -211,7 +211,7 @@ Gift500Points = 3
 Gift1000Points = 2
 GiftLoseLife = 2
 GiftIncreaseSpeed = 2
-GiftBurningBall = 1
+GiftBurningBall = 8
 GiftMagicEye = 1
 
 [level10]

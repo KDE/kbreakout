@@ -12,6 +12,7 @@
 
 class Gift;
 class Brick;
+class Ball;
 
 // TODO: add m_ to all members
 
@@ -46,12 +47,6 @@ private:
     
     // auxiliary functions
     void handleBrickCollisions(Ball *ball);
-    void addBrick(char type, int xCoordinate, int yCoordinate);
-    /**
-     * returns the bricks to the left, right, top and bottom of the given one
-     * if present
-     */
-    QList<Brick *> nearbyBricks(Brick *brick);
     // adds the a gift to a brick without a gift
     //void addGift(const QString &type, QList <Brick *> *bricks);
     

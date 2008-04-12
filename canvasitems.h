@@ -4,20 +4,6 @@
 #include <KDE/KGameCanvas>
 
 #include "item.h"
-#include "globals.h"
-
-class Ball : public Item
-{
-public:
-    Ball();
-    
-    // direction vector
-    qreal directionX;
-    qreal directionY;
-    
-    bool toBeFired;
-    qreal barPosition;
-};
 
 class Bar : public Item
 {
