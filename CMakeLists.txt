@@ -25,4 +25,4 @@ target_link_libraries(kbreakout  ${KDE4_KIO_LIBS} ${KDEGAMES_LIBRARY} )
 install(TARGETS kbreakout  DESTINATION ${BIN_INSTALL_DIR} )
 
 # TODO: put in a CMakeLists.txt in the subdirectory
-install(FILES levelsets/default.desktop DESTINATION ${DATA_INSTALL_DIR}/kbreakout/levelsets)
+install(FILES levelsets/default.levelset DESTINATION ${DATA_INSTALL_DIR}/kbreakout/levelsets)
