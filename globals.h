@@ -66,8 +66,8 @@ const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 const int LEVEL_SCORE = 300;
 const int GIFT_SCORE = 30;
 const int LOSE_LIFE_SCORE = -500;
-const int INITIAL_LIVES = 2;
-const int MAXIMUM_LIVES = 8;
+const int INITIAL_LIVES = 4;
+const int MAXIMUM_LIVES = 10;
 
 // minimum with and height of the game widget (CanvasWidget)
 const int DEFAULT_WIDTH = 700;
