@@ -37,9 +37,11 @@ public:
     void explode();
     
     bool isDeleted() {return m_deleted;}
-    
     void setGift(Gift *);
 
+    // bricks to the left, right top and bottom
+    QList<Brick *> nearbyBricks();
+    
 public slots:
     void hide();
     
@@ -50,7 +52,6 @@ private slots:
 private:
     void handleDeletion();
     void setTypeFromChar(char type);
-    QList<Brick *> nearbyBricks();
 
     GameEngine *m_game;
     Gift *m_gift;

@@ -89,7 +89,7 @@ void GameEngine::resume()
     
     // only restart the gameTimer if there are objects moving
     bool movingObjects = false;
-    foreach(Ball *ball, m_balls) {
+    foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) {
             movingObjects = true;
             continue;
@@ -149,7 +149,7 @@ void GameEngine::fire()
         return;
     }
 
-    foreach(Ball *ball, m_balls) {
+    foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) continue;
         // else
         ball->toBeFired = false;
@@ -434,7 +434,7 @@ void GameEngine::handleBrickCollisions(Ball *ball)
     // TODO: rect->left() and -> bottom() may be one pixel wrong
     QRect rect = ball->getRect();
 
-    foreach(Brick *brick, m_bricks) {
+    foreach (Brick *brick, m_bricks) {
         if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
@@ -483,7 +483,7 @@ void GameEngine::setUpdateInterval(qreal newUpdateInterval)
 
 void GameEngine::updateAttachedBalls()
 {
-    foreach(Ball *ball, m_balls) {
+    foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) continue;
         // else
         int ballX = m_bar.getRect().left() + 

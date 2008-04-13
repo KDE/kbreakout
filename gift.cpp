@@ -101,6 +101,9 @@ void Gift::execute(GameEngine *e)
     else if (type() == "GiftStickyBar") {
         engine->m_bar.setType("StickyBar");
     }
+    else if (type() == "GiftMoreExplosion") {
+        giftMoreExplosion();
+    }
     else {
         kError() << "Unrecognized gift type!!!";
     }
@@ -160,7 +163,7 @@ void Gift::giftSplitBall()
 {
     // TODO: better copy (type, speed, etc...)
     QList<Ball *> newBalls;
-    foreach(Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, engine->m_balls) {
         Ball *newBall = new Ball;
         // give it a nice direction...
         newBall->directionX = ball->directionX;
@@ -179,7 +182,7 @@ void Gift::giftSplitBall()
 
 void Gift::giftUnstoppableBall()
 {
-    foreach(Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, engine->m_balls) {
         if (ball->type() == "BurningBall") {
             ball->setType("UnstoppableBurningBall");
         } else if (ball->type() != "UnstoppableBurningBall") {
@@ -190,11 +193,27 @@ void Gift::giftUnstoppableBall()
 
 void Gift::giftBurningBall()
 {
-    foreach(Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, engine->m_balls) {
         if (ball->type() == "UnstoppableBall") {
             ball->setType("UnstoppableBurningBall");
         } else if (ball->type() != "UnstoppableBurningBall") {
             ball->setType("BurningBall");
+        }
+    }
+}
+
+void Gift::giftMoreExplosion()
+{
+    QList<Brick *> explodingBricks;
+    foreach (Brick *brick, engine->m_bricks) {
+        if (brick->type() == "ExplodingBrick") {
+            explodingBricks.append(brick);
+        }
+    }
+    
+    foreach (Brick *brick, explodingBricks) {
+        foreach (Brick *nearbyBrick, brick->nearbyBricks()) {
+            nearbyBrick->setType("ExplodingBrick");
         }
     }
 }

@@ -27,8 +27,9 @@ line13 = 666666666666666666--
 line14 = 55555xxxxxxxx5555x5-
 Gift100Points = 2
 Gift200Points = 1
-GiftBurningBall = 10
-GiftUnstoppableBall = 10
+GiftBurningBall = 5
+GiftUnstoppableBall = 5
+GiftMoreExplosion = 3
 
 [level2]
 line1 =

@@ -20,7 +20,6 @@
 
 #include "item.h"
 
-class StringList;
 class GameEngine;
 
 class Gift : public Item
@@ -39,8 +38,7 @@ private:
     void giftSplitBall();
     void giftUnstoppableBall();
     void giftBurningBall();
-    
-    static QStringList giftTypes;
+    void giftMoreExplosion();
     
     GameEngine *engine;
     int speed;

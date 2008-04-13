@@ -188,7 +188,7 @@ QList<Brick *> Brick::nearbyBricks()
     nearbyPoints.append(QPoint(x, y - BRICK_HEIGHT));
     nearbyPoints.append(QPoint(x, y + BRICK_HEIGHT));
     
-    foreach(Brick *b, m_game->m_bricks) {
+    foreach (Brick *b, m_game->m_bricks) {
         if (b->isDeleted()) continue;
         foreach (QPoint p, nearbyPoints) {
             if (b->getRect().contains(p)) {

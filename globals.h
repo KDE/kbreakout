@@ -96,10 +96,11 @@ const QString giftTypes[] = {
     
     "GiftEnlargeBar",
     "GiftShrinkBar",
-    "GiftStickyBar"
+    "GiftStickyBar",
+    "GiftMoreExplosion"
 };
 
 // IMPORTANT: keep in sync with the above
-const int giftTypesCount = 18;
+const int giftTypesCount = 19;
 
 #endif // CONSTS_H
