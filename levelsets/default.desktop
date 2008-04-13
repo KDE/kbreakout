@@ -8,7 +8,6 @@
 # line7 = -----1122222211-----
 # Gift100Points = 2
 # Gift200Points = 1
-# GiftBurningBall = 3
 
 [level1]
 line1  =
@@ -32,6 +31,26 @@ GiftUnstoppableBall = 5
 GiftMoreExplosion = 3
 
 [level2]
+line1  =
+line2  =
+line3  =
+line4  =
+line5  =
+line6  = 11111111111111111---
+line7  = 22222222222222222---
+line8  = 11111111111111111---
+line9  = 333333333333333333--
+line10 = 444444444444444444--
+line11 = 333333333333333333--
+line12 = 5555555555555555555-
+line13 = 6666666666666666666-
+line14 = 5555555555555555555-
+Gift100Points = 10
+Gift200Points = 2
+GiftBurningBall = 2
+GiftUnstoppableBall = 1
+
+[level3]
 line1 =
 line2 =
 line3 =
@@ -39,16 +58,36 @@ line4 =
 line5 = 11111122222222111111
 line6 = 22--221111111122--22
 line7 = 111u112222222211u111
-GiftStickyBar = 2
+GiftStickyBar = 1
 GiftEnlargeBar = 1
 GiftShrinkBar = 2
 GiftIncreaseSpeed = 2
 GiftDecreaseSpeed = 1
 Gift100Points = 3
 Gift200Points = 1
-GiftAddBall = 2
+GiftAddBall = 1
 
-[level3]
+[level4]
+line1  =
+line2  =
+line3  = --3333333333333333--
+line4  = --4444444444444444--
+line5  = -333333333333333333-
+line6  = -444444444444444444-
+line7  = -333xxxx3333xxxx333-
+line8  = -444x4444444444x444-
+line9  = -333x3333333333x333-
+line10 = -444x4444444444x444-
+line11 = -333x3333333333x333
+line12 = -444xxxxxxxxxxxx444-
+line13 = -333333333333333333-
+line14 = --------------------
+Gift100Points = 10
+Gift200Points = 2
+GiftMoreExplosion = 5
+
+
+[level5]
 line1 =
 line2 =
 line3 = --1-11-11--11-11-1--
@@ -59,7 +98,7 @@ line7 = 33333333333333333333
 line8 = 2--2--2--22--2--2--2
 line9 = 1--1--1--11--1--1--1
 GiftMagicWand = 2
-Gift200Points = 1
+Gift100Points = 2
 GiftLoseLife = 3
 GiftSplitBall = 2
 GiftIncreaseSpeed = 2
@@ -67,19 +106,19 @@ GiftDecreaseSpeed = 2
 GiftEnlargeBar = 2
 GiftShrinkBar = 2
 
-[level4]
+[level6]
 line1  =
 line2  =
-line3  = ---1--1--22----333--
-line4  = ---1--1--222---333--
-line5  = ---1-1---2-22--3----
-line6  = ---1-1---2--2--3----
-line7  = ---11----2--2--33---
-line8  = ---11----2--2--33---
-line9  = ---111---2--2--3----
-line10 = ---1-1---2-22--3----
-line11 = ---1--1--222---333--
-line12 = ---1--1--22----333--
+line3  = ---4--4--66----333--
+line4  = ---4--4--666---333--
+line5  = ---4-4---6-66--3----
+line6  = ---4-4---6--6--3----
+line7  = ---44----6--6--33---
+line8  = ---44----6--6--33---
+line9  = ---444---6--6--3----
+line10 = ---4-4---6-66--3----
+line11 = ---4--4--666---333--
+line12 = ---4--4--66----333--
 line13 =
 line14 = hhhhhhhhhhhhhhhhhhhh
 line15 = mmmmmmmmmmmmmmmmmmmm
@@ -93,22 +132,22 @@ GiftAddLife = 1
 GiftEnlargeBar = 3
 GiftShrinkBar = 6
 
-[level5]
-line1  = 22--333--444--555--1
-line2  = 222--333--444--555--
-line3  = 222--333--444--555--
-line4  = -222--333--444--555-
-line5  = -222--333--444--555-
-line6  = --222--333--444--555
-line7  = --222--333--444--555
-line8  = 1--222--333--444--55
-line9  = 1--222--333--444--55
-line10 = 11--222--333--444--5
-line11 = 11--222--333--444--5
-line12 = 111--222--333--444--
-line13 = 111--222--333--444--
-line14 = -111--222--333--444-
-line14 = -111--222--333--444-
+[level7]
+line1  = 66--333--444--555--6
+line2  = 666--333--444--555--
+line3  = 666--333--444--555--
+line4  = -666--333--444--555-
+line5  = -666--333--444--555-
+line6  = --666--333--444--555
+line7  = --666--333--444--555
+line8  = 5--666--333--444--55
+line9  = 5--666--333--444--55
+line10 = 55--666--333--444--5
+line11 = 55--666--333--444--5
+line12 = 555--666--333--444--
+line13 = 555--666--333--444--
+line14 = -555--666--333--444-
+line14 = -555--666--333--444-
 GiftStickyBar = 1
 GiftBurningBall = 1
 Gift200Points = 4
@@ -120,7 +159,7 @@ GiftDecreaseSpeed = 6
 GiftEnlargeBar = 1
 GiftShrinkBar = 4
 
-[level6]
+[level8]
 line1  =
 line2  =
 line3  =
@@ -131,12 +170,11 @@ line7  = 22222222222222222222
 line8  = 33333333333333333333
 line9  = 44444444444444444444
 line10 = 55555555555555555555
-line11 = 66666666666666666666
+line11 = xx6666666666666666xx
 line12 = uuuu6uuuuuuuuuu6uuuu
 line13 = 66666666666666666666
 GiftStickyBar = 1
 GiftBurningBall = 1
-GiftMagicWand = 1
 GiftLoseLife = 2
 Gift100Points = 2
 Gift200Points = 1
@@ -146,7 +184,7 @@ GiftDecreaseSpeed = 1
 GiftEnlargeBar = 3
 GiftShrinkBar = 4
 
-[level7]
+[level9]
 line1  = uuuuuuuuuuuuuuuuuuuu
 line2  = u------------------u
 line3  = u-----------------1u
@@ -163,12 +201,12 @@ line13 = -------------------u
 line14 = -----------u-------u
 line15 = -----------uuuuuuuuu
 
-[level8]
+[level10]
 line1  = --------------------
 line2  = --------------------
-line3  = -hhhhhhhhhhhhhhhhhh-
-line4  = -hhmmmmmmmmmmmmmmhh-
-line5  = -hhmm1111111111mmhh-
+line3  = -hhhhhhhhhhhhhhhhh--
+line4  = -hhmmmmmxmmxmmmmmhh-
+line5  = -hhmmm11111111mmmhh-
 line6  = -hhmm1111111111mmhh-
 line7  = -hhmm1111111111mmhh-
 line8  = -hhmm1122222211mmhh-
@@ -176,23 +214,45 @@ line9  = -hhmm1122222211mmhh-
 line10 = -hhmm1122222211mmhh-
 line11 = -hhmm1111111111mmhh-
 line12 = -hhmm1111111111mmhh-
-line13 = -hhmm1111111111mmhh-
+line13 = -hhmmm11111111mmmhh-
 line14 = -hhmmmmmmmmmmmmmmhh-
 line15 = -hhhhhhhhhhhhhhhhhh-
-GiftBurningBall = 1
 GiftUnstoppableBall = 1
-Gift200Points = 8
-Gift500Points = 4
-Gift1000Points = 2
-Gift3000Points = 1
+Gift100Points = 8
+Gift200Points = 4
 GiftLoseLife = 2
 GiftMagicWand = 1
-GiftIncreaseSpeed = 3
-GiftDecreaseSpeed = 6
+GiftIncreaseSpeed = 6
+GiftDecreaseSpeed = 3
 GiftEnlargeBar = 1
 GiftShrinkBar = 4
 
-[level9]
+[level11]
+line1  = --3333333333333333--
+line2  = --3333333333333333--
+line3  = -u111111u55u111111u-
+line4  = -ux11111u55u11111xu-
+line5  = -ux11111u55u11111xu-
+line6  = -ux11111u55u11111xu-
+line7  = -ux11111u55u11111xu-
+line8  = -ux11111u55u11111xu-
+line9  = -ux11111u55u11111xu-
+line10 = -ux11111u55u11111xu-
+line11 = -ux1111xu55ux1111xu-
+line12 = -ux1111xu55ux1111xu-
+line13 = -uxxxxxxu55uxxxxxxu-
+line14 = -uuuuuuuu--uuuuuuuu-
+GiftBurningBall = 2
+Gift100Points = 5
+Gift500Points = 1
+GiftMagicWand = 1
+GiftIncreaseSpeed = 2
+GiftEnlargeBar = 3
+GiftShrinkBar = 4
+GiftLoseLife = 3
+GiftAddLife = 2
+
+[level12]
 line1  = hhhhhhhhh33hhhhhhhhh
 line2  = hhhhhhhhuuuuhhhhhhhh
 line3  = --------------------
@@ -216,7 +276,7 @@ GiftIncreaseSpeed = 2
 GiftBurningBall = 8
 GiftMagicEye = 1
 
-[level10]
+[level13]
 line1  = 22222--------------
 line2  = 111111-------------
 line3  = 6666666------------
@@ -246,7 +306,7 @@ GiftEnlargeBar = 3
 GiftShrinkBar = 5
 GiftNextLevel = 1
 
-[level11]
+[level14]
 line1  = -121212121212121212-
 line2  = -212121212121212121-
 line3  = -uuuuuuuuuuuuuuuuuu-
@@ -276,7 +336,7 @@ GiftEnlargeBar = 4
 GiftShrinkBar = 4
 GiftAddLife = 1
 
-[level12]
+[level15]
 line1  = -------------------
 line2  = -------------------
 line3  = -------------------
@@ -298,29 +358,55 @@ GiftEnlargeBar = 1
 GiftShrinkBar = 4
 GiftAddLife = 1
 
-[level13]
-line1  = hhhhhhhhhhhhhhhhhhh6
-line2  = hhhhhhhhhhhhhhhh----
-line3  = hhhhhhhhhhhhhhh----h
-line4  = hhhhhhhhhhhhhh----hh
-line5  = hhhhhhhhhhhhh----hhh
-line6  = hhhhhhhhhhhh----hhhh
-line7  = hhhhhhhhhhh----hhhhh
-line8  = hhhhhhhhhh----hhhhhh
-line9  = hhhhhhhhh----hhhhhhh
-line10 = hhhhhhhh----hhhhhhhh
-line11 = hhhhhhh----hhhhhhhhh
-line12 = hhhhhh----hhhhhhhhhh
-line13 = hhhhh----hhhhhhhhhhh
-line14 = hhhh----hhhhhhhhhhhh
-line15 = hhh----hhhhhhhhhhhhh
-line16 = hh----hhhhhhhhhhhhhh
+# [level16]
+# line1  = hhhhhhhhhhhhhhhhhhh6
+# line2  = hhhhhhhhhhhhhhhh----
+# line3  = hhhhhhhhhhhhhhh----h
+# line4  = hhhhhhhhhhhhhh----hh
+# line5  = hhhhhhhhhhhhh----hhh
+# line6  = hhhhhhhhhhhh----hhhh
+# line7  = hhhhhhhhhhh----hhhhh
+# line8  = hhhhhhhhhh----hhhhhh
+# line9  = hhhhhhhhh----hhhhhhh
+# line10 = hhhhhhhh----hhhhhhhh
+# line11 = hhhhhhh----hhhhhhhhh
+# line12 = hhhhhh----hhhhhhhhhh
+# line13 = hhhhh----hhhhhhhhhhh
+# line14 = hhhh----hhhhhhhhhhhh
+# line15 = hhh----hhhhhhhhhhhhh
+# line16 = hh----hhhhhhhhhhhhhh
+# GiftLoseLife = 2
+# GiftIncreaseSpeed = 2
+# GiftBurningBall = 2
+# GiftMagicEye = 1
+
+[level16]
+line1  = --------------------
+line2  = --4444444444444444--
+line3  = -433333333333333334-
+line4  = -436666666666666634-
+line5  = -436555555555555634-
+line6  = -4365mmmmmmmmmm5634-
+line7  = -4365mmmmmmmmmm5634-
+line8  = -4365mm222222mm5634-
+line9  = -4365mm211112mm5634-
+line10 = -4365mm21xx12mm5634-
+line11 = -4365mm2----2mm5634-
+line12 = -4365mm------mm5634-
+line13 = -4365m--------45634-
+line14 = -4365----------5634-
+line15 = -436------------634-
+line16 = -43--------------34-
+Gift100Points = 5
+GiftStickyBar = 1
+GiftEnlargeBar = 2
 GiftLoseLife = 2
 GiftIncreaseSpeed = 2
 GiftBurningBall = 2
-GiftMagicEye = 1
+GiftMagicWand = 1
+GiftMoreExplosion = 16
 
-[level14]
+[level17]
 line1  =
 line2  =
 line3  =
@@ -337,3 +423,4 @@ line13 = ---333--4--4--555---
 line14 = ---333--4--4--55----
 GiftLoseLife = 5
 GiftIncreaseSpeed = 20
+Gift3000Points = 4

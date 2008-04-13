@@ -30,12 +30,12 @@ int main (int argc, char *argv[])
     KAboutData aboutData("kbreakout", 0, ki18n("KBreakout"), "0.1.0");
     aboutData.setShortDescription(ki18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutData::License_GPL);
-    aboutData.setCopyrightStatement(ki18n("(c) 2007 Fela Winkelmolen"));
+    aboutData.setCopyrightStatement(ki18n("(c) 2007-2007 Fela Winkelmolen"));
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
                         "fela.kde@gmail.com");
     aboutData.addAuthor(ki18n("Eugene Trounev"), 
-                        ki18n("default artwork"),
+                        ki18n("artwork"),
                         "eugene.trounev@gmail.com");
     
     KCmdLineArgs::init( argc, argv, &aboutData );

@@ -233,8 +233,8 @@ void GameEngine::loadLevel()
             i.remove();
     }
     
-    for (int i = 0; i < giftTypesCount; ++i) {
-        key = giftTypes[i];
+    for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
+        key = GIFT_TYPES[i];
         if (!lvl.hasKey(key)) continue;
         
         QString line = lvl.readEntry(key, "error");

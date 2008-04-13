@@ -56,7 +56,7 @@ const int BAR_MOVEMENT = 5;
 
 // points when breaking a brick
 // decreases over time since last brick was hit
-const int BRICK_SCORE = 20;
+const int BRICK_SCORE = 15;
 // relative score w.r.t the old score each step
 const qreal SCORE_AUTO_DECREASE = 0.998;
 // score when i brick gets "autoremoved" 
@@ -64,18 +64,18 @@ const qreal SCORE_AUTO_DECREASE = 0.998;
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
 const int LEVEL_SCORE = 300;
-const int GIFT_SCORE = 50;
+const int GIFT_SCORE = 30;
 const int LOSE_LIFE_SCORE = -500;
 const int INITIAL_LIVES = 2;
-const int MAX_LIVES = 8;
+const int MAXIMUM_LIVES = 8;
 
 // minimum with and height of the game widget (CanvasWidget)
 const int DEFAULT_WIDTH = 700;
 const int DEFAULT_HEIGHT = 400;
 
-// IMPORTANT: keep giftTypesCount in sync!!!!!!!
+// IMPORTANT: keep GIFT_TYPES_COUNT in sync!!!!!!!
 // TODO: see if I can use somthing different
-const QString giftTypes[] = {
+const QString GIFT_TYPES[] = {
     "Gift100Points",
     "Gift200Points",
     "Gift500Points",
@@ -101,6 +101,6 @@ const QString giftTypes[] = {
 };
 
 // IMPORTANT: keep in sync with the above
-const int giftTypesCount = 19;
+const int GIFT_TYPES_COUNT = 19;
 
 #endif // CONSTS_H

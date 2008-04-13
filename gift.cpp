@@ -56,7 +56,7 @@ void Gift::execute(GameEngine *e)
         engine->addScore(1000 - GIFT_SCORE);
     } 
     else if (type() == "GiftAddLife") {
-        if (engine->m_lives.count() < MAX_LIVES) {
+        if (engine->m_lives.count() < MAXIMUM_LIVES) {
             engine->m_lives.append(new Life);
         }
     } 
