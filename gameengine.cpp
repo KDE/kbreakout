@@ -267,6 +267,7 @@ void GameEngine::loadLevel()
     m_bar.reset();
     updateAttachedBalls();
     setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
+    if (gameIsPaused()) resume();
 }
 
 void GameEngine::step()
