@@ -418,7 +418,6 @@ void GameEngine::handleDeath()
 {
     deleteMovingObjects();
     m_bar.reset();
-    updateAttachedBalls();
     if (m_lives.isEmpty()) {
         emit gameEnded(score, level, elapsedTime);
     } else {
@@ -426,6 +425,7 @@ void GameEngine::handleDeath()
         Ball *ball = new Ball;
         m_balls.append(ball);
         setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
+        updateAttachedBalls();
     }
 }
 

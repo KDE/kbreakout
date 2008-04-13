@@ -104,6 +104,7 @@ void Brick::burn()
     }
     
     setType("BurningBrick");
+    show(); // make sure hidden bricks are shown
     QTimer::singleShot(BURNING_INTERVAL, this, SLOT(hide()));
 }
 
