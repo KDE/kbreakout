@@ -93,7 +93,9 @@ void Gift::execute(GameEngine *e)
         engine->setUpdateInterval(ui);
     }
     else if (type() == "GiftEnlargeBar") {
-        engine->m_bar.enlarge();
+        Bar *bar = &engine->m_bar;
+        bar->enlarge();
+        engine->moveBar(bar->position().x() + bar->getRect().width()/2);
     }
     else if (type() == "GiftShrinkBar") {
         engine->m_bar.shrink();

@@ -489,6 +489,7 @@ void GameEngine::updateAttachedBalls()
         int ballX = m_bar.getRect().left() + 
                 qRound(ball->barPosition * m_bar.getRect().width());
         ball->moveTo(ballX, m_bar.getRect().top() - BALL_SIZE);
+        ball->repaint();
     }
 }
 

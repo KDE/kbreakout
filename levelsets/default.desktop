@@ -29,6 +29,7 @@ Gift200Points = 1
 GiftBurningBall = 5
 GiftUnstoppableBall = 5
 GiftMoreExplosion = 3
+GiftEnlargeBar = 20
 
 [level2]
 line1  =
@@ -82,8 +83,8 @@ line11 = -333x3333333333x333
 line12 = -444xxxxxxxxxxxx444-
 line13 = -333333333333333333-
 line14 = --------------------
-Gift100Points = 10
-Gift200Points = 2
+Gift100Points = 4
+Gift200Points = 1
 GiftMoreExplosion = 5
 
 
