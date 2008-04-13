@@ -28,7 +28,7 @@ Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
     : m_game(gameEngine),
       m_deleted(false)
 {
-    gift = 0;
+    m_gift = 0;
     width = BRICK_WIDTH;
     height = BRICK_HEIGHT;
     
@@ -37,36 +37,55 @@ Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
     setTypeFromChar(typeChar);
 }
 
-void Brick::setDeleted() 
+void Brick::setGift(Gift *gift)
+{
+    m_gift = gift;
+}
+
+void Brick::forcedHit()
 {
     if (m_deleted) return;
     
-    handleDeletion();
+    if (type() == "ExplodingBrick") {
+        explode();
+    } else {
+        handleDeletion();
+    }
     hide();
 }
 
 void Brick::hit()
 {
-        if (type() == "HiddenBrick" && !isVisible()) {
-            show();
-            ++m_game->remainingBricks;
-        } else if (type() == "MultipleBrick3") {
-            setType("MultipleBrick2");
-            // TODO: make a convenience function out of the following two
-            m_game->addScore(qRound(m_game->dScore));
-            m_game->dScore = BRICK_SCORE;
-        } else if (type() == "MultipleBrick2") {
-            setType("MultipleBrick1");
-            m_game->addScore(qRound(m_game->dScore));
-            m_game->dScore = BRICK_SCORE;
-        } else if (type() != "UnbreakableBrick") {
-            setDeleted();
-        }
+    if (type() == "HiddenBrick" && !isVisible()) {
+        show();
+        ++m_game->remainingBricks;
+    } else if (type() == "MultipleBrick3") {
+        setType("MultipleBrick2");
+        // TODO: make a convenience function out of the following two
+        m_game->addScore(qRound(m_game->dScore));
+        m_game->dScore = BRICK_SCORE;
+    } else if (type() == "MultipleBrick2") {
+        setType("MultipleBrick1");
+        m_game->addScore(qRound(m_game->dScore));
+        m_game->dScore = BRICK_SCORE;
+    } else if (type() == "ExplodingBrick") {
+        explode();
+    } else if (type() != "UnbreakableBrick") {
+        forcedHit();
+    }
 }
 
 void Brick::explode()
 {
+    if (m_deleted) return;
+    
     burn();
+    QTimer::singleShot(BURNING_SPEED, this, SLOT(burnNearbyBricks()));
+    
+}
+
+void Brick::burnNearbyBricks()
+{
     foreach (Brick *b, nearbyBricks()) {
         b->burn();
     }
@@ -76,15 +95,25 @@ void Brick::burn()
 {
     if (m_deleted) return;
     
-    handleDeletion();
+    if (type() == "ExplodingBrick") {
+        // makes sure it doesn't explode twice
+        setType("BurningBrick");
+        explode();
+    } else {
+        handleDeletion();
+    }
+    
     setType("BurningBrick");
-    show();
-    QTimer::singleShot(200, this, SLOT(hide()));
+    QTimer::singleShot(BURNING_INTERVAL, this, SLOT(hide()));
 }
 
 
 void Brick::handleDeletion()
 {
+    if (m_deleted) {
+        kError() << "Already deleted!!!!!!!!!!!!!!!!";
+    }
+    
     m_deleted = true; 
     
     // these two kind of bricks aren't counted in the remainingBricks
@@ -95,10 +124,10 @@ void Brick::handleDeletion()
         ++m_game->remainingBricks;
     }
 
-    if (gift != 0) {
-        gift->moveTo(getRect().left(), getRect().top());
-        gift->show();
-        m_game->m_gifts.append(gift);
+    if (m_gift != 0) {
+        m_gift->moveTo(getRect().left(), getRect().top());
+        m_gift->show();
+        m_game->m_gifts.append(m_gift);
     }
     
     --m_game->remainingBricks;
@@ -127,6 +156,7 @@ void Brick::setTypeFromChar(char type)
     case '5': setType("PlainBrick5"); break;
     case '6': setType("PlainBrick6"); break;
     case 'm': setType("MultipleBrick3"); break;
+    case 'x': setType("ExplodingBrick"); break;
     case 'u': 
         setType("UnbreakableBrick");
         --m_game->remainingBricks;
@@ -159,6 +189,7 @@ QList<Brick *> Brick::nearbyBricks()
     nearbyPoints.append(QPoint(x, y + BRICK_HEIGHT));
     
     foreach(Brick *b, m_game->m_bricks) {
+        if (b->isDeleted()) continue;
         foreach (QPoint p, nearbyPoints) {
             if (b->getRect().contains(p)) {
                 result.append(b);

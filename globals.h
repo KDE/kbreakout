@@ -33,7 +33,8 @@ const int MINIMUM_UPDATE_INTERVAL = 5;
 // the lower this number the more the game becomes faster over time
 const qreal UPDATE_INTERVAL_DECREASE = 0.99;
 
-//const int USE_ANTIALIASING = true;
+const int BURNING_INTERVAL = 200; // how long it burns
+const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
 
 const int WIDTH = 20; // how many bricks the game is wide
 const int HEIGHT = 24; // how many bricks the game is high

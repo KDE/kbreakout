@@ -29,21 +29,23 @@ class Brick : public Item
 public:
     Brick(GameEngine *game, char typeChar, int posX, int posY);
     
-    Gift *gift; // TODO: make private
-    
-    void setDeleted();
+    // hits the brick and destroys it regardless of the type of brick
+    void forcedHit();
+    // hits the brick
     void hit();
+    // hits the brick and makes the nearbyBricks explode
     void explode();
     
     bool isDeleted() {return m_deleted;}
     
-    // a ball collided against the brick
-    // can acces the private GameEngine members so be carefull!!! (TODO: (??))
-    //virtual void handleCollision();
+    void setGift(Gift *);
 
 public slots:
-    void burn();
     void hide();
+    
+private slots:
+    void burn();
+    void burnNearbyBricks();
 
 private:
     void handleDeletion();
@@ -51,6 +53,7 @@ private:
     QList<Brick *> nearbyBricks();
 
     GameEngine *m_game;
+    Gift *m_gift;
     bool m_deleted;
 };
 

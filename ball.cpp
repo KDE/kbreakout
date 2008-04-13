@@ -34,11 +34,15 @@ Ball::Ball()
 
 void Ball::collideWithBrick(Brick *brick)
 {
-    if (type() == "UnstoppableBall" ||
-            type() == "UnstoppableBurningBall") {
-        brick->setDeleted();
+    if (type() == "UnstoppableBall") {
+        brick->forcedHit();
         return; // don't bounce
     }
+    if (type() == "UnstoppableBurningBall") {
+        brick->explode();
+        return; // don't bounce
+    }
+    
     
     // calculate bounce
     QRect brickRect(brick->getRect());
@@ -64,7 +68,7 @@ void Ball::collideWithBrick(Brick *brick)
         return; // already bounced
     }
     
-    if (type() == "BurningBall" || type() == "UnstoppableBurningBall") {
+    if (type() == "BurningBall") {
         brick->explode();
     } else {
         brick->hit();

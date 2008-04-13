@@ -257,7 +257,7 @@ void GameEngine::loadLevel()
             gift->hide();
             
             int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->gift = gift;
+            bricksLeft.at(index)->setGift(gift);
             bricksLeft.removeAt(index);
         }
     }
@@ -289,7 +289,7 @@ void GameEngine::step()
     QMutableListIterator<Gift *> i(m_gifts);
     while (i.hasNext()) {
         Gift *gift = i.next();
-        if (!gift->isVisible()) continue;
+        if (!gift->isVisible()) continue; // do nothing
         
         gift->move();
         if (gift->getRect().bottom() > BRICK_HEIGHT * HEIGHT) {
@@ -510,6 +510,7 @@ inline void GameEngine::deleteMovingObjects()
 
 inline void GameEngine::deleteAllObjects()
 {
+    kDebug() << "all object deleted";
     deleteMovingObjects();
     while (!m_bricks.isEmpty()) delete m_bricks.takeFirst();
     while (!m_gifts.isEmpty()) delete m_gifts.takeFirst();
