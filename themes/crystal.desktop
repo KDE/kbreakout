@@ -1,6 +1,8 @@
 [KGameTheme]
 Name=Crystal clear
+Name[sv]=Kristallklar
 Description=Crystal-like theme for KBreakout
+Description[sv]=Tema som liknar kristall för Kbreakout
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
