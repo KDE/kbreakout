@@ -27,10 +27,10 @@
 
 int main (int argc, char *argv[])
 {
-    KAboutData aboutData("kbreakout", 0, ki18n("KBreakout"), "0.1.0");
+    KAboutData aboutData("kbreakout", 0, ki18n("KBreakOut"), "0.8.0");
     aboutData.setShortDescription(ki18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutData::License_GPL);
-    aboutData.setCopyrightStatement(ki18n("(c) 2007-2007 Fela Winkelmolen"));
+    aboutData.setCopyrightStatement(ki18n("(c) 2007-2008 Fela Winkelmolen"));
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
                         "fela.kde@gmail.com");
