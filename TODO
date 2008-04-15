@@ -1,10 +1,8 @@
 BUGS:
 =====
 
-* Pause the game when you just lose, when the ball shows up it's on top of the canvas...
-* When the ball is goint up or down (exactly) sometimes in passes through a wall
+* Pause the game when you just lose, when the ball shows up it's on top of the canvas... (wrong z values)
 * Sometimes ti bounces twice when it shouldn't
-* When the balls is very fast it goes trough bricks
 * Unneeded resizes and repaints on startup
 
 
@@ -14,26 +12,20 @@ TODO:
 == Short Term ==
 * Item: 
     - don't use inheritance
-    - only change the KGameCanvasItem position when repaint is called
 * maybe the why gifts are given isn't that random but depens on the position in che levelset (?????)
 * Ask confirmation on close if a game is running
-* Rename to KBreakOut (?)
 * Add documentation
-* Add more levels
-* Move the bar to where the bar is when resuming after pause
 * Add message boxes for new levels, pause, etc..
-* Add sticky bar support
-* Exploding brick
 * Restrucure file hirarchy
 
 == Mid Term ==
 * Add gui to load new levesets
 * Add sound
-* Add nice effects
+* Add nice visual effects
+* Profiling
 
 == Long Term ==
 * Level editor
-* Profiling
 * Add a border (?)
 * Add gifts to be able to shoot at the bricks (?)
 * Full screen mode
