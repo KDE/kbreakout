@@ -215,7 +215,13 @@ void Gift::giftMoreExplosion()
     
     foreach (Brick *brick, explodingBricks) {
         foreach (Brick *nearbyBrick, brick->nearbyBricks()) {
+            bool isHidden = nearbyBrick->type() == "HiddenBrick" && 
+                            !nearbyBrick->isVisible();
             nearbyBrick->setType("ExplodingBrick");
+            if (isHidden) {
+                nearbyBrick->show();
+                ++engine->remainingBricks;
+            }
         }
     }
 }
