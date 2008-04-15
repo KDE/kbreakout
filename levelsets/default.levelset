@@ -407,8 +407,8 @@ GiftShrinkBar = 4
 GiftAddLife = 1
 
 [level18]
-line1  = ---------hh---------
-line2  = --4444444444444444--
+line1  = -------hhhhhh-------
+line2  = ----444444444444--
 line3  = -433333333333333334-
 line4  = -43666666mm66666634-
 line5  = -4365555mmmm5555634-
@@ -419,19 +419,20 @@ line9  = -436mmm211112mmm634-
 line10 = -43mmmm21xx12mmmm34h
 line11 = -43mmmm2xxxx2mmmm34h
 line12 = -43mmmmxx--xxmmmm34h
-line13 = -4mmmmxx----xxmmmm4h
+line13 = -43mmmmx----xmmmm34h
 line14 = -4365----------5634h
 line15 = -436------------634h
 line16 = h43--------------34h
 Gift100Points = 5
 GiftStickyBar = 2
-GiftEnlargeBar = 3
+GiftEnlargeBar = 2
+GoftShrinkBar = 3
 GiftLoseLife = 2
 GiftAddBall = 1
 GiftSplitBall = 2
 GiftDecreaseSpeed = 2
 GiftIncreaseSpeed = 2
-GiftMoreExplosion = 14
+GiftMoreExplosion = 15
 GiftMagicEye = 3
 
 [level19]
@@ -452,6 +453,7 @@ line14 = 6--333--4--4--55---6
 line15 = 6------------------6
 line16 = 6------------------6
 line17 = 66666666666666666666
+line18 = 66666666666666666666
 
 GiftLoseLife = 5
 GiftSplitBall = 10

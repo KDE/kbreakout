@@ -16,13 +16,7 @@
 */
 
 #include "canvasitems.h"
-
 #include "globals.h"
-#include "renderer.h"
-#include "fontutils.h"
-
-#include <cmath>
-#include <KDebug>
 
 Bar::Bar()
 {
@@ -64,7 +58,6 @@ void Bar::enlarge()
 void Bar::shrink()
 {
     int oldWidth = width;
-    kDebug() << "old width = " << width << endl;
     width = qRound(width/RESIZE_BAR_RATIO);
     if (width < MIN_BAR_WIDTH) width = MIN_BAR_WIDTH;
     loadSprite();
@@ -111,52 +104,5 @@ Background::Background()
     elementId = "BackgroundOverlay";
     moveTo(-1, -1);
         
-    loadSprite();
-}
-
-Score::Score()
-{
-    height = static_cast<int>(BRICK_HEIGHT * 1.5);
-    width =  (BRICK_WIDTH * WIDTH)/6;
-    moveTo(0, - (height * 1.2));
-    
-    elementId = "Display";
-    
-    setScore(0);
-}
-
-void Score::loadSprite()
-{
-    updateScale();
-    
-    QSize size(qRound(m_scale*width), qRound(m_scale*height));
-    QPixmap pixmap = Renderer::self()->renderedSvgElement(elementId, size);
-    
-    QPainter p(&pixmap);
-    int fontSize = fontUtils::fontSize(p, scoreString, width, height,
-                                   fontUtils::DoNotAllowWordWrap);
-    
-    p.setPen(QColor(255,255,255,150));
-    p.setFont(QFont("Helvetica", fontSize, QFont::Bold));
-    p.drawText(QRectF(0, 0, m_scale*width, m_scale*height*0.86), 
-                Qt::AlignCenter, scoreString);
-    setPixmap(pixmap);
-    
-    repaint();
-}
-
-void Score::setScore(int newScore)
-{
-    //scoreString = QString("%L1").arg(newScore);
-    //scoreString = QString("%1").arg(0.01*newScore, 0, 'f', 2);
-    scoreString = QString::number(newScore);
-    
-    // insert spaces every 3 characters
-    int stringSize = scoreString.size();
-    for (int i = 1; i <= (stringSize-1) / 3; ++i) {
-        int position = scoreString.size() - 4 * i + 1;
-        scoreString.insert(position, " ");
-    }
-    
     loadSprite();
 }

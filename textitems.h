@@ -1,5 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2008 Fela Winkelmolen <fela.kde@gmail.com> 
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,38 +15,34 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CANVASITEMS_H
-#define CANVASITEMS_H
+#ifndef TEXT_ITEMS_H
+#define TEXT_ITEMS_H
 
 #include "item.h"
 
-class Bar : public Item
+class TextItem : public Item
 {
 public:
-    Bar();
+    TextItem();
     
-    // resets to default values
-    void reset();
+protected:
+    void loadSprite();
     
-    // used by GiftEnlargeBar and GiftShrinkBar
-    void enlarge();
-    void shrink();
+    QString displayString;
 };
 
-class Life : public Item
+class Score : public TextItem
 {
 public:
-    Life();
-    ~Life();
-    
-private:
-    static int count;
+    Score();
+    void setScore(int newScore);
 };
 
-class Background : public Item
+class LevelInfo : public TextItem
 {
 public:
-    Background();
+    LevelInfo();
+    void setLevel(int newLevel);
 };
 
-#endif // CANVASITEMS_H
+#endif // TEXT_ITEMS_H

@@ -8,6 +8,7 @@ set(kbreakout_SRCS
    mainwindow.cpp 
    canvasitems.cpp
    canvaswidget.cpp
+   textitems.cpp
    item.cpp
    gift.cpp
    brick.cpp

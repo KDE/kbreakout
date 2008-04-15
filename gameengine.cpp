@@ -15,19 +15,19 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <cmath>
+#include "gameengine.h"
 
+#include "gift.h"
+#include "brick.h"
+#include "ball.h"
+
+#include <cmath>
 #include <QTimer>
 
 #include <KConfig>
 #include <KStandardDirs>
 #include <kconfiggroup.h>
 #include <kdebug.h>
-
-#include "gameengine.h"
-#include "gift.h"
-#include "brick.h"
-#include "ball.h"
 
 GameEngine::GameEngine()
     : updateInterval(DEFAULT_UPDATE_INTERVAL)
@@ -267,6 +267,7 @@ void GameEngine::loadLevel()
     m_bar.reset();
     updateAttachedBalls();
     setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
+    levelInfo.setLevel(level);
     if (gameIsPaused()) resume();
 }
 

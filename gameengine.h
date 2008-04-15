@@ -26,6 +26,7 @@
 #include <QRegion>
 
 #include "canvasitems.h"
+#include "textitems.h"
 
 class Gift;
 class Brick;
@@ -103,6 +104,7 @@ private:
     // Canvas Items
     QList<Life *> m_lives;
     Score scoreCanvas;
+    LevelInfo levelInfo;
     QList<Brick *> m_bricks;
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
