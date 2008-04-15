@@ -46,7 +46,7 @@ void TextItem::loadSprite()
     int fontSize = fontUtils::fontSize(p, m_text, qRound(w*0.9), h,
                                    fontUtils::DoNotAllowWordWrap);
     
-    p.setPen(QColor(255,255,255,150));
+    p.setPen(QColor(255, 255, 255, 220));
     p.setFont(QFont("Helvetica", fontSize, QFont::Bold));
     p.drawText(QRectF(0, 0, w, h), 
                 Qt::AlignCenter, m_text);
@@ -73,6 +73,8 @@ void Score::setScore(int newScore)
     
     // insert spaces every 3 characters
     int stringSize = displayString.size();
+    // dont count the '-'
+    if (newScore < 0) --stringSize;
     for (int i = 1; i <= (stringSize-1) / 3; ++i) {
         int position = displayString.size() - 4 * i + 1;
         displayString.insert(position, " ");
