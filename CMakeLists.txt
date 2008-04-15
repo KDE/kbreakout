@@ -14,6 +14,7 @@ set(kbreakout_SRCS
    ball.cpp
    gameengine.cpp
    renderer.cpp
+   fontutils.cpp
 )
 
 kde4_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
