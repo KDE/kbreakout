@@ -4,6 +4,7 @@ BUGS:
 * Pause the game when you just lose, when the ball shows up it's on top of the canvas... (wrong z values)
 * Sometimes ti bounces twice when it shouldn't
 * Unneeded resizes and repaints on startup
+* "Level XX" is shown also when the last level is won..
 
 
 TODO:

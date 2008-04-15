@@ -70,8 +70,8 @@ const int INITIAL_LIVES = 4;
 const int MAXIMUM_LIVES = 10;
 
 // minimum with and height of the game widget (CanvasWidget)
-const int DEFAULT_WIDTH = 700;
-const int DEFAULT_HEIGHT = 400;
+const int DEFAULT_WIDTH = 750;
+const int DEFAULT_HEIGHT = 500;
 
 // IMPORTANT: keep GIFT_TYPES_COUNT in sync!!!!!!!
 // TODO: see if I can use somthing different

@@ -162,10 +162,16 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     
     // TODO: fix score < 0
     
+    const int ALL_LEVELS = -1;
+    
     KScoreDialog::FieldInfo scoreInfo;
     scoreInfo[KScoreDialog::Score].setNum(score);
-    scoreInfo[KScoreDialog::Level].setNum(level);
     scoreInfo[KScoreDialog::Time] = timeString;
+    if (level == ALL_LEVELS) {
+        scoreInfo[KScoreDialog::Level] = i18n("Game won!");
+    } else {
+        scoreInfo[KScoreDialog::Level].setNum(level);
+    }
     
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
                           | KScoreDialog::Time, this);
