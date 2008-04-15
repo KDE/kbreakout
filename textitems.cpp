@@ -98,7 +98,7 @@ void LevelInfo::setLevel(int newLevel)
 
 MessageBox::MessageBox()
 {
-    width = BRICK_WIDTH * 7;
+    width = BRICK_WIDTH * 9;
     height = BRICK_HEIGHT * 5;
     
     int x = (BRICK_WIDTH * WIDTH - width) / 2;

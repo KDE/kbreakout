@@ -54,6 +54,8 @@ void GameEngine::start(QString l)
     for (int i = 0; i < INITIAL_LIVES; ++i){
         m_lives.append(new Life);
     }
+    m_gameOver = false;
+    m_gameWon = false;
     level = 1;
     elapsedTime = 0;
     setScore(0);
@@ -74,6 +76,7 @@ bool GameEngine::gameIsPaused()
 void GameEngine::pause()
 {
     if (gameIsPaused()) return;
+    if (m_gameWon || m_gameOver) return;
     
     elapsedTimeTimer.stop();
     gameTimer.stop();
@@ -188,8 +191,11 @@ void GameEngine::loadLevel()
             kError() << "Invalid '" << levelName << "' in levelset " 
                      << levelSet << endl;
         } else {
-            // TODO: shows the level max+1, is that ok??
-            emit gameEnded(score, level, elapsedTime);
+            m_gameWon = true;
+            messageBox.setText(i18n("Well done! You won the game!"));
+            messageBox.raise();
+            messageBox.show();
+            emit gameEnded(score, -1, elapsedTime);
         }
         return;
     }
@@ -354,7 +360,10 @@ void GameEngine::detectBallCollisions(Ball *ball)
         itemsGotDeleted = true;
         if (m_balls.isEmpty()) {
             addScore(LOSE_LIFE_SCORE);
-        
+            
+            messageBox.setText(i18n("Oops! You have lost the ball!"));
+            messageBox.raise();
+            messageBox.show();
             QTimer::singleShot(1000, this, SLOT(handleDeath()));
             gameTimer.stop();
         
@@ -424,9 +433,16 @@ void GameEngine::detectBallCollisions(Ball *ball)
 // TODO: why is it a slot??
 void GameEngine::handleDeath()
 {
+    if (!gameIsPaused()) {
+        messageBox.hide();
+    }
     deleteMovingObjects();
     m_bar.reset();
     if (m_lives.isEmpty()) {
+        m_gameOver = true;
+        messageBox.setText(i18n("Game Over!"));
+        messageBox.raise();
+        messageBox.show();
         emit gameEnded(score, level, elapsedTime);
     } else {
         delete m_lives.takeLast();

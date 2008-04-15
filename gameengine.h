@@ -102,6 +102,8 @@ private:
     QTimer repaintTimer;
     
     // Canvas Items
+    bool m_gameOver;
+    bool m_gameWon;
     QList<Life *> m_lives;
     Score scoreCanvas;
     LevelInfo levelInfo;
