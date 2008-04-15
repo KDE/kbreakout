@@ -56,7 +56,7 @@ void Item::updateScale()
     qreal scaleX = static_cast<double>(canvas->width())
                    / (BRICK_WIDTH * WIDTH);
     qreal scaleY = static_cast<double>(canvas->height())
-                   / ((BRICK_HEIGHT + 3) * HEIGHT);
+                   / ((BRICK_HEIGHT + 2) * HEIGHT);
     m_scale = qMin(scaleX, scaleY);
     //kDebug() << "m_scale: " << m_scale;
     // assure the m_scaled height of bricks is an int
@@ -67,7 +67,7 @@ void Item::updateScale()
     m_borderLeft = qRound( (static_cast<qreal>(canvas->width()) 
                         - m_scale * (BRICK_WIDTH * WIDTH)) / 2 );
     m_borderTop = qRound( (static_cast<qreal>(canvas->height()) 
-                       - m_scale * (BRICK_HEIGHT * (HEIGHT-1))) / 2 );
+                       - m_scale * (BRICK_HEIGHT * (HEIGHT-2))) / 2 );
 }
 
 void Item::loadSprite()

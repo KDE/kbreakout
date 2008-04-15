@@ -127,6 +127,7 @@ void Brick::handleDeletion()
 
     if (m_gift != 0) {
         m_gift->moveTo(getRect().left(), getRect().top());
+        m_gift->repaint();
         m_gift->show();
         m_game->m_gifts.append(m_gift);
     }
