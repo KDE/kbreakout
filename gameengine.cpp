@@ -24,6 +24,7 @@
 #include <cmath>
 #include <QTimer>
 
+#include <KLocale>
 #include <KConfig>
 #include <KStandardDirs>
 #include <kconfiggroup.h>
@@ -78,7 +79,7 @@ void GameEngine::pause()
     gameTimer.stop();
     repaintTimer.stop();
     emit gamePaused();
-    messageBox.setText("Game Paused");
+    messageBox.setText(i18n("Game Paused!"));
     messageBox.raise();
     messageBox.show();
 }
@@ -270,9 +271,11 @@ void GameEngine::loadLevel()
     moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2);
     m_bar.reset();
     updateAttachedBalls();
+    
     setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
     levelInfo.setLevel(level);
     if (gameIsPaused()) resume();
+    messageBox.hide();
 }
 
 void GameEngine::step()
@@ -455,7 +458,10 @@ void GameEngine::loadNextLevel()
 {
     ++level;
     deleteMovingObjects();
-    QTimer::singleShot(200, this, SLOT(loadLevel()));
+    messageBox.setText(i18n("Level %1", level));
+    messageBox.raise();
+    messageBox.show();
+    QTimer::singleShot(2000, this, SLOT(loadLevel()));
     addScore(LEVEL_SCORE);
 }
 
