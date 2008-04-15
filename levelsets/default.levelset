@@ -28,10 +28,11 @@ line15 = hhhhhhhhhhhhhhhhhhh-
 line16 = hhhhhhhhhhhhhhhhhh--
 Gift100Points = 2
 Gift200Points = 1
-GiftBurningBall = 5
+GiftBurningBall = 2
+GiftStickyBar = 3
 GiftUnstoppableBall = 2
 GiftMoreExplosion = 2
-GiftSplitBall = 2
+GiftSplitBall = 3
 
 [level2]
 line1 =
