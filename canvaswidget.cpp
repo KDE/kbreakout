@@ -27,7 +27,7 @@
 #include "globals.h"
 
 CanvasWidget::CanvasWidget(QWidget *parent) 
-    : KGameCanvasWidget(parent) 
+    : KGameCanvasWidget(parent)
 {
     setFocus();
     

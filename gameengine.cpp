@@ -78,6 +78,9 @@ void GameEngine::pause()
     gameTimer.stop();
     repaintTimer.stop();
     emit gamePaused();
+    messageBox.setText("Game Paused");
+    messageBox.raise();
+    messageBox.show();
 }
 
 void GameEngine::resume()
@@ -100,6 +103,7 @@ void GameEngine::resume()
     }
     
     int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
+    messageBox.hide();
     emit gameResumed(barPosition);
 }
 

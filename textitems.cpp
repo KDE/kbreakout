@@ -26,21 +26,30 @@ TextItem::TextItem()
     elementId = "Display";
 } 
 
+void TextItem::setText(const QString &text) 
+{
+    m_text = text;
+    loadSprite();
+}
+
 void TextItem::loadSprite()
 {
     updateScale();
     
-    QSize size(qRound(m_scale*width), qRound(m_scale*height));
+    int w = qRound(m_scale*width);
+    int h = qRound(m_scale*height);
+    
+    QSize size(w, h);
     QPixmap pixmap = Renderer::self()->renderedSvgElement(elementId, size);
     
     QPainter p(&pixmap);
-    int fontSize = fontUtils::fontSize(p, displayString, width, height,
+    int fontSize = fontUtils::fontSize(p, m_text, qRound(w*0.9), h,
                                    fontUtils::DoNotAllowWordWrap);
     
     p.setPen(QColor(255,255,255,150));
     p.setFont(QFont("Helvetica", fontSize, QFont::Bold));
-    p.drawText(QRectF(0, 0, m_scale*width, m_scale*height*0.86), 
-                Qt::AlignCenter, displayString);
+    p.drawText(QRectF(0, 0, w, h), 
+                Qt::AlignCenter, m_text);
     setPixmap(pixmap);
     
     repaint();
@@ -49,8 +58,8 @@ void TextItem::loadSprite()
 Score::Score()
     : TextItem()
 {
-    height = static_cast<int>(BRICK_HEIGHT * 1.5);
     width =  (BRICK_WIDTH * WIDTH)/6;
+    height = qRound(BRICK_HEIGHT * 1.5);
     moveTo(0, - (height * 1.2));
     
     setScore(0);
@@ -60,7 +69,7 @@ void Score::setScore(int newScore)
 {
     //scoreString = QString("%L1").arg(newScore);
     //scoreString = QString("%1").arg(0.01*newScore, 0, 'f', 2);
-    displayString = QString::number(newScore);
+    QString displayString = QString::number(newScore);
     
     // insert spaces every 3 characters
     int stringSize = displayString.size();
@@ -69,20 +78,28 @@ void Score::setScore(int newScore)
         displayString.insert(position, " ");
     }
     
-    loadSprite();
+    setText(displayString);
 }
 
 LevelInfo::LevelInfo()
     : TextItem()
 {
-    height = static_cast<int>(BRICK_HEIGHT * 1.5);
     width =  (BRICK_WIDTH * WIDTH)/5;
+    height = qRound(BRICK_HEIGHT * 1.5);
     moveTo((BRICK_WIDTH * WIDTH)/5, - (height * 1.2));
 }
 
 void LevelInfo::setLevel(int newLevel)
 {
-    displayString = i18n("Level %1", newLevel);
+    setText(i18n("Level %1", newLevel));
+}
+
+MessageBox::MessageBox()
+{
+    width = BRICK_WIDTH * 7;
+    height = BRICK_HEIGHT * 5;
     
-    loadSprite();
+    int x = (BRICK_WIDTH * WIDTH - width) / 2;
+    int y = (BRICK_HEIGHT * HEIGHT - height) / 2;
+    moveTo(x, y);
 }

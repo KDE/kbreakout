@@ -25,10 +25,12 @@ class TextItem : public Item
 public:
     TextItem();
     
-protected:
-    void loadSprite();
+    void setText(const QString &text);
     
-    QString displayString;
+protected:
+    virtual void loadSprite();
+    
+    QString m_text;
 };
 
 class Score : public TextItem
@@ -43,6 +45,12 @@ class LevelInfo : public TextItem
 public:
     LevelInfo();
     void setLevel(int newLevel);
+};
+
+class MessageBox : public TextItem
+{
+public:
+    MessageBox();
 };
 
 #endif // TEXT_ITEMS_H

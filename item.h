@@ -43,6 +43,7 @@ public:
     // make superclass functions accessible
     using KGameCanvasPixmap::hide;
     using KGameCanvasPixmap::show;
+    using KGameCanvasPixmap::raise;
     //using KGameCanvasPixmap::visible;
     using KGameCanvasPixmap::setPixmap;
     //void hide() {KGameCanvasPixmap::hide();}

@@ -12,11 +12,13 @@ TODO:
 == Short Term ==
 * Item: 
     - don't use inheritance
-* maybe the why gifts are given isn't that random but depens on the position in che levelset (?????)
+* Check if gifts are given isn't that random but depens on the position in che levelset (?????)
 * Ask confirmation on close if a game is running
 * Add documentation
 * Add message boxes for new levels, pause, etc..
 * Restrucure file hirarchy
+* Put constants used only in one place out of globals.h 
+* use m_ for all data members
 
 == Mid Term ==
 * Add gui to load new levesets

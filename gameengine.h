@@ -105,6 +105,7 @@ private:
     QList<Life *> m_lives;
     Score scoreCanvas;
     LevelInfo levelInfo;
+    MessageBox messageBox;
     QList<Brick *> m_bricks;
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
