@@ -1,0 +1,6 @@
+project( kbreakout )
+add_subdirectory( src ) 
+add_subdirectory( pics )
+add_subdirectory( themes )
+add_subdirectory( levelsets )
+install( FILES kbreakout.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
