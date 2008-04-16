@@ -74,13 +74,13 @@ Life::Life()
 {
     ++count;
     
-    width = (BRICK_WIDTH)/2;
-    height = (BRICK_HEIGHT)/2;
+    width = qRound((BRICK_WIDTH)/1.3);
+    height = qRound((BRICK_HEIGHT)/1.3);
     elementId = "PlainBar";
     
     int x = -5 + qRound( BRICK_WIDTH * WIDTH 
-                        - (0.6 * BRICK_WIDTH * count) );
-    int y = qRound(-0.75*BRICK_HEIGHT);
+                        - (BRICK_WIDTH * count) );
+    int y = qRound(-1.2 * BRICK_HEIGHT);
      
     moveTo(x, y);
     

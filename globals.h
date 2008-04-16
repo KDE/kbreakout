@@ -65,7 +65,7 @@ const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
 const int LEVEL_SCORE = 300;
 const int GIFT_SCORE = 30;
-const int LOSE_LIFE_SCORE = -500;
+const int LOSE_LIFE_SCORE = -1000;
 const int INITIAL_LIVES = 4;
 const int MAXIMUM_LIVES = 10;
 
