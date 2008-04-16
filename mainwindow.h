@@ -37,6 +37,7 @@ private slots:
     void configureSettings();
     void showHighscores();
     void loadSettings();
+    void startNewGame();
     
 private:
     void setupActions();

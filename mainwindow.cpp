@@ -91,6 +91,9 @@ MainWindow::~MainWindow()
  
 void MainWindow::setupActions()
 {
+    KStandardGameAction::gameNew(this, SLOT(startNewGame()), 
+                                 actionCollection());
+    
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     
     KStandardGameAction::highscores(this, SLOT(showHighscores()), 
@@ -137,7 +140,7 @@ void MainWindow::loadSettings()
 {
     if (!Renderer::self()->loadTheme(Settings::theme())) {
         KMessageBox::error(this,  
-           i18n( "Failed to load \"%1\" theme. Please check your installation.",
+           i18n("Failed to load \"%1\" theme. Please check your installation.",
            Settings::theme()));
         return;
     }
@@ -152,13 +155,26 @@ void MainWindow::showHighscores()
     ksdialog.exec();
 }
 
+void MainWindow::startNewGame()
+{
+    int ret = KMessageBox::warningYesNo(
+        this,
+        i18n("Starting a new game will end the current one!"),
+        i18n("New Game"),
+        KGuiItem(i18n("Start a new game")),
+        KStandardGuiItem::cancel());
+        
+    if (ret == KMessageBox::Yes) {
+        gameEngine->start("default");
+    }
+}
+
 void MainWindow::handleEndedGame(int score, int level, int time)
 {
     
     QTime t = QTime(0, 0).addSecs(time);
     // TODO: check int overflow and fix 24 hours "overflow"
-    QString timeString = t.toString("HH:mm");    
-    kDebug()<<"score: "<<score<<"level: "<<level<<"time: "<<timeString<<endl;
+    QString timeString = t.toString("HH:mm");
     
     // TODO: fix score < 0
     

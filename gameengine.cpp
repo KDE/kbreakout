@@ -51,9 +51,14 @@ GameEngine::~GameEngine()
 void GameEngine::start(QString l)
 {
     levelSet = l;
+    
+    while(!m_lives.isEmpty()) {
+        delete m_lives.takeFirst();
+    }
     for (int i = 0; i < INITIAL_LIVES; ++i){
         m_lives.append(new Life);
     }
+    
     m_gameOver = false;
     m_gameWon = false;
     level = 1;
