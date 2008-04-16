@@ -73,7 +73,7 @@ void Score::setScore(int newScore)
     
     // insert spaces every 3 characters
     int stringSize = displayString.size();
-    // dont count the '-'
+    // don't count the '-'
     if (newScore < 0) --stringSize;
     for (int i = 1; i <= (stringSize-1) / 3; ++i) {
         int position = displayString.size() - 4 * i + 1;

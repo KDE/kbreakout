@@ -15,16 +15,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "canvaswidget.h"
+#include "item.h"
+#include "renderer.h"
+#include "globals.h"
+
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QCursor>
 
 #include <KDebug>
-
-#include "canvaswidget.h"
-#include "item.h"
-#include "renderer.h"
-#include "globals.h"
 
 CanvasWidget::CanvasWidget(QWidget *parent) 
     : KGameCanvasWidget(parent)

@@ -15,15 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// needed for floor
-#include <cmath>
-
-#include <QSvgRenderer>
-
-#include <KDebug>
-
 #include "item.h"
 #include "renderer.h"
+
+// needed for floor
+#include <cmath>
+#include <QSvgRenderer>
+#include <KDebug>
 
 // static
 KGameCanvasWidget *Item::canvas = 0;

@@ -15,6 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "mainwindow.h"
+#include "gameengine.h"
+#include "canvasitems.h"
+#include "canvaswidget.h"
+#include "renderer.h"
+#include "settings.h"
+
 #include <QAction>
 #include <QGraphicsScene>
 #include <QSvgRenderer>
@@ -31,13 +38,6 @@
 #include <KDE/KScoreDialog>
 #include <KDE/KGameThemeSelector>
 #include <KDE/KStandardGameAction>
-
-#include "mainwindow.h"
-#include "gameengine.h"
-#include "canvasitems.h"
-#include "canvaswidget.h"
-#include "renderer.h"
-#include "settings.h"
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),

@@ -15,8 +15,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONSTS_H
-#define CONSTS_H
+#ifndef GLOBALS_H
+#define GLOBALS_H
 
 #include <QString>
 
@@ -103,4 +103,4 @@ const QString GIFT_TYPES[] = {
 // IMPORTANT: keep in sync with the above
 const int GIFT_TYPES_COUNT = 19;
 
-#endif // CONSTS_H
+#endif // GLOBALS_H
