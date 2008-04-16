@@ -69,6 +69,7 @@ private:
     //void addGift(const QString &type, QList <Brick *> *bricks);
     
     // convenience functions
+    void showMessage(const QString &text);
     void loadNextLevel();
     void addScore(int points);
     void setScore(int score);
@@ -107,7 +108,7 @@ private:
     QList<Life *> m_lives;
     Score scoreCanvas;
     LevelInfo levelInfo;
-    MessageBox messageBox;
+    MessageBox m_messageBox;
     QList<Brick *> m_bricks;
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
@@ -117,6 +118,9 @@ private:
     bool itemsGotDeleted;
 
 private slots:
+    // hides the current showed message by m_messageBox 
+    // unless the game is paused, won or game over
+    void hideMessage();
     void step();
     void repaintMovingObjects();
     void loadLevel();

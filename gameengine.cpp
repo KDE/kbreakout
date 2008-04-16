@@ -87,9 +87,7 @@ void GameEngine::pause()
     gameTimer.stop();
     repaintTimer.stop();
     emit gamePaused();
-    messageBox.setText(i18n("Game Paused!"));
-    messageBox.raise();
-    messageBox.show();
+    showMessage(i18n("Game Paused!"));
 }
 
 void GameEngine::resume()
@@ -112,7 +110,7 @@ void GameEngine::resume()
     }
     
     int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
-    messageBox.hide();
+    hideMessage();
     emit gameResumed(barPosition);
 }
 
@@ -197,9 +195,7 @@ void GameEngine::loadLevel()
                      << levelSet << endl;
         } else {
             m_gameWon = true;
-            messageBox.setText(i18n("Well done! You won the game!"));
-            messageBox.raise();
-            messageBox.show();
+            showMessage(i18n("Well done! You won the game!"));
             emit gameEnded(score, -1, elapsedTime);
         }
         return;
@@ -286,7 +282,8 @@ void GameEngine::loadLevel()
     setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
     levelInfo.setLevel(level);
     if (gameIsPaused()) resume();
-    messageBox.hide();
+    showMessage(i18n("Level %1", level));
+    QTimer::singleShot(2000, this, SLOT(hideMessage()));
 }
 
 void GameEngine::step()
@@ -366,9 +363,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
         if (m_balls.isEmpty()) {
             addScore(LOSE_LIFE_SCORE);
             
-            messageBox.setText(i18n("Oops! You have lost the ball!"));
-            messageBox.raise();
-            messageBox.show();
+            showMessage(i18n("Oops! You have lost the ball!"));
             QTimer::singleShot(1000, this, SLOT(handleDeath()));
             gameTimer.stop();
         
@@ -438,16 +433,12 @@ void GameEngine::detectBallCollisions(Ball *ball)
 // TODO: why is it a slot??
 void GameEngine::handleDeath()
 {
-    if (!gameIsPaused()) {
-        messageBox.hide();
-    }
+    hideMessage();
     deleteMovingObjects();
     m_bar.reset();
     if (m_lives.isEmpty()) {
         m_gameOver = true;
-        messageBox.setText(i18n("Game Over!"));
-        messageBox.raise();
-        messageBox.show();
+        showMessage(i18n("Game Over!"));
         emit gameEnded(score, level, elapsedTime);
     } else {
         delete m_lives.takeLast();
@@ -475,14 +466,28 @@ void GameEngine::handleBrickCollisions(Ball *ball)
 }
 
 //======= convenience functions =================//
+
+void GameEngine::showMessage(const QString &text)
+{
+    m_messageBox.setText(text);
+    m_messageBox.raise();
+    m_messageBox.show();
+}
+
+void GameEngine::hideMessage()
+{
+    if (gameIsPaused()) return;
+    if (m_gameWon && m_gameOver) return;
+    
+    // else
+    m_messageBox.hide();
+}
+
 void GameEngine::loadNextLevel()
 {
     ++level;
     deleteMovingObjects();
-    messageBox.setText(i18n("Level %1", level));
-    messageBox.raise();
-    messageBox.show();
-    QTimer::singleShot(2000, this, SLOT(loadLevel()));
+    QTimer::singleShot(200, this, SLOT(loadLevel()));
     addScore(LEVEL_SCORE);
 }
 
