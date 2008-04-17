@@ -57,27 +57,18 @@ void Ball::collideWithBrick(Brick *brick)
     int min = qMin(qMin(top, bottom), qMin(left, right));
     
     // bounce
-    // TODO: check this stuff
     if (min == top && directionY > 0) {
         directionY *= -1;
-        kDebug() << brickRect.intersects(getRect());
         moveBy(0, -top);
-        kDebug() << brickRect.intersects(getRect());
     } else if (min == bottom && directionY < 0) {
-        kDebug() << brickRect.intersects(getRect());
         directionY *= -1;
         moveBy(0, bottom);
-        kDebug() << brickRect.intersects(getRect());
     } else if (min == left && directionX > 0) {
-        kDebug() << brickRect.intersects(getRect());
         directionX *= -1;
         moveBy(-left, 0);
-        kDebug() << brickRect.intersects(getRect());
     } else if (min == right && directionX < 0) {
-        kDebug() << brickRect.intersects(getRect());
         directionX *= -1;
         moveBy(right, 0);
-        kDebug() << brickRect.intersects(getRect());
     } else {
         return; // already bounced
     }
@@ -88,9 +79,3 @@ void Ball::collideWithBrick(Brick *brick)
         brick->hit();
     }
 }
-
-/*
-void Ball::collideWithBricks(const QList<Brick *> &bricks)
-{
-    
-}*/

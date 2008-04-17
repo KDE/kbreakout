@@ -412,9 +412,9 @@ void GameEngine::detectBallCollisions(Ball *ball)
         // add some randomness to the mix...
         if (qrand() % 512 == 0) {
             if (qrand() % 2) {
-                ball->directionX += 0.01;
+                ball->directionX += 0.002;
             } else {
-                ball->directionY += 0.01;
+                ball->directionY += 0.002;
             }
             
             // increase the speed a little

@@ -27,7 +27,7 @@ const int MINIMUM_GIFT_SPEED = 1;
 const int MAXIMUM_GIFT_SPEED = 3;
 const int REPAINT_INTERVAL = 18;
 // how ofter the position of the item is updated (but not repainted)
-const int DEFAULT_UPDATE_INTERVAL = 13;
+const int DEFAULT_UPDATE_INTERVAL = 14;
 const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
 const int MINIMUM_UPDATE_INTERVAL = 5;
 // the lower this number the more the game becomes faster over time
