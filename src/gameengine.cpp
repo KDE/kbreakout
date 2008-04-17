@@ -452,10 +452,10 @@ void GameEngine::handleDeath()
 
 void GameEngine::handleBrickCollisions(Ball *ball)
 {
-    // TODO: rect->left() and -> bottom() may be one pixel wrong
     QRect rect = ball->getRect();
 
     foreach (Brick *brick, m_bricks) {
+        if (itemsGotDeleted) return;
         if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
