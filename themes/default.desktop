@@ -1,16 +1,8 @@
 [KGameTheme]
 Name=Default
-Name[bg]=По подразбиране
-Name[de]=Standard
 Name[et]=Vaikimisi
-Name[nl]=Standaard
-Name[pt]=Por Omissão
-Name[pt_BR]=Por Omissão
 Name[sv]=Förval
-Name[xx]=xxDefaultxx
 Description=KBreakOut Default theme for KDE 4
-Description[et]=KBreakouti KDE4 vaiketeema
-Description[sv]=Kbreakout standardtema för KDE 4
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
