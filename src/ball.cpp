@@ -20,6 +20,8 @@
 #include "globals.h"
 #include "brick.h"
 
+#include <KDebug>
+
 Ball::Ball()
 {   
     width = BALL_SIZE;
@@ -45,25 +47,37 @@ void Ball::collideWithBrick(Brick *brick)
     
     
     // calculate bounce
-    QRect brickRect(brick->getRect());
-    QRect ballRect(getRect());
+    QRectF brickRect(brick->getRect());
+    QRectF ballRect(getRect());
     
-    int top = brickRect.top() - ballRect.top();
-    int bottom = ballRect.bottom() - brickRect.bottom();
-    int left = brickRect.left() - ballRect.left();
-    int right = ballRect.right() - brickRect.right();
-    int max = qMax(qMax(top, bottom), qMax(left, right));
+    int top = qRound(ballRect.bottom() - brickRect.top());
+    int bottom = qRound(brickRect.bottom() - ballRect.top());
+    int left = qRound(ballRect.right() - brickRect.left());
+    int right = qRound(brickRect.right() - ballRect.left());
+    int min = qMin(qMin(top, bottom), qMin(left, right));
     
     // bounce
     // TODO: check this stuff
-    if (max == top && directionY > 0) {
+    if (min == top && directionY > 0) {
         directionY *= -1;
-    } else if (max == bottom && directionY < 0) {
+        kDebug() << brickRect.intersects(getRect());
+        moveBy(0, -top);
+        kDebug() << brickRect.intersects(getRect());
+    } else if (min == bottom && directionY < 0) {
+        kDebug() << brickRect.intersects(getRect());
         directionY *= -1;
-    } else if (max == left && directionX > 0) {
+        moveBy(0, bottom);
+        kDebug() << brickRect.intersects(getRect());
+    } else if (min == left && directionX > 0) {
+        kDebug() << brickRect.intersects(getRect());
         directionX *= -1;
-    } else if (max == right && directionX < 0) {
+        moveBy(-left, 0);
+        kDebug() << brickRect.intersects(getRect());
+    } else if (min == right && directionX < 0) {
+        kDebug() << brickRect.intersects(getRect());
         directionX *= -1;
+        moveBy(right, 0);
+        kDebug() << brickRect.intersects(getRect());
     } else {
         return; // already bounced
     }
@@ -74,3 +88,9 @@ void Ball::collideWithBrick(Brick *brick)
         brick->hit();
     }
 }
+
+/*
+void Ball::collideWithBricks(const QList<Brick *> &bricks)
+{
+    
+}*/
