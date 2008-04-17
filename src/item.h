@@ -22,7 +22,6 @@
 
 #include "globals.h"
 
-class QSvgRenderer;
 
 // all items (balls, bricks, ...) inerit from this class
 // initially svg and the abstract canvas are set to 0, before calling the 

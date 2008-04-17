@@ -22,7 +22,6 @@
 
 class GameEngine;
 //class Scene; 
-class View;
 class CanvasWidget;
 
 class MainWindow : public KXmlGuiWindow
