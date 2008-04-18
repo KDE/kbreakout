@@ -30,38 +30,38 @@ Gift::Gift(const QString &type)
     setType(type);
     
     int sp = qrand() % (MAXIMUM_GIFT_SPEED - MINIMUM_GIFT_SPEED + 1);
-    speed = MINIMUM_GIFT_SPEED + sp;
+    m_speed = MINIMUM_GIFT_SPEED + sp;
 }
 
-void Gift::move()
+void Gift::move(qreal gameSpeed)
 {
-    moveBy(0, speed);
+    moveBy(0, m_speed * gameSpeed);
 }
 
-void Gift::execute(GameEngine *e)
+void Gift::execute(GameEngine *gameEngine)
 {
-    engine = e;
-    engine->addScore(GIFT_SCORE);
+    m_game = gameEngine;
+    m_game->addScore(GIFT_SCORE);
     
     if (type() == "Gift100Points") {
-        engine->addScore(100 - GIFT_SCORE);
+        m_game->addScore(100 - GIFT_SCORE);
     } 
     else if (type() == "Gift200Points") {
-        engine->addScore(200 - GIFT_SCORE);
+        m_game->addScore(200 - GIFT_SCORE);
     } 
     else if (type() == "Gift500Points") {
-        engine->addScore(500 - GIFT_SCORE);
+        m_game->addScore(500 - GIFT_SCORE);
     } 
     else if (type() == "Gift1000Points") {
-        engine->addScore(1000 - GIFT_SCORE);
+        m_game->addScore(1000 - GIFT_SCORE);
     } 
     else if (type() == "GiftAddLife") {
-        if (engine->m_lives.count() < MAXIMUM_LIVES) {
-            engine->m_lives.append(new Life);
+        if (m_game->m_lives.count() < MAXIMUM_LIVES) {
+            m_game->m_lives.append(new Life);
         }
     } 
     else if (type() == "GiftLoseLife") {
-        engine->handleDeath();
+        m_game->handleDeath();
     } 
     else if (type() == "GiftNextLevel") {
         giftNextLevel();
@@ -76,7 +76,7 @@ void Gift::execute(GameEngine *e)
         giftSplitBall();
     }
     else if (type() == "GiftAddBall") {
-        engine->m_balls.append(new Ball);
+        m_game->m_balls.append(new Ball);
     } 
     else if (type() == "GiftUnstoppableBall") {
         giftUnstoppableBall();
@@ -85,23 +85,21 @@ void Gift::execute(GameEngine *e)
         giftBurningBall();
     }
     else if (type() == "GiftDecreaseSpeed") {
-        qreal ui = engine->updateInterval * CHANGE_SPEED_RATIO;
-        engine->setUpdateInterval(ui);
+        m_game->changeSpeed(1.0/CHANGE_SPEED_RATIO);
     }
     else if (type() == "GiftIncreaseSpeed") {
-        qreal ui = engine->updateInterval / CHANGE_SPEED_RATIO;
-        engine->setUpdateInterval(ui);
+        m_game->changeSpeed(CHANGE_SPEED_RATIO);
     }
     else if (type() == "GiftEnlargeBar") {
-        Bar *bar = &engine->m_bar;
+        Bar *bar = &m_game->m_bar;
         bar->enlarge();
-        engine->moveBar(bar->position().x() + bar->getRect().width()/2);
+        m_game->moveBar(bar->position().x() + bar->getRect().width()/2);
     }
     else if (type() == "GiftShrinkBar") {
-        engine->m_bar.shrink();
+        m_game->m_bar.shrink();
     }
     else if (type() == "GiftStickyBar") {
-        engine->m_bar.setType("StickyBar");
+        m_game->m_bar.setType("StickyBar");
     }
     else if (type() == "GiftMoreExplosion") {
         giftMoreExplosion();
@@ -114,49 +112,49 @@ void Gift::execute(GameEngine *e)
 void Gift::giftNextLevel()
 {
     // assign points for each remaining brick
-    foreach (Brick *brick, engine->m_bricks) {
+    foreach (Brick *brick, m_game->m_bricks) {
         // don't assign points for Unbreakable Bricks
         if (brick->type() == "UnbreakableBrick") continue;
         
-        engine->addScore(AUTOBRICK_SCORE);
+        m_game->addScore(AUTOBRICK_SCORE);
         
         // add extra points for Multiple Bricks
         if (brick->type() == "MultipleBrick3")
-            engine->addScore(AUTOBRICK_SCORE*2);
+            m_game->addScore(AUTOBRICK_SCORE*2);
         if (brick->type() == "MultipleBrick2")
-            engine->addScore(AUTOBRICK_SCORE);
+            m_game->addScore(AUTOBRICK_SCORE);
     }
-    engine->loadNextLevel();
+    m_game->loadNextLevel();
 }
 
 void Gift::giftMagicEye()
 {
     // make all hidden bricks visible
-    foreach (Brick *brick, engine->m_bricks) {
+    foreach (Brick *brick, m_game->m_bricks) {
         if (!brick->isDeleted() && !brick->isVisible()) {
             brick->show();
-            ++engine->remainingBricks;
+            ++m_game->remainingBricks;
         }
     }
 }
 
 void Gift::giftMagicWand()
 {
-    foreach (Brick *brick, engine->m_bricks) {
+    foreach (Brick *brick, m_game->m_bricks) {
         // make Unbreakbable Bricks Breakable
         if (brick->type() == "UnbreakableBrick") {
             brick->setType("BreakableBrick");
-            ++engine->remainingBricks;
+            ++m_game->remainingBricks;
         }
         
         // Make Multiple Bricks single
         if (brick->type() == "MultipleBrick3") {
             brick->setType("MultipleBrick1");
-            engine->addScore(AUTOBRICK_SCORE * 2);
+            m_game->addScore(AUTOBRICK_SCORE * 2);
         }
         if (brick->type() == "MultipleBrick2") {
             brick->setType("MultipleBrick1");
-            engine->addScore(AUTOBRICK_SCORE);
+            m_game->addScore(AUTOBRICK_SCORE);
         }
     }
 }
@@ -165,7 +163,7 @@ void Gift::giftSplitBall()
 {
     // TODO: better copy (type, speed, etc...)
     QList<Ball *> newBalls;
-    foreach (Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, m_game->m_balls) {
         Ball *newBall = new Ball;
         // give it a nice direction...
         newBall->directionX = ball->directionX;
@@ -180,12 +178,12 @@ void Gift::giftSplitBall()
         newBall->moveTo(ball->position());
         newBalls.append(newBall);
     }
-    engine->m_balls += newBalls;
+    m_game->m_balls += newBalls;
 }
 
 void Gift::giftUnstoppableBall()
 {
-    foreach (Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, m_game->m_balls) {
         if (ball->type() == "BurningBall") {
             ball->setType("UnstoppableBurningBall");
         } else if (ball->type() != "UnstoppableBurningBall") {
@@ -196,7 +194,7 @@ void Gift::giftUnstoppableBall()
 
 void Gift::giftBurningBall()
 {
-    foreach (Ball *ball, engine->m_balls) {
+    foreach (Ball *ball, m_game->m_balls) {
         if (ball->type() == "UnstoppableBall") {
             ball->setType("UnstoppableBurningBall");
         } else if (ball->type() != "UnstoppableBurningBall") {
@@ -208,7 +206,7 @@ void Gift::giftBurningBall()
 void Gift::giftMoreExplosion()
 {
     QList<Brick *> explodingBricks;
-    foreach (Brick *brick, engine->m_bricks) {
+    foreach (Brick *brick, m_game->m_bricks) {
         if (brick->type() == "ExplodingBrick") {
             explodingBricks.append(brick);
         }
@@ -221,7 +219,7 @@ void Gift::giftMoreExplosion()
             nearbyBrick->setType("ExplodingBrick");
             if (isHidden) {
                 nearbyBrick->show();
-                ++engine->remainingBricks;
+                ++m_game->remainingBricks;
             }
         }
     }

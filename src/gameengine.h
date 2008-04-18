@@ -42,6 +42,8 @@ public:
     ~GameEngine();
 
 public slots:
+    // handles the timer timeout signals
+    void timerTimeout();
     void start(QString levelset);
     void pause();
     void resume();
@@ -73,7 +75,7 @@ private:
     void loadNextLevel();
     void addScore(int points);
     void setScore(int score);
-    void setUpdateInterval(qreal newUpdateInterval);
+    void changeSpeed(qreal ratio); // ratio is newSpeed/oldSpeed
     void updateAttachedBalls(); // updates all balls attached to the bar
     void deleteMovingObjects();
     void deleteAllObjects();
@@ -90,7 +92,9 @@ private:
     // count of remaining bricks
     // (not counting the unbreakable ones)
     int remainingBricks;
-    qreal updateInterval;
+    // the number of ticks of the timer between one repaint and another
+    int m_repaintInterval;
+    qreal m_speed; // should never be more than 2.0
     
     // moves the objects at every tick (but avoiding to repaint them)
     QTimer gameTimer; // TODO: rename to updateTimer
@@ -99,8 +103,6 @@ private:
     // TODO: use KGameTimer, maybe has to start up as soon as the game starts?
     //       (because it's used to check if the game is paused...)
     QTimer elapsedTimeTimer;
-    // repaints all moving objects
-    QTimer repaintTimer;
     
     // Canvas Items
     bool m_gameOver;

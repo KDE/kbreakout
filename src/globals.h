@@ -22,16 +22,17 @@
 
 // how many pixels it moves each step
 // should be less than the half of BALL_SIZE
-const int BALL_SPEED = 3;
+const int BALL_SPEED = 2;
+const qreal MINIMUM_SPEED = 1.2;
 const int MINIMUM_GIFT_SPEED = 1;
 const int MAXIMUM_GIFT_SPEED = 3;
-const int REPAINT_INTERVAL = 18;
+const int REPAINT_INTERVAL = 16; // should be a power of two
 // how ofter the position of the item is updated (but not repainted)
-const int DEFAULT_UPDATE_INTERVAL = 14;
-const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
-const int MINIMUM_UPDATE_INTERVAL = 5;
+const int DEFAULT_UPDATE_INTERVAL = 13;
+//const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
+const int MINIMUM_UPDATE_INTERVAL = 8;
 // the lower this number the more the game becomes faster over time
-const qreal UPDATE_INTERVAL_DECREASE = 0.99;
+const qreal AUTO_SPEED_INCREASE = 0.99;
 
 const int BURNING_INTERVAL = 200; // how long it burns
 const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster

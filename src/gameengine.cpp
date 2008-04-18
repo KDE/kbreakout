@@ -31,13 +31,9 @@
 #include <kdebug.h>
 
 GameEngine::GameEngine()
-    : updateInterval(DEFAULT_UPDATE_INTERVAL)
 {
-    gameTimer.setInterval(qRound(updateInterval));
-    connect(&gameTimer, SIGNAL(timeout()), SLOT(step()));
-    
-    repaintTimer.setInterval(REPAINT_INTERVAL);
-    connect(&repaintTimer, SIGNAL(timeout()), SLOT(repaintMovingObjects()));
+    gameTimer.setInterval(REPAINT_INTERVAL);
+    connect(&gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
     
     elapsedTimeTimer.setInterval(1000);
     connect(&elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
@@ -70,7 +66,6 @@ void GameEngine::start(QString l)
     
     elapsedTimeTimer.start();
     gameTimer.start();
-    repaintTimer.start();
 }
 
 bool GameEngine::gameIsPaused()
@@ -85,7 +80,6 @@ void GameEngine::pause()
     
     elapsedTimeTimer.stop();
     gameTimer.stop();
-    repaintTimer.stop();
     emit gamePaused();
     showMessage(i18n("Game Paused!"));
 }
@@ -95,7 +89,7 @@ void GameEngine::resume()
     if (!gameIsPaused()) return;
     
     elapsedTimeTimer.start();
-    repaintTimer.start();
+    gameTimer.start();
     
     // only restart the gameTimer if there are objects moving
     bool movingObjects = false;
@@ -104,9 +98,6 @@ void GameEngine::resume()
             movingObjects = true;
             continue;
         }
-    }
-    if (movingObjects) {
-        gameTimer.start();
     }
     
     int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
@@ -138,9 +129,6 @@ void GameEngine::moveBar(int newPos)
     else if (x > width - w) x = width - w;
     
     m_bar.moveTo(x, y);
-    
-    // move attached balls if needed
-    updateAttachedBalls();
 }
 
 void GameEngine::moveBarLeft()
@@ -176,7 +164,6 @@ void GameEngine::fire()
     }
     
     dScore = BRICK_SCORE;
-    if (!gameTimer.isActive()) gameTimer.start();
 }
 
 // TODO: external level loarder???
@@ -279,11 +266,60 @@ void GameEngine::loadLevel()
     m_bar.reset();
     updateAttachedBalls();
     
-    setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
+    gameTimer.setInterval(REPAINT_INTERVAL);
+    m_speed = 1.8;
+    m_repaintInterval = 1;
     levelInfo.setLevel(level);
     if (gameIsPaused()) resume();
     showMessage(i18n("Level %1", level));
     QTimer::singleShot(2000, this, SLOT(hideMessage()));
+}
+
+void GameEngine::timerTimeout() {
+    step(); // call step() at every tick
+    
+    // only repaint every m_repaintInterval ticks
+    static int tick = 0;
+    tick = (tick + 1) % m_repaintInterval;
+    
+    if (tick == 0){
+        repaintMovingObjects();
+    }
+}
+
+void GameEngine::changeSpeed(qreal ratio) {
+    kDebug() << "Update interval =" << gameTimer.interval();
+    m_speed *= ratio;
+    if (m_speed > 2.0) {
+        // make sure the minimum update interval is respected
+        if (gameTimer.interval() < MINIMUM_UPDATE_INTERVAL * 2) {
+            m_speed = 2.0;
+            return;
+        }
+        // else
+        
+        // half the speed
+        m_speed /= 2.0;
+        // and double the number of ticks of the timer per time unit
+        gameTimer.setInterval(gameTimer.interval()/2);
+        m_repaintInterval *= 2;
+        gameTimer.start();
+    }
+    if (m_speed < 1.0) {
+        if (gameTimer.interval() >= REPAINT_INTERVAL) {
+            if (m_speed < MINIMUM_SPEED) m_speed = MINIMUM_SPEED;
+            return;
+        }
+        // else
+        
+        // double the speed
+        m_speed *= 2.0;
+        // and double the number of ticks of the timer per time unit
+        gameTimer.setInterval(gameTimer.interval()*2);
+        m_repaintInterval /= 2;
+        gameTimer.start();
+    }
+
 }
 
 void GameEngine::step()
@@ -292,12 +328,12 @@ void GameEngine::step()
     // change (items get deleted)    
     itemsGotDeleted = false;
     
-    // TODO: don't use magick numbers
     dScore *= SCORE_AUTO_DECREASE;
     foreach (Ball *ball, m_balls) {
         if (ball->toBeFired) continue;
         
-        ball->moveBy(ball->directionX, ball->directionY);
+        // TODO: add function ball->move(speed)
+        ball->moveBy(ball->directionX * m_speed, ball->directionY * m_speed);
         // collision detection
         detectBallCollisions(ball);
         if (itemsGotDeleted) return;
@@ -308,7 +344,7 @@ void GameEngine::step()
         Gift *gift = i.next();
         if (!gift->isVisible()) continue; // do nothing
         
-        gift->move();
+        gift->move(m_speed);
         if (gift->getRect().bottom() > BRICK_HEIGHT * HEIGHT) {
             i.remove();
             delete gift;
@@ -335,6 +371,9 @@ void GameEngine::repaintMovingObjects()
         
         gift->repaint();
     }
+    
+    // move attached balls if needed
+    updateAttachedBalls();
 }
 
 void GameEngine::detectBallCollisions(Ball *ball)
@@ -418,7 +457,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
             }
             
             // increase the speed a little
-            setUpdateInterval(updateInterval*UPDATE_INTERVAL_DECREASE);
+            changeSpeed(AUTO_SPEED_INCREASE);
         }
         
         firstTime = false;
@@ -430,7 +469,6 @@ void GameEngine::detectBallCollisions(Ball *ball)
     }
 }
 
-// TODO: why is it a slot??
 void GameEngine::handleDeath()
 {
     hideMessage();
@@ -442,9 +480,14 @@ void GameEngine::handleDeath()
         emit gameEnded(score, level, elapsedTime);
     } else {
         delete m_lives.takeLast();
+        // TODO: put following in a convenience function 
+        // (called also when a new level is loaded..)
         Ball *ball = new Ball;
         m_balls.append(ball);
-        setUpdateInterval(DEFAULT_UPDATE_INTERVAL);
+        gameTimer.setInterval(REPAINT_INTERVAL);
+        m_repaintInterval = 1;
+        m_speed = 1.8;
+        gameTimer.start();
         updateAttachedBalls();
     }
 }
@@ -501,22 +544,6 @@ inline void GameEngine::setScore(int newScore)
 {
     score = newScore;
     scoreCanvas.setScore(score);
-}
-
-void GameEngine::setUpdateInterval(qreal newUpdateInterval)
-{
-    if (newUpdateInterval > MAXIMUM_UPDATE_INTERVAL) {
-        newUpdateInterval = MAXIMUM_UPDATE_INTERVAL;
-    }
-    if (newUpdateInterval < MINIMUM_UPDATE_INTERVAL) {
-        newUpdateInterval = MINIMUM_UPDATE_INTERVAL;
-    }
-    updateInterval = newUpdateInterval;
-    
-    int roundedValue = qRound(updateInterval);
-    if (roundedValue != gameTimer.interval()) {
-        gameTimer.setInterval(roundedValue);
-    } 
 }
 
 void GameEngine::updateAttachedBalls()

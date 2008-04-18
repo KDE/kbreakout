@@ -169,12 +169,12 @@ line1  = h111111111------hhh
 line2  = h---------11111--hhh
 line3  = h---------------1hhh
 line4  = h----------------hhh
-line5  = hh22222222-------hhh
+line5  = hh22222222--------hh
 line6  = hh--------22222---hh
-line7  = hhhhhhhhhhhhhhh---hh
-line8  = hhhhhhhhhhhhhhh2--hh
-line9  = hhhhhhhhhhhhhhhhh-hh
-line10 = hhhhhhhhhhhhhhhhh-hh
+line7  = hhhhhhhhhhhhhhh----h
+line8  = hhhhhhhhhhhhhhh2h--h
+line9  = hhhhhhhhhhhhhhhhh--h
+line10 = hhhhhhhhhhhhhhhhh--h
 line11 = hhhhhhhhhhhhhhhhh--h
 line12 = hhhhhhhhhhhhhhhhh--h
 line13 = hhhhhhhhhhhhhhhhhh-h
@@ -436,12 +436,12 @@ GiftMoreExplosion = 15
 GiftMagicEye = 3
 
 [level19]
-line1  = 6-------u----------h
-line2  = -----------------u-h
-line3  = -----------------u-h
-line4  = ----------------uh-u
-line5  = -u----uuuuu-u--uhh--
-line6  = u-uhuu--u--u-uhuuh--
+line1  = 6------------------h
+line2  = -------------------u
+line3  = -----------------u--
+line4  = ---------u------uh--
+line5  = ------uuu-u-u--uhh--
+line6  = uuuuuu--u--u-uhuuh--
 line7  = ---u----------u--u--
 line8  = ------------------u-
 line9  = ------------------u-
@@ -454,7 +454,7 @@ line15 = --------------------
 line16 = --------------------
 line17 = ------u---u---u---u-
 
-[leve20]
+[level20]
 line1  = mm-------mm-------mm
 line2  = --------------------
 line3  = ---mm----------mm---

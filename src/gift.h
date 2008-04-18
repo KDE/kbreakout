@@ -27,8 +27,8 @@ class Gift : public Item
 public:
     Gift(const QString &type);
     
-    void move();
-    void execute(GameEngine *engine);
+    void move(qreal gameSpeed);
+    void execute(GameEngine *gameEngine);
     
 private:
     // convenience functions
@@ -40,8 +40,8 @@ private:
     void giftBurningBall();
     void giftMoreExplosion();
     
-    GameEngine *engine;
-    int speed;
+    GameEngine *m_game;
+    qreal m_speed;
 };
 
 #endif // GIFT_H
