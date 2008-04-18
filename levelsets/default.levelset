@@ -40,9 +40,10 @@ line1 =
 line2 =
 line3 =
 line4 =
-line5 = 11111122222222111111
-line6 = 22--221111111122--22
-line7 = 111u112222222211u111
+line5 =
+line6 = 11111122222222111111
+line7 = ---22211111111222---
+line8 = 11uu112222222211uu11
 GiftStickyBar = 1
 GiftEnlargeBar = 1
 GiftShrinkBar = 2
@@ -93,23 +94,27 @@ GiftMoreExplosion = 5
 
 
 [level5]
-line1 =
-line2 =
-line3 = --1-11-11--11-11-1--
-line4 = --2-22-22--22-22-2--
-line5 = -333333333333333333-
-line6 = u11u11u11uu11u11u11u
-line7 = 33333333333333333333
-line8 = 2--2--2--22--2--2--2
-line9 = 1--1--1--11--1--1--1
+line1  =
+line2  =
+line3  =
+line4  =
+line5  = ----11-11--11-11----
+line6  = --2-22-22--22-22-2--
+line7  = -333333333333333333-
+line8  = u--u11u11uu11u11u--u
+line9  = 33333333333333333333
+line10 = 22222222222222222--2
+line11 = 1--1--1--11--1--1--1
+GiftNextLevel = 1
 GiftMagicWand = 2
-Gift100Points = 2
+Gift100Points = 3
 GiftLoseLife = 3
-GiftSplitBall = 2
+GiftSplitBall = 4
+GoftStickyBar = 2
 GiftIncreaseSpeed = 2
 GiftDecreaseSpeed = 2
-GiftEnlargeBar = 2
-GiftShrinkBar = 2
+GiftEnlargeBar = 3
+GiftShrinkBar = 3
 
 [level6]
 line1  =
@@ -209,6 +214,7 @@ GiftIncreaseSpeed = 3
 GiftDecreaseSpeed = 1
 GiftEnlargeBar = 3
 GiftShrinkBar = 4
+GiftAddLife = 1
 
 [level10]
 line1  = uuuuuuuuuuuuuuuuuuuu
@@ -298,7 +304,10 @@ line14 = ---hhhhhhhhhhhhhhhhh
 line15 = --hhhhhhhhhhhhhhhhhh
 line16 = ---uuuhhhhhhhhhhhhhh
 GiftLoseLife = 1
-GiftIncreaseSpeed = 4
+GiftAddBall = 1
+GiftSplitBall = 6
+GiftIncreaseSpeed = 3
+GiftDecreaseSpeed = 2
 GiftEnlargeBar = 2
 GiftShrinkBar = 2
 
@@ -327,10 +336,10 @@ Gift3000Points = 1
 GiftLoseLife = 2
 GiftMagicWand = 1
 GiftIncreaseSpeed = 3
-GiftDecreaseSpeed = 6
 GiftEnlargeBar = 3
 GiftShrinkBar = 5
 GiftNextLevel = 1
+GiftAddLife = 1
 
 
 [level15]
