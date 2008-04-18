@@ -58,8 +58,8 @@ const int BAR_MOVEMENT = 5;
 // points when breaking a brick
 // decreases over time since last brick was hit
 const int BRICK_SCORE = 15;
-// relative score w.r.t the old score each step
-const qreal SCORE_AUTO_DECREASE = 0.998;
+// relative score w.r.t the old score
+const qreal SCORE_AUTO_DECREASE = 1.002;
 // score when i brick gets "autoremoved" 
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
