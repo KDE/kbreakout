@@ -12,13 +12,12 @@ TODO:
 == Short Term ==
 * Item: 
     - don't use inheritance
-* Check if gifts are given isn't that random but depens on the position in che levelset (?????)
+* Check if srand is called
 * Ask confirmation on close if a game is running
-* Add documentation
-* Add message boxes for new levels, pause, etc..
 * Restrucure file hirarchy
 * Put constants used only in one place out of globals.h 
 * use m_ for all data members
+* add points for each remaining hidden brick when going to the next level..
 
 == Mid Term ==
 * Add gui to load new levesets

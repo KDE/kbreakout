@@ -32,7 +32,7 @@ const int DEFAULT_UPDATE_INTERVAL = 13;
 //const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
 const int MINIMUM_UPDATE_INTERVAL = 8;
 // the lower this number the more the game becomes faster over time
-const qreal AUTO_SPEED_INCREASE = 0.99;
+const qreal AUTO_SPEED_INCREASE = 1.01;
 
 const int BURNING_INTERVAL = 200; // how long it burns
 const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
@@ -59,7 +59,7 @@ const int BAR_MOVEMENT = 5;
 // decreases over time since last brick was hit
 const int BRICK_SCORE = 15;
 // relative score w.r.t the old score
-const qreal SCORE_AUTO_DECREASE = 1.002;
+const qreal SCORE_AUTO_DECREASE = 0.998;
 // score when i brick gets "autoremoved" 
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
