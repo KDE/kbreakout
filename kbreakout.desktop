@@ -1,12 +1,10 @@
 [Desktop Entry]
 Name=KBreakOut
-Name[sv]=Utbrytning
 Icon=kbreakout
 Type=Application
 Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
-GenericName[sv]=Utbrytningsliknande spel
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;

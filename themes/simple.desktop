@@ -1,8 +1,8 @@
 [KGameTheme]
 Name=Simple
-Name[sv]=Enkelt
+Name[ga]=Simplí
 Description=Simple KBreakOut theme
-Description[sv]=Enkelt tema för Utbrytning
+Description[ga]=Téama simplí KBreakOut
 VersionFormat=1
 Author=Fela Winkelmolen
 AuthorEmail=fela.kde@gmail.com
