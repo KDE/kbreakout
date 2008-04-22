@@ -7,6 +7,7 @@ Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
 GenericName[sv]=Utbrytningsliknande spel
+GenericName[uk]=Гра схожа на Breakout
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
