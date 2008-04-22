@@ -173,7 +173,7 @@ void Gift::giftSplitBall()
         else
             newBall->directionX *= -1;
         
-        newBall->toBeFired = false;
+        newBall->toBeFired = ball->toBeFired;
         newBall->setType(ball->type());
         newBall->moveTo(ball->position());
         newBalls.append(newBall);
