@@ -4,6 +4,7 @@ BUGS:
 * Pause the game when you just lose, when the ball shows up it's on top of the canvas... (wrong z values)
 * Sometimes ti bounces twice when it shouldn't
 * Unneeded resizes and repaints on startup
+* Sometimes when getting split ball with a ball attached to the bar (after add ball, I think not split ball) strange things happen...
 
 
 TODO:
@@ -12,7 +13,6 @@ TODO:
 == Short Term ==
 * Item: 
     - don't use inheritance
-* Check if srand is called
 * Ask confirmation on close if a game is running
 * Restrucure file hirarchy
 * Put constants used only in one place out of globals.h 

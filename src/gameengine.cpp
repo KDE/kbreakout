@@ -62,7 +62,7 @@ void GameEngine::start(QString l)
     setScore(0);
     
     loadLevel();
-    qsrand(666);
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime())
     
     elapsedTimeTimer.start();
     gameTimer.start();
