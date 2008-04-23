@@ -105,3 +105,14 @@ MessageBox::MessageBox()
     int y = (BRICK_HEIGHT * HEIGHT - height) / 2;
     moveTo(x, y);
 }
+
+InfoMessage::InfoMessage()
+{
+    width = BRICK_WIDTH * 9;
+    height = BRICK_HEIGHT * 2;
+    
+    int x = (BRICK_WIDTH * WIDTH - width) / 2;
+    // at tree fourths of the height
+    int y = (BRICK_HEIGHT * HEIGHT - height) / 4 * 3;
+    moveTo(x, y);
+}

@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
     new Background; // the background put's itself into the canvasWidget
-    gameEngine = new GameEngine; // must be called after Item::setCanvas()
+    gameEngine = new GameEngine(this); // must be called after Item::setCanvas()
     
     connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));
@@ -102,7 +102,7 @@ void MainWindow::setupActions()
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
     
-    KAction *fireAction = actionCollection()->addAction("");
+    KAction *fireAction = actionCollection()->addAction("fire");
     fireAction->setText(i18n("Fire Ball"));
     fireAction->setShortcut(Qt::Key_Space);
     connect(fireAction, SIGNAL(triggered()), gameEngine, SLOT(fire()));

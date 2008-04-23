@@ -32,7 +32,7 @@ Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
     width = BRICK_WIDTH;
     height = BRICK_HEIGHT;
     
-    ++m_game->remainingBricks;
+    ++m_game->m_remainingBricks;
     moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     setTypeFromChar(typeChar);
 }
@@ -58,16 +58,16 @@ void Brick::hit()
 {
     if (type() == "HiddenBrick" && !isVisible()) {
         show();
-        ++m_game->remainingBricks;
+        ++m_game->m_remainingBricks;
     } else if (type() == "MultipleBrick3") {
         setType("MultipleBrick2");
         // TODO: make a convenience function out of the following two
-        m_game->addScore(qRound(m_game->dScore));
-        m_game->dScore = BRICK_SCORE;
+        m_game->addScore(qRound(m_game->m_dScore));
+        m_game->m_dScore = BRICK_SCORE;
     } else if (type() == "MultipleBrick2") {
         setType("MultipleBrick1");
-        m_game->addScore(qRound(m_game->dScore));
-        m_game->dScore = BRICK_SCORE;
+        m_game->addScore(qRound(m_game->m_dScore));
+        m_game->m_dScore = BRICK_SCORE;
     } else if (type() == "ExplodingBrick") {
         explode();
     } else if (type() != "UnbreakableBrick") {
@@ -119,10 +119,10 @@ void Brick::handleDeletion()
     
     // these two kind of bricks aren't counted in the remainingBricks
     if (type() == "HiddenBrick" && !isVisible()) {
-        ++m_game->remainingBricks;
+        ++m_game->m_remainingBricks;
     }
     if (type() == "UnbreakableBrick") {
-        ++m_game->remainingBricks;
+        ++m_game->m_remainingBricks;
     }
 
     if (m_gift != 0) {
@@ -132,12 +132,12 @@ void Brick::handleDeletion()
         m_game->m_gifts.append(m_gift);
     }
     
-    --m_game->remainingBricks;
+    --m_game->m_remainingBricks;
     
-    m_game->addScore(qRound(m_game->dScore));
-    m_game->dScore = BRICK_SCORE;
+    m_game->addScore(qRound(m_game->m_dScore));
+    m_game->m_dScore = BRICK_SCORE;
     
-    if (m_game->remainingBricks == 0) {
+    if (m_game->m_remainingBricks == 0) {
         m_game->loadNextLevel();
         return;
     }
@@ -161,12 +161,12 @@ void Brick::setTypeFromChar(char type)
     case 'x': setType("ExplodingBrick"); break;
     case 'u': 
         setType("UnbreakableBrick");
-        --m_game->remainingBricks;
+        --m_game->m_remainingBricks;
         break;
     case 'h': 
         setType("HiddenBrick");
         hide();
-        --m_game->remainingBricks;
+        --m_game->m_remainingBricks;
         break;
     default:
         kError() << "Invalid File: unknown character '" 

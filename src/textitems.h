@@ -53,4 +53,11 @@ public:
     MessageBox();
 };
 
+
+class InfoMessage : public TextItem
+{
+public:
+    InfoMessage();
+};
+
 #endif // TEXT_ITEMS_H

@@ -111,19 +111,6 @@ void Gift::execute(GameEngine *gameEngine)
 
 void Gift::giftNextLevel()
 {
-    // assign points for each remaining brick
-    foreach (Brick *brick, m_game->m_bricks) {
-        // don't assign points for Unbreakable Bricks
-        if (brick->type() == "UnbreakableBrick") continue;
-        
-        m_game->addScore(AUTOBRICK_SCORE);
-        
-        // add extra points for Multiple Bricks
-        if (brick->type() == "MultipleBrick3")
-            m_game->addScore(AUTOBRICK_SCORE*2);
-        if (brick->type() == "MultipleBrick2")
-            m_game->addScore(AUTOBRICK_SCORE);
-    }
     m_game->loadNextLevel();
 }
 
@@ -133,7 +120,7 @@ void Gift::giftMagicEye()
     foreach (Brick *brick, m_game->m_bricks) {
         if (!brick->isDeleted() && !brick->isVisible()) {
             brick->show();
-            ++m_game->remainingBricks;
+            ++m_game->m_remainingBricks;
         }
     }
 }
@@ -144,7 +131,7 @@ void Gift::giftMagicWand()
         // make Unbreakbable Bricks Breakable
         if (brick->type() == "UnbreakableBrick") {
             brick->setType("BreakableBrick");
-            ++m_game->remainingBricks;
+            ++m_game->m_remainingBricks;
         }
         
         // Make Multiple Bricks single
@@ -215,12 +202,12 @@ void Gift::giftMoreExplosion()
     foreach (Brick *brick, explodingBricks) {
         foreach (Brick *nearbyBrick, brick->nearbyBricks()) {
             if (nearbyBrick->type() == "UnbreakableBrick") {
-                ++m_game->remainingBricks;
+                ++m_game->m_remainingBricks;
             }
             if (nearbyBrick->type() == "HiddenBrick" && 
                     !nearbyBrick->isVisible()) {
                 nearbyBrick->show();
-                ++m_game->remainingBricks;
+                ++m_game->m_remainingBricks;
             }
             
             nearbyBrick->setType("ExplodingBrick");

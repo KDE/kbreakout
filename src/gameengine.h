@@ -28,6 +28,8 @@
 #include "canvasitems.h"
 #include "textitems.h"
 
+class MainWindow;
+
 class Gift;
 class Brick;
 class Ball;
@@ -38,7 +40,7 @@ class GameEngine : public QObject
 {
     Q_OBJECT
 public:
-    GameEngine();
+    GameEngine(MainWindow *);
     ~GameEngine();
 
 public slots:
@@ -72,6 +74,8 @@ private:
     
     // convenience functions
     void showMessage(const QString &text);
+    void showInfoMessage(const QString &text);
+    void showFireBallMessage();
     void loadNextLevel();
     void addScore(int points);
     void setScore(int score);
@@ -82,42 +86,44 @@ private:
     
     bool gameIsPaused();
 
+    MainWindow *m_mainWindow; // needed to access actionCollection()
     QString levelSet;
-    int level;
-    int score;
-    int elapsedTime; // in seconds
+    int m_level;
+    int m_score;
+    int m_elapsedTime; // in seconds
     // score to add if you hit a brick
     // decreases over time since last hit
-    qreal dScore;
+    qreal m_dScore;
     // count of remaining bricks
     // (not counting the unbreakable ones)
-    int remainingBricks;
+    int m_remainingBricks;
     // the number of ticks of the timer between one repaint and another
     int m_repaintInterval;
     qreal m_speed; // should never be more than 2.0
     
     // moves the objects at every tick (but avoiding to repaint them)
-    QTimer gameTimer; // TODO: rename to updateTimer
+    QTimer m_gameTimer; // TODO: rename to updateTimer
     // increases elapsed time every second
     // also used to check whether the game is paused
-    // TODO: use KGameTimer, maybe has to start up as soon as the game starts?
+    // TODO: use KGameTimer, maybe it should to start up as soon as the game starts?
     //       (because it's used to check if the game is paused...)
-    QTimer elapsedTimeTimer;
+    QTimer m_elapsedTimeTimer;
     
     // Canvas Items
     bool m_gameOver;
     bool m_gameWon;
     QList<Life *> m_lives;
-    Score scoreCanvas;
-    LevelInfo levelInfo;
+    Score m_scoreCanvas;
+    LevelInfo m_levelInfo;
     MessageBox m_messageBox;
+    InfoMessage m_infoMessage;
     QList<Brick *> m_bricks;
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
     Bar m_bar;
     
     // is set to true when deleteMovingObjects() is called
-    bool itemsGotDeleted;
+    bool m_itemsGotDeleted;
 
 private slots:
     // hides the current showed message by m_messageBox 
@@ -128,7 +134,7 @@ private slots:
     void loadLevel();
     // takes a life and gives you a new ball if there are any lives left
     void handleDeath();
-    void increaseElapsedTime() {++elapsedTime;}
+    void increaseElapsedTime() {++m_elapsedTime;}
     
     friend class Gift;
     friend class Brick;

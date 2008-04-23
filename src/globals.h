@@ -32,7 +32,7 @@ const int DEFAULT_UPDATE_INTERVAL = 13;
 //const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
 const int MINIMUM_UPDATE_INTERVAL = 8;
 // the lower this number the more the game becomes faster over time
-const qreal AUTO_SPEED_INCREASE = 1.01;
+const qreal AUTO_SPEED_INCREASE = 1.03;
 
 const int BURNING_INTERVAL = 200; // how long it burns
 const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
@@ -49,7 +49,7 @@ const int GIFT_WIDTH = 25;
 const int GIFT_HEIGHT = 18;
 
 // used to enlarge and shrink the bar
-const qreal RESIZE_BAR_RATIO = 1.3;
+const qreal RESIZE_BAR_RATIO = 1.4;
 const qreal CHANGE_SPEED_RATIO = 1.3;
 
 // pixels to move the bar each "tick", when using the keyboard

@@ -13,10 +13,8 @@ TODO:
 * Item: 
     - don't use inheritance
 * Ask confirmation on close if a game is running
-* Restrucure file hirarchy
 * Put constants used only in one place out of globals.h 
 * use m_ for all data members
-* add points for each remaining hidden brick when going to the next level..
 
 == Mid Term ==
 * Add gui to load new levesets

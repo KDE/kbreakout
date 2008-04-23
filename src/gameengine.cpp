@@ -17,26 +17,30 @@
 
 #include "gameengine.h"
 
+#include "mainwindow.h"
 #include "gift.h"
 #include "brick.h"
 #include "ball.h"
 
 #include <cmath>
 #include <QTimer>
+#include <QAction>
 
 #include <KLocale>
 #include <KConfig>
+#include <KActionCollection>
 #include <KStandardDirs>
-#include <kconfiggroup.h>
-#include <kdebug.h>
+#include <KConfigGroup>
+#include <KDebug>
 
-GameEngine::GameEngine()
+GameEngine::GameEngine(MainWindow *mainWindow)
+    : m_mainWindow(mainWindow)
 {
-    gameTimer.setInterval(REPAINT_INTERVAL);
-    connect(&gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
+    m_gameTimer.setInterval(REPAINT_INTERVAL);
+    connect(&m_gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
     
-    elapsedTimeTimer.setInterval(1000);
-    connect(&elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
+    m_elapsedTimeTimer.setInterval(1000);
+    connect(&m_elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
 }
 
 GameEngine::~GameEngine()
@@ -57,20 +61,20 @@ void GameEngine::start(QString l)
     
     m_gameOver = false;
     m_gameWon = false;
-    level = 1;
-    elapsedTime = 0;
+    m_level = 1;
+    m_elapsedTime = 0;
     setScore(0);
     
     loadLevel();
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     
-    elapsedTimeTimer.start();
-    gameTimer.start();
+    m_elapsedTimeTimer.start();
+    m_gameTimer.start();
 }
 
 bool GameEngine::gameIsPaused()
 {
-    return !elapsedTimeTimer.isActive();
+    return !m_elapsedTimeTimer.isActive();
 }
 
 void GameEngine::pause()
@@ -78,8 +82,8 @@ void GameEngine::pause()
     if (gameIsPaused()) return;
     if (m_gameWon || m_gameOver) return;
     
-    elapsedTimeTimer.stop();
-    gameTimer.stop();
+    m_elapsedTimeTimer.stop();
+    m_gameTimer.stop();
     emit gamePaused();
     showMessage(i18n("Game Paused!"));
 }
@@ -88,10 +92,10 @@ void GameEngine::resume()
 {
     if (!gameIsPaused()) return;
     
-    elapsedTimeTimer.start();
-    gameTimer.start();
+    m_elapsedTimeTimer.start();
+    m_gameTimer.start();
     
-    // only restart the gameTimer if there are objects moving
+    // only restart the m_gameTimer if there are objects moving
     bool movingObjects = false;
     foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) {
@@ -163,7 +167,8 @@ void GameEngine::fire()
         ball->directionY = -sin(angle) * BALL_SPEED;
     }
     
-    dScore = BRICK_SCORE;
+    m_dScore = BRICK_SCORE;
+    m_infoMessage.hide();
 }
 
 // TODO: external level loarder???
@@ -174,16 +179,16 @@ void GameEngine::loadLevel()
     path =  KStandardDirs::locate("appdata", path);
     KConfig file(path, KConfig::SimpleConfig);
     
-    QString levelName("level" + QString::number(level));
+    QString levelName("level" + QString::number(m_level));
     
     if (!file.hasGroup(levelName)) {
-        if (level == 1) {
+        if (m_level == 1) {
             kError() << "Invalid '" << levelName << "' in levelset " 
                      << levelSet << endl;
         } else {
             m_gameWon = true;
             showMessage(i18n("Well done! You won the game!"));
-            emit gameEnded(score, -1, elapsedTime);
+            emit gameEnded(m_score, -1, m_elapsedTime);
         }
         return;
     }
@@ -193,7 +198,7 @@ void GameEngine::loadLevel()
     QString key("line" + QString::number(y));
     
     deleteAllObjects();
-    remainingBricks = 0;
+    m_remainingBricks = 0;
     
     while(lvl.hasKey(key)) {
         // one line of bricks, to be converted
@@ -238,7 +243,7 @@ void GameEngine::loadLevel()
         
         QString line = lvl.readEntry(key, "error");
         if (line == "error") {
-            kError() << "Impossible Reading " << level << ":" << key << endl;
+            kError() << "Impossible Reading " << m_level << ":" << key << endl;
             return;
         }
         bool ok;
@@ -266,13 +271,15 @@ void GameEngine::loadLevel()
     m_bar.reset();
     updateAttachedBalls();
     
-    gameTimer.setInterval(REPAINT_INTERVAL);
+    m_gameTimer.setInterval(REPAINT_INTERVAL);
     m_speed = 1.8;
     m_repaintInterval = 1;
-    levelInfo.setLevel(level);
+    m_levelInfo.setLevel(m_level);
     if (gameIsPaused()) resume();
-    showMessage(i18n("Level %1", level));
+    showMessage(i18n("Level %1", m_level));
     QTimer::singleShot(2000, this, SLOT(hideMessage()));
+    
+    showFireBallMessage();
 }
 
 void GameEngine::timerTimeout() {
@@ -288,11 +295,11 @@ void GameEngine::timerTimeout() {
 }
 
 void GameEngine::changeSpeed(qreal ratio) {
-    kDebug() << "Update interval =" << gameTimer.interval();
+    kDebug() << "Update interval =" << m_gameTimer.interval();
     m_speed *= ratio;
     if (m_speed > 2.0) {
         // make sure the minimum update interval is respected
-        if (gameTimer.interval() < MINIMUM_UPDATE_INTERVAL * 2) {
+        if (m_gameTimer.interval() < MINIMUM_UPDATE_INTERVAL * 2) {
             m_speed = 2.0;
             return;
         }
@@ -301,12 +308,12 @@ void GameEngine::changeSpeed(qreal ratio) {
         // half the speed
         m_speed /= 2.0;
         // and double the number of ticks of the timer per time unit
-        gameTimer.setInterval(gameTimer.interval()/2);
+        m_gameTimer.setInterval(m_gameTimer.interval()/2);
         m_repaintInterval *= 2;
-        gameTimer.start();
+        m_gameTimer.start();
     }
     if (m_speed < 1.0) {
-        if (gameTimer.interval() >= REPAINT_INTERVAL) {
+        if (m_gameTimer.interval() >= REPAINT_INTERVAL) {
             if (m_speed < MINIMUM_SPEED) m_speed = MINIMUM_SPEED;
             return;
         }
@@ -315,9 +322,9 @@ void GameEngine::changeSpeed(qreal ratio) {
         // double the speed
         m_speed *= 2.0;
         // and double the number of ticks of the timer per time unit
-        gameTimer.setInterval(gameTimer.interval()*2);
+        m_gameTimer.setInterval(m_gameTimer.interval()*2);
         m_repaintInterval /= 2;
-        gameTimer.start();
+        m_gameTimer.start();
     }
 
 }
@@ -326,9 +333,9 @@ void GameEngine::step()
 {
     // needed to exit from the loop if the arrays that they cicle
     // change (items get deleted)    
-    itemsGotDeleted = false;
+    m_itemsGotDeleted = false;
     
-    dScore *= SCORE_AUTO_DECREASE;
+    m_dScore *= SCORE_AUTO_DECREASE;
     foreach (Ball *ball, m_balls) {
         if (ball->toBeFired) continue;
         
@@ -336,7 +343,7 @@ void GameEngine::step()
         ball->moveBy(ball->directionX * m_speed, ball->directionY * m_speed);
         // collision detection
         detectBallCollisions(ball);
-        if (itemsGotDeleted) return;
+        if (m_itemsGotDeleted) return;
     }
     
     QMutableListIterator<Gift *> i(m_gifts);
@@ -351,7 +358,7 @@ void GameEngine::step()
         }
         else if (m_bar.getRect().intersects(gift->getRect())) {
             gift->execute(this);
-            if (itemsGotDeleted) return;
+            if (m_itemsGotDeleted) return;
             i.remove();
             delete gift;
         }
@@ -398,13 +405,13 @@ void GameEngine::detectBallCollisions(Ball *ball)
         // delete the ball
         m_balls.removeAll(ball);
         delete ball;
-        itemsGotDeleted = true;
+        m_itemsGotDeleted = true;
         if (m_balls.isEmpty()) {
             addScore(LOSE_LIFE_SCORE);
             
             showMessage(i18n("Oops! You have lost the ball!"));
             QTimer::singleShot(1000, this, SLOT(handleDeath()));
-            gameTimer.stop();
+            m_gameTimer.stop();
         
             deleteMovingObjects();
         }
@@ -448,8 +455,11 @@ void GameEngine::detectBallCollisions(Ball *ball)
     
     // never run this function more than two time recursively
     if (firstTime) {
-        // add some randomness to the mix...
-        if (qrand() % 512 == 0) {
+        // avoid infinite loops of the ball
+        static int counter = 0;
+        ++counter;
+        if (counter == 1024) {
+            counter = 0;
             if (qrand() % 2) {
                 ball->directionX += 0.002;
             } else {
@@ -477,18 +487,19 @@ void GameEngine::handleDeath()
     if (m_lives.isEmpty()) {
         m_gameOver = true;
         showMessage(i18n("Game Over!"));
-        emit gameEnded(score, level, elapsedTime);
+        emit gameEnded(m_score, m_level, m_elapsedTime);
     } else {
         delete m_lives.takeLast();
         // TODO: put following in a convenience function 
         // (called also when a new level is loaded..)
         Ball *ball = new Ball;
         m_balls.append(ball);
-        gameTimer.setInterval(REPAINT_INTERVAL);
+        m_gameTimer.setInterval(REPAINT_INTERVAL);
         m_repaintInterval = 1;
         m_speed = 1.8;
-        gameTimer.start();
+        m_gameTimer.start();
         updateAttachedBalls();
+        showFireBallMessage();
     }
 }
 
@@ -498,7 +509,7 @@ void GameEngine::handleBrickCollisions(Ball *ball)
     QRect rect = ball->getRect();
 
     foreach (Brick *brick, m_bricks) {
-        if (itemsGotDeleted) return;
+        if (m_itemsGotDeleted) return;
         if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
         if (!brickRect.intersects(rect)) continue;
@@ -517,6 +528,20 @@ void GameEngine::showMessage(const QString &text)
     m_messageBox.show();
 }
 
+void GameEngine::showInfoMessage(const QString &text)
+{
+    m_infoMessage.setText(text);
+    m_infoMessage.raise();
+    m_infoMessage.show();
+}
+
+void GameEngine::showFireBallMessage()
+{
+    QAction *fireAction = m_mainWindow->actionCollection()->action("fire");
+    QString shortcut = fireAction->shortcut().toString(QKeySequence::PortableText);
+    showInfoMessage(i18n("Press %1 to fire the ball", shortcut));
+}
+
 void GameEngine::hideMessage()
 {
     if (gameIsPaused()) return;
@@ -528,7 +553,22 @@ void GameEngine::hideMessage()
 
 void GameEngine::loadNextLevel()
 {
-    ++level;
+    // assign points for each remaining brick
+    foreach (Brick *brick, m_bricks) {
+        // don't assign points for Unbreakable Bricks
+        if (brick->type() == "UnbreakableBrick") continue;
+        
+        addScore(AUTOBRICK_SCORE);
+        
+        // add extra points for Multiple Bricks
+        if (brick->type() == "MultipleBrick3") {
+            addScore(AUTOBRICK_SCORE*2);
+        }
+        if (brick->type() == "MultipleBrick2") {
+            addScore(AUTOBRICK_SCORE);
+        }
+    }
+    ++m_level;
     deleteMovingObjects();
     QTimer::singleShot(200, this, SLOT(loadLevel()));
     addScore(LEVEL_SCORE);
@@ -536,14 +576,14 @@ void GameEngine::loadNextLevel()
 
 inline void GameEngine::addScore(int points)
 {
-    score += points;
-    scoreCanvas.setScore(score);
+    m_score += points;
+    m_scoreCanvas.setScore(m_score);
 }
 
 inline void GameEngine::setScore(int newScore)
 {
-    score = newScore;
-    scoreCanvas.setScore(score);
+    m_score = newScore;
+    m_scoreCanvas.setScore(m_score);
 }
 
 void GameEngine::updateAttachedBalls()
@@ -562,7 +602,7 @@ void GameEngine::updateAttachedBalls()
 inline void GameEngine::deleteMovingObjects()
 {
     kDebug() << "Deleting objects...\n";
-    itemsGotDeleted = true;
+    m_itemsGotDeleted = true;
     while (!m_balls.isEmpty()) delete m_balls.takeFirst();
     
     QMutableListIterator<Gift *> i(m_gifts);
