@@ -10,6 +10,7 @@ TODO:
 =====
 
 == Short Term ==
+* Use QTimeLine for the falling gifts
 * Item: 
     - don't use inheritance
 * Ask confirmation on close if a game is running
@@ -17,8 +18,9 @@ TODO:
 * use m_ for all data members
 
 == Mid Term ==
+* Try to port to QGraphicsScene
 * Add gui to load new levesets
-* Add sound
+* Add sounds
 * Add nice visual effects
 * Profiling
 
@@ -30,4 +32,4 @@ TODO:
   - mouse sensibility option (when in full screen mode)
   - screen resolution option (when in full screen mode)
 * Add demo mode with AI playing
-* Add the optional use of openGL
+* Add optional use of openGL

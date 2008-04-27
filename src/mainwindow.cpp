@@ -201,6 +201,6 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    gameEngine->fire();
+    //gameEngine->fire();
     KXmlGuiWindow::mousePressEvent(event);
 }
