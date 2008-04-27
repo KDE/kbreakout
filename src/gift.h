@@ -27,7 +27,8 @@ class Gift : public Item
 public:
     Gift(const QString &type);
     
-    void move(qreal gameSpeed);
+    void startFall(int posX, int posY);
+    void move(qreal gameSpeed); // todo rename to step
     void execute(GameEngine *gameEngine);
     
 private:
@@ -41,6 +42,7 @@ private:
     void giftMoreExplosion();
     
     GameEngine *m_game;
+    int m_speedFactor;
     qreal m_speed;
 };
 

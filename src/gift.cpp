@@ -30,12 +30,22 @@ Gift::Gift(const QString &type)
     setType(type);
     
     int sp = qrand() % (MAXIMUM_GIFT_SPEED - MINIMUM_GIFT_SPEED + 1);
-    m_speed = MINIMUM_GIFT_SPEED + sp;
+    m_speedFactor = MINIMUM_GIFT_SPEED + sp;
+    m_speed = 0;
 }
 
 void Gift::move(qreal gameSpeed)
 {
+    m_speed += m_speedFactor * 0.012;
     moveBy(0, m_speed * gameSpeed);
+}
+
+void Gift::startFall(int x, int y)
+{
+    
+    moveTo(x, y);
+    repaint();
+    show();
 }
 
 void Gift::execute(GameEngine *gameEngine)
