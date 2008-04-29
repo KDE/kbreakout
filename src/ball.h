@@ -34,7 +34,7 @@ public:
     bool toBeFired;
     qreal barPosition;
     
-    void collideWithBricks(const QSet<Brick *> &bricks);
+    void collideWithBricks(const QList<Brick *> &bricks);
 
 private:
     void collideWithTwoBricks(const QList<Brick *> &bricks);

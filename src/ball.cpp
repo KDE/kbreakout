@@ -34,15 +34,15 @@ Ball::Ball()
     loadSprite();
 }
 
-void Ball::collideWithBricks(const QSet<Brick *> &bricks)
+void Ball::collideWithBricks(const QList<Brick *> &bricks)
 {
     const int size = bricks.size();
     if (size == 0) {
         return;
     } if (size == 2) {
-        collideWithTwoBricks(bricks.toList());
+        collideWithTwoBricks(bricks);
     } else {
-        collideWithBrick(bricks.toList()[0]);
+        collideWithBrick(bricks[0]);
     }
 }
 
