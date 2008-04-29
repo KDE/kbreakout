@@ -508,14 +508,19 @@ void GameEngine::handleBrickCollisions(Ball *ball)
 {
     QRect rect = ball->getRect();
 
+    QSet<Brick *> bricksIntersecting;
     foreach (Brick *brick, m_bricks) {
         if (m_itemsGotDeleted) return;
         if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
-        if (!brickRect.intersects(rect)) continue;
-        // else: the ball has hit the brick
         
-        ball->collideWithBrick(brick);
+        if (brickRect.intersects(rect)) {
+            bricksIntersecting.insert(brick);
+        }
+    }
+    
+    if (!bricksIntersecting.isEmpty()) {
+        ball->collideWithBricks(bricksIntersecting);
     }
 }
 

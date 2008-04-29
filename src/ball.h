@@ -34,8 +34,10 @@ public:
     bool toBeFired;
     qreal barPosition;
     
-    // TODO: pass multiple bricks and improve the algorithm
-    // returns false if the direction is wrong
+    void collideWithBricks(const QSet<Brick *> &bricks);
+
+private:
+    void collideWithTwoBricks(const QList<Brick *> &bricks);
     void collideWithBrick(Brick *brick);
 };
 

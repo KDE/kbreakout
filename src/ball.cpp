@@ -34,6 +34,36 @@ Ball::Ball()
     loadSprite();
 }
 
+void Ball::collideWithBricks(const QSet<Brick *> &bricks)
+{
+    const int size = bricks.size();
+    if (size == 0) {
+        return;
+    } if (size == 2) {
+        collideWithTwoBricks(bricks.toList());
+    } else {
+        collideWithBrick(bricks.toList()[0]);
+    }
+}
+
+void Ball::collideWithTwoBricks(const QList<Brick *> &bricks)
+{
+    QRectF ballRect = getRect();
+    QRectF r1 = bricks[0]->getRect();
+    QRectF r2 = bricks[1]->getRect();
+    
+    QRectF b1 = r1.intersected(ballRect);
+    QRectF b2 = r2.intersected(ballRect);
+    
+    if (b1.width() * b1.height() > b2.width() * b2.height()) {
+        // the area of intersection with the first brick is bigger
+        collideWithBrick(bricks[0]);
+    } else {
+        collideWithBrick(bricks[1]);
+    }
+}
+
+
 void Ball::collideWithBrick(Brick *brick)
 {
     if (type() == "UnstoppableBall") {
@@ -47,8 +77,8 @@ void Ball::collideWithBrick(Brick *brick)
     
     
     // calculate bounce
-    QRectF brickRect(brick->getRect());
-    QRectF ballRect(getRect());
+    QRectF brickRect = brick->getRect();
+    QRectF ballRect = getRect();
     
     int top = qRound(ballRect.bottom() - brickRect.top());
     int bottom = qRound(brickRect.bottom() - ballRect.top());
