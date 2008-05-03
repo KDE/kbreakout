@@ -190,7 +190,7 @@ QList<Brick *> Brick::nearbyBricks()
     
     foreach (Brick *b, m_game->m_bricks) {
         if (b->isDeleted()) continue;
-        foreach (QPoint p, nearbyPoints) {
+        foreach (const QPoint& p, nearbyPoints) {
             if (b->getRect().contains(p)) {
                 result.append(b);
             }
