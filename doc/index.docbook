@@ -17,6 +17,13 @@
 <affiliation>
 <address><email>fela.kde@gmail.com</email></address></affiliation>
 </author>
+
+<author>
+<firstname>Stephanie</firstname>
+<surname>Whiting</surname>
+<affiliation>
+<address><email>stephaniewhiting03@hotmail.com</email></address></affiliation>
+</author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
@@ -55,7 +62,7 @@
 </para>
 
 <para>
-The object of the game is to destroy as much bricks as possible without losing the ball.
+The object of the game is to destroy as many bricks as possible without losing the ball.
 </para>
 </chapter>
 
@@ -63,7 +70,7 @@ The object of the game is to destroy as much bricks as possible without losing t
 <title>How to Play</title>
 
 <para>
-The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and size walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player disposes of a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress trough the levels destroying all bricks present in each, and trying to get a highscore.
+The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.
 </para>
 
 <para>
@@ -71,7 +78,7 @@ Some bricks have a special behavior, or may let a gift fall down when hit. The g
 </para>
 
 <para>
-To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or the arrow keys. The ball will bounce in the direction of the side of the bar it bounced on: the more it bounces near the left end of the bar the more it will bounce toward the left, the same applies for the right side; if it bounces in the middle of the bar it will bounce straight toward the top.
+To fire the ball press the spacebar, to move the bar use the mouse or the arrow keys. The ball will bounce in the direction of the side of the bar it bounced on hit, the more it bounces near the left end of the bar the more it will bounce toward the left, the same applies for the right side; if it bounces in the middle of the bar it will bounce straight toward the top.
 </para>
 
 </chapter>
@@ -82,13 +89,13 @@ To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or 
 <sect1 id="rules">
 <title>Rules</title>
 <itemizedlist>
-<listitem><para>Passing a level awards 300 points to the player. A level is passed when all not unbreakable and not invisible bricks are destroyed, or alternatively if the next level gift is caught. In the latter case an additional score for each remaining brick is awarded.</para></listitem>
+<listitem><para>Passing a level awards 300 points to the player. A level is passed when all breakable and visible bricks are destroyed, or alternatively if the next level gift is caught. In the latter case an additional score for each remaining brick is awarded.</para></listitem>
 <listitem><para>A score is awarded for every brick destroyed, the smaller the interval between one hit and the following the higher this score.</para></listitem>
 <listitem><para>This gifts hidden in a given level are fixed, their position however is random.</para></listitem>
 <listitem><para>30 points are awarded for every gift caught.</para></listitem>
-<listitem><para>The player loses a life when the ball touches the bottom of the field and there are no other balls left in the game, or when he caches a lose life gift. When losing a life 1000 points are detracted from his score.</para></listitem>
+<listitem><para>The player loses a life when the ball touches the bottom of the field and there are no other balls left in the game, or when he catches a lose life gift. When losing a life 1000 points are detracted from his score.</para></listitem>
 <listitem><para>Additional lives can be gained by catching the add life gift.</para></listitem>
-<listitem><para>The game ends when the player loses the ball while not having any additional liefs left, or when all levels have been won.</para></listitem>
+<listitem><para>The game ends when the player loses the ball while not having any additional lives left, or when all levels have been won.</para></listitem>
 </itemizedlist>
 </sect1>
 
@@ -96,8 +103,8 @@ To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or 
 <title>Brick Types</title>
 <variablelist>
 <varlistentry><term>Plain Bricks</term><listitem><para>Simple bricks, while their appearance may vary they all behave the same way, they get destroyed when hit by the ball and may contain a gift.</para></listitem></varlistentry>
-<varlistentry><term>Unbreakable Brick</term><listitem><para>Never gets destroyed unless hit by a burning or unstoppable ball, or an exploding brick next to it gets hit. These bricks do not need to be destroyed to get to the level.</para></listitem></varlistentry>
-<varlistentry><term>Hidden Brick</term><listitem><para>This brick is not initially shown to the player. When hit for the fist time it gets visible, and becomes a plain brick. If hit by a burning ball, or an exploding brick next to it gets hit it gets destroyed as soon as it appears. As long as it remains hidden it do not need to be destroyed to get to the next level.</para></listitem></varlistentry>
+<varlistentry><term>Unbreakable Brick</term><listitem><para>Never gets destroyed unless hit by a burning or unstoppable ball, or an exploding brick next to it gets hit. These bricks do not need to be destroyed to win the level.</para></listitem></varlistentry>
+<varlistentry><term>Hidden Brick</term><listitem><para>This brick is not initially shown to the player. When hit for the fist time it becomes visible, and becomes a plain brick. If hit by a burning ball, or an exploding brick next to it gets hit it gets destroyed as soon as it appears. As long as it remains hidden it does not need to be destroyed to get to the next level.</para></listitem></varlistentry>
 <varlistentry><term>Multiple Brick</term><listitem><para>Needs to be hit three times before getting destroyed, unless hit by a burning or unstoppable ball, or an exploding brick next to it gets destroyed.</para></listitem></varlistentry>
 <varlistentry><term>Exploding Brick</term><listitem><para>When this brick gets hit also the bricks to the top, bottom, left and right of it will get destroyed, regardless of their type.</para></listitem></varlistentry>
 </variablelist>
@@ -106,7 +113,7 @@ To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or 
 <sect1 id="gifts">
 <title>Gifts</title>
 <variablelist>
-<varlistentry><term>Score Gifts</term><listitem><para>If caught they award the player the number of points written on in.</para></listitem></varlistentry>
+<varlistentry><term>Score Gifts</term><listitem><para>If caught they award the player the number of points written on the gift.</para></listitem></varlistentry>
 <varlistentry><term>Add Life Gift</term><listitem><para>Gives the player an additional life.</para></listitem></varlistentry>
 <varlistentry><term>Lose Life Gift</term><listitem><para>Makes the player lose all balls and resets the bar.</para></listitem></varlistentry>
 <varlistentry><term>Enlarge Bar Gift</term><listitem><para>Enlarges the bar.</para></listitem></varlistentry>
@@ -115,8 +122,8 @@ To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or 
 <varlistentry><term>Add Balls Gift</term><listitem><para>Gives the player an extra ball attached to to bar, which can be fired whenever the player wants.</para></listitem></varlistentry>
 <varlistentry><term>Sticky Bar Gift</term><listitem><para>After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.</para></listitem></varlistentry>
 <varlistentry><term>More Exploding Bricks Gift</term><listitem><para>Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themeselves. This also applies to hidden and unbreakable bricks.</para></listitem></varlistentry>
-<varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types</para></listitem></varlistentry>
-<varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.</para></listitem></varlistentry>
+<varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.</para></listitem></varlistentry>
+<varlistentry><term>Unstoppable Ball Gift</term><listitem><para> Transforms all the balls into unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.</para></listitem></varlistentry>
 <varlistentry><term>Magic Eye Gift</term><listitem><para>Shows all hidden bricks.</para></listitem></varlistentry>
 <varlistentry><term>Magic Wand Gift</term><listitem><para>Transforms all multiple and unbreakable bricks into simple bricks.</para></listitem></varlistentry>
 </variablelist>
@@ -125,8 +132,8 @@ To fire the ball press <keycap>Space</keycap>, to move the bar use the mouse or 
 <sect1 id="stategies-and-tips">
 <title>Strategies and Tips</title>
 <itemizedlist>
-<listitem><para>If possible, it is usually a good idea to send the ball above the bricks, doing so you will have a smaller chance of losing the ball. Sometimes you need to first make a small hole in the layer of brick to accomplish this.</para></listitem>
-<listitem><para>When catching the add ball gift it is wise to not fire it right away but to keep in instead, in case the other balls are lost.</para></listitem>
+<listitem><para>If possible, it is usually a good idea to send the ball above the bricks, doing so you will have a smaller chance of losing the ball. Sometimes you need to first make a small hole in the layer of brick to accomplish this. The smaller the hole, the smaller the chance the balls comes back down.</para></listitem>
+<listitem><para>When catching the add ball gift it is wise to not fire it right away but to keep in instead, in case the other balls are lost. It is also advisable to not catch a sticky bar gift is such a case, as doing so would force you to fire all balls.</para></listitem>
 <listitem><para>When receiving a next level gift you may not want to catch it if you know that there are add life gifts in the level.</para></listitem>
 <listitem><para>In levels where there are a lot of hidden bricks there may be a way to win the level without having to destroy most of them.</para></listitem>
 </itemizedlist>
