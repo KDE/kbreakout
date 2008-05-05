@@ -109,6 +109,10 @@ private:
     //       (because it's used to check if the game is paused...)
     QTimer m_elapsedTimeTimer;
     
+    // used to add a little randomness but in a deterministic way
+    // it's reset when the ball gets fired
+    int randomCounter;
+    
     // Canvas Items
     bool m_gameOver;
     bool m_gameWon;

@@ -169,6 +169,8 @@ void GameEngine::fire()
     
     m_dScore = BRICK_SCORE;
     m_infoMessage.hide();
+    
+    randomCounter = 0;
 }
 
 // TODO: external level loarder???
@@ -456,10 +458,9 @@ void GameEngine::detectBallCollisions(Ball *ball)
     // never run this function more than two time recursively
     if (firstTime) {
         // avoid infinite loops of the ball
-        static int counter = 0;
-        ++counter;
-        if (counter == 1024) {
-            counter = 0;
+        ++randomCounter;
+        if (randomCounter == 1024) {
+            randomCounter = 0;
             if (qrand() % 2) {
                 ball->directionX += 0.002;
             } else {
