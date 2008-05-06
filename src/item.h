@@ -18,7 +18,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <KDE/KGameCanvas>
+#include <KGameCanvas>
 
 #include "globals.h"
 

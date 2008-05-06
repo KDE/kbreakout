@@ -20,7 +20,7 @@
 
 #include <QTimer>
 
-#include <KDE/KGameCanvas>
+#include <KGameCanvas>
 
 class CanvasWidget : public KGameCanvasWidget
 {

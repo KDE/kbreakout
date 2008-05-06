@@ -35,9 +35,9 @@
 #include <KStandardDirs>
 #include <KMessageBox>
 #include <KConfigDialog>
-#include <KDE/KScoreDialog>
-#include <KDE/KGameThemeSelector>
-#include <KDE/KStandardGameAction>
+#include <KScoreDialog>
+#include <KGameThemeSelector>
+#include <KStandardGameAction>
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
