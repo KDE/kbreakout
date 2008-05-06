@@ -580,13 +580,13 @@ void GameEngine::loadNextLevel()
     addScore(LEVEL_SCORE);
 }
 
-inline void GameEngine::addScore(int points)
+void GameEngine::addScore(int points)
 {
     m_score += points;
     m_scoreCanvas.setScore(m_score);
 }
 
-inline void GameEngine::setScore(int newScore)
+void GameEngine::setScore(int newScore)
 {
     m_score = newScore;
     m_scoreCanvas.setScore(m_score);
