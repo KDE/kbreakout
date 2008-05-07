@@ -1,9 +1,6 @@
 [KGameTheme]
 Name=Crystal clear
-Name[sv]=Kristallklar
 Description=Crystal-like theme for KBreakOut
-Description[et]=KBreakOuti Crystali moodi teema
-Description[sv]=Kristall-liknande tema för Utbrytning i KDE 4
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com

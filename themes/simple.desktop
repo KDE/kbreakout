@@ -1,10 +1,6 @@
 [KGameTheme]
 Name=Simple
-Name[et]=Lihtne
-Name[sv]=Enkelt
 Description=Simple KBreakOut theme
-Description[et]=Lihtne KBreakOuti teema
-Description[sv]=Enkelt tema för Utbrytning
 VersionFormat=1
 Author=Fela Winkelmolen
 AuthorEmail=fela.kde@gmail.com
