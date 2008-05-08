@@ -37,6 +37,7 @@ Name[x-test]=xxDefaultxx
 Name[zh_CN]=默认
 Name[zh_TW]=預設
 Description=KBreakOut Default theme for KDE 4
+Description[sv]=Standardtema för Utbrytning i KDE 4
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
