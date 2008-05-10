@@ -313,8 +313,8 @@ Documentation copyright 2008 by Fela Winkelmolen <email>fela.kde@gmail.com</emai
 <appendix id="installation">
 <title>Installation</title>
 
-<sect1 id="getting-knetwalk">
-<title>How to obtain &knetwalk;</title>
+<sect1 id="getting-kbreakout">
+<title>How to obtain &kappname;</title>
 
 &install.intro.documentation;
 
