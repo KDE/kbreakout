@@ -1,9 +1,14 @@
 [KGameTheme]
 Name=Crystal clear
 Name[km]=គ្រីស្តាល់​ថ្លា
+Name[pt]=Cristal
+Name[pt_BR]=Cristal
 Name[sv]=Kristallklar
 Description=Crystal-like theme for KBreakOut
+Description[ga]=Téama cosúil le criostal le haghaidh KBreakOut
 Description[km]=ស្បែក​ដូច​គ្រីស្តាល់​សម្រាប់ KBreakOut
+Description[pt]=Tema tipo Cristal para o KBreakOut
+Description[pt_BR]=Tema tipo Cristal para o KBreakOut
 Description[sv]=Kristall-liknande tema för Utbrytning i KDE 4
 Description[zh_TW]=KBreakOut 的類似 Crystal 佈景主題
 VersionFormat=1
