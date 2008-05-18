@@ -23,6 +23,8 @@
 #include "ball.h"
 
 #include <cmath>
+#include <math.h>
+
 #include <QTimer>
 #include <QAction>
 

@@ -59,7 +59,7 @@ void Item::updateScale()
     //kDebug() << "m_scale: " << m_scale;
     // assure the m_scaled height of bricks is an int
     // making the m_scale a little smaller if needed
-    m_scale = static_cast<qreal>(floor(m_scale*BRICK_HEIGHT))/BRICK_HEIGHT;
+    m_scale = static_cast<qreal>(std::floor(m_scale*BRICK_HEIGHT))/BRICK_HEIGHT;
     if (m_scale <= 0) m_scale = 1.0 / BRICK_HEIGHT;
     //kDebug() << "m_scale: " << m_scale;
     m_borderLeft = qRound( (static_cast<qreal>(canvas->width()) 
