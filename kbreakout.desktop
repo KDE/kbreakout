@@ -15,6 +15,7 @@ GenericName[pt]=Jogo semelhante ao BreakOut
 GenericName[pt_BR]=Jogo semelhante ao BreakOut
 GenericName[sv]=Spel som liknar Breakout
 GenericName[uk]=Гра схожа на Breakout
+GenericName[zh_CN]=挡板弹球游戏
 GenericName[zh_TW]=類似 Breakout 的遊戲
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
