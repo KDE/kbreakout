@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY kbreakout "<application>KBreakout</application>">
 <!ENTITY kappname "&kbreakout;">
 <!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
@@ -8,7 +9,7 @@
 
 <book lang="&language;">
 <bookinfo>
-<title>The &kappname; Handbook</title>
+<title>The &kbreakout; Handbook</title>
 
 <authorgroup>
 <author>
