@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Simple
 Name[ga]=Simplí
+Name[gl]=Simples
 Name[ja]=シンプル
 Name[km]=ធម្មតា
 Name[nds]=Eenfach
@@ -13,6 +14,7 @@ Name[zh_TW]=簡單
 Description=Simple KBreakOut theme
 Description[es]=Tema simple para KBreakOut
 Description[ga]=Téama simplí KBreakOut
+Description[gl]=Tema simples para KBreakOut
 Description[ja]=KBreakOut のシンプルなテーマ
 Description[km]=ស្បែក​របស់ KBreakOut ធម្មតា
 Description[nds]=Eenfach KBreakout-Muster
