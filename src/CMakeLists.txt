@@ -21,4 +21,4 @@ kde4_add_executable(kbreakout ${kbreakout_SRCS})
 
 target_link_libraries(kbreakout kdegames )
 
-install(TARGETS kbreakout  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS kbreakout  ${INSTALL_TARGETS_DEFAULT_ARGS} )
