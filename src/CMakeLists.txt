@@ -17,6 +17,8 @@ set(kbreakout_SRCS
 
 kde4_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 
+kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-app-kbreakout.png")
+
 kde4_add_executable(kbreakout ${kbreakout_SRCS})
 
 target_link_libraries(kbreakout kdegames )
