@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBreakOut
 Name[sv]=Utbrytning
+Name[x-test]=xxKBreakOutxx
 Icon=kbreakout
 Type=Application
 Exec=kbreakout -caption "%c"
@@ -18,6 +19,7 @@ GenericName[pt]=Jogo semelhante ao BreakOut
 GenericName[pt_BR]=Jogo semelhante ao BreakOut
 GenericName[sv]=Spel som liknar Breakout
 GenericName[uk]=Гра схожа на Breakout
+GenericName[x-test]=xxBreakout-like Gamexx
 GenericName[zh_CN]=挡板弹球游戏
 GenericName[zh_TW]=類似 Breakout 的遊戲
 X-KDE-StartupNotify=true
