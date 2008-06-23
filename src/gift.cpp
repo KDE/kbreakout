@@ -36,7 +36,10 @@ Gift::Gift(const QString &type)
 
 void Gift::move(qreal gameSpeed)
 {
-    m_speed += m_speedFactor * 0.012;
+    const double linearIncreaseFactor = 0.005;
+    const double exponentialIncreaseFactor = 0.01;
+    m_speed += m_speedFactor * linearIncreaseFactor;
+    m_speed += m_speedFactor * m_speed * exponentialIncreaseFactor;
     moveBy(0, m_speed * gameSpeed);
 }
 

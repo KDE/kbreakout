@@ -10,7 +10,8 @@ TODO:
 =====
 
 == Short Term ==
-* Use QTimeLine for the falling gifts
+* Check the speed increase is applied only one for each step, non for each ball
+* Add score when game won (and maybe additional score for the lives)
 * Item: 
     - don't use inheritance
 * Ask confirmation on close if a game is running
