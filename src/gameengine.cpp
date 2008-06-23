@@ -382,6 +382,22 @@ void GameEngine::repaintMovingObjects()
         
         gift->repaint();
     }
+
+    // avoid infinite loops of the ball
+    ++randomCounter;
+    if (randomCounter == 1024) {
+        randomCounter = 0;
+        foreach (Ball *ball, m_balls) {
+            if (qrand() % 2) {
+                ball->directionX += 0.002;
+            } else {
+                ball->directionY += 0.002;
+            }
+        }
+
+        // increase the speed a little
+        changeSpeed(AUTO_SPEED_INCREASE);
+    }
     
     // move attached balls if needed
     updateAttachedBalls();
@@ -459,20 +475,6 @@ void GameEngine::detectBallCollisions(Ball *ball)
     
     // never run this function more than two time recursively
     if (firstTime) {
-        // avoid infinite loops of the ball
-        ++randomCounter;
-        if (randomCounter == 1024) {
-            randomCounter = 0;
-            if (qrand() % 2) {
-                ball->directionX += 0.002;
-            } else {
-                ball->directionY += 0.002;
-            }
-            
-            // increase the speed a little
-            changeSpeed(AUTO_SPEED_INCREASE);
-        }
-        
         firstTime = false;
         // check if there is another collision
         detectBallCollisions(ball);

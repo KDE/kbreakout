@@ -10,7 +10,7 @@ TODO:
 =====
 
 == Short Term ==
-* Check the speed increase is applied only one for each step, non for each ball
+* Add feedback to know when a gift has been catched.
 * Add score when game won (and maybe additional score for the lives)
 * Item: 
     - don't use inheritance
