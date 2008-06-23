@@ -191,6 +191,7 @@ void GameEngine::loadLevel()
                      << levelSet << endl;
         } else {
             m_gameWon = true;
+            addScore(GAME_WON_SCORE);
             showMessage(i18n("Well done! You won the game!"));
             emit gameEnded(m_score, -1, m_elapsedTime);
         }

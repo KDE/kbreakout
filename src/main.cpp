@@ -37,6 +37,8 @@ int main (int argc, char *argv[])
     aboutData.addAuthor(ki18n("Eugene Trounev"), 
                         ki18n("artwork"),
                         "eugene.trounev@gmail.com");
+    //aboutData.addCredit(ki18n("Lorenzo Bonomi"),
+    //                    ki18n("testing"));
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
@@ -47,3 +49,4 @@ int main (int argc, char *argv[])
     
     return app.exec();
 }
+
