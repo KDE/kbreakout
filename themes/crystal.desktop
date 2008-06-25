@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Crystal clear
 Name[es]=Cristal transparente
+Name[fr]=Crystal épuré
 Name[ja]=クリスタル・クリア
 Name[km]=គ្រីស្តាល់​ថ្លា
 Name[lv]=Kristāla dzidra
@@ -15,6 +16,7 @@ Description=Crystal-like theme for KBreakOut
 Description[el]=Θέμα Crystal για το KBreakOut
 Description[es]=Tema similar a Cristal para KBreakOut
 Description[et]=KBreakOuti Crystali teema  
+Description[fr]=Thème dans le style de Crystal pour KBreakOut
 Description[ga]=Téama cosúil le criostal le haghaidh KBreakOut
 Description[gl]=Tema do estilo crystal para KBreakOut
 Description[ja]=KBreakOut の Crystal 風テーマ
