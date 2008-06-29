@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Simple
+Name[da]=Enkelt
 Name[de]=Einfach
 Name[el]=Απλό
 Name[et]=Lihtne
@@ -17,6 +18,7 @@ Name[x-test]=xxSimplexx
 Name[zh_CN]=简洁
 Name[zh_TW]=簡單
 Description=Simple KBreakOut theme
+Description[da]=Enkelt KBreakOut-tema
 Description[de]=Einfaches Design für KBreakOut
 Description[el]=Απλό θέμα KBreakOut
 Description[es]=Tema simple para KBreakOut
