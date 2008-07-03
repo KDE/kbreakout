@@ -28,6 +28,7 @@ class Brick : public Item
     Q_OBJECT
 public:
     Brick(GameEngine *game, char typeChar, int posX, int posY);
+    ~Brick();
     
     // hits the brick and destroys it regardless of the type of brick
     void forcedHit();

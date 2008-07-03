@@ -37,6 +37,10 @@ Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
     setTypeFromChar(typeChar);
 }
 
+Brick::~Brick()
+{
+}
+
 void Brick::setGift(Gift *gift)
 {
     m_gift = gift;

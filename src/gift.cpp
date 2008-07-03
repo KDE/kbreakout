@@ -142,9 +142,10 @@ void Gift::giftMagicWand()
 {
     foreach (Brick *brick, m_game->m_bricks) {
         // make Unbreakbable Bricks Breakable
-        if (brick->type() == "UnbreakableBrick") {
+        if (!brick->isDeleted() && brick->type() == "UnbreakableBrick") {
             brick->setType("BreakableBrick");
             ++m_game->m_remainingBricks;
+            kDebug() << m_game->m_remainingBricks;
         }
         
         // Make Multiple Bricks single
@@ -207,7 +208,7 @@ void Gift::giftMoreExplosion()
 {
     QList<Brick *> explodingBricks;
     foreach (Brick *brick, m_game->m_bricks) {
-        if (brick->type() == "ExplodingBrick") {
+        if (!brick->isDeleted() && brick->type() == "ExplodingBrick") {
             explodingBricks.append(brick);
         }
     }
