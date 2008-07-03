@@ -28,10 +28,12 @@ public:
     Gift(const QString &type);
     
     void startFall(int posX, int posY);
-    void move(qreal gameSpeed); // todo rename to step
+    void move(qreal speed, int updateInterval);
     void execute(GameEngine *gameEngine);
     
 private:
+    void step(qreal speed);
+
     // convenience functions
     void giftNextLevel();
     void giftMagicEye();

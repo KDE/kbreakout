@@ -355,8 +355,9 @@ void GameEngine::step()
     while (i.hasNext()) {
         Gift *gift = i.next();
         if (!gift->isVisible()) continue; // do nothing
-        
-        gift->move(m_speed);
+
+        qreal giftSpeed = std::sqrt(m_speed / m_gameTimer.interval());
+        gift->move(giftSpeed, m_gameTimer.interval());
         if (gift->getRect().bottom() > BRICK_HEIGHT * HEIGHT) {
             i.remove();
             delete gift;

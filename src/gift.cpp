@@ -22,6 +22,7 @@
 #include "ball.h"
 
 #include <KDebug>
+#include <cmath>
 
 Gift::Gift(const QString &type)
 {
@@ -34,13 +35,21 @@ Gift::Gift(const QString &type)
     m_speed = 0;
 }
 
-void Gift::move(qreal gameSpeed)
+void Gift::move(qreal speed, int updateInterval)
 {
-    const double linearIncreaseFactor = 0.005;
-    const double exponentialIncreaseFactor = 0.01;
+    for (int i = 0; i < updateInterval; ++i) {
+        step(speed);
+    }
+}
+
+void Gift::step(qreal speed)
+{
+    const qreal linearIncreaseFactor = 0.00008 * speed;
+    const qreal exponentialIncreaseFactor = 0.002;
     m_speed += m_speedFactor * linearIncreaseFactor;
-    m_speed += m_speedFactor * m_speed * exponentialIncreaseFactor;
-    moveBy(0, m_speed * gameSpeed);
+    m_speed += m_speed * exponentialIncreaseFactor;
+    
+    moveBy( 0, m_speed);
 }
 
 void Gift::startFall(int x, int y)
