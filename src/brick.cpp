@@ -119,15 +119,7 @@ void Brick::handleDeletion()
         kError() << "Already deleted!!!!!!!!!!!!!!!!";
     }
     
-    m_deleted = true; 
-    
-    // these two kind of bricks aren't counted in the remainingBricks
-    if (type() == "HiddenBrick" && !isVisible()) {
-        ++m_game->m_remainingBricks;
-    }
-    if (type() == "UnbreakableBrick") {
-        ++m_game->m_remainingBricks;
-    }
+    m_deleted = true;
 
     if (m_gift != 0) {
         m_gift->startFall(getRect().left(), getRect().top());
@@ -138,10 +130,16 @@ void Brick::handleDeletion()
     
     m_game->addScore(qRound(m_game->m_dScore));
     m_game->m_dScore = BRICK_SCORE;
+
+    // these two kind of bricks aren't counted in the remainingBricks
+    if ( (type() == "HiddenBrick" && !isVisible())
+            || type() == "UnbreakableBrick") {
+        ++m_game->m_remainingBricks;
+        return; // never need to load the next level
+    }
     
     if (m_game->m_remainingBricks == 0) {
         m_game->loadNextLevel();
-        return;
     }
 }
 
