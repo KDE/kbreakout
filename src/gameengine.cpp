@@ -36,7 +36,7 @@
 #include <KDebug>
 
 GameEngine::GameEngine(MainWindow *mainWindow)
-    : m_mainWindow(mainWindow)
+    : m_mainWindow(mainWindow), randomCounter(0)
 {
     m_gameTimer.setInterval(REPAINT_INTERVAL);
     connect(&m_gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
@@ -479,7 +479,9 @@ void GameEngine::detectBallCollisions(Ball *ball)
     if (firstTime) {
         firstTime = false;
         // check if there is another collision
-        detectBallCollisions(ball);
+        if ( ! m_itemsGotDeleted) {
+            detectBallCollisions(ball);
+        }
     } else {
         firstTime = true;
         return;
@@ -513,11 +515,11 @@ void GameEngine::handleDeath()
 
 void GameEngine::handleBrickCollisions(Ball *ball)
 {
+    if (m_itemsGotDeleted) return;
     QRect rect = ball->getRect();
 
     QList<Brick *> bricksIntersecting;
     foreach (Brick *brick, m_bricks) {
-        if (m_itemsGotDeleted) return;
         if (brick->isDeleted()) continue;
         QRect brickRect = brick->getRect();
         
