@@ -117,10 +117,10 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
     int key = event->key();
     switch (key) {
     case Qt::Key_S:
-        emit cheatSkipLevel();
+        //emit cheatSkipLevel();
         break;
     case Qt::Key_L:
-        emit cheatAddLife();
+        //emit cheatAddLife();
         break;
     case Qt::Key_Right:
         barDirection = 1;
