@@ -191,7 +191,9 @@ void GameEngine::loadLevel()
                      << levelSet << endl;
         } else {
             m_gameWon = true;
-            addScore(GAME_WON_SCORE);
+            kDebug() << m_score;
+            addScore(GAME_WON_SCORE + m_lives.size() * LIFE_SCORE);
+            kDebug() << m_lives.size() << m_score;
             showMessage(i18n("Well done! You won the game!"));
             emit gameEnded(m_score, -1, m_elapsedTime);
         }
@@ -571,6 +573,7 @@ void GameEngine::loadNextLevel()
     foreach (Brick *brick, m_bricks) {
         // don't assign points for Unbreakable Bricks
         if (brick->type() == "UnbreakableBrick") continue;
+        if (brick->isDeleted()) continue;
         
         addScore(AUTOBRICK_SCORE);
         

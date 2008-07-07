@@ -31,8 +31,8 @@ const int REPAINT_INTERVAL = 16; // should be a power of two
 const int DEFAULT_UPDATE_INTERVAL = 13;
 //const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
 const int MINIMUM_UPDATE_INTERVAL = 8;
-// the lower this number the more the game becomes faster over time
-const qreal AUTO_SPEED_INCREASE = 1.03;
+// the higher this number the more the game becomes faster over time
+const qreal AUTO_SPEED_INCREASE = 1.05;
 
 const int BURNING_INTERVAL = 200; // how long it burns
 const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
@@ -67,6 +67,8 @@ const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 const int LEVEL_SCORE = 300;
 const int GIFT_SCORE = 30;
 const int LOSE_LIFE_SCORE = -1000;
+// score added for each life when game is won
+const int LIFE_SCORE = 2000;
 const int GAME_WON_SCORE = 10000;
 const int INITIAL_LIVES = 2;
 const int MAXIMUM_LIVES = 10;
