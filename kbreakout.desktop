@@ -7,6 +7,7 @@ Type=Application
 Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
+GenericName[cs]=Hra typu Breakout
 GenericName[da]=Breakout-lignende spil
 GenericName[el]=Παιχνίδι παρόμοιο με το Breakout
 GenericName[es]=Juego similar a Breakout
