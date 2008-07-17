@@ -157,3 +157,5 @@ void CanvasWidget::focusOutEvent(QFocusEvent *event)
     emit focusLost();
     KGameCanvasWidget::focusOutEvent(event);
 }
+
+#include "canvaswidget.moc"

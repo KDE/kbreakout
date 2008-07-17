@@ -204,3 +204,5 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     //gameEngine->fire();
     KXmlGuiWindow::mousePressEvent(event);
 }
+
+#include "mainwindow.moc"

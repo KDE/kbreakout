@@ -201,3 +201,5 @@ QList<Brick *> Brick::nearbyBricks()
     
     return result;
 }
+
+#include "brick.moc"
