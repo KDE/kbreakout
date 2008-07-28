@@ -554,7 +554,7 @@ void GameEngine::showInfoMessage(const QString &text)
 void GameEngine::showFireBallMessage()
 {
     QAction *fireAction = m_mainWindow->actionCollection()->action("fire");
-    QString shortcut = fireAction->shortcut().toString(QKeySequence::PortableText);
+    QString shortcut = fireAction->shortcut().toString(QKeySequence::NativeText);
     showInfoMessage(i18n("Press %1 to fire the ball", shortcut));
 }
 
