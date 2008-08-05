@@ -1,1 +1,1 @@
-install( FILES web20.svgz web20.desktop web20_preview.png crystal.desktop crystal.svgz crystal_preview.png simple.svgz simple.desktop simple_preview.png DESTINATION  ${DATA_INSTALL_DIR}/kbreakout/themes )
+install( FILES default.svgz default.desktop web20.svgz web20.desktop web20_preview.png crystal.desktop crystal.svgz crystal_preview.png simple.svgz simple.desktop simple_preview.png DESTINATION  ${DATA_INSTALL_DIR}/kbreakout/themes )
