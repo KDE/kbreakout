@@ -46,7 +46,7 @@ public:
 public slots:
     // handles the timer timeout signals
     void timerTimeout();
-    void start(QString levelset);
+    void start(const QString &levelset);
     void pause();
     void resume();
     void togglePause();

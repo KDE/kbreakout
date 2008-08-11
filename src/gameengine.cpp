@@ -50,7 +50,7 @@ GameEngine::~GameEngine()
     deleteAllObjects();
 }
 
-void GameEngine::start(QString l)
+void GameEngine::start(const QString& l)
 {
     levelSet = l;
     
