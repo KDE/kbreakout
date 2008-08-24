@@ -161,7 +161,7 @@ void MainWindow::startNewGame()
         this,
         i18n("Starting a new game will end the current one!"),
         i18n("New Game"),
-        KGuiItem(i18n("Start a new game")),
+        KGuiItem(i18n("Start a New Game")),
         KStandardGuiItem::cancel());
         
     if (ret == KMessageBox::Yes) {
