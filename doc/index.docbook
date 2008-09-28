@@ -120,7 +120,7 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 <varlistentry><term>Enlarge Bar Gift</term><listitem><para>Enlarges the bar.</para></listitem></varlistentry>
 <varlistentry><term>Shrink Bar Gift</term><listitem><para>Shrinks the bar.</para></listitem></varlistentry>
 <varlistentry><term>Split Balls Gift</term><listitem><para>Doubles the balls.</para></listitem></varlistentry>
-<varlistentry><term>Add Balls Gift</term><listitem><para>Gives the player an extra ball attached to to bar, which can be fired whenever the player wants.</para></listitem></varlistentry>
+<varlistentry><term>Add Balls Gift</term><listitem><para>Gives the player an extra ball attached to the bar, which can be fired whenever the player wants.</para></listitem></varlistentry>
 <varlistentry><term>Sticky Bar Gift</term><listitem><para>After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.</para></listitem></varlistentry>
 <varlistentry><term>More Exploding Bricks Gift</term><listitem><para>Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themeselves. This also applies to hidden and unbreakable bricks.</para></listitem></varlistentry>
 <varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.</para></listitem></varlistentry>
