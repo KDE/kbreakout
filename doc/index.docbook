@@ -122,7 +122,7 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 <varlistentry><term>Split Balls Gift</term><listitem><para>Doubles the balls.</para></listitem></varlistentry>
 <varlistentry><term>Add Balls Gift</term><listitem><para>Gives the player an extra ball attached to the bar, which can be fired whenever the player wants.</para></listitem></varlistentry>
 <varlistentry><term>Sticky Bar Gift</term><listitem><para>After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.</para></listitem></varlistentry>
-<varlistentry><term>More Exploding Bricks Gift</term><listitem><para>Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themeselves. This also applies to hidden and unbreakable bricks.</para></listitem></varlistentry>
+<varlistentry><term>More Exploding Bricks Gift</term><listitem><para>Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themselves. This also applies to hidden and unbreakable bricks.</para></listitem></varlistentry>
 <varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.</para></listitem></varlistentry>
 <varlistentry><term>Unstoppable Ball Gift</term><listitem><para> Transforms all the balls into unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.</para></listitem></varlistentry>
 <varlistentry><term>Magic Eye Gift</term><listitem><para>Shows all hidden bricks.</para></listitem></varlistentry>
@@ -130,11 +130,11 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 </variablelist>
 </sect1>
 
-<sect1 id="stategies-and-tips">
+<sect1 id="strategies-and-tips">
 <title>Strategies and Tips</title>
 <itemizedlist>
 <listitem><para>If possible, it is usually a good idea to send the ball above the bricks, doing so you will have a smaller chance of losing the ball. Sometimes you need to first make a small hole in the layer of brick to accomplish this. The smaller the hole, the smaller the chance the balls comes back down.</para></listitem>
-<listitem><para>When catching the add ball gift it is wise to not fire it right away but to keep in instead, in case the other balls are lost. It is also advisable to not catch a sticky bar gift is such a case, as doing so would force you to fire all balls.</para></listitem>
+<listitem><para>When catching the add ball gift it is wise to not fire it right away but to keep in instead, in case the other balls are lost. It is also advisable to not catch a sticky bar gift in such a case, as doing so would force you to fire all balls.</para></listitem>
 <listitem><para>When receiving a next level gift you may not want to catch it if you know that there are add life gifts in the level.</para></listitem>
 <listitem><para>In levels where there are a lot of hidden bricks there may be a way to win the level without having to destroy most of them.</para></listitem>
 </itemizedlist>
