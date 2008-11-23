@@ -1,9 +1,11 @@
 [KGameTheme]
 Name=IceWorld
+Name[nds]=Ieswelt
 Name[sv]=Isvärld
 Name[zh_TW]=冰世界
 Description=Ice chilled theme
 Description[el]=Ένα παγωμένο θέμα
+Description[nds]=Iesköölt Muster
 Description[pt]=Tema frio como gelo
 Description[pt_BR]=Tema frio como gelo
 Description[sv]=Iskallt tema
