@@ -21,6 +21,6 @@ kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-app-kb
 
 kde4_add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout kdegames )
+target_link_libraries(kbreakout kdegames ${KDE4_KDEUI_LIBS} )
 
 install(TARGETS kbreakout  ${INSTALL_TARGETS_DEFAULT_ARGS} )
