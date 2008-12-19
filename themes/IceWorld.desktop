@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=IceWorld
+Name[de]=Eiswelt
 Name[et]=Jääilm
 Name[nds]=Ieswelt
 Name[nn]=Isverda
@@ -11,6 +12,7 @@ Name[zh_CN]=冰世界
 Name[zh_TW]=冰世界
 Description=Ice chilled theme
 Description[cs]=Ledově chladný motiv
+Description[de]=Ein eisiges Design
 Description[el]=Ένα παγωμένο θέμα
 Description[et]=Jäiselt kõhe teema
 Description[gl]=Tema frío como o xeo
