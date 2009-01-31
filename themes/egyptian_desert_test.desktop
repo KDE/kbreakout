@@ -1,6 +1,12 @@
 [KGameTheme]
 Name=Egyptian Desert
+Name[pt]=Deserto Egípcio
+Name[pt_BR]=Deserto Egípcio
+Name[uk]=Єгипетська пустеля
 Description=Egyptian desert theme test
+Description[pt]=Teste do tema do deserto egípcio
+Description[pt_BR]=Teste do tema do deserto egípcio
+Description[uk]=Перевірка теми єгипетської пустелі
 VersionFormat=0.1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
