@@ -1,10 +1,12 @@
 [KGameTheme]
 Name=Egyptian Desert
+Name[et]=Egiptuse kõrb
 Name[pt]=Deserto Egípcio
 Name[pt_BR]=Deserto Egípcio
 Name[sv]=Egyptisk öken
 Name[uk]=Єгипетська пустеля
 Description=Egyptian desert theme test
+Description[et]=Egiptuse kõrbe teema test
 Description[pt]=Teste do tema do deserto egípcio
 Description[pt_BR]=Teste do tema do deserto egípcio
 Description[sv]=Test av temat Egyptisk öken
