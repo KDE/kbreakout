@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBreakOut
 Name[sv]=Utbrytning
+Name[wa]=sKetaedje (KBreakOut)
 Name[x-test]=xxKBreakOutxx
 Icon=kbreakout
 Type=Application
@@ -33,6 +34,7 @@ GenericName[sl]=Igra podobna Breakoutu
 GenericName[sv]=Spel som liknar Breakout
 GenericName[tr]=Breakout-benzeri Oyun
 GenericName[uk]=Гра схожа на Breakout
+GenericName[wa]=Djeu po sketer des brikes
 GenericName[x-test]=xxBreakout-like Gamexx
 GenericName[zh_CN]=挡板弹球游戏
 GenericName[zh_TW]=打磚塊遊戲
