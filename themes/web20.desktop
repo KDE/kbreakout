@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=WEB 2.0
 Name[de]=Web 2.0
+Name[hne]=वेब २.०
 Name[nn]=Web 2.0
 Name[ru]=Веб 2.0
 Name[sl]=Splet 2.0
@@ -10,7 +11,7 @@ Description=Web 2.0 theme showcases graphical elements reminiscent of those used
 Description[ga]=Baineann Web 2.0 úsáid as míreanna grafacha cosúil leis na cinn a úsáidtear sa ghluaiseacht 'WEB 2.0' atá i mbéal an phobail ar an rud seo a dtugtar 'An Líonghréasán' air.
 Description[nds]=Dat Muster »WEB 2.0« bruukt graafsche Elementen, de liek sünd to de ut de so nöömte "Web-2.0-Bewegen", de opstunns dat Twischennett in Stormloop nimmt, as se seggt.
 Description[pt]=O tema Web 2.0 apresenta elementos gráficos que fazem lembrar os usados no movimento popular da 'WEB 2.0', tentando conquistar a Web de forma intempestiva.
-Description[pt_BR]=O tema Web 2.0 apresenta elementos gráficos que fazem lembrar os usados no movimento popular da 'WEB 2.0', tentando conquistar a Web de forma intempestiva.
+Description[pt_BR]=O tema Web 2.0 apresenta elementos gráficos que lembram aqueles usados no popular movimento da 'WEB 2.0' que agita a Internet.
 Description[sv]=Temat Webb 2.0 förevisar grafiska element som påminner om de som används i den populära rörelsen webb 2.0, som just nu tar interwebben med storm.
 Description[uk]=У темі Web 2.0 графічні елементи нагадують графічні елементи, що використовуються у рамках популярного руху «WEB 2.0», який зараз завойовує тенета.
 VersionFormat=1
