@@ -21,6 +21,7 @@
 #include "gift.h"
 #include "brick.h"
 #include "ball.h"
+#include "settings.h"
 
 #include <cmath>
 #include <math.h>
@@ -74,7 +75,7 @@ void GameEngine::start(const QString& l)
     m_gameTimer.start();
 }
 
-bool GameEngine::gameIsPaused()
+bool GameEngine::gameIsPaused() const
 {
     return !m_elapsedTimeTimer.isActive();
 }
@@ -553,6 +554,7 @@ void GameEngine::showInfoMessage(const QString &text)
 
 void GameEngine::showFireBallMessage()
 {
+    if (Settings::fireOnClick) return; // don't show message
     QAction *fireAction = m_mainWindow->actionCollection()->action("fire");
     QString shortcut = fireAction->shortcut().toString(QKeySequence::NativeText);
     showInfoMessage(i18n("Press %1 to fire the ball", shortcut));
@@ -625,6 +627,7 @@ inline void GameEngine::deleteMovingObjects()
     QMutableListIterator<Gift *> i(m_gifts);
     while (i.hasNext()) {
         Gift *gift = i.next(); 
+        // FIXME ??????????????
         if (gift->isVisible())
             delete gift;
             i.remove();

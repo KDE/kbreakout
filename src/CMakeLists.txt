@@ -13,7 +13,10 @@ set(kbreakout_SRCS
    gameengine.cpp
    renderer.cpp
    fontutils.cpp
+   #generalsettings.cpp
 )
+
+kde4_add_ui_files(kbreakout_SRCS generalsettings.ui)
 
 kde4_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 

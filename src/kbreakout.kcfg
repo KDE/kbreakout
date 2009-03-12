@@ -9,6 +9,10 @@
       <label>The graphical theme to be used.</label>
       <default>themes/default.desktop</default>
     </entry>
+    <entry name="FireOnClick" type="Bool">
+      <label>Fire on mouse click</label>
+      <default>false</default>
+    </entry>
   </group>
   <group name="Preferences">
   </group>

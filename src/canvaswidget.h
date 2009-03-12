@@ -45,11 +45,15 @@ signals:
     void cheatSkipLevel();
     void cheatAddLife();
 
+public slots:
+    void handleGamePaused();
+    // -1 means ignore position
+    void handleGameResumed(int barPosition=-1);
+    void handleGameEnded();
+
 private slots:
     void moveBar();
     void updateBar();
-    void handleGamePaused();
-    void handleGameResumed(int barPosition);
 
 protected:
     void resizeEvent(QResizeEvent *event);

@@ -46,7 +46,7 @@ int main (int argc, char *argv[])
     KGlobal::locale()->insertCatalog("libkdegames");
     
     MainWindow* window = new MainWindow();
-    window->show();
+    Q_UNUSED(window);
     
     return app.exec();
 }

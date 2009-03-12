@@ -9,14 +9,17 @@ BUGS:
 TODO:
 =====
 
-== Short Term ==
-* Add feedback to know when a gift has been catched.
-* Add score when game won (and maybe additional score for the lives)
+== Code Refactoring ==
 * Item: 
     - don't use inheritance
-* Ask confirmation on close if a game is running
 * Put constants used only in one place out of globals.h 
 * use m_ for all data members
+* add const keyboard where appropriate
+
+== Short Term ==
+* Add feedback to know when a gift has been catched.
+* Ask confirmation on close if a game is running
+* Never move the cursor farther then what moves the bar.
 
 == Mid Term ==
 * Try to port to QGraphicsScene

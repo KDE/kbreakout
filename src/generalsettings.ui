@@ -1,0 +1,60 @@
+<ui version="4.0" >
+ <class>GeneralSettings</class>
+ <widget class="QWidget" name="GeneralSettings" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>449</width>
+    <height>184</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>General Settings</string>
+  </property>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>1</x>
+     <y>8</y>
+     <width>441</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout" >
+    <item>
+     <widget class="QLabel" name="label" >
+      <property name="text" >
+       <string>Enabling the following option will make the game steal the mouse cursor, pause the game to get the cursor back.</string>
+      </property>
+      <property name="wordWrap" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="kcfg_FireOnClick" >
+      <property name="text" >
+       <string>Fire on mouse click</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer" >
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

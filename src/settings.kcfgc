@@ -2,4 +2,4 @@
 File=kbreakout.kcfg
 ClassName=Settings
 Singleton=true
-#Mutators=username,skill
+Mutators=true

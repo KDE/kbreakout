@@ -42,6 +42,9 @@ class GameEngine : public QObject
 public:
     GameEngine(MainWindow *);
     ~GameEngine();
+    
+    // TODO: rename to isPaused
+    bool gameIsPaused() const;
 
 public slots:
     // handles the timer timeout signals
@@ -83,8 +86,6 @@ private:
     void updateAttachedBalls(); // updates all balls attached to the bar
     void deleteMovingObjects();
     void deleteAllObjects();
-    
-    bool gameIsPaused();
 
     MainWindow *m_mainWindow; // needed to access actionCollection()
     QString levelSet;

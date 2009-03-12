@@ -19,6 +19,7 @@
 #include "item.h"
 #include "renderer.h"
 #include "globals.h"
+#include "settings.h"
 
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -68,6 +69,7 @@ void CanvasWidget::reloadSprites()
 
 void CanvasWidget::handleGamePaused()
 {
+    releaseMouse();
     updateBarTimer.stop();
     moveBarTimer.stop();
     pauseOverlay.raise();
@@ -79,19 +81,32 @@ void CanvasWidget::handleGameResumed(int barPosition)
 {
     // give feedback
     QCursor newCursor(Qt::BlankCursor);
-    setCursor(newCursor);
     pauseOverlay.hide();
     
     // move the mouse cursor to where the bar is
-    int screenY = mapFromGlobal(cursor().pos()).y();
-    int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
-    QPoint p = mapToGlobal(QPoint(screenX, screenY));
-    newCursor.setPos(p.x(), p.y());
-    setCursor(newCursor);
+    if (barPosition != -1) {
+        int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
+        QPoint p = mapToGlobal(QPoint(screenX, 0));
+        newCursor.setPos(p.x(), cursor().pos().y());
+    }
+
+    if (Settings::fireOnClick()) {
+        grabMouse(newCursor);
+    } else {
+        setCursor(newCursor);
+    }
     updateBarTimer.start();
 }
 
-void CanvasWidget::resizeEvent (QResizeEvent */*event*/)
+void CanvasWidget::handleGameEnded()
+{
+    releaseMouse();
+    updateBarTimer.stop();
+    moveBarTimer.stop();
+    setCursor(QCursor(Qt::ArrowCursor));
+}
+
+void CanvasWidget::resizeEvent(QResizeEvent */*event*/)
 {
     kDebug() << "resized!\n";
     reloadSprites();

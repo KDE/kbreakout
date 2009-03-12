@@ -20,6 +20,7 @@
 #include "canvasitems.h"
 #include "canvaswidget.h"
 #include "renderer.h"
+#include "ui_generalsettings.h"
 #include "settings.h"
 
 #include <QAction>
@@ -38,6 +39,19 @@
 #include <KScoreDialog>
 #include <KGameThemeSelector>
 #include <KStandardGameAction>
+#include <KConfig>
+
+class GeneralSettings : public QWidget
+{
+public:
+    GeneralSettings(QWidget *parent)
+        : QWidget(parent)
+    {
+        ui.setupUi(this);
+    }
+private:
+    Ui::GeneralSettings ui;
+};
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
@@ -57,13 +71,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(canvasWidget, SIGNAL(focusLost()),
             gameEngine, SLOT(pause()));
     
-    connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
-            SLOT(handleEndedGame(int,int,int)));
-    
     connect(gameEngine, SIGNAL(gamePaused()), 
             canvasWidget, SLOT(handleGamePaused()));
     connect(gameEngine, SIGNAL(gameResumed(int)), 
             canvasWidget, SLOT(handleGameResumed(int)));
+    
+    connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
+            SLOT(handleEndedGame(int,int,int)));
     
     // cheating keys, debugging and testing only TODO: REMOVE
     connect(canvasWidget, SIGNAL(cheatSkipLevel()),
@@ -72,7 +86,6 @@ MainWindow::MainWindow(QWidget *parent)
             gameEngine, SLOT(cheatAddLife()));
     
     setCentralWidget(canvasWidget);
-    canvasWidget->setCursor(QCursor(Qt::BlankCursor));
     
     setupActions();
     
@@ -80,7 +93,10 @@ MainWindow::MainWindow(QWidget *parent)
     setupGUI(defaultSize, 
         KXmlGuiWindow::Keys | KXmlGuiWindow::Save| KXmlGuiWindow::Create);
     
+    // show here else (instead of in main) else the mouse can't be grabbed
+    show(); 
     gameEngine->start("default");
+    //canvasWidget->handleGameResumed();
 }
  
 MainWindow::~MainWindow()
@@ -112,6 +128,7 @@ void MainWindow::setupActions()
     pauseAction->setIcon(KIcon("media-playback-pause"));
     QList<QKeySequence> keys;
     keys.append(Qt::Key_P);
+    keys.append(Qt::Key_Escape);
     keys.append(Qt::Key_Pause);
     pauseAction->setShortcut(KShortcut(keys));
     connect(pauseAction, SIGNAL(triggered()), gameEngine, SLOT(togglePause()));
@@ -122,16 +139,23 @@ void MainWindow::configureSettings()
     if (KConfigDialog::showDialog("settings")) {
         return;
     }
+    // else it doesn't exist, thus create the dialog
     
     KConfigDialog *dialog = new KConfigDialog(this, "settings", 
                                               Settings::self());
+    dialog->setModal(true);
     
     dialog->addPage(new KGameThemeSelector( dialog, Settings::self(), 
                     KGameThemeSelector::NewStuffDisableDownload ), 
                     i18n("Theme"), "games-config-theme" );
+    
+    // TODO: when will the page be destroyed?
+    dialog->addPage(new GeneralSettings( dialog ), 
+                    i18nc("General settings", "General"),
+                    "games-config-options");
 
-    connect(dialog, SIGNAL( settingsChanged(const QString&)), this, 
-            SLOT(loadSettings()));
+    connect(dialog, SIGNAL(settingsChanged(const QString&)), 
+            this, SLOT(loadSettings()));
     
     dialog->show();
 }
@@ -192,16 +216,56 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
                           | KScoreDialog::Time, this);
     ksdialog.addScore(scoreInfo);
+    
+    canvasWidget->handleGameEnded();
     ksdialog.exec();
+    canvasWidget->handleGameResumed();
     
     gameEngine->start("default");
 }
 
-
-
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    //gameEngine->fire();
+    if (Settings::fireOnClick() || gameEngine->gameIsPaused()) {
+        gameEngine->fire();
+        KXmlGuiWindow::mousePressEvent(event);
+        return;
+    }
+    // not fire on click
+    
+    // check if dontAskFireOnClick is set
+    // we want to override it's default effect
+    // if it's set to _any_ value we want to keep the
+    // settings of fireOnClick at false
+    bool dontAsk = false; // true if dontAskFireOnClick was set
+    KConfig config(componentData(), "kbreakoutrc");
+    if (config.hasGroup("Notification Messages")) {
+        KConfigGroup group( &config, "Notification Messages");
+        if (group.hasKey("dontAskFireOnClick"))
+            dontAsk = true;
+    }
+    
+    if (dontAsk == false) {
+        // ask the user if he wants to fire on mouse click
+        int res = KMessageBox::questionYesNo(  
+                    this, 
+                    i18n("Do you want to fire the ball on mouse click?\n"
+                        "Answering Yes will make the game steal the\n"
+                        "mouse cursor, pause the game to get\n"
+                        "the cursor back."), 
+                    i18n("Fire on click?"), 
+                    KStandardGuiItem::yes(), 
+                    KStandardGuiItem::no(), 
+                    "dontAskFireOnClick" // doesntAskAgainName 
+        );
+        
+        if (res == KMessageBox::Yes) {
+            Settings::setFireOnClick(true); 
+            Settings::self()->writeConfig();
+            canvasWidget->handleGameResumed();
+        }
+    }
+    
     KXmlGuiWindow::mousePressEvent(event);
 }
 
