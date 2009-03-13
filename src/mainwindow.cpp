@@ -1,5 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2007-2009 Fela Winkelmolen <fela.kde@gmail.com> 
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -174,8 +174,9 @@ void MainWindow::loadSettings()
 
 void MainWindow::showHighscores()
 {
-    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
-                          | KScoreDialog::Time, this);
+    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
+    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), "moves");
+
     ksdialog.exec();
 }
 
@@ -200,21 +201,19 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     // TODO: check int overflow and fix 24 hours "overflow"
     QString timeString = t.toString("HH:mm");
     
-    // TODO: fix score < 0
-    
     const int ALL_LEVELS = -1;
     
     KScoreDialog::FieldInfo scoreInfo;
     scoreInfo[KScoreDialog::Score].setNum(score);
-    scoreInfo[KScoreDialog::Time] = timeString;
+    scoreInfo[KScoreDialog::Custom1] = timeString;
     if (level == ALL_LEVELS) {
         scoreInfo[KScoreDialog::Level] = i18n("Game won!");
     } else {
         scoreInfo[KScoreDialog::Level].setNum(level);
     }
     
-    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level 
-                          | KScoreDialog::Time, this);
+    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
+    ksdialog.addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
     ksdialog.addScore(scoreInfo);
     
     canvasWidget->handleGameEnded();
