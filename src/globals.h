@@ -66,7 +66,7 @@ const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
 const int LEVEL_SCORE = 300;
 const int GIFT_SCORE = 30;
-const int LOSE_LIFE_SCORE = -1000;
+const int LOSE_LIFE_SCORE = 0; // disabled
 // score added for each life when game is won
 const int LIFE_SCORE = 2000;
 const int GAME_WON_SCORE = 10000;
