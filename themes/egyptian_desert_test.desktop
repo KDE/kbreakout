@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Egyptian Desert
+Name[de]=Ägyptische Wüste
 Name[el]=Αιγυπτιακή έρημος
 Name[et]=Egiptuse kõrb
 Name[ga]=Gaineamhlach Éigipteach
@@ -12,6 +13,7 @@ Name[uk]=Єгипетська пустеля
 Name[x-test]=xxEgyptian Desertxx
 Name[zh_TW]=埃及沙漠
 Description=Egyptian desert theme test
+Description[de]=Ein Testdesign einer ägyptischen Wüste.
 Description[el]=δοκιμή θέματος αιγυπτιακής ερήμου
 Description[et]=Egiptuse kõrbe teema test
 Description[ga]=Tástáil den téama gaineamhlaigh Éigiptigh
