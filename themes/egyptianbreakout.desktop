@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Egyptian Breakout
+Description=Egyptian style breakout theme.
+VersionFormat=0.4
+Author=Sean Wilson
+AuthorEmail=suseux@gmail.com
+Type=SVG
+FileName=egyptianbreakout.svgz
+Preview=egyptian_breakout_preview.png
