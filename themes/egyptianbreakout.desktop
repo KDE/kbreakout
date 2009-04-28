@@ -1,6 +1,16 @@
 [KGameTheme]
 Name=Egyptian Breakout
+Name[et]=Egiptuse Breakout
+Name[pt]=Breakout Egípcio
+Name[pt_BR]=Breakout Egípcio
+Name[sv]=Egyptisk utbrytning
+Name[uk]=Єгипетський Breakout
 Description=Egyptian style breakout theme.
+Description[et]=Egiptuse stiilis Breakouti teema.
+Description[pt]=Tema do Breakout de estilo Egípcio.
+Description[pt_BR]=Tema do Breakout de estilo Egípcio.
+Description[sv]=Utbrytningstema med egyptisk stil
+Description[uk]=Тема Breakout у єгипетському стилі.
 VersionFormat=0.4
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
