@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=KBreakOut
 Name[hne]=के-ब्रेकआउट
+Name[sr]=К‑пробој
+Name[sr@latin]=K‑proboj
 Name[sv]=Utbrytning
 Name[x-test]=xxKBreakOutxx
 Icon=kbreakout
@@ -8,6 +10,7 @@ Type=Application
 Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
+GenericName[ca]=Joc similar al Breakout
 GenericName[cs]=Hra typu Breakout
 GenericName[da]=Breakout-lignende spil
 GenericName[de]=Breakout-Spiel
@@ -33,6 +36,8 @@ GenericName[pt_BR]=Jogo do tipo breakout (quebra de barreiras)
 GenericName[ro]=Un joc ca Breakout
 GenericName[ru]=Арканоидо-подобная игра
 GenericName[sl]=Igra podobna Breakoutu
+GenericName[sr]=Игла налик на Пробој
+GenericName[sr@latin]=Igla nalik na Proboj
 GenericName[sv]=Spel som liknar Breakout
 GenericName[tr]=Breakout-benzeri Oyun
 GenericName[uk]=Гра схожа на Breakout
