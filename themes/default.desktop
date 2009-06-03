@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Egyptian Breakout
 Name[da]=Egyptisk Breakout
+Name[de]=Ägyptisch
 Name[el]=Αιγυπτιακή αναπήδηση
 Name[et]=Egiptuse Breakout
 Name[nn]=Egyptiske Breakout
@@ -14,6 +15,7 @@ Name[zh_CN]=埃及风情
 Name[zh_TW]=埃及式打磚塊
 Description=Egyptian style breakout theme.
 Description[da]=Breakout-tema i egyptisk stil.
+Description[de]=Das ägyptische Design für Breakout.
 Description[el]=Αιγυπτιακό θέμα στυλ breakout.
 Description[et]=Egiptuse stiilis Breakouti teema.
 Description[km]=ស្បែក​របស់ KBreakOut Egyptian
