@@ -11,6 +11,7 @@ Type=Application
 Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
+GenericName[ca]=Joc similar al Breakout
 GenericName[cs]=Hra typu Breakout
 GenericName[da]=Breakout-lignende spil
 GenericName[de]=Breakout-Spiel
