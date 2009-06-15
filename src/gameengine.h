@@ -58,9 +58,10 @@ public slots:
     void moveBarRight();
     void fire();
     
-    // cheating keys, debugging and testing only TODO: REMOVE
-    void cheatSkipLevel() {loadNextLevel();}
-    void cheatAddLife() {m_lives.append(new Life);}
+    // cheating keys for debugging and testing. Enabled only when
+    // KDE_DEBUG environment variable is true.
+    void cheatSkipLevel();
+    void cheatAddLife();
 
 signals:
     void gamePaused();
@@ -117,6 +118,7 @@ private:
     // Canvas Items
     bool m_gameOver;
     bool m_gameWon;
+    bool m_cheatsEnabled;
     QList<Life *> m_lives;
     Score m_scoreCanvas;
     LevelInfo m_levelInfo;

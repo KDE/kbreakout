@@ -44,6 +44,8 @@ GameEngine::GameEngine(MainWindow *mainWindow)
     
     m_elapsedTimeTimer.setInterval(1000);
     connect(&m_elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
+
+    m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
 }
 
 GameEngine::~GameEngine()
@@ -176,7 +178,19 @@ void GameEngine::fire()
     randomCounter = 0;
 }
 
-// TODO: external level loarder???
+void GameEngine::cheatSkipLevel() 
+{
+    if (m_cheatsEnabled)
+        loadNextLevel();
+}
+
+void GameEngine::cheatAddLife() 
+{
+    if (m_cheatsEnabled)
+        m_lives.append(new Life);
+}
+
+// TODO: external level loader???
 void GameEngine::loadLevel()
 {
     
