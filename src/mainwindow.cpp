@@ -25,6 +25,7 @@
 
 #include <QAction>
 #include <QGraphicsScene>
+#include <QPointer>
 #include <QSvgRenderer>
 #include <QCursor>
 
@@ -212,15 +213,18 @@ void MainWindow::handleEndedGame(int score, int level, int time)
         scoreInfo[KScoreDialog::Level].setNum(level);
     }
     
-    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog.addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
-    ksdialog.addScore(scoreInfo);
-    
     canvasWidget->handleGameEnded();
-    ksdialog.exec();
-    canvasWidget->handleGameResumed();
     
-    gameEngine->start("default");
+    QPointer<KScoreDialog> ksdialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
+    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
+    ksdialog->addScore(scoreInfo);
+    ksdialog->exec();
+    
+    if ( ksdialog ) {
+        canvasWidget->handleGameResumed();
+        gameEngine->start("default");
+        delete ksdialog;
+    }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
