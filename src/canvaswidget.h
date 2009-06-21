@@ -71,6 +71,10 @@ protected:
     
     // used when moving the bar with the keys
     int barDirection;
+
+    // used to track which direction keys are pressed between key events
+    bool rightPressed;
+    bool leftPressed;
 };
 
 #endif //CANVASWIDGET_H

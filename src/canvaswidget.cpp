@@ -28,7 +28,9 @@
 #include <KDebug>
 
 CanvasWidget::CanvasWidget(QWidget *parent) 
-    : KGameCanvasWidget(parent)
+    : KGameCanvasWidget(parent),
+      rightPressed(false),
+      leftPressed(false)
 {
     setFocus();
     
@@ -138,16 +140,19 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
         emit cheatAddLife();
         break;
     case Qt::Key_Right:
+        rightPressed = true;
         barDirection = 1;
-        moveBarTimer.start();
         break;
     case Qt::Key_Left:
+        leftPressed = true;
         barDirection = -1;
-        moveBarTimer.start();
         break;
     default:
         KGameCanvasWidget::keyPressEvent(event);
     }
+
+    if ((rightPressed || leftPressed) && !moveBarTimer.isActive())
+        moveBarTimer.start();
 }
 
 void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
@@ -159,12 +164,21 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
     int key = event->key();
     switch (key) {
     case Qt::Key_Right:
+        rightPressed = false;
+        break;
     case Qt::Key_Left:
-        moveBarTimer.stop();
+        leftPressed = false;
         break;
     default:
         KGameCanvasWidget::keyReleaseEvent(event);
     }
+
+    if (!rightPressed && !leftPressed)
+        moveBarTimer.stop();
+    else if (rightPressed && !leftPressed)
+        barDirection = 1;
+    else if (!rightPressed && leftPressed)
+        barDirection = -1;
 }
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
