@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Alien Breakout
+Description=Breakout before the aliens do.
+VersionFormat=1
+Author=Sean Wilson
+AuthorEmail=suseux@gmail.com
+Type=SVG
+FileName=alienbreakout.svgz
+Preview=alien_preview.png
