@@ -1,6 +1,16 @@
 [KGameTheme]
 Name=Alien Breakout
+Name[pt]=Breakout Extra-Terrestre
+Name[pt_BR]=Breakout alienígena
+Name[sv]=Utomjordisk utbrytning
+Name[uk]=Чужинський Breakout
+Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
+Description[pt]=Destrua o nível antes dos extra-terrestres.
+Description[pt_BR]=Quebre as barreiras antes que os alienígenas o façam.
+Description[sv]=Bryt dig ut innan utomjordingarna gör det.
+Description[uk]=Breakout до появи чужинців.
+Description[zh_TW]=在異形之前把磚塊打掉。
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
