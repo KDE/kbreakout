@@ -1,9 +1,11 @@
 [KGameTheme]
 Name=Alien Breakout
+Name[de]=Außerirdische
 Name[es]=Breakout alienígena
 Name[nn]=Romvesen
 Name[pt]=Breakout Extra-Terrestre
 Name[pt_BR]=Breakout alienígena
+Name[ru]=Чужой Breakout
 Name[sr]=Туђински пробој
 Name[sr@latin]=Tuđinski proboj
 Name[sv]=Utomjordisk utbrytning
@@ -11,10 +13,12 @@ Name[uk]=Чужинський Breakout
 Name[x-test]=xxAlien Breakoutxx
 Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
+Description[de]=Breakout vor den Außerirdischen.
 Description[es]=Breakout antes de la fiesta de los alienígenas.
 Description[nn]=Romvesena kjem!
 Description[pt]=Destrua o nível antes dos extra-terrestres.
 Description[pt_BR]=Quebre as barreiras antes que os alienígenas o façam.
+Description[ru]=Тема, созданная «чужими»
 Description[sr]=Пробијте се пре туђинаца.
 Description[sr@latin]=Probijte se pre tuđinaca.
 Description[sv]=Bryt dig ut innan utomjordingarna gör det.
