@@ -37,6 +37,9 @@ int main (int argc, char *argv[])
     aboutData.addAuthor(ki18n("Eugene Trounev"), 
                         ki18n("artwork"),
                         "eugene.trounev@gmail.com");
+    aboutData.addAuthor(ki18n("Sean Wilson"),
+                        ki18n("artwork"),
+                        "suseux@gmail.com");
     aboutData.addCredit(ki18n("Lorenzo Bonomi"),
                         ki18n("testing"),
                         "lorenzo.bonomi@hotmail.it");
