@@ -21,7 +21,6 @@
 #include "globals.h"
 #include "settings.h"
 
-#include <QMouseEvent>
 #include <QKeyEvent>
 #include <QCursor>
 

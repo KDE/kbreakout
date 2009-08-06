@@ -23,18 +23,14 @@
 #include "ui_generalsettings.h"
 #include "settings.h"
 
-#include <QAction>
 #include <QGraphicsScene>
 #include <QPointer>
-#include <QSvgRenderer>
-#include <QCursor>
 
 #include <KIcon>
 #include <KAction>
 #include <KStandardAction>
 #include <KActionCollection>
 #include <KLocale>
-#include <KStandardDirs>
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>

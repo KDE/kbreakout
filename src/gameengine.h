@@ -19,11 +19,8 @@
 #define GAMEENGINE_H
 
 #include <QObject>
-#include <QRect>
 #include <QList>
-#include <QSet>
 #include <QTimer>
-#include <QRegion>
 
 #include "canvasitems.h"
 #include "textitems.h"

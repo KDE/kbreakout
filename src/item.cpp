@@ -20,7 +20,6 @@
 
 // needed for floor
 #include <cmath>
-#include <QSvgRenderer>
 #include <KDebug>
 
 // static

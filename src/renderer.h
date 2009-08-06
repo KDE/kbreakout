@@ -20,7 +20,6 @@
 #define RENDERER_H
 
 #include <QPixmap>
-#include <QMap>
 
 class KSvgRenderer;
 class KPixmapCache;
