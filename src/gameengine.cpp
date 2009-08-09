@@ -114,12 +114,12 @@ void GameEngine::resume()
     emit gameResumed(barPosition);
 }
 
-void GameEngine::togglePause()
+void GameEngine::setGamePaused(bool paused)
 {
-    if (gameIsPaused()) {
-        resume();
-    } else {
+    if (paused) {
         pause();
+    } else {
+        resume();
     }
 }
 
@@ -153,6 +153,7 @@ void GameEngine::moveBarRight()
 void GameEngine::fire()
 {
     if (gameIsPaused()) {
+        kDebug() << "trying to fire while game is paused!!!";
         resume();
         return;
     }

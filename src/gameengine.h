@@ -42,6 +42,7 @@ public:
     
     // TODO: rename to isPaused
     bool gameIsPaused() const;
+    void setGamePaused(bool paused);
 
 public slots:
     // handles the timer timeout signals
@@ -49,7 +50,6 @@ public slots:
     void start(const QString &levelset);
     void pause();
     void resume();
-    void togglePause();
     void moveBar(int newXPosition);
     void moveBarLeft();
     void moveBarRight();

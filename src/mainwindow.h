@@ -21,8 +21,8 @@
 #include <KXmlGuiWindow>
 
 class GameEngine;
-//class Scene; 
 class CanvasWidget;
+class KToggleAction;
 
 class MainWindow : public KXmlGuiWindow
 {
@@ -37,9 +37,12 @@ private slots:
     void showHighscores();
     void loadSettings();
     void startNewGame();
+    void setGamePaused(bool paused);
     
 private:
     void setupActions();
+
+    KToggleAction *pauseAction;
     
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;

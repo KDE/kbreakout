@@ -29,6 +29,7 @@
 #include <KIcon>
 #include <KAction>
 #include <KStandardAction>
+#include <KToggleAction>
 #include <KActionCollection>
 #include <KLocale>
 #include <KMessageBox>
@@ -123,17 +124,14 @@ void MainWindow::setupActions()
     connect(fireAction, SIGNAL(triggered()), gameEngine, SLOT(fire()));
     actionCollection()->addAction("fire", fireAction);
 
-    // TODO: use KStandardAction pauseGame
-    KAction *pauseAction = new KAction(this);
-    pauseAction->setText(i18n("Pause"));
-    pauseAction->setIcon(KIcon("media-playback-pause"));
+    pauseAction = KStandardGameAction::pause(this,
+              SLOT(setGamePaused(bool)), actionCollection());
+    // set custom keys
     QList<QKeySequence> keys;
     keys.append(Qt::Key_P);
     keys.append(Qt::Key_Escape);
-    keys.append(Qt::Key_Pause); // doesn't work (no more than 2 keys..)
+    keys.append(Qt::Key_Pause); // doesn't work (no more than 2 keys allowed..)
     pauseAction->setShortcut(KShortcut(keys));
-    connect(pauseAction, SIGNAL(triggered()), gameEngine, SLOT(togglePause()));
-    actionCollection()->addAction("pause", pauseAction);
 }
 
 void MainWindow::configureSettings()
@@ -196,6 +194,10 @@ void MainWindow::startNewGame()
     }
 }
 
+void MainWindow::setGamePaused(bool paused) {
+    gameEngine->setGamePaused(paused);
+}
+
 void MainWindow::handleEndedGame(int score, int level, int time)
 {
     
@@ -230,11 +232,18 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if (Settings::fireOnClick() || gameEngine->gameIsPaused()) {
+    if (gameEngine->gameIsPaused()) {
+        pauseAction->activate(QAction::Trigger);
+        KXmlGuiWindow::mousePressEvent(event);
+        return;
+    }
+
+    if (Settings::fireOnClick()) {
         gameEngine->fire();
         KXmlGuiWindow::mousePressEvent(event);
         return;
     }
+
     // not fire on click
     
     // check if dontAskFireOnClick is set
