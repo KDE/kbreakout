@@ -38,6 +38,7 @@
 #include <KStandardGameAction>
 #include <KConfig>
 
+
 class GeneralSettings : public QWidget
 {
 public:
@@ -115,20 +116,24 @@ void MainWindow::setupActions()
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
     
-    KAction *fireAction = actionCollection()->addAction("fire");
-    fireAction->setText(i18n("Fire Ball"));
+    KAction *fireAction = new KAction(this);
+    fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
+    fireAction->setIcon(KIcon("kbreakout"));
     connect(fireAction, SIGNAL(triggered()), gameEngine, SLOT(fire()));
-    
-    KAction *pauseAction = actionCollection()->addAction("pause");
+    actionCollection()->addAction("fire", fireAction);
+
+    // TODO: use KStandardAction pauseGame
+    KAction *pauseAction = new KAction(this);
     pauseAction->setText(i18n("Pause"));
     pauseAction->setIcon(KIcon("media-playback-pause"));
     QList<QKeySequence> keys;
     keys.append(Qt::Key_P);
     keys.append(Qt::Key_Escape);
-    keys.append(Qt::Key_Pause);
+    keys.append(Qt::Key_Pause); // doesn't work (no more than 2 keys..)
     pauseAction->setShortcut(KShortcut(keys));
     connect(pauseAction, SIGNAL(triggered()), gameEngine, SLOT(togglePause()));
+    actionCollection()->addAction("pause", pauseAction);
 }
 
 void MainWindow::configureSettings()
