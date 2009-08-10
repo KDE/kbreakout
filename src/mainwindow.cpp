@@ -26,10 +26,14 @@
 #include <QGraphicsScene>
 #include <QPointer>
 
+#include <KMenuBar>
+#include <KToolBar>
+#include <KStatusBar>
 #include <KIcon>
 #include <KAction>
 #include <KStandardAction>
 #include <KToggleAction>
+#include <KToggleFullScreenAction>
 #include <KActionCollection>
 #include <KLocale>
 #include <KMessageBox>
@@ -92,7 +96,11 @@ MainWindow::MainWindow(QWidget *parent)
     setupGUI(defaultSize, 
         KXmlGuiWindow::Keys | KXmlGuiWindow::Save| KXmlGuiWindow::Create);
     
-    // show here else (instead of in main) else the mouse can't be grabbed
+    // shouldn't be needed, but for some reason it's all shown by default..
+    toolBar()->hide();
+    statusBar()->hide();
+
+    // show here (instead of in main) else the mouse can't be grabbed
     show(); 
     gameEngine->start("default");
     //canvasWidget->handleGameResumed();
@@ -116,7 +124,10 @@ void MainWindow::setupActions()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
-    
+
+    KStandardAction::fullScreen(this, SLOT(viewFullScreen(bool)), this,
+                                actionCollection());
+
     KAction *fireAction = new KAction(this);
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
@@ -230,6 +241,16 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     }
 }
 
+void MainWindow::viewFullScreen(bool fullScreen)
+{
+    KToggleFullScreenAction::setFullScreen(this, fullScreen);
+    if (fullScreen) {
+        menuBar()->hide();
+    } else {
+        menuBar()->show();
+    }
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if (gameEngine->gameIsPaused()) {
@@ -282,4 +303,3 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     KXmlGuiWindow::mousePressEvent(event);
 }
 
-#include "mainwindow.moc"
