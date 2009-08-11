@@ -95,10 +95,6 @@ MainWindow::MainWindow(QWidget *parent)
     QSize defaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setupGUI(defaultSize, 
         KXmlGuiWindow::Keys | KXmlGuiWindow::Save| KXmlGuiWindow::Create);
-    
-    // shouldn't be needed, but for some reason it's all shown by default..
-    toolBar()->hide();
-    statusBar()->hide();
 
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
