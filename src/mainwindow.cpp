@@ -35,6 +35,7 @@
 #include <KToggleAction>
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
+#include <KShortcut>
 #include <KLocale>
 #include <KMessageBox>
 #include <KConfigDialog>
@@ -121,8 +122,14 @@ void MainWindow::setupActions()
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
 
-    KStandardAction::fullScreen(this, SLOT(viewFullScreen(bool)), this,
-                                actionCollection());
+    KAction *fullScreenAction = KStandardAction::fullScreen(this,
+                          SLOT(viewFullScreen(bool)), this, actionCollection());
+    // set the default primary shortcut as alternate shortcut
+    // and make F the default
+    QKeySequence defaultShortcut = fullScreenAction->shortcut().primary();
+    QKeySequence newPrimary(i18nc("Key (shortcut) to toggle full screen", "F"));
+    KShortcut fullScreenShortcut(newPrimary, defaultShortcut);
+    fullScreenAction->setShortcut(fullScreenShortcut);
 
     KAction *fireAction = new KAction(this);
     fireAction->setText(i18n("Fire the ball"));
@@ -135,9 +142,11 @@ void MainWindow::setupActions()
               SLOT(setGamePaused(bool)), actionCollection());
     // set custom keys
     QList<QKeySequence> keys;
-    keys.append(Qt::Key_P);
+    keys.append(i18nc("Key (shortcut) to pause the game", "P"));
     keys.append(Qt::Key_Escape);
-    keys.append(Qt::Key_Pause); // doesn't work (no more than 2 keys allowed..)
+    // the following won't work (no more than 2 shortcuts allowed..)
+    // TODO: make the pause key work
+    //keys.append(Qt::Key_Pause);
     pauseAction->setShortcut(KShortcut(keys));
 }
 
