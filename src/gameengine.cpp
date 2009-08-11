@@ -181,14 +181,16 @@ void GameEngine::fire()
 
 void GameEngine::cheatSkipLevel() 
 {
-    if (m_cheatsEnabled)
+    if (m_cheatsEnabled) {
         loadNextLevel();
+    }
 }
 
 void GameEngine::cheatAddLife() 
 {
-    if (m_cheatsEnabled)
+    if (m_cheatsEnabled) {
         m_lives.append(new Life);
+    }
 }
 
 // TODO: external level loader???
@@ -416,7 +418,18 @@ void GameEngine::repaintMovingObjects()
         }
 
         // increase the speed a little
-        changeSpeed(AUTO_SPEED_INCREASE);
+        // if there is at least one ball moving
+        // and the game isn't paused
+        bool ballMoving = false;
+        foreach (Ball *ball, m_balls) {
+            if (!ball->toBeFired) {
+                ballMoving = true;
+                break;
+            }
+        }
+        if (ballMoving && !gameIsPaused()) {
+            changeSpeed(AUTO_SPEED_INCREASE);
+        }
     }
     
     // move attached balls if needed
@@ -656,5 +669,3 @@ inline void GameEngine::deleteAllObjects()
     while (!m_bricks.isEmpty()) delete m_bricks.takeFirst();
     while (!m_gifts.isEmpty()) delete m_gifts.takeFirst();
 }
-
-#include "gameengine.moc"
