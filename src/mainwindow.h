@@ -37,6 +37,7 @@ private slots:
     void showHighscores();
     void loadSettings();
     void startNewGame();
+    void fire();
     void setGamePaused(bool paused);
     void viewFullScreen(bool fullScreen);
     

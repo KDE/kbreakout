@@ -44,6 +44,8 @@ public:
     bool gameIsPaused() const;
     void setGamePaused(bool paused);
 
+    static const Bar &bar();
+
 public slots:
     // handles the timer timeout signals
     void timerTimeout();
@@ -62,7 +64,7 @@ public slots:
 
 signals:
     void gamePaused();
-    void gameResumed(int barPosition);
+    void gameResumed();
     void gameEnded(int score, int level, int time);
 
 private:
@@ -125,7 +127,9 @@ private:
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
     Bar m_bar;
-    
+    // XXX
+    static Bar *m_bar_ptr;
+
     // is set to true when deleteMovingObjects() is called
     bool m_itemsGotDeleted;
 

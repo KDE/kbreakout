@@ -36,6 +36,10 @@
 #include <KConfigGroup>
 #include <KDebug>
 
+// static
+Bar *GameEngine::m_bar_ptr = 0;
+
+
 GameEngine::GameEngine(MainWindow *mainWindow)
     : m_mainWindow(mainWindow), randomCounter(0)
 {
@@ -46,6 +50,8 @@ GameEngine::GameEngine(MainWindow *mainWindow)
     connect(&m_elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
 
     m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
+
+    m_bar_ptr = &m_bar;
 }
 
 GameEngine::~GameEngine()
@@ -82,6 +88,11 @@ bool GameEngine::gameIsPaused() const
     return !m_elapsedTimeTimer.isActive();
 }
 
+const Bar &GameEngine::bar()
+{
+    return *m_bar_ptr;
+}
+
 void GameEngine::pause()
 {
     if (gameIsPaused()) return;
@@ -109,9 +120,8 @@ void GameEngine::resume()
         }
     }
     
-    int barPosition = m_bar.position().x() + m_bar.getRect().width()/2;
     hideMessage();
-    emit gameResumed(barPosition);
+    emit gameResumed();
 }
 
 void GameEngine::setGamePaused(bool paused)
@@ -142,12 +152,12 @@ void GameEngine::moveBar(int newPos)
 
 void GameEngine::moveBarLeft()
 {
-    moveBar(m_bar.getRect().left() + m_bar.getRect().width()/2 - BAR_MOVEMENT);
+    moveBar(m_bar.center() - BAR_MOVEMENT);
 }
 
 void GameEngine::moveBarRight()
 {
-    moveBar(m_bar.getRect().left() + m_bar.getRect().width()/2 + BAR_MOVEMENT);
+    moveBar(m_bar.center() + BAR_MOVEMENT);
 }
 
 void GameEngine::fire()
@@ -164,7 +174,7 @@ void GameEngine::fire()
         ball->toBeFired = false;
         
         qreal ballCenter= ball->getRect().left() + (ball->getRect().width())/2;
-        qreal barCenter = m_bar.getRect().left() + (m_bar.getRect().width())/2;
+        qreal barCenter = m_bar.center();
         qreal angle = M_PI / 3;
         angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
         angle += M_PI_2;
@@ -292,7 +302,7 @@ void GameEngine::loadLevel()
     }
     
     m_balls.append(new Ball);
-    moveBar(m_bar.getRect().x() + m_bar.getRect().width()/2);
+    moveBar(m_bar.center());
     m_bar.reset();
     updateAttachedBalls();
     
@@ -474,7 +484,7 @@ void GameEngine::detectBallCollisions(Ball *ball)
     else if (m_bar.getRect().intersects(rect) && ball->directionY > 0) {
         
         qreal ballCenter = ball->getRect().left() + (ball->getRect().width())/2;
-        qreal barCenter  = m_bar.getRect().left() + (m_bar.getRect().width())/2;
+        qreal barCenter  = m_bar.center();
         
         if (ballCenter > m_bar.getRect().left() &&
                 ballCenter < m_bar.getRect().right()) {

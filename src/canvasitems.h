@@ -31,6 +31,8 @@ public:
     // used by GiftEnlargeBar and GiftShrinkBar
     void enlarge();
     void shrink();
+
+    int center() const;
 };
 
 class Life : public Item

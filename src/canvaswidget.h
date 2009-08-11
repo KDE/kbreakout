@@ -41,14 +41,13 @@ signals:
     void pausePressed();
     void escPressed();
     void focusLost();
-    // cheating keys, debugging and testing only TODO: REMOVE
+    // cheating keys, debugging and testing only
     void cheatSkipLevel();
     void cheatAddLife();
 
 public slots:
     void handleGamePaused();
-    // -1 means ignore position
-    void handleGameResumed(int barPosition=-1);
+    void handleGameResumed();
     void handleGameEnded();
 
 private slots:
@@ -56,6 +55,9 @@ private slots:
     void updateBar();
 
 protected:
+    // move the mouse cursor to where the bar is
+    void resetMousePosition();
+
     void resizeEvent(QResizeEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
@@ -75,6 +77,9 @@ protected:
     // used to track which direction keys are pressed between key events
     bool rightPressed;
     bool leftPressed;
+
+    // > 0 if the keys are being used
+    int usingKeys;
 };
 
 #endif //CANVASWIDGET_H

@@ -17,6 +17,7 @@
 
 #include "canvaswidget.h"
 #include "item.h"
+#include "gameengine.h"
 #include "renderer.h"
 #include "globals.h"
 #include "settings.h"
@@ -29,7 +30,8 @@
 CanvasWidget::CanvasWidget(QWidget *parent) 
     : KGameCanvasWidget(parent),
       rightPressed(false),
-      leftPressed(false)
+      leftPressed(false),
+      usingKeys(0)
 {
     setFocus();
     
@@ -50,6 +52,12 @@ CanvasWidget::CanvasWidget(QWidget *parent)
 
 void CanvasWidget::moveBar()
 {
+    if (barDirection != 0) {
+        // delay to switch from keys to mouse
+        const int DELAY = 20;
+        usingKeys = DELAY;
+    }
+
     if (barDirection == 1) emit barMovedRight();
     if (barDirection == -1) emit barMovedLeft();
 }
@@ -78,24 +86,23 @@ void CanvasWidget::handleGamePaused()
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
-void CanvasWidget::handleGameResumed(int barPosition)
+void CanvasWidget::handleGameResumed()
 {
     // give feedback
-    QCursor newCursor(Qt::BlankCursor);
     pauseOverlay.hide();
     
     // move the mouse cursor to where the bar is
-    if (barPosition != -1) {
-        int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
-        QPoint p = mapToGlobal(QPoint(screenX, 0));
-        newCursor.setPos(p.x(), cursor().pos().y());
-    }
+    resetMousePosition();
+
+    QCursor newCursor(Qt::BlankCursor);
+    newCursor.setPos(cursor().pos());
 
     if (Settings::fireOnClick()) {
         grabMouse(newCursor);
     } else {
         setCursor(newCursor);
     }
+
     updateBarTimer.start();
 }
 
@@ -113,11 +120,31 @@ void CanvasWidget::resizeEvent(QResizeEvent */*event*/)
     reloadSprites();
 }
 
+void CanvasWidget::resetMousePosition()
+{
+    int barPosition = GameEngine::bar().center();
+    int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
+    QPoint p = mapToGlobal(QPoint(screenX, 0));
+    cursor().setPos(p.x(), cursor().pos().y());
+}
+
 void CanvasWidget::updateBar()
 {
     QPoint p = mapFromGlobal(cursor().pos());
     if (lastMousePosition == p) return;
     lastMousePosition = p;
+
+    // don't move the mouse if the user was using the keys to play
+    // after a while however (when usingKeys == 0) the mouse gets released
+    // this avoids accidentally moving the mouse while playing using the keys
+    if (usingKeys > 0) {
+        --usingKeys;
+        if (usingKeys == 0) {
+            resetMousePosition();
+        }
+        return;
+    }
+
     // TODO: put scaling somewhere else... (???)
     // convert the screen position to scene position
     int posX = qRound((p.x() - Item::borderLeft()) / Item::scale());
@@ -172,12 +199,13 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
         KGameCanvasWidget::keyReleaseEvent(event);
     }
 
-    if (!rightPressed && !leftPressed)
+    if (!rightPressed && !leftPressed) {
         moveBarTimer.stop();
-    else if (rightPressed && !leftPressed)
+    } else if (rightPressed && !leftPressed) {
         barDirection = 1;
-    else if (!rightPressed && leftPressed)
+    } else if (!rightPressed && leftPressed) {
         barDirection = -1;
+    }
 }
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
@@ -186,4 +214,3 @@ void CanvasWidget::focusOutEvent(QFocusEvent *event)
     KGameCanvasWidget::focusOutEvent(event);
 }
 
-#include "canvaswidget.moc"

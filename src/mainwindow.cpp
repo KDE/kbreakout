@@ -77,8 +77,8 @@ MainWindow::MainWindow(QWidget *parent)
     
     connect(gameEngine, SIGNAL(gamePaused()), 
             canvasWidget, SLOT(handleGamePaused()));
-    connect(gameEngine, SIGNAL(gameResumed(int)), 
-            canvasWidget, SLOT(handleGameResumed(int)));
+    connect(gameEngine, SIGNAL(gameResumed()),
+            canvasWidget, SLOT(handleGameResumed()));
     
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
@@ -100,7 +100,6 @@ MainWindow::MainWindow(QWidget *parent)
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
     gameEngine->start("default");
-    //canvasWidget->handleGameResumed();
 }
  
 MainWindow::~MainWindow()
@@ -135,7 +134,7 @@ void MainWindow::setupActions()
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon("kbreakout"));
-    connect(fireAction, SIGNAL(triggered()), gameEngine, SLOT(fire()));
+    connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
     actionCollection()->addAction("fire", fireAction);
 
     pauseAction = KStandardGameAction::pause(this,
@@ -210,8 +209,18 @@ void MainWindow::startNewGame()
     }
 }
 
-void MainWindow::setGamePaused(bool paused) {
+void MainWindow::setGamePaused(bool paused)
+{
     gameEngine->setGamePaused(paused);
+}
+
+void MainWindow::fire()
+{
+    if (gameEngine->gameIsPaused()) {
+        pauseAction->activate(QAction::Trigger);
+    } else {
+        gameEngine->fire();
+    }
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)
@@ -234,7 +243,8 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     
     canvasWidget->handleGameEnded();
     
-    QPointer<KScoreDialog> ksdialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
+    QPointer<KScoreDialog> ksdialog =
+            new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
     ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
     ksdialog->addScore(scoreInfo);
     ksdialog->exec();

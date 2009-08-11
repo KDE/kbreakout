@@ -129,5 +129,3 @@ void Item::repaint()
       static_cast<int>(m_scale * m_position.x()) + m_borderLeft,
       static_cast<int>(m_scale * m_position.y()) + m_borderTop);
 }
-
-#include "item.moc"

@@ -68,6 +68,11 @@ void Bar::shrink()
     moveBy(d, 0);
 }
 
+int Bar::center() const
+{
+    return getRect().left() + getRect().width()/2;
+}
+
 int Life::count = 0;
 
 Life::Life()
