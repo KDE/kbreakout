@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(canvasWidget, SIGNAL(barMovedRight()),
             gameEngine, SLOT(moveBarRight()));
     connect(canvasWidget, SIGNAL(focusLost()),
-            gameEngine, SLOT(pause()));
+            this, SLOT(pauseGame()));
     
     connect(gameEngine, SIGNAL(gamePaused()), 
             canvasWidget, SLOT(handleGamePaused()));
@@ -92,6 +92,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(canvasWidget);
     
     setupActions();
+    setFocusProxy(canvasWidget);
     
     QSize defaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setupGUI(defaultSize, 
@@ -206,6 +207,13 @@ void MainWindow::startNewGame()
         
     if (ret == KMessageBox::Yes) {
         gameEngine->start("default");
+    }
+}
+
+void MainWindow::pauseGame()
+{
+    if (!pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
     }
 }
 

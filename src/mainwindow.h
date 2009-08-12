@@ -38,6 +38,9 @@ private slots:
     void loadSettings();
     void startNewGame();
     void fire();
+    // calls the action
+    void pauseGame();
+    // called by the action
     void setGamePaused(bool paused);
     void viewFullScreen(bool fullScreen);
     
