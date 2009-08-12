@@ -79,6 +79,8 @@ MainWindow::MainWindow(QWidget *parent)
             canvasWidget, SLOT(handleGamePaused()));
     connect(gameEngine, SIGNAL(gameResumed()),
             canvasWidget, SLOT(handleGameResumed()));
+    connect(gameEngine, SIGNAL(gameResumed()),
+            this, SLOT(handleGameResumed()));
     
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
@@ -220,6 +222,11 @@ void MainWindow::pauseGame()
 void MainWindow::setGamePaused(bool paused)
 {
     gameEngine->setGamePaused(paused);
+}
+
+void MainWindow::handleGameResumed()
+{
+    pauseAction->setChecked(false);
 }
 
 void MainWindow::fire()

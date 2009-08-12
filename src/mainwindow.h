@@ -42,6 +42,8 @@ private slots:
     void pauseGame();
     // called by the action
     void setGamePaused(bool paused);
+    // assures the action not checked anymore
+    void handleGameResumed();
     void viewFullScreen(bool fullScreen);
     
 private:
