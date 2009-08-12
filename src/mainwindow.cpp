@@ -319,7 +319,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if (res == KMessageBox::Yes) {
             Settings::setFireOnClick(true); 
             Settings::self()->writeConfig();
-            canvasWidget->handleGameResumed();
         }
     }
     
