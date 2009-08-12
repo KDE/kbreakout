@@ -43,7 +43,7 @@ void TextItem::loadSprite()
     QPixmap pixmap = Renderer::self()->renderedSvgElement(elementId, size);
     
     QPainter p(&pixmap);
-    int fontSize = fontUtils::fontSize(p, m_text, qRound(w*0.9), h,
+    int fontSize = fontUtils::fontSize(p, m_text, qRound(w*0.8), h,
                                    fontUtils::DoNotAllowWordWrap);
     
     p.setPen(QColor(255, 255, 255, 220));
@@ -115,4 +115,6 @@ InfoMessage::InfoMessage()
     // at tree fourths of the height
     int y = (BRICK_HEIGHT * HEIGHT - height) / 4 * 3;
     moveTo(x, y);
+
+    hide();
 }

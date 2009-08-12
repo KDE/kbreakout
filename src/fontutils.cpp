@@ -26,7 +26,7 @@ int fontUtils::fontSize(QPainter &p, const QString &str,
     QRect rect;
     bool done = false;
 
-    size = 28;
+    size = 72;
 
     while (!done && size > 1) {
         QFont f = p.font();
