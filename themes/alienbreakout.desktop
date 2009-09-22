@@ -2,6 +2,7 @@
 Name=Alien Breakout
 Name[de]=Außerirdische
 Name[es]=Breakout alienígena
+Name[gl]=Fuga alieníxena
 Name[nds]=Buteneerdschenutbrook
 Name[nn]=Romvesen
 Name[pt]=Breakout Extra-Terrestre
@@ -17,6 +18,7 @@ Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
 Description[de]=Breakout vor den Außerirdischen.
 Description[es]=Breakout antes de la fiesta de los alienígenas.
+Description[gl]=Fúgate antes de que o fagan os alieníxenas.
 Description[nds]=Utbreken, ehr de Buteneerdschen dat doot.
 Description[nn]=Romvesena kjem!
 Description[pt]=Destrua o nível antes dos extra-terrestres.
