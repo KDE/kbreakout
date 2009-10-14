@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Alien Breakout
 Name[de]=Außerirdische
+Name[en_GB]=Alien Breakout
 Name[es]=Breakout alienígena
 Name[et]=Tulnukate läbimurdmine
 Name[gl]=Fuga alieníxena
@@ -18,6 +19,7 @@ Name[x-test]=xxAlien Breakoutxx
 Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
 Description[de]=Breakout vor den Außerirdischen.
+Description[en_GB]=Breakout before the aliens do.
 Description[es]=Breakout antes de la fiesta de los alienígenas.
 Description[et]=Läbimurdmine enne tulnukaid.
 Description[gl]=Fúgate antes de que o fagan os alieníxenas.
