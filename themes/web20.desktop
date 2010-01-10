@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=WEB 2.0
 Name[ca]=WEB 2.0
+Name[ca@valencia]=WEB 2.0
 Name[cs]=WEB 2.0
 Name[da]=WEB 2.0
 Name[de]=Web 2.0
@@ -42,6 +43,7 @@ Name[zh_CN]=WEB 2.0
 Name[zh_TW]=WEB 2.0
 Description=Web 2.0 theme showcases graphical elements reminiscent of those used in popular 'WEB 2.0' movement, currently taking the interweb by storm.
 Description[ca]=El tema Web 2.0 presenta els elements gràfics que recorden als utilitzats en el popular moviment 'WEB 2.0', actualment adoptat per l'interweb d'storm.
+Description[ca@valencia]=El tema Web 2.0 presenta els elements gràfics que recorden als utilitzats en el popular moviment 'WEB 2.0', actualment adoptat per l'interweb d'storm.
 Description[da]=Web 2.0-tema fremviser grafiske elementer der minder af de der brugtes i den populære "WEB 2.0"-bevægelse og for tiden tager interweb'et med storm.
 Description[de]=Das Design „Web 2.0“ zeigt grafische Elemente, die an die derzeit das Internet überstürmende „Web 2.0“-Bewegung erinnert.
 Description[el]=Το θέμα Web 2.0 εκθέτει γραφικά στοιχεία που θυμίζουν τη δημοφιλή κίνηση 'WEB 2.0', η οποία καταλαμβάνει το διαδίκτυο με καταιγιστικούς ρυθμούς.
