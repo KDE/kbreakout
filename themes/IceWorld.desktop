@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=IceWorld
 Name[ca]=Món de gel
+Name[ca@valencia]=Món de gel
 Name[cs]=Ledový svět
 Name[da]=IceWorld
 Name[de]=Eiswelt
@@ -39,6 +40,7 @@ Name[zh_CN]=冰世界
 Name[zh_TW]=冰世界
 Description=Ice chilled theme
 Description[ca]=Tema congelat
+Description[ca@valencia]=Tema congelat
 Description[cs]=Ledově chladný motiv
 Description[da]=Isnende koldt tema
 Description[de]=Ein eisiges Design.
