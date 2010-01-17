@@ -2,6 +2,7 @@
 Name=Alien Breakout
 Name[ca]=Breakout alien
 Name[ca@valencia]=Breakout alien
+Name[da]=Rumvæsen-breakout
 Name[de]=Außerirdische
 Name[en_GB]=Alien Breakout
 Name[es]=Breakout alienígena
@@ -26,6 +27,7 @@ Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
 Description[ca]=El Breakout abans que el fessin en aliens.
 Description[ca@valencia]=El Breakout abans que el fessin en aliens.
+Description[da]=Bryd ud før rumvæsenerne gør det.
 Description[de]=Breakout vor den Außerirdischen.
 Description[en_GB]=Breakout before the aliens do.
 Description[es]=Escapa antes de que lo hagan los alienígenas.
