@@ -66,6 +66,7 @@ signals:
     void gamePaused();
     void gameResumed();
     void gameEnded(int score, int level, int time);
+    void resetMousePosition();
 
 private:
     void detectBallCollisions(Ball *ball);

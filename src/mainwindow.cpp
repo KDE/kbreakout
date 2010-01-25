@@ -81,7 +81,8 @@ MainWindow::MainWindow(QWidget *parent)
             canvasWidget, SLOT(handleGameResumed()));
     connect(gameEngine, SIGNAL(gameResumed()),
             this, SLOT(handleGameResumed()));
-    
+    connect(gameEngine, SIGNAL(resetMousePosition()),
+            canvasWidget, SLOT(handleResetMousePosition()));
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
     

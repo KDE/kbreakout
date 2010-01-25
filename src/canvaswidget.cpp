@@ -92,7 +92,7 @@ void CanvasWidget::handleGameResumed()
     pauseOverlay.hide();
     
     // move the mouse cursor to where the bar is
-    resetMousePosition();
+    handleResetMousePosition();
 
     QCursor newCursor(Qt::BlankCursor);
     newCursor.setPos(cursor().pos());
@@ -120,7 +120,7 @@ void CanvasWidget::resizeEvent(QResizeEvent */*event*/)
     reloadSprites();
 }
 
-void CanvasWidget::resetMousePosition()
+void CanvasWidget::handleResetMousePosition()
 {
     int barPosition = GameEngine::bar().center();
     int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
@@ -140,7 +140,7 @@ void CanvasWidget::updateBar()
     if (usingKeys > 0) {
         --usingKeys;
         if (usingKeys == 0) {
-            resetMousePosition();
+            handleResetMousePosition();
         }
         return;
     }

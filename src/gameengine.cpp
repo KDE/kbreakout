@@ -144,8 +144,14 @@ void GameEngine::moveBar(int newPos)
     int y = m_bar.getRect().y();
     int x = newPos - w/2;
     
-    if (x < 0) x = 0;
-    else if (x > width - w) x = width - w;
+    if (x < 0) {
+        x = 0;
+        emit resetMousePosition();
+    }
+    else if (x > width - w) {
+        x = width - w;
+        emit resetMousePosition();
+    }
     
     m_bar.moveTo(x, y);
 }
