@@ -49,15 +49,13 @@ public slots:
     void handleGamePaused();
     void handleGameResumed();
     void handleGameEnded();
+    void handleResetMousePosition();
 
 private slots:
     void moveBar();
     void updateBar();
 
 protected:
-    // move the mouse cursor to where the bar is
-    void resetMousePosition();
-
     void resizeEvent(QResizeEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
