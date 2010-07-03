@@ -63,9 +63,8 @@ void GameEngine::start(const QString& l)
 {
     levelSet = l;
     
-    while(!m_lives.isEmpty()) {
-        delete m_lives.takeFirst();
-    }
+    qDeleteAll(m_lives);
+    m_lives.clear();
     for (int i = 0; i < INITIAL_LIVES; ++i){
         m_lives.append(new Life);
     }
@@ -666,7 +665,8 @@ inline void GameEngine::deleteMovingObjects()
 {
     kDebug() << "Deleting objects...\n";
     m_itemsGotDeleted = true;
-    while (!m_balls.isEmpty()) delete m_balls.takeFirst();
+    qDeleteAll(m_balls);
+    m_balls.clear();
     
     QMutableListIterator<Gift *> i(m_gifts);
     while (i.hasNext()) {
@@ -682,6 +682,8 @@ inline void GameEngine::deleteAllObjects()
 {
     kDebug() << "all object deleted";
     deleteMovingObjects();
-    while (!m_bricks.isEmpty()) delete m_bricks.takeFirst();
-    while (!m_gifts.isEmpty()) delete m_gifts.takeFirst();
+    qDeleteAll(m_bricks);
+    m_bricks.clear();
+    qDeleteAll(m_gifts);
+    m_gifts.clear();
 }
