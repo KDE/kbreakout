@@ -21,7 +21,7 @@
 
 #include <QPainter>
 
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <KGameTheme>
 #include <kpixmapcache.h>
 
@@ -33,7 +33,7 @@ Renderer* Renderer::self()
 
 Renderer::Renderer()
 {
-    m_renderer = new KSvgRenderer();
+    m_renderer = new QSvgRenderer();
     m_cache = new KPixmapCache("kbreakout");
     m_cache->setCacheLimit(3*1024); // TODO: put somewhere else!!!!!!!! (also in KNetWalk!!)
 

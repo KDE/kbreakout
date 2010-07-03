@@ -21,7 +21,7 @@
 
 #include <QPixmap>
 
-class KSvgRenderer;
+class QSvgRenderer;
 class KPixmapCache;
 /**
  * This class is responsible for rendering all the game graphics.
@@ -43,7 +43,7 @@ private:
     Renderer& operator=(const Renderer&);
     ~Renderer();
 
-    KSvgRenderer *m_renderer;
+    QSvgRenderer *m_renderer;
     KPixmapCache *m_cache;
     QString m_currentTheme;
 };
