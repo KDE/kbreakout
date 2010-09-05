@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -52,7 +53,7 @@ private slots:
 
 private:
     void handleDeletion();
-    void setTypeFromChar(char type);
+    static QString getTypeFromChar(char type);
 
     GameEngine *m_game;
     Gift *m_gift;

@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +17,6 @@
 */
 
 #include "item.h"
-#include "renderer.h"
 
 // needed for floor
 #include <cmath>
@@ -24,6 +24,7 @@
 
 // static
 KGameCanvasWidget *Item::canvas = 0;
+KGameRenderer *Item::renderer = 0;
 qreal Item::m_scale = 1.0;
 int Item::m_borderLeft = 0;
 int Item::m_borderTop = 0;
@@ -33,18 +34,27 @@ void Item::setCanvas(KGameCanvasWidget *c)
 {
     canvas = c;
 }
+void Item::setRenderer(KGameRenderer *r)
+{
+    renderer = r;
+}
 
-Item::Item()
-    :KGameCanvasPixmap(canvas), width(0), height(0)
+Item::Item(const QString &spriteKey, int w, int h)
+    :KGameCanvasRenderedPixmap(renderer, spriteKey, canvas), width(w), height(h)
 {
     if (canvas == 0) {
         kError() << "Item::Item(): a scene must be set "
                     "before calling the constructor!!" << endl;
         return;
     }
+    if (renderer == 0) {
+        kError() << "Item::Item(): a renderer must be set "
+                    "before calling the constructor!!" << endl;
+        return;
+    }
     
     connect(canvas, SIGNAL(spritesReloaded()), SLOT(loadSprite()));
-    
+    loadSprite();
     show();
 }
 
@@ -74,8 +84,7 @@ void Item::loadSprite()
     //TODO: should not be needed, or at least I should have a closer look at it
     if (qRound(m_scale*width) == 0 || qRound(m_scale*height) == 0) return;
     
-    QSize size(qRound(m_scale*width), qRound(m_scale*height));
-    setPixmap(Renderer::self()->renderedSvgElement(elementId, size));
+    setRenderSize(QSize(qRound(m_scale*width), qRound(m_scale*height)));
     
     repaint(); //TODO: needed??????
 }
@@ -89,8 +98,7 @@ Item::~Item()
 
 void Item::setType(const QString &type)
 {
-    elementId = type;
-    loadSprite();
+    setSpriteKey(type);
 }
 
 void Item::setRect(const QRectF &/*newRect*/)

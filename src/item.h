@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,19 +23,21 @@
 
 #include "globals.h"
 
+class KGameRenderer;
 
 // all items (balls, bricks, ...) inerit from this class
 // initially svg and the abstract canvas are set to 0, before calling the 
 // constructor setSvgRenderer() and setCanvasAbstract() should be called!!!
 // TODO: should be and abstract class???
-class Item : public QObject, private KGameCanvasPixmap
+class Item : public QObject, protected KGameCanvasRenderedPixmap
 {
     Q_OBJECT
 public:
-    Item();
+    Item(const QString &spriteKey, int width, int height);
     ~Item();
     
     static void setCanvas(KGameCanvasWidget *);
+    static void setRenderer(KGameRenderer *);
 
     static qreal scale() {return m_scale;}
     static int borderLeft() {return m_borderLeft;}
@@ -51,7 +54,7 @@ public:
     //void setPixmap(const QPixmap &p) {KGameCanvasPixmap::setPixmap(p);}
     
     void setType(const QString &type);
-    QString type() const {return elementId;}
+    QString type() const {return spriteKey();}
     
     void setRect(const QRectF &newBoundingRect);
     
@@ -63,7 +66,7 @@ public:
     //void moveTo(int x, int y);
     void moveTo(const QPointF &point);
     void moveBy(qreal dx, qreal dy);
-    void repaint();
+    virtual void repaint();
 
 public slots:
     // load or reloads the sprite
@@ -74,6 +77,7 @@ protected:
     
     // canvas container of all Items
     static KGameCanvasWidget *canvas;
+    static KGameRenderer *renderer;
     
     // TODO: rename to m_scaleRatio
     static qreal m_scale;
@@ -83,7 +87,6 @@ protected:
     int width;
     int height;
     QPointF m_position;
-    QString elementId;
 };
 
 #endif //ITEM_H

@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,7 +27,7 @@ class CanvasWidget : public KGameCanvasWidget
 {
     Q_OBJECT
 public:
-    CanvasWidget(QWidget *parent=0);
+    CanvasWidget(KGameRenderer *renderer, QWidget *parent=0);
 
     // reloads the sprites
     void reloadSprites();
@@ -66,7 +67,7 @@ protected:
     QTimer updateBarTimer; // when using the mouse
     QPoint lastMousePosition;
     
-    KGameCanvasPixmap background;
+    KGameCanvasRenderedPixmap background;
     KGameCanvasPixmap pauseOverlay;
     
     // used when moving the bar with the keys

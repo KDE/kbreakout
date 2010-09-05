@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,15 +24,10 @@
 #include <KDebug>
 
 Ball::Ball()
+    : Item("PlainBall", BALL_SIZE, BALL_SIZE)
 {   
-    width = BALL_SIZE;
-    height = BALL_SIZE;
-    elementId = "PlainBall";
-    
     toBeFired = true;
     barPosition = 0.6;
-    
-    loadSprite();
 }
 
 void Ball::collideWithBricks(const QList<Brick *> &bricks)

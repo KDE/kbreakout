@@ -1,5 +1,6 @@
 /*
     Copyright 2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,14 +24,18 @@
 class TextItem : public Item
 {
 public:
-    TextItem();
+    TextItem(int width, int height);
     
     void setText(const QString &text);
+    void repaint();
     
+    void show();
+    void hide();
 protected:
     virtual void loadSprite();
     
     QString m_text;
+    KGameCanvasPixmap m_textPixmap;
 };
 
 class Score : public TextItem

@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,16 +26,19 @@
 #include <KDebug>
 
 Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
-    : m_game(gameEngine),
+    : Item(getTypeFromChar(typeChar), BRICK_WIDTH, BRICK_HEIGHT),
+      m_game(gameEngine),
       m_deleted(false)
 {
     m_gift = 0;
-    width = BRICK_WIDTH;
-    height = BRICK_HEIGHT;
     
-    ++m_game->m_remainingBricks;
+    if(typeChar != 'u' && typeChar != 'h') // unbreakable or hidden
+        ++m_game->m_remainingBricks;
     moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
-    setTypeFromChar(typeChar);
+    repaint();
+    
+    if(typeChar == 'h') // hidden
+      hide();
 }
 
 Brick::~Brick()
@@ -148,30 +152,23 @@ void Brick::hide()
     Item::hide();
 }
 
-void Brick::setTypeFromChar(char type) 
+QString Brick::getTypeFromChar(char type) 
 {
     switch (type) {
-    case '1': setType("PlainBrick1"); break;
-    case '2': setType("PlainBrick2"); break;
-    case '3': setType("PlainBrick3"); break;
-    case '4': setType("PlainBrick4"); break;
-    case '5': setType("PlainBrick5"); break;
-    case '6': setType("PlainBrick6"); break;
-    case 'm': setType("MultipleBrick3"); break;
-    case 'x': setType("ExplodingBrick"); break;
-    case 'u': 
-        setType("UnbreakableBrick");
-        --m_game->m_remainingBricks;
-        break;
-    case 'h': 
-        setType("HiddenBrick");
-        hide();
-        --m_game->m_remainingBricks;
-        break;
+    case '1': return "PlainBrick1";
+    case '2': return "PlainBrick2";
+    case '3': return "PlainBrick3";
+    case '4': return "PlainBrick4";
+    case '5': return "PlainBrick5";
+    case '6': return "PlainBrick6";
+    case 'm': return "MultipleBrick3";
+    case 'x': return "ExplodingBrick";
+    case 'u': return "UnbreakableBrick";
+    case 'h': return "HiddenBrick";
     default:
         kError() << "Invalid File: unknown character '" 
                     << type << "'\n";
-        setType("PlainBrick1");
+        return "PlainBrick1";
     }
 }
 

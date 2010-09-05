@@ -41,6 +41,9 @@ int main (int argc, char *argv[])
     aboutData.addCredit(ki18n("Lorenzo Bonomi"),
                         ki18n("testing"),
                         "lorenzo.bonomi@hotmail.it");
+    aboutData.addCredit(ki18n("Brian Croom"),
+                        ki18n("port to KGameRenderer"),
+                        "brian.s.croom@gmail.com");
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;

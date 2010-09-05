@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,6 +20,7 @@
 #define MAINWINDOW_H
 
 #include <KXmlGuiWindow>
+#include <KGameRenderer>
 
 class GameEngine;
 class CanvasWidget;
@@ -51,6 +53,7 @@ private:
 
     KToggleAction *pauseAction;
     
+    KGameRenderer renderer;
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     

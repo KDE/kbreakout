@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,14 +20,9 @@
 #include "globals.h"
 
 Bar::Bar()
+    : Item("PlainBar", DEFAULT_BAR_WIDTH, BRICK_HEIGHT)
 {
-    width = DEFAULT_BAR_WIDTH;
-    height = BRICK_HEIGHT;
-    elementId = "PlainBar";
-    
     moveTo(300, (HEIGHT-1)*BRICK_HEIGHT);
-
-    //loadSprite();
 }
 
 void Bar::reset()
@@ -76,20 +72,16 @@ int Bar::center() const
 int Life::count = 0;
 
 Life::Life()
+    : Item("PlainBar", qRound((BRICK_WIDTH)/1.3), qRound((BRICK_HEIGHT)/1.3))
 {
     ++count;
-    
-    width = qRound((BRICK_WIDTH)/1.3);
-    height = qRound((BRICK_HEIGHT)/1.3);
-    elementId = "PlainBar";
     
     int x = -5 + qRound( BRICK_WIDTH * WIDTH 
                         - (BRICK_WIDTH * count) );
     int y = qRound(-1.2 * BRICK_HEIGHT);
      
     moveTo(x, y);
-    
-    loadSprite();
+    repaint();
 }
 
 Life::~Life()
@@ -98,16 +90,8 @@ Life::~Life()
 }
 
 Background::Background()
+    : Item("BackgroundOverlay", (BRICK_WIDTH*WIDTH)+1, (BRICK_HEIGHT*HEIGHT)+1)
 {
-    int w = BRICK_WIDTH * WIDTH;
-    int h = BRICK_HEIGHT * HEIGHT;
-    //qreal border = BACKGROUND_BORDER * w;
-    // BORDER_RATIO is to make it a little bit bigger...
-    // TODO: not sure (souldn't it be 2??? but this seems to work better...)
-    width = w + 1;
-    height = h + 1;
-    elementId = "BackgroundOverlay";
     moveTo(-1, -1);
-        
-    loadSprite();
+    repaint();
 }

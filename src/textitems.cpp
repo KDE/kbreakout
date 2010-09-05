@@ -1,5 +1,6 @@
 /*
     Copyright 2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,13 +18,15 @@
 
 #include "textitems.h"
 
-#include "renderer.h"
 #include "fontutils.h"
 #include <KLocale>
+#include <KGameRenderer>
 
-TextItem::TextItem()
+TextItem::TextItem(int w, int h)
+    : Item("Display", w, h),
+      m_textPixmap(canvas)
 {
-    elementId = "Display";
+    m_textPixmap.show();
 } 
 
 void TextItem::setText(const QString &text) 
@@ -36,12 +39,13 @@ void TextItem::loadSprite()
 {
     updateScale();
     
+    setRenderSize(QSize(qRound(m_scale*width), qRound(m_scale*height)));
+    
     int w = qRound(m_scale*width);
     int h = qRound(m_scale*height);
     
-    QSize size(w, h);
-    QPixmap pixmap = Renderer::self()->renderedSvgElement(elementId, size);
-    
+    QPixmap pixmap(QSize(w, h));
+    pixmap.fill(Qt::transparent);
     QPainter p(&pixmap);
     int fontSize = fontUtils::fontSize(p, m_text, qRound(w*0.8), h,
                                    fontUtils::DoNotAllowWordWrap);
@@ -50,16 +54,33 @@ void TextItem::loadSprite()
     p.setFont(QFont("Helvetica", fontSize, QFont::Bold));
     p.drawText(QRectF(0, 0, w, h), 
                 Qt::AlignCenter, m_text);
-    setPixmap(pixmap);
+    m_textPixmap.setPixmap(pixmap);
     
     repaint();
 }
 
-Score::Score()
-    : TextItem()
+void TextItem::repaint()
 {
-    width =  (BRICK_WIDTH * WIDTH)/6;
-    height = qRound(BRICK_HEIGHT * 1.5);
+    m_textPixmap.moveTo(
+      static_cast<int>(m_scale * m_position.x()) + m_borderLeft,
+      static_cast<int>(m_scale * m_position.y()) + m_borderTop);
+    Item::repaint();
+}
+
+void TextItem::show()
+{
+    m_textPixmap.show();
+    KGameCanvasItem::show();
+}
+void TextItem::hide()
+{
+    m_textPixmap.hide();
+    KGameCanvasItem::hide();
+}
+
+Score::Score()
+    : TextItem((BRICK_WIDTH * WIDTH)/6, qRound(BRICK_HEIGHT * 1.5))
+{
     moveTo(0, - (height * 1.2));
     
     setScore(0);
@@ -84,10 +105,8 @@ void Score::setScore(int newScore)
 }
 
 LevelInfo::LevelInfo()
-    : TextItem()
+    : TextItem((BRICK_WIDTH * WIDTH)/5, qRound(BRICK_HEIGHT * 1.5))
 {
-    width =  (BRICK_WIDTH * WIDTH)/5;
-    height = qRound(BRICK_HEIGHT * 1.5);
     moveTo((BRICK_WIDTH * WIDTH)/5, - (height * 1.2));
 }
 
@@ -97,24 +116,22 @@ void LevelInfo::setLevel(int newLevel)
 }
 
 MessageBox::MessageBox()
+    : TextItem(BRICK_WIDTH * 9, BRICK_HEIGHT * 5)
 {
-    width = BRICK_WIDTH * 9;
-    height = BRICK_HEIGHT * 5;
-    
     int x = (BRICK_WIDTH * WIDTH - width) / 2;
     int y = (BRICK_HEIGHT * HEIGHT - height) / 2;
     moveTo(x, y);
+    repaint();
 }
 
 InfoMessage::InfoMessage()
+    : TextItem(BRICK_WIDTH * 9, BRICK_HEIGHT * 2)
 {
-    width = BRICK_WIDTH * 9;
-    height = BRICK_HEIGHT * 2;
-    
     int x = (BRICK_WIDTH * WIDTH - width) / 2;
     // at tree fourths of the height
     int y = (BRICK_HEIGHT * HEIGHT - height) / 4 * 3;
     moveTo(x, y);
+    repaint();
 
     hide();
 }

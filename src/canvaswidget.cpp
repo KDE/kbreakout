@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,7 +19,6 @@
 #include "canvaswidget.h"
 #include "item.h"
 #include "gameengine.h"
-#include "renderer.h"
 #include "globals.h"
 #include "settings.h"
 
@@ -27,15 +27,15 @@
 
 #include <KDebug>
 
-CanvasWidget::CanvasWidget(QWidget *parent) 
+CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) 
     : KGameCanvasWidget(parent),
+      background(renderer, "Background", this),
       rightPressed(false),
       leftPressed(false),
       usingKeys(0)
 {
     setFocus();
     
-    background.putInCanvas(this);
     background.show();
     pauseOverlay.putInCanvas(this);
     
@@ -65,11 +65,10 @@ void CanvasWidget::moveBar()
 void CanvasWidget::reloadSprites()
 {
     QSize size(width(), height());
-    QPixmap pixmap = Renderer::self()->renderedSvgElement("Background", size);
-    background.setPixmap(pixmap);
+    background.setRenderSize(size);
     
     // pause overlay
-    pixmap = QPixmap(size);
+    QPixmap pixmap = QPixmap(size);
     pixmap.fill(QColor(100, 100, 100, 150));
     pauseOverlay.setPixmap(pixmap);
     

@@ -1,5 +1,6 @@
 /*
     Copyright 2007-2009 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +20,6 @@
 #include "gameengine.h"
 #include "canvasitems.h"
 #include "canvaswidget.h"
-#include "renderer.h"
 #include "ui_generalsettings.h"
 #include "settings.h"
 
@@ -59,10 +59,12 @@ private:
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      canvasWidget(new CanvasWidget(this))
+      renderer(Settings::theme()),
+      canvasWidget(new CanvasWidget(&renderer, this))
 {
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
+    Item::setRenderer(&renderer);
     new Background; // the background put's itself into the canvasWidget
     gameEngine = new GameEngine(this); // must be called after Item::setCanvas()
     
@@ -181,13 +183,7 @@ void MainWindow::configureSettings()
 
 void MainWindow::loadSettings() 
 {
-    if (!Renderer::self()->loadTheme(Settings::theme())) {
-        KMessageBox::error(this,  
-           i18n("Failed to load \"%1\" theme. Please check your installation.",
-           Settings::theme()));
-        return;
-    }
-    
+    renderer.setTheme(Settings::theme());
     canvasWidget->reloadSprites();
 }
 

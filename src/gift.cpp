@@ -1,5 +1,6 @@
 /*
     Copyright 2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,11 +26,8 @@
 #include <cmath>
 
 Gift::Gift(const QString &type)
+    : Item(type, GIFT_WIDTH, GIFT_HEIGHT)
 {
-    width = GIFT_WIDTH;
-    height = GIFT_HEIGHT;
-    setType(type);
-    
     int sp = qrand() % (MAXIMUM_GIFT_SPEED - MINIMUM_GIFT_SPEED + 1);
     m_speedFactor = MINIMUM_GIFT_SPEED + sp;
     m_speed = 0;
