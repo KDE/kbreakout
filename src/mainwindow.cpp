@@ -59,9 +59,10 @@ private:
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      renderer(Settings::theme()),
+      renderer(Settings::defaultThemeValue()),
       canvasWidget(new CanvasWidget(&renderer, this))
 {
+    renderer.setTheme(Settings::theme());
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
     Item::setRenderer(&renderer);
