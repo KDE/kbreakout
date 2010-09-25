@@ -47,7 +47,7 @@ int main (int argc, char *argv[])
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
-    KGlobal::locale()->insertCatalog("libkdegames");
+    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
     
     MainWindow* window = new MainWindow();
     Q_UNUSED(window);

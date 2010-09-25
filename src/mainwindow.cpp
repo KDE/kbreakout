@@ -140,9 +140,9 @@ void MainWindow::setupActions()
     KAction *fireAction = new KAction(this);
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
-    fireAction->setIcon(KIcon("kbreakout"));
+    fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
     connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
-    actionCollection()->addAction("fire", fireAction);
+    actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
     pauseAction = KStandardGameAction::pause(this,
               SLOT(setGamePaused(bool)), actionCollection());
