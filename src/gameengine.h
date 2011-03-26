@@ -30,6 +30,7 @@ class MainWindow;
 class Gift;
 class Brick;
 class Ball;
+class LevelLoader;
 
 // TODO: add m_ to all members
 
@@ -89,7 +90,6 @@ private:
     void deleteAllObjects();
 
     MainWindow *m_mainWindow; // needed to access actionCollection()
-    QString levelSet;
     int m_level;
     int m_score;
     int m_elapsedTime; // in seconds
@@ -128,6 +128,7 @@ private:
     QList<Gift *> m_gifts; // visible gifts
     QList<Ball *> m_balls;
     Bar m_bar;
+    LevelLoader *m_levelLoader;
     // XXX
     static Bar *m_bar_ptr;
 

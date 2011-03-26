@@ -20,6 +20,7 @@
 #include "mainwindow.h"
 #include "gift.h"
 #include "brick.h"
+#include "levelloader.h"
 #include "ball.h"
 #include "settings.h"
 
@@ -30,10 +31,7 @@
 #include <QAction>
 
 #include <KLocale>
-#include <KConfig>
 #include <KActionCollection>
-#include <KStandardDirs>
-#include <KConfigGroup>
 #include <KDebug>
 
 // static
@@ -52,17 +50,21 @@ GameEngine::GameEngine(MainWindow *mainWindow)
     m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
 
     m_bar_ptr = &m_bar;
+
+    m_levelLoader = new LevelLoader( this );
 }
 
 GameEngine::~GameEngine()
 {
     deleteAllObjects();
+    delete m_levelLoader;
 }
 
 void GameEngine::start(const QString& l)
 {
-    levelSet = l;
-    
+    m_levelLoader->setLevelset( l );
+    m_levelLoader->setLevel( 0 );
+
     qDeleteAll(m_lives);
     m_lives.clear();
     for (int i = 0; i < INITIAL_LIVES; ++i){
@@ -208,101 +210,25 @@ void GameEngine::cheatAddLife()
     }
 }
 
-// TODO: external level loader???
 void GameEngine::loadLevel()
 {
-    
-    QString path = "levelsets/" + levelSet + ".levelset";
-    path =  KStandardDirs::locate("appdata", path);
-    KConfig file(path, KConfig::SimpleConfig);
-    
-    QString levelName("level" + QString::number(m_level));
-    
-    if (!file.hasGroup(levelName)) {
-        if (m_level == 1) {
-            kError() << "Invalid '" << levelName << "' in levelset " 
-                     << levelSet << endl;
-        } else {
-            m_gameWon = true;
-            kDebug() << m_score;
-            addScore(GAME_WON_SCORE + m_lives.size() * LIFE_SCORE);
-            kDebug() << m_lives.size() << m_score;
-            showMessage(i18n("Well done! You won the game!"));
-            emit gameEnded(m_score, -1, m_elapsedTime);
-        }
-        return;
-    }
-    
-    KConfigGroup lvl = file.group(levelName);    
-    int y = 1;
-    QString key("line" + QString::number(y));
-    
     deleteAllObjects();
     m_remainingBricks = 0;
     
-    while(lvl.hasKey(key)) {
-        // one line of bricks, to be converted
-        QString line = lvl.readEntry(key, "error");
-        if (line == "error") {
-            kError() << "Something strange happened!!\n";
-            return;
-        }
-        
-        kDebug() << line << endl;
-        
-        if (line.size() > WIDTH) {
-            kError() << "Invalid file: to many bricks\n";
-        }
-        
-        // convert the string, each char represents a brick
-        for (int x = 0; x < line.size(); ++x) {
-            char type = line[x].toAscii();
-            if (type != '-') {
-                m_bricks.append(new Brick(this, type, x, y));
-            }
-        }
-        
-        ++y;
-        key = "line" + QString::number(y);
-    }
-    
-    // add gifts
-    
-    // bricks whitout gifts
-    QList<Brick *> bricksLeft = m_bricks;
-    QMutableListIterator<Brick *> i(bricksLeft);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (brick->type() == "UnbreakableBrick")
-            i.remove();
-    }
-    
-    for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
-        key = GIFT_TYPES[i];
-        if (!lvl.hasKey(key)) continue;
-        
-        QString line = lvl.readEntry(key, "error");
-        if (line == "error") {
-            kError() << "Impossible Reading " << m_level << ":" << key << endl;
-            return;
-        }
-        bool ok;
-        int n = line.toInt(&ok);
-        if (!ok) {
-            kError() << levelName << ":" << key << " invalid number!!" << endl;
-            continue;
-        }
-        if (bricksLeft.count() < n) {
-            kError() << levelName << ": to many gifts!! " << endl;
-            break;
-        }
-        for (int i = 0; i < n; ++i) {
-            Gift *gift = new Gift(key); // key is the gift type
-            gift->hide();
-            
-            int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->setGift(gift);
-            bricksLeft.removeAt(index);
+    m_levelLoader->loadLevel( m_bricks );
+    if( m_bricks.isEmpty() ){
+        if( m_levelLoader->level() == 1 ){
+            // No level in the levelset
+            kError() << "Invalid levelset " << m_levelLoader->levelset() << endl;
+        } else {
+            // No more levels: game won
+            m_gameWon = true;
+            kDebug() << m_score;
+            addScore( GAME_WON_SCORE + m_lives.size() * LIFE_SCORE );
+            kDebug() << m_lives.size() << m_score;
+            showMessage( i18n("Well done! You won the game") );
+            emit gameEnded(m_score, -1, m_elapsedTime);
+            deleteMovingObjects();
         }
     }
     

@@ -45,6 +45,11 @@ Brick::~Brick()
 {
 }
 
+bool Brick::hasGift() const
+{
+    return (m_gift != 0);
+}
+
 void Brick::setGift(Gift *gift)
 {
     m_gift = gift;

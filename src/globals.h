@@ -77,34 +77,4 @@ const int MAXIMUM_LIVES = 10;
 const int DEFAULT_WIDTH = 750;
 const int DEFAULT_HEIGHT = 500;
 
-// IMPORTANT: keep GIFT_TYPES_COUNT in sync!!!!!!!
-// TODO: see if I can use somthing different
-const QString GIFT_TYPES[] = {
-    "Gift100Points",
-    "Gift200Points",
-    "Gift500Points",
-    "Gift1000Points",
-    "GiftAddLife",
-    
-    "GiftLoseLife", 
-    "GiftNextLevel",
-    "GiftSplitBall",
-    "GiftAddBall",
-    "GiftDecreaseSpeed",
-    
-    "GiftIncreaseSpeed",
-    "GiftUnstoppableBall",
-    "GiftBurningBall",
-    "GiftMagicWand",
-    "GiftMagicEye",
-    
-    "GiftEnlargeBar",
-    "GiftShrinkBar",
-    "GiftStickyBar",
-    "GiftMoreExplosion"
-};
-
-// IMPORTANT: keep in sync with the above
-const int GIFT_TYPES_COUNT = 19;
-
 #endif // GLOBALS_H

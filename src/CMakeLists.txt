@@ -11,6 +11,7 @@ set(kbreakout_SRCS
    brick.cpp
    ball.cpp
    gameengine.cpp
+   levelloader.cpp
    fontutils.cpp
    #generalsettings.cpp
 )

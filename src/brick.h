@@ -39,6 +39,7 @@ public:
     void explode();
     
     bool isDeleted() {return m_deleted;}
+    bool hasGift() const;
     void setGift(Gift *);
 
     // bricks to the left, right top and bottom
