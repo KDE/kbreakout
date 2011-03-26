@@ -69,6 +69,7 @@ void TextItem::repaint()
 
 void TextItem::show()
 {
+    m_textPixmap.raise();
     m_textPixmap.show();
     KGameCanvasItem::show();
 }
