@@ -25,19 +25,19 @@
 #include <QTimer>
 #include <KDebug>
 
-Brick::Brick(GameEngine *gameEngine, char typeChar, int x, int y)
-    : Item(getTypeFromChar(typeChar), BRICK_WIDTH, BRICK_HEIGHT),
+Brick::Brick(GameEngine *gameEngine, QString typeString, int x, int y)
+    : Item(typeString, BRICK_WIDTH, BRICK_HEIGHT),
       m_game(gameEngine),
       m_deleted(false)
 {
     m_gift = 0;
     
-    if(typeChar != 'u' && typeChar != 'h') // unbreakable or hidden
+    if(typeString != "UnbreakableBrick" && typeString != "HiddenBrick")
         ++m_game->m_remainingBricks;
     moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     repaint();
     
-    if(typeChar == 'h') // hidden
+    if(typeString == "HiddenBrick")
       hide();
 }
 
@@ -155,26 +155,6 @@ void Brick::handleDeletion()
 void Brick::hide()
 {
     Item::hide();
-}
-
-QString Brick::getTypeFromChar(char type) 
-{
-    switch (type) {
-    case '1': return "PlainBrick1";
-    case '2': return "PlainBrick2";
-    case '3': return "PlainBrick3";
-    case '4': return "PlainBrick4";
-    case '5': return "PlainBrick5";
-    case '6': return "PlainBrick6";
-    case 'm': return "MultipleBrick3";
-    case 'x': return "ExplodingBrick";
-    case 'u': return "UnbreakableBrick";
-    case 'h': return "HiddenBrick";
-    default:
-        kError() << "Invalid File: unknown character '" 
-                    << type << "'\n";
-        return "PlainBrick1";
-    }
 }
 
 QList<Brick *> Brick::nearbyBricks()

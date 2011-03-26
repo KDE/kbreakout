@@ -38,6 +38,8 @@ public:
   
     void loadLevel( QList<Brick *> &m_bricks );
 private:
+    static QString getTypeFromChar(char type);
+    
     QDomDocument *m_levelset;
     GameEngine *m_game;
     

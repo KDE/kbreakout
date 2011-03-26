@@ -145,9 +145,9 @@ void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
                 
                 // Convert line information to bricks
                 for( int x = 0; x < line.size(); x++ ){
-                    char type = line[x].toAscii();
-                    if (type != '-') {
-                        m_bricks.append( new Brick(m_game, type, x, lineNumber) );
+                    char charType = line[x].toAscii();
+                    if (charType != '-') {
+                        m_bricks.append( new Brick(m_game, getTypeFromChar(charType), x, lineNumber) );
                     }
                 }
         } else if( info.tagName() == "Gift" ){
@@ -189,5 +189,25 @@ void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
         }
         
         node = node.nextSibling();
+    }
+}
+
+QString LevelLoader::getTypeFromChar(char type) 
+{
+    switch (type) {
+    case '1': return "PlainBrick1";
+    case '2': return "PlainBrick2";
+    case '3': return "PlainBrick3";
+    case '4': return "PlainBrick4";
+    case '5': return "PlainBrick5";
+    case '6': return "PlainBrick6";
+    case 'm': return "MultipleBrick3";
+    case 'x': return "ExplodingBrick";
+    case 'u': return "UnbreakableBrick";
+    case 'h': return "HiddenBrick";
+    default:
+        kError() << "Invalid File: unknown character '" 
+                    << type << "'\n";
+        return "PlainBrick1";
     }
 }

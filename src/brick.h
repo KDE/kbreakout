@@ -28,7 +28,7 @@ class Brick : public Item
 {
     Q_OBJECT
 public:
-    Brick(GameEngine *game, char typeChar, int posX, int posY);
+    Brick(GameEngine *game, QString typeString, int posX, int posY);
     ~Brick();
     
     // hits the brick and destroys it regardless of the type of brick
@@ -54,7 +54,6 @@ private slots:
 
 private:
     void handleDeletion();
-    static QString getTypeFromChar(char type);
 
     GameEngine *m_game;
     Gift *m_gift;
