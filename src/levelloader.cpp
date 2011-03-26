@@ -22,6 +22,10 @@
 #include <QDomDocument>
 #include <QFile>
 
+// These can be removed when KConfig style levelsets are no longer supported
+#include <KConfig>
+#include <KConfigGroup>
+
 #include <KDebug>
 #include <KStandardDirs>
 
@@ -79,8 +83,19 @@ void LevelLoader::setLevelset(const QString& levelname)
     int errorColumn;
     if( !m_levelset->setContent( &file, false, &errorString, &errorLine, &errorColumn ) ){
         file.close();
-        kError() << "Can't read levelset from " << path << "\nError: " << errorString <<
-                    " in Line " << errorLine << ", Column " << errorColumn << endl;
+        // Testing whether levelset is of old KConfig style
+        KConfig kconfigfile(path, KConfig::SimpleConfig);
+        if( kconfigfile.hasGroup( "level1" ) ){
+            // Levelset is in KConfig style
+            m_oldstyle = true;
+            kError() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
+        } else {
+            kError() << "Can't read levelset from " << path << "\nError: " << errorString <<
+                        " in Line " << errorLine << ", Column " << errorColumn << endl;
+        }
+    } else {
+        // Successfully loaded QDom-style levelset
+        m_oldstyle = false;
     }
     file.close();
     // --
@@ -88,6 +103,11 @@ void LevelLoader::setLevelset(const QString& levelname)
 
 void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
 {   
+    // Check if levelset is of KConfig-type
+    if( m_oldstyle ){
+        loadOldStyleLevel( m_bricks );
+        return;
+    }
     // Selecting the correct level
     m_level++;
     
@@ -189,6 +209,98 @@ void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
         }
         
         node = node.nextSibling();
+    }
+}
+
+void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
+{
+    // Selecting the correct level
+    m_level++;
+    
+    // Loading the levelset
+    QString path = "levelsets/" + m_levelname + ".levelset";
+    path = KStandardDirs::locate("appdata", path);
+    KConfig file(path, KConfig::SimpleConfig);
+    
+    QString levelName("level" + QString::number(m_level));
+    
+    if (!file.hasGroup(levelName)) {
+        // No more levels or no levels found
+        return;
+    }
+    
+    // Loading level information
+    KConfigGroup lvl = file.group(levelName);
+    
+    // add bricks
+    
+    int y = 1;
+    QString key("line" + QString::number(y));
+    
+    while(lvl.hasKey(key)) {
+        // one line of bricks to be converted
+        QString line = lvl.readEntry(key, "error");
+        if (line == "error") {
+            kError() << "Something strange happened!!\n";
+            return;
+        }
+        
+        kDebug() << line << endl;
+        
+        if (line.size() > WIDTH) {
+            kError() << "Invalid file: too many bricks\n";
+        }
+        
+        // Convert the string, each char represents a brick
+        for (int x = 0; x < line.size(); ++x ) {
+            char charType = line[x].toAscii();
+            if (charType != '-') {
+                m_bricks.append(new Brick(m_game, getTypeFromChar(charType), x, y));
+            }
+        }
+        
+        ++y;
+        key = "line" + QString::number(y);
+    }
+    
+    // add gifts
+    
+    //bricks without gifts
+    QList<Brick *> bricksLeft = m_bricks;
+    QMutableListIterator<Brick *> i(bricksLeft);
+    while (i.hasNext()) {
+        Brick *brick = i.next();
+        if (brick->type() == "UnbreakableBrick")
+            i.remove();
+    }
+    
+    for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
+        key = GIFT_TYPES[i];
+        if (!lvl.hasKey(key)) continue;
+        
+        QString line = lvl.readEntry(key, "error");
+        if (line == "error") {
+            kError() << "Impossible reading " << m_level << ":" << key << endl;
+            return;
+        }
+        bool ok;
+        int n = line.toInt(&ok);
+        if (!ok) {
+            kError() << m_levelname << ":" << key << " invalid number!!" << endl;
+            continue;
+        }
+        if (bricksLeft.count() < n) {
+            kError() << m_levelname << ": too many gifts!! " << endl;
+            break;
+        }
+        for (int i = 0; i < n; ++i) {
+            Gift *gift = new Gift(key); // key is the gift type
+            gift->hide();
+            
+            int index = qrand() % bricksLeft.count();
+            bricksLeft.at(index)->setGift(gift);
+            bricksLeft.removeAt(index);
+        }
     }
 }
 
