@@ -125,7 +125,7 @@ void Gift::execute(GameEngine *gameEngine)
         giftMoreExplosion();
     }
     else {
-        kError() << "Unrecognized gift type!!!";
+        kError() << "Unrecognized gift type!!!" << type();
     }
 }
 
