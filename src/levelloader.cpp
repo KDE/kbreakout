@@ -165,16 +165,32 @@ void LevelLoader::loadLevel(QList< Brick* >& bricks)
 
 void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
 {
+    // Reading the line number
     QDomAttr attribute = lineNode.attributeNode("Number");
+    QDomElement attributeNode = lineNode.firstChildElement("Number");
     if( !attribute.isNull() ){
         m_lineNumber = attribute.value().toInt();
+    } else if( !attributeNode.isNull() ) {
+        m_lineNumber = attributeNode.text().toInt();
     } else {
         // Standard line numbering: load next line
         m_lineNumber++;
     }
-    QString line = lineNode.text();
+    
+    // Reading the brick information
+    attribute = lineNode.attributeNode("Bricks");
+    attributeNode = lineNode.firstChildElement("Bricks");
+    QString line;
+    if( !attribute.isNull() ){
+        line = attribute.value();
+    } else if( !attributeNode.isNull() ) {
+        line = attributeNode.text();
+    } else {
+        line = lineNode.text();
+    }
+
     if( line.size() > WIDTH ){
-        kError() << "Invalid levelset " << m_levelname << ": to many bricks in line "
+        kError() << "Invalid levelset " << m_levelname << ": too many bricks in line "
                  << m_lineNumber << endl;
     }
     
