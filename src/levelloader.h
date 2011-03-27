@@ -22,6 +22,7 @@
 #include <QString>
 
 class QDomDocument;
+class QDomElement;
 class Brick;
 class GameEngine;
 
@@ -38,6 +39,9 @@ public:
   
     void loadLevel( QList<Brick *> &m_bricks );
 private:
+    void loadLine( QDomElement lineNode, QList<Brick *> &bricks );
+    void loadGift( QDomElement giftNode, QList<Brick *> &bricks );
+    
     void loadOldStyleLevel( QList<Brick *> &m_bricks );
     static QString getTypeFromChar(char type);
     
@@ -45,6 +49,7 @@ private:
     bool m_oldstyle;
     GameEngine *m_game;
     
+    int m_lineNumber;
     QString m_levelname;
     int m_level;
 };

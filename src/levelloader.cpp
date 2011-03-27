@@ -143,72 +143,82 @@ void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
     // --
     
     // Load bricks and gifts
-    int lineNumber = 0;
+    m_lineNumber = 0;
     while( !node.isNull() ){
         QDomElement info = node.toElement();
         if( info.isNull() ){ kError() << "Invalid levelset " << m_levelname << ": Can't read level information."; }
             
             if( info.tagName() == "Line" ){
                 // Load one line of bricks
-                attribute = info.attributeNode("Number");
-                if( !attribute.isNull() ){
-                    lineNumber = attribute.value().toInt();
-                } else {
-                    // Standard line numbering: load next line
-                    lineNumber++;
-                }
-                QString line = info.text();
-                if( line.size() > WIDTH ){
-                    kError() << "Invalid levelset " << m_levelname << ": to many bricks in line "
-                             << lineNumber << endl;
-                }
-                
-                // Convert line information to bricks
-                for( int x = 0; x < line.size(); x++ ){
-                    char charType = line[x].toAscii();
-                    if (charType != '-') {
-                        m_bricks.append( new Brick(m_game, getTypeFromChar(charType), x, lineNumber) );
-                    }
-                }
+                loadLine( info, m_bricks );
         } else if( info.tagName() == "Gift" ){
             // Load one gift type
-            // Build list of bricks without a gift
-            QList<Brick *> bricksLeft = m_bricks;
-            QMutableListIterator<Brick *> i(bricksLeft);
-            while (i.hasNext()) {
-                Brick *brick = i.next();
-                if (brick->type() == "UnbreakableBrick" || brick->hasGift() ){
-                    i.remove();
-                }
-            }
-            attribute = info.attributeNode("Type");
-            if( attribute.isNull() ){
-                kError() << "Invalid levelset " << m_levelname
-                         << ": Gift Type in Level " << levelName << " not specified" << endl;
-            }
-            QString giftType = attribute.value();
-            bool ok;
-            // Nunber of gifts of this type to be randomly distributed
-            int times = info.text().toInt( &ok );
-            if( ok && bricksLeft.count() < times ){
-                kError() << "Invalid levelset " << m_levelname << ": In Level " << levelName
-                         << " are too many gifts of type " << giftType << endl;
-            }
-            // Distribute gifts
-            for( int i = 0; i < times; i++ ){
-                Gift *gift = new Gift( giftType );
-                gift->hide();
-                
-                int index = qrand() % bricksLeft.count();
-                bricksLeft.at(index)->setGift(gift);
-                bricksLeft.removeAt(index);
-            }
+            loadGift( info, m_bricks );
         } else {
             kError() << "Invalid tag name " << info.tagName() << " has occured in level "
                      << levelName << " in levelset " << m_levelname << endl;
         }
         
         node = node.nextSibling();
+    }
+}
+
+void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
+{
+    QDomAttr attribute = lineNode.attributeNode("Number");
+    if( !attribute.isNull() ){
+        m_lineNumber = attribute.value().toInt();
+    } else {
+        // Standard line numbering: load next line
+        m_lineNumber++;
+    }
+    QString line = lineNode.text();
+    if( line.size() > WIDTH ){
+        kError() << "Invalid levelset " << m_levelname << ": to many bricks in line "
+                 << m_lineNumber << endl;
+    }
+    
+    // Convert line information to bricks
+    for( int x = 0; x < line.size(); x++ ){
+        char charType = line[x].toAscii();
+        if (charType != '-') {
+            bricks.append( new Brick(m_game, getTypeFromChar(charType), x, m_lineNumber) );
+        }
+    }
+}
+
+void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
+{
+    // Build list of bricks without a gift
+    QList<Brick *> bricksLeft = bricks;
+    QMutableListIterator<Brick *> i(bricksLeft);
+    while (i.hasNext()) {
+        Brick *brick = i.next();
+        if (brick->type() == "UnbreakableBrick" || brick->hasGift() ){
+            i.remove();
+        }
+    }
+    QDomAttr attribute = giftNode.attributeNode("Type");
+    if( attribute.isNull() ){
+        kError() << "Invalid levelset " << m_levelname
+                 << ": Gift Type in Level " << m_level << " not specified" << endl;
+    }
+    QString giftType = attribute.value();
+    bool ok;
+    // Nunber of gifts of this type to be randomly distributed
+    int times = giftNode.text().toInt( &ok );
+    if( ok && bricksLeft.count() < times ){
+        kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
+                 << " are too many gifts of type " << giftType << endl;
+    }
+    // Distribute gifts
+    for( int i = 0; i < times; i++ ){
+        Gift *gift = new Gift( giftType );
+        gift->hide();
+        
+        int index = qrand() % bricksLeft.count();
+        bricksLeft.at(index)->setGift(gift);
+        bricksLeft.removeAt(index);
     }
 }
 
