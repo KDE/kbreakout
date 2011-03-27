@@ -198,7 +198,7 @@ void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
     for( int x = 0; x < line.size(); x++ ){
         char charType = line[x].toAscii();
         if (charType != '-') {
-            bricks.append( new Brick(m_game, getTypeFromChar(charType), x, m_lineNumber) );
+            bricks.append( new Brick(m_game, getTypeFromChar(charType), x+1, m_lineNumber) );
         }
     }
 }
@@ -300,7 +300,7 @@ void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
         for (int x = 0; x < line.size(); ++x ) {
             char charType = line[x].toAscii();
             if (charType != '-') {
-                m_bricks.append(new Brick(m_game, getTypeFromChar(charType), x, y));
+                m_bricks.append(new Brick(m_game, getTypeFromChar(charType), x+1, y));
             }
         }
         

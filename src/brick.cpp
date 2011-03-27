@@ -34,7 +34,7 @@ Brick::Brick(GameEngine *gameEngine, QString typeString, int x, int y)
     
     if(typeString != "UnbreakableBrick" && typeString != "HiddenBrick")
         ++m_game->m_remainingBricks;
-    moveTo(x*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
+    moveTo((x-1)*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     repaint();
     
     if(typeString == "HiddenBrick")
