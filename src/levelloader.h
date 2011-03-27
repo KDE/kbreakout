@@ -37,7 +37,7 @@ public:
     QString levelset() const;
     void setLevelset( const QString& levelname );
   
-    void loadLevel( QList<Brick *> &m_bricks );
+    void loadLevel( QList<Brick *> &bricks );
 private:
     void loadLine( QDomElement lineNode, QList<Brick *> &bricks );
     void loadGift( QDomElement giftNode, QList<Brick *> &bricks );

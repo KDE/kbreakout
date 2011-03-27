@@ -101,11 +101,11 @@ void LevelLoader::setLevelset(const QString& levelname)
     // --
 }
 
-void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
+void LevelLoader::loadLevel(QList< Brick* >& bricks)
 {   
     // Check if levelset is of KConfig-type
     if( m_oldstyle ){
-        loadOldStyleLevel( m_bricks );
+        loadOldStyleLevel( bricks );
         return;
     }
     // Selecting the correct level
@@ -148,12 +148,12 @@ void LevelLoader::loadLevel(QList< Brick* >& m_bricks)
         QDomElement info = node.toElement();
         if( info.isNull() ){ kError() << "Invalid levelset " << m_levelname << ": Can't read level information."; }
             
-            if( info.tagName() == "Line" ){
-                // Load one line of bricks
-                loadLine( info, m_bricks );
+        if( info.tagName() == "Line" ){
+            // Load one line of bricks
+            loadLine( info, bricks );
         } else if( info.tagName() == "Gift" ){
             // Load one gift type
-            loadGift( info, m_bricks );
+            loadGift( info, bricks );
         } else {
             kError() << "Invalid tag name " << info.tagName() << " has occured in level "
                      << levelName << " in levelset " << m_levelname << endl;
