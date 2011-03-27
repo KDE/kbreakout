@@ -214,16 +214,35 @@ void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
             i.remove();
         }
     }
+
+    bool nodeTextRead = false;
+    // Reading the brick type
     QDomAttr attribute = giftNode.attributeNode("Type");
-    if( attribute.isNull() ){
-        kError() << "Invalid levelset " << m_levelname
-                 << ": Gift Type in Level " << m_level << " not specified" << endl;
+    QDomElement attributeNode = giftNode.firstChildElement("Type");
+    QString giftType;
+    if( !attribute.isNull() ){
+        giftType = attribute.value();
+    } else if( !attributeNode.isNull() ){
+        giftType = attributeNode.text();
+    } else {
+        giftType = giftNode.text();
+        nodeTextRead = true;
     }
-    QString giftType = attribute.value();
-    bool ok;
-    // Nunber of gifts of this type to be randomly distributed
-    int times = giftNode.text().toInt( &ok );
-    if( ok && bricksLeft.count() < times ){
+
+    // Reading number of gifts to be distributed. If not specified one gift is placed.
+    attribute = giftNode.attributeNode("Count");
+    attributeNode = giftNode.firstChildElement("Count");
+    int times = 1;
+    bool ok = true;
+    if( !attribute.isNull() ){
+        times = attribute.value().toInt( &ok );
+    } else if( !attributeNode.isNull() ){
+        times = attributeNode.text().toInt( &ok );
+    } else if( !nodeTextRead ){
+        times = giftNode.text().toInt( &ok );
+        if( !ok ){ times = 1; }
+    }
+    if( bricksLeft.count() < times ){
         kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
                  << " are too many gifts of type " << giftType << endl;
     }
