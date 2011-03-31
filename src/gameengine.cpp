@@ -111,16 +111,7 @@ void GameEngine::resume()
     
     m_elapsedTimeTimer.start();
     m_gameTimer.start();
-    
-    // only restart the m_gameTimer if there are objects moving
-    bool movingObjects = false;
-    foreach (Ball *ball, m_balls) {
-        if (!ball->toBeFired) {
-            movingObjects = true;
-            continue;
-        }
-    }
-    
+
     hideMessage();
     emit gameResumed();
 }
