@@ -32,13 +32,15 @@ Brick::Brick(GameEngine *gameEngine, QString typeString, int x, int y)
 {
     m_gift = 0;
     
-    if(typeString != "UnbreakableBrick" && typeString != "HiddenBrick")
+    if (typeString != "UnbreakableBrick" && typeString != "HiddenBrick") {
         ++m_game->m_remainingBricks;
+    }
     moveTo((x-1)*BRICK_WIDTH, (y-1)*BRICK_HEIGHT);
     repaint();
     
-    if(typeString == "HiddenBrick")
-      hide();
+    if (typeString == "HiddenBrick") {
+        hide();
+    }
 }
 
 Brick::~Brick()
@@ -90,7 +92,9 @@ void Brick::hit()
 
 void Brick::explode()
 {
-    if (m_deleted) return;
+    if (m_deleted) {
+        return;
+    }
     
     burn();
     QTimer::singleShot(BURNING_SPEED, this, SLOT(burnNearbyBricks()));
@@ -106,7 +110,9 @@ void Brick::burnNearbyBricks()
 
 void Brick::burn()
 {
-    if (m_deleted) return;
+    if (m_deleted) {
+        return;
+    }
     
     if (type() == "ExplodingBrick") {
         // makes sure it doesn't explode twice
@@ -163,7 +169,7 @@ QList<Brick *> Brick::nearbyBricks()
     QRect brickRect = getRect();
     // coordinates of the center of the brick
     int x = brickRect.x() + BRICK_WIDTH / 2;
-    int y = brickRect.y() + BRICK_HEIGHT / 2; 
+    int y = brickRect.y() + BRICK_HEIGHT / 2;
     
     // points to the left, right, top and bottom of the brick
     QList<QPoint> nearbyPoints;
@@ -173,7 +179,9 @@ QList<Brick *> Brick::nearbyBricks()
     nearbyPoints.append(QPoint(x, y + BRICK_HEIGHT));
     
     foreach (Brick *b, m_game->m_bricks) {
-        if (b->isDeleted()) continue;
+        if (b->isDeleted()) {
+            continue;
+        }
         foreach (const QPoint& p, nearbyPoints) {
             if (b->getRect().contains(p)) {
                 result.append(b);

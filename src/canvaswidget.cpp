@@ -130,7 +130,9 @@ void CanvasWidget::handleResetMousePosition()
 void CanvasWidget::updateBar()
 {
     QPoint p = mapFromGlobal(cursor().pos());
-    if (lastMousePosition == p) return;
+    if (lastMousePosition == p) {
+        return;
+    }
     lastMousePosition = p;
 
     // don't move the mouse if the user was using the keys to play
@@ -176,8 +178,9 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
         KGameCanvasWidget::keyPressEvent(event);
     }
 
-    if ((rightPressed || leftPressed) && !moveBarTimer.isActive())
+    if ((rightPressed || leftPressed) && !moveBarTimer.isActive()) {
         moveBarTimer.start();
+    }
 }
 
 void CanvasWidget::keyReleaseEvent(QKeyEvent *event)

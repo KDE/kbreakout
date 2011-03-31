@@ -42,7 +42,9 @@ void Bar::enlarge()
 {
     int oldWidth = width;
     width = qRound(width*RESIZE_BAR_RATIO);
-    if (width > MAX_BAR_WIDTH) width = MAX_BAR_WIDTH;
+    if (width > MAX_BAR_WIDTH) {
+        width = MAX_BAR_WIDTH;
+    }
     loadSprite();
     
     // move the bar to retain it's center
@@ -55,7 +57,9 @@ void Bar::shrink()
 {
     int oldWidth = width;
     width = qRound(width/RESIZE_BAR_RATIO);
-    if (width < MIN_BAR_WIDTH) width = MIN_BAR_WIDTH;
+    if (width < MIN_BAR_WIDTH) {
+        width = MIN_BAR_WIDTH;
+    }
     loadSprite();
     
     // move the bar to retain it's center

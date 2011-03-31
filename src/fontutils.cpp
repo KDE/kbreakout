@@ -42,8 +42,9 @@ int fontUtils::fontSize(QPainter &p, const QString &str,
             return -1;
         } else if (rect.width() > w || rect.height() > h) {
             size = qMin(w * size / rect.width(), h * size / rect.height());
+        } else {
+            done = true;
         }
-        else done = true;
     }
 
     return size;
