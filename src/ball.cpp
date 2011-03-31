@@ -35,7 +35,8 @@ void Ball::collideWithBricks(const QList<Brick *> &bricks)
     const int size = bricks.size();
     if (size == 0) {
         return;
-    } if (size == 2) {
+    }
+    if (size == 2) {
         collideWithTwoBricks(bricks);
     } else {
         collideWithBrick(bricks[0]);
