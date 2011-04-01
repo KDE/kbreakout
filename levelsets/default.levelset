@@ -435,7 +435,7 @@
     <Gift Type="GiftUnstoppableBall">2</Gift>
     <Gift Type="GiftSplitBall">3</Gift>
     <Gift Type="GiftMoreExplosion">3</Gift>
-    <Gift Type="GiftEnlargeBall">3</Gift>
+    <Gift Type="GiftEnlargeBar">3</Gift>
     <Gift Type="GiftMagicEye">1</Gift>
     <Gift Type="GiftStickyBar">2</Gift>
     <Gift Type="Gift1000Points">4</Gift>
