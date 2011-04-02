@@ -224,6 +224,7 @@ void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
         giftType = attribute.value();
     } else if( !attributeNode.isNull() ){
         giftType = attributeNode.text();
+        nodeTextRead = true;
     } else {
         giftType = giftNode.text();
         nodeTextRead = true;
@@ -238,22 +239,59 @@ void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
         times = attribute.value().toInt( &ok );
     } else if( !attributeNode.isNull() ){
         times = attributeNode.text().toInt( &ok );
+        nodeTextRead = true;
     } else if( !nodeTextRead ){
         times = giftNode.text().toInt( &ok );
         if( !ok ){ times = 1; }
     }
+    
     if( bricksLeft.count() < times ){
         kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
                  << " are too many gifts of type " << giftType << endl;
     }
-    // Distribute gifts
-    for( int i = 0; i < times; i++ ){
-        Gift *gift = new Gift( giftType );
-        gift->hide();
+    
+    // If only one brick to be placed: see if position is given
+    QPoint position;
+    if( times == 1 ){
+        attribute = giftNode.attributeNode("Position");
+        attributeNode = giftNode.firstChildElement("Position");
+        if( !attribute.isNull() ){
+            position = positionFromString( attribute.value() );
+        } else if( !attributeNode.isNull() ){
+            position = positionFromString( attributeNode.text() );
+            nodeTextRead = true;
+        } else if( !nodeTextRead && giftNode.text().contains(',') ){
+            position = positionFromString( giftNode.text() );
+            nodeTextRead = true;
+        }
+    }
         
-        int index = qrand() % bricksLeft.count();
-        bricksLeft.at(index)->setGift(gift);
-        bricksLeft.removeAt(index);
+    if( !position.isNull() ){
+        // Put gift at given position
+        Brick *giftBrick = brickAt( position, bricks ); 
+        if( giftBrick == 0 ){
+            kError() << "Invalid levelset " << m_levelname << ": Can't place gift at position ("
+                     << position.x() << "," << position.y() << "). There is no brick.\n";
+        } else {
+            if( giftBrick->hasGift() ){
+                // Brick already has a gift -> move this gift to a random position
+                int index = qrand() % bricksLeft.count();
+                bricksLeft.at(index)->setGift( giftBrick->gift() );
+            }
+            Gift *newgift = new Gift(giftType);
+            newgift->hide();
+            giftBrick->setGift(newgift);
+        }
+    } else {
+        // Distribute gifts randomly
+        for( int i = 0; i < times; i++ ){
+            Gift *gift = new Gift(giftType);
+            gift->hide();
+            
+            int index = qrand() % bricksLeft.count();
+            bricksLeft.at(index)->setGift(gift);
+            bricksLeft.removeAt(index);
+        }
     }
 }
 
@@ -367,4 +405,24 @@ QString LevelLoader::getTypeFromChar(char type)
                     << type << "'\n";
         return "PlainBrick1";
     }
+}
+
+Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
+{
+    Brick *result = 0;
+    foreach( Brick *testbrick, bricks ){
+        if( testbrick->position().x() / BRICK_WIDTH + 1 == position.x()
+            && testbrick->position().y() / BRICK_HEIGHT + 1 == position.y() ){
+            result = testbrick;
+            break;
+        }
+    }
+    return result;
+}
+
+QPoint LevelLoader::positionFromString(const QString& posString)
+{
+    int seperatorPosition = posString.indexOf(',');
+    int length = posString.length();
+    return QPoint( posString.left(seperatorPosition).toInt(), posString.right(length-seperatorPosition-1).toInt() );
 }

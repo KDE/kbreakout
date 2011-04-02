@@ -41,6 +41,7 @@ public:
     bool isDeleted() {return m_deleted;}
     bool hasGift() const;
     void setGift(Gift *);
+    Gift *gift() {return m_gift;}
 
     // bricks to the left, right top and bottom
     QList<Brick *> nearbyBricks();

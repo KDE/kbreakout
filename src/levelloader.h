@@ -23,6 +23,7 @@
 
 class QDomDocument;
 class QDomElement;
+class QPoint;
 class Brick;
 class GameEngine;
 
@@ -44,6 +45,8 @@ private:
     
     void loadOldStyleLevel( QList<Brick *> &m_bricks );
     static QString getTypeFromChar(char type);
+    Brick *brickAt( const QPoint& position, QList<Brick *> &bricks );
+    QPoint positionFromString( const QString& posString );
     
     QDomDocument *m_levelset;
     bool m_oldstyle;

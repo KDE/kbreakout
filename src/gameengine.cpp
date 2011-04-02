@@ -51,6 +51,7 @@ GameEngine::GameEngine(MainWindow *mainWindow)
 
     m_bar_ptr = &m_bar;
 
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_levelLoader = new LevelLoader( this );
 }
 
@@ -78,7 +79,6 @@ void GameEngine::start(const QString& l)
     setScore(0);
     
     loadLevel();
-    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     
     m_elapsedTimeTimer.start();
     m_gameTimer.start();
