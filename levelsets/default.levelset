@@ -86,7 +86,6 @@
     <Gift Type="GiftMagicWand">1</Gift>
     <Gift Type="GiftMagicEye">1</Gift>
     <Gift Type="Gift100Points">4</Gift>
-    <Gift Type="Gift3000Points">1</Gift>
     <Gift Type="GiftAddLife">1</Gift>
     <Gift Type="GiftEnlargeBar">3</Gift>
     <Gift Type="GiftShrinkBar">6</Gift>
@@ -293,7 +292,6 @@
     <Gift Type="Gift200Points">8</Gift>
     <Gift Type="Gift500Points">4</Gift>
     <Gift Type="Gift1000Points">2</Gift>
-    <Gift Type="Gift3000Points">1</Gift>
     <Gift Type="GiftLoseLife">2</Gift>
     <Gift Type="GiftMagicWand">1</Gift>
     <Gift Type="GiftIncreaseSpeed">3</Gift>
@@ -320,8 +318,7 @@
     <Line>5-5-5-5-5-5-5-5-5-5-</Line>
     <Line>-6-6-6-6-6-6-6-6-6-6</Line>
     <Gift Type="Gift100Points">4</Gift>
-    <Gift Type="Gift300Points">3</Gift>
-    <Gift Type="Gift5000Points">2</Gift>
+    <Gift Type="Gift200Points">3</Gift>
     <Gift Type="GiftBurningBall">1</Gift>
     <Gift Type="GiftLoseLife">2</Gift>
     <Gift Type="GiftMoreExplosion">1</Gift>
@@ -439,7 +436,6 @@
     <Gift Type="GiftMagicEye">1</Gift>
     <Gift Type="GiftStickyBar">2</Gift>
     <Gift Type="Gift1000Points">4</Gift>
-    <Gift Type="Gift3000Points">2</Gift>
     <Gift Type="GiftAddLife">5</Gift>
     <Gift Type="GiftNextLevel">3</Gift>
   </Level>
@@ -465,6 +461,5 @@
     <Gift Type="GiftLoseLife">5</Gift>
     <Gift Type="GiftSplitBall">10</Gift>
     <Gift Type="GiftIncreaseSpeed">35</Gift>
-    <Gift Type="Gift3000Points">5</Gift>
   </Level>
 </KBreakOutLevelSet>
