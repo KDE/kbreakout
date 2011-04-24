@@ -619,10 +619,10 @@ inline void GameEngine::deleteMovingObjects()
     QMutableListIterator<Gift *> i(m_gifts);
     while (i.hasNext()) {
         Gift *gift = i.next(); 
-        // FIXME ??????????????
-        if (gift->isVisible())
+        if (gift->isVisible()) {
             delete gift;
             i.remove();
+        }
     }
 }
 

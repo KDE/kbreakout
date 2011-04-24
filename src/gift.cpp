@@ -52,7 +52,6 @@ void Gift::step(qreal speed)
 
 void Gift::startFall(int x, int y)
 {
-    
     moveTo(x, y);
     repaint();
     show();
