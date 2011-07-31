@@ -176,7 +176,7 @@ void MainWindow::configureSettings()
                     i18nc("General settings", "General"),
                     "games-config-options");
 
-    connect(dialog, SIGNAL(settingsChanged(const QString&)), 
+    connect(dialog, SIGNAL(settingsChanged(QString)), 
             this, SLOT(loadSettings()));
     
     dialog->show();
