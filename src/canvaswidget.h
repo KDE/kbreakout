@@ -29,9 +29,6 @@ class CanvasWidget : public KGameCanvasWidget
 public:
     CanvasWidget(KGameRenderer *renderer, QWidget *parent=0);
 
-    // reloads the sprites
-    void reloadSprites();
-    
 signals:
     void spritesReloaded();
     // the position is in game coordinates not screen coordinates
@@ -47,6 +44,7 @@ signals:
     void cheatAddLife();
 
 public slots:
+    void reloadSprites();
     void handleGamePaused();
     void handleGameResumed();
     void handleGameEnded();

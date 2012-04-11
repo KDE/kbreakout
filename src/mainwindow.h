@@ -37,7 +37,6 @@ private slots:
     void handleEndedGame(int score, int level, int time);
     void configureSettings();
     void showHighscores();
-    void loadSettings();
     void startNewGame();
     void fire();
     // calls the action

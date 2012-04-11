@@ -40,7 +40,8 @@
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>
-#include <KGameThemeSelector>
+#include <KgThemeProvider>
+#include <KgThemeSelector>
 #include <KStandardGameAction>
 #include <KConfig>
 
@@ -57,12 +58,18 @@ private:
     Ui::GeneralSettings ui;
 };
 
+static KgThemeProvider* provider()
+{
+	KgThemeProvider* prov = new KgThemeProvider;
+	prov->discoverThemes("appdata", QLatin1String("themes"));
+	return prov;
+}
+
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      renderer(Settings::defaultThemeValue()),
+      renderer(provider()),
       canvasWidget(new CanvasWidget(&renderer, this))
 {
-    renderer.setTheme(Settings::theme());
     // TODO: find a better way..
     Item::setCanvas(canvasWidget);
     Item::setRenderer(&renderer);
@@ -167,8 +174,7 @@ void MainWindow::configureSettings()
                                               Settings::self());
     dialog->setModal(true);
     
-    dialog->addPage(new KGameThemeSelector( dialog, Settings::self(), 
-                    KGameThemeSelector::NewStuffDisableDownload ), 
+    dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
                     i18n("Theme"), "games-config-theme" );
     
     // TODO: when will the page be destroyed?
@@ -180,12 +186,6 @@ void MainWindow::configureSettings()
             this, SLOT(loadSettings()));
     
     dialog->show();
-}
-
-void MainWindow::loadSettings() 
-{
-    renderer.setTheme(Settings::theme());
-    canvasWidget->reloadSprites();
 }
 
 void MainWindow::showHighscores()

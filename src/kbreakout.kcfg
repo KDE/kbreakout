@@ -5,10 +5,6 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kbreakoutrc"/>
   <group name="General">
-    <entry name="Theme" type="String" key="Theme">
-      <label>The graphical theme to be used.</label>
-      <default>themes/default.desktop</default>
-    </entry>
     <entry name="FireOnClick" type="Bool">
       <label>Fire on mouse click</label>
       <default>false</default>
