@@ -19,7 +19,8 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <KGameCanvas>
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamecanvas.h>
 
 #include "globals.h"
 
