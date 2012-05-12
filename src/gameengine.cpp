@@ -18,11 +18,8 @@
 #include "gameengine.h"
 
 #include "mainwindow.h"
-#include "gift.h"
-#include "brick.h"
-#include "levelloader.h"
-#include "ball.h"
 #include "settings.h"
+#include "globals.h"
 
 #include <cmath>
 #include <math.h>
@@ -35,42 +32,42 @@
 #include <KDebug>
 
 // static
-Bar *GameEngine::m_bar_ptr = 0;
+//Bar *GameEngine::m_bar_ptr = 0;
 
 
 GameEngine::GameEngine(MainWindow *mainWindow)
     : m_mainWindow(mainWindow), randomCounter(0)
 {
     m_gameTimer.setInterval(REPAINT_INTERVAL);
-    connect(&m_gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
+    //connect(&m_gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
     
     m_elapsedTimeTimer.setInterval(1000);
     connect(&m_elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
 
     m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
 
-    m_bar_ptr = &m_bar;
+    //m_bar_ptr = &m_bar;
 
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    m_levelLoader = new LevelLoader( this );
+    //m_levelLoader = new LevelLoader( this );
 }
 
 GameEngine::~GameEngine()
 {
     deleteAllObjects();
-    delete m_levelLoader;
+    //delete m_levelLoader;
 }
 
 void GameEngine::start(const QString& l)
 {
-    m_levelLoader->setLevelset(l);
+    /*m_levelLoader->setLevelset(l);
     m_levelLoader->setLevel(0);
 
     qDeleteAll(m_lives);
     m_lives.clear();
     for (int i = 0; i < INITIAL_LIVES; ++i) {
         m_lives.append(new Life);
-    }
+    }*/
     
     m_gameOver = false;
     m_gameWon = false;
@@ -89,10 +86,10 @@ bool GameEngine::gameIsPaused() const
     return !m_elapsedTimeTimer.isActive();
 }
 
-const Bar &GameEngine::bar()
+/*const Bar &GameEngine::bar()
 {
     return *m_bar_ptr;
-}
+}*/
 
 void GameEngine::pause()
 {
@@ -131,7 +128,7 @@ void GameEngine::setGamePaused(bool paused)
 
 void GameEngine::moveBar(int newPos) 
 {
-    if (gameIsPaused()) {
+    /*if (gameIsPaused()) {
         return;
     }
     // width of the game
@@ -149,17 +146,17 @@ void GameEngine::moveBar(int newPos)
         emit resetMousePosition();
     }
     
-    m_bar.moveTo(x, y);
+    m_bar.moveTo(x, y);*/
 }
 
 void GameEngine::moveBarLeft()
 {
-    moveBar(m_bar.center() - BAR_MOVEMENT);
+    //moveBar(m_bar.center() - BAR_MOVEMENT);
 }
 
 void GameEngine::moveBarRight()
 {
-    moveBar(m_bar.center() + BAR_MOVEMENT);
+    //moveBar(m_bar.center() + BAR_MOVEMENT);
 }
 
 void GameEngine::fire()
@@ -170,7 +167,7 @@ void GameEngine::fire()
         return;
     }
 
-    foreach (Ball *ball, m_balls) {
+    /*foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) {
             continue;
         }
@@ -188,7 +185,7 @@ void GameEngine::fire()
     }
     
     m_dScore = BRICK_SCORE;
-    m_infoMessage.hide();
+    m_infoMessage.hide();*/
     
     randomCounter = 0;
 }
@@ -203,7 +200,7 @@ void GameEngine::cheatSkipLevel()
 void GameEngine::cheatAddLife() 
 {
     if (m_cheatsEnabled) {
-        m_lives.append(new Life);
+        //m_lives.append(new Life);
     }
 }
 
@@ -212,7 +209,7 @@ void GameEngine::loadLevel()
     deleteAllObjects();
     m_remainingBricks = 0;
     
-    m_levelLoader->loadLevel( m_bricks );
+    /*m_levelLoader->loadLevel( m_bricks );
     if (m_bricks.isEmpty()) {
         if (m_levelLoader->level() == 1) {
             // No level in the levelset
@@ -244,18 +241,18 @@ void GameEngine::loadLevel()
     showMessage(i18n("Level %1", m_level));
     QTimer::singleShot(2000, this, SLOT(hideMessage()));
     
-    showFireBallMessage();
+    showFireBallMessage();*/
 }
 
 void GameEngine::timerTimeout() {
-    step(); // call step() at every tick
+    //step(); // call step() at every tick
     
     // only repaint every m_repaintInterval ticks
     static int tick = 0;
     tick = (tick + 1) % m_repaintInterval;
     
     if (tick == 0) {
-        repaintMovingObjects();
+        //repaintMovingObjects();
     }
 }
 
@@ -303,7 +300,7 @@ void GameEngine::step()
     m_itemsGotDeleted = false;
     
     m_dScore *= SCORE_AUTO_DECREASE;
-    foreach (Ball *ball, m_balls) {
+    /*foreach (Ball *ball, m_balls) {
         if (ball->toBeFired) {
             continue;
         }
@@ -337,12 +334,12 @@ void GameEngine::step()
             i.remove();
             delete gift;
         }
-    }
+    }*/
 }
 
 void GameEngine::repaintMovingObjects()
 {
-    m_bar.repaint();
+    /*m_bar.repaint();
     
     foreach (Ball *ball, m_balls) {
         ball->repaint();
@@ -383,13 +380,13 @@ void GameEngine::repaintMovingObjects()
     }
     
     // move attached balls if needed
-    updateAttachedBalls();
+    updateAttachedBalls();*/
 }
 
-void GameEngine::detectBallCollisions(Ball *ball)
+void GameEngine::detectBallCollisions(/*Ball *ball*/)
 {
     // never run this function more than two time recursively
-    static bool firstTime = true;
+    /*static bool firstTime = true;
     QRect rect = ball->getRect();
     
     // bounce a little early in some cases so the avarage position is centered
@@ -464,12 +461,12 @@ void GameEngine::detectBallCollisions(Ball *ball)
     } else {
         firstTime = true;
         return;
-    }
+    }*/
 }
 
 void GameEngine::handleDeath()
 {
-    hideMessage();
+    /*hideMessage();
     deleteMovingObjects();
     m_bar.reset();
     if (m_lives.isEmpty()) {
@@ -488,13 +485,13 @@ void GameEngine::handleDeath()
         m_gameTimer.start();
         updateAttachedBalls();
         showFireBallMessage();
-    }
+    }*/
 }
 
 
-void GameEngine::handleBrickCollisions(Ball *ball)
+void GameEngine::handleBrickCollisions(/*Ball *ball*/)
 {
-    if (m_itemsGotDeleted) {
+    /*if (m_itemsGotDeleted) {
         return;
     }
     QRect rect = ball->getRect();
@@ -513,23 +510,23 @@ void GameEngine::handleBrickCollisions(Ball *ball)
     
     if (!bricksIntersecting.isEmpty()) {
         ball->collideWithBricks(bricksIntersecting);
-    }
+    }*/
 }
 
 //======= convenience functions =================//
 
 void GameEngine::showMessage(const QString &text)
 {
-    m_messageBox.setText(text);
+    /*m_messageBox.setText(text);
     m_messageBox.raise();
-    m_messageBox.show();
+    m_messageBox.show();*/
 }
 
 void GameEngine::showInfoMessage(const QString &text)
 {
-    m_infoMessage.setText(text);
+    /*m_infoMessage.setText(text);
     m_infoMessage.raise();
-    m_infoMessage.show();
+    m_infoMessage.show();*/
 }
 
 void GameEngine::showFireBallMessage()
@@ -539,7 +536,7 @@ void GameEngine::showFireBallMessage()
     }
     QAction *fireAction = m_mainWindow->actionCollection()->action("fire");
     QString shortcut = fireAction->shortcut().toString(QKeySequence::NativeText);
-    showInfoMessage(i18n("Press %1 to fire the ball", shortcut));
+    //showInfoMessage(i18n("Press %1 to fire the ball", shortcut));
 }
 
 void GameEngine::hideMessage()
@@ -552,13 +549,13 @@ void GameEngine::hideMessage()
     }
     
     // else
-    m_messageBox.hide();
+    //m_messageBox.hide();
 }
 
 void GameEngine::loadNextLevel()
 {
     // assign points for each remaining brick
-    foreach (Brick *brick, m_bricks) {
+    /*foreach (Brick *brick, m_bricks) {
         // don't assign points for Unbreakable Bricks
         if (brick->type() == "UnbreakableBrick") {
             continue;
@@ -579,24 +576,24 @@ void GameEngine::loadNextLevel()
     ++m_level;
     deleteMovingObjects();
     QTimer::singleShot(200, this, SLOT(loadLevel()));
-    addScore(LEVEL_SCORE);
+    addScore(LEVEL_SCORE);*/
 }
 
 void GameEngine::addScore(int points)
 {
     m_score += points;
-    m_scoreCanvas.setScore(m_score);
+    //m_scoreCanvas.setScore(m_score);
 }
 
 void GameEngine::setScore(int newScore)
 {
     m_score = newScore;
-    m_scoreCanvas.setScore(m_score);
+    //m_scoreCanvas.setScore(m_score);
 }
 
 void GameEngine::updateAttachedBalls()
 {
-    foreach (Ball *ball, m_balls) {
+    /*foreach (Ball *ball, m_balls) {
         if (!ball->toBeFired) {
             continue;
         }
@@ -605,13 +602,13 @@ void GameEngine::updateAttachedBalls()
                 qRound(ball->barPosition * m_bar.getRect().width());
         ball->moveTo(ballX, m_bar.getRect().top() - BALL_SIZE);
         ball->repaint();
-    }
+    }*/
 }
 
 // TODO: check (in debugger?) why this function is called so much...
 inline void GameEngine::deleteMovingObjects()
 {
-    kDebug() << "Deleting objects...\n";
+    /*kDebug() << "Deleting objects...\n";
     m_itemsGotDeleted = true;
     qDeleteAll(m_balls);
     m_balls.clear();
@@ -623,15 +620,15 @@ inline void GameEngine::deleteMovingObjects()
             delete gift;
             i.remove();
         }
-    }
+    }*/
 }
 
 inline void GameEngine::deleteAllObjects()
 {
     kDebug() << "all object deleted";
-    deleteMovingObjects();
+    /*deleteMovingObjects();
     qDeleteAll(m_bricks);
     m_bricks.clear();
     qDeleteAll(m_gifts);
-    m_gifts.clear();
+    m_gifts.clear();*/
 }

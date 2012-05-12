@@ -67,16 +67,16 @@ static KgThemeProvider* provider()
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      renderer(provider()),
-      canvasWidget(new CanvasWidget(&renderer, this))
+//      renderer(provider()),
+      canvasWidget(new CanvasWidget(this))
 {
     // TODO: find a better way..
-    Item::setCanvas(canvasWidget);
-    Item::setRenderer(&renderer);
-    new Background; // the background put's itself into the canvasWidget
+    //Item::setCanvas(canvasWidget);
+    //Item::setRenderer(&renderer);
+    //new Background; // the background put's itself into the canvasWidget
     gameEngine = new GameEngine(this); // must be called after Item::setCanvas()
     
-    connect(canvasWidget, SIGNAL(mouseMoved(int)),
+    /*connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));
     connect(canvasWidget, SIGNAL(barMovedLeft()),
             gameEngine, SLOT(moveBarLeft()));
@@ -100,11 +100,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(canvasWidget, SIGNAL(cheatSkipLevel()),
             gameEngine, SLOT(cheatSkipLevel()));
     connect(canvasWidget, SIGNAL(cheatAddLife()),
-            gameEngine, SLOT(cheatAddLife()));
+            gameEngine, SLOT(cheatAddLife()));*/
     
     setCentralWidget(canvasWidget);
     
-    setupActions();
+    //setupActions();
     setFocusProxy(canvasWidget);
     
     QSize defaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -113,7 +113,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
-    gameEngine->start("default");
+    //gameEngine->start("default");
 }
  
 MainWindow::~MainWindow()
@@ -174,8 +174,8 @@ void MainWindow::configureSettings()
                                               Settings::self());
     dialog->setModal(true);
     
-    dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
-                    i18n("Theme"), "games-config-theme" );
+    /*dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
+                    i18n("Theme"), "games-config-theme" );*/
     
     // TODO: when will the page be destroyed?
     dialog->addPage(new GeneralSettings( dialog ), 
@@ -254,7 +254,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
         scoreInfo[KScoreDialog::Level].setNum(level);
     }
     
-    canvasWidget->handleGameEnded();
+    //canvasWidget->handleGameEnded();
     
     QPointer<KScoreDialog> ksdialog =
             new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
@@ -263,7 +263,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     ksdialog->exec();
     
     if ( ksdialog ) {
-        canvasWidget->handleGameResumed();
+        //canvasWidget->handleGameResumed();
         gameEngine->start("default");
         delete ksdialog;
     }
@@ -281,7 +281,7 @@ void MainWindow::viewFullScreen(bool fullScreen)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if (gameEngine->gameIsPaused()) {
+    /*if (gameEngine->gameIsPaused()) {
         pauseAction->activate(QAction::Trigger);
         KXmlGuiWindow::mousePressEvent(event);
         return;
@@ -327,6 +327,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         }
     }
     
-    KXmlGuiWindow::mousePressEvent(event);
+    KXmlGuiWindow::mousePressEvent(event);*/
 }
 

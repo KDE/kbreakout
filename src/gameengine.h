@@ -22,15 +22,7 @@
 #include <QList>
 #include <QTimer>
 
-#include "canvasitems.h"
-#include "textitems.h"
-
 class MainWindow;
-
-class Gift;
-class Brick;
-class Ball;
-class LevelLoader;
 
 // TODO: add m_ to all members
 
@@ -44,8 +36,6 @@ public:
     // TODO: rename to isPaused
     bool gameIsPaused() const;
     void setGamePaused(bool paused);
-
-    static const Bar &bar();
 
 public slots:
     // handles the timer timeout signals
@@ -70,10 +60,10 @@ signals:
     void resetMousePosition();
 
 private:
-    void detectBallCollisions(Ball *ball);
+    void detectBallCollisions(/*Ball *ball*/);
     
     // auxiliary functions
-    void handleBrickCollisions(Ball *ball);
+    void handleBrickCollisions(/*Ball *ball*/);
     // adds the a gift to a brick without a gift
     //void addGift(const QString &type, QList <Brick *> *bricks);
     
@@ -119,18 +109,6 @@ private:
     bool m_gameOver;
     bool m_gameWon;
     bool m_cheatsEnabled;
-    QList<Life *> m_lives;
-    Score m_scoreCanvas;
-    LevelInfo m_levelInfo;
-    MessageBox m_messageBox;
-    InfoMessage m_infoMessage;
-    QList<Brick *> m_bricks;
-    QList<Gift *> m_gifts; // visible gifts
-    QList<Ball *> m_balls;
-    Bar m_bar;
-    LevelLoader *m_levelLoader;
-    // XXX
-    static Bar *m_bar_ptr;
 
     // is set to true when deleteMovingObjects() is called
     bool m_itemsGotDeleted;
@@ -146,8 +124,8 @@ private slots:
     void handleDeath();
     void increaseElapsedTime() {++m_elapsedTime;}
     
-    friend class Gift;
     friend class Brick;
+    friend class Gift;
 };
 
 #endif // GAMEENGINE_H

@@ -20,7 +20,7 @@
 #define MAINWINDOW_H
 
 #include <KXmlGuiWindow>
-#include <KGameRenderer>
+//#include <KGameRenderer>
 
 class GameEngine;
 class CanvasWidget;
@@ -52,7 +52,7 @@ private:
 
     KToggleAction *pauseAction;
     
-    KGameRenderer renderer;
+    //KGameRenderer renderer;
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     
