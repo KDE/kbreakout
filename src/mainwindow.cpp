@@ -18,10 +18,10 @@
 
 #include "mainwindow.h"
 #include "gameengine.h"
-#include "canvasitems.h"
 #include "canvaswidget.h"
 #include "ui_generalsettings.h"
 #include "settings.h"
+#include "globals.h"
 
 #include <QGraphicsScene>
 #include <QPointer>
