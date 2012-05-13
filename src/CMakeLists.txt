@@ -3,16 +3,10 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames  )
 set(kbreakout_SRCS 
    main.cpp
    mainwindow.cpp 
-#   canvasitems.cpp
    canvaswidget.cpp
-#   textitems.cpp
-#   item.cpp
-#   gift.cpp
-#   brick.cpp
-#   ball.cpp
    gameengine.cpp
-#   levelloader.cpp
    fontutils.cpp
+   svgitem.cpp
    #generalsettings.cpp
 )
 
