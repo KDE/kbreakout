@@ -12,9 +12,9 @@ Item {
         }
     }
 
-    Image {
+    CanvasItem {
         id: ball
-        source: "image://svgitem/PlainBall"
+        spriteKey: "PlainBall"
     }
     Rectangle {
         width: ball.width+10
