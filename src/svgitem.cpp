@@ -11,5 +11,5 @@ SvgItem::SvgItem() : QDeclarativeImageProvider(QDeclarativeImageProvider::Pixmap
 
 QPixmap SvgItem::requestPixmap(const QString &id, QSize *size, const QSize &requestedSize)
 {
-    return renderer->spritePixmap(id, requestedSize);
+    return renderer->spritePixmap(id, renderer->boundsOnSprite(id).size().toSize());
 }

@@ -1,5 +1,4 @@
 import QtQuick 1.1
-import org.kde.games.core 0.1 as GamesCore
 
 Item {
     Rectangle {
@@ -11,5 +10,17 @@ Item {
             anchors.fill: parent
             onClicked: parent.opacity-=0.1
         }
+    }
+
+    Image {
+        id: ball
+        source: "image://svgitem/PlainBall"
+    }
+    Rectangle {
+        width: ball.width+10
+        height: ball.height+10
+        anchors { top: ball.bottom; left: ball.right }
+        color: "black"
+        opacity: 0.6
     }
 }
