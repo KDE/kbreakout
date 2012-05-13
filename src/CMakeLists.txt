@@ -1,12 +1,13 @@
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames  )
 
+add_subdirectory(svgplugin)
+
 set(kbreakout_SRCS 
    main.cpp
    mainwindow.cpp 
    canvaswidget.cpp
    gameengine.cpp
    fontutils.cpp
-   svgitem.cpp
    #generalsettings.cpp
 )
 
