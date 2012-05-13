@@ -16,7 +16,7 @@ public:
 
     QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize)
     {
-        return renderer->spritePixmap(id, *size);
+        return renderer->spritePixmap(id, requestedSize);
     }
 
 private:
