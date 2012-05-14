@@ -67,8 +67,8 @@ static KgThemeProvider* provider()
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-//      renderer(provider()),
-      canvasWidget(new CanvasWidget(this))
+      renderer(provider()),
+      canvasWidget(new CanvasWidget(&renderer, this))
 {
     // TODO: find a better way..
     //Item::setCanvas(canvasWidget);
@@ -104,7 +104,7 @@ MainWindow::MainWindow(QWidget *parent)
     
     setCentralWidget(canvasWidget);
     
-    //setupActions();
+    setupActions();
     setFocusProxy(canvasWidget);
     
     QSize defaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -174,8 +174,8 @@ void MainWindow::configureSettings()
                                               Settings::self());
     dialog->setModal(true);
     
-    /*dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
-                    i18n("Theme"), "games-config-theme" );*/
+    dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
+                    i18n("Theme"), "games-config-theme" );
     
     // TODO: when will the page be destroyed?
     dialog->addPage(new GeneralSettings( dialog ), 
@@ -206,7 +206,7 @@ void MainWindow::startNewGame()
         KStandardGuiItem::cancel());
         
     if (ret == KMessageBox::Yes) {
-        gameEngine->start("default");
+        //gameEngine->start("default");
     }
 }
 
@@ -219,7 +219,7 @@ void MainWindow::pauseGame()
 
 void MainWindow::setGamePaused(bool paused)
 {
-    gameEngine->setGamePaused(paused);
+    //gameEngine->setGamePaused(paused);
 }
 
 void MainWindow::handleGameResumed()
@@ -229,11 +229,11 @@ void MainWindow::handleGameResumed()
 
 void MainWindow::fire()
 {
-    if (gameEngine->gameIsPaused()) {
+    /*if (gameEngine->gameIsPaused()) {
         pauseAction->activate(QAction::Trigger);
     } else {
         gameEngine->fire();
-    }
+    }*/
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

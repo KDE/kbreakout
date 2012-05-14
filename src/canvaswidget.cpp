@@ -4,20 +4,20 @@
 #include "settings.h"
 
 #include <KStandardDirs>
+#include <KgThemeProvider>
 
 #include <QDeclarativeEngine>
-#include <QKeyEvent>
-#include <QCursor>
-#include <QUrl>
+#include <QGraphicsObject>
 
-#include <KDebug>
-
-CanvasWidget::CanvasWidget(QWidget *parent) 
-    : QDeclarativeView(parent)
+CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
+    QDeclarativeView(parent),
+    m_renderer(renderer)
 {
-    engine()->addImageProvider("svgitem", new SvgItem);
+    engine()->addImageProvider("svgitem", new SvgItem(m_renderer));
 
-    QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
+
+    connect(m_renderer->themeProvider(), SIGNAL(currentThemeChanged(const KgTheme*)), rootObject(), SLOT(reloadSprites()));
 }

@@ -7,12 +7,12 @@
 class SvgItem : public QDeclarativeImageProvider
 {
 public:
-    SvgItem();
+    SvgItem(KGameRenderer *renderer);
 
     QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize);
 
 private:
-    KGameRenderer *renderer;
+    KGameRenderer *m_renderer;
 };
 
 #endif

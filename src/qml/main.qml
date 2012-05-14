@@ -12,6 +12,8 @@ Item {
         }
     }
 
+    function reloadSprites() { print("theme changed"); }
+
     CanvasItem {
         id: ball
         spriteKey: "PlainBall"
