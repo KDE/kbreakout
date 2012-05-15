@@ -42,7 +42,7 @@ QSize ThemedImage::spriteSize()
 void ThemedImage::setImplicitSize()
 {
     if (isValid()) {
-        QSize size = spriteSize()*scale();
+        QSize size = spriteSize();
         setImplicitWidth(size.width());
         setImplicitHeight(size.height());
     }

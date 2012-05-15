@@ -17,8 +17,14 @@ Item {
     }*/
 
     Rectangle {
+        id: black
         anchors.fill: ball
         color: "black"
         opacity: 0.3
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: print(black.width, black.height);
     }
 }
