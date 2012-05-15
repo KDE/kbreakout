@@ -1,28 +1,24 @@
 import QtQuick 1.1
+import SvgLibrary 1.0
 
 Item {
-    Rectangle {
-        width: 300
-        height: 200
-        anchors.centerIn: parent
-        color: "green"
-        MouseArea {
-            anchors.fill: parent
-            onClicked: parent.opacity-=0.1
-        }
+    ThemedImage {
+        id: ball
+        //anchors.centerIn: parent
+        x:50; y:50
+        spriteKey: "PlainBall"
+        scale: 2
+        //width: 30; height: 10
     }
 
-    function reloadSprites() { print("theme changed"); }
-
-    CanvasItem {
+    /*CanvasItem {
         id: ball
         spriteKey: "PlainBall"
-    }
+    }*/
+
     Rectangle {
-        width: ball.width+10
-        height: ball.height+10
-        anchors { top: ball.bottom; left: ball.right }
+        anchors.fill: ball
         color: "black"
-        opacity: 0.6
+        opacity: 0.3
     }
 }

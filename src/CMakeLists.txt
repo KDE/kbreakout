@@ -7,6 +7,7 @@ set(kbreakout_SRCS
    gameengine.cpp
    fontutils.cpp
    svgitem.cpp
+   themedimage.cpp
    #generalsettings.cpp
 )
 

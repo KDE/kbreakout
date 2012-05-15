@@ -1,5 +1,6 @@
 #include "canvaswidget.h"
 #include "svgitem.h"
+#include "themedimage.h"
 #include "globals.h"
 #include "settings.h"
 
@@ -14,10 +15,10 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     m_renderer(renderer)
 {
     engine()->addImageProvider("svgitem", new SvgItem(m_renderer));
+    ThemedImage::setRenderer(m_renderer);
+    qmlRegisterType<ThemedImage>("SvgLibrary", 1, 0, "ThemedImage");
 
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
-
-    connect(m_renderer->themeProvider(), SIGNAL(currentThemeChanged(const KgTheme*)), rootObject(), SLOT(reloadSprites()));
 }
