@@ -1,45 +1,44 @@
-#include "themedimage.h"
+#include "canvasitem.h"
 
 #include <QPainter>
-#include <KDebug>
 
 //static
-KGameRenderer *ThemedImage::m_renderer = 0;
+KGameRenderer *CanvasItem::m_renderer = 0;
 
-void ThemedImage::setRenderer(KGameRenderer *renderer)
+void CanvasItem::setRenderer(KGameRenderer *renderer)
 {
     m_renderer = renderer;
 }
 
-ThemedImage::ThemedImage(QDeclarativeItem *parent) :
+CanvasItem::CanvasItem(QDeclarativeItem *parent) :
     QDeclarativeItem(parent)
 {
     setFlag(QGraphicsItem::ItemHasNoContents, false);
 }
 
-QString ThemedImage::spriteKey() const
+QString CanvasItem::spriteKey() const
 {
     return m_key;
 }
 
-void ThemedImage::setSpriteKey(const QString &spriteKey)
+void CanvasItem::setSpriteKey(const QString &spriteKey)
 {
     m_key = spriteKey;
 }
 
-bool ThemedImage::isValid() const
+bool CanvasItem::isValid() const
 {
     return (m_renderer && m_renderer->spriteExists(m_key));
 }
 
-QSize ThemedImage::spriteSize()
+QSize CanvasItem::spriteSize()
 {
     if (isValid())
         return m_renderer->boundsOnSprite(m_key).size().toSize();
     return QSize();
 }
 
-void ThemedImage::setImplicitSize()
+void CanvasItem::setImplicitSize()
 {
     if (isValid()) {
         QSize size = spriteSize();
@@ -48,12 +47,12 @@ void ThemedImage::setImplicitSize()
     }
 }
 
-QSize ThemedImage::implicitSize()
+QSize CanvasItem::implicitSize()
 {
     return QSize(implicitWidth(), implicitHeight());
 }
 
-void ThemedImage::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void CanvasItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     if (isValid()) {
         setImplicitSize();

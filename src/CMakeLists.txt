@@ -6,8 +6,7 @@ set(kbreakout_SRCS
    canvaswidget.cpp
    gameengine.cpp
    fontutils.cpp
-   svgitem.cpp
-   themedimage.cpp
+   canvasitem.cpp
    #generalsettings.cpp
 )
 
