@@ -21,8 +21,6 @@ public:
     bool isValid() const;
 
     void setImplicitSize();
-    QSize implicitSize();
-    QSize spriteSize();
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget=0);
 

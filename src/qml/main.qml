@@ -5,20 +5,18 @@ Item {
     id: canvas
 
     CanvasItem {
-        id: ball
-        spriteKey: "PlainBall"
-        anchors.centerIn: parent
-    }
-
-    Rectangle {
-        id: black
-        anchors.fill: ball
-        color: "black"
-        opacity: 0.3
-    }
-
-    MouseArea {
+        id: background
+        spriteKey: "Background"
         anchors.fill: parent
-        onClicked: print(black.width, black.height);
+
+        CanvasItem {
+            id: ball
+            spriteKey: "PlainBall"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                bottom: parent.bottom
+                bottomMargin: 20
+            }
+        }
     }
 }
