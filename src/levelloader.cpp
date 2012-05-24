@@ -16,8 +16,9 @@
 */
 
 #include "levelloader.h"
-#include "brick.h"
-#include "gift.h"
+//#include "brick.h"
+//#include "gift.h"
+#include "globals.h"
 
 #include <QDomDocument>
 #include <QFile>
@@ -101,11 +102,11 @@ void LevelLoader::setLevelset(const QString& levelname)
     // --
 }
 
-void LevelLoader::loadLevel(QList< Brick* >& bricks)
+void LevelLoader::loadLevel()
 {   
     // Check if levelset is of KConfig-type
     if( m_oldstyle ){
-        loadOldStyleLevel( bricks );
+        loadOldStyleLevel();
         return;
     }
     // Selecting the correct level
@@ -150,10 +151,10 @@ void LevelLoader::loadLevel(QList< Brick* >& bricks)
             
         if( info.tagName() == "Line" ){
             // Load one line of bricks
-            loadLine( info, bricks );
+            loadLine( info );
         } else if( info.tagName() == "Gift" ){
             // Load one gift type
-            loadGift( info, bricks );
+            loadGift( info );
         } else {
             kError() << "Invalid tag name " << info.tagName() << " has occured in level "
                      << levelName << " in levelset " << m_levelname << endl;
@@ -163,7 +164,7 @@ void LevelLoader::loadLevel(QList< Brick* >& bricks)
     }
 }
 
-void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
+void LevelLoader::loadLine(QDomElement lineNode)
 {
     // Reading the line number
     QDomAttr attribute = lineNode.attributeNode("Number");
@@ -198,15 +199,15 @@ void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
     for( int x = 0; x < line.size(); x++ ){
         char charType = line[x].toAscii();
         if (charType != '-') {
-            bricks.append( new Brick(m_game, getTypeFromChar(charType), x+1, m_lineNumber) );
+            //bricks.append( new Brick(m_game, getTypeFromChar(charType), x+1, m_lineNumber) );
         }
     }
 }
 
-void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
+void LevelLoader::loadGift(QDomElement giftNode)
 {
     // Build list of bricks without a gift
-    QList<Brick *> bricksLeft = bricks;
+    /*QList<Brick *> bricksLeft = bricks;
     QMutableListIterator<Brick *> i(bricksLeft);
     while (i.hasNext()) {
         Brick *brick = i.next();
@@ -292,13 +293,13 @@ void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
             bricksLeft.at(index)->setGift(gift);
             bricksLeft.removeAt(index);
         }
-    }
+    }*/
 }
 
-void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
+void LevelLoader::loadOldStyleLevel()
 {
     // Selecting the correct level
-    m_level++;
+    /*m_level++;
     
     // Loading the levelset
     QString path = "levelsets/" + m_levelname + ".levelset";
@@ -384,7 +385,7 @@ void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
             bricksLeft.at(index)->setGift(gift);
             bricksLeft.removeAt(index);
         }
-    }
+    }*/
 }
 
 QString LevelLoader::getTypeFromChar(char type) 
@@ -407,7 +408,7 @@ QString LevelLoader::getTypeFromChar(char type)
     }
 }
 
-Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
+/*Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
 {
     Brick *result = 0;
     foreach( Brick *testbrick, bricks ){
@@ -418,7 +419,7 @@ Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
         }
     }
     return result;
-}
+}*/
 
 QPoint LevelLoader::positionFromString(const QString& posString)
 {

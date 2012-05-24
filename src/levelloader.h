@@ -24,7 +24,7 @@
 class QDomDocument;
 class QDomElement;
 class QPoint;
-class Brick;
+//class Brick;
 class GameEngine;
 
 class LevelLoader
@@ -38,14 +38,14 @@ public:
     QString levelset() const;
     void setLevelset( const QString& levelname );
   
-    void loadLevel( QList<Brick *> &bricks );
+    void loadLevel();
 private:
-    void loadLine( QDomElement lineNode, QList<Brick *> &bricks );
-    void loadGift( QDomElement giftNode, QList<Brick *> &bricks );
+    void loadLine( QDomElement lineNode );
+    void loadGift( QDomElement giftNode );
     
-    void loadOldStyleLevel( QList<Brick *> &m_bricks );
+    void loadOldStyleLevel();
     static QString getTypeFromChar(char type);
-    Brick *brickAt( const QPoint& position, QList<Brick *> &bricks );
+    //Brick *brickAt( const QPoint& position, QList<Brick *> &bricks );
     QPoint positionFromString( const QString& posString );
     
     QDomDocument *m_levelset;
