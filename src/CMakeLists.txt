@@ -6,7 +6,6 @@ set(kbreakout_SRCS
    canvaswidget.cpp
    gameengine.cpp
    levelloader.cpp
-   fontutils.cpp
    canvasitem.cpp
    #generalsettings.cpp
 )
