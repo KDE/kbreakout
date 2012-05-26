@@ -201,16 +201,6 @@ void LevelLoader::loadLine(QDomElement lineNode)
 
 void LevelLoader::loadGift(QDomElement giftNode)
 {
-    // Build list of bricks without a gift
-    /*QList<Brick *> bricksLeft = bricks;
-    QMutableListIterator<Brick *> i(bricksLeft);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (brick->type() == "UnbreakableBrick" || brick->hasGift() ){
-            i.remove();
-        }
-    }*/
-
     bool nodeTextRead = false;
     // Reading the brick type
     QDomAttr attribute = giftNode.attributeNode("Type");
@@ -241,11 +231,6 @@ void LevelLoader::loadGift(QDomElement giftNode)
         if( !ok ){ times = 1; }
     }
     
-    /*if( bricksLeft.count() < times ){
-        kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
-                 << " are too many gifts of type " << giftType << endl;
-    }*/
-    
     // If only one brick to be placed: see if position is given
     QString position;
     if( times == 1 ){
@@ -263,34 +248,6 @@ void LevelLoader::loadGift(QDomElement giftNode)
     }
 
     emit loadGift(giftType, times, position);
-     
-    /*if( !position.isNull() ){
-        // Put gift at given position
-        Brick *giftBrick = brickAt( position, bricks ); 
-        if( giftBrick == 0 ){
-            kError() << "Invalid levelset " << m_levelname << ": Can't place gift at position ("
-                     << position.x() << "," << position.y() << "). There is no brick.\n";
-        } else {
-            if( giftBrick->hasGift() ){
-                // Brick already has a gift -> move this gift to a random position
-                int index = qrand() % bricksLeft.count();
-                bricksLeft.at(index)->setGift( giftBrick->gift() );
-            }
-            Gift *newgift = new Gift(giftType);
-            newgift->hide();
-            giftBrick->setGift(newgift);
-        }
-    } else {
-        // Distribute gifts randomly
-        for( int i = 0; i < times; i++ ){
-            Gift *gift = new Gift(giftType);
-            gift->hide();
-            
-            int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->setGift(gift);
-            bricksLeft.removeAt(index);
-        }
-    }*/
 }
 
 void LevelLoader::loadOldStyleLevel()
