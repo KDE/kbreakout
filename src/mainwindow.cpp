@@ -97,6 +97,8 @@ MainWindow::MainWindow(QWidget *parent)
             SLOT(handleEndedGame(int,int,int)));*/
     connect(gameEngine, SIGNAL(newLine(int,QString)),
             canvasWidget, SLOT(showLine(int,QString)));
+    connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
+            canvasWidget, SLOT(putGift(QString,int,QString)));
     
     // cheating keys, debugging and testing only TODO: REMOVE
     /*connect(canvasWidget, SIGNAL(cheatSkipLevel()),

@@ -24,3 +24,10 @@ void CanvasWidget::showLine(int lineNumber, QString line)
                               Q_ARG(QVariant, line));
 }
 
+void CanvasWidget::putGift(QString gift, int times, QString pos)
+{
+    QMetaObject::invokeMethod(rootObject(), "loadGift",
+                              Q_ARG(QVariant, gift),
+                              Q_ARG(QVariant, times),
+                              Q_ARG(QVariant, pos));
+}

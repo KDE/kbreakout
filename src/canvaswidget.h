@@ -16,6 +16,7 @@ public slots:
 
 private slots:
     void showLine(int lineNumber, QString line);
+    void putGift(QString gift, int times, QString pos);
 
 private:
     KGameRenderer *m_renderer;

@@ -44,6 +44,7 @@ public:
 
 signals:
     void loadLine(int lineNumber, QString line);
+    void loadGift(QString giftType, int times, QString position);
 
 private:
     void loadLine( QDomElement lineNode );

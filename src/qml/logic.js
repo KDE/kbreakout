@@ -18,3 +18,56 @@ function getTypeFromChar(type)
     }
 }
 
+function indexForPos(position) {
+    var pos = position.split(",");
+    var row = parseInt(pos[0]) - 1;
+    var column = parseInt(pos[1]) - 1;
+    return row*bricks.columns + column;
+}
+
+function putGiftOnRandomBrick(gift, except) {
+    var index;
+    var brick;
+    do {
+        index = Math.round(Math.random()*bricks.items.count);
+        brick = bricks.items.itemAt(index);
+    } while (index==except || brick==null || brick.type=="" || brick.hasGift());
+    brick.giftType = gift;
+}
+
+function giftlessBricks() {
+    var count = 0;
+    for (var i=0; i<bricks.items.count; i++) {
+        var brick = bricks.items.itemAt(i);
+        if (brick!=null && brick.type!="" && !brick.hasGift()) count++;
+    }
+}
+
+function putGift(gift, times, pos) {
+    if (pos!="") {
+        // Put gift at given position
+        var index = indexForPos(pos);
+        var giftBrick = bricks.items.itemAt(index);
+        if (giftBrick == null || giftBrick.type == "") {
+            print("error:", "Can't place gift at position (", pos, "). There is no brick.");
+        }
+        else {
+            if (giftBrick.hasGift()) {
+                // Brick already has a gift -> move this gift to a random position
+                putGiftOnRandomBrick(gift, index);
+            }
+            giftBrick.giftType = gift;
+        }
+    }
+    else {
+        // Distribute gifts randomly
+        var bricksLeft = giftlessBricks();
+        if (bricksLeft < times) {
+            print("error:", "Too many gifts of type", gift);
+            return;
+        }
+        for (var i=0; i<times; i++) {
+            putGiftOnRandomBrick(gift, -1);
+        }
+    }
+}

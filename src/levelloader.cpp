@@ -209,7 +209,7 @@ void LevelLoader::loadGift(QDomElement giftNode)
         if (brick->type() == "UnbreakableBrick" || brick->hasGift() ){
             i.remove();
         }
-    }
+    }*/
 
     bool nodeTextRead = false;
     // Reading the brick type
@@ -241,28 +241,30 @@ void LevelLoader::loadGift(QDomElement giftNode)
         if( !ok ){ times = 1; }
     }
     
-    if( bricksLeft.count() < times ){
+    /*if( bricksLeft.count() < times ){
         kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
                  << " are too many gifts of type " << giftType << endl;
-    }
+    }*/
     
     // If only one brick to be placed: see if position is given
-    QPoint position;
+    QString position;
     if( times == 1 ){
         attribute = giftNode.attributeNode("Position");
         attributeNode = giftNode.firstChildElement("Position");
         if( !attribute.isNull() ){
-            position = positionFromString( attribute.value() );
+            position = attribute.value();
         } else if( !attributeNode.isNull() ){
-            position = positionFromString( attributeNode.text() );
+            position = attributeNode.text();
             nodeTextRead = true;
         } else if( !nodeTextRead && giftNode.text().contains(',') ){
-            position = positionFromString( giftNode.text() );
+            position = giftNode.text();
             nodeTextRead = true;
         }
     }
-        
-    if( !position.isNull() ){
+
+    emit loadGift(giftType, times, position);
+     
+    /*if( !position.isNull() ){
         // Put gift at given position
         Brick *giftBrick = brickAt( position, bricks ); 
         if( giftBrick == 0 ){

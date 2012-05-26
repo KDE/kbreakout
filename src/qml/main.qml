@@ -37,6 +37,10 @@ Item {
         brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
     }
 
+    function loadGift(gift, times, pos) {
+        Logic.putGift(gift, times, pos);
+    }
+
     property string brickString
     
     Component.onCompleted: {
@@ -50,13 +54,14 @@ Item {
         id: bricks
         columns: Globals.WIDTH
         anchors.fill: bgOverlay
+        property alias items: brickItems
         
         Repeater {
+            id: brickItems
             model: brickString.split("")
-            CanvasItem {
-                spriteKey: Logic.getTypeFromChar(modelData)
+            Brick {
+                type: Logic.getTypeFromChar(modelData)
                 width: bgOverlay.width/20
-                height: width*Globals.BRICK_HEIGHT/Globals.BRICK_WIDTH
             }
         }
     }

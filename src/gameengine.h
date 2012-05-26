@@ -56,9 +56,11 @@ public slots:
     void cheatAddLife();
 
     void emitNewLine(int lineNumber, QString line);
+    void emitNewGift(QString gift, int times, QString pos);
 
 signals:
     void newLine(int lineNumner, QString line);
+    void newGift(QString gift, int times, QString pos);
     void gamePaused();
     void gameResumed();
     void gameEnded(int score, int level, int time);
