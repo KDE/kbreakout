@@ -14,6 +14,12 @@ CanvasItem::CanvasItem(QDeclarativeItem *parent) :
     QDeclarativeItem(parent)
 {
     setFlag(QGraphicsItem::ItemHasNoContents, false);
+    connect(m_renderer, SIGNAL(themeChanged(const KgTheme*)), this, SLOT(reload()));
+}
+
+void CanvasItem::reload()
+{
+    update();
 }
 
 QString CanvasItem::spriteKey() const
@@ -23,7 +29,11 @@ QString CanvasItem::spriteKey() const
 
 void CanvasItem::setSpriteKey(const QString &spriteKey)
 {
-    m_key = spriteKey;
+    if (spriteKey != m_key) {
+        m_key = spriteKey;
+        emit spriteKeyChanged();
+        update();
+    }
 }
 
 bool CanvasItem::isValid() const

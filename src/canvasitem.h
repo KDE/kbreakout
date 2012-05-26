@@ -27,6 +27,9 @@ public:
 signals:
     void spriteKeyChanged();
 
+private slots:
+    void reload();
+
 private:
     QString m_key;
     static KGameRenderer *m_renderer;
