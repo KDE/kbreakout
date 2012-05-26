@@ -18,6 +18,7 @@
 #ifndef LEVELLOADER_H
 #define LEVELLOADER_H
 
+#include <QObject>
 #include <QList>
 #include <QString>
 
@@ -27,8 +28,9 @@ class QPoint;
 //class Brick;
 class GameEngine;
 
-class LevelLoader
+class LevelLoader : public QObject
 {
+    Q_OBJECT
 public:
     LevelLoader( GameEngine *gameEngine );
     ~LevelLoader();
@@ -39,6 +41,10 @@ public:
     void setLevelset( const QString& levelname );
   
     void loadLevel();
+
+signals:
+    void loadLine(int lineNumber, QString line);
+
 private:
     void loadLine( QDomElement lineNode );
     void loadGift( QDomElement giftNode );

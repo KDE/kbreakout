@@ -18,6 +18,7 @@
 #include "gameengine.h"
 
 #include "mainwindow.h"
+#include "levelloader.h"
 #include "settings.h"
 #include "globals.h"
 
@@ -49,21 +50,22 @@ GameEngine::GameEngine(MainWindow *mainWindow)
     //m_bar_ptr = &m_bar;
 
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    //m_levelLoader = new LevelLoader( this );
+    m_levelLoader = new LevelLoader( this );
+    connect(m_levelLoader, SIGNAL(loadLine(int,QString)), this, SLOT(emitNewLine(int,QString)));
 }
 
 GameEngine::~GameEngine()
 {
     deleteAllObjects();
-    //delete m_levelLoader;
+    delete m_levelLoader;
 }
 
 void GameEngine::start(const QString& l)
 {
-    /*m_levelLoader->setLevelset(l);
+    m_levelLoader->setLevelset(l);
     m_levelLoader->setLevel(0);
 
-    qDeleteAll(m_lives);
+    /*qDeleteAll(m_lives);
     m_lives.clear();
     for (int i = 0; i < INITIAL_LIVES; ++i) {
         m_lives.append(new Life);
@@ -209,8 +211,8 @@ void GameEngine::loadLevel()
     deleteAllObjects();
     m_remainingBricks = 0;
     
-    /*m_levelLoader->loadLevel( m_bricks );
-    if (m_bricks.isEmpty()) {
+    m_levelLoader->loadLevel();
+    /*if (m_bricks.isEmpty()) {
         if (m_levelLoader->level() == 1) {
             // No level in the levelset
             kError() << "Invalid levelset " << m_levelLoader->levelset() << endl;
@@ -224,24 +226,29 @@ void GameEngine::loadLevel()
             emit gameEnded(m_score, -1, m_elapsedTime);
             deleteMovingObjects();
         }
-    }
+    }*/
     
-    m_balls.append(new Ball);
+    /*m_balls.append(new Ball);
     moveBar(m_bar.center());
     m_bar.reset();
-    updateAttachedBalls();
+    updateAttachedBalls();*/
     
     m_gameTimer.setInterval(REPAINT_INTERVAL);
     m_speed = 1.8;
     m_repaintInterval = 1;
-    m_levelInfo.setLevel(m_level);
+    //m_levelInfo.setLevel(m_level);
     if (gameIsPaused()) {
         resume();
     }
-    showMessage(i18n("Level %1", m_level));
+    //showMessage(i18n("Level %1", m_level));
     QTimer::singleShot(2000, this, SLOT(hideMessage()));
     
-    showFireBallMessage();*/
+    //showFireBallMessage();
+}
+
+void GameEngine::emitNewLine(int lineNumber, QString line)
+{
+    emit newLine(lineNumber, line);
 }
 
 void GameEngine::timerTimeout() {

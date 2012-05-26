@@ -15,6 +15,7 @@ signals:
 public slots:
 
 private slots:
+    void showLine(int lineNumber, QString line);
 
 private:
     KGameRenderer *m_renderer;

@@ -16,3 +16,11 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
 }
+
+void CanvasWidget::showLine(int lineNumber, QString line)
+{
+    QMetaObject::invokeMethod(rootObject(), "loadLine",
+                              Q_ARG(QVariant, lineNumber),
+                              Q_ARG(QVariant, line));
+}
+

@@ -24,6 +24,8 @@
 
 class MainWindow;
 
+class LevelLoader;
+
 // TODO: add m_ to all members
 
 class GameEngine : public QObject
@@ -53,7 +55,10 @@ public slots:
     void cheatSkipLevel();
     void cheatAddLife();
 
+    void emitNewLine(int lineNumber, QString line);
+
 signals:
+    void newLine(int lineNumner, QString line);
     void gamePaused();
     void gameResumed();
     void gameEnded(int score, int level, int time);
@@ -109,6 +114,7 @@ private:
     bool m_gameOver;
     bool m_gameWon;
     bool m_cheatsEnabled;
+    LevelLoader *m_levelLoader;
 
     // is set to true when deleteMovingObjects() is called
     bool m_itemsGotDeleted;

@@ -19,6 +19,7 @@
 //#include "brick.h"
 //#include "gift.h"
 #include "globals.h"
+#include "gameengine.h"
 
 #include <QDomDocument>
 #include <QFile>
@@ -31,7 +32,7 @@
 #include <KStandardDirs>
 
 LevelLoader::LevelLoader(GameEngine *gameEngine)
-  : m_game( gameEngine )
+  : QObject(gameEngine), m_game( gameEngine )
 {
     m_levelname = QString();
     m_level = 0;
@@ -194,14 +195,8 @@ void LevelLoader::loadLine(QDomElement lineNode)
         kError() << "Invalid levelset " << m_levelname << ": too many bricks in line "
                  << m_lineNumber << endl;
     }
-    
-    // Convert line information to bricks
-    for( int x = 0; x < line.size(); x++ ){
-        char charType = line[x].toAscii();
-        if (charType != '-') {
-            //bricks.append( new Brick(m_game, getTypeFromChar(charType), x+1, m_lineNumber) );
-        }
-    }
+
+    emit loadLine(m_lineNumber, line);
 }
 
 void LevelLoader::loadGift(QDomElement giftNode)

@@ -83,9 +83,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(canvasWidget, SIGNAL(barMovedRight()),
             gameEngine, SLOT(moveBarRight()));
     connect(canvasWidget, SIGNAL(focusLost()),
-            this, SLOT(pauseGame()));
+            this, SLOT(pauseGame()));*/
     
-    connect(gameEngine, SIGNAL(gamePaused()), 
+    /*connect(gameEngine, SIGNAL(gamePaused()), 
             canvasWidget, SLOT(handleGamePaused()));
     connect(gameEngine, SIGNAL(gameResumed()),
             canvasWidget, SLOT(handleGameResumed()));
@@ -94,10 +94,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameEngine, SIGNAL(resetMousePosition()),
             canvasWidget, SLOT(handleResetMousePosition()));
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
-            SLOT(handleEndedGame(int,int,int)));
+            SLOT(handleEndedGame(int,int,int)));*/
+    connect(gameEngine, SIGNAL(newLine(int,QString)),
+            canvasWidget, SLOT(showLine(int,QString)));
     
     // cheating keys, debugging and testing only TODO: REMOVE
-    connect(canvasWidget, SIGNAL(cheatSkipLevel()),
+    /*connect(canvasWidget, SIGNAL(cheatSkipLevel()),
             gameEngine, SLOT(cheatSkipLevel()));
     connect(canvasWidget, SIGNAL(cheatAddLife()),
             gameEngine, SLOT(cheatAddLife()));*/
@@ -113,7 +115,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
-    //gameEngine->start("default");
+    gameEngine->start("default");
 }
  
 MainWindow::~MainWindow()
