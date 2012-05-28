@@ -43,7 +43,7 @@ public:
     void loadLevel();
 
 signals:
-    void loadLine(int lineNumber, QString line);
+    void loadLine(QString line, int lineNumber);
     void loadGift(QString giftType, int times, QString position);
 
 private:

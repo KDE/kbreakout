@@ -51,7 +51,7 @@ GameEngine::GameEngine(MainWindow *mainWindow)
 
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_levelLoader = new LevelLoader( this );
-    connect(m_levelLoader, SIGNAL(loadLine(int,QString)), this, SLOT(emitNewLine(int,QString)));
+    connect(m_levelLoader, SIGNAL(loadLine(QString,int)), this, SLOT(emitNewLine(QString,int)));
     connect(m_levelLoader, SIGNAL(loadGift(QString,int,QString)), this, SLOT(emitNewGift(QString,int,QString)));
 }
 
@@ -247,9 +247,9 @@ void GameEngine::loadLevel()
     //showFireBallMessage();
 }
 
-void GameEngine::emitNewLine(int lineNumber, QString line)
+void GameEngine::emitNewLine(QString line, int lineNumber)
 {
-    emit newLine(lineNumber, line);
+    emit newLine(line, lineNumber);
 }
 
 void GameEngine::emitNewGift(QString gift, int times, QString pos)

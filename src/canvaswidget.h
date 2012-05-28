@@ -15,7 +15,7 @@ signals:
 public slots:
 
 private slots:
-    void showLine(int lineNumber, QString line);
+    void showLine(QString line, int lineNumber);
     void putGift(QString gift, int times, QString pos);
 
 private:

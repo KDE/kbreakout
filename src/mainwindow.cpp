@@ -95,8 +95,8 @@ MainWindow::MainWindow(QWidget *parent)
             canvasWidget, SLOT(handleResetMousePosition()));
     connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));*/
-    connect(gameEngine, SIGNAL(newLine(int,QString)),
-            canvasWidget, SLOT(showLine(int,QString)));
+    connect(gameEngine, SIGNAL(newLine(QString,int)),
+            canvasWidget, SLOT(showLine(QString,int)));
     connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
             canvasWidget, SLOT(putGift(QString,int,QString)));
     

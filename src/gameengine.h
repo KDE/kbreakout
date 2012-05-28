@@ -55,11 +55,11 @@ public slots:
     void cheatSkipLevel();
     void cheatAddLife();
 
-    void emitNewLine(int lineNumber, QString line);
+    void emitNewLine(QString line, int lineNumber);
     void emitNewGift(QString gift, int times, QString pos);
 
 signals:
-    void newLine(int lineNumner, QString line);
+    void newLine(QString line, int lineNumber);
     void newGift(QString gift, int times, QString pos);
     void gamePaused();
     void gameResumed();

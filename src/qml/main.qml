@@ -32,7 +32,7 @@ Item {
         height: canvas.m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
     }
 
-    function loadLine(lineNumber, line) {
+    function loadLine(line, lineNumber) {
         var start = (lineNumber-1)*Globals.WIDTH;
         brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
     }
