@@ -16,8 +16,6 @@
 */
 
 #include "levelloader.h"
-//#include "brick.h"
-//#include "gift.h"
 #include "globals.h"
 #include "gameengine.h"
 
@@ -315,44 +313,4 @@ void LevelLoader::loadOldStyleLevel()
 
         emit newGift(key, times, QString());
     }
-}
-
-QString LevelLoader::getTypeFromChar(char type) 
-{
-    switch (type) {
-    case '1': return "PlainBrick1";
-    case '2': return "PlainBrick2";
-    case '3': return "PlainBrick3";
-    case '4': return "PlainBrick4";
-    case '5': return "PlainBrick5";
-    case '6': return "PlainBrick6";
-    case 'm': return "MultipleBrick3";
-    case 'x': return "ExplodingBrick";
-    case 'u': return "UnbreakableBrick";
-    case 'h': return "HiddenBrick";
-    default:
-        kError() << "Invalid File: unknown character '" 
-                    << type << "'\n";
-        return "PlainBrick1";
-    }
-}
-
-/*Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
-{
-    Brick *result = 0;
-    foreach( Brick *testbrick, bricks ){
-        if( testbrick->position().x() / BRICK_WIDTH + 1 == position.x()
-            && testbrick->position().y() / BRICK_HEIGHT + 1 == position.y() ){
-            result = testbrick;
-            break;
-        }
-    }
-    return result;
-}*/
-
-QPoint LevelLoader::positionFromString(const QString& posString)
-{
-    int seperatorPosition = posString.indexOf(',');
-    int length = posString.length();
-    return QPoint( posString.left(seperatorPosition).toInt(), posString.right(length-seperatorPosition-1).toInt() );
 }

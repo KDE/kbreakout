@@ -19,13 +19,9 @@
 #define LEVELLOADER_H
 
 #include <QObject>
-#include <QList>
-#include <QString>
 
 class QDomDocument;
 class QDomElement;
-class QPoint;
-//class Brick;
 class GameEngine;
 
 class LevelLoader : public QObject
@@ -51,9 +47,6 @@ private:
     void loadGift( QDomElement giftNode );
     
     void loadOldStyleLevel();
-    static QString getTypeFromChar(char type);
-    //Brick *brickAt( const QPoint& position, QList<Brick *> &bricks );
-    QPoint positionFromString( const QString& posString );
     
     QDomDocument *m_levelset;
     bool m_oldstyle;
