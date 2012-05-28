@@ -60,7 +60,7 @@ Item {
         text: "Level "+parent.level
     }
 
-    property int lives: Globals.INITIAL_LIVES+1
+    property int lives: Globals.INITIAL_LIVES
     Row {
         id: lifeBars
         spacing: scaledBrickWidth*3/13
