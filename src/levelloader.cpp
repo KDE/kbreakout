@@ -253,7 +253,7 @@ void LevelLoader::loadGift(QDomElement giftNode)
 void LevelLoader::loadOldStyleLevel()
 {
     // Selecting the correct level
-    /*m_level++;
+    m_level++;
     
     // Loading the levelset
     QString path = "levelsets/" + m_levelname + ".levelset";
@@ -288,29 +288,14 @@ void LevelLoader::loadOldStyleLevel()
         if (line.size() > WIDTH) {
             kError() << "Invalid file: too many bricks\n";
         }
-        
-        // Convert the string, each char represents a brick
-        for (int x = 0; x < line.size(); ++x ) {
-            char charType = line[x].toAscii();
-            if (charType != '-') {
-                m_bricks.append(new Brick(m_game, getTypeFromChar(charType), x+1, y));
-            }
-        }
+
+        emit loadLine(y, line);
         
         ++y;
         key = "line" + QString::number(y);
     }
     
     // add gifts
-    
-    //bricks without gifts
-    QList<Brick *> bricksLeft = m_bricks;
-    QMutableListIterator<Brick *> i(bricksLeft);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (brick->type() == "UnbreakableBrick")
-            i.remove();
-    }
     
     for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
         key = GIFT_TYPES[i];
@@ -322,24 +307,14 @@ void LevelLoader::loadOldStyleLevel()
             return;
         }
         bool ok;
-        int n = line.toInt(&ok);
+        int times = line.toInt(&ok);
         if (!ok) {
             kError() << m_levelname << ":" << key << " invalid number!!" << endl;
             continue;
         }
-        if (bricksLeft.count() < n) {
-            kError() << m_levelname << ": too many gifts!! " << endl;
-            break;
-        }
-        for (int i = 0; i < n; ++i) {
-            Gift *gift = new Gift(key); // key is the gift type
-            gift->hide();
-            
-            int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->setGift(gift);
-            bricksLeft.removeAt(index);
-        }
-    }*/
+
+        emit loadGift(key, times, QString());
+    }
 }
 
 QString LevelLoader::getTypeFromChar(char type) 
