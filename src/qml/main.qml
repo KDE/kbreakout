@@ -32,6 +32,9 @@ Item {
         height: canvas.m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
     }
 
+    property real scaledBrickWidth: bgOverlay.width/Globals.WIDTH
+    property real scaledBrickHeight: scaledBrickWidth * Globals.BRICK_HEIGHT / Globals.BRICK_WIDTH
+
     property int score: 0
     TextItem {
         id: scoreDisplay
@@ -55,6 +58,27 @@ Item {
             bottomMargin: height/5
         }
         text: "Level "+parent.level
+    }
+
+    property int lives: Globals.INITIAL_LIVES+1
+    Row {
+        id: lifeBars
+        spacing: scaledBrickWidth*3/13
+        anchors {
+            right: bgOverlay.right
+            rightMargin: 20
+            bottom: bgOverlay.top
+            bottomMargin: levelDisplay.height/5
+        }
+
+        Repeater {
+            model: canvas.lives
+            CanvasItem {
+                spriteKey: "PlainBar"
+                width: scaledBrickWidth/1.3
+                height: scaledBrickHeight/1.3
+            }
+        }
     }
 
     function loadLine(line, lineNumber) {
@@ -86,7 +110,7 @@ Item {
             model: brickString.split("")
             Brick {
                 type: Logic.getTypeFromChar(modelData)
-                width: bgOverlay.width/20
+                width: bgOverlay.width/Globals.WIDTH
             }
         }
     }
