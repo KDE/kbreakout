@@ -36,7 +36,6 @@ Item {
     TextItem {
         id: scoreDisplay
         width: bgOverlay.width/6
-        idealWidth: Globals.BRICK_WIDTH*Globals.WIDTH/6
         anchors {
             left: bgOverlay.left
             bottom: bgOverlay.top
@@ -49,7 +48,6 @@ Item {
     TextItem {
         id: levelDisplay
         width: bgOverlay.width/5
-        idealWidth: Globals.BRICK_WIDTH*Globals.WIDTH/5
         anchors {
             left: scoreDisplay.right
             leftMargin: width-scoreDisplay.width

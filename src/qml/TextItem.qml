@@ -5,8 +5,7 @@ import "globals.js" as Globals
 CanvasItem {
     id: item
     spriteKey: "Display"
-    property real idealWidth
-    height: width*(Globals.BRICK_HEIGHT*1.3)/idealWidth
+    height: bgOverlay.width * (Globals.BRICK_HEIGHT*1.3) / (Globals.BRICK_WIDTH*Globals.WIDTH)
     property alias text: textItem.text
     property int fontSize
 
