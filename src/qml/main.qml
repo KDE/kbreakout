@@ -32,6 +32,33 @@ Item {
         height: canvas.m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
     }
 
+    property int score: 0
+    TextItem {
+        id: scoreDisplay
+        width: bgOverlay.width/6
+        idealWidth: Globals.BRICK_WIDTH*Globals.WIDTH/6
+        anchors {
+            left: bgOverlay.left
+            bottom: bgOverlay.top
+            bottomMargin: height/5
+        }
+        text: parent.score
+    }
+
+    property int level: 1
+    TextItem {
+        id: levelDisplay
+        width: bgOverlay.width/5
+        idealWidth: Globals.BRICK_WIDTH*Globals.WIDTH/5
+        anchors {
+            left: scoreDisplay.right
+            leftMargin: width-scoreDisplay.width
+            bottom: bgOverlay.top
+            bottomMargin: height/5
+        }
+        text: "Level "+parent.level
+    }
+
     function loadLine(line, lineNumber) {
         var start = (lineNumber-1)*Globals.WIDTH;
         brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
