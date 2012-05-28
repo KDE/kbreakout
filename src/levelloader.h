@@ -43,8 +43,8 @@ public:
     void loadLevel();
 
 signals:
-    void loadLine(QString line, int lineNumber);
-    void loadGift(QString giftType, int times, QString position);
+    void newLine(QString line, int lineNumber);
+    void newGift(QString giftType, int times, QString position);
 
 private:
     void loadLine( QDomElement lineNode );
