@@ -5,7 +5,7 @@ import "globals.js" as Globals
 CanvasItem {
     id: item
     spriteKey: "Display"
-    height: bgOverlay.width * (Globals.BRICK_HEIGHT*1.3) / (Globals.BRICK_WIDTH*Globals.WIDTH)
+    height: bgOverlay.width * (Globals.BRICK_HEIGHT*1.5) / (Globals.BRICK_WIDTH*Globals.WIDTH)
     property alias text: textItem.text
     property int fontSize
 
@@ -17,12 +17,21 @@ CanvasItem {
         color: "white"
     }
 
-    onWidthChanged: updateFontSize();
-    onHeightChanged: updateFontSize();
+    onWidthChanged: fontTimerTrigger.restart();
+    onHeightChanged: fontTimerTrigger.restart();
 
     function updateFontSize() {
         fontSize = 72;
         fontTimer.start();
+    }
+ 
+    Timer {
+        id: fontTimerTrigger
+        interval: 100
+        onTriggered: {
+            if (!fontTimer.running)
+                updateFontSize();
+        }
     }
 
     Timer {
