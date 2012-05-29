@@ -5,16 +5,29 @@ import "logic.js" as Logic
 
 Item {
     id: canvas
-    property int m_scale: updateScale();
     
-    // needs revision, returns very inaccurate scale
-    function updateScale() {
-        var scaleX = width/(Globals.BRICK_WIDTH*Globals.WIDTH);
-        var scaleY = height/(Globals.BRICK_HEIGHT*Globals.HEIGHT);
-        var scale = Math.min(scaleX, scaleY);
-        scale = Math.floor(scale*Globals.BRICK_HEIGHT)/Globals.BRICK_HEIGHT;
-        if (scale <= 0) scale = 1.0 / Globals.BRICK_HEIGHT;
-        return scale;
+    onWidthChanged: updateGeometry();
+    onHeightChanged: updateGeometry();
+
+    function updateGeometry() {
+        var bw = Globals.BRICK_WIDTH*Globals.WIDTH + 1;
+        // bh = (overlayHeight = BRICK_HEIGHT*HEIGHT+1)
+        //     +(headerItemsHeight = BRICK_HEIGHT*1.5)
+        //     +(margin = headerItemHeight*0.2)
+        var bh = Globals.BRICK_HEIGHT*Globals.HEIGHT + 1 + Globals.BRICK_HEIGHT*1.5*1.2;
+
+        var w = canvas.height*bw/bh;
+        var h = canvas.width*bh/bw;
+
+        if (w > canvas.width) {
+            container.width = canvas.width-20;
+            container.height = container.width*bh/bw;
+        } else if (h > canvas.height) {
+            container.height = canvas.height-50;
+            container.width = container.height*bw/bh;
+        } else {
+            // Never happens, don't know what to do in case it does!
+        }
     }
 
     CanvasItem {
@@ -23,13 +36,20 @@ Item {
         anchors.fill: parent
     }
 
+    Item {
+        id: container
+        anchors.centerIn: parent
+    }
+
     CanvasItem {
         id: bgOverlay
         spriteKey: "BackgroundOverlay"
-        anchors.centerIn: parent
-        
-        width: canvas.m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH + 1)
-        height: canvas.m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
+        anchors {
+            left: container.left
+            right: container.right
+            bottom: container.bottom
+        }
+        height: width * (Globals.BRICK_HEIGHT*Globals.HEIGHT+1) / (Globals.BRICK_WIDTH*Globals.WIDTH+1)
     }
 
     property real scaledBrickWidth: bgOverlay.width/Globals.WIDTH
@@ -63,7 +83,7 @@ Item {
     property int lives: Globals.INITIAL_LIVES
     Row {
         id: lifeBars
-        spacing: scaledBrickWidth*3/13
+        spacing: scaledBrickWidth*0.23
         anchors {
             right: bgOverlay.right
             rightMargin: 20
