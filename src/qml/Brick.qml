@@ -4,8 +4,8 @@ import "globals.js" as Globals
 
 CanvasItem {
     id: brick
-    property int blockWidth: spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
-    property int blockHeight: spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
+    property int blockWidth: giftType!="" && spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
+    property int blockHeight: giftType!="" && spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
     height: width*blockHeight/blockWidth
 
     property string type
