@@ -30,6 +30,8 @@ Item {
         }
     }
 
+    property real m_scale: container.width/(Globals.BRICK_WIDTH*Globals.WIDTH)
+
     CanvasItem {
         id: background
         spriteKey: "Background"
@@ -46,19 +48,17 @@ Item {
         spriteKey: "BackgroundOverlay"
         anchors {
             left: container.left
-            right: container.right
             bottom: container.bottom
         }
-        height: width * (Globals.BRICK_HEIGHT*Globals.HEIGHT+1) / (Globals.BRICK_WIDTH*Globals.WIDTH+1)
+        width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH + 1)
+        height: m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
     }
-
-    property real scaledBrickWidth: bgOverlay.width/Globals.WIDTH
-    property real scaledBrickHeight: scaledBrickWidth * Globals.BRICK_HEIGHT / Globals.BRICK_WIDTH
 
     property int score: 0
     TextItem {
         id: scoreDisplay
-        width: bgOverlay.width/6
+        width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH)/6
+        height: m_scale * Globals.BRICK_HEIGHT*1.5
         anchors {
             left: bgOverlay.left
             bottom: bgOverlay.top
@@ -70,7 +70,8 @@ Item {
     property int level: 1
     TextItem {
         id: levelDisplay
-        width: bgOverlay.width/5
+        width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH)/5
+        height: m_scale * Globals.BRICK_HEIGHT*1.5
         anchors {
             left: scoreDisplay.right
             leftMargin: width-scoreDisplay.width
@@ -83,7 +84,7 @@ Item {
     property int lives: Globals.INITIAL_LIVES
     Row {
         id: lifeBars
-        spacing: scaledBrickWidth*0.23
+        spacing: m_scale * Globals.BRICK_WIDTH*0.23
         anchors {
             right: bgOverlay.right
             rightMargin: 20
@@ -95,8 +96,8 @@ Item {
             model: canvas.lives
             CanvasItem {
                 spriteKey: "PlainBar"
-                width: scaledBrickWidth/1.3
-                height: scaledBrickHeight/1.3
+                width: m_scale * Globals.BRICK_WIDTH/1.3
+                height: m_scale * Globals.BRICK_HEIGHT/1.3
             }
         }
     }
@@ -130,7 +131,6 @@ Item {
             model: brickString.split("")
             Brick {
                 type: Logic.getTypeFromChar(modelData)
-                width: bgOverlay.width/Globals.WIDTH
             }
         }
     }

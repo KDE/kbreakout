@@ -6,7 +6,9 @@ CanvasItem {
     id: brick
     property int blockWidth: giftType!="" && spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
     property int blockHeight: giftType!="" && spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
-    height: width*blockHeight/blockWidth
+
+    width: m_scale * blockWidth
+    height: m_scale * blockHeight
 
     property string type
     property string giftType
