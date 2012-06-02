@@ -145,4 +145,23 @@ Item {
     function startGame() {
         Logic.startGame();
     }
+
+    Timer {
+        id: gameTimer
+        interval: Globals.REPAINT_INTERVAL
+        repeat: true
+        onTriggered: Logic.timerTimeout();
+    }
+
+    Timer {
+        id: elapsedTimeTimer
+        interval: 1000
+        repeat: true
+        property int elapsedTime: 0
+        onTriggered: elapsedTime++;
+    }
+
+    function fire() {
+        Logic.fireBall();
+    }
 }

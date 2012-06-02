@@ -13,6 +13,7 @@ public:
 signals:
 
 public slots:
+    void fire();
 
 private slots:
     void showLine(QString line, int lineNumber);

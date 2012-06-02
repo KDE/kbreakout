@@ -36,3 +36,8 @@ void CanvasWidget::startGame()
 {
     QMetaObject::invokeMethod(rootObject(), "startGame");
 }
+
+void CanvasWidget::fire()
+{
+    QMetaObject::invokeMethod(rootObject(), "fire");
+}

@@ -1,6 +1,7 @@
 var ballSpeed = 1.8;
 var ballComponent = Qt.createComponent("Ball.qml");
 var balls = new Array;
+var dScore;
 
 function getTypeFromChar(type) 
 {
@@ -83,4 +84,34 @@ function createBall() {
 
 function startGame() {
     createBall();
+    elapsedTimeTimer.start();
+    gameTimer.start();
+}
+
+function timerTimeout() {
+    dScore *= Globals.SCORE_AUTO_DECREASE;
+    for (var i in balls) {
+        var ball = balls[i];
+        if (ball.toBeFired) continue;
+
+        ball.x += m_scale * ball.directionX * ballSpeed;
+        ball.y += m_scale * ball.directionY * ballSpeed;
+    }
+}
+
+function fireBall() {
+    for (var i in balls) {
+        var ball = balls[i];
+        if (!ball.toBeFired) continue;
+
+        ball.toBeFired = false;
+        var ballCenter = ball.x + ball.width/2;
+        var barCenter = bar.x + bar.width/2;
+        var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
+
+        ball.directionX =  Math.cos(angle) * Globals.BALL_SPEED;
+        ball.directionY = -Math.sin(angle) * Globals.BALL_SPEED;
+    }
+
+    dScore = Globals.BRICK_SCORE;
 }

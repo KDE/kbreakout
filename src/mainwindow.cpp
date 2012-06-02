@@ -235,11 +235,11 @@ void MainWindow::handleGameResumed()
 
 void MainWindow::fire()
 {
-    /*if (gameEngine->gameIsPaused()) {
-        pauseAction->activate(QAction::Trigger);
+    if (gameEngine->gameIsPaused()) {
+        //pauseAction->activate(QAction::Trigger);
     } else {
-        gameEngine->fire();
-    }*/
+        canvasWidget->fire();
+    }
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)
