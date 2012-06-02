@@ -1,3 +1,7 @@
+var ballSpeed = 1.8;
+var ballComponent = Qt.createComponent("Ball.qml");
+var balls = new Array;
+
 function getTypeFromChar(type) 
 {
     switch (type) {
@@ -70,4 +74,13 @@ function putGift(gift, times, pos) {
             putGiftOnRandomBrick(gift, -1);
         }
     }
+}
+
+function createBall() {
+    var ball = ballComponent.createObject(canvas);
+    balls.push(ball);
+}
+
+function startGame() {
+    createBall();
 }

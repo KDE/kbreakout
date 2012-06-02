@@ -245,6 +245,7 @@ void GameEngine::loadLevel()
     QTimer::singleShot(2000, this, SLOT(hideMessage()));
     
     //showFireBallMessage();
+    emit ready();
 }
 
 void GameEngine::timerTimeout() {

@@ -94,8 +94,7 @@ Item {
 
         Repeater {
             model: canvas.lives
-            CanvasItem {
-                spriteKey: "PlainBar"
+            Bar {
                 width: m_scale * Globals.BRICK_WIDTH/1.3
                 height: m_scale * Globals.BRICK_HEIGHT/1.3
             }
@@ -133,5 +132,17 @@ Item {
                 type: Logic.getTypeFromChar(modelData)
             }
         }
+    }
+
+    Bar {
+        id: bar
+        anchors {
+            bottom: bgOverlay.bottom
+            horizontalCenter: bgOverlay.horizontalCenter
+        }
+    }
+
+    function startGame() {
+        Logic.startGame();
     }
 }

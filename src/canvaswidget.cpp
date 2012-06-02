@@ -31,3 +31,8 @@ void CanvasWidget::putGift(QString gift, int times, QString pos)
                               Q_ARG(QVariant, times),
                               Q_ARG(QVariant, pos));
 }
+
+void CanvasWidget::startGame()
+{
+    QMetaObject::invokeMethod(rootObject(), "startGame");
+}
