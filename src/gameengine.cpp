@@ -37,17 +37,9 @@
 
 
 GameEngine::GameEngine(MainWindow *mainWindow)
-    : m_mainWindow(mainWindow), randomCounter(0)
+    : m_mainWindow(mainWindow)
 {
-    m_gameTimer.setInterval(REPAINT_INTERVAL);
-    //connect(&m_gameTimer, SIGNAL(timeout()), SLOT(timerTimeout()));
-    
-    m_elapsedTimeTimer.setInterval(1000);
-    connect(&m_elapsedTimeTimer, SIGNAL(timeout()), SLOT(increaseElapsedTime()));
-
     m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
-
-    //m_bar_ptr = &m_bar;
 
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_levelLoader = new LevelLoader( this );
@@ -66,37 +58,17 @@ void GameEngine::start(const QString& l)
     m_levelLoader->setLevelset(l);
     m_levelLoader->setLevel(0);
 
-    /*qDeleteAll(m_lives);
-    m_lives.clear();
-    for (int i = 0; i < INITIAL_LIVES; ++i) {
-        m_lives.append(new Life);
-    }*/
-    
     m_gameOver = false;
     m_gameWon = false;
     m_level = 1;
-    m_elapsedTime = 0;
     setScore(0);
     
     loadLevel();
-    
-    m_elapsedTimeTimer.start();
-    m_gameTimer.start();
 }
-
-bool GameEngine::gameIsPaused() const
-{
-    return !m_elapsedTimeTimer.isActive();
-}
-
-/*const Bar &GameEngine::bar()
-{
-    return *m_bar_ptr;
-}*/
 
 void GameEngine::pause()
 {
-    if (gameIsPaused()) {
+    /*if (gameIsPaused()) {
         return;
     }
     if (m_gameWon || m_gameOver) {
@@ -104,93 +76,18 @@ void GameEngine::pause()
     }
     m_elapsedTimeTimer.stop();
     m_gameTimer.stop();
-    emit gamePaused();
-    showMessage(i18n("Game Paused!"));
+    emit gamePaused();*/
 }
 
 void GameEngine::resume()
 {
-    if (!gameIsPaused()) {
+    /*if (!gameIsPaused()) {
         return;
     }
     m_elapsedTimeTimer.start();
     m_gameTimer.start();
 
-    hideMessage();
-    emit gameResumed();
-}
-
-void GameEngine::setGamePaused(bool paused)
-{
-    if (paused) {
-        pause();
-    } else {
-        resume();
-    }
-}
-
-void GameEngine::moveBar(int newPos) 
-{
-    /*if (gameIsPaused()) {
-        return;
-    }
-    // width of the game
-    int width = BRICK_WIDTH * WIDTH;
-    // width of the bar
-    int w = m_bar.getRect().width();
-    int y = m_bar.getRect().y();
-    int x = newPos - w/2;
-    
-    if (x < 0) {
-        x = 0;
-        emit resetMousePosition();
-    } else if (x > width - w) {
-        x = width - w;
-        emit resetMousePosition();
-    }
-    
-    m_bar.moveTo(x, y);*/
-}
-
-void GameEngine::moveBarLeft()
-{
-    //moveBar(m_bar.center() - BAR_MOVEMENT);
-}
-
-void GameEngine::moveBarRight()
-{
-    //moveBar(m_bar.center() + BAR_MOVEMENT);
-}
-
-void GameEngine::fire()
-{
-    if (gameIsPaused()) {
-        kDebug() << "trying to fire while game is paused!!!";
-        resume();
-        return;
-    }
-
-    /*foreach (Ball *ball, m_balls) {
-        if (!ball->toBeFired) {
-            continue;
-        }
-        // else
-        ball->toBeFired = false;
-        
-        qreal ballCenter= ball->getRect().left() + (ball->getRect().width())/2;
-        qreal barCenter = m_bar.center();
-        qreal angle = M_PI / 3;
-        angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
-        angle += M_PI_2;
-        
-        ball->directionX =  cos(angle) * BALL_SPEED;
-        ball->directionY = -sin(angle) * BALL_SPEED;
-    }
-    
-    m_dScore = BRICK_SCORE;
-    m_infoMessage.hide();*/
-    
-    randomCounter = 0;
+    emit gameResumed();*/
 }
 
 void GameEngine::cheatSkipLevel() 
@@ -229,162 +126,13 @@ void GameEngine::loadLevel()
         }
     }*/
     
-    /*m_balls.append(new Ball);
-    moveBar(m_bar.center());
-    m_bar.reset();
-    updateAttachedBalls();*/
-    
-    m_gameTimer.setInterval(REPAINT_INTERVAL);
-    m_speed = 1.8;
-    m_repaintInterval = 1;
+    //m_speed = 1.8;
+    //m_repaintInterval = 1;
     //m_levelInfo.setLevel(m_level);
-    if (gameIsPaused()) {
-        resume();
-    }
     //showMessage(i18n("Level %1", m_level));
-    QTimer::singleShot(2000, this, SLOT(hideMessage()));
+    //QTimer::singleShot(2000, this, SLOT(hideMessage()));
     
-    //showFireBallMessage();
     emit ready();
-}
-
-void GameEngine::timerTimeout() {
-    //step(); // call step() at every tick
-    
-    // only repaint every m_repaintInterval ticks
-    static int tick = 0;
-    tick = (tick + 1) % m_repaintInterval;
-    
-    if (tick == 0) {
-        //repaintMovingObjects();
-    }
-}
-
-void GameEngine::changeSpeed(qreal ratio) {
-    kDebug() << "Update interval =" << m_gameTimer.interval();
-    m_speed *= ratio;
-    if (m_speed > 2.0) {
-        // make sure the minimum update interval is respected
-        if (m_gameTimer.interval() < MINIMUM_UPDATE_INTERVAL * 2) {
-            m_speed = 2.0;
-            return;
-        }
-        // else
-        
-        // half the speed
-        m_speed /= 2.0;
-        // and double the number of ticks of the timer per time unit
-        m_gameTimer.setInterval(m_gameTimer.interval()/2);
-        m_repaintInterval *= 2;
-        m_gameTimer.start();
-    }
-    if (m_speed < 1.0) {
-        if (m_gameTimer.interval() >= REPAINT_INTERVAL) {
-            if (m_speed < MINIMUM_SPEED) {
-                m_speed = MINIMUM_SPEED;
-            }
-            return;
-        }
-        // else
-        
-        // double the speed
-        m_speed *= 2.0;
-        // and double the number of ticks of the timer per time unit
-        m_gameTimer.setInterval(m_gameTimer.interval()*2);
-        m_repaintInterval /= 2;
-        m_gameTimer.start();
-    }
-
-}
-
-void GameEngine::step()
-{
-    // needed to exit from the loop if the arrays that they cicle
-    // change (items get deleted)    
-    m_itemsGotDeleted = false;
-    
-    m_dScore *= SCORE_AUTO_DECREASE;
-    /*foreach (Ball *ball, m_balls) {
-        if (ball->toBeFired) {
-            continue;
-        }
-        
-        // TODO: add function ball->move(speed)
-        ball->moveBy(ball->directionX * m_speed, ball->directionY * m_speed);
-        // collision detection
-        detectBallCollisions(ball);
-        if (m_itemsGotDeleted) {
-            return;
-        }
-    }
-    
-    QMutableListIterator<Gift *> i(m_gifts);
-    while (i.hasNext()) {
-        Gift *gift = i.next();
-        if (!gift->isVisible()) {
-            continue; // do nothing
-        }
-
-        qreal giftSpeed = std::sqrt(m_speed / m_gameTimer.interval());
-        gift->move(giftSpeed, m_gameTimer.interval());
-        if (gift->getRect().bottom() > BRICK_HEIGHT * HEIGHT) {
-            i.remove();
-            delete gift;
-        } else if (m_bar.getRect().intersects(gift->getRect())) {
-            gift->execute(this);
-            if (m_itemsGotDeleted) {
-                return;
-            }
-            i.remove();
-            delete gift;
-        }
-    }*/
-}
-
-void GameEngine::repaintMovingObjects()
-{
-    /*m_bar.repaint();
-    
-    foreach (Ball *ball, m_balls) {
-        ball->repaint();
-    }
-    
-    foreach (Gift *gift, m_gifts) {
-        if (!gift->isVisible()) {
-            continue;
-        }
-        gift->repaint();
-    }
-
-    // avoid infinite loops of the ball
-    ++randomCounter;
-    if (randomCounter == 1024) {
-        randomCounter = 0;
-        foreach (Ball *ball, m_balls) {
-            if (qrand() % 2) {
-                ball->directionX += 0.002;
-            } else {
-                ball->directionY += 0.002;
-            }
-        }
-
-        // increase the speed a little
-        // if there is at least one ball moving
-        // and the game isn't paused
-        bool ballMoving = false;
-        foreach (Ball *ball, m_balls) {
-            if (!ball->toBeFired) {
-                ballMoving = true;
-                break;
-            }
-        }
-        if (ballMoving && !gameIsPaused()) {
-            changeSpeed(AUTO_SPEED_INCREASE);
-        }
-    }
-    
-    // move attached balls if needed
-    updateAttachedBalls();*/
 }
 
 void GameEngine::detectBallCollisions(/*Ball *ball*/)
@@ -519,20 +267,6 @@ void GameEngine::handleBrickCollisions(/*Ball *ball*/)
 
 //======= convenience functions =================//
 
-void GameEngine::showMessage(const QString &text)
-{
-    /*m_messageBox.setText(text);
-    m_messageBox.raise();
-    m_messageBox.show();*/
-}
-
-void GameEngine::showInfoMessage(const QString &text)
-{
-    /*m_infoMessage.setText(text);
-    m_infoMessage.raise();
-    m_infoMessage.show();*/
-}
-
 void GameEngine::showFireBallMessage()
 {
     if (Settings::fireOnClick()) {
@@ -545,12 +279,12 @@ void GameEngine::showFireBallMessage()
 
 void GameEngine::hideMessage()
 {
-    if (gameIsPaused()) {
+    /*if (gameIsPaused()) {
         return;
     }
     if (m_gameWon && m_gameOver) {
         return;
-    }
+    }*/
     
     // else
     //m_messageBox.hide();
@@ -629,8 +363,8 @@ inline void GameEngine::deleteMovingObjects()
 
 inline void GameEngine::deleteAllObjects()
 {
-    kDebug() << "all object deleted";
-    /*deleteMovingObjects();
+    /*kDebug() << "all object deleted";
+    deleteMovingObjects();
     qDeleteAll(m_bricks);
     m_bricks.clear();
     qDeleteAll(m_gifts);

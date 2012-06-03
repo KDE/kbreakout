@@ -154,7 +154,7 @@ void MainWindow::setupActions()
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
-    connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
+    connect(fireAction, SIGNAL(triggered()), canvasWidget, SLOT(fire()));
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
     pauseAction = KStandardGameAction::pause(this,
@@ -231,15 +231,6 @@ void MainWindow::setGamePaused(bool paused)
 void MainWindow::handleGameResumed()
 {
     pauseAction->setChecked(false);
-}
-
-void MainWindow::fire()
-{
-    if (gameEngine->gameIsPaused()) {
-        //pauseAction->activate(QAction::Trigger);
-    } else {
-        canvasWidget->fire();
-    }
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

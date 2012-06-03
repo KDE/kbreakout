@@ -38,7 +38,6 @@ private slots:
     void configureSettings();
     void showHighscores();
     void startNewGame();
-    void fire();
     // calls the action
     void pauseGame();
     // called by the action
