@@ -7,6 +7,7 @@ CanvasItem {
     spriteKey: "Display"
     property alias text: textItem.text
     property int fontSize
+    property int maxFontSize: 60
 
     Text {
         id: textItem
@@ -20,7 +21,7 @@ CanvasItem {
     onHeightChanged: fontTimerTrigger.restart();
 
     function updateFontSize() {
-        fontSize = 72;
+        fontSize = maxFontSize;
         fontTimer.start();
     }
  
@@ -40,6 +41,7 @@ CanvasItem {
         onTriggered: {
             if (textItem.width > item.width || textItem.height > item.height) {
                 var size = Math.min(item.width * fontSize / textItem.width, item.height * fontSize / textItem.height);
+                size = Math.floor(size);
                 if (size == fontSize) {
                     stop();
                 } else {
