@@ -54,6 +54,45 @@ Item {
         height: m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
     }
 
+    property bool paused: false
+    Rectangle {
+        anchors.fill: parent
+        color: "#646464"
+        opacity: paused ? 0.6 : 0
+        z: 1
+
+        Behavior on opacity { NumberAnimation { duration: 100 } }
+    }
+    function setGamePaused(paused) {
+        Logic.setGamePaused(paused);
+    }
+
+    TextItem {
+        id: messageBox
+        anchors.centerIn: bgOverlay
+        z: 2
+        width: m_scale * Globals.BRICK_WIDTH*9
+        height: m_scale * Globals.BRICK_HEIGHT*5
+        opacity: text!=""
+
+        Behavior on opacity { NumberAnimation { duration: 100 } }
+    }
+
+    TextItem {
+        id: infoMessage
+        anchors {
+            horizontalCenter: bgOverlay.horizontalCenter
+            bottom: bgOverlay.bottom
+            bottomMargin: (bgOverlay.height-height)/4
+        }
+        width: m_scale * Globals.BRICK_WIDTH*9
+        height: m_scale * Globals.BRICK_HEIGHT*2
+        maxFontSize: 32
+        opacity: text!=""
+
+        Behavior on opacity { NumberAnimation { duration: 100 } }
+    }
+
     property int score: 0
     TextItem {
         id: scoreDisplay
@@ -153,6 +192,8 @@ Item {
     }
 
     function updateBarDirection(direction) {
+        if (paused)
+            return;
         if (direction==0) {
             moveBarTimer.stop();
         } else {
@@ -182,6 +223,10 @@ Item {
     }
 
     function fire() {
-        Logic.fireBall();
+        if (paused) {
+            Logic.setGamePaused(false);
+        } else {
+            Logic.fireBall();
+        }
     }
 }

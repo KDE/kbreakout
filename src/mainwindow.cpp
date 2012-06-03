@@ -225,7 +225,7 @@ void MainWindow::pauseGame()
 
 void MainWindow::setGamePaused(bool paused)
 {
-    //gameEngine->setGamePaused(paused);
+    canvasWidget->setGamePaused(paused);
 }
 
 void MainWindow::handleGameResumed()

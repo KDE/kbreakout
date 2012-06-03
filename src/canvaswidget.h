@@ -14,6 +14,7 @@ signals:
 
 public slots:
     void fire();
+    void setGamePaused(bool paused);
 
 private slots:
     void showLine(QString line, int lineNumber);

@@ -86,6 +86,7 @@ function startGame() {
     createBall();
     elapsedTimeTimer.start();
     gameTimer.start();
+    showInfoMessage("Press Space to fire the ball");
 }
 
 function timerTimeout() {
@@ -114,6 +115,7 @@ function fireBall() {
     }
 
     dScore = Globals.BRICK_SCORE;
+    hideInfoMessage();
 }
 
 function moveBar(x) {
@@ -124,4 +126,33 @@ function moveBar(x) {
     }
 
     bar.x = x;
+}
+
+function setGamePaused(paused) {
+    canvas.paused = paused;
+    if (paused) {
+        showMessage("Game Paused!");
+        elapsedTimeTimer.stop();
+        gameTimer.stop();
+    } else {
+        elapsedTimeTimer.start();
+        gameTimer.start();
+        hideMessage();
+    }
+}
+
+function showMessage(text) {
+    messageBox.text = text;
+}
+
+function showInfoMessage(text) {
+    infoMessage.text = text;
+}
+
+function hideMessage() {
+    messageBox.text = "";
+}
+
+function hideInfoMessage() {
+    infoMessage.text = "";
 }

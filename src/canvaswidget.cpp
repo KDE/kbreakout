@@ -44,6 +44,12 @@ void CanvasWidget::fire()
     QMetaObject::invokeMethod(rootObject(), "fire");
 }
 
+void CanvasWidget::setGamePaused(bool paused)
+{
+    QMetaObject::invokeMethod(rootObject(), "setGamePaused",
+                              Q_ARG(QVariant, paused));
+}
+
 void CanvasWidget::updateBarDirection()
 {
     QMetaObject::invokeMethod(rootObject(), "updateBarDirection",
