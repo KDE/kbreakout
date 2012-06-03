@@ -138,7 +138,27 @@ Item {
         id: bar
         anchors {
             bottom: bgOverlay.bottom
-            horizontalCenter: bgOverlay.horizontalCenter
+        }
+        x: m_scale * 300
+        property int direction: 0
+    }
+
+    Timer {
+        id: moveBarTimer
+        interval: Globals.DEFAULT_UPDATE_INTERVAL
+        repeat: true
+        onTriggered: {
+            Logic.moveBar(bar.x + (m_scale * bar.direction*Globals.BAR_MOVEMENT));
+        }
+    }
+
+    function updateBarDirection(direction) {
+        if (direction==0) {
+            moveBarTimer.stop();
+        } else {
+            bar.direction = direction;
+            if (!moveBarTimer.running)
+                moveBarTimer.start();
         }
     }
 

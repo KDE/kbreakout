@@ -115,3 +115,13 @@ function fireBall() {
 
     dScore = Globals.BRICK_SCORE;
 }
+
+function moveBar(x) {
+    if (x < bgOverlay.x) {
+        x = bgOverlay.x;
+    } else if (x+bar.width > bgOverlay.x+bgOverlay.width) {
+        x = bgOverlay.x + bgOverlay.width - bar.width;
+    }
+
+    bar.x = x;
+}

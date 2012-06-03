@@ -18,10 +18,22 @@ public slots:
 private slots:
     void showLine(QString line, int lineNumber);
     void putGift(QString gift, int times, QString pos);
+    void updateBarDirection();
     void startGame();
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 
 private:
     KGameRenderer *m_renderer;
+
+    //used when moving the bar with the keys
+    int m_barDirection;
+
+    // used to track which direction keys are pressed between key events
+    bool m_rightPressed;
+    bool m_leftPressed;
 
 };
 
