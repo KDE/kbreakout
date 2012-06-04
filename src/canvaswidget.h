@@ -28,6 +28,7 @@ public:
     CanvasWidget(KGameRenderer *renderer, QWidget *parent=0);
 
 signals:
+    void gameEnded(int score, int level, int elapsedTime);
 
 public slots:
     void fire();

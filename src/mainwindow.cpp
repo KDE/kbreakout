@@ -92,9 +92,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameEngine, SIGNAL(gameResumed()),
             this, SLOT(handleGameResumed()));
     connect(gameEngine, SIGNAL(resetMousePosition()),
-            canvasWidget, SLOT(handleResetMousePosition()));
-    connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
-            SLOT(handleEndedGame(int,int,int)));*/
+            canvasWidget, SLOT(handleResetMousePosition()));*/
+    connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
+            SLOT(handleEndedGame(int,int,int)));
     connect(gameEngine, SIGNAL(newLine(QString,int)),
             canvasWidget, SLOT(showLine(QString,int)));
     connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
@@ -251,8 +251,6 @@ void MainWindow::handleEndedGame(int score, int level, int time)
         scoreInfo[KScoreDialog::Level].setNum(level);
     }
     
-    //canvasWidget->handleGameEnded();
-    
     QPointer<KScoreDialog> ksdialog =
             new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
     ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
@@ -260,7 +258,6 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     ksdialog->exec();
     
     if ( ksdialog ) {
-        //canvasWidget->handleGameResumed();
         gameEngine->start("default");
         delete ksdialog;
     }

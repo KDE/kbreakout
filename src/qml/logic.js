@@ -22,6 +22,9 @@ var dScore;
 var tick = 0;
 var repaintInterval;
 var randomCounter = 0;
+var itemsGotDeleted;
+var gameOver = false;
+var gameWon = false;
 
 function getTypeFromChar(type) 
 {
@@ -103,15 +106,29 @@ function createBall() {
 }
 
 function startGame() {
+    lives = Globals.INITIAL_LIVES;
+    score = 0;
+    elapsedTimeTimer.elapsedTime = 0;
+    // TODO: showMessage("Level 1");
+    hideMessage();
+    resumeGame();
+}
+
+function resumeGame() {
     createBall();
     speed = 1.8;
     repaintInterval = 1;
     elapsedTimeTimer.start();
+    gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
     showInfoMessage("Press Space to fire the ball");
 }
 
 function timerTimeout() {
+    // needed to exit from the loop if the arrays that they cycle
+    // change (items get deleted)
+    itemsGotDeleted = false;
+
     dScore *= Globals.SCORE_AUTO_DECREASE;
     for (var i in balls) {
         var ball = balls[i];
@@ -119,6 +136,13 @@ function timerTimeout() {
 
         ball.x += m_scale * ball.directionX * speed;
         ball.y += m_scale * ball.directionY * speed;
+
+        // collision detection
+        firstTime = true;
+        detectBallCollisions(ball);
+        if (itemsGotDeleted) {
+            return;
+        }
     }
 
     tick = (tick+1) % repaintInterval;
@@ -173,10 +197,12 @@ function setGamePaused(paused) {
 
 function showMessage(text) {
     messageBox.text = text;
+    messageBox.updateFontSize();
 }
 
 function showInfoMessage(text) {
     infoMessage.text = text;
+    infoMessage.updateFontSize();
 }
 
 function hideMessage() {
@@ -250,4 +276,113 @@ function changeSpeed(ratio) {
         repaintInterval /= 2;
         gameTimer.restart();
     }
+}
+
+function createRect(x, y, width, height) {
+    return {
+        left: x,
+        top: y,
+        right: x+width,
+        bottom: y+height
+    };
+}
+
+function intersects(r1, r2) {
+    return !(r2.left > r1.right ||
+             r2.right < r1.left ||
+             r2.top > r1.bottom ||
+             r2.bottom < r1.top);
+}
+
+// never run this function more than two times recursively
+var firstTime = true;
+function detectBallCollisions(ball) {
+    // bounce a little early in some cases so the average position is centered
+    var x = ball.x + ball.directionX/2;
+    var y = ball.y + ball.directionY/2;
+    var rect = createRect(x, y, ball.width, ball.height);
+    var barRect = createRect(bar.x, bar.y, bar.width, bar.height);
+
+    // bounce against the wall
+    if (x < bgOverlay.x && ball.directionX < 0) {
+        ball.directionX *= -1;
+    } else if (x+ball.width > bgOverlay.x+bgOverlay.width
+                && ball.directionX > 0) {
+        ball.directionX *= -1;
+    } else if (y < bgOverlay.y && ball.directionY < 0) {
+        ball.directionY *= -1;
+    } else if (y+ball.height > bgOverlay.y+bgOverlay.height
+                && ball.directionY > 0) {
+        // delete the ball
+        balls.splice(balls.indexOf(ball), 1);
+        ball.destroy();
+        itemsGotDeleted = true;
+        if (balls.length == 0) {
+            showMessage("Oops! You have lost the ball!");
+            handleDeathTimer.start();
+            gameTimer.stop();
+
+            //TODO: delete moving objects
+        }
+        return;
+    }
+    // bounce against the bar
+    else if (intersects(rect, barRect) && ball.directionY > 0) {
+        
+        var ballCenter = ball.x + ball.width/2;
+        var barCenter = bar.x + bar.width/2;
+
+        if (ballCenter > bar.x &&
+                ballCenter < bar.x+bar.width) {
+            // the bar has been hit
+
+            if (bar.type() == "StickyBar") {
+                ball.toBeFired = true;
+
+                diff = ball.x - bar.x;
+
+                ball.barPosition = diff / bar.width;
+                //TODO: update attached balls
+            }
+
+            var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
+            var speed = Math.sqrt(Math.pow(ball.directionX, 2) +
+                                Math.pow(ball.directionY, 2));
+
+            ball.directionX =  Math.cos(angle) * speed;
+            ball.directionY = -Math.sin(angle) * speed;
+        }
+    } else { // bounce against the bricks (and optionally break them)
+        // TODO: handleBrickCollisions(ball);
+    }
+
+    // never run this function more than two times recursively
+    if (firstTime) {
+        firstTime = false;
+        if (!itemsGotDeleted) {
+            detectBallCollisions(ball);
+        }
+    } else {
+        firstTime = true;
+        return;
+    }
+}
+
+function handleDeath() {
+    hideMessage();
+    // TODO: delete moving objects
+    // TODO: bar.reset
+    if (lives == 0) {
+        gameOver = true;
+        showMessage("Game Over!");
+        elapsedTimeTimer.stop();
+        moveBarTimer.stop();
+        canvas.gameEnded(score, level, elapsedTimeTimer.elapsedTime);
+    } else {
+        lives--;
+        resumeGame();
+    }
+}
+
+function handleBrickCollisions(ball) {
 }

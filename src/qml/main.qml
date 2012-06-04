@@ -22,6 +22,8 @@ import "logic.js" as Logic
 
 Item {
     id: canvas
+
+    signal gameEnded(int score, int level, int elapsedTime)
     
     onWidthChanged: updateGeometry();
     onHeightChanged: updateGeometry();
@@ -236,6 +238,12 @@ Item {
         repeat: true
         property int elapsedTime: 0
         onTriggered: elapsedTime++;
+    }
+
+    Timer {
+        id: handleDeathTimer
+        interval: 1000
+        onTriggered: Logic.handleDeath()
     }
 
     function fire() {

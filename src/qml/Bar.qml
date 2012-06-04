@@ -23,4 +23,6 @@ CanvasItem {
     spriteKey: "PlainBar"
     width: m_scale * Globals.DEFAULT_BAR_WIDTH
     height: m_scale * Globals.BRICK_HEIGHT
+
+    function type() { return spriteKey; }
 }

@@ -34,6 +34,8 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
+
+    connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
 }
 
 void CanvasWidget::showLine(QString line, int lineNumber)
