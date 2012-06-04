@@ -107,13 +107,20 @@ function createBall() {
 
 function startGame() {
     lives = Globals.INITIAL_LIVES;
-    score = 0;
+    gameOver = false;
+    gameWon = false;
+    level = 1;
     elapsedTimeTimer.elapsedTime = 0;
-    // TODO: showMessage("Level 1");
-    hideMessage();
+    score = 0;
+
+    showMessage("Level "+level);
+    hideLater(messageBox, 2000);
     resumeGame();
 }
 
+// TODO: loadNextLevel
+
+// similar to GameEngine::loadLevel() in terms of setting state variables
 function resumeGame() {
     createBall();
     speed = 1.8;
@@ -213,6 +220,12 @@ function hideInfoMessage() {
     infoMessage.text = "";
 }
 
+function hideLater(target, interval) {
+    hideTimer.target = target;
+    hideTimer.interval = interval;
+    hideTimer.start();
+}
+
 function updateBallDirection() {
     // avoid infinite loops of the ball
     ++randomCounter;
@@ -278,12 +291,13 @@ function changeSpeed(ratio) {
     }
 }
 
-function createRect(x, y, width, height) {
+function createRect(object) {
+    var globalPos = object.parent.mapToItem(null, object.x, object.y);
     return {
-        left: x,
-        top: y,
-        right: x+width,
-        bottom: y+height
+        left: globalPos.x,
+        top: globalPos.y,
+        right: globalPos.x + object.width,
+        bottom: globalPos.y + object.height
     };
 }
 
@@ -294,14 +308,22 @@ function intersects(r1, r2) {
              r2.bottom < r1.top);
 }
 
+function intersectArea(r1, r2) {
+    return (Math.min(r1.right, r2.right) - Math.max(r1.left, r2.left)) *
+           (Math.min(r1.bottom, r2.bottom) - Math.max(r1.top, r2.top));
+}
+
 // never run this function more than two times recursively
 var firstTime = true;
 function detectBallCollisions(ball) {
     // bounce a little early in some cases so the average position is centered
-    var x = ball.x + ball.directionX/2;
-    var y = ball.y + ball.directionY/2;
-    var rect = createRect(x, y, ball.width, ball.height);
-    var barRect = createRect(bar.x, bar.y, bar.width, bar.height);
+    var rect = createRect(ball);
+    rect.left += ball.directionX/2;
+    rect.top += ball.directionY/2;
+    var x = rect.left;
+    var y = rect.top;
+
+    var barRect = createRect(bar);
 
     // bounce against the wall
     if (x < bgOverlay.x && ball.directionX < 0) {
@@ -353,7 +375,7 @@ function detectBallCollisions(ball) {
             ball.directionY = -Math.sin(angle) * speed;
         }
     } else { // bounce against the bricks (and optionally break them)
-        // TODO: handleBrickCollisions(ball);
+        handleBrickCollisions(ball);
     }
 
     // never run this function more than two times recursively
@@ -385,4 +407,92 @@ function handleDeath() {
 }
 
 function handleBrickCollisions(ball) {
+    if (itemsGotDeleted) {
+        return;
+    }
+    var rect = createRect(ball);
+    var intersectingBricks = new Array;
+
+    for (var i=0; i<brickItems.count; i++) {
+        var brick = brickItems.itemAt(i);
+        if (brick.type == "") continue;
+        var brickRect = createRect(brick);
+
+        if (intersects(brickRect, rect)) {
+            intersectingBricks.push(brick);
+        }
+    }
+
+    if (intersectingBricks.length != 0) {
+        collideWithBricks(ball, intersectingBricks);
+    }
+}
+
+function collideWithBricks(ball, bricks) {
+    if (bricks.length == 2) {
+        collideWithTwoBricks(ball, bricks);
+    } else {
+        collideWithBrick(ball, bricks[0]);
+    }
+}
+
+function collideWithTwoBricks(ball, bricks) {
+    var ballRect = createRect(ball);
+    var r1 = createRect(bricks[0]);
+    var r2 = createRect(bricks[1]);
+
+    var area1 = intersectArea(ball, r1);
+    var area2 = intersectArea(ball, r2);
+
+    if (area1 > area2) {
+        // the area of intersection with the first brick is bigger
+        collideWithBrick(ball, bricsk[0]);
+    } else {
+        collideWithBrick(ball, bricks[1]);
+    }
+}
+
+function collideWithBrick(ball, brick) {
+    //print("collide with 1 brick");
+    if (ball.type() == "UnstoppableBall") {
+        //TODO: brick.forcedHit();
+        return; // don't bounce
+    }
+    if (ball.type() == "UnstoppableBurningBall") {
+        //TODO: brick.explode();
+        return; // don't bounce
+    }
+
+    // calculate bounce
+    var brickRect = createRect(brick);
+    var ballRect = createRect(ball);
+
+    var top = Math.round(ballRect.bottom - brickRect.top);
+    var bottom = Math.round(brickRect.bottom - ballRect.top);
+    var left = Math.round(ballRect.right - brickRect.left);
+    var right = Math.round(brickRect.right - ballRect.left);
+    var min = Math.min(Math.min(top, bottom), Math.min(left, right));
+
+    // bounce
+    if (min == top && ball.directionY > 0) {
+        ball.directionY *= -1;
+        ball.y -= top;
+    } else if (min == bottom && ball.directionY < 0) {
+        ball.directionY *= -1;
+        ball.y += bottom;
+    } else if (min == left && ball.directionX > 0) {
+        ball.directionX *= -1;
+        ball.x -= left;
+    } else if (min == right && ball.directionX < 0) {
+        ball.directionX *= -1;
+        ball.x += right;
+    } else {
+        return; // already bounced
+    }
+
+    if (ball.type() == "BurningBall") {
+        //TODO: brick.explode()
+    } else {
+        //TODO: brick.hit()
+    }
 }

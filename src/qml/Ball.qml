@@ -34,4 +34,6 @@ CanvasItem {
 
     x: bar.x + barPosition*bar.width
     y: bar.y - height
+
+    function type() { return spriteKey; }
 }

@@ -246,6 +246,12 @@ Item {
         onTriggered: Logic.handleDeath()
     }
 
+    Timer {
+        id: hideTimer
+        property variant target
+        onTriggered: target.text = "";
+    }
+
     function fire() {
         if (paused) {
             Logic.setGamePaused(false);
