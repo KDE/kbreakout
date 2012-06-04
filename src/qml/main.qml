@@ -104,7 +104,6 @@ Item {
         }
         width: m_scale * Globals.BRICK_WIDTH*9
         height: m_scale * Globals.BRICK_HEIGHT*2
-        maxFontSize: 32
         opacity: text!=""
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
