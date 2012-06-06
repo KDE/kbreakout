@@ -161,6 +161,9 @@ Item {
     function loadLine(line, lineNumber) {
         var start = (lineNumber-1)*Globals.WIDTH;
         brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
+        for(var i=0; i<line.length; i++) {
+            if (line[i] != '-') Logic.remainingBricks++;
+        }
     }
 
     function loadGift(gift, times, pos) {
@@ -222,7 +225,7 @@ Item {
     }
 
     function startGame() {
-        Logic.startGame();
+        Logic.startLevel();
     }
 
     Timer {
@@ -258,5 +261,12 @@ Item {
         } else {
             Logic.fireBall();
         }
+    }
+
+    Timer {
+        id: burnBricksTimer
+        property variant target
+        interval: Globals.BURNING_SPEED
+        onTriggered: Logic.burnNearbyBricks(target);
     }
 }

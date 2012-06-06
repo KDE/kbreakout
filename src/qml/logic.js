@@ -105,14 +105,7 @@ function createBall() {
     balls.push(ball);
 }
 
-function startGame() {
-    lives = Globals.INITIAL_LIVES;
-    gameOver = false;
-    gameWon = false;
-    level = 1;
-    elapsedTimeTimer.elapsedTime = 0;
-    score = 0;
-
+function startLevel() {
     showMessage("Level "+level);
     hideLater(messageBox, 2000);
     resumeGame();
@@ -453,13 +446,12 @@ function collideWithTwoBricks(ball, bricks) {
 }
 
 function collideWithBrick(ball, brick) {
-    //print("collide with 1 brick");
     if (ball.type() == "UnstoppableBall") {
-        //TODO: brick.forcedHit();
+        forcedHit(brick);
         return; // don't bounce
     }
     if (ball.type() == "UnstoppableBurningBall") {
-        //TODO: brick.explode();
+        explode(brick);
         return; // don't bounce
     }
 
@@ -491,8 +483,112 @@ function collideWithBrick(ball, brick) {
     }
 
     if (ball.type() == "BurningBall") {
-        //TODO: brick.explode()
+        explode(brick);
     } else {
-        //TODO: brick.hit()
+        hit(brick);
     }
+}
+
+var remainingBricks=0;
+
+function addBrickScore() {
+    score += Math.round(dScore);
+    dScore = Globals.BRICK_SCORE;
+}
+
+function forcedHit(brick) {
+    if (brick.type == "") return;
+
+    if (brick.type == "ExplodingBrick") {
+        explode(brick);
+    } else {
+        handleDeletion(brick);
+    }
+
+    brick.hide();
+}
+
+function hit(brick) {
+    if (brick.type == "HiddenBrick" && brick.spriteKey=="") {
+        brick.spriteKey = brick.type;
+        ++remainingBricks;
+    } else if (brick.type == "MultipleBrick3") {
+        brick.type = "MultipleBrick2";
+        addBrickScore();
+    } else if (brick.type == "MultipleBrick2") {
+        brick.type = "MultipleBrick1";
+        addBrickScore();
+    } else if (brick.type == "ExplodingBrick") {
+        explode(brick);
+    } else if (brick.type != "UnbreakableBrick") {
+        forcedHit(brick);
+    }
+}
+
+function explode(brick) {
+    if (brick.type == "") return;
+
+    burn(brick);
+    burnNearbyBricksLater(brick);
+}
+
+function burnNearbyBricksLater(brick) {
+    burnBricksTimer.target = brick;
+    burnBricksTimer.start();
+}
+
+function burnNearbyBricks(brick) {
+    var bricks = nearbyBricks(brick);
+    for (var i in bricks) {
+        burn(brickItems.itemAt(bricks[i]));
+    }
+}
+
+function burn(brick) {
+    if (brick.type == "") return;
+
+    if (brick.type == "ExplodingBrick") {
+        // make sure it doesn't explode twice
+        brick.type = "BurningBrick";
+        explode(brick);
+    } else {
+        handleDeletion(brick);
+    }
+
+    brick.type = "BurningBrick";
+    //brick.spriteKey = brick.type; // make sure hidden bricks are shown
+    brick.hideTimer.start();
+}
+
+function handleDeletion(brick) {
+    var brickType = brick.type;
+    brick.type = "";
+    if (brick.hasGift()) {
+        // TODO: showGift
+    }
+
+    --remainingBricks;
+    addBrickScore();
+
+    // these two kind of bricks aren't counted in remainingBricks
+    if (brickType == "HiddenBrick" || brickType == "UnbreakableBrick") {
+        ++remainingBricks;
+        return; // never need to load the next level
+    }
+
+    if (remainingBricks == 0) {
+        showMessage("Level complete!");
+    }
+}
+
+function nearbyBricks(brick) {
+    var i = brick.index;
+    var bricks = new Array;
+    var points = new Array(i-1, i+1, i-Globals.WIDTH, i+Globals.WIDTH);
+    for (var j in points) {
+        if (brickItems.itemAt(j).type != "") {
+            bricks.push(j);
+        }
+    }
+    return bricks;
 }

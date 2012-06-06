@@ -31,12 +31,21 @@ CanvasItem {
     property string giftType
 
     onTypeChanged: show();
-    //onGiftTypeChanged: showGift();
 
     function isHidden() { return spriteKey==""; }
     function hide() { spriteKey = ""; }
-    function show() { spriteKey = type; }
+    function show() {
+        if (type != "HiddenBrick") {
+            spriteKey = type;
+        }
+    }
 
     function showGift() { spriteKey = giftType; }
     function hasGift() { return giftType!=""; }
+
+    Timer {
+        id: hideTimer
+        interval: Globals.BURNING_INTERVAL
+        onTriggered: hide();
+    }
 }
