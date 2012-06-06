@@ -48,4 +48,8 @@ CanvasItem {
         interval: Globals.BURNING_INTERVAL
         onTriggered: hide();
     }
+
+    function hideLater() {
+        hideTimer.start();
+    }
 }

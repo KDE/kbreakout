@@ -164,7 +164,11 @@ function timerTimeout() {
     dScore *= Globals.SCORE_AUTO_DECREASE;
     for (var i in balls) {
         var ball = balls[i];
-        if (ball.toBeFired) continue;
+        if (ball.toBeFired) {
+            // update attached balls
+            ball.x = bar.x + ball.barPosition*bar.width;
+            continue;
+        }
 
         ball.x += m_scale * ball.directionX * speed;
         ball.y += m_scale * ball.directionY * speed;
@@ -394,10 +398,9 @@ function detectBallCollisions(ball) {
             if (bar.type() == "StickyBar") {
                 ball.toBeFired = true;
 
-                diff = ball.x - bar.x;
+                var diff = ball.x - bar.x;
 
                 ball.barPosition = diff / bar.width;
-                //TODO: update attached balls
             }
 
             var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
@@ -598,7 +601,7 @@ function burn(brick) {
 
     brick.type = "BurningBrick";
     //brick.spriteKey = brick.type; // make sure hidden bricks are shown
-    brick.hideTimer.start();
+    brick.hideLater();
 }
 
 function handleDeletion(brick) {
