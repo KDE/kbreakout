@@ -35,6 +35,8 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
 
+    // forward signals from QML
+    connect(rootObject(), SIGNAL(levelComplete()), this, SIGNAL(levelComplete()));
     connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
 }
 

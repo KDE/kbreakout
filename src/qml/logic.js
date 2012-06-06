@@ -26,6 +26,13 @@ var itemsGotDeleted;
 var gameOver = false;
 var gameWon = false;
 
+function resetBricks() {
+    var emptyBricks="";
+    for(var i=0; i<Globals.WIDTH*Globals.HEIGHT; i++)
+        emptyBricks += "-";
+    brickString = emptyBricks;
+}
+
 function getTypeFromChar(type) 
 {
     switch (type) {
@@ -106,12 +113,37 @@ function createBall() {
 }
 
 function startLevel() {
+    ++level;
     showMessage("Level "+level);
     hideLater(messageBox, 2000);
     resumeGame();
 }
 
-// TODO: loadNextLevel
+function loadNextLevel() {
+    // assign points for each remaining brick
+    for (var i=0; i<brickItems.count; i++) {
+        var type = brickItems.itemAt(i).type;
+        // don't assign points for unbreakable bricks
+        if (type == "UnbreakableBrick") {
+            continue;
+        }
+        if (type == "") {
+            continue;
+        }
+        score += Globals.AUTOBRICK_SCORE;
+
+        // add extra points for multiple bricks
+        if (type == "MultipleBrick3") {
+            score += Globals.AUTOBRICK_SCORE*2;
+        } else if (type == "MultipleBrick2") {
+            score += Globals.AUTOBRICK_SCORE;
+        }
+    }
+    deleteMovingObjects();
+    score += Globals.LEVEL_SCORE;
+    resetBricks();
+    canvas.levelComplete();
+}
 
 // similar to GameEngine::loadLevel() in terms of setting state variables
 function resumeGame() {
@@ -284,6 +316,14 @@ function changeSpeed(ratio) {
     }
 }
 
+function deleteMovingObjects() {
+    for(var i=0; i<balls.length; i++) {
+        balls.shift().destroy();
+    }
+    itemsGotDeleted = true;
+    // TODO: delete moving gifts
+}
+
 function createRect(object) {
     var globalPos = object.parent.mapToItem(null, object.x, object.y);
     return {
@@ -337,7 +377,7 @@ function detectBallCollisions(ball) {
             handleDeathTimer.start();
             gameTimer.stop();
 
-            //TODO: delete moving objects
+            deleteMovingObjects();
         }
         return;
     }
@@ -374,6 +414,7 @@ function detectBallCollisions(ball) {
     // never run this function more than two times recursively
     if (firstTime) {
         firstTime = false;
+        // check if there is another collision
         if (!itemsGotDeleted) {
             detectBallCollisions(ball);
         }
@@ -385,7 +426,7 @@ function detectBallCollisions(ball) {
 
 function handleDeath() {
     hideMessage();
-    // TODO: delete moving objects
+    deleteMovingObjects();
     // TODO: bar.reset
     if (lives == 0) {
         gameOver = true;
@@ -577,7 +618,7 @@ function handleDeletion(brick) {
     }
 
     if (remainingBricks == 0) {
-        showMessage("Level complete!");
+        loadNextLevel();
     }
 }
 

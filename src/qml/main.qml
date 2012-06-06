@@ -23,6 +23,7 @@ import "logic.js" as Logic
 Item {
     id: canvas
 
+    signal levelComplete()
     signal gameEnded(int score, int level, int elapsedTime)
     
     onWidthChanged: updateGeometry();
@@ -124,7 +125,7 @@ Item {
         text: parent.score
     }
 
-    property int level: 1
+    property int level: 0
     TextItem {
         id: levelDisplay
         width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH)/5
@@ -162,7 +163,8 @@ Item {
         var start = (lineNumber-1)*Globals.WIDTH;
         brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
         for(var i=0; i<line.length; i++) {
-            if (line[i] != '-') Logic.remainingBricks++;
+            var c = line[i];
+            if (c!='-' && c!='u' && c!='h') Logic.remainingBricks++;
         }
     }
 
@@ -173,15 +175,13 @@ Item {
     property string brickString
     
     Component.onCompleted: {
-        var emptyBricks="";
-        for(var i=0; i<Globals.WIDTH*Globals.HEIGHT; i++)
-            emptyBricks += "-";
-        brickString = emptyBricks;
+        Logic.resetBricks();
     }
 
     Grid {
         id: bricks
         columns: Globals.WIDTH
+        rows: Globals.HEIGHT
         anchors.fill: bgOverlay
         property alias items: brickItems
         
