@@ -61,7 +61,6 @@ void GameEngine::start(const QString& l)
     m_gameOver = false;
     m_gameWon = false;
     m_level = 1;
-    setScore(0);
     
     loadLevel();
 }
@@ -93,7 +92,7 @@ void GameEngine::resume()
 void GameEngine::cheatSkipLevel() 
 {
     if (m_cheatsEnabled) {
-        loadNextLevel();
+        loadLevel();
     }
 }
 
@@ -135,136 +134,6 @@ void GameEngine::loadLevel()
     emit ready();
 }
 
-void GameEngine::detectBallCollisions(/*Ball *ball*/)
-{
-    // never run this function more than two time recursively
-    /*static bool firstTime = true;
-    QRect rect = ball->getRect();
-    
-    // bounce a little early in some cases so the avarage position is centered
-    rect.translate(qRound(ball->directionX/2), qRound(ball->directionY/2));
-    
-    // bounce against the wall
-    if (rect.left() < 0 && ball->directionX < 0) {
-        ball->directionX *= -1;
-    } else if (rect.right() + 1 > BRICK_WIDTH * WIDTH
-             && ball->directionX > 0) {
-        ball->directionX *= -1;
-    } else if (rect.top() < 0 && ball->directionY < 0) {
-        ball->directionY *= -1;
-    } else if (rect.bottom()+1 > ( HEIGHT) * BRICK_HEIGHT 
-             && ball->directionY > 0) {
-        // delete the ball
-        m_balls.removeAll(ball);
-        delete ball;
-        m_itemsGotDeleted = true;
-        if (m_balls.isEmpty()) {
-            addScore(LOSE_LIFE_SCORE);
-            
-            showMessage(i18n("Oops! You have lost the ball!"));
-            QTimer::singleShot(1000, this, SLOT(handleDeath()));
-            m_gameTimer.stop();
-        
-            deleteMovingObjects();
-        }
-        return;
-    }
-    // bounce against the bar
-    else if (m_bar.getRect().intersects(rect) && ball->directionY > 0) {
-        
-        qreal ballCenter = ball->getRect().left() + (ball->getRect().width())/2;
-        qreal barCenter  = m_bar.center();
-        
-        if (ballCenter > m_bar.getRect().left() &&
-                ballCenter < m_bar.getRect().right()) {
-            // the bar has been hit
-            
-            if (m_bar.type() == "StickyBar") {
-                ball->toBeFired = true;
-                
-                qreal diff = ball->getRect().left() - m_bar.getRect().left();
-                
-                ball->barPosition = diff / m_bar.getRect().width();
-                updateAttachedBalls();
-            }
-            
-            qreal angle = M_PI / 3;
-            angle *= (barCenter - ballCenter) / (m_bar.getRect().width()/2);
-            angle += M_PI_2;
-            
-            qreal speed = sqrt(pow(ball->directionX, 2) + 
-                           pow(ball->directionY, 2));
-            if (angle > 0 && angle < M_PI) {
-                ball->directionX =  cos(angle) * speed;
-                ball->directionY = -sin(angle) * speed;
-            }
-        }
-    } else { // bounce against the bricks (and optionally break them)
-        handleBrickCollisions(ball);
-    }
-    
-    // never run this function more than two time recursively
-    if (firstTime) {
-        firstTime = false;
-        // check if there is another collision
-        if ( ! m_itemsGotDeleted) {
-            detectBallCollisions(ball);
-        }
-    } else {
-        firstTime = true;
-        return;
-    }*/
-}
-
-void GameEngine::handleDeath()
-{
-    /*hideMessage();
-    deleteMovingObjects();
-    m_bar.reset();
-    if (m_lives.isEmpty()) {
-        m_gameOver = true;
-        showMessage(i18n("Game Over!"));
-        emit gameEnded(m_score, m_level, m_elapsedTime);
-    } else {
-        delete m_lives.takeLast();
-        // TODO: put following in a convenience function 
-        // (called also when a new level is loaded..)
-        Ball *ball = new Ball;
-        m_balls.append(ball);
-        m_gameTimer.setInterval(REPAINT_INTERVAL);
-        m_repaintInterval = 1;
-        m_speed = 1.8;
-        m_gameTimer.start();
-        updateAttachedBalls();
-        showFireBallMessage();
-    }*/
-}
-
-
-void GameEngine::handleBrickCollisions(/*Ball *ball*/)
-{
-    /*if (m_itemsGotDeleted) {
-        return;
-    }
-    QRect rect = ball->getRect();
-
-    QList<Brick *> bricksIntersecting;
-    foreach (Brick *brick, m_bricks) {
-        if (brick->isDeleted()) {
-            continue;
-        }
-        QRect brickRect = brick->getRect();
-        
-        if (brickRect.intersects(rect)) {
-            bricksIntersecting.append(brick);
-        }
-    }
-    
-    if (!bricksIntersecting.isEmpty()) {
-        ball->collideWithBricks(bricksIntersecting);
-    }*/
-}
-
 //======= convenience functions =================//
 
 void GameEngine::showFireBallMessage()
@@ -288,77 +157,6 @@ void GameEngine::hideMessage()
     
     // else
     //m_messageBox.hide();
-}
-
-void GameEngine::loadNextLevel()
-{
-    // assign points for each remaining brick
-    /*foreach (Brick *brick, m_bricks) {
-        // don't assign points for Unbreakable Bricks
-        if (brick->type() == "UnbreakableBrick") {
-            continue;
-        }
-        if (brick->isDeleted()) {
-            continue;
-        }
-        addScore(AUTOBRICK_SCORE);
-        
-        // add extra points for Multiple Bricks
-        if (brick->type() == "MultipleBrick3") {
-            addScore(AUTOBRICK_SCORE*2);
-        }
-        if (brick->type() == "MultipleBrick2") {
-            addScore(AUTOBRICK_SCORE);
-        }
-    }
-    ++m_level;
-    deleteMovingObjects();
-    QTimer::singleShot(200, this, SLOT(loadLevel()));
-    addScore(LEVEL_SCORE);*/
-}
-
-void GameEngine::addScore(int points)
-{
-    m_score += points;
-    //m_scoreCanvas.setScore(m_score);
-}
-
-void GameEngine::setScore(int newScore)
-{
-    m_score = newScore;
-    //m_scoreCanvas.setScore(m_score);
-}
-
-void GameEngine::updateAttachedBalls()
-{
-    /*foreach (Ball *ball, m_balls) {
-        if (!ball->toBeFired) {
-            continue;
-        }
-        // else
-        int ballX = m_bar.getRect().left() + 
-                qRound(ball->barPosition * m_bar.getRect().width());
-        ball->moveTo(ballX, m_bar.getRect().top() - BALL_SIZE);
-        ball->repaint();
-    }*/
-}
-
-// TODO: check (in debugger?) why this function is called so much...
-inline void GameEngine::deleteMovingObjects()
-{
-    /*kDebug() << "Deleting objects...\n";
-    m_itemsGotDeleted = true;
-    qDeleteAll(m_balls);
-    m_balls.clear();
-    
-    QMutableListIterator<Gift *> i(m_gifts);
-    while (i.hasNext()) {
-        Gift *gift = i.next(); 
-        if (gift->isVisible()) {
-            delete gift;
-            i.remove();
-        }
-    }*/
 }
 
 inline void GameEngine::deleteAllObjects()

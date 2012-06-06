@@ -55,19 +55,8 @@ signals:
     void resetMousePosition();
 
 private:
-    void detectBallCollisions(/*Ball *ball*/);
-    
-    // auxiliary functions
-    void handleBrickCollisions(/*Ball *ball*/);
-    // adds the a gift to a brick without a gift
-    //void addGift(const QString &type, QList <Brick *> *bricks);
-    
     // convenience functions
     void showFireBallMessage();
-    void loadNextLevel();
-    void addScore(int points);
-    void setScore(int score);
-    void updateAttachedBalls(); // updates all balls attached to the bar
     void deleteMovingObjects();
     void deleteAllObjects();
 
@@ -95,8 +84,6 @@ private slots:
     // unless the game is paused, won or game over
     void hideMessage();
     void loadLevel();
-    // takes a life and gives you a new ball if there are any lives left
-    void handleDeath();
     
     friend class Brick;
     friend class Gift;
