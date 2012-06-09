@@ -32,6 +32,8 @@ CanvasItem {
     x: m_scale * (column*Globals.BRICK_WIDTH)
     y: m_scale * (row*Globals.BRICK_HEIGHT)
 
+    Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
+
     property string type
     property string giftType
 
