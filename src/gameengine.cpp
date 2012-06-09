@@ -159,6 +159,11 @@ void GameEngine::hideMessage()
     //m_messageBox.hide();
 }
 
+void GameEngine::loadNextLevel()
+{
+    QTimer::singleShot(200, this, SLOT(loadLevel()));
+}
+
 inline void GameEngine::deleteAllObjects()
 {
     /*kDebug() << "all object deleted";

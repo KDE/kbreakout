@@ -39,6 +39,7 @@ public slots:
     void start(const QString &levelset);
     void pause();
     void resume();
+    void loadNextLevel();
     
     // cheating keys for debugging and testing. Enabled only when
     // KDE_DEBUG environment variable is true.
