@@ -21,11 +21,16 @@ import "globals.js" as Globals
 
 CanvasItem {
     id: brick
+    property int row
+    property int column
     property int blockWidth: giftType!="" && spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
     property int blockHeight: giftType!="" && spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
 
     width: m_scale * blockWidth
     height: m_scale * blockHeight
+
+    x: m_scale * (column*Globals.BRICK_WIDTH)
+    y: m_scale * (row*Globals.BRICK_HEIGHT)
 
     property string type
     property string giftType

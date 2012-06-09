@@ -160,38 +160,11 @@ Item {
     }
 
     function loadLine(line, lineNumber) {
-        var start = (lineNumber-1)*Globals.WIDTH;
-        brickString = brickString.slice(0, start) + line + brickString.slice(start+line.length);
-        for(var i=0; i<line.length; i++) {
-            var c = line[i];
-            if (c!='-' && c!='u' && c!='h') Logic.remainingBricks++;
-        }
+        Logic.showLine(line, lineNumber);
     }
 
     function loadGift(gift, times, pos) {
         Logic.putGift(gift, times, pos);
-    }
-
-    property string brickString
-    
-    Component.onCompleted: {
-        Logic.resetBricks();
-    }
-
-    Grid {
-        id: bricks
-        columns: Globals.WIDTH
-        rows: Globals.HEIGHT
-        anchors.fill: bgOverlay
-        property alias items: brickItems
-        
-        Repeater {
-            id: brickItems
-            model: brickString.split("")
-            Brick {
-                type: Logic.getTypeFromChar(modelData)
-            }
-        }
     }
 
     Bar {

@@ -18,6 +18,8 @@
 var speed;
 var ballComponent = Qt.createComponent("Ball.qml");
 var balls = new Array;
+var brickComponent = Qt.createComponent("Brick.qml");
+var bricks = new Array;
 var dScore;
 var tick = 0;
 var repaintInterval;
@@ -26,17 +28,20 @@ var itemsGotDeleted;
 var gameOver = false;
 var gameWon = false;
 
+function remove(array, object) {
+    array.splice(array.indexOf(object), 1);
+}
+
 function resetBricks() {
-    var emptyBricks="";
-    for(var i=0; i<Globals.WIDTH*Globals.HEIGHT; i++)
-        emptyBricks += "-";
-    brickString = emptyBricks;
+    for (var i in bricks) {
+        bricks[i].destroy();
+    }
+    bricks = new Array;
 }
 
 function getTypeFromChar(type) 
 {
     switch (type) {
-    case '-': return "";
     case '1': return "PlainBrick1";
     case '2': return "PlainBrick2";
     case '3': return "PlainBrick3";
@@ -57,24 +62,51 @@ function indexForPos(position) {
     var pos = position.split(",");
     var row = parseInt(pos[0]) - 1;
     var column = parseInt(pos[1]) - 1;
-    return row*bricks.columns + column;
+    return index(row, column);
+}
+
+function index(row, column) {
+    for (var i in bricks) {
+        var brick = bricks[i];
+        if (brick.row==row && brick.column==column) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 function putGiftOnRandomBrick(gift, except) {
     var index;
     var brick;
     do {
-        index = Math.round(Math.random()*bricks.items.count);
-        brick = bricks.items.itemAt(index);
-    } while (index==except || brick==null || brick.type=="" || brick.hasGift());
+        index = Math.round(Math.random()*bricks.length);
+        brick = bricks[index];
+    } while (index==except || brick.hasGift());
     brick.giftType = gift;
 }
 
 function giftlessBricks() {
     var count = 0;
-    for (var i=0; i<bricks.items.count; i++) {
-        var brick = bricks.items.itemAt(i);
-        if (brick!=null && brick.type!="" && !brick.hasGift()) count++;
+    for (var i=0; i<bricks.length; i++) {
+        var brick = bricks[i];
+        if (!brick.hasGift()) count++;
+    }
+}
+
+function createBrick(row, column, type) {
+    var brick = brickComponent.createObject(bgOverlay);
+    brick.row = row;
+    brick.column = column;
+    brick.type = type;
+    bricks.push(brick);
+}
+
+function showLine(line, number) {
+    for (var i=0; i<line.length; i++) {
+        var c = line[i];
+        if (c == '-') continue;
+        createBrick(number-1, i, getTypeFromChar(c));
+        if (c!='h' && c!='u') ++remainingBricks;
     }
 }
 
@@ -82,8 +114,8 @@ function putGift(gift, times, pos) {
     if (pos!="") {
         // Put gift at given position
         var index = indexForPos(pos);
-        var giftBrick = bricks.items.itemAt(index);
-        if (giftBrick == null || giftBrick.type == "") {
+        var giftBrick = bricks[index];
+        if (giftBrick.type == "") {
             print("error:", "Can't place gift at position (", pos, "). There is no brick.");
         }
         else {
@@ -121,8 +153,8 @@ function startLevel() {
 
 function loadNextLevel() {
     // assign points for each remaining brick
-    for (var i=0; i<brickItems.count; i++) {
-        var type = brickItems.itemAt(i).type;
+    for (var i=0; i<bricks.length; i++) {
+        var type = bricks[i].type;
         // don't assign points for unbreakable bricks
         if (type == "UnbreakableBrick") {
             continue;
@@ -373,7 +405,7 @@ function detectBallCollisions(ball) {
     } else if (y+ball.height > bgOverlay.y+bgOverlay.height
                 && ball.directionY > 0) {
         // delete the ball
-        balls.splice(balls.indexOf(ball), 1);
+        remove(balls, ball);
         ball.destroy();
         itemsGotDeleted = true;
         if (balls.length == 0) {
@@ -450,8 +482,8 @@ function handleBrickCollisions(ball) {
     var rect = createRect(ball);
     var intersectingBricks = new Array;
 
-    for (var i=0; i<brickItems.count; i++) {
-        var brick = brickItems.itemAt(i);
+    for (var i=0; i<bricks.length; i++) {
+        var brick = bricks[i];
         if (brick.type == "") continue;
         var brickRect = createRect(brick);
 
@@ -582,9 +614,9 @@ function burnNearbyBricksLater(brick) {
 }
 
 function burnNearbyBricks(brick) {
-    var bricks = nearbyBricks(brick);
-    for (var i in bricks) {
-        burn(brickItems.itemAt(bricks[i]));
+    var nearby = nearbyBricks(brick);
+    for (var i in nearby) {
+        burn(nearby[i]);
     }
 }
 
@@ -606,10 +638,12 @@ function burn(brick) {
 
 function handleDeletion(brick) {
     var brickType = brick.type;
-    brick.type = "";
     if (brick.hasGift()) {
         // TODO: showGift
+    } else {
+        brick.destroy();
     }
+    remove(bricks, brick);
 
     --remainingBricks;
     addBrickScore();
@@ -626,13 +660,13 @@ function handleDeletion(brick) {
 }
 
 function nearbyBricks(brick) {
-    var i = brick.index;
-    var bricks = new Array;
-    var points = new Array(i-1, i+1, i-Globals.WIDTH, i+Globals.WIDTH);
+    var row = brick.row;
+    var column = brick.column;
+    var nearby = new Array;
+    var points = new Array(index(row, column-1), index(row, column+1), index(row-1, column), index(row+1, column));
     for (var j in points) {
-        if (brickItems.itemAt(j).type != "") {
-            bricks.push(j);
-        }
+        if (j<0) continue;
+        nearby.push(bricks[j]);
     }
-    return bricks;
+    return nearby;
 }
