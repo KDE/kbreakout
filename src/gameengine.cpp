@@ -32,10 +32,6 @@
 #include <KActionCollection>
 #include <KDebug>
 
-// static
-//Bar *GameEngine::m_bar_ptr = 0;
-
-
 GameEngine::GameEngine(MainWindow *mainWindow)
     : m_mainWindow(mainWindow)
 {

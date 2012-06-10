@@ -70,28 +70,12 @@ MainWindow::MainWindow(QWidget *parent)
       renderer(provider()),
       canvasWidget(new CanvasWidget(&renderer, this))
 {
-    // TODO: find a better way..
-    //Item::setCanvas(canvasWidget);
-    //Item::setRenderer(&renderer);
-    //new Background; // the background put's itself into the canvasWidget
-    gameEngine = new GameEngine(this); // must be called after Item::setCanvas()
+    gameEngine = new GameEngine(this);
     
     /*connect(canvasWidget, SIGNAL(mouseMoved(int)),
-            gameEngine, SLOT(moveBar(int)));
-    connect(canvasWidget, SIGNAL(barMovedLeft()),
-            gameEngine, SLOT(moveBarLeft()));
-    connect(canvasWidget, SIGNAL(barMovedRight()),
-            gameEngine, SLOT(moveBarRight()));
-    connect(canvasWidget, SIGNAL(focusLost()),
-            this, SLOT(pauseGame()));*/
+            gameEngine, SLOT(moveBar(int)));*/
     
-    /*connect(gameEngine, SIGNAL(gamePaused()), 
-            canvasWidget, SLOT(handleGamePaused()));
-    connect(gameEngine, SIGNAL(gameResumed()),
-            canvasWidget, SLOT(handleGameResumed()));
-    connect(gameEngine, SIGNAL(gameResumed()),
-            this, SLOT(handleGameResumed()));
-    connect(gameEngine, SIGNAL(resetMousePosition()),
+    /*connect(gameEngine, SIGNAL(resetMousePosition()),
             canvasWidget, SLOT(handleResetMousePosition()));*/
     connect(canvasWidget, SIGNAL(levelComplete()),
             gameEngine, SLOT(loadNextLevel()));
@@ -221,21 +205,9 @@ void MainWindow::startNewGame()
     }
 }
 
-void MainWindow::pauseGame()
-{
-    if (!pauseAction->isChecked()) {
-        pauseAction->activate(QAction::Trigger);
-    }
-}
-
 void MainWindow::setGamePaused(bool paused)
 {
     canvasWidget->setGamePaused(paused);
-}
-
-void MainWindow::handleGameResumed()
-{
-    pauseAction->setChecked(false);
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)

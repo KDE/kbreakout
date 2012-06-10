@@ -19,8 +19,6 @@
 #define GAMEENGINE_H
 
 #include <QObject>
-#include <QList>
-#include <QTimer>
 
 class MainWindow;
 
@@ -86,9 +84,6 @@ private slots:
     // unless the game is paused, won or game over
     void hideMessage();
     void loadLevel();
-    
-    friend class Brick;
-    friend class Gift;
 };
 
 #endif // GAMEENGINE_H
