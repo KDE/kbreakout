@@ -45,6 +45,8 @@ private slots:
 protected:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
+    void focusInEvent(QFocusEvent *event);
+    void focusOutEvent(QFocusEvent *event);
 
 private:
     KGameRenderer *m_renderer;
