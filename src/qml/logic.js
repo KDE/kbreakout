@@ -31,11 +31,21 @@ function remove(array, object) {
     array.splice(array.indexOf(object), 1);
 }
 
+function reset() {
+    level = 0;
+    score = 0;
+    resetBricks();
+    gameOver = false;
+    gameWon = false;
+    lives = Globals.INITIAL_LIVES;
+}
+
 function resetBricks() {
     for (var i in bricks) {
         bricks[i].destroy();
     }
     bricks = new Array;
+    remainingBricks = 0;
 }
 
 function getTypeFromChar(type) 

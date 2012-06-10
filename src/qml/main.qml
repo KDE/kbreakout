@@ -122,7 +122,7 @@ Item {
         Behavior on opacity { NumberAnimation { duration: 100 } }
     }
 
-    property int score: 0
+    property int score
     TextItem {
         id: scoreDisplay
         width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH)/6
@@ -135,7 +135,7 @@ Item {
         text: parent.score
     }
 
-    property int level: 0
+    property int level
     TextItem {
         id: levelDisplay
         width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH)/5
@@ -149,7 +149,7 @@ Item {
         text: "Level "+parent.level
     }
 
-    property int lives: Globals.INITIAL_LIVES
+    property int lives
     Row {
         id: lifeBars
         spacing: m_scale * Globals.BRICK_WIDTH*0.23
@@ -167,6 +167,10 @@ Item {
                 height: m_scale * Globals.BRICK_HEIGHT/1.3
             }
         }
+    }
+
+    function reset() {
+        Logic.reset();
     }
 
     function loadLine(line, lineNumber) {

@@ -40,6 +40,11 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
 }
 
+void CanvasWidget::newGame()
+{
+    QMetaObject::invokeMethod(rootObject(), "reset");
+}
+
 void CanvasWidget::showLine(QString line, int lineNumber)
 {
     QMetaObject::invokeMethod(rootObject(), "loadLine",

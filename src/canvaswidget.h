@@ -36,6 +36,7 @@ public slots:
     void setGamePaused(bool paused);
 
 private slots:
+    void newGame();
     void showLine(QString line, int lineNumber);
     void putGift(QString gift, int times, QString pos);
     void updateBarDirection();

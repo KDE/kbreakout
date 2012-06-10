@@ -61,6 +61,8 @@ void GameEngine::start(const QString& l)
     m_gameOver = false;
     m_gameWon = false;
     m_level = 1;
+
+    emit loadingNewGame();
     
     loadLevel();
 }

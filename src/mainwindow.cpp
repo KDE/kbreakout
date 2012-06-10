@@ -97,6 +97,9 @@ MainWindow::MainWindow(QWidget *parent)
             gameEngine, SLOT(loadNextLevel()));
     connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
+
+    connect(gameEngine, SIGNAL(loadingNewGame()),
+            canvasWidget, SLOT(newGame()));
     connect(gameEngine, SIGNAL(newLine(QString,int)),
             canvasWidget, SLOT(showLine(QString,int)));
     connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
