@@ -80,7 +80,7 @@ function putGiftOnRandomBrick(gift, except) {
     do {
         index = Math.round(Math.random()*bricks.length);
         brick = bricks[index];
-    } while (index==except || brick.hasGift());
+    } while (index==except || brick==null || brick.hasGift());
     brick.giftType = gift;
 }
 
