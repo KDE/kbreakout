@@ -646,13 +646,24 @@ function handleDeletion(brick) {
 }
 
 function nearbyBricks(brick) {
-    var row = brick.row;
-    var column = brick.column;
-    var nearby = new Array;
-    var points = new Array(index(row, column-1), index(row, column+1), index(row-1, column), index(row+1, column));
+    var result = new Array;
+
+    // coordinates of the center of the brick
+    var x = brick.x + brick.width/2;
+    var y = brick.y + brick.height/2;
+
+    // points to the left, right, top and bottom of the brick
+    var points = new Array;
+    points.push([x-brick.width, y]);
+    points.push([x+brick.width, y]);
+    points.push([x, y-brick.height]);
+    points.push([x, y+brick.height]);
+
     for (var j in points) {
-        if (j<0) continue;
-        nearby.push(bricks[j]);
+        var px = points[j][0];
+        var py = points[j][1];
+        var b = bgOverlay.childAt(px, py);
+        if (b != null && b.objectName == "brick") result.push(b);
     }
-    return nearby;
+    return result;
 }
