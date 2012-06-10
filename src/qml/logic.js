@@ -37,6 +37,8 @@ function reset() {
     resetBricks();
     gameOver = false;
     gameWon = false;
+    deleteMovingObjects();
+    paused = false;
     lives = Globals.INITIAL_LIVES;
 }
 
