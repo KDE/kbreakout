@@ -20,9 +20,37 @@ import SvgLibrary 1.0
 import "globals.js" as Globals
 
 CanvasItem {
+    id: bar
     spriteKey: "PlainBar"
     width: m_scale * Globals.DEFAULT_BAR_WIDTH
     height: m_scale * Globals.BRICK_HEIGHT
+    property int direction: 0
 
     function type() { return spriteKey; }
+
+    // for preserving position relative
+    // to bgOverlay when canvas is resized
+    property real posX
+    x: m_scale * posX
+
+    function stopMoving() {
+        moveTimer.stop();
+    }
+
+    Timer {
+        id: moveTimer
+        interval: Globals.DEFAULT_UPDATE_INTERVAL
+        repeat: true
+        running: direction!=0 && !paused
+        onTriggered: {
+            var xPos = bar.posX + (bar.direction*Globals.BAR_MOVEMENT);
+            if (xPos < 0) {
+                xPos = 0;
+            } else if (xPos*m_scale+bar.width > bgOverlay.width) {
+                xPos = (bgOverlay.width - bar.width)/m_scale;
+            }
+
+            bar.posX = xPos;
+        }
+    }
 }

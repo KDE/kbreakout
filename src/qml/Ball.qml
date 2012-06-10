@@ -30,10 +30,28 @@ CanvasItem {
     property real barPosition: 0.6
 
     width: m_scale * Globals.BALL_SIZE
-    height: width
+    height: m_scale * Globals.BALL_SIZE
 
-    x: bar.x + barPosition*bar.width
-    y: bar.y - height
+    // for preserving position relative
+    // to bgOverlay when canvas is resized
+    property real posX
+    property real posY
+    x: m_scale * posX
+    y: m_scale * posY
 
     function type() { return spriteKey; }
+
+    Timer {
+        interval: gameTimer.interval
+        running: gameTimer.running
+        repeat: true
+        onTriggered: {
+            if (toBeFired) {
+                posX = (bar.x + barPosition*bar.width)/m_scale;
+            } else {
+                posX += directionX * speed;
+                posY += directionY * speed;
+            }
+        }
+    }
 }

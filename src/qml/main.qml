@@ -29,6 +29,8 @@ Item {
     onWidthChanged: updateGeometry();
     onHeightChanged: updateGeometry();
 
+    property real speed
+
     function updateGeometry() {
         var bw = Globals.BRICK_WIDTH*Globals.WIDTH + 1;
         // bh = (overlayHeight = BRICK_HEIGHT*HEIGHT+1)
@@ -72,6 +74,14 @@ Item {
         }
         width: m_scale * (Globals.BRICK_WIDTH*Globals.WIDTH + 1)
         height: m_scale * (Globals.BRICK_HEIGHT*Globals.HEIGHT + 1)
+
+        Bar {
+            id: bar
+            anchors {
+                bottom: parent.bottom
+            }
+            posX: 300
+        }
     }
 
     property bool paused: false
@@ -167,34 +177,8 @@ Item {
         Logic.putGift(gift, times, pos);
     }
 
-    Bar {
-        id: bar
-        anchors {
-            bottom: bgOverlay.bottom
-        }
-        x: m_scale * 300
-        property int direction: 0
-    }
-
-    Timer {
-        id: moveBarTimer
-        interval: Globals.DEFAULT_UPDATE_INTERVAL
-        repeat: true
-        onTriggered: {
-            Logic.moveBar(bar.x + (m_scale * bar.direction*Globals.BAR_MOVEMENT));
-        }
-    }
-
     function updateBarDirection(direction) {
-        if (paused)
-            return;
-        if (direction==0) {
-            moveBarTimer.stop();
-        } else {
-            bar.direction = direction;
-            if (!moveBarTimer.running)
-                moveBarTimer.start();
-        }
+        bar.direction = direction;
     }
 
     function startGame() {

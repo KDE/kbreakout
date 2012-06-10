@@ -15,7 +15,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var speed;
 var ballComponent = Qt.createComponent("Ball.qml");
 var balls = new Array;
 var brickComponent = Qt.createComponent("Brick.qml");
@@ -140,7 +139,9 @@ function putGift(gift, times, pos) {
 }
 
 function createBall() {
-    var ball = ballComponent.createObject(canvas);
+    var ball = ballComponent.createObject(bgOverlay);
+    ball.posX = (bar.x + ball.barPosition*bar.width)/m_scale;
+    ball.posY = (bar.y - ball.height)/m_scale;
     balls.push(ball);
 }
 
@@ -197,13 +198,8 @@ function timerTimeout() {
     for (var i in balls) {
         var ball = balls[i];
         if (ball.toBeFired) {
-            // update attached balls
-            ball.x = bar.x + ball.barPosition*bar.width;
             continue;
         }
-
-        ball.x += m_scale * ball.directionX * speed;
-        ball.y += m_scale * ball.directionY * speed;
 
         // collision detection
         firstTime = true;
@@ -225,29 +221,19 @@ function fireBall() {
         var ball = balls[i];
         if (!ball.toBeFired) continue;
 
-        ball.toBeFired = false;
         var ballCenter = ball.x + ball.width/2;
         var barCenter = bar.x + bar.width/2;
         var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
 
         ball.directionX =  Math.cos(angle) * Globals.BALL_SPEED;
         ball.directionY = -Math.sin(angle) * Globals.BALL_SPEED;
+        ball.toBeFired = false;
     }
 
     dScore = Globals.BRICK_SCORE;
     hideInfoMessage();
 
     randomCounter = 0;
-}
-
-function moveBar(x) {
-    if (x < bgOverlay.x) {
-        x = bgOverlay.x;
-    } else if (x+bar.width > bgOverlay.x+bgOverlay.width) {
-        x = bgOverlay.x + bgOverlay.width - bar.width;
-    }
-
-    bar.x = x;
 }
 
 function setGamePaused(paused) {
@@ -361,7 +347,7 @@ function deleteMovingObjects() {
 }
 
 function createRect(object) {
-    var globalPos = object.parent.mapToItem(null, object.x, object.y);
+    var globalPos = object.parent.mapToItem(bgOverlay, object.x, object.y);
     return {
         left: globalPos.x,
         top: globalPos.y,
@@ -395,14 +381,14 @@ function detectBallCollisions(ball) {
     var barRect = createRect(bar);
 
     // bounce against the wall
-    if (x < bgOverlay.x && ball.directionX < 0) {
+    if (x < 0 && ball.directionX < 0) {
         ball.directionX *= -1;
-    } else if (x+ball.width > bgOverlay.x+bgOverlay.width
+    } else if (x+ball.width > bgOverlay.width
                 && ball.directionX > 0) {
         ball.directionX *= -1;
-    } else if (y < bgOverlay.y && ball.directionY < 0) {
+    } else if (y < 0 && ball.directionY < 0) {
         ball.directionY *= -1;
-    } else if (y+ball.height > bgOverlay.y+bgOverlay.height
+    } else if (y+ball.height > bgOverlay.height
                 && ball.directionY > 0) {
         // delete the ball
         remove(balls, ball);
@@ -467,7 +453,7 @@ function handleDeath() {
         gameOver = true;
         showMessage("Game Over!");
         elapsedTimeTimer.stop();
-        moveBarTimer.stop();
+        bar.stopMoving();
         canvas.gameEnded(score, level, elapsedTimeTimer.elapsedTime);
     } else {
         lives--;
@@ -544,16 +530,16 @@ function collideWithBrick(ball, brick) {
     // bounce
     if (min == top && ball.directionY > 0) {
         ball.directionY *= -1;
-        ball.y -= top;
+        ball.posY -= top;
     } else if (min == bottom && ball.directionY < 0) {
         ball.directionY *= -1;
-        ball.y += bottom;
+        ball.posY += bottom;
     } else if (min == left && ball.directionX > 0) {
         ball.directionX *= -1;
-        ball.x -= left;
+        ball.posX -= left;
     } else if (min == right && ball.directionX < 0) {
         ball.directionX *= -1;
-        ball.x += right;
+        ball.posX += right;
     } else {
         return; // already bounced
     }
