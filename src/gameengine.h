@@ -38,11 +38,6 @@ public slots:
     void pause();
     void resume();
     void loadNextLevel();
-    
-    // cheating keys for debugging and testing. Enabled only when
-    // KDE_DEBUG environment variable is true.
-    void cheatSkipLevel();
-    void cheatAddLife();
 
 signals:
     void loadingNewGame();
@@ -73,7 +68,6 @@ private:
     // Canvas Items
     bool m_gameOver;
     bool m_gameWon;
-    bool m_cheatsEnabled;
     LevelLoader *m_levelLoader;
 
     // is set to true when deleteMovingObjects() is called

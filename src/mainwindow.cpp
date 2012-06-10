@@ -91,12 +91,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameEngine, SIGNAL(ready()),
             canvasWidget, SLOT(startGame()));
     
-    // cheating keys, debugging and testing only TODO: REMOVE
-    /*connect(canvasWidget, SIGNAL(cheatSkipLevel()),
-            gameEngine, SLOT(cheatSkipLevel()));
-    connect(canvasWidget, SIGNAL(cheatAddLife()),
-            gameEngine, SLOT(cheatAddLife()));*/
-    
     setCentralWidget(canvasWidget);
     
     setupActions();

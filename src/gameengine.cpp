@@ -35,8 +35,6 @@
 GameEngine::GameEngine(MainWindow *mainWindow)
     : m_mainWindow(mainWindow)
 {
-    m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
-
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_levelLoader = new LevelLoader( this );
     connect(m_levelLoader, SIGNAL(newLine(QString,int)), this, SIGNAL(newLine(QString,int)));
@@ -85,20 +83,6 @@ void GameEngine::resume()
     m_gameTimer.start();
 
     emit gameResumed();*/
-}
-
-void GameEngine::cheatSkipLevel() 
-{
-    if (m_cheatsEnabled) {
-        loadLevel();
-    }
-}
-
-void GameEngine::cheatAddLife() 
-{
-    if (m_cheatsEnabled) {
-        //m_lives.append(new Life);
-    }
 }
 
 void GameEngine::loadLevel()
