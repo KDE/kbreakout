@@ -24,8 +24,6 @@ class MainWindow;
 
 class LevelLoader;
 
-// TODO: add m_ to all members
-
 class GameEngine : public QObject
 {
     Q_OBJECT
