@@ -26,7 +26,7 @@ CanvasItem {
     property int blockWidth: giftType!="" && spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
     property int blockHeight: giftType!="" && spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
 
-    objectName: isHidden() || isGiftVisible() ? "" : "brick"
+    objectName: hidden || giftVisible ? "" : "brick"
 
     width: m_scale * blockWidth
     height: m_scale * blockHeight
@@ -41,7 +41,7 @@ CanvasItem {
 
     onTypeChanged: show();
 
-    function isHidden() { return spriteKey==""; }
+    property bool hidden: spriteKey==""
     function hide() { spriteKey = ""; }
     function show() {
         if (type != "HiddenBrick") {
@@ -49,7 +49,7 @@ CanvasItem {
         }
     }
 
-    function isGiftVisible() { spriteKey == giftType; }
+    property bool giftVisible: spriteKey==giftType
     function showGift() { spriteKey = giftType; }
     function hasGift() { return giftType!=""; }
 
