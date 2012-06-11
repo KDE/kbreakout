@@ -24,9 +24,13 @@ CanvasItem {
     spriteKey: "PlainBar"
     width: m_scale * Globals.DEFAULT_BAR_WIDTH
     height: m_scale * Globals.BRICK_HEIGHT
+
+    Behavior on width { NumberAnimation { duration: 50 } }
+
     property int direction: 0
 
-    function type() { return spriteKey; }
+    property string type
+    onTypeChanged: spriteKey = type;
 
     // for preserving position relative
     // to bgOverlay when canvas is resized
@@ -42,15 +46,42 @@ CanvasItem {
         interval: Globals.DEFAULT_UPDATE_INTERVAL
         repeat: true
         running: direction!=0 && !paused
-        onTriggered: {
-            var xPos = bar.posX + (bar.direction*Globals.BAR_MOVEMENT);
-            if (xPos < 0) {
-                xPos = 0;
-            } else if (xPos*m_scale+bar.width > bgOverlay.width) {
-                xPos = (bgOverlay.width - bar.width)/m_scale;
-            }
+        onTriggered: moveBy(bar.direction*Globals.BAR_MOVEMENT);
+    }
 
-            bar.posX = xPos;
+    function moveBy(dx) {
+        var xPos = posX + dx;
+        if (xPos < 0) {
+            xPos = 0;
+        } else if (xPos*m_scale + width > bgOverlay.width) {
+            xPos = (bgOverlay.width - bar.width)/m_scale;
         }
+
+        posX = xPos;
+    }
+
+    function reset() {
+        var oldWidth = width;
+        width = m_scale * Globals.DEFAULT_BAR_WIDTH;
+        type = "PlainBar";
+        moveBy( ((oldWidth-width)/2) / m_scale );
+    }
+
+    function enlarge() {
+        var oldWidth = width;
+        width = Math.round((width/m_scale) * Globals.RESIZE_BAR_RATIO) * m_scale;
+        if (width > Globals.MAX_BAR_WIDTH*m_scale) {
+            width = Globals.MAX_BAR_WIDTH*m_scale;
+        }
+        moveBy( ((oldWidth-width)/2) / m_scale );
+    }
+
+    function shrink() {
+        var oldWidth = width;
+        width = Math.round((width/m_scale) / Globals.RESIZE_BAR_RATIO) * m_scale;
+        if (width < Globals.MIN_BAR_WIDTH*m_scale) {
+            width = Globals.MIN_BAR_WIDTH*m_scale;
+        }
+        moveBy( ((oldWidth-width)/2) / m_scale );
     }
 }

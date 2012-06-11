@@ -23,6 +23,9 @@ CanvasItem {
     id: ball
     spriteKey: "PlainBall"
 
+    property string type
+    onTypeChanged: spriteKey = type;
+
     property real directionX
     property real directionY
 
@@ -38,8 +41,6 @@ CanvasItem {
     property real posY
     x: m_scale * posX
     y: m_scale * posY
-
-    function type() { return spriteKey; }
 
     Timer {
         interval: gameTimer.interval

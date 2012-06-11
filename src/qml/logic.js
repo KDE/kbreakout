@@ -37,6 +37,7 @@ function reset() {
     level = 0;
     score = 0;
     resetBricks();
+    bar.reset();
     gameOver = false;
     gameWon = false;
     deleteMovingObjects();
@@ -231,7 +232,7 @@ function timerTimeout() {
             remove(gifts, gift);
             gift.destroy();
         } else if (intersects(giftRect, barRect)) {
-            // TODO: execute(gift.giftType);
+            executeGift(gift.type);
             if (itemsGotDeleted) {
                 return;
             }
@@ -370,11 +371,14 @@ function changeSpeed(ratio) {
 }
 
 function deleteMovingObjects() {
-    for(var i=0; i<balls.length; i++) {
+    itemsGotDeleted = true;
+    for (var i=0; i<balls.length; i++) {
         balls.shift().destroy();
     }
-    itemsGotDeleted = true;
-    // TODO: delete moving gifts
+    
+    for (var i=0; i<gifts.length; i++) {
+        gifts.shift().destroy();
+    }
 }
 
 function createRect(object) {
@@ -444,7 +448,7 @@ function detectBallCollisions(ball) {
                 ballCenter < bar.x+bar.width) {
             // the bar has been hit
 
-            if (bar.type() == "StickyBar") {
+            if (bar.type == "StickyBar") {
                 ball.toBeFired = true;
 
                 var diff = ball.x - bar.x;
@@ -479,7 +483,7 @@ function detectBallCollisions(ball) {
 function handleDeath() {
     hideMessage();
     deleteMovingObjects();
-    // TODO: bar.reset
+    bar.reset();
     if (lives == 0) {
         gameOver = true;
         showMessage("Game Over!");
@@ -539,11 +543,11 @@ function collideWithTwoBricks(ball, bricks) {
 }
 
 function collideWithBrick(ball, brick) {
-    if (ball.type() == "UnstoppableBall") {
+    if (ball.type == "UnstoppableBall") {
         forcedHit(brick);
         return; // don't bounce
     }
-    if (ball.type() == "UnstoppableBurningBall") {
+    if (ball.type == "UnstoppableBurningBall") {
         explode(brick);
         return; // don't bounce
     }
@@ -575,7 +579,7 @@ function collideWithBrick(ball, brick) {
         return; // already bounced
     }
 
-    if (ball.type() == "BurningBall") {
+    if (ball.type == "BurningBall") {
         explode(brick);
     } else {
         hit(brick);
@@ -702,4 +706,171 @@ function nearbyBricks(brick) {
         if (b != null && b.objectName == "brick") result.push(b);
     }
     return result;
+}
+
+function executeGift(type) {
+    score += Globals.GIFT_SCORE;
+    
+    if (type == "Gift100Points") {
+        score += 100 - Globals.GIFT_SCORE;
+    } 
+    else if (type == "Gift200Points") {
+        score += 200 - Globals.GIFT_SCORE;
+    } 
+    else if (type == "Gift500Points") {
+        score += 500 - Globals.GIFT_SCORE;
+    } 
+    else if (type == "Gift1000Points") {
+        score += 1000 - Globals.GIFT_SCORE;
+    } 
+    else if (type == "GiftAddLife") {
+        if (lives < Globals.MAXIMUM_LIVES) {
+            lives++;
+        }
+    } 
+    else if (type == "GiftLoseLife") {
+        handleDeath();
+    } 
+    else if (type == "GiftNextLevel") {
+        loadNextLevel();
+    }
+    else if (type == "GiftMagicEye") {
+        giftMagicEye();
+    }
+    else if (type == "GiftMagicWand") {
+        giftMagicWand();
+    }
+    else if (type == "GiftSplitBall") {
+        giftSplitBall();
+    }
+    else if (type == "GiftAddBall") {
+        createBall();
+    } 
+    else if (type == "GiftUnstoppableBall") {
+        giftUnstoppableBall();
+    }
+    else if (type == "GiftBurningBall") {
+        giftBurningBall();
+    }
+    else if (type == "GiftDecreaseSpeed") {
+        changeSpeed(1.0/Globals.CHANGE_SPEED_RATIO);
+    }
+    else if (type == "GiftIncreaseSpeed") {
+        changeSpeed(Globals.CHANGE_SPEED_RATIO);
+    }
+    else if (type == "GiftEnlargeBar") {
+        bar.enlarge();
+    }
+    else if (type == "GiftShrinkBar") {
+        bar.shrink();
+    }
+    else if (type == "GiftStickyBar") {
+        bar.type = "StickyBar";
+    }
+    else if (type == "GiftMoreExplosion") {
+        giftMoreExplosion();
+    }
+    else {
+        print("Unrecognized gift type!!!", type);
+    }
+}
+
+function giftMagicEye() {
+    // make all hidden bricks visible
+    for (var i in bricks) {
+        var brick = bricks[i];
+        brick.forceShow();
+    }
+}
+
+function giftMagicWand() {
+    for (var i in bricks) {
+        var brick = bricks[i];
+
+        // make unbreakable bricks breakable
+        if (brick.type == "UnbreakableBrick") {
+            brick.type = "BreakableBrick";
+            ++remainingBricks;
+        }
+
+        // make multiple bricks single
+        if (brick.type == "MultipleBrick3") {
+            brick.type = "MultipleBrick1";
+            score += Globals.AUTO_BRICK_SCORE * 2;
+        } else if (brick.type == "MultipleBrick2") {
+            brick.type = "MultipleBrick1";
+            score += Globals.AUTO_BRICK_SCORE;
+        }
+    }
+}
+
+function giftSplitBall() {
+    var newBalls = new Array;
+    for (var i in balls) {
+        var ball = balls[i];
+        var newBall = ballComponent.createObject(bgOverlay);
+
+        // give it a nice direction
+        newBall.directionX = ball.directionX;
+        newBall.directionY = ball.directionY;
+        if (ball.directionY > 0)
+            newBall.directionY *= -1;
+        else
+            newBall.directionX *= -1;
+
+        newBall.toBeFired = ball.toBeFired;
+        newBall.spriteKey = ball.spriteKey;
+        newBall.posX = ball.posX;
+        newBall.posY = ball.posY;
+        newBalls.push(newBall);
+    }
+    balls = balls.concat(newBalls);
+}
+
+function giftUnstoppableBall() {
+    for (var i in balls) {
+        var ball = balls[i];
+        if (ball.type == "BurningBall") {
+            ball.type = "UnstoppableBurningBall";
+        } else if (ball.type != "UnstoppableBurningBall") {
+            ball.type = "UnstoppableBall";
+        }
+    }
+}
+
+function giftBurningBall() {
+    for (var i in balls) {
+        var ball = balls[i];
+        if (ball.type == "UnstoppableBall") {
+            ball.type = "UnstoppableBurningBall";
+        } else if (ball.type != "UnstoppableBurningBall") {
+            ball.type = "BurningBall";
+        }
+    }
+}
+
+function giftMoreExplosion() {
+    var explodingBricks = new Array;
+    for (var i in bricks) {
+        var brick = bricks[i];
+        if (brick.type == "ExplodingBrick") {
+            explodingBricks.push(brick);
+        }
+    }
+
+    for (var i in explodingBricks) {
+        var nearby = nearbyBricks(explodingBricks[i]);
+        for (var j in nearby) {
+            var nearbyBrick = nearby[j];
+            if (nearbyBrick.type == "UnbreakableBrick") {
+                ++remainingBricks;
+            }
+            if (nearbyBrick.type == "HiddenBrick" && nearbyBrick.spriteKey!=nearbyBrick.type) {
+                nearbyBrick.forcedShow();
+                ++remainingBricks;
+            }
+
+            nearbyBrick.type = "ExplodingBrick";
+        }
+    }
 }

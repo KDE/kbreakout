@@ -48,6 +48,9 @@ CanvasItem {
             spriteKey = type;
         }
     }
+    function forceShow() {
+        spriteKey = type;
+    }
 
     property bool giftVisible: spriteKey==giftType
     function showGift() { spriteKey = giftType; }
