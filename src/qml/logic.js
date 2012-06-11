@@ -638,7 +638,7 @@ function createGiftAt(brick) {
     var gift = giftComponent.createObject(bgOverlay);
     gift.type = brick.giftType;
     gift.setPosition(brick.x/m_scale, brick.y/m_scale);
-    gift.startFalling();
+    gift.falling = true;
     gifts.push(gift);
 }
 
