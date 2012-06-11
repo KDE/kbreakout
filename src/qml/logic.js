@@ -95,7 +95,7 @@ function putGiftOnRandomBrick(gift, except) {
     do {
         index = Math.round(Math.random()*bricks.length);
         brick = bricks[index];
-    } while (index==except || brick==null || brick.hasGift());
+    } while (index==except || brick==null || brick.hasGift);
     brick.giftType = gift;
 }
 
@@ -103,7 +103,7 @@ function giftlessBricks() {
     var count = 0;
     for (var i=0; i<bricks.length; i++) {
         var brick = bricks[i];
-        if (!brick.hasGift()) count++;
+        if (!brick.hasGift) count++;
     }
 }
 
@@ -133,7 +133,7 @@ function putGift(gift, times, pos) {
             print("error:", "Can't place gift at position (", pos, "). There is no brick.");
         }
         else {
-            if (giftBrick.hasGift()) {
+            if (giftBrick.hasGift) {
                 // Brick already has a gift -> move this gift to a random position
                 putGiftOnRandomBrick(gift, index);
             }
@@ -269,6 +269,7 @@ function fireBall() {
 }
 
 function setGamePaused(paused) {
+    if (gameOver || gameWon) return;
     canvas.paused = paused;
     if (paused) {
         showMessage("Game Paused!");
@@ -666,7 +667,7 @@ function createGiftAt(brick) {
 }
 
 function handleDeletion(brick) {
-    if (brick.hasGift()) {
+    if (brick.hasGift) {
         createGiftAt(brick);
     }
     var brickType = brick.type;
@@ -705,7 +706,7 @@ function nearbyBricks(brick) {
         var px = points[j][0];
         var py = points[j][1];
         var b = bgOverlay.childAt(px, py);
-        if (b != null && b.objectName == "brick") result.push(b);
+        if (b != null) result.push(b);
     }
     return result;
 }
@@ -781,7 +782,7 @@ function giftMagicEye() {
     // make all hidden bricks visible
     for (var i in bricks) {
         var brick = bricks[i];
-        brick.forceShow();
+        brick.visible = true;
     }
 }
 
@@ -868,7 +869,7 @@ function giftMoreExplosion() {
                 ++remainingBricks;
             }
             if (nearbyBrick.type == "HiddenBrick" && nearbyBrick.spriteKey!=nearbyBrick.type) {
-                nearbyBrick.forcedShow();
+                nearbyBrick.visible = true;
                 ++remainingBricks;
             }
 

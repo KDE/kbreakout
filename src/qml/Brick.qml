@@ -23,13 +23,9 @@ CanvasItem {
     id: brick
     property int row
     property int column
-    property int blockWidth: giftType!="" && spriteKey==giftType ? Globals.GIFT_WIDTH : Globals.BRICK_WIDTH
-    property int blockHeight: giftType!="" && spriteKey==giftType ? Globals.GIFT_HEIGHT : Globals.BRICK_HEIGHT
 
-    objectName: hidden || giftVisible ? "" : "brick"
-
-    width: m_scale * blockWidth
-    height: m_scale * blockHeight
+    width: m_scale * Globals.BRICK_WIDTH
+    height: m_scale * Globals.BRICK_HEIGHT
 
     x: m_scale * (column*Globals.BRICK_WIDTH)
     y: m_scale * (row*Globals.BRICK_HEIGHT)
@@ -37,24 +33,12 @@ CanvasItem {
     Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
 
     property string type
+    onTypeChanged: spriteKey = type;
+
+    visible: type!="HiddenBrick"
+
     property string giftType
-
-    onTypeChanged: show();
-
-    property bool hidden: spriteKey==""
-    function hide() { spriteKey = ""; }
-    function show() {
-        if (type != "HiddenBrick") {
-            spriteKey = type;
-        }
-    }
-    function forceShow() {
-        spriteKey = type;
-    }
-
-    property bool giftVisible: spriteKey==giftType
-    function showGift() { spriteKey = giftType; }
-    function hasGift() { return giftType!=""; }
+    property bool hasGift: giftType!=""
 
     Timer {
         id: hideTimer
