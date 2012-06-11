@@ -223,6 +223,23 @@ function timerTimeout() {
         }
     }
 
+    for (var i in gifts) {
+        var gift = gifts[i];
+        var giftRect = createRect(gift);
+        var barRect = createRect(bar);
+        if (gift.y+gift.height > bgOverlay.height) {
+            remove(gifts, gift);
+            gift.destroy();
+        } else if (intersects(giftRect, barRect)) {
+            // TODO: execute(gift.giftType);
+            if (itemsGotDeleted) {
+                return;
+            }
+            remove(gifts, gift);
+            gift.destroy();
+        }
+    }
+
     tick = (tick+1) % repaintInterval;
 
     if (tick==0) {
