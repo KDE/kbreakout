@@ -74,8 +74,8 @@ function getTypeFromChar(type)
 
 function indexForPos(position) {
     var pos = position.split(",");
-    var row = parseInt(pos[0]) - 1;
-    var column = parseInt(pos[1]) - 1;
+    var column = parseInt(pos[0]) - 1;
+    var row = parseInt(pos[1]) - 1;
     return index(row, column);
 }
 
@@ -128,14 +128,14 @@ function putGift(gift, times, pos) {
     if (pos!="") {
         // Put gift at given position
         var index = indexForPos(pos);
-        var giftBrick = bricks[index];
-        if (giftBrick.type == "") {
+        if (index == -1) {
             print("error:", "Can't place gift at position (", pos, "). There is no brick.");
         }
         else {
+            var giftBrick = bricks[index];
             if (giftBrick.hasGift) {
                 // Brick already has a gift -> move this gift to a random position
-                putGiftOnRandomBrick(gift, index);
+                putGiftOnRandomBrick(giftBrick.giftType, index);
             }
             giftBrick.giftType = gift;
         }
