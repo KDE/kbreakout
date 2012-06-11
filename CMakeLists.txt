@@ -11,6 +11,8 @@ if(NOT COMPILING_KDEGAMES)
 	include_directories(${KDEGAMES_INCLUDE_DIRS} ${KDE4_INCLUDES} ${QDBUS_INCLUDE_DIRS})
 endif(NOT COMPILING_KDEGAMES)
 
+find_package(KDeclarative REQUIRED)
+
 add_subdirectory( src ) 
 add_subdirectory( pics )
 add_subdirectory( themes )

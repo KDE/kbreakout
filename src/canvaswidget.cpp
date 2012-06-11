@@ -22,6 +22,7 @@
 
 #include <QKeyEvent>
 
+#include <kdeclarative.h>
 #include <KStandardDirs>
 
 CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
@@ -30,6 +31,12 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
 {
     CanvasItem::setRenderer(m_renderer);
     qmlRegisterType<CanvasItem>("SvgLibrary", 1, 0, "CanvasItem");
+
+    KDeclarative kdeclarative;
+    kdeclarative.setDeclarativeEngine(engine());
+    kdeclarative.initialize();
+    // binds things like i18n and icons
+    kdeclarative.setupBindings();
 
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
