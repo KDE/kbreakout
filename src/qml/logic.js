@@ -242,13 +242,14 @@ function timerTimeout() {
         }
     }
 
-    for (var i in gifts) {
+    for (var i=0; i<gifts.length; i++) {
         var gift = gifts[i];
         var giftRect = createRect(gift);
         var barRect = createRect(bar);
         if (gift.y+gift.height > bgOverlay.height) {
             remove(gifts, gift);
             gift.destroy();
+            i--;
         } else if (intersects(giftRect, barRect)) {
             executeGift(gift.type);
             if (itemsGotDeleted) {
@@ -256,6 +257,7 @@ function timerTimeout() {
             }
             remove(gifts, gift);
             gift.destroy();
+            i--;
         }
     }
 
