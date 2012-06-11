@@ -161,6 +161,20 @@ function createBall() {
 }
 
 function startLevel() {
+    if (bricks.length==0) {
+        if (level == 0) {
+            // No level in the levelset
+            print("Invalid levelset");
+        } else {
+            // No more levels: game won
+            gameWon = true;
+            score += Globals.GAME_WON_SCORE + lives*Globals.LIFE_SCORE;
+            showMessage("Well done! You won the game");
+            endGame();
+            deleteMovingObjects();
+        }
+        return;
+    }
     ++level;
     showMessage("Level "+level);
     hideLater(messageBox, 2000);
@@ -202,6 +216,10 @@ function resumeGame() {
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
     showInfoMessage("Press Space to fire the ball");
+}
+
+function endGame() {
+    canvas.gameEnded(score, (gameWon ? -1 : level), elapsedTimeTimer.elapsedTime);
 }
 
 function timerTimeout() {
@@ -492,7 +510,7 @@ function handleDeath() {
         showMessage("Game Over!");
         elapsedTimeTimer.stop();
         bar.stopMoving();
-        canvas.gameEnded(score, level, elapsedTimeTimer.elapsedTime);
+        endGame();
     } else {
         lives--;
         resumeGame();
