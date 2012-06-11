@@ -169,14 +169,14 @@ function startLevel() {
             // No more levels: game won
             gameWon = true;
             score += Globals.GAME_WON_SCORE + lives*Globals.LIFE_SCORE;
-            showMessage("Well done! You won the game");
+            showMessage(i18n("Well done! You won the game"));
             endGame();
             deleteMovingObjects();
         }
         return;
     }
     ++level;
-    showMessage("Level "+level);
+    showMessage(i18n("Level %1", level));
     hideLater(messageBox, 2000);
     resumeGame();
 }
@@ -215,7 +215,7 @@ function resumeGame() {
     elapsedTimeTimer.start();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
-    showInfoMessage("Press Space to fire the ball");
+    showInfoMessage(i18n("Press Space to fire the ball"));
 }
 
 function endGame() {
@@ -292,7 +292,7 @@ function setGamePaused(paused) {
     if (gameOver || gameWon) return;
     canvas.paused = paused;
     if (paused) {
-        showMessage("Game Paused!");
+        showMessage(i18n("Game Paused!"));
         elapsedTimeTimer.stop();
         gameTimer.stop();
     } else {
@@ -453,7 +453,7 @@ function detectBallCollisions(ball) {
         ball.destroy();
         itemsGotDeleted = true;
         if (balls.length == 0) {
-            showMessage("Oops! You have lost the ball!");
+            showMessage(i18n("Oops! You have lost the ball!"));
             handleDeathTimer.start();
             gameTimer.stop();
 
@@ -509,7 +509,7 @@ function handleDeath() {
     bar.reset();
     if (lives == 0) {
         gameOver = true;
-        showMessage("Game Over!");
+        showMessage(i18n("Game Over!"));
         elapsedTimeTimer.stop();
         bar.stopMoving();
         endGame();

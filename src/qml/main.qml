@@ -146,7 +146,7 @@ Item {
             bottom: bgOverlay.top
             bottomMargin: height/5
         }
-        text: "Level "+parent.level
+        text: i18n("Level %1", parent.level)
     }
 
     property int lives
