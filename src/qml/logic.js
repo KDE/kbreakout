@@ -372,11 +372,13 @@ function changeSpeed(ratio) {
 
 function deleteMovingObjects() {
     itemsGotDeleted = true;
-    for (var i=0; i<balls.length; i++) {
+    var times = balls.length
+    for (var i=0; i<times; i++) {
         balls.shift().destroy();
     }
     
-    for (var i=0; i<gifts.length; i++) {
+    times = gifts.length
+    for (var i=0; i<times; i++) {
         gifts.shift().destroy();
     }
 }
