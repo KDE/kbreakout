@@ -19,6 +19,8 @@ var ballComponent = Qt.createComponent("Ball.qml");
 var balls = new Array;
 var brickComponent = Qt.createComponent("Brick.qml");
 var bricks = new Array;
+var giftComponent = Qt.createComponent("Gift.qml");
+var gifts = new Array;
 var dScore;
 var tick = 0;
 var repaintInterval;
@@ -578,8 +580,6 @@ function forcedHit(brick) {
     } else {
         handleDeletion(brick);
     }
-
-    brick.hide();
 }
 
 function hit(brick) {
@@ -634,13 +634,20 @@ function burn(brick) {
     brick.hideLater();
 }
 
+function createGiftAt(brick) {
+    var gift = giftComponent.createObject(bgOverlay);
+    gift.type = brick.giftType;
+    gift.setPosition(brick.x/m_scale, brick.y/m_scale);
+    gift.startFalling();
+    gifts.push(gift);
+}
+
 function handleDeletion(brick) {
-    var brickType = brick.type;
     if (brick.hasGift()) {
-        // TODO: showGift
-    } else {
-        brick.destroy();
+        createGiftAt(brick);
     }
+    var brickType = brick.type;
+    brick.destroy();
     remove(bricks, brick);
 
     --remainingBricks;
