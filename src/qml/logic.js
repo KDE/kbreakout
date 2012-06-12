@@ -235,7 +235,7 @@ function resumeGame() {
     elapsedTimeTimer.start();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
-    showInfoMessage(i18n("Press Space to fire the ball"));
+    showInfoMessage(i18n("Press %1 to fire the ball", "Space"));
 }
 
 function endGame() {
