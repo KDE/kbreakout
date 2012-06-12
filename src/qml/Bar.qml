@@ -71,7 +71,7 @@ CanvasItem {
 
     function enlarge() {
         var oldWidth = barWidth;
-        var barWidth = Math.round(barWidth * Globals.RESIZE_BAR_RATIO);
+        barWidth = Math.round(barWidth * Globals.RESIZE_BAR_RATIO);
         if (barWidth > Globals.MAX_BAR_WIDTH) {
             barWidth = Globals.MAX_BAR_WIDTH;
         }
@@ -80,7 +80,7 @@ CanvasItem {
 
     function shrink() {
         var oldWidth = barWidth;
-        width = Math.round(barWidth / Globals.RESIZE_BAR_RATIO);
+        barWidth = Math.round(barWidth / Globals.RESIZE_BAR_RATIO);
         if (barWidth < Globals.MIN_BAR_WIDTH) {
             barWidth = Globals.MIN_BAR_WIDTH;
         }
