@@ -63,27 +63,27 @@ CanvasItem {
     }
 
     function reset() {
-        var oldWidth = barWidth;
-        barWidth = Globals.DEFAULT_BAR_WIDTH;
+        var newWidth = Globals.DEFAULT_BAR_WIDTH;
+        moveBy( (barWidth-newWidth)/2 );
+        barWidth = newWidth;
         type = "PlainBar";
-        moveBy( (oldWidth-barWidth)/2 );
     }
 
     function enlarge() {
-        var oldWidth = barWidth;
-        barWidth = Math.round(barWidth * Globals.RESIZE_BAR_RATIO);
-        if (barWidth > Globals.MAX_BAR_WIDTH) {
-            barWidth = Globals.MAX_BAR_WIDTH;
+        var newWidth = Math.round(barWidth * Globals.RESIZE_BAR_RATIO);
+        if (newWidth > Globals.MAX_BAR_WIDTH) {
+            newWidth = Globals.MAX_BAR_WIDTH;
         }
-        moveBy( (oldWidth-barWidth)/2 );
+        moveBy( (barWidth-newWidth)/2 );
+        barWidth = newWidth;
     }
 
     function shrink() {
-        var oldWidth = barWidth;
-        barWidth = Math.round(barWidth / Globals.RESIZE_BAR_RATIO);
-        if (barWidth < Globals.MIN_BAR_WIDTH) {
-            barWidth = Globals.MIN_BAR_WIDTH;
+        var newWidth = Math.round(barWidth / Globals.RESIZE_BAR_RATIO);
+        if (newWidth < Globals.MIN_BAR_WIDTH) {
+            newWidth = Globals.MIN_BAR_WIDTH;
         }
-        moveBy( (oldWidth-barWidth)/2 );
+        moveBy( (barWidth-newWidth)/2 );
+        barWidth = newWidth;
     }
 }
