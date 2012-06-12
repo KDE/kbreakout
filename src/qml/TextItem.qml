@@ -36,11 +36,14 @@ CanvasItem {
     onWidthChanged: fontTimerTrigger.restart();
     onHeightChanged: fontTimerTrigger.restart();
 
+    // assign largest font size and start the timer to update
+    // font size to fit text
     function updateFontSize() {
         fontSize = 72;
         fontTimer.start();
     }
  
+    // do not update font size more frequently than once in 100ms
     Timer {
         id: fontTimerTrigger
         interval: 100
@@ -50,6 +53,8 @@ CanvasItem {
         }
     }
 
+    // check font size every 1ms; if text does not fit, decrease the font size
+    // stop the timer, if text fits
     Timer {
         id: fontTimer
         interval: 1
