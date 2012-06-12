@@ -100,7 +100,7 @@ Item {
     TextItem {
         id: messageBox
         anchors.centerIn: bgOverlay
-        z: 2
+        z: 2 // to make it display above the dynamic objects
         width: m_scale * Globals.BRICK_WIDTH*9
         height: m_scale * Globals.BRICK_HEIGHT*5
         opacity: text!=""
