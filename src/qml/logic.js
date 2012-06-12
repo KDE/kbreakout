@@ -33,6 +33,25 @@ function remove(array, object) {
     array.splice(array.indexOf(object), 1);
 }
 
+function scoreString(score) {
+    var absScore = Math.abs(score);
+    var str = absScore.toString().split("");
+
+    // insert spaces every 3 characters
+    var start = str.length%3;
+    if (start==0) start=3;
+    for (; start<str.length; start+=4) {
+        str.splice(start, 0, " ");
+    }
+    
+    // join the array
+    var displayString = score<0 ? "-" : "";
+    for (var i in str) {
+        displayString += str[i];
+    }
+    return displayString;
+}
+
 function reset() {
     level = 0;
     score = 0;

@@ -132,7 +132,7 @@ Item {
             bottom: bgOverlay.top
             bottomMargin: height/5
         }
-        text: parent.score
+        text: Logic.scoreString(parent.score)
     }
 
     property int level
