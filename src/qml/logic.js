@@ -229,6 +229,7 @@ function loadNextLevel() {
 // similar to GameEngine::loadLevel() in terms of setting state variables
 function resumeGame() {
     createBall();
+    bar.reset();
     speed = 1.8;
     repaintInterval = 1;
     elapsedTimeTimer.start();

@@ -22,7 +22,9 @@ import "globals.js" as Globals
 CanvasItem {
     id: bar
     spriteKey: "PlainBar"
-    width: m_scale * Globals.DEFAULT_BAR_WIDTH
+
+    property real barWidth: Globals.DEFAULT_BAR_WIDTH
+    width: m_scale * barWidth
     height: m_scale * Globals.BRICK_HEIGHT
 
     Behavior on width { NumberAnimation { duration: 50 } }
@@ -61,27 +63,27 @@ CanvasItem {
     }
 
     function reset() {
-        var oldWidth = width;
-        width = m_scale * Globals.DEFAULT_BAR_WIDTH;
+        var oldWidth = barWidth;
+        barWidth = Globals.DEFAULT_BAR_WIDTH;
         type = "PlainBar";
-        moveBy( ((oldWidth-width)/2) / m_scale );
+        moveBy( (oldWidth-barWidth)/2 );
     }
 
     function enlarge() {
-        var oldWidth = width;
-        width = Math.round((width/m_scale) * Globals.RESIZE_BAR_RATIO) * m_scale;
-        if (width > Globals.MAX_BAR_WIDTH*m_scale) {
-            width = Globals.MAX_BAR_WIDTH*m_scale;
+        var oldWidth = barWidth;
+        var barWidth = Math.round(barWidth * Globals.RESIZE_BAR_RATIO);
+        if (barWidth > Globals.MAX_BAR_WIDTH) {
+            barWidth = Globals.MAX_BAR_WIDTH;
         }
-        moveBy( ((oldWidth-width)/2) / m_scale );
+        moveBy( (oldWidth-barWidth)/2 );
     }
 
     function shrink() {
-        var oldWidth = width;
-        width = Math.round((width/m_scale) / Globals.RESIZE_BAR_RATIO) * m_scale;
-        if (width < Globals.MIN_BAR_WIDTH*m_scale) {
-            width = Globals.MIN_BAR_WIDTH*m_scale;
+        var oldWidth = barWidth;
+        width = Math.round(barWidth / Globals.RESIZE_BAR_RATIO);
+        if (barWidth < Globals.MIN_BAR_WIDTH) {
+            barWidth = Globals.MIN_BAR_WIDTH;
         }
-        moveBy( ((oldWidth-width)/2) / m_scale );
+        moveBy( (oldWidth-barWidth)/2 );
     }
 }
