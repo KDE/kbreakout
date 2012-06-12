@@ -548,7 +548,7 @@ function handleBrickCollisions(ball) {
 
     for (var i=0; i<bricks.length; i++) {
         var brick = bricks[i];
-        if (brick.type == "") continue;
+        if (brick == null) continue;
         var brickRect = createRect(brick);
 
         if (intersects(brickRect, rect)) {
@@ -637,7 +637,7 @@ function addBrickScore() {
 }
 
 function forcedHit(brick) {
-    if (brick.type == "") return;
+    if (brick == null) return;
 
     if (brick.type == "ExplodingBrick") {
         explode(brick);
@@ -647,8 +647,8 @@ function forcedHit(brick) {
 }
 
 function hit(brick) {
-    if (brick.type == "HiddenBrick" && brick.spriteKey=="") {
-        brick.spriteKey = brick.type;
+    if (brick.type == "HiddenBrick" && !brick.visible) {
+        brick.visible = true;
         ++remainingBricks;
     } else if (brick.type == "MultipleBrick3") {
         brick.type = "MultipleBrick2";
@@ -659,12 +659,12 @@ function hit(brick) {
     } else if (brick.type == "ExplodingBrick") {
         explode(brick);
     } else if (brick.type != "UnbreakableBrick") {
-        forcedHit(brick);
+        handleDeletion(brick);
     }
 }
 
 function explode(brick) {
-    if (brick.type == "") return;
+    if (brick == null) return;
 
     burn(brick);
     burnNearbyBricksLater(brick);
@@ -683,7 +683,7 @@ function burnNearbyBricks(brick) {
 }
 
 function burn(brick) {
-    if (brick.type == "") return;
+    if (brick == null) return;
 
     if (brick.type == "ExplodingBrick") {
         // make sure it doesn't explode twice
@@ -692,10 +692,6 @@ function burn(brick) {
     } else {
         handleDeletion(brick);
     }
-
-    brick.type = "BurningBrick";
-    //brick.spriteKey = brick.type; // make sure hidden bricks are shown
-    brick.hideLater();
 }
 
 function createGiftAt(brick) {

@@ -39,14 +39,4 @@ CanvasItem {
 
     property string giftType
     property bool hasGift: giftType!=""
-
-    Timer {
-        id: hideTimer
-        interval: Globals.BURNING_INTERVAL
-        onTriggered: hide();
-    }
-
-    function hideLater() {
-        hideTimer.start();
-    }
 }
