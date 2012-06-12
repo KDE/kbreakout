@@ -309,7 +309,7 @@ function fireBall() {
 }
 
 function setGamePaused(paused) {
-    if (gameOver || gameWon) return;
+    if (gameOver || gameWon || canvas.paused==paused) return;
     canvas.paused = paused;
     if (paused) {
         showMessage(i18n("Game Paused!"));
