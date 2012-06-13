@@ -45,6 +45,7 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     // forward signals from QML
     connect(rootObject(), SIGNAL(levelComplete()), this, SIGNAL(levelComplete()));
     connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
+    connect(rootObject(), SIGNAL(mousePressed()), this, SIGNAL(mousePressed()));
 }
 
 void CanvasWidget::newGame()

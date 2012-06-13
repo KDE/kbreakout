@@ -43,6 +43,7 @@ private slots:
     // called by the action
     void setGamePaused(bool paused);
     void viewFullScreen(bool fullScreen);
+    void handleMousePressed();
     
 private:
     void setupActions();
@@ -53,8 +54,6 @@ private:
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     
-protected:
-    void mousePressEvent(QMouseEvent *event);
 };
  
 #endif

@@ -83,6 +83,8 @@ MainWindow::MainWindow(QWidget *parent)
             gameEngine, SLOT(loadNextLevel()));
     connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
+    connect(canvasWidget, SIGNAL(mousePressed()),
+            this, SLOT(handleMousePressed()));
 
     connect(gameEngine, SIGNAL(loadingNewGame()),
             canvasWidget, SLOT(newGame()));
@@ -254,17 +256,15 @@ void MainWindow::viewFullScreen(bool fullScreen)
     }
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
+void MainWindow::handleMousePressed()
 {
-    /*if (gameEngine->gameIsPaused()) {
+    if (pauseAction->isChecked()) {
         pauseAction->activate(QAction::Trigger);
-        KXmlGuiWindow::mousePressEvent(event);
         return;
     }
 
     if (Settings::fireOnClick()) {
-        gameEngine->fire();
-        KXmlGuiWindow::mousePressEvent(event);
+        canvasWidget->fire();
         return;
     }
 
@@ -301,7 +301,5 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             Settings::self()->writeConfig();
         }
     }
-    
-    KXmlGuiWindow::mousePressEvent(event);*/
 }
 

@@ -25,6 +25,7 @@ Item {
 
     signal levelComplete()
     signal gameEnded(int score, int level, int elapsedTime)
+    signal mousePressed()
     
     onWidthChanged: updateGeometry();
     onHeightChanged: updateGeometry();
@@ -229,5 +230,12 @@ Item {
         property variant target
         interval: Globals.BURNING_SPEED
         onTriggered: Logic.burnNearbyBricks(target);
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: canvas.mousePressed()
     }
 }

@@ -31,6 +31,7 @@ signals:
     void levelComplete();
     void gameEnded(int score, int level, int elapsedTime);
     void focusLost();
+    void mousePressed();
 
 public slots:
     void fire();
