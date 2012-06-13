@@ -105,13 +105,7 @@ void CanvasWidget::resetCursor()
 
 void CanvasWidget::updateCursor()
 {
-    QVariant property = rootObject()->property("paused");
-    if (!property.isValid()) {
-        kError() << "'paused' property in main.qml is no longer valid";
-        return;
-    }
-
-    bool paused = property.toBool();
+    bool paused = rootObject()->property("paused").toBool();
 
     if (paused) {
         resetCursor();
