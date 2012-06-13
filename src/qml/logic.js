@@ -243,7 +243,7 @@ function endGame() {
     canvas.gameEnded(score, (gameWon ? -1 : level), elapsedTimeTimer.elapsedTime);
 }
 
-function timerTimeout() {
+function detectCollisions() {
     // needed to exit from the loop if the arrays that they cycle
     // change (items get deleted)
     itemsGotDeleted = false;

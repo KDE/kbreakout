@@ -194,7 +194,7 @@ Item {
         id: gameTimer
         interval: Globals.REPAINT_INTERVAL
         repeat: true
-        onTriggered: Logic.timerTimeout();
+        onTriggered: Logic.detectCollisions();
     }
 
     Timer {
