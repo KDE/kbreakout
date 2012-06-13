@@ -236,7 +236,7 @@ function resumeGame() {
     elapsedTimeTimer.start();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
-    showInfoMessage(i18n("Press %1 to fire the ball", "Space"));
+    showInfoMessage();
 }
 
 function endGame() {
@@ -330,8 +330,7 @@ function showMessage(text) {
 }
 
 function showInfoMessage(text) {
-    infoMessage.text = text;
-    infoMessage.updateFontSize();
+    infoMessage.opacity = 1;
 }
 
 function hideMessage() {
@@ -339,7 +338,7 @@ function hideMessage() {
 }
 
 function hideInfoMessage() {
-    infoMessage.text = "";
+    infoMessage.opacity = 0;
 }
 
 function hideLater(target, interval) {

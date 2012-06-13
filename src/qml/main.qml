@@ -111,6 +111,7 @@ Item {
         Behavior on opacity { NumberAnimation { duration: 100 } }
     }
 
+    property string fireShortcut: "Space"
     TextItem {
         id: infoMessage
         anchors {
@@ -120,7 +121,8 @@ Item {
         }
         width: m_scale * Globals.BRICK_WIDTH*9
         height: m_scale * Globals.BRICK_HEIGHT*2
-        opacity: text!=""
+        text: i18n("Press %1 to fire the ball", fireShortcut)
+        opacity: 0
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
     }

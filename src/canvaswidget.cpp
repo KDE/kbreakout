@@ -20,6 +20,8 @@
 #include "globals.h"
 #include "settings.h"
 
+#include <QDeclarativeContext>
+#include <QAction>
 #include <QKeyEvent>
 #include <QCursor>
 
@@ -53,6 +55,13 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
 
     setCursor(QCursor(Qt::BlankCursor));
+}
+
+void CanvasWidget::updateFireShortcut()
+{
+    QAction *fireAction = qobject_cast<QAction*>(sender());
+    QString shortcut = fireAction->shortcut().toString(QKeySequence::NativeText);
+    rootObject()->setProperty("fireShortcut", shortcut);
 }
 
 void CanvasWidget::newGame()

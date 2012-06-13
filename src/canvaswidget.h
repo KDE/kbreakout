@@ -37,6 +37,7 @@ signals:
 public slots:
     void fire();
     void setGamePaused(bool paused);
+    void updateFireShortcut();
 
 private slots:
     void newGame();

@@ -142,6 +142,7 @@ void MainWindow::setupActions()
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
     connect(fireAction, SIGNAL(triggered()), canvasWidget, SLOT(fire()));
+    connect(fireAction, SIGNAL(changed()), canvasWidget, SLOT(updateFireShortcut()));
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
     pauseAction = KStandardGameAction::pause(this,
