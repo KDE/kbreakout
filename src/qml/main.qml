@@ -89,10 +89,11 @@ Item {
 
     property bool paused: false
     Rectangle {
+        id: pauseOverlay
         anchors.fill: parent
         color: "#646464"
         opacity: paused ? 0.6 : 0
-        z: 1
+        z: 1 // to show above all the elements (except messageBox)
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
     }
@@ -103,7 +104,7 @@ Item {
     TextItem {
         id: messageBox
         anchors.centerIn: bgOverlay
-        z: 2 // to make it display above the dynamic objects
+        z: 2 // to make it display above the pause overlay
         width: m_scale * Globals.BRICK_WIDTH*9
         height: m_scale * Globals.BRICK_HEIGHT*5
         opacity: text!=""
@@ -113,7 +114,7 @@ Item {
 
     property string fireShortcut: "Space"
     TextItem {
-        id: infoMessage
+        id: fireBallMessage
         anchors {
             horizontalCenter: bgOverlay.horizontalCenter
             bottom: bgOverlay.bottom

@@ -236,7 +236,7 @@ function resumeGame() {
     elapsedTimeTimer.start();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.start();
-    showInfoMessage();
+    showFireBallMessage();
 }
 
 function endGame() {
@@ -304,7 +304,7 @@ function fireBall() {
     }
 
     dScore = Globals.BRICK_SCORE;
-    hideInfoMessage();
+    hideFireBallMessage();
 
     randomCounter = 0;
 }
@@ -329,16 +329,16 @@ function showMessage(text) {
     messageBox.updateFontSize();
 }
 
-function showInfoMessage(text) {
-    infoMessage.opacity = 1;
+function showFireBallMessage(text) {
+    fireBallMessage.opacity = 1;
 }
 
 function hideMessage() {
     messageBox.text = "";
 }
 
-function hideInfoMessage() {
-    infoMessage.opacity = 0;
+function hideFireBallMessage() {
+    fireBallMessage.opacity = 0;
 }
 
 function hideLater(target, interval) {
