@@ -499,6 +499,7 @@ function detectBallCollisions(ball) {
                 var diff = ball.x - bar.x;
 
                 ball.barPosition = diff / bar.width;
+                ball.posY = (bar.y-ball.height)/m_scale;
             }
 
             var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
