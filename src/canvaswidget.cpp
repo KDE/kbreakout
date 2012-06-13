@@ -99,7 +99,6 @@ void CanvasWidget::updateBarDirection()
 
 void CanvasWidget::resetCursor()
 {
-    //releaseMouse();
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
