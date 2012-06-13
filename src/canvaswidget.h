@@ -45,6 +45,7 @@ private slots:
     void startGame();
     void updateCursor();
     void resetCursor();
+    void resetMousePosition();
 
 protected:
     void keyPressEvent(QKeyEvent *event);

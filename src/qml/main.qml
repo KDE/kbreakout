@@ -66,6 +66,8 @@ Item {
         anchors.centerIn: parent
     }
 
+    property int barCenter: mapFromItem(bgOverlay, Math.round(bar.x + bar.width/2), 0).x
+
     CanvasItem {
         id: bgOverlay
         spriteKey: "BackgroundOverlay"

@@ -109,11 +109,21 @@ void CanvasWidget::updateCursor()
     if (paused) {
         resetCursor();
     } else {
-        // TODO: move the cursor to where the bar is
+        // FIXME: move the cursor to where the bar is
+        resetMousePosition();
         QCursor newCursor(Qt::BlankCursor);
         newCursor.setPos(cursor().pos());
         setCursor(newCursor);
     }
+}
+
+void CanvasWidget::resetMousePosition()
+{
+    // FIXME: the cursor's position is supposed to be reset,
+    // just doesn't work!
+    int barPosition = rootObject()->property("barCenter").toInt();
+    QPoint p = mapToGlobal(QPoint(barPosition, 0));
+    cursor().setPos(p.x(), cursor().pos().y());
 }
 
 void CanvasWidget::keyPressEvent(QKeyEvent *event)
