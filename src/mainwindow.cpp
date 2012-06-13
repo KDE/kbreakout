@@ -197,6 +197,7 @@ void MainWindow::startNewGame()
         KStandardGuiItem::cancel());
         
     if (ret == KMessageBox::Yes) {
+        pauseAction->setChecked(false);
         gameEngine->start("default");
     }
 }
