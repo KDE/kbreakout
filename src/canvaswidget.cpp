@@ -64,6 +64,12 @@ void CanvasWidget::updateFireShortcut()
     rootObject()->setProperty("fireShortcut", shortcut);
 }
 
+void CanvasWidget::resizeEvent(QResizeEvent *event)
+{
+    QDeclarativeView::resizeEvent(event);
+    QMetaObject::invokeMethod(rootObject(), "updateGeometry");
+}
+
 void CanvasWidget::newGame()
 {
     QMetaObject::invokeMethod(rootObject(), "reset");

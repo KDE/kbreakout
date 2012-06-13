@@ -53,6 +53,7 @@ protected:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void focusOutEvent(QFocusEvent *event);
+    void resizeEvent(QResizeEvent *event);
 
 private:
     //used when moving the bar with the keys

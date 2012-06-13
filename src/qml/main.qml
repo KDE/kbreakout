@@ -26,9 +26,6 @@ Item {
     signal levelComplete()
     signal gameEnded(int score, int level, int elapsedTime)
     signal mousePressed()
-    
-    onWidthChanged: updateGeometry();
-    onHeightChanged: updateGeometry();
 
     property real speed
 
