@@ -24,20 +24,20 @@
 #include <QCursor>
 
 #include <kdeclarative.h>
+#include <KGameRenderer>
 #include <KStandardDirs>
 
 CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
-    QDeclarativeView(parent),
-    m_renderer(renderer)
+    QDeclarativeView(parent)
 {
-    CanvasItem::setRenderer(m_renderer);
-    qmlRegisterType<CanvasItem>("SvgLibrary", 1, 0, "CanvasItem");
-
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(engine());
     kdeclarative.initialize();
     // binds things like i18n and icons
     kdeclarative.setupBindings();
+
+    CanvasItem::setRenderer(renderer);
+    qmlRegisterType<CanvasItem>("SvgLibrary", 1, 0, "CanvasItem");
 
     setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");

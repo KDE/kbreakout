@@ -19,7 +19,8 @@
 #define CANVASWIDGET_H
 
 #include <QDeclarativeView>
-#include <KGameRenderer>
+
+class KGameRenderer;
 
 class CanvasWidget : public QDeclarativeView
 {
@@ -53,8 +54,6 @@ protected:
     void focusOutEvent(QFocusEvent *event);
 
 private:
-    KGameRenderer *m_renderer;
-
     //used when moving the bar with the keys
     int m_barDirection;
 
