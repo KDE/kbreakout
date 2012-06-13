@@ -234,8 +234,18 @@ Item {
 
     MouseArea {
         id: mouseArea
+        enabled: false
         anchors.fill: parent
         hoverEnabled: true
+        onPositionChanged: {
+            if (paused) return;
+
+            // avoids accidentally moving the mouse while playing using the keys
+            if (bar.direction != 0) return;
+
+            var barX = canvas.mapToItem(bgOverlay, mouse.x, 0).x - bar.width/2;
+            bar.moveTo(barX/m_scale);
+        }
         onClicked: canvas.mousePressed()
     }
 }

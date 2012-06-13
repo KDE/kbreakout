@@ -62,6 +62,7 @@ function reset() {
     deleteMovingObjects();
     paused = false;
     lives = Globals.INITIAL_LIVES;
+    mouseArea.enabled = true;
 }
 
 function resetBricks() {

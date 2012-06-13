@@ -51,15 +51,18 @@ CanvasItem {
         onTriggered: moveBy(bar.direction*Globals.BAR_MOVEMENT);
     }
 
-    function moveBy(dx) {
-        var xPos = posX + dx;
-        if (xPos < 0) {
-            xPos = 0;
-        } else if (xPos*m_scale + width > bgOverlay.width) {
-            xPos = (bgOverlay.width - bar.width)/m_scale;
+    function moveTo(newPos) {
+        if (newPos < 0) {
+            newPos = 0;
+        } else if (newPos*m_scale + width > bgOverlay.width) {
+            newPos = (bgOverlay.width - bar.width)/m_scale;
         }
 
-        posX = xPos;
+        posX = newPos;
+    }
+
+    function moveBy(dx) {
+        moveTo(posX + dx);
     }
 
     function reset() {
