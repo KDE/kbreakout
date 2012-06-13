@@ -21,6 +21,7 @@
 #include "settings.h"
 
 #include <QKeyEvent>
+#include <QCursor>
 
 #include <kdeclarative.h>
 #include <KStandardDirs>
@@ -46,6 +47,12 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
     connect(rootObject(), SIGNAL(levelComplete()), this, SIGNAL(levelComplete()));
     connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
     connect(rootObject(), SIGNAL(mousePressed()), this, SIGNAL(mousePressed()));
+
+    // for handling mouse cursor
+    connect(rootObject(), SIGNAL(pausedChanged()), this, SLOT(updateCursor()));
+    connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
+
+    setCursor(QCursor(Qt::BlankCursor));
 }
 
 void CanvasWidget::newGame()
@@ -88,6 +95,32 @@ void CanvasWidget::updateBarDirection()
 {
     QMetaObject::invokeMethod(rootObject(), "updateBarDirection",
                               Q_ARG(QVariant, m_barDirection));
+}
+
+void CanvasWidget::resetCursor()
+{
+    //releaseMouse();
+    setCursor(QCursor(Qt::ArrowCursor));
+}
+
+void CanvasWidget::updateCursor()
+{
+    QVariant property = rootObject()->property("paused");
+    if (!property.isValid()) {
+        kError() << "'paused' property in main.qml is no longer valid";
+        return;
+    }
+
+    bool paused = property.toBool();
+
+    if (paused) {
+        resetCursor();
+    } else {
+        // TODO: move the cursor to where the bar is
+        QCursor newCursor(Qt::BlankCursor);
+        newCursor.setPos(cursor().pos());
+        setCursor(newCursor);
+    }
 }
 
 void CanvasWidget::keyPressEvent(QKeyEvent *event)

@@ -43,6 +43,8 @@ private slots:
     void putGift(QString gift, int times, QString pos);
     void updateBarDirection();
     void startGame();
+    void updateCursor();
+    void resetCursor();
 
 protected:
     void keyPressEvent(QKeyEvent *event);
