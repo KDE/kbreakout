@@ -30,6 +30,7 @@ public:
 signals:
     void levelComplete();
     void gameEnded(int score, int level, int elapsedTime);
+    void focusLost();
 
 public slots:
     void fire();
@@ -45,7 +46,6 @@ private slots:
 protected:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
-    void focusInEvent(QFocusEvent *event);
     void focusOutEvent(QFocusEvent *event);
 
 private:

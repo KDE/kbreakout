@@ -74,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
     
     /*connect(canvasWidget, SIGNAL(mouseMoved(int)),
             gameEngine, SLOT(moveBar(int)));*/
+    connect(canvasWidget, SIGNAL(focusLost()),
+            this, SLOT(pauseGame()));
     
     /*connect(gameEngine, SIGNAL(resetMousePosition()),
             canvasWidget, SLOT(handleResetMousePosition()));*/
@@ -196,6 +198,13 @@ void MainWindow::startNewGame()
         
     if (ret == KMessageBox::Yes) {
         gameEngine->start("default");
+    }
+}
+
+void MainWindow::pauseGame()
+{
+    if (!pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
     }
 }
 

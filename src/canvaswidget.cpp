@@ -143,12 +143,8 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
     updateBarDirection();
 }
 
-void CanvasWidget::focusInEvent(QFocusEvent *event)
-{
-    setGamePaused(false);
-}
-
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
 {
-    setGamePaused(true);
+    emit focusLost();
+    QDeclarativeView::focusOutEvent(event);
 }

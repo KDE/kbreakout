@@ -38,6 +38,8 @@ private slots:
     void configureSettings();
     void showHighscores();
     void startNewGame();
+    // calls the action
+    void pauseGame();
     // called by the action
     void setGamePaused(bool paused);
     void viewFullScreen(bool fullScreen);
