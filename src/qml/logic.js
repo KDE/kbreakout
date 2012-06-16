@@ -205,7 +205,7 @@ function startLevel() {
             gameWon = true;
             score += Globals.GAME_WON_SCORE + lives*Globals.LIFE_SCORE;
             showMessage(i18n("Well done! You won the game"));
-            endGame();
+            singleShot(10, endGame, null);
             deleteMovingObjects();
         }
         return;
@@ -552,7 +552,7 @@ function handleDeath() {
         showMessage(i18n("Game Over!"));
         elapsedTimeTimer.stop();
         bar.stopMoving();
-        endGame();
+        singleShot(10, endGame, null);
     } else {
         lives--;
         resumeGame();
