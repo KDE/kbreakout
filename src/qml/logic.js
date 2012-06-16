@@ -233,15 +233,14 @@ function loadNextLevel() {
     canvas.levelComplete();
 }
 
-// similar to GameEngine::loadLevel() in terms of setting state variables
 function resumeGame() {
     createBall();
     bar.reset();
     speed = 1.8;
     repaintInterval = 1;
-    elapsedTimeTimer.start();
+    elapsedTimeTimer.restart();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
-    gameTimer.start();
+    gameTimer.restart();
     showFireBallMessage();
 }
 
@@ -371,10 +370,10 @@ function updateBallDirection() {
         // and the game isn't paused
         var ballMoving = false;
         for (var i in balls) {
-            var ball = balls[i];
-            if (ball.toBeFired) continue;
-            ballMoving = true;
-            break;
+            if (!balls[i].toBeFired) {
+                ballMoving = true;
+                break;
+            }
         }
         if (ballMoving && !paused) {
             changeSpeed(Globals.AUTO_SPEED_INCREASE);
