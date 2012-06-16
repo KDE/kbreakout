@@ -216,7 +216,10 @@ Item {
     Timer {
         id: hideTimer
         property variant target
-        onTriggered: target.text = "";
+        onTriggered: {
+            if (paused) return;
+            target.text = "";
+        }
     }
 
     function fire() {

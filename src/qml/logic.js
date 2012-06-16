@@ -313,7 +313,6 @@ function setGamePaused(paused) {
     if (gameOver || gameWon || canvas.paused==paused) return;
     canvas.paused = paused;
     if (paused) {
-        hideTimer.stop();
         showMessage(i18n("Game Paused!"));
         elapsedTimeTimer.stop();
         gameTimer.stop();
