@@ -23,12 +23,9 @@
 #include "settings.h"
 #include "globals.h"
 
-#include <QGraphicsScene>
 #include <QPointer>
 
 #include <KMenuBar>
-#include <KToolBar>
-#include <KStatusBar>
 #include <KIcon>
 #include <KAction>
 #include <KStandardAction>
@@ -36,7 +33,6 @@
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
 #include <KShortcut>
-#include <KLocale>
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>
@@ -72,13 +68,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     gameEngine = new GameEngine(this);
     
-    /*connect(canvasWidget, SIGNAL(mouseMoved(int)),
-            gameEngine, SLOT(moveBar(int)));*/
     connect(canvasWidget, SIGNAL(focusLost()),
             this, SLOT(pauseGame()));
     
-    /*connect(gameEngine, SIGNAL(resetMousePosition()),
-            canvasWidget, SLOT(handleResetMousePosition()));*/
     connect(canvasWidget, SIGNAL(levelComplete()),
             gameEngine, SLOT(loadNextLevel()));
     connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
