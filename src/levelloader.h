@@ -22,13 +22,12 @@
 
 class QDomDocument;
 class QDomElement;
-class GameEngine;
 
 class LevelLoader : public QObject
 {
     Q_OBJECT
 public:
-    LevelLoader( GameEngine *gameEngine );
+    LevelLoader( QObject *parent = 0 );
     ~LevelLoader();
     
     int level() const;
@@ -50,7 +49,6 @@ private:
     
     QDomDocument *m_levelset;
     bool m_oldstyle;
-    GameEngine *m_game;
     
     int m_lineNumber;
     QString m_levelname;

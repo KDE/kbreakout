@@ -17,7 +17,6 @@
 
 #include "levelloader.h"
 #include "globals.h"
-#include "gameengine.h"
 
 #include <QDomDocument>
 #include <QFile>
@@ -29,8 +28,8 @@
 #include <KDebug>
 #include <KStandardDirs>
 
-LevelLoader::LevelLoader(GameEngine *gameEngine)
-  : QObject(gameEngine), m_game( gameEngine )
+LevelLoader::LevelLoader(QObject *parent)
+  : QObject(parent)
 {
     m_levelname = QString();
     m_level = 0;
