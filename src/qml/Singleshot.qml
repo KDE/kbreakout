@@ -5,5 +5,8 @@ Timer {
 
     property variant target
 
-    onTriggered: timeout(target);
+    onTriggered: {
+        timeout(target);
+        destroy(10);
+    }
 }
