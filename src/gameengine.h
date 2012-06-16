@@ -20,21 +20,17 @@
 
 #include <QObject>
 
-class MainWindow;
-
 class LevelLoader;
 
 class GameEngine : public QObject
 {
     Q_OBJECT
 public:
-    GameEngine(MainWindow *);
+    GameEngine(QObject *parent = 0);
     ~GameEngine();
     
 public slots:
     void start(const QString &levelset);
-    void pause();
-    void resume();
     void loadNextLevel();
 
 signals:
@@ -42,39 +38,13 @@ signals:
     void newLine(QString line, int lineNumber);
     void newGift(QString gift, int times, QString pos);
     void ready();
-    void gamePaused();
-    void gameResumed();
-    void gameEnded(int score, int level, int time);
-    void resetMousePosition();
 
 private:
-    // convenience functions
-    void showFireBallMessage();
-    void deleteMovingObjects();
     void deleteAllObjects();
 
-    MainWindow *m_mainWindow; // needed to access actionCollection()
-    int m_level;
-    int m_score;
-    // score to add if you hit a brick
-    // decreases over time since last hit
-    qreal m_dScore;
-    // count of remaining bricks
-    // (not counting the unbreakable ones)
-    int m_remainingBricks;
-    
-    // Canvas Items
-    bool m_gameOver;
-    bool m_gameWon;
     LevelLoader *m_levelLoader;
 
-    // is set to true when deleteMovingObjects() is called
-    bool m_itemsGotDeleted;
-
 private slots:
-    // hides the current showed message by m_messageBox 
-    // unless the game is paused, won or game over
-    void hideMessage();
     void loadLevel();
 };
 
