@@ -21,10 +21,16 @@ var brickComponent = Qt.createComponent("Brick.qml");
 var bricks = new Array;
 var giftComponent = Qt.createComponent("Gift.qml");
 var gifts = new Array;
+// score to add if you hit a brick
+// decreases over time since last hit
 var dScore;
+// count of remaining bricks
+// (not counting the unbreakable ones)
+var remainingBricks=0;
 var tick = 0;
 var repaintInterval;
 var randomCounter = 0;
+// is set to true when deleteMovingObjects() is called
 var itemsGotDeleted;
 var gameOver = false;
 var gameWon = false;
@@ -629,8 +635,6 @@ function collideWithBrick(ball, brick) {
         hit(brick);
     }
 }
-
-var remainingBricks=0;
 
 function addBrickScore() {
     score += Math.round(dScore);

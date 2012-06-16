@@ -213,6 +213,8 @@ Item {
         onTriggered: Logic.handleDeath()
     }
 
+    // hides the current showed message by target
+    // unless the game is paused, won or game over
     Timer {
         id: hideTimer
         property variant target
