@@ -34,9 +34,18 @@ var randomCounter = 0;
 var itemsGotDeleted;
 var gameOver = false;
 var gameWon = false;
+var singleShotComponent = Qt.createComponent("Singleshot.qml");
 
 function remove(array, object) {
     array.splice(array.indexOf(object), 1);
+}
+
+function singleShot(interval, slot, target) {
+    var timer = singleShotComponent.createObject(canvas);
+    timer.interval = interval;
+    timer.target = target;
+    timer.timeout.connect(slot);
+    timer.start();
 }
 
 function scoreString(score) {
@@ -676,16 +685,11 @@ function explode(brick) {
     if (brick == null) return;
 
     burn(brick);
-    burnNearbyBricksLater(brick);
+    singleShot(Globals.BURNING_SPEED, burnNearbyBricks, createRect(brick));
 }
 
-function burnNearbyBricksLater(brick) {
-    burnBricksTimer.target = brick;
-    burnBricksTimer.start();
-}
-
-function burnNearbyBricks(brick) {
-    var nearby = nearbyBricks(brick);
+function burnNearbyBricks(brickRect) {
+    var nearby = nearbyBricks(brickRect);
     for (var i in nearby) {
         burn(nearby[i]);
     }
@@ -699,11 +703,17 @@ function burn(brick) {
         brick.type = "BurningBrick";
         explode(brick);
     } else {
-        // TODO: singleShot
-        handleDeletion(brick);
+        singleShot(Globals.BURNING_SPEED, deleteBrick, new Array(brick.x, brick.y));
     }
 
     brick.type = "BurningBrick";
+}
+
+function deleteBrick(pos) {
+    var brick = bgOverlay.childAt(pos[0], pos[1]);
+    if (brick!=null && bricks.indexOf(brick)>=0) {
+        handleDeletion(brick);
+    }
 }
 
 function createGiftAt(brick) {
@@ -715,12 +725,12 @@ function createGiftAt(brick) {
 }
 
 function handleDeletion(brick) {
+    remove(bricks, brick);
     if (brick.hasGift) {
         createGiftAt(brick);
     }
     var brickType = brick.type;
     brick.destroy();
-    remove(bricks, brick);
 
     --remainingBricks;
     addBrickScore();
@@ -736,25 +746,27 @@ function handleDeletion(brick) {
     }
 }
 
-function nearbyBricks(brick) {
+function nearbyBricks(brickRect) {
     var result = new Array;
 
     // coordinates of the center of the brick
-    var x = brick.x + brick.width/2;
-    var y = brick.y + brick.height/2;
+    var x = (brickRect.left + brickRect.right)/2;
+    var y = (brickRect.top + brickRect.bottom)/2;
+    var width = (brickRect.right - brickRect.left);
+    var height = (brickRect.bottom - brickRect.top);
 
     // points to the left, right, top and bottom of the brick
     var points = new Array;
-    points.push([x-brick.width, y]);
-    points.push([x+brick.width, y]);
-    points.push([x, y-brick.height]);
-    points.push([x, y+brick.height]);
+    points.push([x-width, y]);
+    points.push([x+width, y]);
+    points.push([x, y-height]);
+    points.push([x, y+height]);
 
     for (var j in points) {
         var px = points[j][0];
         var py = points[j][1];
         var b = bgOverlay.childAt(px, py);
-        if (b != null) result.push(b);
+        if (b != null && bricks.indexOf(b)>=0) result.push(b);
     }
     return result;
 }
@@ -910,13 +922,13 @@ function giftMoreExplosion() {
     }
 
     for (var i in explodingBricks) {
-        var nearby = nearbyBricks(explodingBricks[i]);
+        var nearby = nearbyBricks(createRect(explodingBricks[i]));
         for (var j in nearby) {
             var nearbyBrick = nearby[j];
             if (nearbyBrick.type == "UnbreakableBrick") {
                 ++remainingBricks;
             }
-            if (nearbyBrick.type == "HiddenBrick" && nearbyBrick.spriteKey!=nearbyBrick.type) {
+            if (nearbyBrick.type == "HiddenBrick" && !nearbyBrick.visible) {
                 nearbyBrick.visible = true;
                 ++remainingBricks;
             }

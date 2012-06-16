@@ -21,7 +21,7 @@ import "globals.js" as Globals
 
 CanvasItem {
     id: gift
-    //property alias type: spriteKey
+
     property string type
     onTypeChanged: spriteKey = type;
 
