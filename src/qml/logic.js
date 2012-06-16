@@ -709,6 +709,8 @@ function burn(brick) {
     brick.type = "BurningBrick";
 }
 
+// wrapper function to get the brick from position
+// and then passing it to handleDeletion
 function deleteBrick(pos) {
     var brick = bgOverlay.childAt(pos[0], pos[1]);
     if (brick!=null && bricks.indexOf(brick)>=0) {
