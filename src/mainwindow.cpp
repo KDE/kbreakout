@@ -133,7 +133,7 @@ void MainWindow::setupActions()
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
-    connect(fireAction, SIGNAL(triggered()), canvasWidget, SLOT(fire()));
+    connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
     connect(fireAction, SIGNAL(changed()), canvasWidget, SLOT(updateFireShortcut()));
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
@@ -236,6 +236,15 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     if ( ksdialog ) {
         gameEngine->start("default");
         delete ksdialog;
+    }
+}
+
+void MainWindow::fire()
+{
+    if (pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
+    } else {
+        canvasWidget->fire();
     }
 }
 

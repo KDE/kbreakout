@@ -225,11 +225,7 @@ Item {
     }
 
     function fire() {
-        if (paused) {
-            Logic.setGamePaused(false);
-        } else {
-            Logic.fireBall();
-        }
+        Logic.fireBall();
     }
 
     Timer {

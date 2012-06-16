@@ -295,6 +295,11 @@ function detectCollisions() {
 }
 
 function fireBall() {
+    if (paused) {
+        print("trying to fire while game is paused!!!");
+        return;
+    }
+
     for (var i in balls) {
         var ball = balls[i];
         if (!ball.toBeFired) continue;
