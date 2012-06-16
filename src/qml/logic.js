@@ -699,8 +699,11 @@ function burn(brick) {
         brick.type = "BurningBrick";
         explode(brick);
     } else {
+        // TODO: singleShot
         handleDeletion(brick);
     }
+
+    brick.type = "BurningBrick";
 }
 
 function createGiftAt(brick) {
