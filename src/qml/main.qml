@@ -28,6 +28,9 @@ Item {
     signal mousePressed()
 
     property real speed
+    property bool paused: false
+    property bool gameOver: false
+    property bool gameWon: false
 
     function updateGeometry() {
         var bw = Globals.BRICK_WIDTH*Globals.WIDTH + 1;
@@ -84,7 +87,6 @@ Item {
         }
     }
 
-    property bool paused: false
     Rectangle {
         id: pauseOverlay
         anchors.fill: parent

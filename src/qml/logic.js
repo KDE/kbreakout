@@ -32,8 +32,6 @@ var repaintInterval;
 var randomCounter = 0;
 // is set to true when deleteMovingObjects() is called
 var itemsGotDeleted;
-var gameOver = false;
-var gameWon = false;
 var singleShotComponent = Qt.createComponent("Singleshot.qml");
 
 function remove(array, object) {
