@@ -52,7 +52,7 @@ CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
 
     // for handling mouse cursor
     connect(rootObject(), SIGNAL(pausedChanged()), this, SLOT(updateCursor()));
-    connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
+    connect(this, SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
 }
 
 void CanvasWidget::updateFireShortcut()
