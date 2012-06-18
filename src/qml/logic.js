@@ -729,14 +729,18 @@ function handleDeletion(brick) {
     if (brick.hasGift) {
         createGiftAt(brick);
     }
+
+    // take the properties we want later before destroying the brick
     var brickType = brick.type;
+    var brickVisible = brick.visible;
     brick.destroy();
 
     --remainingBricks;
     addBrickScore();
 
     // these two kind of bricks aren't counted in remainingBricks
-    if (brickType == "HiddenBrick" || brickType == "UnbreakableBrick") {
+    if ( (brickType == "HiddenBrick" && !brickVisible)
+            || brickType == "UnbreakableBrick") {
         ++remainingBricks;
         return; // never need to load the next level
     }
@@ -842,7 +846,10 @@ function giftMagicEye() {
     // make all hidden bricks visible
     for (var i in bricks) {
         var brick = bricks[i];
-        brick.visible = true;
+        if (!brick.visible) {
+            brick.visible = true;
+            ++remainingBricks;
+        }
     }
 }
 
