@@ -626,16 +626,16 @@ function collideWithBrick(ball, brick) {
     // bounce
     if (min == top && ball.directionY > 0) {
         ball.directionY *= -1;
-        ball.posY -= top;
+        ball.posY -= top/m_scale;
     } else if (min == bottom && ball.directionY < 0) {
         ball.directionY *= -1;
-        ball.posY += bottom;
+        ball.posY += bottom/m_scale;
     } else if (min == left && ball.directionX > 0) {
         ball.directionX *= -1;
-        ball.posX -= left;
+        ball.posX -= left/m_scale;
     } else if (min == right && ball.directionX < 0) {
         ball.directionX *= -1;
-        ball.posX += right;
+        ball.posX += right/m_scale;
     } else {
         return; // already bounced
     }
