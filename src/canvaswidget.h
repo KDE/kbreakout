@@ -18,11 +18,11 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
-#include <QDeclarativeView>
+#include "kgdeclarativeview.h"
 
 class KGameRenderer;
 
-class CanvasWidget : public QDeclarativeView
+class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT
 public:

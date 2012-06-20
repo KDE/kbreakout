@@ -76,3 +76,5 @@ void CanvasItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
         painter->drawPixmap(boundingRect().toRect(), pix);
     }
 }
+
+#include "canvasitem.moc"

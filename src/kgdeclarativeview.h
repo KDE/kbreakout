@@ -15,28 +15,20 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 1.1
-import org.kde.games.core 0.1 as KgCore
-import "globals.js" as Globals
+#ifndef KGDECLARATIVEVIEW_H
+#define KGDECLARATIVEVIEW_H
 
-KgCore.CanvasItem {
-    id: brick
-    property int row
-    property int column
+#include <QDeclarativeView>
 
-    width: m_scale * Globals.BRICK_WIDTH
-    height: m_scale * Globals.BRICK_HEIGHT
+class KGameRenderer;
 
-    x: m_scale * (column*Globals.BRICK_WIDTH)
-    y: m_scale * (row*Globals.BRICK_HEIGHT)
+class KgDeclarativeView : public QDeclarativeView
+{
+    Q_OBJECT
+public:
+    KgDeclarativeView(KGameRenderer *renderer=0, QWidget *parent=0);
+    void setupRenderer(KGameRenderer *renderer);
 
-    Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
+};
 
-    property string type
-    onTypeChanged: spriteKey = type;
-
-    visible: type!="HiddenBrick"
-
-    property string giftType
-    property bool hasGift: giftType!=""
-}
+#endif //KGDECLARATIVEVIEW_H

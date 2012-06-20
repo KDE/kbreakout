@@ -16,10 +16,10 @@
 */
 
 import QtQuick 1.1
-import SvgLibrary 1.0
+import org.kde.games.core 0.1 as KgCore
 import "globals.js" as Globals
 
-CanvasItem {
+KgCore.CanvasItem {
     id: ball
     spriteKey: "PlainBall"
 

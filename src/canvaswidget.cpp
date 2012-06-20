@@ -16,32 +16,20 @@
 */
 
 #include "canvaswidget.h"
-#include "canvasitem.h"
 #include "globals.h"
 #include "settings.h"
 
-#include <QDeclarativeContext>
+#include <QGraphicsObject>
 #include <QAction>
 #include <QKeyEvent>
 #include <QCursor>
 
-#include <kdeclarative.h>
 #include <KGameRenderer>
 #include <KStandardDirs>
 
 CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
-    QDeclarativeView(parent)
+    KgDeclarativeView(renderer, parent)
 {
-    KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(engine());
-    kdeclarative.initialize();
-    // binds things like i18n and icons
-    kdeclarative.setupBindings();
-
-    CanvasItem::setRenderer(renderer);
-    qmlRegisterType<CanvasItem>("SvgLibrary", 1, 0, "CanvasItem");
-
-    setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
 

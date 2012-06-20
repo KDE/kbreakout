@@ -15,42 +15,26 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CANVASITEM_H
-#define CANVASITEM_H
+#include "corebindingsplugin.h"
 
-#include <QDeclarativeItem>
+#include "canvasitem.h"
+
+#include <QDeclarativeContext>
 #include <KGameRenderer>
 
-class CanvasItem : public QDeclarativeItem
+void CoreBindingsPlugin::initializeEngine(QDeclarativeEngine *engine, const char *uri)
 {
-    Q_OBJECT
-    Q_PROPERTY(QString spriteKey READ spriteKey WRITE setSpriteKey NOTIFY spriteKeyChanged)
-    Q_PROPERTY(bool valid READ isValid)
+    QObject *property = engine->rootContext()->contextProperty("renderer").value<QObject*>();
+    KGameRenderer *renderer = (KGameRenderer*) property;
+    //CanvasItem::setRenderer(new KGameRenderer(prov));
+    CanvasItem::setRenderer(renderer);
+}
 
-public:
-    CanvasItem(QDeclarativeItem *parent = 0);
+void CoreBindingsPlugin::registerTypes(const char *uri)
+{
+    Q_ASSERT(uri == QLatin1String("org.kde.games.core"));
 
-    static void setRenderer(KGameRenderer*);
+    qmlRegisterType<CanvasItem>(uri, 0, 1, "CanvasItem");
+}
 
-    QString spriteKey() const;
-    void setSpriteKey(const QString &spriteKey);
-
-    bool isValid() const;
-
-    void setImplicitSize();
-
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget=0);
-
-signals:
-    void spriteKeyChanged();
-
-private slots:
-    void reload();
-
-private:
-    QString m_key;
-    static KGameRenderer *m_renderer;
-
-};
-
-#endif
+#include "corebindingsplugin.moc"

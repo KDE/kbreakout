@@ -15,28 +15,21 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtQuick 1.1
-import org.kde.games.core 0.1 as KgCore
-import "globals.js" as Globals
+#ifndef COREBINDINGSPLUGIN_H
+#define COREBINDINGSPLUGIN_H
 
-KgCore.CanvasItem {
-    id: brick
-    property int row
-    property int column
+#include <QDeclarativeEngine>
+#include <QDeclarativeExtensionPlugin>
 
-    width: m_scale * Globals.BRICK_WIDTH
-    height: m_scale * Globals.BRICK_HEIGHT
+class CoreBindingsPlugin : public QDeclarativeExtensionPlugin
+{
+    Q_OBJECT
 
-    x: m_scale * (column*Globals.BRICK_WIDTH)
-    y: m_scale * (row*Globals.BRICK_HEIGHT)
+public:
+    void initializeEngine(QDeclarativeEngine *engine, const char *uri);
+    void registerTypes(const char *uri);
+};
 
-    Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
+Q_EXPORT_PLUGIN2(corebindingsplugin, CoreBindingsPlugin)
 
-    property string type
-    onTypeChanged: spriteKey = type;
-
-    visible: type!="HiddenBrick"
-
-    property string giftType
-    property bool hasGift: giftType!=""
-}
+#endif // COREBINDINGSPLUGIN_H

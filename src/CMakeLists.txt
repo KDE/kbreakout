@@ -1,4 +1,6 @@
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${KDECLARATIVE_INCLUDE_DIR} )
+add_subdirectory(declarativeimports)
+
+include_directories( ${CMAKE_SOURCE_DIR}/libkdegames )
 
 set(kbreakout_SRCS 
    main.cpp
@@ -6,7 +8,7 @@ set(kbreakout_SRCS
    canvaswidget.cpp
    gameengine.cpp
    levelloader.cpp
-   canvasitem.cpp
+   kgdeclarativeview.cpp
    #generalsettings.cpp
 )
 

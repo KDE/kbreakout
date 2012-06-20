@@ -16,7 +16,7 @@
 */
 
 import QtQuick 1.1
-import SvgLibrary 1.0
+import org.kde.games.core 0.1 as KgCore
 import "globals.js" as Globals
 import "logic.js" as Logic
 
@@ -55,7 +55,7 @@ Item {
 
     property real m_scale: container.width/(Globals.BRICK_WIDTH*Globals.WIDTH)
 
-    CanvasItem {
+    KgCore.CanvasItem {
         id: background
         spriteKey: "Background"
         anchors.fill: parent
@@ -68,7 +68,7 @@ Item {
 
     property int barCenter: mapFromItem(bgOverlay, Math.round(bar.x + bar.width/2), 0).x
 
-    CanvasItem {
+    KgCore.CanvasItem {
         id: bgOverlay
         spriteKey: "BackgroundOverlay"
         anchors {
