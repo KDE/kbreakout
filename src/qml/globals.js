@@ -30,7 +30,7 @@ var MINIMUM_UPDATE_INTERVAL = 8;
 var AUTO_SPEED_INCREASE = 1.05;
 
 var BURNING_INTERVAL = 200; // how long it burns
-var BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
+var BURNING_SPEED = Math.floor(BURNING_INTERVAL/2); // lower is faster
 
 var WIDTH = 20; // how many bricks the game is wide
 var HEIGHT = 24; // how many bricks the game is high
@@ -57,7 +57,7 @@ var BRICK_SCORE = 15;
 var SCORE_AUTO_DECREASE = 0.998;
 // score when i brick gets "autoremoved" 
 // (for example becouse of a gift, of fire)
-var AUTOBRICK_SCORE = BRICK_SCORE / 2;
+var AUTOBRICK_SCORE = Math.floor(BRICK_SCORE / 2);
 // points avarded when passing a level
 var LEVEL_SCORE = 300;
 var GIFT_SCORE = 30;
