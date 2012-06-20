@@ -28,52 +28,59 @@ void CanvasItem::setRenderer(KGameRenderer *renderer)
 }
 
 CanvasItem::CanvasItem(QDeclarativeItem *parent) :
-    QDeclarativeItem(parent)
+    QDeclarativeItem(parent),
+    KGameRendererClient(m_renderer, QString())
 {
     setFlag(QGraphicsItem::ItemHasNoContents, false);
-    connect(m_renderer, SIGNAL(themeChanged(const KgTheme*)), this, SLOT(reload()));
 }
 
-void CanvasItem::reload()
+QSize CanvasItem::boundingSize()
 {
-    update();
+    return boundingRect().toRect().size();
 }
 
-QString CanvasItem::spriteKey() const
+void CanvasItem::setSpriteKey(const QString &key)
 {
-    return m_key;
-}
-
-void CanvasItem::setSpriteKey(const QString &spriteKey)
-{
-    if (spriteKey != m_key) {
-        m_key = spriteKey;
+    if (spriteKey() != key) {
+        KGameRendererClient::setSpriteKey(key);
+        setRenderSize(boundingRect().toRect().size());
         emit spriteKeyChanged();
-        update();
     }
 }
 
 bool CanvasItem::isValid() const
 {
-    return (m_renderer && m_renderer->spriteExists(m_key));
+    return (m_renderer && m_renderer->spriteExists(spriteKey()));
 }
 
 void CanvasItem::setImplicitSize()
 {
     if (isValid()) {
-        QSize size = m_renderer->boundsOnSprite(m_key).size().toSize();
+        QSize size = m_renderer->boundsOnSprite(spriteKey()).size().toSize();
         setImplicitWidth(size.width());
         setImplicitHeight(size.height());
     }
 }
 
+void CanvasItem::receivePixmap(const QPixmap& pixmap)
+{
+    m_pixmap = pixmap;
+    update();
+}
+
 void CanvasItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(option); Q_UNUSED(widget);
-    if (isValid()) {
+
+    QSize size = boundingSize();
+    if (renderSize() != size) {
+        setRenderSize(size);
+        return;
+    }
+
+    if (!m_pixmap.isNull()) {
         setImplicitSize();
-        QPixmap pix = m_renderer->spritePixmap(m_key, boundingRect().toRect().size());
-        painter->drawPixmap(boundingRect().toRect(), pix);
+        painter->drawPixmap(boundingRect().toRect(), m_pixmap);
     }
 }
 

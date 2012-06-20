@@ -18,11 +18,11 @@
 #ifndef CANVASITEM_H
 #define CANVASITEM_H
 
-#include <QObject>
 #include <QDeclarativeItem>
 #include <KGameRenderer>
+#include <KGameRendererClient>
 
-class CanvasItem : public QDeclarativeItem
+class CanvasItem : public QDeclarativeItem, KGameRendererClient
 {
     Q_OBJECT
     Q_PROPERTY(QString spriteKey READ spriteKey WRITE setSpriteKey NOTIFY spriteKeyChanged)
@@ -33,24 +33,23 @@ public:
 
     static void setRenderer(KGameRenderer*);
 
-    QString spriteKey() const;
     void setSpriteKey(const QString &spriteKey);
 
     bool isValid() const;
 
     void setImplicitSize();
 
+    void receivePixmap(const QPixmap& pixmap);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget=0);
 
 signals:
     void spriteKeyChanged();
 
-private slots:
-    void reload();
-
 private:
-    QString m_key;
     static KGameRenderer *m_renderer;
+    QPixmap m_pixmap;
+
+    QSize boundingSize();
 
 };
 
