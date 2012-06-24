@@ -353,6 +353,7 @@ function showFireBallMessage(text) {
 }
 
 function hideMessage() {
+    if (gameOver || gameWon || paused) return;
     messageBox.opacity = 0;
 }
 
