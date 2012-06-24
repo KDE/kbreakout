@@ -445,12 +445,11 @@ function deleteMovingObjects() {
 }
 
 function createRect(object) {
-    var globalPos = object.parent.mapToItem(bgOverlay, object.x, object.y);
     return {
-        left: globalPos.x,
-        top: globalPos.y,
-        right: globalPos.x + object.width,
-        bottom: globalPos.y + object.height
+        left: object.x,
+        top: object.y,
+        right: object.x + object.width,
+        bottom: object.y + object.height
     };
 }
 
