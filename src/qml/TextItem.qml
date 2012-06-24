@@ -29,17 +29,16 @@ KgCore.CanvasItem {
         id: textItem
         anchors.centerIn: parent
         opacity: 220/256
-        font { bold: true; family: "Helvetica"; pixelSize: fontSize }
+        font { bold: true; family: "Helvetica"; pixelSize: fontSize*m_scale }
         color: "white"
     }
 
-    onWidthChanged: fontTimerTrigger.restart();
-    onHeightChanged: fontTimerTrigger.restart();
+    onTextChanged: fontTimerTrigger.restart();
 
     // assign largest font size and start the timer to update
     // font size to fit text
     function updateFontSize() {
-        fontSize = 72;
+        fontSize = 72/m_scale;
         fontTimer.start();
     }
  

@@ -342,7 +342,7 @@ function setGamePaused(paused) {
 
 function showMessage(text) {
     messageBox.text = text;
-    messageBox.updateFontSize();
+    messageBox.opacity = 1;
 }
 
 function showFireBallMessage(text) {
@@ -350,7 +350,7 @@ function showFireBallMessage(text) {
 }
 
 function hideMessage() {
-    messageBox.text = "";
+    messageBox.opacity = 0;
 }
 
 function hideFireBallMessage() {

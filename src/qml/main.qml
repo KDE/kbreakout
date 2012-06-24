@@ -106,7 +106,7 @@ Item {
         z: 2 // to make it display above the pause overlay
         width: m_scale * Globals.BRICK_WIDTH*9
         height: m_scale * Globals.BRICK_HEIGHT*5
-        opacity: text!=""
+        opacity: 0
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
     }
@@ -222,7 +222,7 @@ Item {
         property variant target
         onTriggered: {
             if (paused) return;
-            target.text = "";
+            target.opacity = 0;
         }
     }
 
