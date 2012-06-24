@@ -66,11 +66,13 @@ KgCore.CanvasItem {
                 size = Math.floor(size);
                 if (size == fontSize) {
                     stop();
+                    opacity = 1;
                 } else {
                     fontSize = size;
                 }
             } else {
                 stop();
+                opacity = 1;
             }
         }
     }

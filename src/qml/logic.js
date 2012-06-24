@@ -341,8 +341,11 @@ function setGamePaused(paused) {
 }
 
 function showMessage(text) {
-    messageBox.text = text;
-    messageBox.opacity = 1;
+    if (messageBox.text == text) {
+        messageBox.opacity = 1;
+    } else {
+        messageBox.text = text;
+    }
 }
 
 function showFireBallMessage(text) {
