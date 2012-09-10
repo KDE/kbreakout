@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Simple
+Name[uk]=Проста
+Name[x-test]=xxSimplexx
 Description=Simple KBreakOut theme
+Description[uk]=Проста тема для KBreakOut
+Description[x-test]=xxSimple KBreakOut themexx
 VersionFormat=1
 Author=Fela Winkelmolen
 AuthorEmail=fela.kde@gmail.com

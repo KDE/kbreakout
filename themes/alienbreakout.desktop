@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Alien Breakout
+Name[uk]=Чужинський Breakout
+Name[x-test]=xxAlien Breakoutxx
 Description=Breakout before the aliens do.
+Description[uk]=Breakout до появи чужинців.
+Description[x-test]=xxBreakout before the aliens do.xx
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com

@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=WEB 2.0
+Name[uk]=WEB 2.0
+Name[x-test]=xxWEB 2.0xx
 Description=Web 2.0 theme showcases graphical elements reminiscent of those used in popular 'WEB 2.0' movement, currently taking the interweb by storm.
+Description[uk]=У темі Web 2.0 графічні елементи нагадують графічні елементи, що використовуються у рамках популярного руху «WEB 2.0», який зараз завойовує тенета.
+Description[x-test]=xxWeb 2.0 theme showcases graphical elements reminiscent of those used in popular 'WEB 2.0' movement, currently taking the interweb by storm.xx
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com

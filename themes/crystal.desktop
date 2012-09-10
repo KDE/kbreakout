@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Crystal clear
+Name[uk]=Кристально чиста
+Name[x-test]=xxCrystal clearxx
 Description=Crystal-like theme for KBreakOut
+Description[uk]=Кристалоподібна тема для KBreakOut
+Description[x-test]=xxCrystal-like theme for KBreakOutxx
 VersionFormat=1
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com

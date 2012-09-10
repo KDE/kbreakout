@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=IceWorld
+Name[uk]=IceWorld
+Name[x-test]=xxIceWorldxx
 Description=Ice chilled theme
+Description[uk]=Крижана тема
+Description[x-test]=xxIce chilled themexx
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
