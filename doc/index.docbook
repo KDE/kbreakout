@@ -8,7 +8,7 @@
 ]>
 
 <book id="kbreakout" lang="&language;">
-<book id="kbreakout"info>
+<bookinfo>
 <title>The &kbreakout; Handbook</title>
 
 <authorgroup>
