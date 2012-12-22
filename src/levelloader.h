@@ -18,19 +18,16 @@
 #ifndef LEVELLOADER_H
 #define LEVELLOADER_H
 
-#include <QList>
-#include <QString>
+#include <QObject>
 
 class QDomDocument;
 class QDomElement;
-class QPoint;
-class Brick;
-class GameEngine;
 
-class LevelLoader
+class LevelLoader : public QObject
 {
+    Q_OBJECT
 public:
-    LevelLoader( GameEngine *gameEngine );
+    LevelLoader( QObject *parent = 0 );
     ~LevelLoader();
     
     int level() const;
@@ -38,19 +35,20 @@ public:
     QString levelset() const;
     void setLevelset( const QString& levelname );
   
-    void loadLevel( QList<Brick *> &bricks );
+    void loadLevel();
+
+signals:
+    void newLine(QString line, int lineNumber);
+    void newGift(QString giftType, int times, QString position);
+
 private:
-    void loadLine( QDomElement lineNode, QList<Brick *> &bricks );
-    void loadGift( QDomElement giftNode, QList<Brick *> &bricks );
+    void loadLine( QDomElement lineNode );
+    void loadGift( QDomElement giftNode );
     
-    void loadOldStyleLevel( QList<Brick *> &m_bricks );
-    static QString getTypeFromChar(char type);
-    Brick *brickAt( const QPoint& position, QList<Brick *> &bricks );
-    QPoint positionFromString( const QString& posString );
+    void loadOldStyleLevel();
     
     QDomDocument *m_levelset;
     bool m_oldstyle;
-    GameEngine *m_game;
     
     int m_lineNumber;
     QString m_levelname;

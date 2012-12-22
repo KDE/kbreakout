@@ -16,8 +16,7 @@
 */
 
 #include "levelloader.h"
-#include "brick.h"
-#include "gift.h"
+#include "globals.h"
 
 #include <QDomDocument>
 #include <QFile>
@@ -29,8 +28,8 @@
 #include <KDebug>
 #include <KStandardDirs>
 
-LevelLoader::LevelLoader(GameEngine *gameEngine)
-  : m_game( gameEngine )
+LevelLoader::LevelLoader(QObject *parent)
+  : QObject(parent)
 {
     m_levelname = QString();
     m_level = 0;
@@ -101,11 +100,11 @@ void LevelLoader::setLevelset(const QString& levelname)
     // --
 }
 
-void LevelLoader::loadLevel(QList< Brick* >& bricks)
+void LevelLoader::loadLevel()
 {   
     // Check if levelset is of KConfig-type
     if( m_oldstyle ){
-        loadOldStyleLevel( bricks );
+        loadOldStyleLevel();
         return;
     }
     // Selecting the correct level
@@ -150,10 +149,10 @@ void LevelLoader::loadLevel(QList< Brick* >& bricks)
             
         if( info.tagName() == "Line" ){
             // Load one line of bricks
-            loadLine( info, bricks );
+            loadLine( info );
         } else if( info.tagName() == "Gift" ){
             // Load one gift type
-            loadGift( info, bricks );
+            loadGift( info );
         } else {
             kError() << "Invalid tag name " << info.tagName() << " has occured in level "
                      << levelName << " in levelset " << m_levelname << endl;
@@ -163,7 +162,7 @@ void LevelLoader::loadLevel(QList< Brick* >& bricks)
     }
 }
 
-void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
+void LevelLoader::loadLine(QDomElement lineNode)
 {
     // Reading the line number
     QDomAttr attribute = lineNode.attributeNode("Number");
@@ -193,28 +192,12 @@ void LevelLoader::loadLine(QDomElement lineNode, QList< Brick* >& bricks)
         kError() << "Invalid levelset " << m_levelname << ": too many bricks in line "
                  << m_lineNumber << endl;
     }
-    
-    // Convert line information to bricks
-    for( int x = 0; x < line.size(); x++ ){
-        char charType = line[x].toAscii();
-        if (charType != '-') {
-            bricks.append( new Brick(m_game, getTypeFromChar(charType), x+1, m_lineNumber) );
-        }
-    }
+
+    emit newLine(line, m_lineNumber);
 }
 
-void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
+void LevelLoader::loadGift(QDomElement giftNode)
 {
-    // Build list of bricks without a gift
-    QList<Brick *> bricksLeft = bricks;
-    QMutableListIterator<Brick *> i(bricksLeft);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (brick->type() == "UnbreakableBrick" || brick->hasGift() ){
-            i.remove();
-        }
-    }
-
     bool nodeTextRead = false;
     // Reading the brick type
     QDomAttr attribute = giftNode.attributeNode("Type");
@@ -245,57 +228,26 @@ void LevelLoader::loadGift(QDomElement giftNode, QList< Brick* >& bricks)
         if( !ok ){ times = 1; }
     }
     
-    if( bricksLeft.count() < times ){
-        kError() << "Invalid levelset " << m_levelname << ": In Level " << m_level
-                 << " are too many gifts of type " << giftType << endl;
-    }
-    
     // If only one brick to be placed: see if position is given
-    QPoint position;
+    QString position;
     if( times == 1 ){
         attribute = giftNode.attributeNode("Position");
         attributeNode = giftNode.firstChildElement("Position");
         if( !attribute.isNull() ){
-            position = positionFromString( attribute.value() );
+            position = attribute.value();
         } else if( !attributeNode.isNull() ){
-            position = positionFromString( attributeNode.text() );
+            position = attributeNode.text();
             nodeTextRead = true;
         } else if( !nodeTextRead && giftNode.text().contains(',') ){
-            position = positionFromString( giftNode.text() );
+            position = giftNode.text();
             nodeTextRead = true;
         }
     }
-        
-    if( !position.isNull() ){
-        // Put gift at given position
-        Brick *giftBrick = brickAt( position, bricks ); 
-        if( giftBrick == 0 ){
-            kError() << "Invalid levelset " << m_levelname << ": Can't place gift at position ("
-                     << position.x() << "," << position.y() << "). There is no brick.\n";
-        } else {
-            if( giftBrick->hasGift() ){
-                // Brick already has a gift -> move this gift to a random position
-                int index = qrand() % bricksLeft.count();
-                bricksLeft.at(index)->setGift( giftBrick->gift() );
-            }
-            Gift *newgift = new Gift(giftType);
-            newgift->hide();
-            giftBrick->setGift(newgift);
-        }
-    } else {
-        // Distribute gifts randomly
-        for( int i = 0; i < times; i++ ){
-            Gift *gift = new Gift(giftType);
-            gift->hide();
-            
-            int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->setGift(gift);
-            bricksLeft.removeAt(index);
-        }
-    }
+
+    emit newGift(giftType, times, position);
 }
 
-void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
+void LevelLoader::loadOldStyleLevel()
 {
     // Selecting the correct level
     m_level++;
@@ -333,29 +285,14 @@ void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
         if (line.size() > WIDTH) {
             kError() << "Invalid file: too many bricks\n";
         }
-        
-        // Convert the string, each char represents a brick
-        for (int x = 0; x < line.size(); ++x ) {
-            char charType = line[x].toAscii();
-            if (charType != '-') {
-                m_bricks.append(new Brick(m_game, getTypeFromChar(charType), x+1, y));
-            }
-        }
+
+        emit newLine(line, y);
         
         ++y;
         key = "line" + QString::number(y);
     }
     
     // add gifts
-    
-    //bricks without gifts
-    QList<Brick *> bricksLeft = m_bricks;
-    QMutableListIterator<Brick *> i(bricksLeft);
-    while (i.hasNext()) {
-        Brick *brick = i.next();
-        if (brick->type() == "UnbreakableBrick")
-            i.remove();
-    }
     
     for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
         key = GIFT_TYPES[i];
@@ -367,62 +304,12 @@ void LevelLoader::loadOldStyleLevel ( QList< Brick* >& m_bricks )
             return;
         }
         bool ok;
-        int n = line.toInt(&ok);
+        int times = line.toInt(&ok);
         if (!ok) {
             kError() << m_levelname << ":" << key << " invalid number!!" << endl;
             continue;
         }
-        if (bricksLeft.count() < n) {
-            kError() << m_levelname << ": too many gifts!! " << endl;
-            break;
-        }
-        for (int i = 0; i < n; ++i) {
-            Gift *gift = new Gift(key); // key is the gift type
-            gift->hide();
-            
-            int index = qrand() % bricksLeft.count();
-            bricksLeft.at(index)->setGift(gift);
-            bricksLeft.removeAt(index);
-        }
-    }
-}
 
-QString LevelLoader::getTypeFromChar(char type) 
-{
-    switch (type) {
-    case '1': return "PlainBrick1";
-    case '2': return "PlainBrick2";
-    case '3': return "PlainBrick3";
-    case '4': return "PlainBrick4";
-    case '5': return "PlainBrick5";
-    case '6': return "PlainBrick6";
-    case 'm': return "MultipleBrick3";
-    case 'x': return "ExplodingBrick";
-    case 'u': return "UnbreakableBrick";
-    case 'h': return "HiddenBrick";
-    default:
-        kError() << "Invalid File: unknown character '" 
-                    << type << "'\n";
-        return "PlainBrick1";
+        emit newGift(key, times, QString());
     }
-}
-
-Brick *LevelLoader::brickAt( const QPoint& position, QList<Brick *> &bricks )
-{
-    Brick *result = 0;
-    foreach( Brick *testbrick, bricks ){
-        if( testbrick->position().x() / BRICK_WIDTH + 1 == position.x()
-            && testbrick->position().y() / BRICK_HEIGHT + 1 == position.y() ){
-            result = testbrick;
-            break;
-        }
-    }
-    return result;
-}
-
-QPoint LevelLoader::positionFromString(const QString& posString)
-{
-    int seperatorPosition = posString.indexOf(',');
-    int length = posString.length();
-    return QPoint( posString.left(seperatorPosition).toInt(), posString.right(length-seperatorPosition-1).toInt() );
 }

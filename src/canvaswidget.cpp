@@ -1,6 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
-    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
+    Copyright 2012 Viranch Mehta <viranch.mehta@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,202 +16,175 @@
 */
 
 #include "canvaswidget.h"
-#include "item.h"
-#include "gameengine.h"
 #include "globals.h"
 #include "settings.h"
 
+#include <QGraphicsObject>
+#include <QAction>
 #include <QKeyEvent>
 #include <QCursor>
 
-#include <KDebug>
+#include <KGameRenderer>
+#include <KStandardDirs>
 
-CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) 
-    : KGameCanvasWidget(parent),
-      background(renderer, "Background", this),
-      rightPressed(false),
-      leftPressed(false),
-      usingKeys(0)
+CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
+    KgDeclarativeView(renderer, parent)
 {
-    setFocus();
-    
-    background.show();
-    pauseOverlay.putInCanvas(this);
-    
-    moveBarTimer.setInterval(DEFAULT_UPDATE_INTERVAL);
-    connect(&moveBarTimer, SIGNAL(timeout()), SLOT(moveBar()));
-    
-    updateBarTimer.setInterval(DEFAULT_UPDATE_INTERVAL);
-    connect(&updateBarTimer, SIGNAL(timeout()), SLOT(updateBar()));
-    lastMousePosition = QPoint(0, 0);
-    
-    updateBarTimer.start();
+    QString path = KStandardDirs::locate("appdata", "qml/main.qml");
+    setSource(QUrl::fromLocalFile(path));
+
+    // forward signals from QML
+    connect(rootObject(), SIGNAL(levelComplete()), this, SIGNAL(levelComplete()));
+    connect(rootObject(), SIGNAL(gameEnded(int,int,int)), this, SIGNAL(gameEnded(int,int,int)));
+    connect(rootObject(), SIGNAL(mousePressed()), this, SIGNAL(mousePressed()));
+
+    // for handling mouse cursor
+    connect(rootObject(), SIGNAL(pausedChanged()), this, SLOT(updateCursor()));
+    connect(this, SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
+}
+
+void CanvasWidget::updateFireShortcut()
+{
+    QAction *fireAction = qobject_cast<QAction*>(sender());
+    QString shortcut = fireAction->shortcut().toString(QKeySequence::NativeText);
+    rootObject()->setProperty("fireShortcut", shortcut);
+}
+
+void CanvasWidget::resizeEvent(QResizeEvent *event)
+{
+    QDeclarativeView::resizeEvent(event);
+    QMetaObject::invokeMethod(rootObject(), "updateGeometry");
+}
+
+void CanvasWidget::newGame()
+{
+    QMetaObject::invokeMethod(rootObject(), "reset");
+
     setCursor(QCursor(Qt::BlankCursor));
 }
 
-void CanvasWidget::moveBar()
+void CanvasWidget::showLine(QString line, int lineNumber)
 {
-    if (barDirection != 0) {
-        // delay to switch from keys to mouse
-        const int DELAY = 20;
-        usingKeys = DELAY;
-    }
-
-    if (barDirection == 1) emit barMovedRight();
-    if (barDirection == -1) emit barMovedLeft();
+    QMetaObject::invokeMethod(rootObject(), "loadLine",
+                              Q_ARG(QVariant, line),
+                              Q_ARG(QVariant, lineNumber));
 }
 
-void CanvasWidget::reloadSprites()
+void CanvasWidget::putGift(QString gift, int times, QString pos)
 {
-    QSize size(width(), height());
-    background.setRenderSize(size);
-    
-    // pause overlay
-    QPixmap pixmap = QPixmap(size);
-    pixmap.fill(QColor(100, 100, 100, 150));
-    pauseOverlay.setPixmap(pixmap);
-    
-    emit spritesReloaded();
+    QMetaObject::invokeMethod(rootObject(), "loadGift",
+                              Q_ARG(QVariant, gift),
+                              Q_ARG(QVariant, times),
+                              Q_ARG(QVariant, pos));
 }
 
-void CanvasWidget::handleGamePaused()
+void CanvasWidget::startGame()
 {
-    releaseMouse();
-    updateBarTimer.stop();
-    moveBarTimer.stop();
-    pauseOverlay.raise();
-    pauseOverlay.show();
+    QMetaObject::invokeMethod(rootObject(), "startGame");
+}
+
+void CanvasWidget::fire()
+{
+    QMetaObject::invokeMethod(rootObject(), "fire");
+}
+
+void CanvasWidget::setGamePaused(bool paused)
+{
+    QMetaObject::invokeMethod(rootObject(), "setGamePaused",
+                              Q_ARG(QVariant, paused));
+}
+
+void CanvasWidget::updateBarDirection()
+{
+    QMetaObject::invokeMethod(rootObject(), "updateBarDirection",
+                              Q_ARG(QVariant, m_barDirection));
+}
+
+void CanvasWidget::resetCursor()
+{
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
-void CanvasWidget::handleGameResumed()
+void CanvasWidget::updateCursor()
 {
-    // give feedback
-    pauseOverlay.hide();
-    
-    // move the mouse cursor to where the bar is
-    handleResetMousePosition();
+    bool paused = rootObject()->property("paused").toBool();
 
-    QCursor newCursor(Qt::BlankCursor);
-    newCursor.setPos(cursor().pos());
-
-    if (Settings::fireOnClick()) {
-        grabMouse(newCursor);
+    if (paused) {
+        resetCursor();
     } else {
+        // FIXME: move the cursor to where the bar is
+        resetMousePosition();
+        QCursor newCursor(Qt::BlankCursor);
+        newCursor.setPos(cursor().pos());
         setCursor(newCursor);
     }
-
-    updateBarTimer.start();
 }
 
-void CanvasWidget::handleGameEnded()
+void CanvasWidget::resetMousePosition()
 {
-    releaseMouse();
-    updateBarTimer.stop();
-    moveBarTimer.stop();
-    setCursor(QCursor(Qt::ArrowCursor));
-}
-
-void CanvasWidget::resizeEvent(QResizeEvent */*event*/)
-{
-    kDebug() << "resized!\n";
-    reloadSprites();
-}
-
-void CanvasWidget::handleResetMousePosition()
-{
-    int barPosition = GameEngine::bar().center();
-    int screenX = qRound(barPosition * Item::scale()) + Item::borderLeft();
-    QPoint p = mapToGlobal(QPoint(screenX, 0));
+    // FIXME: the cursor's position is supposed to be reset,
+    // just doesn't work!
+    int barPosition = rootObject()->property("barCenter").toInt();
+    QPoint p = mapToGlobal(QPoint(barPosition, 0));
     cursor().setPos(p.x(), cursor().pos().y());
-}
-
-void CanvasWidget::updateBar()
-{
-    QPoint p = mapFromGlobal(cursor().pos());
-    if (lastMousePosition == p) {
-        return;
-    }
-    lastMousePosition = p;
-
-    // don't move the mouse if the user was using the keys to play
-    // after a while however (when usingKeys == 0) the mouse gets released
-    // this avoids accidentally moving the mouse while playing using the keys
-    if (usingKeys > 0) {
-        --usingKeys;
-        if (usingKeys == 0) {
-            handleResetMousePosition();
-        }
-        return;
-    }
-
-    // TODO: put scaling somewhere else... (???)
-    // convert the screen position to scene position
-    int posX = qRound((p.x() - Item::borderLeft()) / Item::scale());
-    emit mouseMoved(posX);
 }
 
 void CanvasWidget::keyPressEvent(QKeyEvent *event)
 {
     if (event->isAutoRepeat()) {
-        KGameCanvasWidget::keyPressEvent(event);
+        QDeclarativeView::keyPressEvent(event);
         return;
     }
     int key = event->key();
     switch (key) {
-    case Qt::Key_S:
-        emit cheatSkipLevel();
-        break;
-    case Qt::Key_L:
-        emit cheatAddLife();
-        break;
     case Qt::Key_Right:
-        rightPressed = true;
-        barDirection = 1;
+        m_rightPressed = true;
+        m_barDirection = 1;
         break;
     case Qt::Key_Left:
-        leftPressed = true;
-        barDirection = -1;
+        m_leftPressed = true;
+        m_barDirection = -1;
         break;
     default:
-        KGameCanvasWidget::keyPressEvent(event);
+        QDeclarativeView::keyPressEvent(event);
+        return;
     }
 
-    if ((rightPressed || leftPressed) && !moveBarTimer.isActive()) {
-        moveBarTimer.start();
-    }
+    updateBarDirection();
 }
 
 void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
 {
     if (event->isAutoRepeat()) {
-        KGameCanvasWidget::keyReleaseEvent(event);
+        QDeclarativeView::keyReleaseEvent(event);
         return;
     }
     int key = event->key();
     switch (key) {
     case Qt::Key_Right:
-        rightPressed = false;
+        m_rightPressed = false;
         break;
     case Qt::Key_Left:
-        leftPressed = false;
+        m_leftPressed = false;
         break;
     default:
-        KGameCanvasWidget::keyReleaseEvent(event);
+        QDeclarativeView::keyReleaseEvent(event);
+        return;
     }
 
-    if (!rightPressed && !leftPressed) {
-        moveBarTimer.stop();
-    } else if (rightPressed && !leftPressed) {
-        barDirection = 1;
-    } else if (!rightPressed && leftPressed) {
-        barDirection = -1;
+    if (!m_rightPressed && !m_leftPressed) {
+        m_barDirection = 0;
+    } else if (m_rightPressed && !m_leftPressed) {
+        m_barDirection = 1;
+    } else if (!m_rightPressed && m_leftPressed) {
+        m_barDirection = -1;
     }
+
+    updateBarDirection();
 }
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
 {
     emit focusLost();
-    KGameCanvasWidget::focusOutEvent(event);
+    QDeclarativeView::focusOutEvent(event);
 }
-

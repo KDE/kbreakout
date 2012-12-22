@@ -1,5 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2012 Viranch Mehta <viranch.mehta@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,30 +15,28 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BALL_H
-#define BALL_H
+import QtQuick 1.1
+import org.kde.games.core 0.1 as KgCore
+import "globals.js" as Globals
 
-#include "item.h"
+KgCore.CanvasItem {
+    id: brick
+    property int row
+    property int column
 
-class Brick;
+    width: m_scale * Globals.BRICK_WIDTH
+    height: m_scale * Globals.BRICK_HEIGHT
 
-class Ball : public Item
-{
-public:
-    Ball();
-    
-    // direction vector
-    qreal directionX;
-    qreal directionY;
-    
-    bool toBeFired;
-    qreal barPosition;
-    
-    void collideWithBricks(const QList<Brick *> &bricks);
+    x: m_scale * (column*Globals.BRICK_WIDTH)
+    y: m_scale * (row*Globals.BRICK_HEIGHT)
 
-private:
-    void collideWithTwoBricks(const QList<Brick *> &bricks);
-    void collideWithBrick(Brick *brick);
-};
+    Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
 
-#endif // BALL_H
+    property string type
+    onTypeChanged: spriteKey = type;
+
+    visible: type!="HiddenBrick"
+
+    property string giftType
+    property bool hasGift: giftType!=""
+}

@@ -18,17 +18,14 @@
 
 #include "mainwindow.h"
 #include "gameengine.h"
-#include "canvasitems.h"
 #include "canvaswidget.h"
 #include "ui_generalsettings.h"
 #include "settings.h"
+#include "globals.h"
 
-#include <QGraphicsScene>
 #include <QPointer>
 
 #include <KMenuBar>
-#include <KToolBar>
-#include <KStatusBar>
 #include <KIcon>
 #include <KAction>
 #include <KStandardAction>
@@ -36,7 +33,6 @@
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
 #include <KShortcut>
-#include <KLocale>
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>
@@ -70,37 +66,26 @@ MainWindow::MainWindow(QWidget *parent)
       renderer(provider()),
       canvasWidget(new CanvasWidget(&renderer, this))
 {
-    // TODO: find a better way..
-    Item::setCanvas(canvasWidget);
-    Item::setRenderer(&renderer);
-    new Background; // the background put's itself into the canvasWidget
-    gameEngine = new GameEngine(this); // must be called after Item::setCanvas()
+    gameEngine = new GameEngine(this);
     
-    connect(canvasWidget, SIGNAL(mouseMoved(int)),
-            gameEngine, SLOT(moveBar(int)));
-    connect(canvasWidget, SIGNAL(barMovedLeft()),
-            gameEngine, SLOT(moveBarLeft()));
-    connect(canvasWidget, SIGNAL(barMovedRight()),
-            gameEngine, SLOT(moveBarRight()));
     connect(canvasWidget, SIGNAL(focusLost()),
             this, SLOT(pauseGame()));
     
-    connect(gameEngine, SIGNAL(gamePaused()), 
-            canvasWidget, SLOT(handleGamePaused()));
-    connect(gameEngine, SIGNAL(gameResumed()),
-            canvasWidget, SLOT(handleGameResumed()));
-    connect(gameEngine, SIGNAL(gameResumed()),
-            this, SLOT(handleGameResumed()));
-    connect(gameEngine, SIGNAL(resetMousePosition()),
-            canvasWidget, SLOT(handleResetMousePosition()));
-    connect(gameEngine, SIGNAL(gameEnded(int,int,int)), 
+    connect(canvasWidget, SIGNAL(levelComplete()),
+            gameEngine, SLOT(loadNextLevel()));
+    connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
             SLOT(handleEndedGame(int,int,int)));
-    
-    // cheating keys, debugging and testing only TODO: REMOVE
-    connect(canvasWidget, SIGNAL(cheatSkipLevel()),
-            gameEngine, SLOT(cheatSkipLevel()));
-    connect(canvasWidget, SIGNAL(cheatAddLife()),
-            gameEngine, SLOT(cheatAddLife()));
+    connect(canvasWidget, SIGNAL(mousePressed()),
+            this, SLOT(handleMousePressed()));
+
+    connect(gameEngine, SIGNAL(loadingNewGame()),
+            canvasWidget, SLOT(newGame()));
+    connect(gameEngine, SIGNAL(newLine(QString,int)),
+            canvasWidget, SLOT(showLine(QString,int)));
+    connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
+            canvasWidget, SLOT(putGift(QString,int,QString)));
+    connect(gameEngine, SIGNAL(ready()),
+            canvasWidget, SLOT(startGame()));
     
     setCentralWidget(canvasWidget);
     
@@ -149,6 +134,7 @@ void MainWindow::setupActions()
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
     connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
+    connect(fireAction, SIGNAL(changed()), canvasWidget, SLOT(updateFireShortcut()));
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
     pauseAction = KStandardGameAction::pause(this,
@@ -206,6 +192,7 @@ void MainWindow::startNewGame()
         KStandardGuiItem::cancel());
         
     if (ret == KMessageBox::Yes) {
+        pauseAction->setChecked(false);
         gameEngine->start("default");
     }
 }
@@ -219,21 +206,7 @@ void MainWindow::pauseGame()
 
 void MainWindow::setGamePaused(bool paused)
 {
-    gameEngine->setGamePaused(paused);
-}
-
-void MainWindow::handleGameResumed()
-{
-    pauseAction->setChecked(false);
-}
-
-void MainWindow::fire()
-{
-    if (gameEngine->gameIsPaused()) {
-        pauseAction->activate(QAction::Trigger);
-    } else {
-        gameEngine->fire();
-    }
+    canvasWidget->setGamePaused(paused);
 }
 
 void MainWindow::handleEndedGame(int score, int level, int time)
@@ -254,8 +227,6 @@ void MainWindow::handleEndedGame(int score, int level, int time)
         scoreInfo[KScoreDialog::Level].setNum(level);
     }
     
-    canvasWidget->handleGameEnded();
-    
     QPointer<KScoreDialog> ksdialog =
             new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
     ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
@@ -263,9 +234,17 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     ksdialog->exec();
     
     if ( ksdialog ) {
-        canvasWidget->handleGameResumed();
         gameEngine->start("default");
         delete ksdialog;
+    }
+}
+
+void MainWindow::fire()
+{
+    if (pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
+    } else {
+        canvasWidget->fire();
     }
 }
 
@@ -279,17 +258,15 @@ void MainWindow::viewFullScreen(bool fullScreen)
     }
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
+void MainWindow::handleMousePressed()
 {
-    if (gameEngine->gameIsPaused()) {
+    if (pauseAction->isChecked()) {
         pauseAction->activate(QAction::Trigger);
-        KXmlGuiWindow::mousePressEvent(event);
         return;
     }
 
     if (Settings::fireOnClick()) {
-        gameEngine->fire();
-        KXmlGuiWindow::mousePressEvent(event);
+        canvasWidget->fire();
         return;
     }
 
@@ -326,7 +303,5 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             Settings::self()->writeConfig();
         }
     }
-    
-    KXmlGuiWindow::mousePressEvent(event);
 }
 

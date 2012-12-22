@@ -1,6 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
-    Copyright 2010 Brian Croom <brian.s.croom@gmail.com>
+    Copyright 2012 Viranch Mehta <viranch.mehta@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,65 +18,51 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
-#include <QTimer>
+#include "kgdeclarativeview.h"
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamecanvas.h>
+class KGameRenderer;
 
-class CanvasWidget : public KGameCanvasWidget
+class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT
 public:
     CanvasWidget(KGameRenderer *renderer, QWidget *parent=0);
 
 signals:
-    void spritesReloaded();
-    // the position is in game coordinates not screen coordinates
-    void mouseMoved(int positionX); // TODO: rename
-    void ballFired();
-    void barMovedLeft();
-    void barMovedRight();
-    void pausePressed();
-    void escPressed();
+    void levelComplete();
+    void gameEnded(int score, int level, int elapsedTime);
     void focusLost();
-    // cheating keys, debugging and testing only
-    void cheatSkipLevel();
-    void cheatAddLife();
+    void mousePressed();
 
 public slots:
-    void reloadSprites();
-    void handleGamePaused();
-    void handleGameResumed();
-    void handleGameEnded();
-    void handleResetMousePosition();
+    void fire();
+    void setGamePaused(bool paused);
+    void updateFireShortcut();
 
 private slots:
-    void moveBar();
-    void updateBar();
+    void newGame();
+    void showLine(QString line, int lineNumber);
+    void putGift(QString gift, int times, QString pos);
+    void updateBarDirection();
+    void startGame();
+    void updateCursor();
+    void resetCursor();
+    void resetMousePosition();
 
 protected:
-    void resizeEvent(QResizeEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void focusOutEvent(QFocusEvent *event);
-    
-    // TODO: use QTimeLine
-    QTimer moveBarTimer; // when using the keyboard
-    QTimer updateBarTimer; // when using the mouse
-    QPoint lastMousePosition;
-    
-    KGameCanvasRenderedPixmap background;
-    KGameCanvasPixmap pauseOverlay;
-    
-    // used when moving the bar with the keys
-    int barDirection;
+    void resizeEvent(QResizeEvent *event);
+
+private:
+    //used when moving the bar with the keys
+    int m_barDirection;
 
     // used to track which direction keys are pressed between key events
-    bool rightPressed;
-    bool leftPressed;
+    bool m_rightPressed;
+    bool m_leftPressed;
 
-    // > 0 if the keys are being used
-    int usingKeys;
 };
 
 #endif //CANVASWIDGET_H

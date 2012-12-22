@@ -1,5 +1,5 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
+    Copyright 2012 Viranch Mehta <viranch.mehta@gmail.com>
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,40 +15,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CANVASITEMS_H
-#define CANVASITEMS_H
+import QtQuick 1.1
 
-#include "item.h"
+Timer {
+    signal timeout(variant target)
 
-class Bar : public Item
-{
-public:
-    Bar();
-    
-    // resets to default values
-    void reset();
-    
-    // used by GiftEnlargeBar and GiftShrinkBar
-    void enlarge();
-    void shrink();
+    property variant target
 
-    int center() const;
-};
-
-class Life : public Item
-{
-public:
-    Life();
-    ~Life();
-    
-private:
-    static int count;
-};
-
-class Background : public Item
-{
-public:
-    Background();
-};
-
-#endif // CANVASITEMS_H
+    onTriggered: {
+        timeout(target);
+        destroy(10);
+    }
+}

@@ -1,18 +1,14 @@
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames  )
+add_subdirectory(declarativeimports)
+
+include_directories( ${CMAKE_SOURCE_DIR}/libkdegames )
 
 set(kbreakout_SRCS 
    main.cpp
    mainwindow.cpp 
-   canvasitems.cpp
    canvaswidget.cpp
-   textitems.cpp
-   item.cpp
-   gift.cpp
-   brick.cpp
-   ball.cpp
    gameengine.cpp
    levelloader.cpp
-   fontutils.cpp
+   kgdeclarativeview.cpp
    #generalsettings.cpp
 )
 
@@ -22,9 +18,10 @@ kde4_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 
 kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-app-kbreakout.png")
 
-kde4_add_executable(kbreakout ${kbreakout_SRCS})
+kde4_add_executable(kbreakout-qml ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout kdegames kdegamesprivate ${KDE4_KDEUI_LIBS} ${QT_QTXML_LIBRARY})
+target_link_libraries(kbreakout-qml kdegames kdegamesprivate ${KDE4_KDEUI_LIBS} ${QT_QTXML_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY} ${KDECLARATIVE_LIBRARIES})
 
-install(TARGETS kbreakout  ${INSTALL_TARGETS_DEFAULT_ARGS} )
-install(FILES kbreakoutui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kbreakout)
+install(TARGETS kbreakout-qml ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(FILES kbreakoutui.rc DESTINATION  ${DATA_INSTALL_DIR}/kbreakout)
+install(DIRECTORY qml DESTINATION ${DATA_INSTALL_DIR}/kbreakout)

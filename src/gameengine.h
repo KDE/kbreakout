@@ -19,135 +19,33 @@
 #define GAMEENGINE_H
 
 #include <QObject>
-#include <QList>
-#include <QTimer>
 
-#include "canvasitems.h"
-#include "textitems.h"
-
-class MainWindow;
-
-class Gift;
-class Brick;
-class Ball;
 class LevelLoader;
-
-// TODO: add m_ to all members
 
 class GameEngine : public QObject
 {
     Q_OBJECT
 public:
-    GameEngine(MainWindow *);
+    GameEngine(QObject *parent = 0);
     ~GameEngine();
     
-    // TODO: rename to isPaused
-    bool gameIsPaused() const;
-    void setGamePaused(bool paused);
-
-    static const Bar &bar();
-
 public slots:
-    // handles the timer timeout signals
-    void timerTimeout();
     void start(const QString &levelset);
-    void pause();
-    void resume();
-    void moveBar(int newXPosition);
-    void moveBarLeft();
-    void moveBarRight();
-    void fire();
-    
-    // cheating keys for debugging and testing. Enabled only when
-    // KDE_DEBUG environment variable is true.
-    void cheatSkipLevel();
-    void cheatAddLife();
+    void loadNextLevel();
 
 signals:
-    void gamePaused();
-    void gameResumed();
-    void gameEnded(int score, int level, int time);
-    void resetMousePosition();
+    void loadingNewGame();
+    void newLine(QString line, int lineNumber);
+    void newGift(QString gift, int times, QString pos);
+    void ready();
 
 private:
-    void detectBallCollisions(Ball *ball);
-    
-    // auxiliary functions
-    void handleBrickCollisions(Ball *ball);
-    // adds the a gift to a brick without a gift
-    //void addGift(const QString &type, QList <Brick *> *bricks);
-    
-    // convenience functions
-    void showMessage(const QString &text);
-    void showInfoMessage(const QString &text);
-    void showFireBallMessage();
-    void loadNextLevel();
-    void addScore(int points);
-    void setScore(int score);
-    void changeSpeed(qreal ratio); // ratio is newSpeed/oldSpeed
-    void updateAttachedBalls(); // updates all balls attached to the bar
-    void deleteMovingObjects();
     void deleteAllObjects();
 
-    MainWindow *m_mainWindow; // needed to access actionCollection()
-    int m_level;
-    int m_score;
-    int m_elapsedTime; // in seconds
-    // score to add if you hit a brick
-    // decreases over time since last hit
-    qreal m_dScore;
-    // count of remaining bricks
-    // (not counting the unbreakable ones)
-    int m_remainingBricks;
-    // the number of ticks of the timer between one repaint and another
-    int m_repaintInterval;
-    qreal m_speed; // should never be more than 2.0
-    
-    // moves the objects at every tick (but avoiding to repaint them)
-    QTimer m_gameTimer; // TODO: rename to updateTimer
-    // increases elapsed time every second
-    // also used to check whether the game is paused
-    // TODO: use KGameTimer, maybe it should to start up as soon as the game starts?
-    //       (because it's used to check if the game is paused...)
-    QTimer m_elapsedTimeTimer;
-    
-    // used to add a little randomness but in a deterministic way
-    // it's reset when the ball gets fired
-    int randomCounter;
-    
-    // Canvas Items
-    bool m_gameOver;
-    bool m_gameWon;
-    bool m_cheatsEnabled;
-    QList<Life *> m_lives;
-    Score m_scoreCanvas;
-    LevelInfo m_levelInfo;
-    MessageBox m_messageBox;
-    InfoMessage m_infoMessage;
-    QList<Brick *> m_bricks;
-    QList<Gift *> m_gifts; // visible gifts
-    QList<Ball *> m_balls;
-    Bar m_bar;
     LevelLoader *m_levelLoader;
-    // XXX
-    static Bar *m_bar_ptr;
-
-    // is set to true when deleteMovingObjects() is called
-    bool m_itemsGotDeleted;
 
 private slots:
-    // hides the current showed message by m_messageBox 
-    // unless the game is paused, won or game over
-    void hideMessage();
-    void step();
-    void repaintMovingObjects();
     void loadLevel();
-    // takes a life and gives you a new ball if there are any lives left
-    void handleDeath();
-    void increaseElapsedTime() {++m_elapsedTime;}
-    
-    friend class Gift;
-    friend class Brick;
 };
 
 #endif // GAMEENGINE_H
