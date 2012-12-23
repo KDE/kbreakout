@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=KBreakOut
 Name[ast]=KBreakOut
-Name[bs]=KBreakOut
 Name[ca]=KBreakOut
 Name[ca@valencia]=KBreakOut
 Name[cs]=KBreakOut
@@ -54,7 +53,6 @@ Exec=kbreakout -caption "%c"
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
 GenericName[ast]=Xuegu asemeyáu a Breakout
-GenericName[bs]=Igra cigli
 GenericName[ca]=Joc similar al Breakout
 GenericName[ca@valencia]=Joc similar al Breakout
 GenericName[cs]=Hra typu Breakout

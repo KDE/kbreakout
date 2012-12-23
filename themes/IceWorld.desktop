@@ -1,7 +1,6 @@
 [KGameTheme]
 Name=IceWorld
 Name[ast]=Mundu xeláu
-Name[bs]=Ledeni svijet
 Name[ca]=Món de gel
 Name[ca@valencia]=Món de gel
 Name[cs]=Ledový svět
@@ -48,7 +47,6 @@ Name[zh_CN]=冰世界
 Name[zh_TW]=冰世界
 Description=Ice chilled theme
 Description[ast]=Tema enfriáu
-Description[bs]=Tema rashladjeno
 Description[ca]=Tema congelat
 Description[ca@valencia]=Tema congelat
 Description[cs]=Ledově chladný motiv
