@@ -23,7 +23,7 @@
 #include <QDeclarativeContext>
 #include <KGameRenderer>
 
-void CoreBindingsPlugin::initializeEngine(QDeclarativeEngine *engine, const char *uri)
+void CoreBindingsPlugin::initializeEngine(QDeclarativeEngine *engine, const char * /*uri*/)
 {
     QObject *property = engine->rootContext()->contextProperty("renderer").value<QObject*>();
     KGameRenderer *renderer = (KGameRenderer*) property;
