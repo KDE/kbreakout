@@ -18,7 +18,7 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
-#include "kgdeclarativeview.h"
+#include <KgDeclarativeView>
 
 class KGameRenderer;
 
@@ -26,7 +26,7 @@ class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT
 public:
-    CanvasWidget(KGameRenderer *renderer, QWidget *parent=0);
+    CanvasWidget(QWidget *parent=0);
 
 signals:
     void levelComplete();
