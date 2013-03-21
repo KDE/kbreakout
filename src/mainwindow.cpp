@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent)
       m_provider(provider()),
       canvasWidget(new CanvasWidget(this))
 {
-    canvasWidget->registerProvider("themeProvider", m_provider);
+    m_provider->setDeclarativeEngine("themeProvider", canvasWidget->engine());
     gameEngine = new GameEngine(this);
     
     connect(canvasWidget, SIGNAL(focusLost()),
