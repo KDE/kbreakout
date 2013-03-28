@@ -168,9 +168,6 @@ void MainWindow::configureSettings()
     dialog->addPage(new GeneralSettings( dialog ), 
                     i18nc("General settings", "General"),
                     "games-config-options");
-
-    connect(dialog, SIGNAL(settingsChanged(QString)), 
-            this, SLOT(loadSettings()));
     
     dialog->show();
 }
