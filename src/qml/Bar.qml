@@ -19,7 +19,7 @@ import QtQuick 1.1
 import org.kde.games.core 0.1 as KgCore
 import "globals.js" as Globals
 
-KgCore.CanvasItem {
+CanvasItem {
     id: bar
     spriteKey: "PlainBar"
 

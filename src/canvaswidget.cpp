@@ -27,8 +27,8 @@
 #include <KGameRenderer>
 #include <KStandardDirs>
 
-CanvasWidget::CanvasWidget(KGameRenderer *renderer, QWidget *parent) :
-    KgDeclarativeView(renderer, parent)
+CanvasWidget::CanvasWidget(QWidget *parent) :
+    KgDeclarativeView(parent)
 {
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));

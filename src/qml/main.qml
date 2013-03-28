@@ -55,7 +55,7 @@ Item {
 
     property real m_scale: container.width/(Globals.BRICK_WIDTH*Globals.WIDTH)
 
-    KgCore.CanvasItem {
+    CanvasItem {
         id: background
         spriteKey: "Background"
         anchors.fill: parent
@@ -68,7 +68,7 @@ Item {
 
     property int barCenter: mapFromItem(bgOverlay, Math.round(bar.x + bar.width/2), 0).x
 
-    KgCore.CanvasItem {
+    CanvasItem {
         id: bgOverlay
         spriteKey: "BackgroundOverlay"
         anchors {

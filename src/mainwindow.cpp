@@ -56,16 +56,17 @@ private:
 
 static KgThemeProvider* provider()
 {
-	KgThemeProvider* prov = new KgThemeProvider;
-	prov->discoverThemes("appdata", QLatin1String("themes"));
-	return prov;
+    KgThemeProvider* prov = new KgThemeProvider;
+    prov->discoverThemes("appdata", QLatin1String("themes"));
+    return prov;
 }
 
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      renderer(provider()),
-      canvasWidget(new CanvasWidget(&renderer, this))
+      m_provider(provider()),
+      canvasWidget(new CanvasWidget(this))
 {
+    m_provider->setDeclarativeEngine("themeProvider", canvasWidget->engine());
     gameEngine = new GameEngine(this);
     
     connect(canvasWidget, SIGNAL(focusLost()),
@@ -160,7 +161,7 @@ void MainWindow::configureSettings()
                                               Settings::self());
     dialog->setModal(true);
     
-    dialog->addPage(new KgThemeSelector(renderer.themeProvider()),
+    dialog->addPage(new KgThemeSelector(m_provider),
                     i18n("Theme"), "games-config-theme" );
     
     // TODO: when will the page be destroyed?
