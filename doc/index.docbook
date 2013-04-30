@@ -113,20 +113,332 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 
 <sect1 id="gifts">
 <title>Gifts</title>
+<note>
+  <para>
+    Pictures for the gifts below are for the default theme of &kbreakout;.
+  </para>
+</note>
 <variablelist>
-<varlistentry><term>Score Gifts</term><listitem><para>If caught they award the player the number of points written on the gift.</para></listitem></varlistentry>
-<varlistentry><term>Add Life Gift</term><listitem><para>Gives the player an additional life.</para></listitem></varlistentry>
-<varlistentry><term>Lose Life Gift</term><listitem><para>Makes the player lose all balls and resets the bar.</para></listitem></varlistentry>
-<varlistentry><term>Enlarge Bar Gift</term><listitem><para>Enlarges the bar.</para></listitem></varlistentry>
-<varlistentry><term>Shrink Bar Gift</term><listitem><para>Shrinks the bar.</para></listitem></varlistentry>
-<varlistentry><term>Split Balls Gift</term><listitem><para>Doubles the balls.</para></listitem></varlistentry>
-<varlistentry><term>Add Balls Gift</term><listitem><para>Gives the player an extra ball attached to the bar, which can be fired whenever the player wants.</para></listitem></varlistentry>
-<varlistentry><term>Sticky Bar Gift</term><listitem><para>After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.</para></listitem></varlistentry>
-<varlistentry><term>More Exploding Bricks Gift</term><listitem><para>Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themselves. This also applies to hidden and unbreakable bricks.</para></listitem></varlistentry>
-<varlistentry><term>Burning Ball Gift</term><listitem><para>Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.</para></listitem></varlistentry>
-<varlistentry><term>Unstoppable Ball Gift</term><listitem><para> Transforms all the balls into unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.</para></listitem></varlistentry>
-<varlistentry><term>Magic Eye Gift</term><listitem><para>Shows all hidden bricks.</para></listitem></varlistentry>
-<varlistentry><term>Magic Wand Gift</term><listitem><para>Transforms all multiple and unbreakable bricks into simple bricks.</para></listitem></varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Gift 1000 Points
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Score Gifts
+    </term>
+    <listitem>
+      <para>
+	If caught they award the player the number of points written on the gift.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Add Life Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Add Life Gift
+    </term>
+    <listitem>
+      <para>
+	Gives the player an additional life.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Lose Life Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Lose Life Gift
+    </term>
+    <listitem>
+      <para>
+	Makes the player lose all balls and resets the bar.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Enlarge Bar Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Enlarge Bar Gift
+    </term>
+    <listitem>
+      <para>
+	Enlarges the bar.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Shrink Bar Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Shrink Bar Gift
+    </term>
+    <listitem>
+      <para>
+	Shrinks the bar.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Split Balls Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Split Balls Gift
+    </term>
+    <listitem>
+      <para>
+	Doubles the balls.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Add Balls Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Add Balls Gift
+    </term>
+    <listitem>
+      <para>
+	Gives the player an extra ball attached to the bar, which can be fired whenever the player wants.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Sticky Bar Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Sticky Bar Gift
+    </term>
+    <listitem>
+      <para>
+	After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    More Exploding Bricks Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      More Exploding Bricks Gift
+    </term>
+    <listitem>
+      <para>
+	Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themselves. This also applies to hidden and unbreakable bricks.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Burning Ball Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Burning Ball Gift
+    </term>
+    <listitem>
+      <para>
+	Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Unstoppable Ball Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Unstoppable Ball Gift
+    </term>
+    <listitem>
+      <para>
+	Transforms all the balls into unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Magic Eye Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Magic Eye Gift
+    </term>
+    <listitem>
+      <para>
+	Shows all hidden bricks.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Magic Wand Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Magic Wand Gift
+    </term>
+    <listitem>
+      <para>
+	Transforms all multiple and unbreakable bricks into simple bricks.
+      </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Increase Speed Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Increase Speed Gift
+    </term>
+    <listitem>
+      <para>
+	Increases the speed of the ball by 30% of the current speed.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Decrease Speed Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Decrease Speed Gift
+    </term>
+    <listitem>
+      <para>
+	Decreases the speed of the ball dividing the current speed by 1.3.
+      </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG" />
+	</imageobject>
+	<textobject>
+	  <phrase>
+	    Next Level Gift
+	  </phrase>
+	</textobject>
+      </inlinemediaobject>
+      Next Level Gift
+    </term>
+    <listitem>
+      <para>
+	Opens the next level of the game immediately.
+      </para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 </sect1>
 
