@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
 $EXTRACTRC `find . -name \*.rc -o -name \*.ui -o -name \*.kcfg` >> rc.cpp
-$XGETTEXT `find . -name \*.qml -o -name \*.cpp` -o $podir/kbreakout.pot
+$XGETTEXT `find . -name \*.cpp` -o $podir/kbreakout.pot
+$XGETTEXT `find . -name \*.qml -o -name \*.js` -j -L Java -o $podir/kbreakout.pot
 rm -f rc.cpp
