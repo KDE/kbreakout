@@ -656,7 +656,7 @@ Quits the program.
 </variablelist>
 
 <para>
-&kbreakout; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+Additionally &kbreakout; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
 menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
 >Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
 of the &kde; Fundamentals.
