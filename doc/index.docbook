@@ -577,14 +577,29 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 <chapter id="interface-overview">
 <title>Interface Overview</title>
 
-<sect1 id="game-menu">
-<title><guimenu>Game</guimenu> Menu</title>
+<sect1 id="menu">
+<title>The Menu</title>
 
 <variablelist>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Pause and resume the current game.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>&Esc;</keycap>
 </shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>New</guimenuitem>
@@ -624,45 +639,28 @@ Quits the program.
 </para>
 </listitem>
 </varlistentry>
-</variablelist>
-
-</sect1>
-
-
-
-
-<sect1 id="settings-menu">
-<title><guimenu>Settings</guimenu> Menu</title>
-
-<variablelist>
 
 <varlistentry>
 <term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo>
+</shortcut>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
+<guimenuitem>Full Screen Mode</guimenuitem>
 </menuchoice></term>
 <listitem><para>
-<action>Opens a dialog which lets you redefine all the keyboard shortcuts.</action>
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure &kappname;...</guimenuitem>
-</menuchoice></term>
-<listitem><para>
-<action>Opens a dialog which lets you choose a graphical theme for the game.</action>
+<action>Play the &kbreakout; game in full screen mode. Leaving this mode is only possible using the shortcut.</action>
 </para></listitem>
 </varlistentry>
 
 </variablelist>
-</sect1>
 
-<sect1 id="help">
-<title><guimenu>Help</guimenu> Menu</title>
-
-&help.menu.documentation;
+<para>
+&kbreakout; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
@@ -684,7 +682,7 @@ Quits the program.
 <row>
 <entry>Pause/Resume</entry>
 <entry>
-<keycap>P</keycap>
+<keycap>&Esc;</keycap>
 </entry>
 </row>
 <row>
@@ -704,6 +702,10 @@ Quits the program.
 <entry>
 <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
 </entry>
+</row>
+<row>
+<entry>Full Screen Mode</entry>
+<entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo></entry>
 </row>
 <row>
 <entry>Help</entry>
