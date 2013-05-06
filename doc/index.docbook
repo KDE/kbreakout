@@ -587,11 +587,11 @@ To fire the ball press the spacebar, to move the bar use the mouse or the arrow 
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Pause</guimenuitem>
+<guimenuitem>New</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
-Pause and resume the current game.
+Starts a new game.
 </para>
 </listitem>
 </varlistentry>
@@ -602,11 +602,11 @@ Pause and resume the current game.
 <keycap>&Esc;</keycap>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem>
+<guimenuitem>Pause</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
-Starts a new game.
+Pause and resume the current game.
 </para>
 </listitem>
 </varlistentry>
