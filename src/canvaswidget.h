@@ -20,13 +20,12 @@
 
 #include <KgDeclarativeView>
 
-class KGameRenderer;
-
 class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT
 public:
     CanvasWidget(QWidget *parent=0);
+    KgThemeProvider* getProvider() {return m_provider;}
 
 signals:
     void levelComplete();
@@ -62,7 +61,7 @@ private:
     // used to track which direction keys are pressed between key events
     bool m_rightPressed;
     bool m_leftPressed;
-
+    KgThemeProvider *m_provider;
 };
 
 #endif //CANVASWIDGET_H

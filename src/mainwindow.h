@@ -51,7 +51,6 @@ private:
 
     KToggleAction *pauseAction;
     
-    KgThemeProvider *m_provider;
     CanvasWidget *canvasWidget;
     GameEngine *gameEngine;
     

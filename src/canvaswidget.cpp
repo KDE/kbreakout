@@ -24,12 +24,15 @@
 #include <QKeyEvent>
 #include <QCursor>
 
-#include <KGameRenderer>
 #include <KStandardDirs>
+#include <KgThemeProvider>
 
 CanvasWidget::CanvasWidget(QWidget *parent) :
-    KgDeclarativeView(parent)
+    KgDeclarativeView(parent),
+    m_provider(new KgThemeProvider)
 {
+    m_provider->discoverThemes("appdata", QLatin1String("themes"));
+    m_provider->setDeclarativeEngine("themeProvider", engine());
     QString path = KStandardDirs::locate("appdata", "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
 

@@ -36,7 +36,6 @@
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>
-#include <KgThemeProvider>
 #include <KgThemeSelector>
 #include <KStandardGameAction>
 #include <KConfig>
@@ -54,19 +53,10 @@ private:
     Ui::GeneralSettings ui;
 };
 
-static KgThemeProvider* provider()
-{
-    KgThemeProvider* prov = new KgThemeProvider;
-    prov->discoverThemes("appdata", QLatin1String("themes"));
-    return prov;
-}
-
 MainWindow::MainWindow(QWidget *parent) 
     : KXmlGuiWindow(parent),
-      m_provider(provider()),
       canvasWidget(new CanvasWidget(this))
 {
-    m_provider->setDeclarativeEngine("themeProvider", canvasWidget->engine());
     gameEngine = new GameEngine(this);
     
     connect(canvasWidget, SIGNAL(focusLost()),
@@ -161,7 +151,7 @@ void MainWindow::configureSettings()
                                               Settings::self());
     dialog->setModal(true);
     
-    dialog->addPage(new KgThemeSelector(m_provider),
+    dialog->addPage(new KgThemeSelector(canvasWidget->getProvider()),
                     i18n("Theme"), "games-config-theme" );
     
     // TODO: when will the page be destroyed?
