@@ -25,6 +25,7 @@ class CanvasWidget : public KgDeclarativeView
     Q_OBJECT
 public:
     CanvasWidget(QWidget *parent=0);
+    virtual ~CanvasWidget();
     KgThemeProvider* getProvider() {return m_provider;}
 
 signals:

@@ -46,6 +46,11 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
     connect(this, SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
 }
 
+CanvasWidget::~CanvasWidget()
+{
+    delete m_provider;
+}
+
 void CanvasWidget::updateFireShortcut()
 {
     QAction *fireAction = qobject_cast<QAction*>(sender());
