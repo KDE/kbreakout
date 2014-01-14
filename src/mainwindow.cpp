@@ -87,6 +87,12 @@ MainWindow::MainWindow(QWidget *parent)
     setupGUI(defaultSize, 
         KXmlGuiWindow::Keys | KXmlGuiWindow::Save| KXmlGuiWindow::Create);
 
+    if (isFullScreen()) {
+        menuBar()->hide();
+    } else {
+        menuBar()->show();
+    }
+
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
     gameEngine->start("default");
