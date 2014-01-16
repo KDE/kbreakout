@@ -893,6 +893,7 @@ function giftSplitBall() {
 
         newBall.toBeFired = ball.toBeFired;
         newBall.spriteKey = ball.spriteKey;
+        newBall.type = ball.type;
         newBall.posX = ball.posX;
         newBall.posY = ball.posY;
         newBalls.push(newBall);
