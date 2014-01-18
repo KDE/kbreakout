@@ -869,10 +869,10 @@ function giftMagicWand() {
         // make multiple bricks single
         if (brick.type == "MultipleBrick3") {
             brick.type = "MultipleBrick1";
-            score += Globals.AUTO_BRICK_SCORE * 2;
+            score += Globals.AUTOBRICK_SCORE * 2;
         } else if (brick.type == "MultipleBrick2") {
             brick.type = "MultipleBrick1";
-            score += Globals.AUTO_BRICK_SCORE;
+            score += Globals.AUTOBRICK_SCORE;
         }
     }
 }
