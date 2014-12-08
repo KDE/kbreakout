@@ -19,7 +19,7 @@
 #define CANVASWIDGET_H
 
 #include <KgDeclarativeView>
-
+class KgThemeProvider;
 class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT

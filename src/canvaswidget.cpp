@@ -23,10 +23,11 @@
 #include <QAction>
 #include <QKeyEvent>
 #include <QCursor>
+#include <QQuickItem>
 
 #include <KStandardDirs>
 #include <KgThemeProvider>
-
+#include <QDeclarativeView>
 CanvasWidget::CanvasWidget(QWidget *parent) :
     KgDeclarativeView(parent),
     m_provider(new KgThemeProvider)
@@ -60,7 +61,7 @@ void CanvasWidget::updateFireShortcut()
 
 void CanvasWidget::resizeEvent(QResizeEvent *event)
 {
-    QDeclarativeView::resizeEvent(event);
+    QQuickWidget::resizeEvent(event);
     QMetaObject::invokeMethod(rootObject(), "updateGeometry");
 }
 
@@ -140,7 +141,7 @@ void CanvasWidget::resetMousePosition()
 void CanvasWidget::keyPressEvent(QKeyEvent *event)
 {
     if (event->isAutoRepeat()) {
-        QDeclarativeView::keyPressEvent(event);
+        QQuickWidget::keyPressEvent(event);
         return;
     }
     int key = event->key();
@@ -154,7 +155,7 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
         m_barDirection = -1;
         break;
     default:
-        QDeclarativeView::keyPressEvent(event);
+        QQuickWidget::keyPressEvent(event);
         return;
     }
 
@@ -164,7 +165,7 @@ void CanvasWidget::keyPressEvent(QKeyEvent *event)
 void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
 {
     if (event->isAutoRepeat()) {
-        QDeclarativeView::keyReleaseEvent(event);
+        QQuickWidget::keyReleaseEvent(event);
         return;
     }
     int key = event->key();
@@ -176,7 +177,7 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
         m_leftPressed = false;
         break;
     default:
-        QDeclarativeView::keyReleaseEvent(event);
+        QQuickWidget::keyReleaseEvent(event);
         return;
     }
 
@@ -194,5 +195,5 @@ void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
 {
     emit focusLost();
-    QDeclarativeView::focusOutEvent(event);
+    QQuickWidget::focusOutEvent(event);
 }

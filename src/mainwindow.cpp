@@ -27,7 +27,7 @@
 
 #include <KMenuBar>
 #include <KIcon>
-#include <KAction>
+#include <QAction>
 #include <KStandardAction>
 #include <KToggleAction>
 #include <KToggleFullScreenAction>
@@ -117,16 +117,17 @@ void MainWindow::setupActions()
     KStandardAction::preferences(this, SLOT(configureSettings()), 
                                 actionCollection());
 
-    KAction *fullScreenAction = KStandardAction::fullScreen(this,
+    QAction *fullScreenAction = KStandardAction::fullScreen(this,
                           SLOT(viewFullScreen(bool)), this, actionCollection());
     // set the default primary shortcut as alternate shortcut
     // and make F the default
+#if 0 //QT5
     QKeySequence defaultShortcut = fullScreenAction->shortcut().primary();
     QKeySequence newPrimary(i18nc("Key (shortcut) to toggle full screen", "F"));
     KShortcut fullScreenShortcut(newPrimary, defaultShortcut);
-    fullScreenAction->setShortcut(fullScreenShortcut);
-
-    KAction *fireAction = new KAction(this);
+    fullScreenAction->setShortcuts(fullScreenShortcut);
+#endif
+    QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
@@ -143,7 +144,7 @@ void MainWindow::setupActions()
     // the following won't work (no more than 2 shortcuts allowed..)
     // TODO: make the pause key work
     //keys.append(Qt::Key_Pause);
-    pauseAction->setShortcut(KShortcut(keys));
+    pauseAction->setShortcuts(KShortcut(keys));
 }
 
 void MainWindow::configureSettings()
@@ -271,13 +272,14 @@ void MainWindow::handleMousePressed()
     // if it's set to _any_ value we want to keep the
     // settings of fireOnClick at false
     bool dontAsk = false; // true if dontAskFireOnClick was set
+#if 0 //QT5
     KConfig config(componentData(), "kbreakoutrc");
     if (config.hasGroup("Notification Messages")) {
         KConfigGroup group( &config, "Notification Messages");
         if (group.hasKey("dontAskFireOnClick"))
             dontAsk = true;
     }
-    
+    #endif
     if (dontAsk == false) {
         // ask the user if he wants to fire on mouse click
         int res = KMessageBox::questionYesNo(  

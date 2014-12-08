@@ -17,7 +17,7 @@
 
 
 #include <KApplication>
-#include <KAboutData>
+#include <K4AboutData>
 #include <KCmdLineArgs>
 #include <KLocale>
 
@@ -25,9 +25,9 @@
 
 int main (int argc, char *argv[])
 {
-    KAboutData aboutData("kbreakout", 0, ki18n("KBreakOut"), "1.1.0");
+    K4AboutData aboutData("kbreakout", 0, ki18n("KBreakOut"), "1.1.0");
     aboutData.setShortDescription(ki18n("A breakout like game for KDE"));
-    aboutData.setLicense(KAboutData::License_GPL);
+    aboutData.setLicense(K4AboutData::License_GPL);
     aboutData.setCopyrightStatement(ki18n("(c) 2007-2008 Fela Winkelmolen"));
     aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
                         ki18n("original author and maintainer"),
@@ -50,7 +50,6 @@ int main (int argc, char *argv[])
     
     KCmdLineArgs::init( argc, argv, &aboutData );
     KApplication app;
-    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
     
     MainWindow* window = new MainWindow();
     Q_UNUSED(window);
