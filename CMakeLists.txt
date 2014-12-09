@@ -6,15 +6,13 @@ set (QT_MIN_VERSION "5.3.0")
 find_package(ECM 1.3.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test Declarative)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Declarative)
 find_package(KF5 REQUIRED COMPONENTS 
     CoreAddons 
     Config 
     ItemModels 
     WidgetsAddons 
     WindowSystem 
-    Codecs 
-    Archive
     Config 
     DBusAddons 
     DNSSD 
@@ -28,13 +26,9 @@ find_package(KF5 REQUIRED COMPONENTS
     Completion 
     JobWidgets
     TextWidgets
-    GlobalAccel
     XmlGui
-    Crash
-    Bookmarks
     KIO
     NotifyConfig
-    NewStuff
     KDELibs4Support)
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
@@ -53,4 +47,4 @@ add_subdirectory( pics )
 add_subdirectory( themes )
 add_subdirectory( levelsets )
 add_subdirectory(doc)
-install( PROGRAMS kbreakout.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kbreakout.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )

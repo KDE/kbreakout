@@ -108,3 +108,4 @@ GenericName[zh_TW]=打磚塊遊戲
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
+X-DBUS-ServiceName=org.kde.kbreakout

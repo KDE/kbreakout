@@ -296,7 +296,7 @@ void MainWindow::handleMousePressed()
         
         if (res == KMessageBox::Yes) {
             Settings::setFireOnClick(true); 
-            Settings::self()->writeConfig();
+            Settings::self()->save();
         }
     }
 }
