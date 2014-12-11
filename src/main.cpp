@@ -16,40 +16,49 @@
 */
 
 
-#include <KApplication>
-#include <K4AboutData>
-#include <KCmdLineArgs>
+
+#include <KAboutData>
+
 #include <KLocale>
+#include <QApplication>
+#include <KLocalizedString>
+#include <QCommandLineParser>
 
 #include "mainwindow.h"
 
 int main (int argc, char *argv[])
 {
-    K4AboutData aboutData("kbreakout", 0, ki18n("KBreakOut"), "1.1.0");
-    aboutData.setShortDescription(ki18n("A breakout like game for KDE"));
-    aboutData.setLicense(K4AboutData::License_GPL);
-    aboutData.setCopyrightStatement(ki18n("(c) 2007-2008 Fela Winkelmolen"));
-    aboutData.addAuthor(ki18n("Fela Winkelmolen"), 
-                        ki18n("original author and maintainer"),
+    KAboutData aboutData("kbreakout", i18n("KBreakOut"), "1.1.0");
+    aboutData.setShortDescription(i18n("A breakout like game for KDE"));
+    aboutData.setLicense(KAboutLicense::GPL);
+    aboutData.setCopyrightStatement(i18n("(c) 2007-2008 Fela Winkelmolen"));
+    aboutData.addAuthor(i18n("Fela Winkelmolen"), 
+                        i18n("original author and maintainer"),
                         "fela.kde@gmail.com");
-    aboutData.addAuthor(ki18n("Eugene Trounev"), 
-                        ki18n("artwork"),
+    aboutData.addAuthor(i18n("Eugene Trounev"), 
+                        i18n("artwork"),
                         "eugene.trounev@gmail.com");
-    aboutData.addAuthor(ki18n("Sean Wilson"),
-                        ki18n("artwork"),
+    aboutData.addAuthor(i18n("Sean Wilson"),
+                        i18n("artwork"),
                         "suseux@gmail.com");
-    aboutData.addCredit(ki18n("Lorenzo Bonomi"),
-                        ki18n("testing"),
+    aboutData.addCredit(i18n("Lorenzo Bonomi"),
+                        i18n("testing"),
                         "lorenzo.bonomi@hotmail.it");
-    aboutData.addCredit(ki18n("Brian Croom"),
-                        ki18n("port to KGameRenderer"),
+    aboutData.addCredit(i18n("Brian Croom"),
+                        i18n("port to KGameRenderer"),
                         "brian.s.croom@gmail.com");
-    aboutData.addCredit(ki18n("Viranch Mehta"),
-                        ki18n("port to QtQuick"),
+    aboutData.addCredit(i18n("Viranch Mehta"),
+                        i18n("port to QtQuick"),
                         "viranch.mehta@gmail.com");
     
-    KCmdLineArgs::init( argc, argv, &aboutData );
-    KApplication app;
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
     
     MainWindow* window = new MainWindow();
     Q_UNUSED(window);

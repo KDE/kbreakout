@@ -26,7 +26,7 @@
 #include <QPointer>
 
 #include <KMenuBar>
-#include <KIcon>
+#include <QIcon>
 #include <QAction>
 #include <KStandardAction>
 #include <KToggleAction>
@@ -130,7 +130,7 @@ void MainWindow::setupActions()
     QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
-    fireAction->setIcon(KIcon( QLatin1String( "kbreakout" )));
+    fireAction->setIcon(QIcon::fromTheme( QLatin1String( "kbreakout" )));
     connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
     connect(fireAction, SIGNAL(changed()), canvasWidget, SLOT(updateFireShortcut()));
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
