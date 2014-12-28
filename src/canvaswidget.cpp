@@ -44,7 +44,7 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
 
     // for handling mouse cursor
     connect(rootObject(), SIGNAL(pausedChanged()), this, SLOT(updateCursor()));
-    connect(this, SIGNAL(gameEnded(int,int,int)), this, SLOT(resetCursor()));
+    connect(this, &CanvasWidget::gameEnded, this, &CanvasWidget::resetCursor);
 }
 
 CanvasWidget::~CanvasWidget()
