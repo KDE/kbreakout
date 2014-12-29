@@ -59,24 +59,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     gameEngine = new GameEngine(this);
     
-    connect(canvasWidget, SIGNAL(focusLost()),
-            this, SLOT(pauseGame()));
+    connect(canvasWidget, &CanvasWidget::focusLost, this, &MainWindow::pauseGame);
     
-    connect(canvasWidget, SIGNAL(levelComplete()),
-            gameEngine, SLOT(loadNextLevel()));
-    connect(canvasWidget, SIGNAL(gameEnded(int,int,int)), 
-            SLOT(handleEndedGame(int,int,int)));
-    connect(canvasWidget, SIGNAL(mousePressed()),
-            this, SLOT(handleMousePressed()));
+    connect(canvasWidget, &CanvasWidget::levelComplete, gameEngine, &GameEngine::loadNextLevel);
+    connect(canvasWidget, &CanvasWidget::gameEnded, this, &MainWindow::handleEndedGame);
+    connect(canvasWidget, &CanvasWidget::mousePressed, this, &MainWindow::handleMousePressed);
 
-    connect(gameEngine, SIGNAL(loadingNewGame()),
-            canvasWidget, SLOT(newGame()));
-    connect(gameEngine, SIGNAL(newLine(QString,int)),
-            canvasWidget, SLOT(showLine(QString,int)));
-    connect(gameEngine, SIGNAL(newGift(QString,int,QString)),
-            canvasWidget, SLOT(putGift(QString,int,QString)));
-    connect(gameEngine, SIGNAL(ready()),
-            canvasWidget, SLOT(startGame()));
+    connect(gameEngine, &GameEngine::loadingNewGame, canvasWidget, &CanvasWidget::newGame);
+    connect(gameEngine, &GameEngine::newLine, canvasWidget, &CanvasWidget::showLine);
+    connect(gameEngine, &GameEngine::newGift, canvasWidget, &CanvasWidget::putGift);
+    connect(gameEngine, &GameEngine::ready, canvasWidget, &CanvasWidget::startGame);
     
     setCentralWidget(canvasWidget);
     
@@ -131,8 +123,8 @@ void MainWindow::setupActions()
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
     fireAction->setIcon(QIcon::fromTheme( QLatin1String( "kbreakout" )));
-    connect(fireAction, SIGNAL(triggered()), this, SLOT(fire()));
-    connect(fireAction, SIGNAL(changed()), canvasWidget, SLOT(updateFireShortcut()));
+    connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
+    connect(fireAction, &QAction::changed, canvasWidget, &CanvasWidget::updateFireShortcut);
     actionCollection()->addAction( QLatin1String( "fire" ), fireAction);
 
     pauseAction = KStandardGameAction::pause(this,

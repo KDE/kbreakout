@@ -39,7 +39,7 @@ public slots:
     void setGamePaused(bool paused);
     void updateFireShortcut();
 
-private slots:
+public slots:
     void newGame();
     void showLine(QString line, int lineNumber);
     void putGift(QString gift, int times, QString pos);
