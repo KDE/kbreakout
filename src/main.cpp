@@ -22,11 +22,16 @@
 #include <QApplication>
 #include <KLocalizedString>
 #include <QCommandLineParser>
-
+#include <Kdelibs4ConfigMigrator>
 #include "mainwindow.h"
 
 int main (int argc, char *argv[])
 {
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kbreakout"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kbreakoutrc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
+    migrate.migrate();
+
     KAboutData aboutData("kbreakout", i18n("KBreakOut"), "1.1.0");
     aboutData.setShortDescription(i18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutLicense::GPL);
