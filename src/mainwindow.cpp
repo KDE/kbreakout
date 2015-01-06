@@ -25,14 +25,14 @@
 
 #include <QPointer>
 
-#include <KMenuBar>
+#include <QMenuBar>
 #include <QIcon>
 #include <QAction>
 #include <KStandardAction>
 #include <KToggleAction>
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
-#include <KShortcut>
+#include <QKeySequence>
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KScoreDialog>
@@ -113,12 +113,8 @@ void MainWindow::setupActions()
                           SLOT(viewFullScreen(bool)), this, actionCollection());
     // set the default primary shortcut as alternate shortcut
     // and make F the default
-#if 0 //QT5
-    QKeySequence defaultShortcut = fullScreenAction->shortcut().primary();
-    QKeySequence newPrimary(i18nc("Key (shortcut) to toggle full screen", "F"));
-    KShortcut fullScreenShortcut(newPrimary, defaultShortcut);
-    fullScreenAction->setShortcuts(fullScreenShortcut);
-#endif
+    QKeySequence fullScreenShortcut(i18nc("Key (shortcut) to toggle full screen", "F"));
+    fullScreenAction->setShortcut(fullScreenShortcut);
     QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
     fireAction->setShortcut(Qt::Key_Space);
@@ -136,7 +132,7 @@ void MainWindow::setupActions()
     // the following won't work (no more than 2 shortcuts allowed..)
     // TODO: make the pause key work
     //keys.append(Qt::Key_Pause);
-    pauseAction->setShortcuts(KShortcut(keys));
+    pauseAction->setShortcuts(keys);
 }
 
 void MainWindow::configureSettings()

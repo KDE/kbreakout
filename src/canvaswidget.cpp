@@ -24,17 +24,18 @@
 #include <QKeyEvent>
 #include <QCursor>
 #include <QQuickItem>
-
-#include <KStandardDirs>
-#include <KgThemeProvider>
+#include <QStandardPaths>
 #include <QDeclarativeView>
+
+#include <KgThemeProvider>
+
 CanvasWidget::CanvasWidget(QWidget *parent) :
     KgDeclarativeView(parent),
     m_provider(new KgThemeProvider)
 {
     m_provider->discoverThemes("appdata", QLatin1String("themes"));
     m_provider->setDeclarativeEngine("themeProvider", engine());
-    QString path = KStandardDirs::locate("appdata", "qml/main.qml");
+    QString path = QStandardPaths::locate(QStandardPaths::DataLocation, "qml/main.qml");
     setSource(QUrl::fromLocalFile(path));
 
     // forward signals from QML

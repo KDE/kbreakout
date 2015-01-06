@@ -21,6 +21,7 @@
 
 #include <QTimer>
 #include <QTime>
+#include <QDebug>
 
 GameEngine::GameEngine(QObject *parent)
     : QObject(parent)
@@ -63,7 +64,7 @@ void GameEngine::loadNextLevel()
 
 inline void GameEngine::deleteAllObjects()
 {
-    /*kDebug() << "all object deleted";
+    /*qDebug() << "all object deleted";
     deleteMovingObjects();
     qDeleteAll(m_bricks);
     m_bricks.clear();

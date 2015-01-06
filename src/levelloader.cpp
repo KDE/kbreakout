@@ -20,13 +20,13 @@
 
 #include <QDomDocument>
 #include <QFile>
+#include <QStandardPaths>
 
 // These can be removed when KConfig style levelsets are no longer supported
 #include <KConfig>
 #include <KConfigGroup>
 
-#include <KDebug>
-#include <KStandardDirs>
+#include <QDebug>
 
 LevelLoader::LevelLoader(QObject *parent)
   : QObject(parent)
@@ -66,7 +66,7 @@ void LevelLoader::setLevelset(const QString& levelname)
     // Loading document model
     // Locating the path in the filesystem
     QString path = "levelsets/" + m_levelname + ".levelset";
-    path =  KStandardDirs::locate("appdata", path);
+    path =  QStandardPaths::locate(QStandardPaths::DataLocation, path);
     // --
     
     delete m_levelset;
@@ -74,7 +74,7 @@ void LevelLoader::setLevelset(const QString& levelname)
     m_levelset = new QDomDocument( m_levelname );
     QFile file( path );
     if( !file.open( QIODevice::ReadOnly ) ){
-        kError() << "Can't open file " << path << endl;
+        qCritical() << "Can't open file " << path << endl;
     }
   
     QString errorString;
@@ -87,9 +87,9 @@ void LevelLoader::setLevelset(const QString& levelname)
         if( kconfigfile.hasGroup( "level1" ) ){
             // Levelset is in KConfig style
             m_oldstyle = true;
-            kError() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
+            qCritical() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
         } else {
-            kError() << "Can't read levelset from " << path << "\nError: " << errorString <<
+            qCritical() << "Can't read levelset from " << path << "\nError: " << errorString <<
                         " in Line " << errorLine << ", Column " << errorColumn << endl;
         }
     } else {
@@ -111,7 +111,7 @@ void LevelLoader::loadLevel()
     m_level++;
     
     if( m_levelset == 0 ){
-        kError() << "Error: No levelset specified" << endl;
+        qCritical() << "Error: No levelset specified" << endl;
         return;
     }
     
@@ -131,7 +131,7 @@ void LevelLoader::loadLevel()
     QDomAttr attribute;
     QDomElement level = node.toElement();
     if( level.isNull() ){
-        kError() << "Invalid Levelset " << m_levelname << ": Can't read level information";
+        qCritical() << "Invalid Levelset " << m_levelname << ": Can't read level information";
     }
     attribute = level.attributeNode("Name");
     QString levelName;
@@ -145,7 +145,7 @@ void LevelLoader::loadLevel()
     m_lineNumber = 0;
     while( !node.isNull() ){
         QDomElement info = node.toElement();
-        if( info.isNull() ){ kError() << "Invalid levelset " << m_levelname << ": Can't read level information."; }
+        if( info.isNull() ){ qCritical() << "Invalid levelset " << m_levelname << ": Can't read level information."; }
             
         if( info.tagName() == "Line" ){
             // Load one line of bricks
@@ -154,7 +154,7 @@ void LevelLoader::loadLevel()
             // Load one gift type
             loadGift( info );
         } else {
-            kError() << "Invalid tag name " << info.tagName() << " has occured in level "
+            qCritical() << "Invalid tag name " << info.tagName() << " has occured in level "
                      << levelName << " in levelset " << m_levelname << endl;
         }
         
@@ -189,7 +189,7 @@ void LevelLoader::loadLine(QDomElement lineNode)
     }
 
     if( line.size() > WIDTH ){
-        kError() << "Invalid levelset " << m_levelname << ": too many bricks in line "
+        qCritical() << "Invalid levelset " << m_levelname << ": too many bricks in line "
                  << m_lineNumber << endl;
     }
 
@@ -254,7 +254,7 @@ void LevelLoader::loadOldStyleLevel()
     
     // Loading the levelset
     QString path = "levelsets/" + m_levelname + ".levelset";
-    path = KStandardDirs::locate("appdata", path);
+    path = QStandardPaths::locate(QStandardPaths::DataLocation, path);
     KConfig file(path, KConfig::SimpleConfig);
     
     QString levelName("level" + QString::number(m_level));
@@ -276,14 +276,14 @@ void LevelLoader::loadOldStyleLevel()
         // one line of bricks to be converted
         QString line = lvl.readEntry(key, "error");
         if (line == "error") {
-            kError() << "Something strange happened!!\n";
+            qCritical() << "Something strange happened!!\n";
             return;
         }
         
-        kDebug() << line << endl;
+        qDebug() << line << endl;
         
         if (line.size() > WIDTH) {
-            kError() << "Invalid file: too many bricks\n";
+            qCritical() << "Invalid file: too many bricks\n";
         }
 
         emit newLine(line, y);
@@ -300,13 +300,13 @@ void LevelLoader::loadOldStyleLevel()
         
         QString line = lvl.readEntry(key, "error");
         if (line == "error") {
-            kError() << "Impossible reading " << m_level << ":" << key << endl;
+            qCritical() << "Impossible reading " << m_level << ":" << key << endl;
             return;
         }
         bool ok;
         int times = line.toInt(&ok);
         if (!ok) {
-            kError() << m_levelname << ":" << key << " invalid number!!" << endl;
+            qCritical() << m_levelname << ":" << key << " invalid number!!" << endl;
             continue;
         }
 
