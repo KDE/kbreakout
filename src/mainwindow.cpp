@@ -117,7 +117,7 @@ void MainWindow::setupActions()
     fullScreenAction->setShortcut(fullScreenShortcut);
     QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
-    fireAction->setShortcut(Qt::Key_Space);
+    actionCollection()->setDefaultShortcut(fireAction,Qt::Key_Space);
     fireAction->setIcon(QIcon::fromTheme( QLatin1String( "kbreakout" )));
     connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
     connect(fireAction, &QAction::changed, canvasWidget, &CanvasWidget::updateFireShortcut);
