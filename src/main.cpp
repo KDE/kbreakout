@@ -23,10 +23,13 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <Kdelibs4ConfigMigrator>
+#include <KDBusService>
 #include "mainwindow.h"
 
 int main (int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kbreakout"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kbreakoutrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
@@ -55,7 +58,6 @@ int main (int argc, char *argv[])
                         i18n("port to QtQuick"),
                         "viranch.mehta@gmail.com");
     
-    QApplication app(argc, argv);
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
@@ -63,7 +65,8 @@ int main (int argc, char *argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    
+   
+    KDBusService service; 
     MainWindow* window = new MainWindow();
     Q_UNUSED(window);
     

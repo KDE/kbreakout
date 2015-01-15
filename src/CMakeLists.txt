@@ -17,7 +17,7 @@ kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-apps-k
 
 add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate KF5::KDELibs4Support Qt5::Declarative Qt5::Xml Qt5::Declarative )
+target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate KF5::KDELibs4Support Qt5::Declarative Qt5::Xml KF5::DBusAddons)
 
 install(TARGETS kbreakout ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install(FILES kbreakoutui.rc DESTINATION  ${KXMLGUI_INSTALL_DIR}/kbreakout)
