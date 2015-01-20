@@ -13,11 +13,11 @@ ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
 
 kconfig_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 
-kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-apps-kbreakout.png")
+#kde4_add_app_icon(kbreakout_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-apps-kbreakout.png")
 
 add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate KF5::KDELibs4Support Qt5::Declarative Qt5::Xml KF5::DBusAddons)
+target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate Qt5::Declarative Qt5::Xml KF5::DBusAddons KF5::XmlGui)
 
 install(TARGETS kbreakout ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install(FILES kbreakoutui.rc DESTINATION  ${KXMLGUI_INSTALL_DIR}/kbreakout)
