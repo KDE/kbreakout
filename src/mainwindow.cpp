@@ -29,7 +29,6 @@
 #include <QIcon>
 #include <QAction>
 #include <KStandardAction>
-#include <KToggleAction>
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
 #include <QKeySequence>

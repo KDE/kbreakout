@@ -23,9 +23,8 @@
 #include <QAction>
 #include <QKeyEvent>
 #include <QCursor>
-#include <QQuickItem>
 #include <QStandardPaths>
-#include <QDeclarativeView>
+#include <QQuickItem>
 
 #include <KgThemeProvider>
 

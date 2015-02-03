@@ -18,7 +18,6 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include <QString>
 
 // how many pixels it moves each step
 // should be less than the half of BALL_SIZE
