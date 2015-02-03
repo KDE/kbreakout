@@ -22,7 +22,6 @@
 #include <KXmlGuiWindow>
 
 class GameEngine;
-class KgThemeProvider;
 class CanvasWidget;
 class KToggleAction;
 
