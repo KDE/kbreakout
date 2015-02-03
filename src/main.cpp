@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
     migrate.migrate();
 
-    KAboutData aboutData(QLatin1Literal("kbreakout"), i18n("KBreakOut"), QLatin1Literal("1.1.0"));
+    KAboutData aboutData(QLatin1Literal("kbreakout"), i18n("KBreakOut"), QLatin1Literal("1.2.0"));
     aboutData.setShortDescription(i18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutLicense::GPL);
     aboutData.setCopyrightStatement(i18n("(c) 2007-2008 Fela Winkelmolen"));
