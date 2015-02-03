@@ -1,16 +1,16 @@
 /*
-    Copyright 2011 Julian Helfferich <julian.helfferich@gmail.com> 
-  
+    Copyright 2011 Julian Helfferich <julian.helfferich@gmail.com>
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-   
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-   
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -29,7 +29,7 @@
 #include <QDebug>
 
 LevelLoader::LevelLoader(QObject *parent)
-  : QObject(parent)
+    : QObject(parent)
 {
     m_levelname = QString();
     m_level = 0;
@@ -56,9 +56,9 @@ QString LevelLoader::levelset() const
     return m_levelname;
 }
 
-void LevelLoader::setLevelset(const QString& levelname)
+void LevelLoader::setLevelset(const QString &levelname)
 {
-    if( levelname == m_levelname ){
+    if (levelname == m_levelname) {
         return;
     }
     m_levelname = levelname;
@@ -68,23 +68,23 @@ void LevelLoader::setLevelset(const QString& levelname)
     QString path = QLatin1String("levelsets/") + m_levelname + QLatin1String(".levelset");
     path =  QStandardPaths::locate(QStandardPaths::DataLocation, path);
     // --
-    
+
     delete m_levelset;
-    
-    m_levelset = new QDomDocument( m_levelname );
-    QFile file( path );
-    if( !file.open( QIODevice::ReadOnly ) ){
+
+    m_levelset = new QDomDocument(m_levelname);
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly)) {
         qCritical() << "Can't open file " << path << endl;
     }
-  
+
     QString errorString;
     int errorLine;
     int errorColumn;
-    if( !m_levelset->setContent( &file, false, &errorString, &errorLine, &errorColumn ) ){
+    if (!m_levelset->setContent(&file, false, &errorString, &errorLine, &errorColumn)) {
         file.close();
         // Testing whether levelset is of old KConfig style
         KConfig kconfigfile(path, KConfig::SimpleConfig);
-        if( kconfigfile.hasGroup( QLatin1String("level1") ) ){
+        if (kconfigfile.hasGroup(QLatin1String("level1"))) {
             // Levelset is in KConfig style
             m_oldstyle = true;
             qCritical() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
@@ -101,63 +101,65 @@ void LevelLoader::setLevelset(const QString& levelname)
 }
 
 void LevelLoader::loadLevel()
-{   
+{
     // Check if levelset is of KConfig-type
-    if( m_oldstyle ){
+    if (m_oldstyle) {
         loadOldStyleLevel();
         return;
     }
     // Selecting the correct level
     m_level++;
-    
-    if( m_levelset == 0 ){
+
+    if (m_levelset == 0) {
         qCritical() << "Error: No levelset specified" << endl;
         return;
     }
-    
+
     QDomElement levels = m_levelset->documentElement();
     QDomNode node = levels.firstChild();
-    for( int i = 1; i < m_level; i++ ){
+    for (int i = 1; i < m_level; i++) {
         node = node.nextSibling();
     }
     // --
-    
+
     // Load level information
-    if( node.isNull() || node.toElement().tagName() != QLatin1String("Level") ){
+    if (node.isNull() || node.toElement().tagName() != QLatin1String("Level")) {
         // Level not found or no more levels
         return;
     }
-    
+
     QDomAttr attribute;
     QDomElement level = node.toElement();
-    if( level.isNull() ){
+    if (level.isNull()) {
         qCritical() << "Invalid Levelset " << m_levelname << ": Can't read level information";
     }
     attribute = level.attributeNode(QLatin1String("Name"));
     QString levelName;
-    if( !attribute.isNull() ){
+    if (!attribute.isNull()) {
         levelName = level.attributeNode(QLatin1String("Name")).value();
     }
     node = node.firstChild();
     // --
-    
+
     // Load bricks and gifts
     m_lineNumber = 0;
-    while( !node.isNull() ){
+    while (!node.isNull()) {
         QDomElement info = node.toElement();
-        if( info.isNull() ){ qCritical() << "Invalid levelset " << m_levelname << ": Can't read level information."; }
-            
-        if( info.tagName() == QLatin1String("Line") ){
+        if (info.isNull()) {
+            qCritical() << "Invalid levelset " << m_levelname << ": Can't read level information.";
+        }
+
+        if (info.tagName() == QLatin1String("Line")) {
             // Load one line of bricks
-            loadLine( info );
-        } else if( info.tagName() == QLatin1String("Gift") ){
+            loadLine(info);
+        } else if (info.tagName() == QLatin1String("Gift")) {
             // Load one gift type
-            loadGift( info );
+            loadGift(info);
         } else {
             qCritical() << "Invalid tag name " << info.tagName() << " has occured in level "
-                     << levelName << " in levelset " << m_levelname << endl;
+                        << levelName << " in levelset " << m_levelname << endl;
         }
-        
+
         node = node.nextSibling();
     }
 }
@@ -167,30 +169,30 @@ void LevelLoader::loadLine(QDomElement lineNode)
     // Reading the line number
     QDomAttr attribute = lineNode.attributeNode(QLatin1String("Number"));
     QDomElement attributeNode = lineNode.firstChildElement(QLatin1String("Number"));
-    if( !attribute.isNull() ){
+    if (!attribute.isNull()) {
         m_lineNumber = attribute.value().toInt();
-    } else if( !attributeNode.isNull() ) {
+    } else if (!attributeNode.isNull()) {
         m_lineNumber = attributeNode.text().toInt();
     } else {
         // Standard line numbering: load next line
         m_lineNumber++;
     }
-    
+
     // Reading the brick information
     attribute = lineNode.attributeNode(QLatin1String("Bricks"));
     attributeNode = lineNode.firstChildElement(QLatin1String("Bricks"));
     QString line;
-    if( !attribute.isNull() ){
+    if (!attribute.isNull()) {
         line = attribute.value();
-    } else if( !attributeNode.isNull() ) {
+    } else if (!attributeNode.isNull()) {
         line = attributeNode.text();
     } else {
         line = lineNode.text();
     }
 
-    if( line.size() > WIDTH ){
+    if (line.size() > WIDTH) {
         qCritical() << "Invalid levelset " << m_levelname << ": too many bricks in line "
-                 << m_lineNumber << endl;
+                    << m_lineNumber << endl;
     }
 
     emit newLine(line, m_lineNumber);
@@ -203,9 +205,9 @@ void LevelLoader::loadGift(QDomElement giftNode)
     QDomAttr attribute = giftNode.attributeNode(QLatin1String("Type"));
     QDomElement attributeNode = giftNode.firstChildElement(QLatin1String("Type"));
     QString giftType;
-    if( !attribute.isNull() ){
+    if (!attribute.isNull()) {
         giftType = attribute.value();
-    } else if( !attributeNode.isNull() ){
+    } else if (!attributeNode.isNull()) {
         giftType = attributeNode.text();
         nodeTextRead = true;
     } else {
@@ -218,27 +220,29 @@ void LevelLoader::loadGift(QDomElement giftNode)
     attributeNode = giftNode.firstChildElement(QLatin1String("Count"));
     int times = 1;
     bool ok = true;
-    if( !attribute.isNull() ){
-        times = attribute.value().toInt( &ok );
-    } else if( !attributeNode.isNull() ){
-        times = attributeNode.text().toInt( &ok );
+    if (!attribute.isNull()) {
+        times = attribute.value().toInt(&ok);
+    } else if (!attributeNode.isNull()) {
+        times = attributeNode.text().toInt(&ok);
         nodeTextRead = true;
-    } else if( !nodeTextRead ){
-        times = giftNode.text().toInt( &ok );
-        if( !ok ){ times = 1; }
+    } else if (!nodeTextRead) {
+        times = giftNode.text().toInt(&ok);
+        if (!ok) {
+            times = 1;
+        }
     }
-    
+
     // If only one brick to be placed: see if position is given
     QString position;
-    if( times == 1 ){
+    if (times == 1) {
         attribute = giftNode.attributeNode(QLatin1String("Position"));
         attributeNode = giftNode.firstChildElement(QLatin1String("Position"));
-        if( !attribute.isNull() ){
+        if (!attribute.isNull()) {
             position = attribute.value();
-        } else if( !attributeNode.isNull() ){
+        } else if (!attributeNode.isNull()) {
             position = attributeNode.text();
             nodeTextRead = true;
-        } else if( !nodeTextRead && giftNode.text().contains(QLatin1Char(',')) ){
+        } else if (!nodeTextRead && giftNode.text().contains(QLatin1Char(','))) {
             position = giftNode.text();
             nodeTextRead = true;
         }
@@ -251,53 +255,55 @@ void LevelLoader::loadOldStyleLevel()
 {
     // Selecting the correct level
     m_level++;
-    
+
     // Loading the levelset
     QString path = QLatin1String("levelsets/") + m_levelname + QLatin1String(".levelset");
     path = QStandardPaths::locate(QStandardPaths::DataLocation, path);
     KConfig file(path, KConfig::SimpleConfig);
-    
+
     QString levelName(QLatin1String("level") + QString::number(m_level));
-    
+
     if (!file.hasGroup(levelName)) {
         // No more levels or no levels found
         return;
     }
-    
+
     // Loading level information
     KConfigGroup lvl = file.group(levelName);
-    
+
     // add bricks
-    
+
     int y = 1;
     QString key(QLatin1String("line") + QString::number(y));
-    
-    while(lvl.hasKey(key)) {
+
+    while (lvl.hasKey(key)) {
         // one line of bricks to be converted
         QString line = lvl.readEntry(key, "error");
         if (line == QLatin1String("error")) {
             qCritical() << "Something strange happened!!\n";
             return;
         }
-        
+
         qDebug() << line << endl;
-        
+
         if (line.size() > WIDTH) {
             qCritical() << "Invalid file: too many bricks\n";
         }
 
         emit newLine(line, y);
-        
+
         ++y;
         key = QLatin1String("line") + QString::number(y);
     }
-    
+
     // add gifts
-    
+
     for (int i = 0; i < GIFT_TYPES_COUNT; ++i) {
         key = GIFT_TYPES[i];
-        if (!lvl.hasKey(key)) continue;
-        
+        if (!lvl.hasKey(key)) {
+            continue;
+        }
+
         QString line = lvl.readEntry(key, "error");
         if (line == QLatin1String("error")) {
             qCritical() << "Impossible reading " << m_level << ":" << key << endl;

@@ -1,16 +1,16 @@
 /*
-    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com> 
-  
+    Copyright 2007-2008 Fela Winkelmolen <fela.kde@gmail.com>
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-   
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-   
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -35,7 +35,7 @@ const int MINIMUM_UPDATE_INTERVAL = 8;
 const qreal AUTO_SPEED_INCREASE = 1.05;
 
 const int BURNING_INTERVAL = 200; // how long it burns
-const int BURNING_SPEED = BURNING_INTERVAL/2; // lower is faster
+const int BURNING_SPEED = BURNING_INTERVAL / 2; // lower is faster
 
 const int WIDTH = 20; // how many bricks the game is wide
 const int HEIGHT = 24; // how many bricks the game is high
@@ -60,7 +60,7 @@ const int BAR_MOVEMENT = 5;
 const int BRICK_SCORE = 15;
 // relative score w.r.t the old score
 const qreal SCORE_AUTO_DECREASE = 0.998;
-// score when i brick gets "autoremoved" 
+// score when i brick gets "autoremoved"
 // (for example becouse of a gift, of fire)
 const int AUTOBRICK_SCORE = BRICK_SCORE / 2;
 // points avarded when passing a level
