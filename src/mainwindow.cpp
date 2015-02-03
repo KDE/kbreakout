@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // show here (instead of in main) else the mouse can't be grabbed
     show(); 
-    gameEngine->start("default");
+    gameEngine->start(QLatin1Literal("default"));
 }
  
 MainWindow::~MainWindow()
@@ -137,22 +137,22 @@ void MainWindow::setupActions()
 
 void MainWindow::configureSettings()
 {
-    if (KConfigDialog::showDialog("settings")) {
+    if (KConfigDialog::showDialog(QLatin1Literal("settings"))) {
         return;
     }
     // else it doesn't exist, thus create the dialog
     
-    KConfigDialog *dialog = new KConfigDialog(this, "settings", 
+    KConfigDialog *dialog = new KConfigDialog(this, QLatin1Literal("settings"),
                                               Settings::self());
     dialog->setModal(true);
     
     dialog->addPage(new KgThemeSelector(canvasWidget->getProvider()),
-                    i18n("Theme"), "games-config-theme" );
+                    i18n("Theme"), QLatin1Literal("games-config-theme") );
     
     // TODO: when will the page be destroyed?
     dialog->addPage(new GeneralSettings( dialog ), 
                     i18nc("General settings", "General"),
-                    "games-config-options");
+                    QLatin1Literal("games-config-options"));
     
     dialog->show();
 }
@@ -160,7 +160,7 @@ void MainWindow::configureSettings()
 void MainWindow::showHighscores()
 {
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), "moves");
+    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), QLatin1Literal("moves"));
 
     ksdialog.exec();
 }
@@ -176,7 +176,7 @@ void MainWindow::startNewGame()
         
     if (ret == KMessageBox::Yes) {
         pauseAction->setChecked(false);
-        gameEngine->start("default");
+        gameEngine->start(QLatin1Literal("default"));
     }
 }
 
@@ -197,7 +197,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     
     QTime t = QTime(0, 0).addSecs(time);
     // TODO: check int overflow and fix 24 hours "overflow"
-    QString timeString = t.toString("HH:mm");
+    QString timeString = t.toString(QLatin1Literal("HH:mm"));
     
     const int ALL_LEVELS = -1;
     
@@ -212,12 +212,12 @@ void MainWindow::handleEndedGame(int score, int level, int time)
     
     QPointer<KScoreDialog> ksdialog =
             new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), "moves");
+    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), QLatin1Literal("moves"));
     ksdialog->addScore(scoreInfo);
     ksdialog->exec();
     
     if ( ksdialog ) {
-        gameEngine->start("default");
+        gameEngine->start(QLatin1Literal("default"));
         delete ksdialog;
     }
 }
@@ -279,7 +279,7 @@ void MainWindow::handleMousePressed()
                     i18n("Fire on click?"), 
                     KStandardGuiItem::yes(), 
                     KStandardGuiItem::no(), 
-                    "dontAskFireOnClick" // doesntAskAgainName 
+                    QLatin1Literal("dontAskFireOnClick") // doesntAskAgainName
         );
         
         if (res == KMessageBox::Yes) {

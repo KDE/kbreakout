@@ -34,8 +34,8 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
     m_provider(new KgThemeProvider)
 {
     m_provider->discoverThemes("appdata", QLatin1String("themes"));
-    m_provider->setDeclarativeEngine("themeProvider", engine());
-    QString path = QStandardPaths::locate(QStandardPaths::DataLocation, "qml/main.qml");
+    m_provider->setDeclarativeEngine(QLatin1Literal("themeProvider"), engine());
+    QString path = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1Literal("qml/main.qml"));
     setSource(QUrl::fromLocalFile(path));
 
     // forward signals from QML

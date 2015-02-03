@@ -59,28 +59,28 @@ private:
 // Can be removed, when KConfig levelsets are no longer supported
 
 const QString GIFT_TYPES[] = {
-    "Gift100Points",
-    "Gift200Points",
-    "Gift500Points",
-    "Gift1000Points",
-    "GiftAddLife",
+    QLatin1Literal("Gift100Points"),
+    QLatin1Literal("Gift200Points"),
+    QLatin1Literal("Gift500Points"),
+    QLatin1Literal("Gift1000Points"),
+    QLatin1Literal("GiftAddLife"),
     
-    "GiftLoseLife", 
-    "GiftNextLevel",
-    "GiftSplitBall",
-    "GiftAddBall",
-    "GiftDecreaseSpeed",
+    QLatin1Literal("GiftLoseLife"),
+    QLatin1Literal("GiftNextLevel"),
+    QLatin1Literal("GiftSplitBall"),
+    QLatin1Literal("GiftAddBall"),
+    QLatin1Literal("GiftDecreaseSpeed"),
     
-    "GiftIncreaseSpeed",
-    "GiftUnstoppableBall",
-    "GiftBurningBall",
-    "GiftMagicWand",
-    "GiftMagicEye",
+    QLatin1Literal("GiftIncreaseSpeed"),
+    QLatin1Literal("GiftUnstoppableBall"),
+    QLatin1Literal("GiftBurningBall"),
+    QLatin1Literal("GiftMagicWand"),
+    QLatin1Literal("GiftMagicEye"),
     
-    "GiftEnlargeBar",
-    "GiftShrinkBar",
-    "GiftStickyBar",
-    "GiftMoreExplosion"
+    QLatin1Literal("GiftEnlargeBar"),
+    QLatin1Literal("GiftShrinkBar"),
+    QLatin1Literal("GiftStickyBar"),
+    QLatin1Literal("GiftMoreExplosion")
 };
 
 // IMPORTANT: keep in sync with the above
