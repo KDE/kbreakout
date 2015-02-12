@@ -17,7 +17,7 @@ kconfig_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 
 add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate Qt5::Declarative Qt5::Xml KF5::DBusAddons KF5::XmlGui)
+target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate Qt5::Xml KF5::DBusAddons KF5::XmlGui)
 
 install(TARGETS kbreakout ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install(FILES kbreakoutui.rc DESTINATION  ${KXMLGUI_INSTALL_DIR}/kbreakout)
