@@ -18,7 +18,6 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-
 // how many pixels it moves each step
 // should be less than the half of BALL_SIZE
 const int BALL_SPEED = 2;
