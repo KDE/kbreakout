@@ -1,1 +1,1 @@
-ecm_install_icons( ICONS hi128-apps-kbreakout.png  hi16-apps-kbreakout.png  hi22-apps-kbreakout.png  hi32-apps-kbreakout.png  hi48-apps-kbreakout.png  hi64-apps-kbreakout.png DESTINATION ${ICON_INSTALL_DIR} )
+ecm_install_icons( ICONS hi128-apps-kbreakout.png  hi16-apps-kbreakout.png  hi22-apps-kbreakout.png  hi32-apps-kbreakout.png  hi48-apps-kbreakout.png  hi64-apps-kbreakout.png DESTINATION ${KDE_INSTALL_ICONDIR} )

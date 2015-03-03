@@ -1,1 +1,1 @@
-install( FILES default.levelset DESTINATION ${DATA_INSTALL_DIR}/kbreakout/levelsets )
+install( FILES default.levelset DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout/levelsets )
