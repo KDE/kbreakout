@@ -13,7 +13,7 @@ ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
 
 kconfig_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/hi*-apps-kbreakout.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/*-apps-kbreakout.png")
 ecm_add_app_icon(kbreakout_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kbreakout ${kbreakout_SRCS})
