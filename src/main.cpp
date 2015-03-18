@@ -26,12 +26,13 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kbreakout"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kbreakoutrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
     migrate.migrate();
+
+   QApplication app(argc, argv);
+
 
     KAboutData aboutData(QLatin1Literal("kbreakout"), i18n("KBreakOut"), QLatin1Literal("1.2.0"));
     aboutData.setShortDescription(i18n("A breakout like game for KDE"));
