@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Crystal clear
+Name[ast]=Cristal tresparente
 Name[bs]=Kristalno čisto
 Name[ca]=Cristall clar
 Name[ca@valencia]=Cristall transparent
@@ -48,6 +49,7 @@ Name[x-test]=xxCrystal clearxx
 Name[zh_CN]=清澈水晶
 Name[zh_TW]=Crystal clear
 Description=Crystal-like theme for KBreakOut
+Description[ast]=Tema asemeyáu a Cristal pa KBreakOut
 Description[bs]=Tema za KBreakOut poput kristala
 Description[ca]=Tema cristal·lí pel KBreakOut
 Description[ca@valencia]=Tema cristal·lí pel KBreakOut
