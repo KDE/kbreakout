@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     migrate.setConfigFiles(QStringList() << QStringLiteral("kbreakoutrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
     migrate.migrate();
-
+    KLocalizedString::setApplicationDomain("kbreakout");
 
     KAboutData aboutData(QLatin1Literal("kbreakout"), i18n("KBreakOut"), QLatin1Literal("1.2.0"));
     aboutData.setShortDescription(i18n("A breakout like game for KDE"));
