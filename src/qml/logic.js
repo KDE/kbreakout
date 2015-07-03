@@ -326,6 +326,12 @@ function fireBall() {
     randomCounter = 0;
 }
 
+function addLife() {
+    if (lives < Globals.MAXIMUM_LIVES) {
+        lives++;
+    }
+}
+
 function setGamePaused(paused) {
     if (gameOver || gameWon || canvas.paused==paused) return;
     canvas.paused = paused;
@@ -794,9 +800,7 @@ function executeGift(type) {
         score += 1000 - Globals.GIFT_SCORE;
     } 
     else if (type == "GiftAddLife") {
-        if (lives < Globals.MAXIMUM_LIVES) {
-            lives++;
-        }
+        addLife();
     } 
     else if (type == "GiftLoseLife") {
         handleDeath();

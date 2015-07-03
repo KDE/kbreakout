@@ -97,6 +97,16 @@ void CanvasWidget::fire()
     QMetaObject::invokeMethod(rootObject(), "fire");
 }
 
+void CanvasWidget::cheatSkipLevel()
+{
+    QMetaObject::invokeMethod(rootObject(), "cheatSkipLevel");
+}
+
+void CanvasWidget::cheatAddLife()
+{
+    QMetaObject::invokeMethod(rootObject(), "cheatAddLife");
+}
+
 void CanvasWidget::setGamePaused(bool paused)
 {
     QMetaObject::invokeMethod(rootObject(), "setGamePaused",

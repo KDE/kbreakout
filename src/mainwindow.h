@@ -38,6 +38,8 @@ private slots:
     void showHighscores();
     void startNewGame();
     void fire();
+    void cheatSkipLevel();
+    void cheatAddLife();
     // calls the action
     void pauseGame();
     // called by the action
@@ -46,6 +48,8 @@ private slots:
     void handleMousePressed();
 
 private:
+    bool m_cheatsEnabled;
+
     void setupActions();
 
     KToggleAction *pauseAction;

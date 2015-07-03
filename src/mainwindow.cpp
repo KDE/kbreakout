@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     gameEngine = new GameEngine(this);
 
+    m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
+
     connect(canvasWidget, &CanvasWidget::focusLost, this, &MainWindow::pauseGame);
 
     connect(canvasWidget, &CanvasWidget::levelComplete, gameEngine, &GameEngine::loadNextLevel);
@@ -120,6 +122,22 @@ void MainWindow::setupActions()
     connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
     connect(fireAction, &QAction::changed, canvasWidget, &CanvasWidget::updateFireShortcut);
     actionCollection()->addAction(QLatin1String("fire"), fireAction);
+
+    if (m_cheatsEnabled) {
+        QAction *cheatSkipLevelAction = new QAction(this);
+        cheatSkipLevelAction->setText(i18n("Skip level"));
+        actionCollection()->setDefaultShortcut(cheatSkipLevelAction, Qt::Key_S);
+        cheatSkipLevelAction->setIcon(QIcon::fromTheme(QLatin1String("kbreakout")));
+        connect(cheatSkipLevelAction, &QAction::triggered, this, &MainWindow::cheatSkipLevel);
+        actionCollection()->addAction(QLatin1String("cheatSkipLevel"), cheatSkipLevelAction);
+
+        QAction *cheatAddLifeAction = new QAction(this);
+        cheatAddLifeAction->setText(i18n("Add life"));
+        actionCollection()->setDefaultShortcut(cheatAddLifeAction, Qt::Key_L);
+        cheatAddLifeAction->setIcon(QIcon::fromTheme(QLatin1String("kbreakout")));
+        connect(cheatAddLifeAction, &QAction::triggered, this, &MainWindow::cheatAddLife);
+        actionCollection()->addAction(QLatin1String("cheatAddLife"), cheatAddLifeAction);
+    }
 
     pauseAction = KStandardGameAction::pause(this,
                   SLOT(setGamePaused(bool)), actionCollection());
@@ -226,6 +244,24 @@ void MainWindow::fire()
         pauseAction->activate(QAction::Trigger);
     } else {
         canvasWidget->fire();
+    }
+}
+
+void MainWindow::cheatSkipLevel()
+{
+    if (pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
+    } else {
+        canvasWidget->cheatSkipLevel();
+    }
+}
+
+void MainWindow::cheatAddLife()
+{
+    if (pauseAction->isChecked()) {
+        pauseAction->activate(QAction::Trigger);
+    } else {
+        canvasWidget->cheatAddLife();
     }
 }
 

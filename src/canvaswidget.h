@@ -39,6 +39,8 @@ signals:
 
 public slots:
     void fire();
+    void cheatSkipLevel();
+    void cheatAddLife();
     void setGamePaused(bool paused);
     void updateFireShortcut();
 

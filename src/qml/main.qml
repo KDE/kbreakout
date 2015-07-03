@@ -230,6 +230,14 @@ Item {
         Logic.fireBall();
     }
 
+    function cheatAddLife() {
+        Logic.addLife();
+    }
+
+    function cheatSkipLevel() {
+        Logic.loadNextLevel();
+    }
+
     Timer {
         id: burnBricksTimer
         property variant target
