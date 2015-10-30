@@ -59,28 +59,28 @@ private:
 // Can be removed, when KConfig levelsets are no longer supported
 
 const QString GIFT_TYPES[] = {
-    QLatin1Literal("Gift100Points"),
-    QLatin1Literal("Gift200Points"),
-    QLatin1Literal("Gift500Points"),
-    QLatin1Literal("Gift1000Points"),
-    QLatin1Literal("GiftAddLife"),
+    QStringLiteral("Gift100Points"),
+    QStringLiteral("Gift200Points"),
+    QStringLiteral("Gift500Points"),
+    QStringLiteral("Gift1000Points"),
+    QStringLiteral("GiftAddLife"),
 
-    QLatin1Literal("GiftLoseLife"),
-    QLatin1Literal("GiftNextLevel"),
-    QLatin1Literal("GiftSplitBall"),
-    QLatin1Literal("GiftAddBall"),
-    QLatin1Literal("GiftDecreaseSpeed"),
+    QStringLiteral("GiftLoseLife"),
+    QStringLiteral("GiftNextLevel"),
+    QStringLiteral("GiftSplitBall"),
+    QStringLiteral("GiftAddBall"),
+    QStringLiteral("GiftDecreaseSpeed"),
 
-    QLatin1Literal("GiftIncreaseSpeed"),
-    QLatin1Literal("GiftUnstoppableBall"),
-    QLatin1Literal("GiftBurningBall"),
-    QLatin1Literal("GiftMagicWand"),
-    QLatin1Literal("GiftMagicEye"),
+    QStringLiteral("GiftIncreaseSpeed"),
+    QStringLiteral("GiftUnstoppableBall"),
+    QStringLiteral("GiftBurningBall"),
+    QStringLiteral("GiftMagicWand"),
+    QStringLiteral("GiftMagicEye"),
 
-    QLatin1Literal("GiftEnlargeBar"),
-    QLatin1Literal("GiftShrinkBar"),
-    QLatin1Literal("GiftStickyBar"),
-    QLatin1Literal("GiftMoreExplosion")
+    QStringLiteral("GiftEnlargeBar"),
+    QStringLiteral("GiftShrinkBar"),
+    QStringLiteral("GiftStickyBar"),
+    QStringLiteral("GiftMoreExplosion")
 };
 
 // IMPORTANT: keep in sync with the above

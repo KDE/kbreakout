@@ -59,7 +59,7 @@ void GameEngine::loadLevel()
 
 void GameEngine::loadNextLevel()
 {
-    QTimer::singleShot(200, this, SLOT(loadLevel()));
+    QTimer::singleShot(200, this, &GameEngine::loadLevel);
 }
 
 inline void GameEngine::deleteAllObjects()

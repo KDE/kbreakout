@@ -84,7 +84,7 @@ void LevelLoader::setLevelset(const QString &levelname)
         file.close();
         // Testing whether levelset is of old KConfig style
         KConfig kconfigfile(path, KConfig::SimpleConfig);
-        if (kconfigfile.hasGroup(QLatin1String("level1"))) {
+        if (kconfigfile.hasGroup(QStringLiteral("level1"))) {
             // Levelset is in KConfig style
             m_oldstyle = true;
             qCritical() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
@@ -133,10 +133,10 @@ void LevelLoader::loadLevel()
     if (level.isNull()) {
         qCritical() << "Invalid Levelset " << m_levelname << ": Can't read level information";
     }
-    attribute = level.attributeNode(QLatin1String("Name"));
+    attribute = level.attributeNode(QStringLiteral("Name"));
     QString levelName;
     if (!attribute.isNull()) {
-        levelName = level.attributeNode(QLatin1String("Name")).value();
+        levelName = level.attributeNode(QStringLiteral("Name")).value();
     }
     node = node.firstChild();
     // --
@@ -167,8 +167,8 @@ void LevelLoader::loadLevel()
 void LevelLoader::loadLine(QDomElement lineNode)
 {
     // Reading the line number
-    QDomAttr attribute = lineNode.attributeNode(QLatin1String("Number"));
-    QDomElement attributeNode = lineNode.firstChildElement(QLatin1String("Number"));
+    QDomAttr attribute = lineNode.attributeNode(QStringLiteral("Number"));
+    QDomElement attributeNode = lineNode.firstChildElement(QStringLiteral("Number"));
     if (!attribute.isNull()) {
         m_lineNumber = attribute.value().toInt();
     } else if (!attributeNode.isNull()) {
@@ -179,8 +179,8 @@ void LevelLoader::loadLine(QDomElement lineNode)
     }
 
     // Reading the brick information
-    attribute = lineNode.attributeNode(QLatin1String("Bricks"));
-    attributeNode = lineNode.firstChildElement(QLatin1String("Bricks"));
+    attribute = lineNode.attributeNode(QStringLiteral("Bricks"));
+    attributeNode = lineNode.firstChildElement(QStringLiteral("Bricks"));
     QString line;
     if (!attribute.isNull()) {
         line = attribute.value();
@@ -202,8 +202,8 @@ void LevelLoader::loadGift(QDomElement giftNode)
 {
     bool nodeTextRead = false;
     // Reading the brick type
-    QDomAttr attribute = giftNode.attributeNode(QLatin1String("Type"));
-    QDomElement attributeNode = giftNode.firstChildElement(QLatin1String("Type"));
+    QDomAttr attribute = giftNode.attributeNode(QStringLiteral("Type"));
+    QDomElement attributeNode = giftNode.firstChildElement(QStringLiteral("Type"));
     QString giftType;
     if (!attribute.isNull()) {
         giftType = attribute.value();
@@ -216,8 +216,8 @@ void LevelLoader::loadGift(QDomElement giftNode)
     }
 
     // Reading number of gifts to be distributed. If not specified one gift is placed.
-    attribute = giftNode.attributeNode(QLatin1String("Count"));
-    attributeNode = giftNode.firstChildElement(QLatin1String("Count"));
+    attribute = giftNode.attributeNode(QStringLiteral("Count"));
+    attributeNode = giftNode.firstChildElement(QStringLiteral("Count"));
     int times = 1;
     bool ok = true;
     if (!attribute.isNull()) {
@@ -235,8 +235,8 @@ void LevelLoader::loadGift(QDomElement giftNode)
     // If only one brick to be placed: see if position is given
     QString position;
     if (times == 1) {
-        attribute = giftNode.attributeNode(QLatin1String("Position"));
-        attributeNode = giftNode.firstChildElement(QLatin1String("Position"));
+        attribute = giftNode.attributeNode(QStringLiteral("Position"));
+        attributeNode = giftNode.firstChildElement(QStringLiteral("Position"));
         if (!attribute.isNull()) {
             position = attribute.value();
         } else if (!attributeNode.isNull()) {

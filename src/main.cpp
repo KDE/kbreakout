@@ -34,28 +34,28 @@ int main(int argc, char *argv[])
     migrate.migrate();
     KLocalizedString::setApplicationDomain("kbreakout");
 
-    KAboutData aboutData(QLatin1Literal("kbreakout"), i18n("KBreakOut"), QLatin1Literal("1.2.0"));
+    KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral("1.2.0"));
     aboutData.setShortDescription(i18n("A breakout like game for KDE"));
     aboutData.setLicense(KAboutLicense::GPL);
     aboutData.setCopyrightStatement(i18n("(c) 2007-2008 Fela Winkelmolen"));
     aboutData.addAuthor(i18n("Fela Winkelmolen"),
                         i18n("original author and maintainer"),
-                        QLatin1Literal("fela.kde@gmail.com"));
+                        QStringLiteral("fela.kde@gmail.com"));
     aboutData.addAuthor(i18n("Eugene Trounev"),
                         i18n("artwork"),
-                        QLatin1Literal("eugene.trounev@gmail.com"));
+                        QStringLiteral("eugene.trounev@gmail.com"));
     aboutData.addAuthor(i18n("Sean Wilson"),
                         i18n("artwork"),
-                        QLatin1Literal("suseux@gmail.com"));
+                        QStringLiteral("suseux@gmail.com"));
     aboutData.addCredit(i18n("Lorenzo Bonomi"),
                         i18n("testing"),
-                        QLatin1Literal("lorenzo.bonomi@hotmail.it"));
+                        QStringLiteral("lorenzo.bonomi@hotmail.it"));
     aboutData.addCredit(i18n("Brian Croom"),
                         i18n("port to KGameRenderer"),
-                        QLatin1Literal("brian.s.croom@gmail.com"));
+                        QStringLiteral("brian.s.croom@gmail.com"));
     aboutData.addCredit(i18n("Viranch Mehta"),
                         i18n("port to QtQuick"),
-                        QLatin1Literal("viranch.mehta@gmail.com"));
+                        QStringLiteral("viranch.mehta@gmail.com"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);

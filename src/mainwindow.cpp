@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // show here (instead of in main) else the mouse can't be grabbed
     show();
-    gameEngine->start(QLatin1Literal("default"));
+    gameEngine->start(QStringLiteral("default"));
 }
 
 MainWindow::~MainWindow()
@@ -118,25 +118,25 @@ void MainWindow::setupActions()
     QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
     actionCollection()->setDefaultShortcut(fireAction, Qt::Key_Space);
-    fireAction->setIcon(QIcon::fromTheme(QLatin1String("kbreakout")));
+    fireAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
     connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
     connect(fireAction, &QAction::changed, canvasWidget, &CanvasWidget::updateFireShortcut);
-    actionCollection()->addAction(QLatin1String("fire"), fireAction);
+    actionCollection()->addAction(QStringLiteral("fire"), fireAction);
 
     if (m_cheatsEnabled) {
         QAction *cheatSkipLevelAction = new QAction(this);
         cheatSkipLevelAction->setText(i18n("Skip level"));
         actionCollection()->setDefaultShortcut(cheatSkipLevelAction, Qt::Key_S);
-        cheatSkipLevelAction->setIcon(QIcon::fromTheme(QLatin1String("kbreakout")));
+        cheatSkipLevelAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatSkipLevelAction, &QAction::triggered, this, &MainWindow::cheatSkipLevel);
-        actionCollection()->addAction(QLatin1String("cheatSkipLevel"), cheatSkipLevelAction);
+        actionCollection()->addAction(QStringLiteral("cheatSkipLevel"), cheatSkipLevelAction);
 
         QAction *cheatAddLifeAction = new QAction(this);
         cheatAddLifeAction->setText(i18n("Add life"));
         actionCollection()->setDefaultShortcut(cheatAddLifeAction, Qt::Key_L);
-        cheatAddLifeAction->setIcon(QIcon::fromTheme(QLatin1String("kbreakout")));
+        cheatAddLifeAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatAddLifeAction, &QAction::triggered, this, &MainWindow::cheatAddLife);
-        actionCollection()->addAction(QLatin1String("cheatAddLife"), cheatAddLifeAction);
+        actionCollection()->addAction(QStringLiteral("cheatAddLife"), cheatAddLifeAction);
     }
 
     pauseAction = KStandardGameAction::pause(this,
@@ -153,22 +153,22 @@ void MainWindow::setupActions()
 
 void MainWindow::configureSettings()
 {
-    if (KConfigDialog::showDialog(QLatin1Literal("settings"))) {
+    if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
         return;
     }
     // else it doesn't exist, thus create the dialog
 
-    KConfigDialog *dialog = new KConfigDialog(this, QLatin1Literal("settings"),
+    KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"),
             Settings::self());
     dialog->setModal(true);
 
     dialog->addPage(new KgThemeSelector(canvasWidget->getProvider()),
-                    i18n("Theme"), QLatin1Literal("games-config-theme"));
+                    i18n("Theme"), QStringLiteral("games-config-theme"));
 
     // TODO: when will the page be destroyed?
     dialog->addPage(new GeneralSettings(dialog),
                     i18nc("General settings", "General"),
-                    QLatin1Literal("games-config-options"));
+                    QStringLiteral("games-config-options"));
 
     dialog->show();
 }
@@ -176,7 +176,7 @@ void MainWindow::configureSettings()
 void MainWindow::showHighscores()
 {
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), QLatin1Literal("moves"));
+    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), QStringLiteral("moves"));
 
     ksdialog.exec();
 }
@@ -192,7 +192,7 @@ void MainWindow::startNewGame()
 
     if (ret == KMessageBox::Yes) {
         pauseAction->setChecked(false);
-        gameEngine->start(QLatin1Literal("default"));
+        gameEngine->start(QStringLiteral("default"));
     }
 }
 
@@ -213,7 +213,7 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
     QTime t = QTime(0, 0).addSecs(time);
     // TODO: check int overflow and fix 24 hours "overflow"
-    QString timeString = t.toString(QLatin1Literal("HH:mm"));
+    QString timeString = t.toString(QStringLiteral("HH:mm"));
 
     const int ALL_LEVELS = -1;
 
@@ -228,12 +228,12 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
     QPointer<KScoreDialog> ksdialog =
         new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), QLatin1Literal("moves"));
+    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), QStringLiteral("moves"));
     ksdialog->addScore(scoreInfo);
     ksdialog->exec();
 
     if (ksdialog) {
-        gameEngine->start(QLatin1Literal("default"));
+        gameEngine->start(QStringLiteral("default"));
         delete ksdialog;
     }
 }
@@ -314,7 +314,7 @@ void MainWindow::handleMousePressed()
                       i18n("Fire on click?"),
                       KStandardGuiItem::yes(),
                       KStandardGuiItem::no(),
-                      QLatin1Literal("dontAskFireOnClick") // doesntAskAgainName
+                      QStringLiteral("dontAskFireOnClick") // doesntAskAgainName
                   );
 
         if (res == KMessageBox::Yes) {
