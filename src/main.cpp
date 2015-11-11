@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
     aboutData.addCredit(i18n("Viranch Mehta"),
                         i18n("port to QtQuick"),
                         QStringLiteral("viranch.mehta@gmail.com"));
+    aboutData.setHomepage(QStringLiteral("https://games.kde.org/kbreakout"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
