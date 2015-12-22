@@ -27,7 +27,7 @@ class LevelLoader : public QObject
 {
     Q_OBJECT
 public:
-    LevelLoader(QObject *parent = 0);
+    explicit LevelLoader(QObject *parent = 0);
     ~LevelLoader();
 
     int level() const;

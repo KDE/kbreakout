@@ -26,7 +26,7 @@ class GameEngine : public QObject
 {
     Q_OBJECT
 public:
-    GameEngine(QObject *parent = 0);
+    explicit GameEngine(QObject *parent = 0);
     ~GameEngine();
 
 public slots:
