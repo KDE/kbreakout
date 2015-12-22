@@ -156,7 +156,7 @@ void LevelLoader::loadLevel()
             // Load one gift type
             loadGift(info);
         } else {
-            qCritical() << "Invalid tag name " << info.tagName() << " has occured in level "
+            qCritical() << "Invalid tag name " << info.tagName() << " has occurred in level "
                         << levelName << " in levelset " << m_levelname << endl;
         }
 
