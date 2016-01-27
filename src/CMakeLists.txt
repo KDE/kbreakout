@@ -1,4 +1,4 @@
-include_directories( ${CMAKE_SOURCE_DIR}/libKF5KDEGames )
+include_directories(${CMAKE_SOURCE_DIR}/libKF5KDEGames)
 
 set(kbreakout_SRCS
    main.cpp
@@ -18,7 +18,14 @@ ecm_add_app_icon(kbreakout_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kbreakout ${kbreakout_SRCS})
 
-target_link_libraries(kbreakout KF5KDEGames KF5KDEGamesPrivate Qt5::Xml KF5::DBusAddons KF5::XmlGui)
+target_link_libraries(kbreakout
+    KF5KDEGames
+    KF5KDEGamesPrivate
+    Qt5::Xml
+    KF5::DBusAddons
+    KF5::XmlGui
+    KF5::Crash
+)
 
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 install(FILES kbreakoutui.rc DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kbreakout)
