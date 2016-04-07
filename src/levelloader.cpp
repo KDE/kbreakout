@@ -66,7 +66,7 @@ void LevelLoader::setLevelset(const QString &levelname)
     // Loading document model
     // Locating the path in the filesystem
     QString path = QLatin1String("levelsets/") + m_levelname + QLatin1String(".levelset");
-    path =  QStandardPaths::locate(QStandardPaths::DataLocation, path);
+    path =  QStandardPaths::locate(QStandardPaths::AppDataLocation, path);
     // --
 
     delete m_levelset;
@@ -258,7 +258,7 @@ void LevelLoader::loadOldStyleLevel()
 
     // Loading the levelset
     QString path = QLatin1String("levelsets/") + m_levelname + QLatin1String(".levelset");
-    path = QStandardPaths::locate(QStandardPaths::DataLocation, path);
+    path = QStandardPaths::locate(QStandardPaths::AppDataLocation, path);
     KConfig file(path, KConfig::SimpleConfig);
 
     QString levelName(QLatin1String("level") + QString::number(m_level));
