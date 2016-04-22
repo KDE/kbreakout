@@ -261,4 +261,23 @@ Item {
         }
         onClicked: canvas.mousePressed()
     }
+
+    Item {
+        id: keyEventHandler
+        focus: true
+        anchors.fill: parent
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Right) {
+                updateBarDirection(1);
+            } else if (event.key == Qt.Key_Left) {
+                updateBarDirection(-1);
+            }
+        }
+
+        Keys.onReleased: {
+            if (event.key == Qt.Key_Right || event.key == Qt.Key_Left) {
+                updateBarDirection(0);
+            }
+        }
+    }
 }

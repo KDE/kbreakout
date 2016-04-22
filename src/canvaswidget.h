@@ -55,8 +55,6 @@ public slots:
     void resetMousePosition();
 
 protected:
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
     void focusOutEvent(QFocusEvent *event);
     void resizeEvent(QResizeEvent *event);
 
