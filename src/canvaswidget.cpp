@@ -21,7 +21,6 @@
 
 #include <QGraphicsObject>
 #include <QAction>
-#include <QKeyEvent>
 #include <QCursor>
 #include <QStandardPaths>
 #include <QQuickItem>
@@ -146,60 +145,6 @@ void CanvasWidget::resetMousePosition()
     int barPosition = rootObject()->property("barCenter").toInt();
     QPoint p = mapToGlobal(QPoint(barPosition, 0));
     cursor().setPos(p.x(), cursor().pos().y());
-}
-
-void CanvasWidget::keyPressEvent(QKeyEvent *event)
-{
-    if (event->isAutoRepeat()) {
-        QQuickWidget::keyPressEvent(event);
-        return;
-    }
-    int key = event->key();
-    switch (key) {
-    case Qt::Key_Right:
-        m_rightPressed = true;
-        m_barDirection = 1;
-        break;
-    case Qt::Key_Left:
-        m_leftPressed = true;
-        m_barDirection = -1;
-        break;
-    default:
-        QQuickWidget::keyPressEvent(event);
-        return;
-    }
-
-    updateBarDirection();
-}
-
-void CanvasWidget::keyReleaseEvent(QKeyEvent *event)
-{
-    if (event->isAutoRepeat()) {
-        QQuickWidget::keyReleaseEvent(event);
-        return;
-    }
-    int key = event->key();
-    switch (key) {
-    case Qt::Key_Right:
-        m_rightPressed = false;
-        break;
-    case Qt::Key_Left:
-        m_leftPressed = false;
-        break;
-    default:
-        QQuickWidget::keyReleaseEvent(event);
-        return;
-    }
-
-    if (!m_rightPressed && !m_leftPressed) {
-        m_barDirection = 0;
-    } else if (m_rightPressed && !m_leftPressed) {
-        m_barDirection = 1;
-    } else if (!m_rightPressed && m_leftPressed) {
-        m_barDirection = -1;
-    }
-
-    updateBarDirection();
 }
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
