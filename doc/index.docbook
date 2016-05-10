@@ -1,8 +1,5 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY kbreakout "<application>KBreakout</application>">
-<!ENTITY kappname "&kbreakout;">
-<!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
 <!ENTITY % addindex "IGNORE">
 ]>
@@ -35,12 +32,12 @@
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-05-03</date>
-<releaseinfo>1.0.0 (&kde; 4.11)</releaseinfo>
+<date>2016-05-09</date>
+<releaseinfo>1.2.0 (Applications 16.04)</releaseinfo>
 
 <abstract>
 <para>
-&kappname;, a Breakout-like game.</para>
+&kbreakout;, a Breakout-like game.</para>
 </abstract>
 
 <keywordset>
@@ -59,8 +56,19 @@
 <title>Introduction</title>
 
 <para>
-&kappname; is a Breakout-like game.
+&kbreakout; is a Breakout-like game.
 </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>&kbreakout; gameboard</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
 
 <para>
 The object of the game is to destroy as many bricks as possible without losing the ball.
@@ -80,6 +88,11 @@ Some bricks have a special behavior, or may let a gift fall down when hit. The g
 
 <para>
 To fire the ball press the spacebar, to move the bar use the mouse or the arrow keys. The ball will bounce in the direction of the side of the bar it bounced on hit, the more it bounces near the left end of the bar the more it will bounce toward the left, the same applies for the right side; if it bounces in the middle of the bar it will bounce straight toward the top.
+</para>
+
+<para>
+If you enable the option <guilabel>Fire on mouse click</guilabel> in the settings dialog, you can click with the &LMB; to fire.
+Enabling the option will make the game steal the mouse cursor, pause the game to get the cursor back.
 </para>
 
 </chapter>
@@ -599,7 +612,7 @@ Starts a new game.
 <varlistentry>
 <term><menuchoice>
 <shortcut>
-<keycap>&Esc;</keycap>
+<keycap>P</keycap>
 </shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Pause</guimenuitem>
@@ -682,7 +695,7 @@ of the &kde; Fundamentals.
 <row>
 <entry>Pause/Resume</entry>
 <entry>
-<keycap>&Esc;</keycap>
+<keycap>P</keycap>
 </entry>
 </row>
 <row>
@@ -729,7 +742,7 @@ of the &kde; Fundamentals.
 <title>Credits and License</title>
 
 <para>
-&kappname;
+&kbreakout;
 </para>
 <para>
 Program copyright 2008 by Fela Winkelmolen <email>fela.kde@gmail.com</email>
@@ -744,25 +757,6 @@ Documentation copyright 2008 by Fela Winkelmolen <email>fela.kde@gmail.com</emai
 &underGPL;
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kbreakout">
-<title>How to obtain &kappname;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-</appendix>
-
 
 &documentation.index; 
 </book>
