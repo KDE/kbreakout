@@ -17,6 +17,7 @@
 
 #include "levelloader.h"
 #include "globals.h"
+#include "kbreakout_debug.h"
 
 #include <QDomDocument>
 #include <QFile>
@@ -25,8 +26,6 @@
 // These can be removed when KConfig style levelsets are no longer supported
 #include <KConfig>
 #include <KConfigGroup>
-
-#include <QDebug>
 
 LevelLoader::LevelLoader(QObject *parent)
     : QObject(parent)
@@ -284,7 +283,7 @@ void LevelLoader::loadOldStyleLevel()
             return;
         }
 
-        qDebug() << line << endl;
+        qCDebug(KBREAKOUT_General) << line << endl;
 
         if (line.size() > WIDTH) {
             qCritical() << "Invalid file: too many bricks\n";

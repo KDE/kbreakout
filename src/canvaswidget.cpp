@@ -17,6 +17,7 @@
 
 #include "canvaswidget.h"
 #include "globals.h"
+#include "kbreakout_debug.h"
 #include "settings.h"
 
 #include <QGraphicsObject>
@@ -34,6 +35,9 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
     m_provider->discoverThemes("appdata", QStringLiteral("themes"));
     m_provider->setDeclarativeEngine(QStringLiteral("themeProvider"), engine());
     QString path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("qml/main.qml"));
+
+    qCDebug(KBREAKOUT_General) << "QtQuick QML file: " << path;
+
     setSource(QUrl::fromLocalFile(path));
 
     // forward signals from QML

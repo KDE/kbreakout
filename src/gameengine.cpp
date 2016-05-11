@@ -17,11 +17,11 @@
 
 #include "gameengine.h"
 
+#include "kbreakout_debug.h"
 #include "levelloader.h"
 
 #include <QTimer>
 #include <QTime>
-#include <QDebug>
 
 GameEngine::GameEngine(QObject *parent)
     : QObject(parent)
@@ -64,7 +64,7 @@ void GameEngine::loadNextLevel()
 
 inline void GameEngine::deleteAllObjects()
 {
-    /*qDebug() << "all object deleted";
+    /*qCDebug(KBREAKOUT_General) << "all object deleted";
     deleteMovingObjects();
     qDeleteAll(m_bricks);
     m_bricks.clear();
