@@ -601,12 +601,12 @@ function collideWithTwoBricks(ball, bricks) {
     var r1 = createRect(bricks[0]);
     var r2 = createRect(bricks[1]);
 
-    var area1 = intersectArea(ball, r1);
-    var area2 = intersectArea(ball, r2);
+    var area1 = intersectArea(ballRect, r1);
+    var area2 = intersectArea(ballRect, r2);
 
     if (area1 > area2) {
         // the area of intersection with the first brick is bigger
-        collideWithBrick(ball, bricsk[0]);
+        collideWithBrick(ball, bricks[0]);
     } else {
         collideWithBrick(ball, bricks[1]);
     }
