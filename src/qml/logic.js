@@ -713,6 +713,11 @@ function burn(brick) {
         singleShot(Globals.BURNING_SPEED, deleteBrick, new Array(brick.x, brick.y));
     }
 
+    if (brick.type == "HiddenBrick" && !brick.visible
+            || brick.type == "UnbreakableBrick") {
+        // Add to brick count when burning invisible and ubreakable bricks
+        ++remainingBricks;
+    }
     brick.type = "BurningBrick";
 }
 
