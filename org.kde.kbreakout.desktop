@@ -55,7 +55,6 @@ Type=Application
 Exec=kbreakout -qwindowtitle %c
 X-DocPath=kbreakout/index.html
 GenericName=Breakout-like Game
-GenericName[ast]=Xuegu asemeyáu a Breakout
 GenericName[bs]=Igra cigli
 GenericName[ca]=Joc similar al Breakout
 GenericName[ca@valencia]=Joc similar al Breakout
