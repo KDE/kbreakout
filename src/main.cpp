@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kbreakout");
 
     KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral("1.2.0"));
-    aboutData.setShortDescription(i18n("A breakout like game for KDE"));
+    aboutData.setShortDescription(i18n("A breakout like game by KDE"));
     aboutData.setLicense(KAboutLicense::GPL);
     aboutData.setCopyrightStatement(i18n("(c) 2007-2008 Fela Winkelmolen"));
     aboutData.addAuthor(i18n("Fela Winkelmolen"),
