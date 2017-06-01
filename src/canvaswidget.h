@@ -55,8 +55,8 @@ public slots:
     void resetMousePosition();
 
 protected:
-    void focusOutEvent(QFocusEvent *event);
-    void resizeEvent(QResizeEvent *event);
+    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
 
 private:
     //used when moving the bar with the keys
