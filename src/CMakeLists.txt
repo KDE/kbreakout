@@ -1,4 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/libKF5KDEGames)
 
 set(kbreakout_SRCS
    main.cpp
@@ -10,6 +9,7 @@ set(kbreakout_SRCS
    #generalsettings.cpp
 )
 
+qt5_add_resources(kbreakout_SRCS kbreakout.qrc)
 ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
 
 kconfig_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
@@ -29,5 +29,4 @@ target_link_libraries(kbreakout
 )
 
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
-install(FILES kbreakoutui.rc DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kbreakout)
 install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout)
