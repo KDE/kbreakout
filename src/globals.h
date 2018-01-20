@@ -28,7 +28,6 @@ const int REPAINT_INTERVAL = 16; // should be a power of two
 // how ofter the position of the item is updated (but not repainted)
 const int DEFAULT_UPDATE_INTERVAL = 13;
 //const int MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
-const int MINIMUM_UPDATE_INTERVAL = 8;
 // the higher this number the more the game becomes faster over time
 const qreal AUTO_SPEED_INCREASE = 1.05;
 
