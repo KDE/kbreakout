@@ -198,7 +198,12 @@ Item {
         id: gameTimer
         interval: Globals.REPAINT_INTERVAL
         repeat: true
-        onTriggered: Logic.detectCollisions();
+        onTriggered: {
+            for (x = 0; x < Logic.substeps; ++x) {
+                Logic.moveBalls()
+                Logic.detectCollisions()
+            }
+        }
     }
 
     Timer {

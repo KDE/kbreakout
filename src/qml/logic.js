@@ -34,6 +34,11 @@ var randomCounter = 0;
 var itemsGotDeleted;
 var singleShotComponent = Qt.createComponent("Singleshot.qml");
 
+// Substeps are used to avoid that the ball is moved too far in a single update,
+// possibly leading to buggy behavior. The movement is divided into multiple
+// substeps and collisions are detected after each substep.
+var substeps = 1;
+
 function remove(array, object) {
     array.splice(array.indexOf(object), 1);
 }
@@ -245,6 +250,7 @@ function resumeGame() {
     bar.reset();
     speed = 1.8;
     repaintInterval = 1;
+    substeps = 1;
     elapsedTimeTimer.restart();
     gameTimer.interval = Globals.REPAINT_INTERVAL;
     gameTimer.restart();
@@ -253,6 +259,19 @@ function resumeGame() {
 
 function endGame() {
     canvas.gameEnded(score, (gameWon ? -1 : level), elapsedTimeTimer.elapsedTime);
+}
+
+function moveBalls() {
+    for (var i in balls) {
+        var ball = balls[i]
+        if (ball.toBeFired) {
+            ball.posX = (bar.x + ball.barPosition*bar.width)/m_scale;
+        } else {
+            ball.posX += ball.directionX * speed;
+            ball.posY += ball.directionY * speed;
+        }
+
+    }
 }
 
 function detectCollisions() {
@@ -406,25 +425,14 @@ function updateBallDirection() {
 function changeSpeed(ratio) {
     speed *= ratio;
     if (speed > 2.0) {
-        // make sure the minimum update interval is respected
-        if (gameTimer.interval < Globals.MINIMUM_UPDATE_INTERVAL*2) {
-            speed = 2.0;
-            return;
-        }
-        // else
-
         // half the speed
         speed /= 2.0;
         // and double the number of ticks of the timer per time unit
-        gameTimer.interval /= 2;
-        repaintInterval *= 2;
-        gameTimer.restart();
+        substeps *= 2;
     }
     if (speed < 1.0) {
-        if (gameTimer.interval >= Globals.REPAINT_INTERVAL) {
-            if (speed < Globals.MINIMUM_SPEED) {
-                speed = Globals.MINIMUM_SPEED;
-            }
+        if (substeps == 1) {
+            speed = Globals.MINIMUM_SPEED
             return;
         }
         // else
@@ -432,9 +440,7 @@ function changeSpeed(ratio) {
         // double the speed
         speed *= 2.0;
         // and half the number of ticks of the timer per time unit
-        gameTimer.interval *= 2;
-        repaintInterval /= 2;
-        gameTimer.restart();
+        substeps /= 2;
     }
 }
 
@@ -527,11 +533,9 @@ function detectBallCollisions(ball) {
             }
 
             var angle = (Math.PI/3) * (barCenter-ballCenter)/(bar.width/2) + Math.PI/2;
-            var speed = Math.sqrt(Math.pow(ball.directionX, 2) +
-                                Math.pow(ball.directionY, 2));
 
-            ball.directionX =  Math.cos(angle) * speed;
-            ball.directionY = -Math.sin(angle) * speed;
+            ball.directionX =  Math.cos(angle) * Globals.BALL_SPEED;
+            ball.directionY = -Math.sin(angle) * Globals.BALL_SPEED;
         }
     } else { // bounce against the bricks (and optionally break them)
         handleBrickCollisions(ball);

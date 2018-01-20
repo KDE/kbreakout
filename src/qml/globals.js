@@ -25,7 +25,6 @@ var REPAINT_INTERVAL = 16; // should be a power of two
 // how ofter the position of the item is updated (but not repainted)
 var DEFAULT_UPDATE_INTERVAL = 13;
 //var MAXIMUM_UPDATE_INTERVAL = REPAINT_INTERVAL;
-var MINIMUM_UPDATE_INTERVAL = 8;
 // the higher this number the more the game becomes faster over time
 var AUTO_SPEED_INCREASE = 1.05;
 
