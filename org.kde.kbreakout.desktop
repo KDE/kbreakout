@@ -131,6 +131,7 @@ Comment[sv]=Klassiskt spelhallsspel
 Comment[tr]=Klasik arcade oyunu
 Comment[uk]=Класична аркадна гра
 Comment[x-test]=xxClassic arcade gamexx
+Comment[zh_CN]=经典街机游戏
 Comment[zh_TW]=傳統大型遊戲機遊戲
 StartupNotify=true
 X-DBUS-StartupType=Multi
