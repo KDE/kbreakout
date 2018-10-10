@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     gameEngine = new GameEngine(this);
 
-    m_cheatsEnabled = !qgetenv("KDE_DEBUG").isEmpty();
+    m_cheatsEnabled = !qEnvironmentVariableIsEmpty("KDE_DEBUG");
 
     connect(canvasWidget, &CanvasWidget::focusLost, this, &MainWindow::pauseGame);
 
