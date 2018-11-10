@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>org.kde.kbreakout.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KBreakOut</name>
+  <summary>KBreakOut is a Breakout-like game by KDE</summary>
+  <description>
+    <p>
+      The objective of KBreakOut is to destroy as many bricks as possible without losing the ball.
+    </p>
+    <p>
+        The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.
+    </p>
+  </description>
+  <url type="homepage">http://games.kde.org/game.php?game=kbreakout</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kbreakout</url>
+  <url type="help">https://docs.kde.org/?application=kbreakout</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kbreakout&amp;source=appdata</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Playing KBreakOut</caption>
+      <image>http://kde.org/images/screenshots/kbreakout.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+</component>
