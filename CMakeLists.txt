@@ -29,6 +29,8 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)
+include(ECMQtDeclareLoggingCategory)
+
 
 add_definitions(
     -DQT_USE_FAST_CONCATENATION
@@ -47,4 +49,6 @@ add_subdirectory(levelsets)
 add_subdirectory(doc)
 install(PROGRAMS org.kde.kbreakout.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kbreakout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+install( FILES kbreakout.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

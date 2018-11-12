@@ -4,10 +4,10 @@ set(kbreakout_SRCS
    mainwindow.cpp
    canvaswidget.cpp
    gameengine.cpp
-   kbreakout_debug.cpp
    levelloader.cpp
-   #generalsettings.cpp
 )
+
+ecm_qt_declare_logging_category(kbreakout_SRCS HEADER kbreakout_debug.h IDENTIFIER KBREAKOUT_General CATEGORY_NAME KBreakout)
 
 qt5_add_resources(kbreakout_SRCS kbreakout.qrc)
 ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
