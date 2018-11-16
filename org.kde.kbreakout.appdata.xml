@@ -6,6 +6,7 @@
   <name>KBreakOut</name>
   <name xml:lang="ca">KBreakOut</name>
   <name xml:lang="ca-valencia">KBreakOut</name>
+  <name xml:lang="de">KBreakOut</name>
   <name xml:lang="es">KBreakOut</name>
   <name xml:lang="nl">KBreakOut</name>
   <name xml:lang="pt">KBreakOut</name>
@@ -17,6 +18,7 @@
   <summary>KBreakOut is a Breakout-like game by KDE</summary>
   <summary xml:lang="ca">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
   <summary xml:lang="ca-valencia">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
+  <summary xml:lang="de">KBreakOut ist ein Breakout-ähnliches Spiel von KDE</summary>
   <summary xml:lang="es">KBreakOut es un juego semejante a Breakout creado por KDE</summary>
   <summary xml:lang="nl">KBreakOut is een Breakout-achtig spel door KDE</summary>
   <summary xml:lang="pt">O KBreakOut é um jogo do tipo Breakout pelo KDE</summary>
@@ -30,6 +32,7 @@
     </p>
     <p xml:lang="ca">L'objectiu del KBreakOut és destruir tants maons com sigui possible sense perdre la pilota.</p>
     <p xml:lang="ca-valencia">L'objectiu del KBreakOut és destruir tants maons com siga possible sense perdre la pilota.</p>
+    <p xml:lang="de">Das Ziel des Spiels ist es, so viele Steine wie möglich zu zerstören, ohne den Ball zu verlieren.</p>
     <p xml:lang="es">El objetivo de KBreakOut es destruir tantos ladrillos como sea posible sin perder la bola.</p>
     <p xml:lang="nl">Het doel van KBreakOut is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen.</p>
     <p xml:lang="pt">O objectivo do KBreakOut é destruir tantos tijolos quantos possíveis, sem perder a bola.</p>
@@ -42,6 +45,7 @@
     </p>
     <p xml:lang="ca">El jugador té un camp que conté maons. Una pilota viatja per la pantalla, rebotant a la paret superior i a les laterals. Quan col·lisiona amb un maó, la pilota rebota i el maó es destrueix. El jugador perd una vida quan la pilota toca la part inferior del camp. Per evitar-ho, el jugador té que usar una barra mòbil situada a la part inferior de la finestra per rebotar la pilota cap amunt. L'objectiu del joc és progressar pels nivells destruint tots els maons de cada nivell, intentant aconseguir una puntuació màxima.</p>
     <p xml:lang="ca-valencia">El jugador té un camp que conté maons. Una pilota viatja per la pantalla, rebotant a la paret superior i a les laterals. Quan col·lisiona amb un maó, la pilota rebota i el maó es destrueix. El jugador perd una vida quan la pilota toca la part inferior del camp. Per evitar-ho, el jugador té que usar una barra mòbil situada a la part inferior de la finestra per rebotar la pilota cap amunt. L'objectiu del joc és progressar pels nivells destruint tots els maons de cada nivell, intentant aconseguir una puntuació màxima.</p>
+    <p xml:lang="de">Dem Spieler wird ein Spielfeld mit einer Anzahl an Steinen präsentiert. Ein Ball wandert über den Bildschirm, springt dabei aber von der oberen und den seitlichen Wänden ab. Wenn ein Stein getroffen wird, springt der Ball ab und der Stein ist zerstört. Der Spieler verliert ein Leben, wenn der Ball das untere Ende des Feldes berührt. Um das zu verhindern, muss der Spieler den Ball mithilfe einer beweglichen Leiste am unteren Rand zurückspringen lassen. Das Ziel des Spieles ist es, die Ebenen zu durchlaufen, indem alle Steine darin zerstört werden, und dabei noch einen hohen Punktestand zu erreichen.</p>
     <p xml:lang="es">Al jugador se le muestra un campo de juego que contiene cierto número de ladrillos. Una bola se desplaza por la pantalla, rebotando en las paredes de la parte superior y de los laterales. Al alcanzar un ladrillo, la bola rebota y el ladrillo se destruye. El jugador pierde una vida cada vez que la bola toca la parte inferior del campo. Para evitar que ocurra esto, el jugador debe usar una barra móvil situada en la parte inferior de la ventana para hacer que la bola rebote hacia arriba. El objetivo del juego consiste en progresar a través de varios niveles destruyendo todos los ladrillos presentes en cada uno de ellos para tratar de obtener una alta puntuación.</p>
     <p xml:lang="nl">De speler krijgt een speelveld te zien met daarin een aantal bakstenen. Een bal verplaatst zich over het scherm, stuiterend tegen de bovenkant en de muren aan de zijkanten. Als het een baksteen raakt dan stuitert de bal weg en is de baksteen vernietigd. De speler verliest een leven als de bal de onderkant van het veld raakt. Om dit te voorkomen moet de speler een beweegbare speelbalk gebruiken om de de bal weer omhoog te stuiteren, die onderaan het venster te vinden is. Het doel van het spel is door de levels te gaan ondertussen alle aanwezige bakstenen vernietigend en een hoge score te krijgen.</p>
     <p xml:lang="pt">É apresentado ao jogador um campo de jogo que contém uma determinada quantidade de tijolos. Uma bola percorre o ecrã, fazendo ricochete nas paredes superior e laterais. Quando atingir um tijolo, a bola ressalta e o tijolo é destruído. O jogador perde uma vida quando a bola atingir o fundo do campo. Para evitar que isto aconteça, o jogador dispõe de uma barra móvel para ressaltar a bola para cima, situando-se esta barra no fundo da janela. O intuito do jogo é progredir pelos níveis, destruindo todos os tijolos presentes em cada um, tentando obter um recorde.</p>
@@ -59,6 +63,7 @@
       <caption>Playing KBreakOut</caption>
       <caption xml:lang="ca">Jugant al KBreakOut</caption>
       <caption xml:lang="ca-valencia">Jugant al KBreakOut</caption>
+      <caption xml:lang="de">KBreakOut spielen</caption>
       <caption xml:lang="es">Jugando a KBreakOut</caption>
       <caption xml:lang="nl">KBreakOut spelen</caption>
       <caption xml:lang="pt">Jogar ao KBreakOut</caption>
