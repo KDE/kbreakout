@@ -41,12 +41,14 @@
 
 class GeneralSettings : public QWidget
 {
+    Q_OBJECT
 public:
-    GeneralSettings(QWidget *parent)
+    explicit GeneralSettings(QWidget *parent)
         : QWidget(parent)
     {
         ui.setupUi(this);
     }
+    ~GeneralSettings() {}
 private:
     Ui::GeneralSettings ui;
 };
@@ -324,3 +326,4 @@ void MainWindow::handleMousePressed()
     }
 }
 
+#include "mainwindow.moc"

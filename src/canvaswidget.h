@@ -24,27 +24,27 @@ class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT
 public:
-    explicit CanvasWidget(QWidget *parent = 0);
-    virtual ~CanvasWidget();
+    explicit CanvasWidget(QWidget *parent = nullptr);
+    ~CanvasWidget() override;
     KgThemeProvider *getProvider()
     {
         return m_provider;
     }
 
-signals:
+Q_SIGNALS:
     void levelComplete();
     void gameEnded(int score, int level, int elapsedTime);
     void focusLost();
     void mousePressed();
 
-public slots:
+public Q_SLOTS:
     void fire();
     void cheatSkipLevel();
     void cheatAddLife();
     void setGamePaused(bool paused);
     void updateFireShortcut();
 
-public slots:
+public Q_SLOTS:
     void newGame();
     void showLine(QString line, int lineNumber);
     void putGift(QString gift, int times, QString pos);
@@ -55,8 +55,8 @@ public slots:
     void resetMousePosition();
 
 protected:
-    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
-    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
+    void focusOutEvent(QFocusEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     //used when moving the bar with the keys

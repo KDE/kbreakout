@@ -30,9 +30,8 @@
 LevelLoader::LevelLoader(QObject *parent)
     : QObject(parent)
 {
-    m_levelname = QString();
     m_level = 0;
-    m_levelset = 0;
+    m_levelset = nullptr;
 }
 
 LevelLoader::~LevelLoader()
@@ -73,7 +72,7 @@ void LevelLoader::setLevelset(const QString &levelname)
     m_levelset = new QDomDocument(m_levelname);
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCritical() << "Can't open file " << path << endl;
+        qCCritical(KBREAKOUT_General) << "Can't open file " << path << endl;
     }
 
     QString errorString;
@@ -86,9 +85,9 @@ void LevelLoader::setLevelset(const QString &levelname)
         if (kconfigfile.hasGroup(QStringLiteral("level1"))) {
             // Levelset is in KConfig style
             m_oldstyle = true;
-            qCritical() << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
+            qCCritical(KBREAKOUT_General) << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
         } else {
-            qCritical() << "Can't read levelset from " << path << "\nError: " << errorString <<
+            qCCritical(KBREAKOUT_General) << "Can't read levelset from " << path << "\nError: " << errorString <<
                         " in Line " << errorLine << ", Column " << errorColumn << endl;
         }
     } else {
@@ -109,8 +108,8 @@ void LevelLoader::loadLevel()
     // Selecting the correct level
     m_level++;
 
-    if (m_levelset == 0) {
-        qCritical() << "Error: No levelset specified" << endl;
+    if (m_levelset == nullptr) {
+        qCCritical(KBREAKOUT_General) << "Error: No levelset specified" << endl;
         return;
     }
 
@@ -130,7 +129,7 @@ void LevelLoader::loadLevel()
     QDomAttr attribute;
     QDomElement level = node.toElement();
     if (level.isNull()) {
-        qCritical() << "Invalid Levelset " << m_levelname << ": Can't read level information";
+        qCCritical(KBREAKOUT_General) << "Invalid Levelset " << m_levelname << ": Can't read level information";
     }
     attribute = level.attributeNode(QStringLiteral("Name"));
     QString levelName;
@@ -145,7 +144,7 @@ void LevelLoader::loadLevel()
     while (!node.isNull()) {
         QDomElement info = node.toElement();
         if (info.isNull()) {
-            qCritical() << "Invalid levelset " << m_levelname << ": Can't read level information.";
+            qCCritical(KBREAKOUT_General) << "Invalid levelset " << m_levelname << ": Can't read level information.";
         }
 
         if (info.tagName() == QLatin1String("Line")) {
@@ -155,7 +154,7 @@ void LevelLoader::loadLevel()
             // Load one gift type
             loadGift(info);
         } else {
-            qCritical() << "Invalid tag name " << info.tagName() << " has occurred in level "
+            qCCritical(KBREAKOUT_General) << "Invalid tag name " << info.tagName() << " has occurred in level "
                         << levelName << " in levelset " << m_levelname << endl;
         }
 
@@ -190,7 +189,7 @@ void LevelLoader::loadLine(QDomElement lineNode)
     }
 
     if (line.size() > WIDTH) {
-        qCritical() << "Invalid levelset " << m_levelname << ": too many bricks in line "
+        qCCritical(KBREAKOUT_General) << "Invalid levelset " << m_levelname << ": too many bricks in line "
                     << m_lineNumber << endl;
     }
 
@@ -279,14 +278,14 @@ void LevelLoader::loadOldStyleLevel()
         // one line of bricks to be converted
         QString line = lvl.readEntry(key, "error");
         if (line == QLatin1String("error")) {
-            qCritical() << "Something strange happened!!\n";
+            qCCritical(KBREAKOUT_General) << "Something strange happened!!\n";
             return;
         }
 
         qCDebug(KBREAKOUT_General) << line << endl;
 
         if (line.size() > WIDTH) {
-            qCritical() << "Invalid file: too many bricks\n";
+            qCCritical(KBREAKOUT_General) << "Invalid file: too many bricks\n";
         }
 
         emit newLine(line, y);
@@ -305,13 +304,13 @@ void LevelLoader::loadOldStyleLevel()
 
         QString line = lvl.readEntry(key, "error");
         if (line == QLatin1String("error")) {
-            qCritical() << "Impossible reading " << m_level << ":" << key << endl;
+            qCCritical(KBREAKOUT_General) << "Impossible reading " << m_level << ":" << key << endl;
             return;
         }
         bool ok;
         int times = line.toInt(&ok);
         if (!ok) {
-            qCritical() << m_levelname << ":" << key << " invalid number!!" << endl;
+            qCCritical(KBREAKOUT_General) << m_levelname << ":" << key << " invalid number!!" << endl;
             continue;
         }
 

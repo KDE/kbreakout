@@ -27,7 +27,7 @@ class LevelLoader : public QObject
 {
     Q_OBJECT
 public:
-    explicit LevelLoader(QObject *parent = 0);
+    explicit LevelLoader(QObject *parent = nullptr);
     ~LevelLoader();
 
     int level() const;
@@ -37,7 +37,7 @@ public:
 
     void loadLevel();
 
-signals:
+Q_SIGNALS:
     void newLine(QString line, int lineNumber);
     void newGift(QString giftType, int times, QString position);
 

@@ -26,17 +26,17 @@ class GameEngine : public QObject
 {
     Q_OBJECT
 public:
-    explicit GameEngine(QObject *parent = 0);
+    explicit GameEngine(QObject *parent = nullptr);
     ~GameEngine();
 
-public slots:
+public Q_SLOTS:
     void start(const QString &levelset);
     void loadNextLevel();
 
-signals:
+Q_SIGNALS:
     void loadingNewGame();
-    void newLine(QString line, int lineNumber);
-    void newGift(QString gift, int times, QString pos);
+    void newLine(const QString &line, int lineNumber);
+    void newGift(const QString &gift, int times, const QString &pos);
     void ready();
 
 private:
@@ -44,7 +44,7 @@ private:
 
     LevelLoader *m_levelLoader;
 
-private slots:
+private Q_SLOTS:
     void loadLevel();
 };
 
