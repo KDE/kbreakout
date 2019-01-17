@@ -20,6 +20,7 @@
   <name xml:lang="uk">KBreakOut</name>
   <name xml:lang="x-test">xxKBreakOutxx</name>
   <name xml:lang="zh-CN">KBreakOut</name>
+  <name xml:lang="zh-TW">KBreakOut</name>
   <summary>KBreakOut is a Breakout-like game by KDE</summary>
   <summary xml:lang="ca">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
   <summary xml:lang="ca-valencia">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
@@ -93,6 +94,7 @@
       <caption xml:lang="sv">Spela Utbrytning</caption>
       <caption xml:lang="uk">Гра у KBreakOut</caption>
       <caption xml:lang="x-test">xxPlaying KBreakOutxx</caption>
+      <caption xml:lang="zh-TW">遊玩 KBreakOut</caption>
       <image>http://kde.org/images/screenshots/kbreakout.png</image>
     </screenshot>
   </screenshots>
