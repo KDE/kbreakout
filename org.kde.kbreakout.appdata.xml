@@ -11,6 +11,7 @@
   <name xml:lang="es">KBreakOut</name>
   <name xml:lang="fr">KBreakOut</name>
   <name xml:lang="gl">KBreakOut</name>
+  <name xml:lang="id">KBreakOut</name>
   <name xml:lang="nl">KBreakOut</name>
   <name xml:lang="pl">KBreakOut</name>
   <name xml:lang="pt">KBreakOut</name>
@@ -29,6 +30,7 @@
   <summary xml:lang="es">KBreakOut es un juego semejante a Breakout creado por KDE</summary>
   <summary xml:lang="fr">KBreakOut est un jeu de type Breakout par KDE</summary>
   <summary xml:lang="gl">KBreakOut é un xogo de rachar bloques de KDE</summary>
+  <summary xml:lang="id">KBreakOut adalah sebuah permainan seperti Breakout oleh KDE</summary>
   <summary xml:lang="nl">KBreakOut is een Breakout-achtig spel door KDE</summary>
   <summary xml:lang="pl">KBreakOut jest grą przebij-się dla KDE</summary>
   <summary xml:lang="pt">O KBreakOut é um jogo do tipo Breakout pelo KDE</summary>
@@ -47,6 +49,7 @@
     <p xml:lang="es">El objetivo de KBreakOut es destruir tantos ladrillos como sea posible sin perder la bola.</p>
     <p xml:lang="fr">L'objectif de KBreakOut est de casser le plus de briques possibles sans faire tomber la balle.</p>
     <p xml:lang="gl">O obxectivo de KBreakOut é destruír tantos bloques como for posíbel sen perder a bóla.</p>
+    <p xml:lang="id">Sasaran KBreakOut adalah menghancurkan semua bata yang memungkinkan tanpa peluputan bola.</p>
     <p xml:lang="nl">Het doel van KBreakOut is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen.</p>
     <p xml:lang="pl">Celem w KBreakOut jest zniszczenie tylu cegieł ile to możliwe bez utraty piłki.</p>
     <p xml:lang="pt">O objectivo do KBreakOut é destruir tantos tijolos quantos possíveis, sem perder a bola.</p>
@@ -64,6 +67,7 @@
     <p xml:lang="es">Al jugador se le muestra un campo de juego que contiene cierto número de ladrillos. Una bola se desplaza por la pantalla, rebotando en las paredes de la parte superior y de los laterales. Al alcanzar un ladrillo, la bola rebota y el ladrillo se destruye. El jugador pierde una vida cada vez que la bola toca la parte inferior del campo. Para evitar que ocurra esto, el jugador debe usar una barra móvil situada en la parte inferior de la ventana para hacer que la bola rebote hacia arriba. El objetivo del juego consiste en progresar a través de varios niveles destruyendo todos los ladrillos presentes en cada uno de ellos para tratar de obtener una alta puntuación.</p>
     <p xml:lang="fr">Le joueur fait face à un mur comprenant un certain nombre de briques. Une balle traverse l'écran en rebondissant sur les murs latéraux et supérieurs. Lorsqu'une brique est touchée, la balle rebondit et la brique est détruite. Le joueur perd une vie si la balle touche le bas de l'écran. Pour survivre, le joueur doit utiliser une barre qui se déplace latéralement en bas de la fenêtre et faire rebondir la balle. L'objectif du jeu est de progresser vers les niveaux supérieurs en détruisant la totalité des briques afin de se hisser au palmarès des meilleurs scores.</p>
     <p xml:lang="gl">Ao xogador preséntaselle un campo de xogo que contén determinada cantidade de bloques. Unha bóla atravesa a pantalla, rebotando nas paredes superior e laterais. Cando bate nun bloque, a bóla rebota e o bloque é destruído. O xogador perde unha vida cando a bóla toca o fondo do campo. Para evitar que isto ocorra, o xogador ten que usar unha barra móbil para facer rebotar a bóla cara riba, situada no fondo da xanela. O obxectivo do xogo é avanzar polos niveis destruíndo todos os bloques que aparezan en cada un e intentando obter unha puntuación máxima.</p>
+    <p xml:lang="id">Pemain disajikan dengan bidang permainan yang berisi sejumlah batu bata. Sebuah bola bergerak lalu-lalang melintasi layar, memantul dari atas dan samping dinding. Ketika batu bata terpukul bola yang memantul dan batu bata hancur. Pemain kehilangan hidup ketika bola menyentuh bagian bawah bidang. Untuk mencegah ini dari yang terjadi, pemain harus menggunakan bilah yang bisa digerakkan untuk memantulkan bola ke atas, terletak di bagian bawah window. Tujuan dari permainan ini adalah progres melalui level menghancurkan semua batu bata yang ada di tempat masing-masing, dan mencoba untuk mendapatkan skor tinggi.</p>
     <p xml:lang="nl">De speler krijgt een speelveld te zien met daarin een aantal bakstenen. Een bal verplaatst zich over het scherm, stuiterend tegen de bovenkant en de muren aan de zijkanten. Als het een baksteen raakt dan stuitert de bal weg en is de baksteen vernietigd. De speler verliest een leven als de bal de onderkant van het veld raakt. Om dit te voorkomen moet de speler een beweegbare speelbalk gebruiken om de de bal weer omhoog te stuiteren, die onderaan het venster te vinden is. Het doel van het spel is door de levels te gaan ondertussen alle aanwezige bakstenen vernietigend en een hoge score te krijgen.</p>
     <p xml:lang="pl">Graczowi przedstawia się pole gry, które zawiera cegły. Kulka przemierza ekran odbijając się od górnych i bocznych ścian. Po uderzeniu w cegłę, kulka odbija się, a cegła zostaje zniszczona. Gracz traci życie, gdy kulka dotknie dołu pola. Aby tego uniknąć, gracz musi użyć ruchomej paletki na dole okna, aby odbić kulkę w górę. Celem gry jest przejście wszystkich poziomów poprzez zbicie obecnych w nich cegieł, uzyskując przy tym najwyższy wynik.</p>
     <p xml:lang="pt">É apresentado ao jogador um campo de jogo que contém uma determinada quantidade de tijolos. Uma bola percorre o ecrã, fazendo ricochete nas paredes superior e laterais. Quando atingir um tijolo, a bola ressalta e o tijolo é destruído. O jogador perde uma vida quando a bola atingir o fundo do campo. Para evitar que isto aconteça, o jogador dispõe de uma barra móvel para ressaltar a bola para cima, situando-se esta barra no fundo da janela. O intuito do jogo é progredir pelos níveis, destruindo todos os tijolos presentes em cada um, tentando obter um recorde.</p>
@@ -86,6 +90,7 @@
       <caption xml:lang="es">Jugando a KBreakOut</caption>
       <caption xml:lang="fr">Partie de KBreakOut en cours</caption>
       <caption xml:lang="gl">Xogando a KBreakOut</caption>
+      <caption xml:lang="id">Memainkan KBreakOut</caption>
       <caption xml:lang="nl">KBreakOut spelen</caption>
       <caption xml:lang="pl">Granie w KBreakOut</caption>
       <caption xml:lang="pt">Jogar ao KBreakOut</caption>
