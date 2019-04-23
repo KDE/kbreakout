@@ -75,14 +75,14 @@ void CanvasWidget::newGame()
     setCursor(QCursor(Qt::BlankCursor));
 }
 
-void CanvasWidget::showLine(QString line, int lineNumber)
+void CanvasWidget::showLine(const QString &line, int lineNumber)
 {
     QMetaObject::invokeMethod(rootObject(), "loadLine",
                               Q_ARG(QVariant, line),
                               Q_ARG(QVariant, lineNumber));
 }
 
-void CanvasWidget::putGift(QString gift, int times, QString pos)
+void CanvasWidget::putGift(const QString &gift, int times, const QString &pos)
 {
     QMetaObject::invokeMethod(rootObject(), "loadGift",
                               Q_ARG(QVariant, gift),

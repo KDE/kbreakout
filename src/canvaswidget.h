@@ -46,8 +46,8 @@ public Q_SLOTS:
 
 public Q_SLOTS:
     void newGame();
-    void showLine(QString line, int lineNumber);
-    void putGift(QString gift, int times, QString pos);
+    void showLine(const QString &line, int lineNumber);
+    void putGift(const QString &gift, int times, const QString &pos);
     void updateBarDirection();
     void startGame();
     void updateCursor();
