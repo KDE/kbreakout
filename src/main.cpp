@@ -24,6 +24,7 @@
 #include <Kdelibs4ConfigMigrator>
 #include <KDBusService>
 #include "mainwindow.h"
+#include "kbreakout_version.h"
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     migrate.migrate();
     KLocalizedString::setApplicationDomain("kbreakout");
 
-    KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral("1.2.0"));
+    KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral(KBREAKOUT_VERSION_STRING));
     aboutData.setShortDescription(i18n("A breakout like game by KDE"));
     aboutData.setLicense(KAboutLicense::GPL);
     aboutData.setCopyrightStatement(i18n("(c) 2007-2008 Fela Winkelmolen"));
