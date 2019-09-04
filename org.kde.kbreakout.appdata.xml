@@ -92,7 +92,7 @@
     <p xml:lang="uk">Перед гравцем буде показано ігрове поле з декількома блоками. полем пересуватиметься кулька, яка відбиватиметься від бічних і верхньої стін. Якщо кулька влучить у блок, вона відіб’ється від нього, а сам блок буде зруйновано. Якщо кулька торкнеться нижньої стіни ігрового поля, гравець втратить одне життя. Щоб цього не сталося, гравцеві слід буде пересувати розташовану у нижній частині ігрового поля рисочку, якою можна відбивати кульку угору. Метою гри є просування рівнями шляхом руйнування всіх блоків на кожному з пройдених рівнів, а також збільшення очкового результату гри.</p>
     <p xml:lang="x-test">xxThe player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.xx</p>
   </description>
-  <url type="homepage">http://games.kde.org/game.php?game=kbreakout</url>
+  <url type="homepage">https://kde.org/applications/games/org.kde.kbreakout</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kbreakout</url>
   <url type="help">https://docs.kde.org/?application=kbreakout</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kbreakout&amp;source=appdata</url>
@@ -119,7 +119,7 @@
       <caption xml:lang="uk">Гра у KBreakOut</caption>
       <caption xml:lang="x-test">xxPlaying KBreakOutxx</caption>
       <caption xml:lang="zh-TW">KBreakOut 遊玩畫面</caption>
-      <image>http://kde.org/images/screenshots/kbreakout.png</image>
+      <image>https://kde.org/images/screenshots/kbreakout.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
