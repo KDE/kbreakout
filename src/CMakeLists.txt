@@ -7,7 +7,7 @@ set(kbreakout_SRCS
    levelloader.cpp
 )
 
-ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KBREAKOUT VERSION_HEADER kbreakout_version.h)
+ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBREAKOUT VERSION_HEADER kbreakout_version.h)
 
 ecm_qt_declare_logging_category(kbreakout_SRCS HEADER kbreakout_debug.h IDENTIFIER KBREAKOUT_General CATEGORY_NAME KBreakout)
 
