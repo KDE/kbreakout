@@ -26,7 +26,6 @@
 GameEngine::GameEngine(QObject *parent)
     : QObject(parent)
 {
-    qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
     m_levelLoader = new LevelLoader(this);
     connect(m_levelLoader, &LevelLoader::newLine, this, &GameEngine::newLine);
     connect(m_levelLoader, &LevelLoader::newGift, this, &GameEngine::newGift);
