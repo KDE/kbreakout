@@ -72,7 +72,7 @@ void LevelLoader::setLevelset(const QString &levelname)
     m_levelset = new QDomDocument(m_levelname);
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCCritical(KBREAKOUT_General) << "Can't open file " << path << endl;
+        qCCritical(KBREAKOUT_General) << "Can't open file " << path;
     }
 
     QString errorString;
@@ -88,7 +88,7 @@ void LevelLoader::setLevelset(const QString &levelname)
             qCCritical(KBREAKOUT_General) << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
         } else {
             qCCritical(KBREAKOUT_General) << "Can't read levelset from " << path << "\nError: " << errorString <<
-                        " in Line " << errorLine << ", Column " << errorColumn << endl;
+                                             " in Line " << errorLine << ", Column " << errorColumn;
         }
     } else {
         // Successfully loaded QDom-style levelset
@@ -109,7 +109,7 @@ void LevelLoader::loadLevel()
     m_level++;
 
     if (m_levelset == nullptr) {
-        qCCritical(KBREAKOUT_General) << "Error: No levelset specified" << endl;
+        qCCritical(KBREAKOUT_General) << "Error: No levelset specified";
         return;
     }
 
@@ -155,7 +155,7 @@ void LevelLoader::loadLevel()
             loadGift(info);
         } else {
             qCCritical(KBREAKOUT_General) << "Invalid tag name " << info.tagName() << " has occurred in level "
-                        << levelName << " in levelset " << m_levelname << endl;
+                                          << levelName << " in levelset " << m_levelname;
         }
 
         node = node.nextSibling();
@@ -190,7 +190,7 @@ void LevelLoader::loadLine(QDomElement lineNode)
 
     if (line.size() > WIDTH) {
         qCCritical(KBREAKOUT_General) << "Invalid levelset " << m_levelname << ": too many bricks in line "
-                    << m_lineNumber << endl;
+                                      << m_lineNumber;
     }
 
     emit newLine(line, m_lineNumber);
@@ -282,7 +282,7 @@ void LevelLoader::loadOldStyleLevel()
             return;
         }
 
-        qCDebug(KBREAKOUT_General) << line << endl;
+        qCDebug(KBREAKOUT_General) << line;
 
         if (line.size() > WIDTH) {
             qCCritical(KBREAKOUT_General) << "Invalid file: too many bricks\n";
@@ -304,13 +304,13 @@ void LevelLoader::loadOldStyleLevel()
 
         QString line = lvl.readEntry(key, "error");
         if (line == QLatin1String("error")) {
-            qCCritical(KBREAKOUT_General) << "Impossible reading " << m_level << ":" << key << endl;
+            qCCritical(KBREAKOUT_General) << "Impossible reading " << m_level << ":" << key;
             return;
         }
         bool ok;
         int times = line.toInt(&ok);
         if (!ok) {
-            qCCritical(KBREAKOUT_General) << m_levelname << ":" << key << " invalid number!!" << endl;
+            qCCritical(KBREAKOUT_General) << m_levelname << ":" << key << " invalid number!!";
             continue;
         }
 
