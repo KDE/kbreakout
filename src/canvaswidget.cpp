@@ -46,8 +46,7 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
     connect(rootObject(), SIGNAL(mousePressed()), this, SIGNAL(mousePressed()));
 
     // for handling mouse cursor
-    connect(rootObject(), SIGNAL(pausedChanged()), this, SLOT(updateCursor()));
-    connect(this, &CanvasWidget::gameEnded, this, &CanvasWidget::resetCursor);
+    connect(rootObject(), SIGNAL(ballMovingChanged()), this, SLOT(updateCursor()));
 }
 
 CanvasWidget::~CanvasWidget()
@@ -68,11 +67,17 @@ void CanvasWidget::resizeEvent(QResizeEvent *event)
     QMetaObject::invokeMethod(rootObject(), "updateGeometry");
 }
 
+bool CanvasWidget::event(QEvent *event)
+{
+    if (event->type() == QEvent::Leave) {
+        updateCursor();
+    }
+    return KgDeclarativeView::event(event);
+}
+
 void CanvasWidget::newGame()
 {
     QMetaObject::invokeMethod(rootObject(), "reset");
-
-    setCursor(QCursor(Qt::BlankCursor));
 }
 
 void CanvasWidget::showLine(const QString &line, int lineNumber)
@@ -122,33 +127,34 @@ void CanvasWidget::updateBarDirection()
                               Q_ARG(QVariant, m_barDirection));
 }
 
-void CanvasWidget::resetCursor()
-{
-    setCursor(QCursor(Qt::ArrowCursor));
-}
-
 void CanvasWidget::updateCursor()
 {
-    bool paused = rootObject()->property("paused").toBool();
+    const bool ballMoving = rootObject()->property("ballMoving").toBool();
 
-    if (paused) {
-        resetCursor();
-    } else {
-        // FIXME: move the cursor to where the bar is
+    if (ballMoving) {
         resetMousePosition();
-        QCursor newCursor(Qt::BlankCursor);
-        newCursor.setPos(cursor().pos());
-        setCursor(newCursor);
+        setCursor(Qt::BlankCursor);
+    } else {
+        setCursor(Qt::ArrowCursor);
     }
 }
 
 void CanvasWidget::resetMousePosition()
 {
-    // FIXME: the cursor's position is supposed to be reset,
-    // just doesn't work!
-    int barPosition = rootObject()->property("barCenter").toInt();
-    QPoint p = mapToGlobal(QPoint(barPosition, 0));
-    cursor().setPos(p.x(), cursor().pos().y());
+    const QQuickItem *jailItem = rootObject()->property("jailItem").value<QQuickItem*>();
+    const QPoint jailItemTopLeft = mapToGlobal(QPoint(jailItem->x(), jailItem->y()));
+    QPoint p = QCursor::pos();
+    if (p.x() < jailItemTopLeft.x()) {
+        QCursor::setPos(jailItemTopLeft.x(), p.y());
+    } else if (p.x() > jailItemTopLeft.x() + jailItem->width()) {
+        QCursor::setPos(jailItemTopLeft.x() + jailItem->width(), p.y());
+    }
+
+    if (p.y() < jailItemTopLeft.y()) {
+        QCursor::setPos(p.x(), jailItemTopLeft.y());
+    } else if (p.y() > jailItemTopLeft.y() + jailItem->height()) {
+        QCursor::setPos(p.x(), jailItemTopLeft.y() + jailItem->height());
+    }
 }
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)

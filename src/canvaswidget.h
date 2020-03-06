@@ -51,12 +51,12 @@ public Q_SLOTS:
     void updateBarDirection();
     void startGame();
     void updateCursor();
-    void resetCursor();
     void resetMousePosition();
 
 protected:
     void focusOutEvent(QFocusEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    bool event(QEvent *event) override;
 
 private:
     //used when moving the bar with the keys

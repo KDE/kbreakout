@@ -31,6 +31,8 @@ Item {
     property bool paused: false
     property bool gameOver: false
     property bool gameWon: false
+    readonly property Item jailItem: bgOverlay
+    readonly property bool ballMoving: !paused && fireBallMessage.opacity !== 1
 
     function updateGeometry() {
         var bw = Globals.BRICK_WIDTH*Globals.WIDTH + 1;
