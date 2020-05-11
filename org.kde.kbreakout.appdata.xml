@@ -18,6 +18,7 @@
   <name xml:lang="it">KBreakOut</name>
   <name xml:lang="ko">KBreakOut</name>
   <name xml:lang="nl">KBreakOut</name>
+  <name xml:lang="nn">KBreakOut</name>
   <name xml:lang="pl">KBreakOut</name>
   <name xml:lang="pt">KBreakOut</name>
   <name xml:lang="pt-BR">KBreakOut</name>
@@ -42,6 +43,7 @@
   <summary xml:lang="it">KBreakOut è un gioco simile a Breakout della comunità KDE.</summary>
   <summary xml:lang="ko">KBreakOut은 KDE의 벽돌 깨기 게임입니다</summary>
   <summary xml:lang="nl">KBreakOut is een Breakout-achtig spel door KDE</summary>
+  <summary xml:lang="nn">KBreakOut er eit Breakout-liknande spel frå KDE</summary>
   <summary xml:lang="pl">KBreakOut jest grą przebij-się dla KDE</summary>
   <summary xml:lang="pt">O KBreakOut é um jogo do tipo Breakout pelo KDE</summary>
   <summary xml:lang="pt-BR">O KBreakOut é um jogo semelhante ao Breakout (quebra de barreiras) do KDE</summary>
@@ -66,6 +68,7 @@
     <p xml:lang="it">L'obiettivo di KBreakOut è quello di distruggere più mattonelle possibili senza perdere la palla.</p>
     <p xml:lang="ko">KBreakOut의 목표는 공을 잃지 않고 최대한 많은 벽돌을 깨는 것입니다.</p>
     <p xml:lang="nl">Het doel van KBreakOut is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen.</p>
+    <p xml:lang="nn">Målet i KBreakOut er å øydeleggja så mange brikker som mogleg utan å mista ballen.</p>
     <p xml:lang="pl">Celem w KBreakOut jest zniszczenie tylu cegieł ile to możliwe bez utraty piłki.</p>
     <p xml:lang="pt">O objectivo do KBreakOut é destruir tantos tijolos quantos possíveis, sem perder a bola.</p>
     <p xml:lang="pt-BR">O objetivo do KBreakOut é destruir o maior número possível de tijolos sem deixar a bola cair.</p>
@@ -116,6 +119,7 @@
       <caption xml:lang="it">Giocare a KBreakOut</caption>
       <caption xml:lang="ko">KBreakOut 플레이</caption>
       <caption xml:lang="nl">KBreakOut spelen</caption>
+      <caption xml:lang="nn">Spelar KBreakOut</caption>
       <caption xml:lang="pl">Granie w KBreakOut</caption>
       <caption xml:lang="pt">Jogar ao KBreakOut</caption>
       <caption xml:lang="pt-BR">Jogando KBreakOut</caption>
