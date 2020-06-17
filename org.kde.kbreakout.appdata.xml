@@ -26,7 +26,6 @@
   <name xml:lang="sk">KBreakOut</name>
   <name xml:lang="sv">Utbrytning</name>
   <name xml:lang="uk">KBreakOut</name>
-  <name xml:lang="x-test">xxKBreakOutxx</name>
   <name xml:lang="zh-CN">KBreakOut</name>
   <name xml:lang="zh-TW">KBreakOut</name>
   <summary>KBreakOut is a Breakout-like game by KDE</summary>
@@ -50,7 +49,6 @@
   <summary xml:lang="sk">KBreakOut je hra KDE podobná úteku</summary>
   <summary xml:lang="sv">Utbrytning är ett spel som liknar Breakout av KDE</summary>
   <summary xml:lang="uk">KBreakOut — це гра, схожа на Breakout, від KDE</summary>
-  <summary xml:lang="x-test">xxKBreakOut is a Breakout-like game by KDExx</summary>
   <description>
     <p>
       The objective of KBreakOut is to destroy as many bricks as possible without losing the ball.
@@ -75,7 +73,6 @@
     <p xml:lang="sk">Cieľom programu KBreakOut je zničiť čo najviac tehál bez straty lopty.</p>
     <p xml:lang="sv">Syftet med Utbrytning är att förstöra så många tegelstenar som möjligt utan att förlora bollen.</p>
     <p xml:lang="uk">Метою гри є знищити якомога більше блоків без втрати кульки.</p>
-    <p xml:lang="x-test">xxThe objective of KBreakOut is to destroy as many bricks as possible without losing the ball.xx</p>
     <p>
         The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.
     </p>
@@ -98,7 +95,6 @@
     <p xml:lang="sk">Hráč dostane hracie pole obsahujúce množstvo tehál. Guľa putuje po obrazovke a odráža sa od hornej a bočnej steny. Keď je zasiahnutá tehla, lopta sa odrazí a tehla je zničená. Hráč sa stratí na živote, keď sa lopta dotkne spodnej časti ihriska. Aby sa tomu zabránilo, musí hráč použiť pohyblivú tyč na odrazenie lopty smerom nahor, ktorá sa nachádza v dolnej časti okna. Účelom hry je napredovať cez úrovne ničiac všetky tehly prítomné v každej z nich a snažiť sa získať čo najvyššie skóre.</p>
     <p xml:lang="sv">Ett spelfält som innehåller ett antal tegelstenar visas för spelaren. En boll rör sig över skärmen, och studsar från väggarna längs överkanten och sidorna. När en tegelsten träffas, studsar bollen bort och tegelstenen förstörs. Spelaren förlorar ett liv när bollen rör vid fältets underkant. För att förhindra att det sker, måste spelaren använda en rörlig platta, som finns längst ner i fönstret, för att studsa bollen uppåt. Spelets syfte är att ta sig igenom alla nivåer, förstöra tegelstenarna som finns i varje nivå, och försöka uppnå bästa poäng.</p>
     <p xml:lang="uk">Перед гравцем буде показано ігрове поле з декількома блоками. полем пересуватиметься кулька, яка відбиватиметься від бічних і верхньої стін. Якщо кулька влучить у блок, вона відіб’ється від нього, а сам блок буде зруйновано. Якщо кулька торкнеться нижньої стіни ігрового поля, гравець втратить одне життя. Щоб цього не сталося, гравцеві слід буде пересувати розташовану у нижній частині ігрового поля рисочку, якою можна відбивати кульку угору. Метою гри є просування рівнями шляхом руйнування всіх блоків на кожному з пройдених рівнів, а також збільшення очкового результату гри.</p>
-    <p xml:lang="x-test">xxThe player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.xx</p>
   </description>
   <url type="homepage">https://kde.org/applications/games/org.kde.kbreakout</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kbreakout</url>
@@ -127,7 +123,6 @@
       <caption xml:lang="sk">Hranie KBreakOut</caption>
       <caption xml:lang="sv">Spela Utbrytning</caption>
       <caption xml:lang="uk">Гра у KBreakOut</caption>
-      <caption xml:lang="x-test">xxPlaying KBreakOutxx</caption>
       <caption xml:lang="zh-TW">KBreakOut 遊玩畫面</caption>
       <image>https://kde.org/images/screenshots/kbreakout.png</image>
     </screenshot>
