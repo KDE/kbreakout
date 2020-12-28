@@ -89,19 +89,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupActions()
 {
-    KStandardGameAction::gameNew(this, SLOT(startNewGame()),
-                                 actionCollection());
+    KStandardGameAction::gameNew(this, &MainWindow::startNewGame, actionCollection());
 
-    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+    KStandardGameAction::quit(this, &MainWindow::close, actionCollection());
 
-    KStandardGameAction::highscores(this, SLOT(showHighscores()),
-                                    actionCollection());
+    KStandardGameAction::highscores(this, &MainWindow::showHighscores, actionCollection());
 
-    KStandardAction::preferences(this, SLOT(configureSettings()),
-                                 actionCollection());
+    KStandardAction::preferences(this, &MainWindow::configureSettings, actionCollection());
 
     QAction *fullScreenAction = KStandardAction::fullScreen(this,
-                                SLOT(viewFullScreen(bool)), this, actionCollection());
+                                &MainWindow::viewFullScreen, this, actionCollection());
     // set the default primary shortcut as alternate shortcut
     // and make F the default
     QKeySequence fullScreenShortcut(i18nc("Key (shortcut) to toggle full screen", "F"));
@@ -130,8 +127,7 @@ void MainWindow::setupActions()
         actionCollection()->addAction(QStringLiteral("cheatAddLife"), cheatAddLifeAction);
     }
 
-    pauseAction = KStandardGameAction::pause(this,
-                  SLOT(setGamePaused(bool)), actionCollection());
+    pauseAction = KStandardGameAction::pause(this, &MainWindow::setGamePaused, actionCollection());
     // set custom keys
     QList<QKeySequence> keys;
     keys.append(i18nc("Key (shortcut) to pause the game", "P"));
