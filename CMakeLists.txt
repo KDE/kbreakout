@@ -47,7 +47,5 @@ add_subdirectory(pics)
 add_subdirectory(themes)
 add_subdirectory(levelsets)
 add_subdirectory(doc)
-install(PROGRAMS org.kde.kbreakout.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.kbreakout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

@@ -39,6 +39,9 @@ target_link_libraries(kbreakout
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout)
 
+install(PROGRAMS org.kde.kbreakout.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kbreakout.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+
 ecm_qt_install_logging_categories(
     EXPORT KBREAKOUT
     FILE kbreakout.categories
