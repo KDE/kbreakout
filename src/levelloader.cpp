@@ -184,7 +184,7 @@ void LevelLoader::loadLine(QDomElement lineNode)
                                       << m_lineNumber;
     }
 
-    emit newLine(line, m_lineNumber);
+    Q_EMIT newLine(line, m_lineNumber);
 }
 
 void LevelLoader::loadGift(QDomElement giftNode)
@@ -237,7 +237,7 @@ void LevelLoader::loadGift(QDomElement giftNode)
         }
     }
 
-    emit newGift(giftType, times, position);
+    Q_EMIT newGift(giftType, times, position);
 }
 
 void LevelLoader::loadOldStyleLevel()
@@ -279,7 +279,7 @@ void LevelLoader::loadOldStyleLevel()
             qCCritical(KBREAKOUT_General) << "Invalid file: too many bricks\n";
         }
 
-        emit newLine(line, y);
+        Q_EMIT newLine(line, y);
 
         ++y;
         key = QLatin1String("line") + QString::number(y);
@@ -305,6 +305,6 @@ void LevelLoader::loadOldStyleLevel()
             continue;
         }
 
-        emit newGift(key, times, QString());
+        Q_EMIT newGift(key, times, QString());
     }
 }

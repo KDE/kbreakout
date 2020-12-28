@@ -32,7 +32,7 @@ void GameEngine::start(const QString &l)
     m_levelLoader->setLevelset(l);
     m_levelLoader->setLevel(0);
 
-    emit loadingNewGame();
+    Q_EMIT loadingNewGame();
 
     loadLevel();
 }
@@ -43,7 +43,7 @@ void GameEngine::loadLevel()
 
     m_levelLoader->loadLevel();
 
-    emit ready();
+    Q_EMIT ready();
 }
 
 void GameEngine::loadNextLevel()

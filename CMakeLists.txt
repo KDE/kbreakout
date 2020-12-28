@@ -40,7 +40,10 @@ include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 
-add_definitions(-DQT_NO_FOREACH)
+add_definitions(
+    -DQT_NO_KEYWORDS
+    -DQT_NO_FOREACH
+)
 
 add_subdirectory(src)
 add_subdirectory(pics)

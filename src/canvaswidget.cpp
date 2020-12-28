@@ -150,6 +150,6 @@ void CanvasWidget::resetMousePosition()
 
 void CanvasWidget::focusOutEvent(QFocusEvent *event)
 {
-    emit focusLost();
+    Q_EMIT focusLost();
     QQuickWidget::focusOutEvent(event);
 }
