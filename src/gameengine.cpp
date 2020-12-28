@@ -6,9 +6,10 @@
 
 #include "gameengine.h"
 
+// own
 #include "kbreakout_debug.h"
 #include "levelloader.h"
-
+// Qt
 #include <QTimer>
 #include <QTime>
 

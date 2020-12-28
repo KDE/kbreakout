@@ -4,16 +4,18 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include <KAboutData>
-#include <KCrash>
-
-#include <QApplication>
-#include <KLocalizedString>
-#include <QCommandLineParser>
-#include <Kdelibs4ConfigMigrator>
-#include <KDBusService>
+// own
 #include "mainwindow.h"
 #include "kbreakout_version.h"
+// KF
+#include <KAboutData>
+#include <KCrash>
+#include <KLocalizedString>
+#include <Kdelibs4ConfigMigrator>
+#include <KDBusService>
+// Qt
+#include <QApplication>
+#include <QCommandLineParser>
 
 int main(int argc, char *argv[])
 {

@@ -5,17 +5,19 @@
 */
 
 #include "canvaswidget.h"
+
+// own
 #include "globals.h"
 #include "kbreakout_debug.h"
 #include "settings.h"
-
+// KDEGames
+#include <KgThemeProvider>
+// Qt
 #include <QGraphicsObject>
 #include <QAction>
 #include <QCursor>
 #include <QStandardPaths>
 #include <QQuickItem>
-
-#include <KgThemeProvider>
 
 CanvasWidget::CanvasWidget(QWidget *parent) :
     KgDeclarativeView(parent),

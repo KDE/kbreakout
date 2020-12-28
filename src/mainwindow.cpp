@@ -6,27 +6,30 @@
 */
 
 #include "mainwindow.h"
+
+// own
 #include "gameengine.h"
 #include "canvaswidget.h"
 #include "ui_generalsettings.h"
 #include "settings.h"
 #include "globals.h"
-
-#include <QPointer>
-
-#include <QMenuBar>
-#include <QIcon>
-#include <QAction>
-#include <KStandardAction>
-#include <KToggleFullScreenAction>
-#include <KActionCollection>
-#include <QKeySequence>
-#include <KMessageBox>
-#include <KConfigDialog>
+// KDEGames
 #include <KScoreDialog>
 #include <KgThemeSelector>
 #include <KStandardGameAction>
+// KF
+#include <KStandardAction>
+#include <KToggleFullScreenAction>
+#include <KActionCollection>
+#include <KMessageBox>
+#include <KConfigDialog>
 #include <KConfig>
+// Qt
+#include <QPointer>
+#include <QMenuBar>
+#include <QIcon>
+#include <QAction>
+#include <QKeySequence>
 
 class GeneralSettings : public QWidget
 {

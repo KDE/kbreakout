@@ -7,8 +7,11 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
+// KDEGames
 #include <KgDeclarativeView>
+
 class KgThemeProvider;
+
 class CanvasWidget : public KgDeclarativeView
 {
     Q_OBJECT

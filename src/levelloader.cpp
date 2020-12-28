@@ -5,16 +5,18 @@
 */
 
 #include "levelloader.h"
+
+// own
 #include "globals.h"
 #include "kbreakout_debug.h"
-
-#include <QDomDocument>
-#include <QFile>
-#include <QStandardPaths>
-
+// KF
 // These can be removed when KConfig style levelsets are no longer supported
 #include <KConfig>
 #include <KConfigGroup>
+// Qt
+#include <QDomDocument>
+#include <QFile>
+#include <QStandardPaths>
 
 LevelLoader::LevelLoader(QObject *parent)
     : QObject(parent)
