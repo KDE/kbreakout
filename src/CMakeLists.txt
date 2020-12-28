@@ -9,7 +9,13 @@ set(kbreakout_SRCS
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBREAKOUT VERSION_HEADER kbreakout_version.h)
 
-ecm_qt_declare_logging_category(kbreakout_SRCS HEADER kbreakout_debug.h IDENTIFIER KBREAKOUT_General CATEGORY_NAME KBreakout)
+ecm_qt_declare_logging_category(kbreakout_SRCS
+    HEADER kbreakout_debug.h
+    IDENTIFIER KBREAKOUT_General
+    CATEGORY_NAME kbreakout
+    DESCRIPTION "KBreakout game"
+    EXPORT KBREAKOUT
+)
 
 qt5_add_resources(kbreakout_SRCS kbreakout.qrc)
 ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
@@ -32,3 +38,9 @@ target_link_libraries(kbreakout
 
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout)
+
+ecm_qt_install_logging_categories(
+    EXPORT KBREAKOUT
+    FILE kbreakout.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
