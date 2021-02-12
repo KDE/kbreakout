@@ -5,6 +5,7 @@ set(kbreakout_SRCS
    canvaswidget.cpp
    gameengine.cpp
    levelloader.cpp
+   kbreakout.qrc
 )
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBREAKOUT VERSION_HEADER kbreakout_version.h)
@@ -17,7 +18,6 @@ ecm_qt_declare_logging_category(kbreakout_SRCS
     EXPORT KBREAKOUT
 )
 
-qt5_add_resources(kbreakout_SRCS kbreakout.qrc)
 ki18n_wrap_ui(kbreakout_SRCS generalsettings.ui)
 
 kconfig_add_kcfg_files(kbreakout_SRCS settings.kcfgc )
