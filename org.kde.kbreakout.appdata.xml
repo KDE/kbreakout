@@ -56,6 +56,7 @@
   <summary xml:lang="sv">Utbrytning är ett spel som liknar Breakout av KDE</summary>
   <summary xml:lang="uk">KBreakOut — це гра, схожа на Breakout, від KDE</summary>
   <summary xml:lang="x-test">xxKBreakOut is a Breakout-like game by KDExx</summary>
+  <summary xml:lang="zh-CN">KBreakOut 是 KDE 的一个挡板弹球游戏</summary>
   <summary xml:lang="zh-TW">KBreakOut 是一款 KDE 的類 Breakout 遊戲</summary>
   <description>
     <p>
@@ -84,6 +85,7 @@
     <p xml:lang="sv">Syftet med Utbrytning är att förstöra så många tegelstenar som möjligt utan att förlora bollen.</p>
     <p xml:lang="uk">Метою гри є знищити якомога більше блоків без втрати кульки.</p>
     <p xml:lang="x-test">xxThe objective of KBreakOut is to destroy as many bricks as possible without losing the ball.xx</p>
+    <p xml:lang="zh-CN">KBreakOut 的目标是在不丢掉球的情况下摧毁尽可能多的砖块。</p>
     <p xml:lang="zh-TW">KBreakout 的目標為在不損失任何球的情況下摧毀盡可能多的磚塊。</p>
     <p>
         The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.
@@ -142,6 +144,7 @@
       <caption xml:lang="sv">Spela Utbrytning</caption>
       <caption xml:lang="uk">Гра у KBreakOut</caption>
       <caption xml:lang="x-test">xxPlaying KBreakOutxx</caption>
+      <caption xml:lang="zh-CN">游玩 KBreakOut</caption>
       <caption xml:lang="zh-TW">KBreakOut 遊玩畫面</caption>
       <image>https://kde.org/images/screenshots/kbreakout.png</image>
     </screenshot>
