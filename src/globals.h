@@ -59,7 +59,7 @@ const int GAME_WON_SCORE = 10000;
 const int INITIAL_LIVES = 2;
 const int MAXIMUM_LIVES = 10;
 
-// minimum with and height of the game widget (CanvasWidget)
+// minimum width and height of the game widget (CanvasWidget)
 const int DEFAULT_WIDTH = 750;
 const int DEFAULT_HEIGHT = 500;
 
