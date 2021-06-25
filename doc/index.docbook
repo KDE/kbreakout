@@ -32,8 +32,8 @@
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2016-05-09</date>
-<releaseinfo>1.2.0 (Applications 16.04)</releaseinfo>
+<date>2021-06-25</date>
+<releaseinfo>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 <para>
@@ -44,8 +44,8 @@
 <keyword>KDE</keyword>
 <keyword>kdegames</keyword>
 <keyword>game</keyword>
-<keyword>kbreakout</keyword>
-<keyword>breakout</keyword>
+<keyword>KBreakOut</keyword>
+<keyword>Breakout</keyword>
 <keyword>brick</keyword>
 <keyword>bricks</keyword>
 <keyword>ball</keyword>
@@ -108,7 +108,7 @@ Enabling the option will make the game steal the mouse cursor, pause the game to
 <listitem><para>This gifts hidden in a given level are fixed, their position however is random.</para></listitem>
 <listitem><para>30 points are awarded for every gift caught.</para></listitem>
 <listitem><para>The player loses a life when the ball touches the bottom of the field and there are no other balls left in the game, or when he catches a lose life gift. When losing a life 1000 points are detracted from his score.</para></listitem>
-<listitem><para>Additional lives can be gained by catching the add life gift.</para></listitem>
+<listitem><para>Additional lives can be gained by catching the add life gifts.</para></listitem>
 <listitem><para>The game ends when the player loses the ball while not having any additional lives left, or when all levels have been won.</para></listitem>
 </itemizedlist>
 </sect1>
@@ -658,7 +658,7 @@ Quits the program.
 <shortcut>
 <keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo>
 </shortcut>
-<guimenu>Settings</guimenu>
+<guimenu>View</guimenu>
 <guimenuitem>Full Screen Mode</guimenuitem>
 </menuchoice></term>
 <listitem><para>
@@ -689,7 +689,7 @@ of the &kde; Fundamentals.
 <row>
 <entry>Fire</entry>
 <entry>
-<keycap>Space</keycap>
+&Space;
 </entry>
 </row>
 <row>
