@@ -2,7 +2,7 @@
 Name=Alien Breakout
 Name[bs]=Probijanje aliena
 Name[ca]=Breakout alienígena
-Name[ca@valencia]=Breakout alien
+Name[ca@valencia]=Breakout alienígena
 Name[da]=Rumvæsen-breakout
 Name[de]=Außerirdische
 Name[el]=Εξωγήινο breakout
@@ -44,7 +44,7 @@ Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
 Description[bs]=Bježi prije aliena.
 Description[ca]=El Breakout abans que el fessin els alienígenes.
-Description[ca@valencia]=El Breakout abans que el fessin els aliens.
+Description[ca@valencia]=El Breakout abans que el fessin els alienígenes.
 Description[da]=Bryd ud før rumvæsenerne gør det.
 Description[de]=Breakout vor den Außerirdischen.
 Description[el]=Κάνε breakout πριν από τους εξωγήινους.
