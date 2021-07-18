@@ -13,6 +13,7 @@
   <name xml:lang="en-GB">KBreakOut</name>
   <name xml:lang="es">KBreakOut</name>
   <name xml:lang="et">KBreakOut</name>
+  <name xml:lang="eu">KBreakOut</name>
   <name xml:lang="fi">KBreakOut</name>
   <name xml:lang="fr">KBreakOut</name>
   <name xml:lang="gl">KBreakOut</name>
@@ -40,6 +41,7 @@
   <summary xml:lang="en-GB">KBreakOut is a Breakout-like game by KDE</summary>
   <summary xml:lang="es">KBreakOut es un juego semejante a Breakout creado por KDE</summary>
   <summary xml:lang="et">KBreakOut on KDE Breakouti moodi mäng</summary>
+  <summary xml:lang="eu">KBreakOut KDEk egindako «Breakout» antzeko joko bat da</summary>
   <summary xml:lang="fi">KBreakOut on Breakout-tyyppinen KDE-peli</summary>
   <summary xml:lang="fr">KBreakOut est un jeu de type Breakout par KDE</summary>
   <summary xml:lang="gl">KBreakOut é un xogo de rachar bloques de KDE</summary>
@@ -69,6 +71,7 @@
     <p xml:lang="en-GB">The objective of KBreakOut is to destroy as many bricks as possible without losing the ball.</p>
     <p xml:lang="es">El objetivo de KBreakOut es destruir tantos ladrillos como sea posible sin perder la bola.</p>
     <p xml:lang="et">KBreakOuti siht on hävitada võimalikult palju telliseid ilma palli kaotamata.</p>
+    <p xml:lang="eu">KBreakOut-en helburua, pilota galdu gabe ahalik adreilu gehien suntsitzea da.</p>
     <p xml:lang="fi">KBreakOutin tavoitteena on tuhota niin monta tiiltä kuin mahdollista menettämättä palloa.</p>
     <p xml:lang="fr">L'objectif de KBreakOut est de casser le plus de briques possibles sans faire tomber la balle.</p>
     <p xml:lang="gl">O obxectivo de KBreakOut é destruír tantos bloques como for posíbel sen perder a bóla.</p>
@@ -97,6 +100,7 @@
     <p xml:lang="en-GB">The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.</p>
     <p xml:lang="es">Al jugador se le muestra un campo de juego que contiene cierto número de ladrillos. Una bola se desplaza por la pantalla, rebotando en las paredes de la parte superior y de los laterales. Al alcanzar un ladrillo, la bola rebota y el ladrillo se destruye. El jugador pierde una vida cada vez que la bola toca la parte inferior del campo. Para evitar que ocurra esto, el jugador debe usar una barra móvil situada en la parte inferior de la ventana para hacer que la bola rebote hacia arriba. El objetivo del juego consiste en progresar a través de varios niveles destruyendo todos los ladrillos presentes en cada uno de ellos para tratar de obtener una alta puntuación.</p>
     <p xml:lang="et">Mängija ees avaneb mitme tellisega mänguväli. Pall liigub mööda ekraani, põrgates tagasi üla-ja külgseintelt. Tellise tabamise korral põrkab pall sellelt tagasi ja tellis hävib. Mängija kaotab elu, kui pall puudutab välja allserva. Selle vältimiseks on mängijal kasutada allservas asuv väike platvorm, mida liigutades saab palli üles tagasi põrgatada. Mängu siht on edeneda ühelt tasemelt teisele kõiki telliseid hävitades ning sel moel punkte kogudes.</p>
+    <p xml:lang="eu">Jokalariari hainbat adreilu dituen joko-eremu bat aurkezten zaio. Pilota bat dabil pantailan harat-honat, goi eta alboko hormetan punpaka. Adreilu bat jotzen denean, pilotak punpa egiten du eta adreilua suntsitzen da. Jokalariak bizitza bat galtzen du pilotak eremuaren zorua jotzen duenean. Hori gerta ez dadin, jokalariak leiho behean kokatua dagoen barra higikor bat erabili behar du pilota goraka punpatzeko. Jokoaren helburua mailetan aurrera egitea da, bakoitzean dauden adreilu guztiak suntsituz, eta puntuazio altua lortzen saiatuz.</p>
     <p xml:lang="fr">Le joueur fait face à un mur comprenant un certain nombre de briques. Une balle traverse l'écran en rebondissant sur les murs latéraux et supérieurs. Lorsqu'une brique est touchée, la balle rebondit et la brique est détruite. Le joueur perd une vie si la balle touche le bas de l'écran. Pour survivre, le joueur doit utiliser une barre qui se déplace latéralement en bas de la fenêtre et faire rebondir la balle. L'objectif du jeu est de progresser vers les niveaux supérieurs en détruisant la totalité des briques afin de se hisser au palmarès des meilleurs scores.</p>
     <p xml:lang="gl">Ao xogador preséntaselle un campo de xogo que contén determinada cantidade de bloques. Unha bóla atravesa a pantalla, rebotando nas paredes superior e laterais. Cando bate nun bloque, a bóla rebota e o bloque é destruído. O xogador perde unha vida cando a bóla toca o fondo do campo. Para evitar que isto ocorra, o xogador ten que usar unha barra móbil para facer rebotar a bóla cara riba, situada no fondo da xanela. O obxectivo do xogo é avanzar polos niveis destruíndo todos os bloques que aparezan en cada un e intentando obter unha puntuación máxima.</p>
     <p xml:lang="id">Pemain disajikan dengan bidang permainan yang berisi sejumlah batu bata. Sebuah bola bergerak lalu-lalang melintasi layar, memantul dari atas dan samping dinding. Ketika batu bata terpukul bola yang memantul dan batu bata hancur. Pemain kehilangan nyawa ketika bola menyentuh bagian bawah bidang. Untuk mencegah ini dari yang terjadi, pemain harus menggunakan bilah yang bisa digerakkan untuk memantulkan bola ke atas, terletak di bagian bawah window. Tujuan dari permainan ini adalah progres melalui level menghancurkan semua batu bata yang ada di tempat masing-masing, dan mencoba untuk mendapatkan skor tinggi.</p>
@@ -129,6 +133,7 @@
       <caption xml:lang="en-GB">Playing KBreakOut</caption>
       <caption xml:lang="es">Jugando a KBreakOut</caption>
       <caption xml:lang="et">KBreakOuti mängimine</caption>
+      <caption xml:lang="eu">Jokatu KBreakOut-era</caption>
       <caption xml:lang="fi">KBreakOutin pelaaminen</caption>
       <caption xml:lang="fr">Partie de KBreakOut en cours</caption>
       <caption xml:lang="gl">Xogando a KBreakOut</caption>
