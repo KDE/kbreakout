@@ -40,7 +40,7 @@ public:
     {
         ui.setupUi(this);
     }
-    ~GeneralSettings() {}
+    ~GeneralSettings() override {}
 private:
     Ui::GeneralSettings ui;
 };

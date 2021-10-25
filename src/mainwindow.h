@@ -20,7 +20,7 @@ class MainWindow : public KXmlGuiWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
 private Q_SLOTS:
     void handleEndedGame(int score, int level, int time);

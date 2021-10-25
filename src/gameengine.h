@@ -17,7 +17,7 @@ class GameEngine : public QObject
     Q_OBJECT
 public:
     explicit GameEngine(QObject *parent = nullptr);
-    ~GameEngine();
+    ~GameEngine() override;
 
 public Q_SLOTS:
     void start(const QString &levelset);
