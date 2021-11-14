@@ -322,7 +322,7 @@
     <Gift Type="GiftBurningBall">1</Gift>
     <Gift Type="GiftLoseLife">2</Gift>
     <Gift Type="GiftMoreExplosion">1</Gift>
-    <Gift Type="GiftIncreaseSpeed">2</Gift>
+    <Gift Type="GiftDecreaseSpeed">2</Gift>
     <Gift Type="GiftIncreaseSpeed">3</Gift>
     <Gift Type="GiftEnlargeBar">4</Gift>
     <Gift Type="GiftShrinkBar">4</Gift>
