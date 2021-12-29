@@ -36,7 +36,7 @@ target_link_libraries(kbreakout
     KF5::DBusAddons
     KF5::XmlGui
     KF5::Crash
-    Qt5::Xml
+    Qt${QT_MAJOR_VERSION}::Xml
 )
 
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
