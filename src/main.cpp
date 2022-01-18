@@ -11,7 +11,9 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KLocalizedString>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
+#endif
 #include <KDBusService>
 // Qt
 #include <QApplication>
@@ -25,10 +27,12 @@ int main(int argc, char *argv[])
 #endif
     QApplication app(argc, argv);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kbreakout"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kbreakoutrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kbreakoutui.rc"));
     migrate.migrate();
+#endif
     KLocalizedString::setApplicationDomain("kbreakout");
 
     KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral(KBREAKOUT_VERSION_STRING));
