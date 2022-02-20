@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Alien Breakout
+Name[ar]=اختراق الكائنات الفضائية
 Name[bs]=Probijanje aliena
 Name[ca]=Breakout alienígena
 Name[ca@valencia]=Breakout alienígena
@@ -43,6 +44,7 @@ Name[x-test]=xxAlien Breakoutxx
 Name[zh_CN]=异形打砖块
 Name[zh_TW]=異形式打磚塊
 Description=Breakout before the aliens do.
+Description[ar]=اخترق قبل أن تفعل الكائنات الفضائية.
 Description[bs]=Bježi prije aliena.
 Description[ca]=El Breakout abans que el fessin els alienígenes.
 Description[ca@valencia]=El Breakout abans que el fessin els alienígenes.

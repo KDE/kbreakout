@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Egyptian Breakout
+Name[ar]=الاختراق المصري
 Name[bs]=Egipatsko razbijanje
 Name[ca]=Breakout egipci
 Name[ca@valencia]=Breakout egipci
@@ -44,6 +45,7 @@ Name[x-test]=xxEgyptian Breakoutxx
 Name[zh_CN]=埃及风情
 Name[zh_TW]=埃及式打磚塊
 Description=Egyptian style breakout theme.
+Description[ar]=سمة الاختراق على الطريقة المصرية
 Description[bs]=Tema razbijanja u Egipatskom stilu.
 Description[ca]=Tema del Breakout d'estil egipci.
 Description[ca@valencia]=Tema del Breakout d'estil egipci.
