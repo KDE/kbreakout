@@ -33,6 +33,7 @@ ecm_add_app_icon(kbreakout ICONS ${ICONS_SRCS})
 target_link_libraries(kbreakout
     KF5KDEGames
     KF5KDEGamesPrivate
+    KF5::CoreAddons
     KF5::DBusAddons
     KF5::XmlGui
     KF5::Crash
