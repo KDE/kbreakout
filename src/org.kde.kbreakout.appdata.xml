@@ -37,7 +37,7 @@
   <summary>KBreakOut is a Breakout-like game by KDE</summary>
   <summary xml:lang="ar">الاختراق هي لعبة شبيهة بلعبة بريك أوت بواسطة كدي</summary>
   <summary xml:lang="ca">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
-  <summary xml:lang="ca-valencia">El KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
+  <summary xml:lang="ca-valencia">KBreakOut és un joc com el Breakout, creat per la comunitat KDE</summary>
   <summary xml:lang="de">KBreakOut ist ein Breakout-ähnliches Spiel von KDE</summary>
   <summary xml:lang="el">Το KBreakOut είναι ένα παιχνίδι από το KDE παρόμοιο με το BreakOut</summary>
   <summary xml:lang="en-GB">KBreakOut is a Breakout-like game by KDE</summary>
@@ -68,7 +68,7 @@
     </p>
     <p xml:lang="ar">الهدف من لعبة الاختراق هو تدمير أكبر عدد ممكن من الطوب بدون خسارة الكرة.</p>
     <p xml:lang="ca">L'objectiu del KBreakOut és destruir tants maons com sigui possible sense perdre la pilota.</p>
-    <p xml:lang="ca-valencia">L'objectiu del KBreakOut és destruir tants maons com siga possible sense perdre la pilota.</p>
+    <p xml:lang="ca-valencia">L'objectiu de KBreakOut és destruir tants maons com siga possible sense perdre la pilota.</p>
     <p xml:lang="de">Das Ziel des Spiels ist es, so viele Steine wie möglich zu zerstören, ohne den Ball zu verlieren.</p>
     <p xml:lang="el">Ο σκοπός του KBreakOut είναι να καταστρέψεις όσο το δυνατόν περισσότερα τουβλάκια χωρίς να χάσεις τη μπάλα.</p>
     <p xml:lang="en-GB">The objective of KBreakOut is to destroy as many bricks as possible without losing the ball.</p>
@@ -133,7 +133,7 @@
       <caption>Playing KBreakOut</caption>
       <caption xml:lang="ar">يلعب الاختراق</caption>
       <caption xml:lang="ca">Jugant al KBreakOut</caption>
-      <caption xml:lang="ca-valencia">Jugant al KBreakOut</caption>
+      <caption xml:lang="ca-valencia">Jugant a KBreakOut</caption>
       <caption xml:lang="de">KBreakOut spielen</caption>
       <caption xml:lang="el">Παίζω KBreakOut</caption>
       <caption xml:lang="en-GB">Playing KBreakOut</caption>
