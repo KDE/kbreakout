@@ -11,6 +11,7 @@
 #include "kbreakout_debug.h"
 #include "settings.h"
 // KDEGames
+#include <kdegames_version.h>
 #include <KgThemeProvider>
 // Qt
 #include <QGraphicsObject>
@@ -23,7 +24,11 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
     KgDeclarativeView(parent),
     m_provider(new KgThemeProvider)
 {
+#if KDEGAMES_VERSION >= QT_VERSION_CHECK(7, 4, 0)
+    m_provider->discoverThemes(QStringLiteral("themes"));
+#else
     m_provider->discoverThemes("appdata", QStringLiteral("themes"));
+#endif
     m_provider->setDeclarativeEngine(QStringLiteral("themeProvider"), engine());
     QString path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("qml/main.qml"));
 
