@@ -12,7 +12,7 @@ set (QT_MIN_VERSION "5.15.0")
 set (KF5_MIN_VERSION "5.90.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -23,6 +23,7 @@ include(ECMInstallIcons)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
+include(InternalMacros)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS

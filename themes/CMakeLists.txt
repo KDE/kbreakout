@@ -1,1 +1,26 @@
-install( FILES default.desktop egyptian_breakout_preview.png egyptianbreakout.svgz alienbreakout.svgz alienbreakout.desktop alien_preview.png web20.svgz web20.desktop web20_preview.png crystal.desktop crystal.svgz crystal_preview.png simple.svgz simple.desktop simple_preview.png IceWorld.svgz IceWorld.desktop IceWorld_preview.png DESTINATION  ${KDE_INSTALL_DATADIR}/kbreakout/themes )
+# SPDX-FileCopyrightText: 2022 Friedrich W. H. Kossebau <kossebau@kde.org>
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+function(install_theme name)
+    cmake_parse_arguments(ARG "" "ID" "" ${ARGN})
+    if (NOT ARG_ID)
+        set(ARG_ID "${name}")
+    endif()
+    set(svgz "${CMAKE_CURRENT_BINARY_DIR}/${name}.svgz")
+    generate_svgz(${name}.svg ${svgz} "theme-")
+    install(
+        FILES
+            ${ARG_ID}.desktop
+            ${name}_preview.png
+            ${svgz}
+        DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout/themes
+    )
+endfunction()
+
+install_theme(egyptianbreakout ID default)
+install_theme(alienbreakout)
+install_theme(web20)
+install_theme(crystal)
+install_theme(simple)
+install_theme(IceWorld)
