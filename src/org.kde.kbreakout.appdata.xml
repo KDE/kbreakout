@@ -128,7 +128,7 @@
     <p xml:lang="zh-CN">展示在玩家面前的是一个游戏场地，其中包含一些积木。 球在屏幕上穿行，与顶部墙壁和侧墙发生碰撞。 当一块砖被击中时，球被反弹，同时砖块被摧毁。 当球碰到游戏场地底部时，玩家将失去生命。 为了防止这种情况发生，玩家必须使用位于窗口底部，可移动的板向上反弹球。 游戏的目的是通过摧毁每个关卡内的所有砖块来升级，并尽力获得一个高分。</p>
     <p xml:lang="zh-TW">向玩家展示包含許多磚塊的遊戲場地。球會穿過畫面，並在頂部與側邊的牆壁反彈。擊中磚塊時，磚塊會被破壞，而球則會彈開。球碰到場地底部的話，玩家就會失去一條生命。為避免這類的情況發生，玩家必須使用可移動的橫槓來將位於視窗底部的球向上彈起。遊戲的目標是摧毀每個關卡中的所有磚塊，並取得高分。</p>
   </description>
-  <url type="homepage">https://kde.org/applications/games/org.kde.kbreakout</url>
+  <url type="homepage">https://apps.kde.org/kbreakout</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kbreakout</url>
   <url type="help">https://docs.kde.org/?application=kbreakout</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kbreakout&amp;source=appdata</url>
