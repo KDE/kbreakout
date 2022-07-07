@@ -302,8 +302,8 @@ void MainWindow::handleMousePressed()
                            "mouse cursor, pause the game to get\n"
                            "the cursor back."),
                       i18n("Fire on click?"),
-                      KStandardGuiItem::yes(),
-                      KStandardGuiItem::no(),
+                      KGuiItem(i18nc("@action;button", "Use Mouse Click"), QStringLiteral("input-mouse")),
+                      KGuiItem(i18nc("@action;button", "Ignore Mouse Click"), QStringLiteral("dialog-cancel")),
                       QStringLiteral("dontAskFireOnClick") // doesntAskAgainName
                   );
 
