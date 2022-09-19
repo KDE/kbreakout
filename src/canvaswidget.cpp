@@ -13,23 +13,33 @@
 // KDEGames
 #include <kdegames_version.h>
 #include <KgThemeProvider>
+// KF
+#include <KLocalizedContext>
 // Qt
 #include <QGraphicsObject>
+#include <QQmlContext>
 #include <QAction>
 #include <QCursor>
 #include <QStandardPaths>
 #include <QQuickItem>
 
 CanvasWidget::CanvasWidget(QWidget *parent) :
-    KgDeclarativeView(parent),
+    QQuickWidget(parent),
     m_provider(new KgThemeProvider)
 {
+    QQmlEngine *engine = this->engine();
+
+    auto *localizedContextObject = new KLocalizedContext(engine);
+    engine->rootContext()->setContextObject(localizedContextObject);
+
+    setResizeMode(SizeRootObjectToView);
+
 #if KDEGAMES_VERSION >= QT_VERSION_CHECK(7, 4, 0)
     m_provider->discoverThemes(QStringLiteral("themes"));
 #else
     m_provider->discoverThemes("appdata", QStringLiteral("themes"));
 #endif
-    m_provider->setDeclarativeEngine(QStringLiteral("themeProvider"), engine());
+    m_provider->setDeclarativeEngine(QStringLiteral("themeProvider"), engine);
     QString path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("qml/main.qml"));
 
     qCDebug(KBREAKOUT_General) << "QtQuick QML file: " << path;
@@ -68,7 +78,7 @@ bool CanvasWidget::event(QEvent *event)
     if (event->type() == QEvent::Leave) {
         updateCursor();
     }
-    return KgDeclarativeView::event(event);
+    return QQuickWidget::event(event);
 }
 
 void CanvasWidget::newGame()

@@ -7,12 +7,12 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
-// KDEGames
-#include <KgDeclarativeView>
+// Qt
+#include <QQuickWidget>
 
 class KgThemeProvider;
 
-class CanvasWidget : public KgDeclarativeView
+class CanvasWidget : public QQuickWidget
 {
     Q_OBJECT
 public:
