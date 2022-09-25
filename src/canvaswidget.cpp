@@ -16,12 +16,11 @@
 // KF
 #include <KLocalizedContext>
 // Qt
-#include <QGraphicsObject>
-#include <QQmlContext>
 #include <QAction>
 #include <QCursor>
-#include <QStandardPaths>
+#include <QGraphicsObject>
 #include <QQuickItem>
+#include <QStandardPaths>
 
 CanvasWidget::CanvasWidget(QWidget *parent) :
     QQuickWidget(parent),
