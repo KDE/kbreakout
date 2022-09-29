@@ -19,6 +19,7 @@
 #include <QAction>
 #include <QCursor>
 #include <QGraphicsObject>
+#include <QQmlContext>
 #include <QQuickItem>
 #include <QStandardPaths>
 
