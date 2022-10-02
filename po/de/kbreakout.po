@@ -1,0 +1,255 @@
+# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2011, 2013, 2015, 2017, 2021.
+# Linda-Maria Wirthmann <dont.breathe.today@googlemail.de>, 2009.
+# Johannes Obermayr <johannesobermayr@gmx.de>, 2009, 2010.
+# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbreakout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2022-07-11 23:49+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Burkhard Lück"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "lueck@hube-lueck.de"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+"Ist diese Einstellung aktiviert, steht der Mauszeiger nur noch für KBreakout "
+"zur Verfügung. Sie müssen dann das Spiel anhalten, um ihn wieder für alle "
+"Anwendungen zur Verfügung zu stellen."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "Mit Mausklick abschießen"
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, kde-format
+msgid "A Breakout like game by KDE"
+msgstr "Ein Breakout-Spiel von KDE"
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "© 2007–2008, Fela Winkelmolen"
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr "Ursprünglicher Autor und Betreuer"
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr "Grafikdesign"
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr "Sean Wilson"
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "Lorenzo Bonomi"
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "Tester"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr "Brian Croom"
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr "Portierung zu KGameRenderer"
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr "Viranch Mehta"
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr "Portierung zu QtQuick"
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "F"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr "Den Ball abschießen"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr "Ebene überspringen"
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr "Leben hinzufügen"
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "P"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "Design"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "Allgemein"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   Zeit (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "Wenn Sie ein neues Spiel starten, wird das laufende Spiel abgebrochen!"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "Neues Spiel"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "Ein neues Spiel starten"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "Spiel gewonnen!"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "Zeit (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"Möchten Sie den Ball mit einem Mausklick abschießen?\n"
+"Mit „Ja“ steht der Mauszeiger nur noch für KBreakout zur\n"
+"Verfügung.Sie müssen dann das Spiel anhalten, um ihn\n"
+"wieder für alle Anwendungen zur Verfügung zu stellen."
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "Mit Klicken den Ball abschießen?"
+
+#: mainwindow.cpp:305
+#, kde-format
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "Mausklick verwenden"
+
+#: mainwindow.cpp:306
+#, kde-format
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "Mausklick ignorieren"
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr "Sehr gut! Sie haben diese Spiel gewonnen"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "Ebene %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "Spiel angehalten."
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "Hoppla! Sie haben den Ball verfehlt."
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "Spiel beendet."
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "Drücken Sie %1, um den Ball abzuschießen."
+
+#~ msgid "The graphical theme to be used."
+#~ msgstr "Grafikdesign"
+
+#~ msgid "Failed to load \"%1\" theme. Please check your installation."
+#~ msgstr ""
+#~ "Design „%1“ lässt sich nicht laden. Bitten überprüfen Sie die "
+#~ "Installation."
+
+#~ msgid "Pause"
+#~ msgstr "Pause"

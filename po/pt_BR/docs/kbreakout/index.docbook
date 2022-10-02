@@ -1,0 +1,873 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Brazilian-Portuguese "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Manual do &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Luiz Fernando</firstname
+><surname
+>Ranghetti</surname
+><affiliation
+><address
+><email
+>elchevive@opensuse.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>André Marcelo</firstname
+><surname
+>Alvarenga</surname
+><affiliation
+><address
+><email
+>alvarenga@kde.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>09/05/2016</date>
+<releaseinfo
+>1.2.0 (Applications 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, um jogo no estilo Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>jogo</keyword>
+<keyword
+>kbreakout</keyword>
+<keyword
+>breakout</keyword>
+<keyword
+>tijolo</keyword>
+<keyword
+>tijolos</keyword>
+<keyword
+>bola</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdução</title>
+
+<para
+>&kbreakout; é um jogo no estilo Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabuleiro do jogo &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>O objetivo do jogo é destruir o máximo de tijolos possível sem perder a bola. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Como jogar</title>
+
+<para
+>O jogador é apresentado a um campo de jogo contendo um número de tijolos. Uma bola viaja pela tela, rebatendo nas paredes do topo e laterais. Quando um tijolo é atingido, a bola rebate e o tijolo é destruído. O jogador perde uma vida quando a bola toca a parte inferior do campo. Para prevenir isto, o jogador tem que usar uma barra deslizante, situada na parte inferior do campo, para rebater a bola pra cima. O propósito do jogo é progredir através dos níveis destruindo todos os tijolos presente em cada nível e tentar fazer um recorde. </para>
+
+<para
+>Alguns tijolos têm um comportamento especial ou podem deixar algum presente quando tocados. Os presentes podem ser pegos com a barra, seu comportamento pode ser positivo ou negativo. Para obter mais informações sobre os tipos diferentes de tijolos veja o próximo capítulo. </para>
+
+<para
+>Para atirar a bola pressione a barra de espaço, para mover a barra use o mouse ou as setas do teclado. A bola rebaterá na direção do lado da barra que foi tocada, o mais próximo do canto esquerdo da barra a bola tocar, mais longe da esquerda a bola irá rebater, o mesmo vale para o lado direito; se ela bater no meio da barra, a bola rebaterá direto para o topo. </para>
+
+<para
+>Se ativar a opção <guilabel
+>Atirar com o clique do mouse</guilabel
+> a partir da caixa de diálogo de configurações, será possível atirar clicando no &LMB; do mouse. Ativar a opção a seguir fará o jogo capturar o ponteiro do mouse. Pause o jogo para recuperar o ponteiro. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Regras do jogo, estratégias e dicas</title>
+
+<sect1 id="rules">
+<title
+>Regras</title>
+<itemizedlist>
+<listitem
+><para
+>Passar um nível dá ao jogador 300 pontos. Um nível é passado quando todos os tijolos quebráveis e visíveis forem destruídos ou alternativamente se o presente de próximo nível for pego. No último caso uma pontuação adicional para cada tijolo restante é obtida.</para
+></listitem>
+<listitem
+><para
+>Uma pontuação é obtida para cada tijolo destruído, quanto menor o tempo entre uma batida no tijolo e outra, maior é a pontuação.</para
+></listitem>
+<listitem
+><para
+>Os presentes escondidos num dado nível são fixos, sua posição no entanto é aleatória.</para
+></listitem>
+<listitem
+><para
+>30 pontos são obtidos para cada presente pego.</para
+></listitem>
+<listitem
+><para
+>O jogador perde uma vida quando a bola tocar o canto inferior do campo e não existir outras bolas em jogo ou quando o jogador pegar um presente que perde uma vida. Quando se perde uma vida, 1000 pontos são descontados da pontuação.</para
+></listitem>
+<listitem
+><para
+>Vidas adicionais são obtidas pegando o presente de vida adicional.</para
+></listitem>
+<listitem
+><para
+>O jogo terminal quando o jogador perde a bola quando não tiver mais nenhuma vida adicional ou quando todos os níveis forem ganhos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tipos de tijolos</title>
+<note>
+  <para
+>As imagens de tijolos abaixo são do tema padrão do &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo plano </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo plano </term>
+    <listitem>
+      <para
+>Tijolos simples, enquanto a aparência pode variar, todos têm o mesmo comportamento, eles são destruídos quando tocados pela bola e podem conter presentes. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo inquebrável </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo inquebrável </term>
+    <listitem>
+      <para
+>Nunca são destruídos a menos que tocados por uma bola flamejante, uma bola que não para ou se um tijolo explosivo estiver perto e for tocado. Estes tijolos não são necessitam serem destruídos para se ganhar o nível. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo quebrável </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo quebrável </term>
+    <listitem>
+      <para
+>Os tijolos inquebráveis poderão mudar para quebráveis com o <link linkend="gift-magic-wand"
+>presente da Varinha Mágica</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo oculto </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo oculto </term>
+    <listitem>
+      <para
+>Este tijolo não é inicialmente exibido ao jogador. Quando tocado pela primeira vez ele se torna visível e se torna um tijolo plano. Se for tocado por uma bola flamejante ou um tijolo explosivo estiver perto e for tocado ele é destruído assim que se tornar visível. Enquanto ele estiver escondido, não necessita ser destruído para ir ao próximo nível. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo múltiplo </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo múltiplo </term>
+    <listitem>
+      <para
+>Necessita ser tocado três vezes antes de ser destruído, ao menos que seja tocado por uma bola flamejante, uma bola que não para ou um tijolo explosivo estiver perto for tocado. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo explosivo </phrase>
+	</textobject>
+      </inlinemediaobject
+>Tijolo explosivo </term>
+    <listitem>
+      <para
+>Quando este tijolo for tocado, os tijolos acima, abaixo, a esquerda e a direita são também destruídos, independente do seu tipo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Presentes</title>
+<note>
+  <para
+>As imagens de presentes abaixo são do tema padrão do &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de 1000 pontos </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presentes de ponto </term>
+    <listitem>
+      <para
+>Se pegos, o jogador obtém o número de pontos escritos nele. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de vida adicional </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de vida adicional </term>
+    <listitem>
+      <para
+>Dá ao jogador uma vida adicional. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de perda de vida </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de perda de vida </term>
+    <listitem>
+      <para
+>Faz o jogador perder todas as bolas e reinicia a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente que aumenta a barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente que aumenta a barra </term>
+    <listitem>
+      <para
+>Aumenta a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente que diminui a barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente que diminui a barra </term>
+    <listitem>
+      <para
+>Diminui a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente que divide a bola </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente que divide a bola </term>
+    <listitem>
+      <para
+>Dobra o número de bolas. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente que adiciona bolas </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente que adiciona bolas </term>
+    <listitem>
+      <para
+>Dá ao jogador uma bola extra anexada a barra, que pode ser atirada quando o jogador quiser. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de barra aderente </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de barra aderente </term>
+    <listitem>
+      <para
+>Após pegar este presente, toda vez que uma bola tocar a barra ela permanece aderida a barra, permitindo ao jogador atirá-la novamente. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de mais tijolos explosivos </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de mais tijolos explosivos </term>
+    <listitem>
+      <para
+>Faz todos os tijolos acima, abaixo, a esquerda e a direita de tijolos explosivos virarem tijolos explosivos. Isto também se aplica a tijolos escondidos e inquebráveis. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de bola flamejante </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de bola flamejante </term>
+    <listitem>
+      <para
+>Transforma todas as bolas em bolas flamejantes. Quando uma bola flamejante toca um tijolo, os tijolos acima, abaixo, a esquerda e a direita também são destruídos. Uma bola flamejante destrói todos os tipos de tijolos independente de seu tipo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de bola que não para </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de bola que não para </term>
+    <listitem>
+      <para
+>Transforma todas as bolas em bolas que não param. Uma bola que não para destrói todos os tijolos que encontra no seu caminho, independente do tipo e nunca rebate neles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente do olho mágico </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente do olho mágico </term>
+    <listitem>
+      <para
+>Exibe todos os tijolos escondidos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de varinha mágica </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de varinha mágica </term>
+    <listitem>
+      <para
+>Transforma todos os tijolos múltiplos e inquebráveis em tijolos simples. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de aumento de velocidade </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de aumento de velocidade </term>
+    <listitem>
+      <para
+>Aumenta a velocidade bola em 30% da velocidade atual. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de diminuição de velocidade </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de diminuição de velocidade </term>
+    <listitem>
+      <para
+>Reduz a velocidade bola com a divisão da velocidade atual por 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Presente de próximo nível </phrase>
+	</textobject>
+      </inlinemediaobject
+>Presente de próximo nível </term>
+    <listitem>
+      <para
+>Abre imediatamente o acesso ao próximo nível do jogo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Estratégias e dicas</title>
+<itemizedlist>
+<listitem
+><para
+>Se possível, geralmente é uma boa ideia mandar a bola acima dos tijolos, fazendo isso você terá uma pequena chance de perder a bola. Algumas vezes você precisa primeiro fazer um pequeno buraco na camada de tijolos para conseguir isto. Quanto menor o buraco, menor a chance da bola voltar pra baixo.</para
+></listitem>
+<listitem
+><para
+>Quando pegar o presente de bola adicional, é prudente não atirá-la imediatamente, mas sim mantê-la, no caso de outras bolas serem perdidas. Também é aconselhável não pegar um presente de barra aderente neste caso, pois fazendo isto você é forçado a atirar todas as bolas.</para
+></listitem>
+<listitem
+><para
+>Quando receber um presente de próximo nível você pode não querer pegá-lo se você souber que existem presentes de vida adicional no nível.</para
+></listitem>
+<listitem
+><para
+>Em níveis que houverem vários tijolos escondidos, pode existir um jeito de ganhar o nível sem ter que destruir a maioria deles.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Visão geral da interface</title>
+
+<sect1 id="menu">
+<title
+>Itens dos menus</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia um novo jogo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Pausar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Pausa ou prossegue com o jogo atual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar recordes</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Exibe um diálogo contendo os recordes. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sai do programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Modo de tela inteira</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Joga o &kbreakout; no modo em tela inteira. Só é possível sair deste modo com o uso da tecla de atalho.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>O &kbreakout; possui os itens dos menus <guimenu
+>Configurações</guimenu
+> e <guimenu
+>Ajuda</guimenu
+>, comuns do &kde;. Para mais informações, consulte as seções sobre o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Configurações</ulink
+> e o <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Atalhos</title>
+
+<para
+>Os atalhos padrão são:</para>
+
+<table>
+<title
+>Atalhos</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Atirar</entry>
+<entry>
+<keycap
+>Tecla espaço</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Pausar/reiniciar</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Inicia um novo jogo</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Exibir recordes</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Sair</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Modo de tela inteira</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Ajuda</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>O que é isto?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Créditos e Licença</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Direitos autorais do programa 2008 por Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Direitos autorais da documentação 2008 por Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Tradução de Luiz Fernando Ranghetti <email
+>elchevive@opensuse.org</email
+> e André Marcelo Alvarenga <email
+>alvarenga@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

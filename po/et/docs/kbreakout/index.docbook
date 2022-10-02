@@ -1,0 +1,862 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kbreakout "<application
+>KBreakout</application
+>">
+<!ENTITY kappname "&kbreakout;">
+<!ENTITY package "kdegames">
+<!ENTITY % Estonian  "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>&kbreakout;i käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2013-05-03</date>
+<releaseinfo
+>1.0.0 (&kde; 4.11)</releaseinfo>
+
+<abstract>
+<para
+>&kappname; on Breakouti moodi mäng.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>mäng</keyword>
+<keyword
+>kbreakout</keyword>
+<keyword
+>breakout</keyword>
+<keyword
+>tellis</keyword>
+<keyword
+>tellised</keyword>
+<keyword
+>pall</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>&kappname; on Breakouti moodi mäng. </para>
+
+<para
+>Mängu eesmärk on hävitada võimalikult palju telliseid ilma palli kaotamata. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Kuidas mängida</title>
+
+<para
+>Mängija ees on mitut tellist sisaldav mänguväli. Pall liigub üle ekraani, põrgates lae ja külgseinte vastu. Tellise tabamisel põrkab pall sellelt tagasi ja tellis hävib. Mängija kaotab elu, kui pall puudutab välja allserva. Selle vältimiseks on mängija käsutuses akna allosas liikuv latt, millelt pall saab tagasi üles põrgata. Mängu eesmärk on läbida võimalikult palju tasemeid, hävitades igal tasemel kõik tellised, ning saavutada sel moel võimalikult palju punkte. </para>
+
+<para
+>Mõned kivid käituvad iseäralikult või lasevad tabamisel vabaks mõne allalangeva kingituse. Latt võib kingitused kinni püüda. Kingitused võivad mõjuda positiivselt või negatiivselt. Täpsemalt kõneleb eri tüüpi tellistest ja kinkidest järgmine peatükk. </para>
+
+<para
+>Palli õhkupaiskamiseks vajuta tühikuklahvi, lati liigutamiseks kasuta hiirt või nooleklahve. Pall põrkab lati selle külke suunda, mida ta tabas: mida lähemale lati vasakule otsale tabamus oli, seda järsemalt see vasakule põrkab (sama parema otsa kohta). Kui pall tabab lati keskkohta, põrkab ta otse üles. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Mängureeglid, strateegia ja nõuanded</title>
+
+<sect1 id="rules">
+<title
+>Reeglid</title>
+<itemizedlist>
+<listitem
+><para
+>Taseme läbimine annab mängijale 300 punkti. Tase saab läbi, kui hävitatud on kõik purunevad ja nähtavad tellised või kui püütakse kinni järgmise taseme kingitus. Viimasel juhul saab lisapunkte iga allesjäänud tellise eest.</para
+></listitem>
+<listitem
+><para
+>Punkte saab iga hävitatud tellise eest ning mida väiksem on kahe tabamuse vahe, seda rohkem punkte saab.</para
+></listitem>
+<listitem
+><para
+>Igal tasemel on kindlad kingitused, kuid nende asukoht on juhuslik.</para
+></listitem>
+<listitem
+><para
+>Iga kinnipüütud kingituse eest saab 30 punkti.</para
+></listitem>
+<listitem
+><para
+>Mängija kaotab elu, kui pall tabab välja allserva ning mängus pole enam ühtegi palli või kui ta püüab kinni elukaotamise kingituse. Elu kaotamisel lahutatakse senisest tulemusest 1000 punkti.</para
+></listitem>
+<listitem
+><para
+>Lisaelusid saab hankida lisaelu kingitusi kinni püüdes.</para
+></listitem>
+<listitem
+><para
+>Mäng saab läbi, kui mängija kaotab palli ja tal pole enam ühtegi elu jäänud või kui kõik tasemed on võidetud.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tellisetüübid</title>
+<note>
+  <para
+>Allpool näidatavad tellisepildid vastavad &kbreakout;i vaikimisi teemale. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tavaline tellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tavaline tellis </term>
+    <listitem>
+      <para
+>Kõige tavalisem tellis, mille välimus võib küll varieeruda, aga mis käitub alati ühtmoodi: pihta saades hävib. Võib sisaldada kingitust. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Purunematu tellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Purunematu tellis </term>
+    <listitem>
+      <para
+>Tellis, mis ei hävi kunagi, kui seda ei taba just põlev või peatumatu pall või kui tabamust ei saa selle kõrval asuv plahvatav tellis. Nende telliste hävitamine ei ole taseme võitmiseks vajalik. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Purustatav tellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Purustatav tellis </term>
+    <listitem>
+      <para
+>Purunematuid telliseid saab muuta purustatavaks <link linkend="gift-magic-wand"
+>võlukepi kingitusega</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Peidetud tellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Peidetud tellis </term>
+    <listitem>
+      <para
+>Seda tellist algul mängijale ei näidata. See ilmub nähtavale alles esimese tabamuse järel ja muutub siis tavaliseks telliseks. Kui peidetud tellist tabab põlev pall või tabamuse saab selle kõrval asuv plahvatav tellis, hävib peidetud tellis kohe nähtavale ilmumisel. Kuni tellis on nähtamatu, ei ole seda vaja järgmisele tasemele jõudmiseks hävitada. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mitmiktellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Mitmiktellis </term>
+    <listitem>
+      <para
+>Seda tellist tuleb tabada kolm korda, enne kui see hävib, kui seda ei taba just põlev või peatumatu pall või kui tabamust ei saa selle kõrval asuv plahvatav tellis. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Plahvatav tellis </phrase>
+	</textobject>
+      </inlinemediaobject>
+Plahvatav tellis </term>
+    <listitem>
+      <para
+>Kui selline tellis saab tabamuse, hävivad ka selle kohal, all, vasakul ja paremal asuvad tellised sõltumata oma tüübist. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Kingitused</title>
+<note>
+  <para
+>Allpool näidatavad kingitusepildid vastavad &kbreakout;i vaikimisi teemale. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>1000 punkti kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Punktikingitused </term>
+    <listitem>
+      <para
+>Kinnipüüdmisel annavad need mängijale pealekirjutatud arvu punkte. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Lisaelu kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Lisaelu kingitus </term>
+    <listitem>
+      <para
+>Annab mängijale lisaelu. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Elukaotamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Elukaotamise kingitus </term>
+    <listitem>
+      <para
+>Kinnipüüdmisel kaotab mängija kõik pallid ja lati asukoht lähtestatakse. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Lati laiendamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Lati laiendamise kingitus </term>
+    <listitem>
+      <para
+>Laiendab latti. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Lati kahandamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Lati kahandamise kingitus </term>
+    <listitem>
+      <para
+>Kahandab latti. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Pallide topeldamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Pallide topeldamise kingitus </term>
+    <listitem>
+      <para
+>Kahekordistab pallide arvu. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Lisapalli kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Lisapalli kingitus </term>
+    <listitem>
+      <para
+>Annab mängijale lisapalli, mis on kinnitatud lati külge ja mille mängija võib õhku paisata siis, kui ise soovib. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Kleepuva lati kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Kleepuva lati kingitus </term>
+    <listitem>
+      <para
+>Kinnipüüdmisel muutub latt kleepuvaks, nii et pall seda tabades jääb lati külge, mis võimaldab mängijal selle oma tahtmist mööda välja lasta. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Plahvatavate telliste paljundamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Plahvatavate telliste paljundamise kingitus </term>
+    <listitem>
+      <para
+>Muudab kõik plahvatavate telliste kohal ja all ning neist vasakul ja paremal asuvad telliseid samuti plahvatavaks. See kehtib ka peidetud ja purunematute telliste kohta. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Põleva palli kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Põleva palli kingitus </term>
+    <listitem>
+      <para
+>Muudab kõik pallid põlevaks. Kui põlev pall tabab tellist, hävivad ka selle kohal ja all ning sellest vasakul ja paremal asuvad tellised. Põlev pall hävitab kõiki telliseid tüübist sõltumata. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Peatumatu palli kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Peatumatu palli kingitus </term>
+    <listitem>
+      <para
+>Muudab kõik pallid peatumatuks. Peatumatu pall hävitab kõik teele ette jäävad tellised tüübist sõltumata ega põrku neilt kunagi tagasi. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Salasilma kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Salasilma kingitus </term>
+    <listitem>
+      <para
+>Näitab kõiki peidetud telliseid. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Võlukepi kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Võlukepi kingitus </term>
+    <listitem>
+      <para
+>Muudab kõik mitmik- ja purunematud tellised tavalisteks. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Kiiruse suurendamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Kiiruse suurendamise kingitus </term>
+    <listitem>
+      <para
+>Suurendab palli kiirust 30% võrra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Kiiruse vähendamise kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Kiiruse vähendamise kingitus </term>
+    <listitem>
+      <para
+>Vähendab palli kiirust, jagades senise kiiruse 1,3-ga. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Järgmise taseme kingitus </phrase>
+	</textobject>
+      </inlinemediaobject>
+Järgmise taseme kingitus </term>
+    <listitem>
+      <para
+>Avab otsekohe mängu järgmise taseme. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Strateegia ja nõuanded</title>
+<itemizedlist>
+<listitem
+><para
+>Kui võimalik, tasuks alati saata pall telliste kohale, sest nii on võimalus seda kaotada väiksem. Mõnikord tuleb selleks kõigepealt tellisekihti avaus tekitada. Mida väiksem avaus, seda väiksem ka võimalus, et pall kiiresti tagasi tuleb.</para
+></listitem>
+<listitem
+><para
+>Lisapalli kingituse saamisel on enamasti mõttekas seda kohe mitte välja lasta, vaid jätta see vähemalt mõneks ajaks seisma, et selle abil vajaduse korral kompenseerida teiste pallide kaotust. Samuti on soovitatav sellisel juhul mitte kinni püüda kleepuva lati kingitust, sest see sunnib seejärel kõik pallid välja laskma.</para
+></listitem>
+<listitem
+><para
+>Järgmise taseme kingituse puhul ei pruugi seda kinni püüda, kui tead, et tasemel leidub ka lisaelude kingitusi.</para
+></listitem>
+<listitem
+><para
+>Tasemetel, kus leidub hulganisti peidetud telliseid, on päris mõttekas tase võita neid võimalikult vähe hävitades.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Liidese tutvustus</title>
+
+<sect1 id="menu">
+<title
+>Menüükirjed</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Alustab uut mängu. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>&Esc;</keycap
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Teeb mängus pausi või jätkab peatatud mängu. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Näita rekordeid</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Avab rekordeid näitava dialoogi. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Lõpetab rakenduse töö. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Täisekraanirežiim</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Võimaldab mängida &kbreakout;i täisekraanirežiimis. Sellest režiimist saab väljuda ainult kiirklahviga.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Lisaks on &kbreakout;il tavapärased &kde; <guimenu
+>seadistuste</guimenu
+> ja <guimenu
+>abi</guimenu
+>menüü elemendid, mille kohta leiab rohkem teavet &kde; põhialuste käsiraamatu osadest <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Menüü Seadistused</ulink
+> ja <ulink url="help:/fundamentals/ui.html#menus-help"
+>Menüü Abi</ulink
+>. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Kiirklahvid</title>
+
+<para
+>Vaikimisi kiirklahvid on järgmised:</para>
+
+<table>
+<title
+>Kiirklahvid</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Tulistamine</entry>
+<entry>
+<keycap
+>Tühikuklahv</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Paus/jätkamine</entry>
+<entry>
+<keycap
+>&Esc;</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Uue mängu alustamine</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Rekordite näitamine</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Väljumine</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Täisekraanirežiim</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Abi</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Mis see on?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Autorid ja litsents</title>
+
+<para
+>&kappname; </para>
+<para
+>Rakenduse autoriõigus 2008: Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Dokumentatsiooni autoriõigus 2008: Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="getting-kbreakout">
+<title
+>&kappname;i hankimine</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

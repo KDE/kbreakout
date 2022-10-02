@@ -1,0 +1,837 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Dutch "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Het handboek van &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+&Freek.de.Kruijf;&Ronald.Stroethoff; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, een Breakout-achtig spel.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>steen</keyword>
+<keyword
+>stenen</keyword>
+<keyword
+>bal</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>&kbreakout;, een Breakout-achtig spel. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het spelbord van &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Het doel van het spel is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Hoe te spelen</title>
+
+<para
+>De speler krijgt een speelveld te zien met daarin een aantal bakstenen. Een bal verplaatst zich over het scherm, stuiterend tegen de bovenkant en de muren aan de zijkanten. Als het een baksteen raakt dan stuitert de bal weg en is de baksteen vernietigd. De speler verliest een leven als de bal de onderkant van het veld raakt. Om dit te voorkomen moet de speler een beweegbare speelbalk gebruiken om de de bal weer omhoog te stuiteren, die onderaan het venster te vinden is. Het doel van het spel is door de levels te gaan ondertussen alle aanwezige bakstenen vernietigend en een hoge score te krijgen. </para>
+
+<para
+>Sommige stenen hebben een speciaal gedrag, of er kan een cadeau uit vallen wanneer het getroffen wordt. Deze cadeaus kunt u opvangen met de speelbalk, hun gedrag kan positief maar ook negatief zijn. Meer informatie over de verschillende soorten bakstenen en cadeaus lees u in het volgende hoofdstuk. </para>
+
+<para
+>Om de bal af te schieten drukt u op de spatiebalk, om de speelbalk te verplaatsen gebruikt u de muis of de pijltjestoetsen. De bal stuitert in de richting van waar het de speelbalk raakt, hoe dichter het de linkerkant van de speelbalk raakt, hoe meer het naar links weg stuitert, hetzelfde geldt voor de rechterkant; als het het midden van de speelbalk raakt dan stuitert het recht omhoog. </para>
+
+<para
+>Als u de optie <guilabel
+>Afvuren op muisklik</guilabel
+> inschakelt in de instellingendialoog, dan kunt u klikken met de &LMB; om te vuren. Instellen van deze optie laat het spel de muiscursor stelen, pauzeer het spel om de cursor terug te krijgen. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Spelregels, strategieën en tips</title>
+
+<sect1 id="rules">
+<title
+>Regels</title>
+<itemizedlist>
+<listitem
+><para
+>Als een speler een level passeert dan krijgt hij 300 punten. Een level is gepasseerd als alle breekbare en zichtbare bakstenen zijn vernietigd, of alternatief het volgende level als cadeau is gevangen. In het laatste geval krijgt u extra punten voor elke overgebleven baksteen.</para
+></listitem>
+<listitem
+><para
+>U krijgt punten voor elke baksteen die u vernietigd, hoe sneller na de laatste vernietigde baksteen u de volgende baksteen vernietigd hoe hoger de score.</para
+></listitem>
+<listitem
+><para
+>Het aantal in een level verborgen cadeaus is vast maar hun positie is willekeurig.</para
+></listitem>
+<listitem
+><para
+>U krijgt 30 punten voor ieder cadeau dat u vangt.</para
+></listitem>
+<listitem
+><para
+>De speler verliest een leven als de bal de onderkant van het veld raakt en er geen andere ballen meer in het spel zijn, of wanneer hij een verlies van leven cadeau vangt. Bij het verlies van een leven raakt u 1000 punten kwijt.</para
+></listitem>
+<listitem
+><para
+>U kunt extra levens krijgen door cadeaus voor extra levens te vangen.</para
+></listitem>
+<listitem
+><para
+>Het spel eindigt als de speler de bal verliest en geen extra levens meer over heeft, of wanneer alle levels gewonnen zijn.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Soorten bakstenen</title>
+<note>
+  <para
+>De afbeeldingen van de bakstenen hieronder zijn voor het standaard thema van &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gewone baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gewone bakstenen </term>
+    <listitem>
+      <para
+>Gewone bakstenen, hoewel hun uiterlijk kan variëren is het gedrag altijd hetzelfde, Een bal kan ze vernietigen door ze te raken en er kan een cadeau in zitten. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Onverwoestbare baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Onverwoestbare baksteen </term>
+    <listitem>
+      <para
+>Is onvernietigbaar tenzij geraakt door een brandende bal of een onstopbare bal, of als een exploderende baksteen ernaast geraakt wordt. deze bakstenen hoeft u niet te vernietigen om een level te winnen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Breekbare baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Breekbare baksteen </term>
+    <listitem>
+      <para
+>Onverwoestbare bakstenen kunt u veranderen in breekbare bakstenen door gebruik van een <link linkend="gift-magic-wand"
+>Cadeau voor magische muren</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Verborgen baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Verborgen baksteen </term>
+    <listitem>
+      <para
+>Deze baksteen is in het begin niet zichtbaar voor de speler. pas nadat het voor de eerste keer is geraakt komt het zichtbaar en wordt het een gewone baksteen. Als een brandende bal het raakt of exploderende baksteen ernaast wordt geraakt dan zal deze vernietigd worden zodra het zichtbaar wordt. Zolang het verborgen is, hoeft u het niet te vernietigen en kunt u doorgaan naar de volgende level. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Meervoudige baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Meervoudige baksteen </term>
+    <listitem>
+      <para
+>Deze moet u drie keer raken voordat het vernietigd is, tenzij u het raakt met een brandende of onstopbare bal, of een exploderende baksteen ernaast wordt vernietigd. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Exploderende baksteen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Exploderende baksteen </term>
+    <listitem>
+      <para
+>Als u deze baksteen raakt, dan zullen ook de bakstenen erboven, eronder, links en rechts vernietigd worden, onafhankelijk van het type. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Cadeaus</title>
+<note>
+  <para
+>De afbeeldingen van de cadeaus hieronder zijn voor het standaard thema van &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>1000 punten cadeau </phrase>
+	</textobject>
+      </inlinemediaobject
+>Punten cadeaus </term>
+    <listitem>
+      <para
+>Als u deze opvangt dan krijgt u het aantal punten dat op het cadeau is geschreven. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor extra leven </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor extra leven </term>
+    <listitem>
+      <para
+>Geeft de speler een extra leven. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor het verlies van een leven </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor het verlies van een leven </term>
+    <listitem>
+      <para
+>Zorgt ervoor dat de speler alle ballen verliest en start het level opnieuw. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor vergroten van speelbalk </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor vergroten van speelbalk </term>
+    <listitem>
+      <para
+>Vergroot de speelbalk. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor verkleinen van speelbalk </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor verkleinen van speelbalk </term>
+    <listitem>
+      <para
+>Verkleint de speelbalk. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor het splitsen van ballen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor het splitsen van ballen </term>
+    <listitem>
+      <para
+>Verdubbelt het aantal ballen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor extra ballen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor extra ballen </term>
+    <listitem>
+      <para
+>Geeft de speler een extra bal die aan de speelbalk vast gaat zitten, deze kan de speler op elk gewenst moment gebruiken. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor een klevende speelbalk </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor een klevende speelbalk </term>
+    <listitem>
+      <para
+>Na het vangen van dit cadeau zal iedere bal die de speelbalk raakt hieraan vast blijven zitten, zodat de speler het opnieuw kan afschieten. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor meer exploderende bakstenen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor meer exploderende bakstenen </term>
+    <listitem>
+      <para
+>Zorgt dat alle bakstenen erboven, eronder, links en rechts ook vernietigd worden. Dit geldt ook voor verborgen en onverwoestbare bakstenen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor brandende ballen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor brandende ballen </term>
+    <listitem>
+      <para
+>Verandert alle ballen in brandende ballen. Als u met een brandende bal een baksteen raakt dan vernietigt u ook alle bakstenen erboven, eronder, links en rechts daarvan. Een brandende bal vernietigt alle soorten bakstenen onafhankelijk van het soort. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor onstopbare ballen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor onstopbare ballen </term>
+    <listitem>
+      <para
+>Verandert alle ballen in onstopbare ballen. Een onstopbare bal vernietigt alle bakstenen die het tegenkomt onafhankelijk van het soort, en stuitert nooit er tegen terug. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor magische ogen </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor magische ogen </term>
+    <listitem>
+      <para
+>Toont alle verborgen bakstenen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor magische muren </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor magische muren </term>
+    <listitem>
+      <para
+>Verandert alle meervoudige bakstenen en onverwoestbare bakstenen in gewone bakstenen. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor snelheidsverhoging </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor snelheidsverhoging </term>
+    <listitem>
+      <para
+>Verhoogt de huidige snelheid van de bal met 30%. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor snelheidsvermindering </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor snelheidsvermindering </term>
+    <listitem>
+      <para
+>Vermindert de huidige snelheid van de bal door de snelheid te delen met 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Cadeau voor volgend niveau </phrase>
+	</textobject>
+      </inlinemediaobject
+>Cadeau voor volgend niveau </term>
+    <listitem>
+      <para
+>Geeft het volgende level onmiddellijk vrij. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Strategieën en tips</title>
+<itemizedlist>
+<listitem
+><para
+>Indien mogelijk, is het meestal een goed idee om de bal boven de laag bakstenen te sturen, in dat geval is de kans kleiner dat u de bal verliest. Soms is het nodig dat u eerst een klein gat maakt in de laag bakstenen om dit te kunnen doen. Hoe kleiner het gat, hoe kleiner de kans dat de bal weer omlaag komt.</para
+></listitem>
+<listitem
+><para
+>Als u een Cadeau voor extra ballen heeft opgevangen dan is het niet verstandig om deze onmiddellijk weer af te schieten maar deze te bewaren voor het geval dat de andere ballen verloren zijn. Het is ook verstandig om geen Cadeau voor een klevende speelbalk op te vangen omdat in dat geval geen bal meer op uw speelbalk terugstuitert maar u weer gedwongen bent om elke bal af te schieten.</para
+></listitem>
+<listitem
+><para
+>Als een Cadeau voor volgend niveau omlaag komt dan wilt u deze wellicht niet opvangen als u weet dat er Cadeaus voor extra leven in dit level aanwezig zijn.</para
+></listitem>
+<listitem
+><para
+>In levels waar veel verborgen bakstenen zijn, kan er een methode zijn om deze level te winnen zonder dat u er veel hiervan moet vernietigen.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Overzicht van het interface</title>
+
+<sect1 id="menu">
+<title
+>Menu-items</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Start een nieuw spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauze</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Pauzeer of hervat het huidige spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Topscores tonen</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Toont een dialoog met de hoge scores. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sluit het programma. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Beeld</guimenu
+> <guimenuitem
+>Modus Volledig scherm</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Speel het spel &kbreakout; in modus volledig scherm. Deze modus verlaten is alleen mogelijk met de sneltoets.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>&kbreakout; heeft de standaard &kde;-menu-items <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, lees voor meer informatie de secties over het <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Help Menu</ulink
+> van de &kde; Fundamentals. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Sneltoetsen</title>
+
+<para
+>De standaard sneltoetsen zijn:</para>
+
+<table>
+<title
+>Sneltoetsen</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Vuur</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Pauzeren/hervatten</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Start een nieuw spel</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Topscores tonen</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Afsluiten</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Volledig schermmodus</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Help</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Wat is dit?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Dankbetuiging en licentie</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Programma copyright 2008 bij Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Documentatie copyright 2008 bij Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+&meld.fouten;&vertaling.freek;&vertaling.ronald; &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

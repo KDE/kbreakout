@@ -1,0 +1,599 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kbreakout "<application
+>KBreakout</application
+>">
+<!ENTITY kappname "&kbreakout;">
+<!ENTITY package "kdegames">
+<!ENTITY % French "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Manuel de &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stéphanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+&traducteurStanislasZeller; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>05/05/2008</date>
+<releaseinfo
+>1.0.0</releaseinfo>
+
+<abstract>
+<para
+>&kappname;, un jeu de type Breakout</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>jeu kde</keyword>
+<keyword
+>jeu</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>brique</keyword>
+<keyword
+>briques</keyword>
+<keyword
+>balle</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduction</title>
+
+<para
+>&kappname; est un jeu de type Breakout. </para>
+
+<para
+>L'objectif du jeu est de détruire autant de briques que possible sans perdre la balle. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Comment jouer</title>
+
+<para
+>Le joueur peut voir un champ de jeu contenant un nombre de briques. Une balle traverse l'écran, rebondissant contre les murs. Quand une brique est touchée, la balle rebondit et la brique est détruite. Le joueur perd une vie quand la balle tombe en bas de l'écran. Pour prévenir ceci, le joueur utilise une barre pour faire rebondir la balle vers le haut, située en bas de la fenêtre de jeu. Le but du jeu est de progresser à travers les niveaux en détruisant toutes les briques présentes dans chaque niveau, et essayer de réaliser un score le plus haut possible. </para>
+
+<para
+>Certaines briques ont un comportement spécial, ou offre un bonus quand elles sont touchées. Le bonus peut être attrapé avec la barre, leur comportement peuvent être positif ou négatif. Pour plus d'informations sur les différents types de briques et bonus, se référer au chapitre suivant. </para>
+
+<para
+>Pour lancer la balle, cliquez sur la touche « espace ». Pour déplacer la barre, utilisez la souris ou les flèches du clavier. La balle va rebondir dans la direction du bord de la barre qu'elle touche. Plus la balle va rebondir près du bord gauche de la barre, plus elle va repartir en haut à gauche., la même chose s'applique pour le coté droit. Si elle rebondit au milieu de la barre, la balle repartira vers le haut à la verticale. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Règles du jeu, stratégies et astuces</title>
+
+<sect1 id="rules">
+<title
+>Règles</title>
+<itemizedlist>
+<listitem
+><para
+>La réussite d'un niveau est récompensée de 300 points au joueur. Un niveau est réussi quand toutes les briques visibles et cassables sont détruites, ou si le bonus de niveau suivant est attrapé. Dans ce dernier cas, un score additionnel pour chaque brique détruite est remporté.</para
+></listitem>
+<listitem
+><para
+>Un score est remporté pour chaque brique détruite : plus petit est l'intervalle entre un coup et le suivant, plus grand est le score.</para
+></listitem>
+<listitem
+><para
+>Les bonus cachés dans les niveaux sont fixés, leur position, cependant, se fait au hasard.</para
+></listitem>
+<listitem
+><para
+>30 points sont remportés pour tous les bonus attrapés.</para
+></listitem>
+<listitem
+><para
+>Le joueur perd une vie quand la balle tombe en bas du champ de jeu et que plus aucune balle se trouve sur le champ de jeu, ou quand le joueur attrape un bonus de perte de vie. Quand une vie est perdue, 1000 points est retiré au score.</para
+></listitem>
+<listitem
+><para
+>Les vies additionnelles peuvent être obtenues en attrapant des bonus de vie.</para
+></listitem>
+<listitem
+><para
+>La partie prend fin quand le joueur perd sa balle et qu'il ne lui reste plus aucune vies, ou quand tous les niveaux ont été remportés.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Types de briques</title>
+<variablelist>
+<varlistentry
+><term
+>Brique simple</term
+><listitem
+><para
+>Les briques simples. Leurs apparences peuvent varier mais ont toutes le même type, c'est-à-dire qu'elles sont détruites quand la balle les touche, et elles peuvent contenir un bonus.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Brique incassable</term
+><listitem
+><para
+>Ces briques sont impossible à détruire à moins d'utiliser les balles en feu ou les balles indestructibles, ou une brique explosive à proximité qui la fera exploser. Ces briques n'ont pas besoin d'être détruites pour terminer le niveau.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Brique invisible</term
+><listitem
+><para
+>Cette brique n'est pas affichée au joueur. Quand elle est touchée pour la première fois, elle devient visible, et a le type de brique simple. Si elle est touchée par une balle en feu, ou une brique explosive à proximité d'elle, elle sera détruite dès qu'elle apparaîtra. Aussi longtemps qu'elle reste invisible, il n'est pas nécessaire de la détruire pour passer au niveau suivant.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Brique multiple</term
+><listitem
+><para
+>Cette brique a besoin d'être frappée trois fois avant de pouvoir être détruite, à moins qu'elle ne soit frappée par une balle en feu ou une balle indestructible, ou une brique explosive à proximité qui la fera exploser.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Brique explosive</term
+><listitem
+><para
+>Quand cette brique explose, les briques situées de part et d'autre seront aussi détruites, peu importe leur type.</para
+></listitem
+></varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Bonus</title>
+<variablelist>
+<varlistentry
+><term
+>Bonus de score</term
+><listitem
+><para
+>Si ce bonus est attrapé, le joueur gagne le nombre de points indiqué sur ce bonus.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de vie</term
+><listitem
+><para
+>Donne au joueur une vie supplémentaire</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de perte d'une vie</term
+><listitem
+><para
+>Le joueur perd toutes ses balles, sa barre et doit rejouer.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de barre agrandie</term
+><listitem
+><para
+>Agrandit la barre.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de barre réduite</term
+><listitem
+><para
+>Réduit la barre.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de balle double</term
+><listitem
+><para
+>Deux balles apparaissent.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de balle supplémentaire</term
+><listitem
+><para
+>Donne au joueur une balle supplémentaire collée à la barre, qui peut être lancée quand le joueur le souhaite.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de barre collante</term
+><listitem
+><para
+>Après avoir attrapé ce bonus, chaque fois que la balle touche la barre, celle ci devient collante et garde la balle, ce qui permet au joueur de la relancer.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de brique explosive</term
+><listitem
+><para
+>Transforme toutes les briques en haut, en bas, à droite et à gauche en des briques explosives qui vont détruire les briques elles mêmes. Ceci s'applique aussi aux briques cachées et incassables.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de balle en feu</term
+><listitem
+><para
+>Transforme toutes les balles en balles enflammées. Quand une balle en feu touche une brique, aussi bien les briques en haut, bas, gauche et droite sont détruites. Une balle en feu détruit tous les types de briques sans se soucier de leurs types.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de balle indestructible</term
+><listitem
+><para
+>Transforme toutes les balles en balles indestructibles. Une balle indestructible détruit toutes les briques qu'elle rencontre sur son parcours, sans considération de leurs types. Elle ne rebondit jamais sur celles ci.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus d'œil magique</term
+><listitem
+><para
+>Affiche toutes les briques cachées.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Bonus de baguette magique</term
+><listitem
+><para
+>Transforme toutes les briques multiples et incassables en de simples briques.</para
+></listitem
+></varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Stratégies et astuces</title>
+<itemizedlist>
+<listitem
+><para
+>Si possible, c'est généralement une bonne idée d'envoyer la balle au dessus des briques, vous donnant une chance minime de perdre la balle. Quelque fois, vous avez besoin de faire un petit trou dans la couche de briques pour accomplir cette technique. Plus le trou est petit, plus la chance de voir revenir la balle est diminuée.</para
+></listitem>
+<listitem
+><para
+>Quand vous attrapez un bonus de balle supplémentaire, il est judicieux de ne pas l'envoyer directement, mais de la conserver dans le cas où les autres balles sont perdus. Il est aussi judicieux de ne pas attraper un bonus de barre collante dans ce cas, vous forçant à lancer toutes vos balles.</para
+></listitem>
+<listitem
+><para
+>Quand vous recevez un bonus de niveau suivant, vous pouvez ne pas l'attraper si vous savez qu'il y a dans le niveau des bonus de vie supplémentaire.</para
+></listitem>
+<listitem
+><para
+>Dans les niveaux où il y a beaucoup de briques invisibles, il existe une manière de remporter le niveau sans avoir à les détruire toutes.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Vue d'ensemble de l'interface</title>
+
+<sect1 id="game-menu">
+<title
+>Le menu <guimenu
+>Jeu</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Démarre une nouvelle partie. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Affiche une boîte de dialogue contenant les meilleurs scores. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Quitte le programme. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+
+
+
+<sect1 id="settings-menu">
+<title
+>Le menu <guimenu
+>Configuration</guimenu
+></title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Ouvre une boîte de dialogue où vous pouvez redéfinir tous les raccourcis clavier.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kappname;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Ouvre une boîte de dialogue où vous pouvez choisir le thème graphique pour le jeu.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help">
+<title
+>Le menu <guimenu
+>Aide</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Raccourcis</title>
+
+<para
+>Les raccourcis par défaut sont : </para>
+
+<table>
+<title
+>Raccourcis</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Feu</entry>
+<entry>
+<keycap
+>Espace</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Pause / Résumé</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Démarre une nouvelle partie</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Affiche les meilleurs scores</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Quitter</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Aide</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Qu'est-ce que c'est ?</entry>
+<entry>
+<keycombo action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Remerciements et licence</title>
+
+<para
+>&kappname; </para>
+<para
+>Copyright du programme 2008 par Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Copyright de la documentation 2008 par Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Traduction française par &StanislasZeller;.</para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Installation</title>
+
+<sect1 id="getting-kbreakout">
+<title
+>Comment obtenir &kappname;</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Compilation et Installation</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

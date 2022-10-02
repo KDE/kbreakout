@@ -1,0 +1,860 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Portuguese "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Manual do &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-05-09</date>
+<releaseinfo
+>1.2.0 (Aplicações 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, um jogo do estilo do Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>jogo</keyword>
+<keyword
+>kbreakout</keyword>
+<keyword
+>breakout</keyword>
+<keyword
+>tijolo</keyword>
+<keyword
+>tijolos</keyword>
+<keyword
+>bola</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdução</title>
+
+<para
+>O &kbreakout; é um jogo semelhante ao Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabuleiro de jogo do &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>O objectivo do jogo é destruir tantos tijolos quantos possíveis, sem perder a bola. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Como Jogar</title>
+
+<para
+>É apresentado ao jogador um campo de jogo que contém uma determinada quantidade de tijolos. Uma bola percorre o ecrã, fazendo ricochete nas paredes superior e laterais. Quando atingir um tijolo, a bola ressalta e o tijolo é destruído. O jogador perde uma vida quando a bola atingir o fundo do campo. Para evitar que isto aconteça, o jogador dispõe de uma barra móvel para ressaltar a bola para cima, situando-se esta barra no fundo da janela. O intuito do jogo é progredir pelos níveis, destruindo todos os tijolos presentes em cada um, tentando obter um recorde. </para>
+
+<para
+>Alguns tijolos têm um comportamento especial, ou poderão deixar cair um brinde quando forem atingidos. Os brindes podem ser apanhados com a barra, sendo o seu comportamento positivo ou negativo. Para mais informações sobre os diferentes tipos de tijolos e brindes, veja o capítulo seguinte. </para>
+
+<para
+>Para disparar a bola, carregue em <keycap
+>Espaço</keycap
+>; para mover a barra, use o rato ou as teclas de cursores. A bola irá bater na direcção do lado da barra onde ressaltou: quanto mais bater perto do extremo esquerdo da barra, mais se deslocará em direcção à esquerda, aplicando-se o mesmo princípio para o lado direito; se ressaltar no meio da barra, irá ressaltar directamente em relação ao topo. </para>
+
+<para
+>Se activar a opção <guilabel
+>Disparar com o botão do rato</guilabel
+> na janela de configuração, poderá carregar no &LMB; para disparar. Se activar a opção, irá fazer com que o jogo capture o cursor do rato; coloque o jogo em pausa para voltar a ter o cursor de volta. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Regras do Jogo, Estratégias e Sugestões</title>
+
+<sect1 id="rules">
+<title
+>Regras</title>
+<itemizedlist>
+<listitem
+><para
+>A passagem de um nível atribui 300 pontos ao jogador. Um nível é terminado quando todos os tijolos não-inquebráveis e visíveis forem destruídos ou, em alternativa, se apanhar o brinde de nível seguinte. No último caso, ganha uma pontuação adicional por cada tijolo restante.</para
+></listitem>
+<listitem
+><para
+>O jogador adquire pontos por cada tijolo destruído; a pontuação aumenta com a duração do período entre um choque da bola com um tijolo e o choque seguinte.</para
+></listitem>
+<listitem
+><para
+>Os brindes escondidos num dado nível são fixos; contudo, as suas posições são aleatórias.</para
+></listitem>
+<listitem
+><para
+>Ganhará 30 pontos por cada brinde recolhido.</para
+></listitem>
+<listitem
+><para
+>O jogador perde uma vida quando a bola atingir o fundo do campo e não existirem mais bolas em jogo, ou então quando apanhar um brinde de perda de vida. Ao perder uma vida, ser-lhe-ão retirados 1 000 pontos da sua pontuação.</para
+></listitem>
+<listitem
+><para
+>Poderá ganhar mais vidas se apanhar o brinde de adição de vidas.</para
+></listitem>
+<listitem
+><para
+>O jogo termina quando o jogador perder a bola sem ter mais vidas extra; termina também quando tiver ganho todos os níveis.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tipos de Tijolos</title>
+<note>
+  <para
+>As imagens dos tijolos abaixo são do tema predefinido do &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Simples </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolos Simples </term>
+    <listitem>
+      <para
+>Os tijolos simples, embora a sua aparência possa mudar, comportam-se todos da mesma forma, sendo destruídos quando forem atingidos pela bola, podendo também conter um brinde. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Inquebrável </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolo Inquebrável </term>
+    <listitem>
+      <para
+>Nunca é destruído, a menos que seja atingido por uma bola em chamas ou imparável, ou ainda se for atingido um tijolo explosivo perto deste. Estes tijolos não precisam de ser destruídos para finalizar o nível. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Quebrável </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolo Quebrável </term>
+    <listitem>
+      <para
+>Os tijolos inquebráveis poderão mudar para normais com o <link linkend="gift-magic-wand"
+>brinde da Varinha Mágica</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Escondido </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolo Escondido </term>
+    <listitem>
+      <para
+>Este tijolo não aparece ao jogador no início. Quando for atingido pela primeira vez, ficará visível e tornar-se-á um tijolo simples. Se for atingido por uma bola em chamas ou por um tijolo explosivo, desaparecerá assim que surgir. Desde que permaneça escondido, não é necessário destruí-lo para passar ao nível seguinte. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Múltiplo </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolo Múltiplo </term>
+    <listitem>
+      <para
+>Tem de ser atingido três vezes antes ser destruído, a menos que seja atingido por uma bola em chamas ou imparável, ou ainda se um tijolo explodir perto deste. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Tijolo Explosivo </phrase>
+	</textobject>
+      </inlinemediaobject>
+Tijolo Explosivo </term>
+    <listitem>
+      <para
+>Quando este tijolo for atingido, os tijolos acima, abaixo, à esquerda e à direita deste serão destruídos, independentemente do seu tipo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Brindes</title>
+<note>
+  <para
+>As imagens dos brindes abaixo são do tema predefinido do &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de 1000 Pontos </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brindes de Pontos </term>
+    <listitem>
+      <para
+>Se forem recolhidos, atribuem ao jogador o número de pontos que vem escrito neles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Adição de Vidas </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Adição de Vidas </term>
+    <listitem>
+      <para
+>Dá ao jogador uma vida adicional. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Perda de Vidas </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Perda de Vidas </term>
+    <listitem>
+      <para
+>Faz com que o jogador perca todas as bolas e reinicia a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Aumento da Barra </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Aumento da Barra </term>
+    <listitem>
+      <para
+>Alarga a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Redução da Barra </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Redução da Barra </term>
+    <listitem>
+      <para
+>Encolhe a barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Divisão de Bolas </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Divisão de Bolas </term>
+    <listitem>
+      <para
+>Duplica as bolas. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Adição de Bolas </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Adição de Bolas </term>
+    <listitem>
+      <para
+>Dá ao jogador uma bola extra colada à barra, a qual poderá ser disparada quando o jogador o desejar. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Barra Pegajosa </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Barra Pegajosa </term>
+    <listitem>
+      <para
+>Depois de apanhar este brinde, sempre que uma bola tocar na barra, ficará colada a esta, permitindo ao jogador disparar de novo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Tijolos Mais Explosivos </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Tijolos Mais Explosivos </term>
+    <listitem>
+      <para
+>Faz com que todos os tijolos acima, abaixo, à direita e à esquerda dos tijolos explosivos estoirem por si só. Isto também se aplica aos tijolos escondidos e inquebráveis. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Bola em Chamas </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Bola em Chamas </term>
+    <listitem>
+      <para
+>Transforma todas as bolas em bolas em chamas. Quando uma bola em chamas atingir um tijolo, também os tijolos por cima, por baixo, pela esquerda e pela direita serão destruídos. Uma bola em chamas destrói todos os tipos de tijolos, independentemente dos seus tipos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Bola Imparável </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Bola Imparável </term>
+    <listitem>
+      <para
+>Transforma todas as bolas em bolas imparáveis. Uma bola imparável destrói todos os tijolos que apanhar pelo seu caminho, independentemente do seu tipo, nunca mais rebatendo com eles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Olho Mágico </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Olho Mágico </term>
+    <listitem>
+      <para
+>Mostra todos os tijolos escondidos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Varinha Mágica </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Varinha Mágica </term>
+    <listitem>
+      <para
+>Transforma todos os tijolos múltiplos e inquebráveis em tijolos simples. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Aumento de Velocidade </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Aumento de Velocidade </term>
+    <listitem>
+      <para
+>Aumenta a velocidade actual da bola em 30%. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Diminuição de Velocidade </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Diminuição de Velocidade </term>
+    <listitem>
+      <para
+>Diminui a velocidade actual da bola em 30%. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Brinde de Nível Seguinte </phrase>
+	</textobject>
+      </inlinemediaobject>
+Brinde de Nível Seguinte </term>
+    <listitem>
+      <para
+>Abre imediatamente o acesso ao nível seguinte do jogo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Estratégias e Dicas</title>
+<itemizedlist>
+<listitem
+><para
+>Se possível, é normalmente uma boa ideia enviar a bola para cima dos tijolos, porque se o fizer terá menos hipóteses de perder a bola. Algumas vezes terá de fazer primeiro um pequeno buraco na camada de tijolos para conseguir este objectivo.</para
+></listitem>
+<listitem
+><para
+>Ao capturar o brinde para adição de bola, convém não dispará-la mas sim mantê-la, no caso de perder as outras bolas. Também se aconselha que não capture uma bola autocolante, se ocorrer o caso, dado que teria de disparar todas as bolas.</para
+></listitem>
+<listitem
+><para
+>Ao obter um brinde de nível seguinte, poderá não querer apanhá-lo para já, caso saiba que existem brindes de vidas extra neste nível.</para
+></listitem>
+<listitem
+><para
+>Nos níveis onde existirem bastantes tijolos escondidos, poderá existir uma forma de ganhar o nível sem ter de destruir a sua maioria.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Apresentação à Interface</title>
+
+<sect1 id="menu">
+<title
+>Opções do Menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia um novo jogo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Coloca o jogo em pausa e volta a prossegui-lo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar os Recordes</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Mostra uma janela que contém os Recordes. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sai do programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Modo de Ecrã Completo</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Joga o &kbreakout; a ocupar todo o ecrã. Só poderá sair deste módulo através da combinação de teclas respectiva.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Para além disso, o &kbreakout; tem os itens de menu <guimenu
+>Configuração</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> normais do &kde;; para mais informações, leia as secções sobre o menu <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Configuração</ulink
+> e <ulink url="help:/fundamentals/ui.html#menus-help"
+>Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Atalhos</title>
+
+<para
+>Os atalhos predefinidos são:</para>
+
+<table>
+<title
+>Atalhos</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Disparo</entry>
+<entry>
+<keycap
+>Espaço</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Pausa/Continuação</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Iniciar um novo jogo</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Mostrar os Recordes</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Sair</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Modo de Ecrã Completo</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Ajuda</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>O que é isto?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Créditos e Licença</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Programa com 'copyright' 2008 de Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Documentação com 'copyright' 2008 de Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Tradução de José Nuno Pires <email
+>zepires@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

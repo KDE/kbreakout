@@ -1,0 +1,855 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Swedish "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Handbok Utbrytning</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>Utbrytning, ett spel som liknar Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>Utbrytning</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>tegelsten</keyword>
+<keyword
+>tegelstenar</keyword>
+<keyword
+>boll</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+
+<para
+>Utbrytning är ett spel som liknar Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelbrädet i Utbrytning</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Spelets syfte är att förstöra så många tegelstenar som möjligt utan att förlora bollen. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Hur man spelar</title>
+
+<para
+>Ett spelfält som innehåller ett antal tegelstenar visas för spelaren. En boll rör sig över skärmen, och studsar från väggarna längs överkanten och sidorna. När en tegelsten träffas, studsar bollen bort och tegelstenen förstörs. Spelaren förlorar ett liv när bollen rör vid fältets underkant. För att förhindra att det sker, måste spelaren använda en rörlig platta, som finns längst ner i fönstret, för att studsa bollen uppåt. Spelets syfte är att ta sig igenom alla nivåer, förstöra tegelstenarna som finns i varje nivå, och försöka uppnå bästa poäng. </para>
+
+<para
+>Vissa tegelstenar har ett särskilt beteende, eller kanske låter en gåva falla ner när de träffas. Gåvorna kan fångas med plattan. Deras beteende kan antingen vara positivt eller negativt. För ytterligare information om olika typer av tegelstenar och gåvor, se nästa kapitel. </para>
+
+<para
+>Tryck på mellanslag för att skjuta iväg bollen. Använd musen eller piltangenterna för att flytta plattan. Bollen studsar i riktningen av den sida av plattan där den studsade vid träffen. Ju närmare plattans vänstra sida den studsar, desto mer studsar den åt vänster. Samma sak gäller för höger sida. Om den studsar mitt på plattan, studsar den rakt uppåt. </para>
+
+<para
+>Om alternativet <guilabel
+>Skjut med musklick</guilabel
+> i inställningsdialogrutan, går det att klicka med vänster musknapp för att skjuta. Aktiveras alternativet kommer spelet att stjäla muspekaren, gör paus i spelet för att få tillbaka pekaren. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Spelregler, strategi och tips</title>
+
+<sect1 id="rules">
+<title
+>Regler</title>
+<itemizedlist>
+<listitem
+><para
+>Att klara av en nivå ger 300 poäng till spelaren. En nivå har klarats när alla synliga tegelstenar som kan gå sönder har förstörts, eller alternativt om gåvan att gå till nästa nivå fångas. I det senare fallet ges ytterligare poäng för varje kvarvarande tegelsten.</para
+></listitem>
+<listitem
+><para
+>Poäng ges för varje tegelsten som förstörs, ju kortare intervall mellan en träff och den nästa, desto högre blir poängen.</para
+></listitem>
+<listitem
+><para
+>Gåvorna som döljs i en given nivå är fasta, men deras position är dock slumpmässig.</para
+></listitem>
+<listitem
+><para
+>30 poäng erhålls för varje fångad gåva.</para
+></listitem>
+<listitem
+><para
+>Spelaren förlorar ett liv när bollen rör vid fältets underkant och det inte finns några andra bollar kvar i spelet, eller om han fångar en gåva som gör att han förlorar livet. När ett liv förloras dras 1000 poäng av från resultatet.</para
+></listitem>
+<listitem
+><para
+>Ytterligare liv kan vinnas genom att fånga gåvorna som lägger till ett liv.</para
+></listitem>
+<listitem
+><para
+>Spelet tar slut när spelaren förlorar bollen och inte har några ytterligare liv kvar, eller när alla nivåer har vunnits.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Typer av tegelstenar</title>
+<note>
+  <para
+>Bilderna på tegelstenarna nedan är för standardtemat i Utbrytning. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Enkel tegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Enkla tegelstenar </term>
+    <listitem>
+      <para
+>Vanliga tegelstenar beter sig alla på samma sätt, även om deras utseende kan variera. De förstörs när de träffas av bollen, och kan innehålla en gåva. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Okrossbar tegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Okrossbar tegelsten </term>
+    <listitem>
+      <para
+>Förstörs aldrig om de inte träffas av en brinnande boll eller en boll som inte går att stoppa, eller en exploderande tegelsten intill den träffas. Dessa tegelstenar behöver inte förstöras för att vinna nivån. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Krossbar tegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Krossbar tegelsten </term>
+    <listitem>
+      <para
+>Okrossbara tegelstenar kan omvandlas till krossbara med <link linkend="gift-magic-wand"
+>gåvan med trollstav</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Dold tegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Dold tegelsten </term>
+    <listitem>
+      <para
+>Den här tegelstenen visas inte för spelaren från början. När den träffas för första gången blir den synlig, och blir en vanlig tegelsten. Om den träffas av en brinnande boll, eller om en exploderande tegelsten intill den träffas, förstörs den så fort den visas. Medan den är dold behöver den inte förstöras för att gå till nästa nivå. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Flerträffstegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Flerträffstegelsten </term>
+    <listitem>
+      <para
+>Måste träffas tre gånger innan den förstörs, om den inte träffas av en brinnande boll eller en boll som inte går att stoppa, eller en exploderande tegelsten intill den förstörs. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Exploderande tegelsten </phrase>
+	</textobject>
+      </inlinemediaobject
+>Exploderande tegelsten </term>
+    <listitem>
+      <para
+>När den här tegelstenen träffas, förstörs också tegelstenarna ovanför, under, till vänster och till höger, oberoende av typ. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Gåvor</title>
+<note>
+  <para
+>Bilderna på gåvorna nedan är för standardtemat i Utbrytning. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med 1000 poäng </phrase>
+	</textobject>
+      </inlinemediaobject
+>Poänggåvor </term>
+    <listitem>
+      <para
+>Om de fångas belönas spelaren med antal poäng skrivna på gåvan. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att lägg till ett liv </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att lägg till ett liv </term>
+    <listitem>
+      <para
+>Ger spelaren ytterligare ett liv. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att förlora ett liv </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att förlora ett liv </term>
+    <listitem>
+      <para
+>Gör att spelaren förlorar alla bollar och återställer plattan. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att förstora plattan </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att förstora plattan </term>
+    <listitem>
+      <para
+>Förstorar plattan. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att förminska plattan </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att förminska plattan </term>
+    <listitem>
+      <para
+>Förminskar plattan. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att dela bollar </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att dela bollar </term>
+    <listitem>
+      <para
+>Dubblerar antal bollar. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för att lägga till bollar </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för att lägga till bollar </term>
+    <listitem>
+      <para
+>Ger spelaren en extra boll fäst vid plattan, som kan skjutas iväg så fort spelaren vill. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva för klistrig platta </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva för klistrig platta </term>
+    <listitem>
+      <para
+>Efter att ha fångat den här gåvan, fastnar bollar så fort de rör vid plattan, vilket låter spelaren skjuta iväg dem igen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med fler exploderande tegelstenar </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med fler exploderande tegelstenar </term>
+    <listitem>
+      <para
+>Gör att alla tegelstenar ovanför, under, till höger om och till vänster om exploderande tegelstenar själva blir exploderande tegelstenar. Det gäller också dolda och okrossbara tegelstenar. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med brinnande bollar </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med brinnande bollar </term>
+    <listitem>
+      <para
+>Omvandlar alla bollar till brinnande bollar. När en brinnande boll träffar en tegelsten förstörs också tegelstenarna ovanför, under, till vänster om och till höger om den. En brinnande boll förstör alla tegelstenar oberoende av typ. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med boll som inte kan stoppas </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med boll som inte kan stoppas </term>
+    <listitem>
+      <para
+>Omvandlar alla bollar till bollar som inte kan stoppas. En boll som inte kan stoppas förstör alla tegelstenar längs vägen, oberoende av typ, och studsar aldrig mot dem. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med magiskt öga </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med magiskt öga </term>
+    <listitem>
+      <para
+>Visar alla dolda tegelstenar. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med trollstav </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med trollstav </term>
+    <listitem>
+      <para
+>Omvandlar alla flerträffstegelstenar och okrossbara tegelstenar till vanliga tegelstenar. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med ökad hastighet </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med ökad hastighet </term>
+    <listitem>
+      <para
+>Ökar bollens hastighet med 30 % av den nuvarande hastigheten. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med minskad hastighet </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med minskad hastighet </term>
+    <listitem>
+      <para
+>Minskar bollens hastighet genom att dividera den nuvarande hastigheten med 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gåva med nästa nivå </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gåva med nästa nivå </term>
+    <listitem>
+      <para
+>Öppnar spelets nästa nivå omedelbart. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Strategi och tips</title>
+<itemizedlist>
+<listitem
+><para
+>Om möjligt är det oftast en god idé att skicka bollen ovanför tegelstenarna. Genom att göra det är det mindre risk att förlora bollen. Ibland måste du först göra ett litet hål i tegelstensraden för att åstadkomma det. Ju mindre hålet är, desto mindre är chansen att bollen kommer tillbaka ner.</para
+></listitem>
+<listitem
+><para
+>När gåvan för att lägga till en boll fångas, är det smart att inte skjuta iväg den direkt, utan behålla den, ifall övriga bollar går förlorade. Det är också lämpligt att inte fånga en gåva för klistrig platta i detta fall, eftersom du skulle bli tvungen att skjuta iväg alla bollar om du gjorde det.</para
+></listitem>
+<listitem
+><para
+>När du tar emot en gåva av nästa nivå, kanske du ska välja att inte fånga den om du vet att det finns gåvor för att lägga till liv kvar på nivån.</para
+></listitem>
+<listitem
+><para
+>På nivåer där det finns många dolda tegelstenar kan det finnas sätt att vinna nivån utan att behöva förstöra de flesta av dem.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Översikt av gränssnittet</title>
+
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nytt</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Startar ett nytt spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Pausa eller återuppta aktuellt spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa bästa resultat</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Visar en dialogruta som innehåller bästa resultat. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Avslutar programmet. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Visa</guimenu
+> <guimenuitem
+>Fullskärmsläge</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Spela Utbrytning i fullskärmsläge. Det är bara möjligt att lämna fullskärmsläget med snabbtangenten.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Dessutom har Utbrytning de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Genvägar</title>
+
+<para
+>Förvalda genvägar är:</para>
+
+<table>
+<title
+>Genvägar</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Skjut</entry>
+<entry
+>Mellanslag </entry>
+</row>
+<row>
+<entry
+>Paus eller återuppta</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Starta ett nytt spel</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Visa bästa resultat</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Avsluta</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Fullskärmsläge</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Hjälp</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Vad är det här?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>Utbrytning </para>
+<para
+>Program copyright 2008 by Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Dokumentation copyright 2008 by Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

@@ -1,0 +1,254 @@
+# translation of kbreakout.po to galician
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# mvillarino <mvillarino@users.sourceforge.net>, 2008, 2009.
+# Xosé <xosecalvo@gmail.com>, 2009, 2012.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2015.
+# Marce Villarino <mvillarino@kde-espana.org>, 2013.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbreakout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2017-10-22 10:04+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "mvillarino, Xosé Calvo, Adrián Chaves Fernández"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"mvillarino@users.sourceforge.net, xosecalvo@gmail.com, adrian@chaves.io"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "Opcións xerais"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+"Ao activar a opción seguinte o xogo captura o cursor do rato; detén o xogo "
+"para retomar o cursor."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "Disparar ao premer co rato"
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, fuzzy, kde-format
+#| msgid "A breakout like game by KDE"
+msgid "A Breakout like game by KDE"
+msgstr "Un xogo de rachar bloques por KDE"
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "© 2007-2008 Fela Winkelmolen"
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr "autor orixinal e mantedor"
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr "deseño gráfico"
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr "Sean Wilson"
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "Lorenzo Bonomi"
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "probas"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr "Brian Croom"
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr "portaxe a KGameRenderer"
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr "Viranch Mehta"
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr "portaxe a QtQuick"
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "F"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr "Lanzar a bóla"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr "Saltarse o nivel"
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr "Engadir unha vida"
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "P"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "Tema visual"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "Xeral"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   Tempo (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "Se comezas unha partida nova terminarás a actual!"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "Nova partida"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "Iniciar unha partida nova"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "Gañaches a partida!"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "Tempo (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"Queres disparar a bóla premendo co rato?\n"
+"Se responde «si», o xogo capturará\n"
+"o cursor; detén o xogo para\n"
+"retomar o cursor."
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "Disparar ao premer co rato?"
+
+#: mainwindow.cpp:305
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "Disparar ao premer co rato"
+
+#: mainwindow.cpp:306
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "Disparar ao premer co rato"
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr "Parabéns! Gañaches a partida"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "Nivel %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "Partida en pausa!"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "Vaia! Perdiches a bóla!"
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "Rematou a partida!"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "Preme %1 para disparar a bóla"
+
+#~ msgid "The graphical theme to be used."
+#~ msgstr "O tema gráfico que se usará."

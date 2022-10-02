@@ -1,0 +1,689 @@
+# translation of lskat.po to Romanian
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Claudiu Costin <claudiuc@kde.org>, 2004.
+# Sergiu Bivol <sergiu@cip.md>, 2008, 2009.
+# Laurenţiu Buzdugan <lbuz@rolix.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lskat\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2009-09-02 00:54-0600\n"
+"Last-Translator: Laurenţiu Buzdugan <lbuz@rolix.org>\n"
+"Language-Team: Română <kde-i18n-ro@kde.org>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sergiu Bivol"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sergiu@cip.md"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "Configurări generale"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+"Activarea opțiunii următoare va face jocul să fure cursorul mausului, "
+"întrerupeți jocul pentru a recupera cursorul."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "Foc la clic pe maus"
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, fuzzy, kde-format
+#| msgid "A breakout like game for KDE"
+msgid "A Breakout like game by KDE"
+msgstr "Un joc KDE ca Breakout"
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007-2008 Fela Winkelmolen"
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr "Autor original și responsabil"
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr "Grafică"
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr ""
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "Lorenzo Bonomi"
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "Testare"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr ""
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr ""
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr ""
+
+#: mainwindow.cpp:110
+#, fuzzy, kde-format
+#| msgid "Fire Ball"
+msgid "Fire the ball"
+msgstr "Lansează mingea"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr ""
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr ""
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr ""
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "Tematică"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "General"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   Timp (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "Începerea unui joc nou îl va încheia pe cel curent!"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "Joc nou"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "Începe joc nou"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "Joc câștigat!"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "Timp (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"Doriți să împușcați bila la clic pe maus?\n"
+"Răspunsul Da va face ca jocul să fure\n"
+"cursorul mausului, întrerupeți jocul pentru\n"
+"a recupera cursorul."
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "Foc la clic?"
+
+#: mainwindow.cpp:305
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "Foc la clic pe maus"
+
+#: mainwindow.cpp:306
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "Foc la clic pe maus"
+
+#: qml/logic.js:199
+#, fuzzy
+#| msgid "Well done! You won the game!"
+msgid "Well done! You won the game"
+msgstr "Bine jucat! Ați câștigat jocul!"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "Nivelul %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "Joc întrerupt!"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "Vai! Ați pierdut mingea!"
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "Jocul s-a încheiat!"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "Apăsați %1 pentru a lansa mingea"
+
+#~ msgid "The graphical theme to be used."
+#~ msgstr "Tematica grafică de utilizat."
+
+#~ msgid "Failed to load \"%1\" theme. Please check your installation."
+#~ msgstr "Încărcarea tematicii „%1” a eșuat. Verificați instalarea."
+
+#~ msgid "Pause"
+#~ msgstr "Întrerupe"
+
+#~ msgctxt "Default player name"
+#~ msgid "Alice"
+#~ msgstr "Alina"
+
+#~| msgid "Bob"
+#~ msgctxt "Default player name"
+#~ msgid "Bob"
+#~ msgstr "Mihai"
+
+#~ msgid "unknown"
+#~ msgstr "necunoscut"
+
+#~ msgctxt "suite name"
+#~ msgid "Clubs"
+#~ msgstr "Cluburi"
+
+#~ msgctxt "suite name"
+#~ msgid "Spades"
+#~ msgstr "Spade"
+
+#~ msgctxt "suite name"
+#~ msgid "Hearts"
+#~ msgstr "Inimi"
+
+#~ msgctxt "suite name"
+#~ msgid "Diamonds"
+#~ msgstr "Diamante"
+
+#~ msgctxt "card name"
+#~ msgid "Ace"
+#~ msgstr "As"
+
+#~ msgctxt "card name"
+#~ msgid "King"
+#~ msgstr "Popă"
+
+#~ msgctxt "card name"
+#~ msgid "Queen"
+#~ msgstr "Damă"
+
+#~ msgctxt "card name"
+#~ msgid "Ten"
+#~ msgstr "Zece"
+
+#~ msgctxt "card name"
+#~ msgid "Nine"
+#~ msgstr "Nouă"
+
+#~ msgctxt "card name"
+#~ msgid "Eight"
+#~ msgstr "Opt"
+
+#~ msgctxt "card name"
+#~ msgid "Seven"
+#~ msgstr "Șapte"
+
+#~ msgctxt "eg jack of clubs"
+#~ msgid "%1 of %2"
+#~ msgstr "%1 din %2"
+
+#~| msgid "Lieutenant Skat"
+#~ msgctxt "Title of the game - line 1"
+#~ msgid "Lieutenant Skat"
+#~ msgstr "Locotenentul Skat"
+
+#~| msgid "for"
+#~ msgctxt "Title of the game - line 2"
+#~ msgid "for"
+#~ msgstr "pentru"
+
+#~| msgid "K D E"
+#~ msgctxt "Title of the game - line 3"
+#~ msgid "K D E"
+#~ msgstr "K D E"
+
+#~| msgid "%1 points"
+#~ msgctxt "Resulting score of a game with no point"
+#~ msgid "no point"
+#~ msgstr "niciun punct"
+
+#, fuzzy
+#~| msgid "%1 points"
+#~ msgctxt "Resulting score of a game between 1 and 4"
+#~ msgid "%1 point"
+#~ msgid_plural "%1 points"
+#~ msgstr[0] "%1 puncte"
+#~ msgstr[1] "%1 puncte"
+#~ msgstr[2] "%1 de puncte"
+
+#~ msgid "Game was aborted - no winner"
+#~ msgstr "Jocul a fost anulat - fără câștigător"
+
+#, fuzzy
+#~ msgid "Player %1 won "
+#~ msgstr "Jucător 1 - %1 câștigat "
+
+#~ msgid "%1 won with 90 points. Super!"
+#~ msgstr "%1 a câștigat peste 90 de puncte. Superb!"
+
+#~ msgid "%1 won to nil. Congratulations!"
+#~ msgstr "%1 a câștigat la zero.  Felicitări!"
+
+#~ msgid "Player 2 - %1 won "
+#~ msgstr "Jucător 2 - %1 câștigat "
+
+#, fuzzy
+#~| msgid "(c) Martin Heni   "
+#~ msgid "(c) 1995-2007, Martin Heni"
+#~ msgstr "(c) Martin Heni   "
+
+#, fuzzy
+#~| msgid "(c) Martin Heni   "
+#~ msgid "Martin Heni"
+#~ msgstr "(c) Martin Heni   "
+
+#~ msgid "Enter debug level"
+#~ msgstr "Introduceți nivelul de depanare"
+
+#, fuzzy
+#~ msgid "Game Over. Please start a new game."
+#~ msgstr "Pornesc un joc nou..."
+
+#~ msgid "Clears the all time statistics which is kept in all sessions."
+#~ msgstr ""
+#~ "Șterge toate statisticile de timp care au fost păstrate în toate "
+#~ "sesiunile."
+
+#~ msgid "Aborts a currently played game. No winner will be declared."
+#~ msgstr "Anulează jocul curent. Nu vor fi declarați câștigători."
+
+#~ msgid "Quits the program."
+#~ msgstr "Închide programul."
+
+#~ msgid "Starting Player"
+#~ msgstr "Jucătorul care începe"
+
+#~ msgid "Changing starting player..."
+#~ msgstr "Modific jucătorul care începe..."
+
+#~ msgid "Chooses which player begins the next game."
+#~ msgstr "Alegeți ce jucător începe jocul următor."
+
+#~ msgid "Player &1"
+#~ msgstr "Jucător &1"
+
+#~ msgid "Player &2"
+#~ msgstr "Jucător &2"
+
+#~ msgid "Player &1 Played By"
+#~ msgstr "Jucătorul &1 controlat de"
+
+#~ msgid "Changing who plays player 1..."
+#~ msgstr "Modific cine controlează jucătorul 1..."
+
+#, fuzzy
+#~ msgid "Changing who plays player 1."
+#~ msgstr "Modific cine controlează jucătorul 1..."
+
+#~ msgid "&Computer"
+#~ msgstr "&Calculator"
+
+#~ msgid "Player &2 Played By"
+#~ msgstr "Jucătorul &2 controlat de"
+
+#~ msgid "Changing who plays player 2..."
+#~ msgstr "Modific cine controlează jucătorul 2..."
+
+#, fuzzy
+#~ msgid "Changing who plays player 2."
+#~ msgstr "Modific cine controlează jucătorul 2..."
+
+#, fuzzy
+#~| msgid "Change level..."
+#~ msgid "Changing theme..."
+#~ msgstr "Modific nivelul..."
+
+#, fuzzy
+#~| msgid "Change level..."
+#~ msgid "Changing theme."
+#~ msgstr "Modific nivelul..."
+
+#~ msgid "Select &Card Deck..."
+#~ msgstr "Selectează &spatele cărții..."
+
+#~ msgid "Configure card decks..."
+#~ msgstr "Configurează spatele cărții..."
+
+#~ msgid "Choose how the cards should look."
+#~ msgstr "Alegeți modul în care vor arăta cărțile."
+
+#, fuzzy
+#~ msgid "&Change Player Names..."
+#~ msgstr "Nume jucători"
+
+#~ msgid "Do you really want to clear the all time statistical data?"
+#~ msgstr ""
+#~ "Doriți într-adevăr să ștergeți toate\n"
+#~ "statisticile de timp?"
+
+#, fuzzy
+#~ msgid "&Game"
+#~ msgstr "Jocuri:"
+
+#~ msgid "Configure Names"
+#~ msgstr "Configurează numele"
+
+#, fuzzy
+#~ msgid "Player Names"
+#~ msgstr "Nume jucători"
+
+#~ msgid "Player 1:"
+#~ msgstr "Jucător 1:"
+
+#~ msgid "Player 2:"
+#~ msgstr "Jucător 2:"
+
+#, fuzzy
+#~| msgid "Score:"
+#~ msgctxt "Score in score widget"
+#~ msgid "Score: %1"
+#~ msgstr "Scor:"
+
+#, fuzzy
+#~| msgid "Games:"
+#~ msgctxt "Won and overall games in score widget"
+#~ msgid "Games: %1 / %2"
+#~ msgstr "Jocuri:"
+
+#, fuzzy
+#~ msgid "Player 1"
+#~ msgstr "Jucător &1"
+
+#, fuzzy
+#~ msgid "Player 2"
+#~ msgstr "Jucător &2"
+
+#, fuzzy
+#~ msgid "KDE"
+#~ msgstr "K D E"
+
+#~ msgid "Starting a new game..."
+#~ msgstr "Pornesc un joc nou..."
+
+#~ msgid "&Clear Statistics"
+#~ msgstr "Ș&terge statisticile"
+
+#~ msgid "Delete all time statistics..."
+#~ msgstr "Șterge toate statisticile de timp..."
+
+#, fuzzy
+#~ msgid "End game"
+#~ msgstr "T&ermină joc"
+
+#~ msgid "Ending the current game..."
+#~ msgstr "Termin jocul curent..."
+
+#~ msgid "Exiting..."
+#~ msgstr "Termin..."
+
+#~ msgid "Points:"
+#~ msgstr "Puncte:"
+
+#, fuzzy
+#~ msgid "PlayerName"
+#~ msgstr "Nume jucători"
+
+#~ msgid "Send &Message..."
+#~ msgstr "Trimite &mesaj..."
+
+#~ msgid "Sending message to remote player..."
+#~ msgstr "Trimit mesaj la jucătorul distant..."
+
+#~ msgid "Allows you to talk with a remote player."
+#~ msgstr "Vă permite să vorbiți cu jucătorul distant."
+
+#~ msgid "&Player"
+#~ msgstr "&Jucător"
+
+#~ msgid "Change the strength of the computer player."
+#~ msgstr "Modifică nivelul jucătorului calculator."
+
+#~ msgid "&Normal"
+#~ msgstr "&Normal"
+
+#~ msgid "&Advanced"
+#~ msgstr "&Avansat"
+
+#~ msgid "&Hard"
+#~ msgstr "&Greu"
+
+#~ msgid "Change &Names..."
+#~ msgstr "&Modifică nume..."
+
+#~ msgid "Configure player names..."
+#~ msgstr "Configurez numele jucătorilor..."
+
+#~ msgid "This leaves space for the mover"
+#~ msgstr "Aceasta lasă spațiu pentru cel ce mută"
+
+#~ msgid "Ready"
+#~ msgstr "Gata"
+
+#~ msgid "Welcome to Lieutenant Skat"
+#~ msgstr "Bine ați venit!"
+
+#~ msgid "Game ended...start a new one..."
+#~ msgstr "Joc terminat. Pornesc un joc nou..."
+
+#~ msgid "No game running"
+#~ msgstr "Nu rulează nici un joc"
+
+#~ msgid "%1 to move..."
+#~ msgstr "%1 la mutare..."
+
+#~ msgid ""
+#~ "Cannot start player 1. Maybe the network connection failed or the "
+#~ "computer player process file is not found."
+#~ msgstr ""
+#~ "Nu pot porni jucătorul 1. Probabil conexiunea de rețea a eșuat sau "
+#~ "fișierul proces pentru jucătorul calculator nu poate fi găsit."
+
+#~ msgid ""
+#~ "Cannot start player 2. Maybe the network connection failed or the "
+#~ "computer player process file is not found."
+#~ msgstr ""
+#~ "Nu pot porni jucătorul 2. Probabil conexiunea de rețea a eșuat sau "
+#~ "fișierul proces pentru jucătorul calculator nu poate fi găsit."
+
+#~ msgid "Remote connection to %1:%2..."
+#~ msgstr "Conexiune distantă la %1:%2..."
+
+#~ msgid "Offering remote connection on port %1..."
+#~ msgstr "Ofer conexiune distantă pe portul %1..."
+
+#~ msgid "Abort"
+#~ msgstr "Anulează"
+
+#~ msgid "Waiting for the computer to move..."
+#~ msgstr "Aștept mutarea calculatorului..."
+
+#~ msgid "Waiting for remote player..."
+#~ msgstr "Aștept jucătorul distant..."
+
+#~ msgid "Please make your move..."
+#~ msgstr "Vă rog să faceți mutarea dumneavoastră..."
+
+#~ msgid "Remote connection lost for player 1..."
+#~ msgstr "Am pierdut conexiunea cu jucătorul 1..."
+
+#~ msgid "Remote connection lost for player 2..."
+#~ msgstr "Am pierdut conexiunea cu jucătorul 2..."
+
+#~ msgid "Message from remote player:\n"
+#~ msgstr "Mesaj de la jucătorul distant:\n"
+
+#~ msgid "Remote player ended game..."
+#~ msgstr "Jucătorul distant a terminat jocul..."
+
+#~ msgid "You are network client...loading remote game..."
+#~ msgstr "Sunteți client de rețea. Încarc jocul distant..."
+
+#~ msgid "You are network server..."
+#~ msgstr "Sunteți server de rețea..."
+
+#~ msgid ""
+#~ "Severe internal error. Move to illegal position.\n"
+#~ "Restart game and report bug to the developer.\n"
+#~ msgstr ""
+#~ "Eroare internă severă. Mutare în poziție eronată.\n"
+#~ "Reporniți jocul și raportați eroarea dezvoltatorului.\n"
+
+#~ msgid ""
+#~ "This move would not follow the rulebook.\n"
+#~ "Better think again!\n"
+#~ msgstr ""
+#~ "Această mutare nu respectă regulile jocului.\n"
+#~ "Mai gândiți-vă!\n"
+
+#~ msgid "It is not your turn.\n"
+#~ msgstr "Nu este rândul dumneavoastră.\n"
+
+#~ msgid "This move is not possible.\n"
+#~ msgstr "Această mutare nu este posibilă.\n"
+
+#~ msgid "%1 won over 90 points. Super!"
+#~ msgstr "%1 a câștigat peste 90 de puncte. Super!"
+
+#~ msgid "Move:"
+#~ msgstr "Mutare:"
+
+#~ msgid "Won:"
+#~ msgstr "Câștiguri:"
+
+#~ msgid "Hold on... the other player hasn't been yet..."
+#~ msgstr "Așteptați... Celălalt nu a terminat încă.."
+
+#~ msgid "Hold your horses..."
+#~ msgstr "Țineți-vă caii..."
+
+#~ msgid "Ah ah ah... only one go at a time..."
+#~ msgstr "Ah ah ah...numai unul de-odată..."
+
+#~ msgid "Please wait... it is not your turn."
+#~ msgstr "Vă rog așteptați... Nu este mutarea dumneavoastră."
+
+#~ msgid "Card Game"
+#~ msgstr "Joc de cărți"
+
+#~ msgid "Send Message to Remote Player"
+#~ msgstr "Trimite mesaj către jucătorul distant"
+
+#~ msgid "Enter Message"
+#~ msgstr "Introduceți mesajul"
+
+#~ msgid "Enter a player's name"
+#~ msgstr "Introduceți numele jucătorului"
+
+#, fuzzy
+#~ msgid "Network Options"
+#~ msgstr "Configurează opțiunile de rețea"
+
+#, fuzzy
+#~ msgid "Play As"
+#~ msgstr "Nume jucători"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Port"

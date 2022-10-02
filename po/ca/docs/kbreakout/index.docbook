@@ -1,0 +1,839 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Catalan  "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>El manual del &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>25 de juny de 2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>El &kbreakout; és un joc similar al Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>joc</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>maó</keyword>
+<keyword
+>maons</keyword>
+<keyword
+>bola</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+
+<para
+>El &kbreakout; és un joc similar al Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Joc de taula &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>L'objectiu del joc és destruir tants maons com sigui possible sense perdre la bola. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Com jugar</title>
+
+<para
+>El jugador té un camp de joc que conté maons. Una bola viatja per la pantalla, rebotant pel mur de dalt i els costats. Quan colpeja amb un maó, la bola rebota i el maó es destrueix. El jugador perdrà una vida quan la bola toqui la part inferior del camp. Per a evitar-ho, el jugador haurà d'emprar una barra mòbil situada a la part inferior de la finestra, per a fer rebotar la bola cap amunt. L'objectiu del joc és progressar pels nivells destruint tots els maons de cada nivell, intentant aconseguir una puntuació màxima. </para>
+
+<para
+>Alguns maons tenen un comportament especial o poden deixar caure un regal quan es colpegen. Els regals es poden atrapar amb la barra, el seu comportament pot ser positiu o negatiu. Per a obtenir més informació sobre els diferents tipus de maons i regals, vegeu el capítol següent. </para>
+
+<para
+>Per a disparar la bola premeu la barra d'espai, per a moure la barra utilitzeu el ratolí o les tecles de fletxa. La bola rebotarà en la direcció del costat de la barra on ha rebotat en colpejar, com més a prop reboti de l'extrem esquerre de la barra, més rebotarà cap a l'esquerra, el mateix s'aplica al costat dret. Si rebota en el mig de la barra, rebotarà directament cap a dalt. </para>
+
+<para
+>Si habiliteu l'opció <guilabel
+>Llança en clicar</guilabel
+> en el diàleg de configuració, podreu fer clic amb el &BER; per a disparar. Habilitar-la farà que el joc robi el cursor del ratolí, poseu en pausa la partida per a recuperar el cursor. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Les regles del joc, estratègies i consells</title>
+
+<sect1 id="rules">
+<title
+>Regles</title>
+<itemizedlist>
+<listitem
+><para
+>Passar un nivell atorga 300 punts al jugador. Es passa de nivell quan es destrueixen tots els maons trencadissos i visibles, o de manera alternativa si s'atrapa el regal de nivell següent. En l'últim cas, s'atorga una puntuació addicional per cada maó restant.</para
+></listitem>
+<listitem
+><para
+>S'atorga una puntuació per cada maó destruït, com més petit sigui l'interval entre un cop i el següent, més gran serà la puntuació.</para
+></listitem>
+<listitem
+><para
+>Aquests regals ocults en un nivell determinat són fixos, però la seva posició és aleatòria.</para
+></listitem>
+<listitem
+><para
+>S'atorguen 30 punts per cada regal atrapat.</para
+></listitem>
+<listitem
+><para
+>El jugador perdrà una vida quan la bola toqui la part inferior del camp i no quedin altres boles en la partida, o quan s'atrapa un regal de perdre una vida. En perdre una vida, es restaran 1.000 punts de la vostra puntuació.</para
+></listitem>
+<listitem
+><para
+>Es poden guanyar vides addicionals capturant els regals d'afegir una vida.</para
+></listitem>
+<listitem
+><para
+>El joc acaba quan el jugador perd la bola i no li queden vides addicionals, o quan s'han guanyat tots els nivells.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tipus de maons</title>
+<note>
+  <para
+>Les imatges dels maons que es mostren a continuació són per al tema predeterminat del &nbsp;&kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó llis </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maons llisos </term>
+    <listitem>
+      <para
+>Els maons senzills, si bé la seva aparença pot variar, tots es comporten de la mateixa manera, es destrueixen quan els colpeja la bola i poden contenir un regal. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó irrompible </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maó irrompible </term>
+    <listitem>
+      <para
+>No es destrueix mai si no és colpejat per una bola de foc o imparable, o un maó que explota al costat seu. No cal destruir aquests maons per a guanyar el nivell. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó trencadís </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maó trencadís </term>
+    <listitem>
+      <para
+>Els maons irrompibles es poden convertir en maons trencadissos amb el <link linkend="gift-magic-wand"
+>regal de vareta màgica</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó ocult </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maó ocult </term>
+    <listitem>
+      <para
+>Aquest maó no es mostra inicialment al jugador. Quan es colpeja per primera vegada, esdevé visible i es converteix en un maó llis. Si el colpegeu amb una bola de foc o un maó explota al seu costat, es destruirà tan aviat com apareix. Mentre romangui ocult, no caldrà destruir-lo per a passar al nivell següent. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó de múltiples cops </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maó de múltiples cops </term>
+    <listitem>
+      <para
+>S'han de colpejar tres vegades abans de ser destruïts, llevat que el colpegeu amb una bola de foc o imparable, o que un maó exploti al seu costat. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Maó explosiu </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Maó explosiu </term>
+    <listitem>
+      <para
+>Quan es colpeja aquest maó, també es destruiran els maons de la part superior, inferior, esquerra i dreta, independentment del seu tipus. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Regals</title>
+<note>
+  <para
+>Les imatges dels regals que hi ha a continuació són per al tema predeterminat del &nbsp;&kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de 1.000 punts </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regals de puntuació </term>
+    <listitem>
+      <para
+>Si s'atrapen, atorguen al jugador la quantitat de punts escrits en el regal. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal d'afegir una vida </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal d'afegir una vida </term>
+    <listitem>
+      <para
+>Li dona al jugador una vida addicional. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de perdre una vida </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal de perdre una vida </term>
+    <listitem>
+      <para
+>Fa que el jugador perdi totes les boles i restableix la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal allarga la barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal allarga la barra </term>
+    <listitem>
+      <para
+>Allarga la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal escurça la barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal escurça la barra </term>
+    <listitem>
+      <para
+>Escurça la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal divideix les boles </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal divideix les boles </term>
+    <listitem>
+      <para
+>Dobla les boles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal afegeix boles </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal afegeix boles </term>
+    <listitem>
+      <para
+>Li dona al jugador una bola addicional adherida a la barra, la qual podrà disparar-se quan el jugador vulgui. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de barra enganxosa </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal de barra enganxosa </term>
+    <listitem>
+      <para
+>Després d'atrapar aquest regal, cada vegada que una bola toqui la barra, hi romandrà adherida, el qual permetrà que el jugador la torni a disparar. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de més maons explosius </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal de més maons explosius </term>
+    <listitem>
+      <para
+>Fa que tots els maons que estiguin dalt, baix, dreta i esquerra dels maons explosius, explotin ells mateixos. Això també s'aplica als maons ocults i irrompibles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal bola de foc </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal bola de foc </term>
+    <listitem>
+      <para
+>Transforma totes les boles en boles de foc. Quan una bola de foc colpeja un maó, també es destrueixen els maons de dalt, baix, esquerra i dreta. Una bola de foc destruirà qualsevol maó, independentment del seu tipus. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal bola imparable </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal bola imparable </term>
+    <listitem>
+      <para
+>Transforma totes les boles en boles imparables. Una bola imparable destruirà tots els maons que trobi en el seu camí, independentment del seu tipus, i mai rebotarà contra seu. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal ull màgic </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal ull màgic </term>
+    <listitem>
+      <para
+>Mostra tots els maons ocults. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de vareta màgica </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal de vareta màgica </term>
+    <listitem>
+      <para
+>Transforma tots els maons de múltiples cops i irrompibles en maons llisos. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal augmenta la velocitat </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal augmenta la velocitat </term>
+    <listitem>
+      <para
+>Fa augmentar la velocitat de la bola en un 30% de la velocitat actual. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal disminueix la velocitat </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal disminueix la velocitat </term>
+    <listitem>
+      <para
+>Fa disminuir la velocitat de la bola dividint la velocitat actual per 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regal de nivell següent </phrase>
+	</textobject>
+      </inlinemediaobject
+>&nbsp;Regal de nivell següent </term>
+    <listitem>
+      <para
+>Obre immediatament el nivell següent del joc. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Les estratègies i consells</title>
+<itemizedlist>
+<listitem
+><para
+>Si és possible, sol ser una bona idea enviar la bola per sobre dels maons, d'aquesta manera tindreu menys possibilitats de perdre-la. De vegades, per a aconseguir això, primer haureu de fer un petit forat a la capa de maons. Com més petit sigui el forat, menor serà la possibilitat que les boles tornin a baixar.</para
+></listitem>
+<listitem
+><para
+>Quan s'atrapa el regal d'afegir una bola, és aconsellable no disparar-la immediatament, sinó mantenir-la pel cas que es perdin les altres boles. En aquest cas també és aconsellable no atrapar un regal de barra enganxosa, ja que en fer-ho us obligarà a disparar totes les boles.</para
+></listitem>
+<listitem
+><para
+>Quan es rep un regal de nivell següent, és possible que no el vulgueu rebre si sabeu que en aquest nivell hi ha regals per a afegir vides.</para
+></listitem>
+<listitem
+><para
+>En els nivells on hi ha molts maons ocults, pot haver-hi una forma de guanyar el nivell sense haver-ne de destruir la majoria.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Resum de la interfície</title>
+
+<sect1 id="menu">
+<title
+>Elements de menú</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Comença una partida nova. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Posa en pausa o continua la partida actual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Mostra les puntuacions</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Mostra un diàleg que conté les puntuacions més altes. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Surt del programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj; <keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Visualitza</guimenu
+> <guimenuitem
+>Mode de pantalla completa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Juga el joc &kbreakout; en el mode de pantalla completa. Sortir d'aquest mode només és possible mitjançant la drecera.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De manera addicional, el &kbreakout; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Dreceres</title>
+
+<para
+>Les dreceres predeterminades són les següents:</para>
+
+<table>
+<title
+>Dreceres</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Foc</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Fa pausa/reprèn</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Inicia una partida nova</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Mostra les millors puntuacions</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Surt</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Mode de pantalla completa</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Ajuda</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Ajuda «Què és això?»</entry>
+<entry>
+<keycombo action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Crèdits i llicència</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Copyright del programa 2008 per en Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Copyright de la documentació 2008 per en Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

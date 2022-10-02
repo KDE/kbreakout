@@ -1,0 +1,240 @@
+# Uyghur translation for kbreakout.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Sahran <sahran.ug@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbreakout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2013-09-08 07:05+0900\n"
+"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language: ug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "ئادەتتىكى تەڭشەك"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr ""
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, kde-format
+msgid "A Breakout like game by KDE"
+msgstr ""
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr ""
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr ""
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr ""
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr "Sean Wilson"
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr ""
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "سىناق"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr "Brian Croom"
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr ""
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "F"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr ""
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr ""
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr ""
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "P"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "ئۆرنەك"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "ئادەتتىكى"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   ۋاقىت (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr ""
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "يېڭى ئويۇن"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "يېڭى ئويۇن باشلايدۇ"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr ""
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "ۋاقىت (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr ""
+
+#: mainwindow.cpp:305
+#, kde-format
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr ""
+
+#: mainwindow.cpp:306
+#, kde-format
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr ""
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr ""
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "دەرىجە %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "ئويۇن ۋاقىتلىق توختىتىلدى!"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr ""
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "ئويۇن تامام!"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr ""
+
+#~ msgid "The graphical theme to be used."
+#~ msgstr "ئىشلىتىلىدىغان كۆزنەكلىك ئۆرنەك."

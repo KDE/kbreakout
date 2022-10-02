@@ -1,0 +1,855 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Italian "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Manuale di &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Federico</firstname
+><surname
+>Zenith</surname
+><affiliation
+><address
+><email
+>federico.zenith@member.fsf.org</email
+></address
+></affiliation
+><contrib
+>Traduzione in italiano</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, un gioco simile a Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>gioco</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>mattonella</keyword>
+<keyword
+>mattonelle</keyword>
+<keyword
+>pallina</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduzione</title>
+
+<para
+>&kbreakout; è un gioco simile a Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabellone di gioco di &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>L'obiettivo del gioco è distruggere il più possibile di mattonelle senza perdere la pallina. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Come si gioca</title>
+
+<para
+>Al giocatore viene presentato un campo di gioco contenente un certo numero di mattonelle. Una pallina passa nello schermo, rimbalzando sui muri laterali e superiore. Quando una mattonella viene colpita, la pallina rimbalza e la mattonella viene distrutta. Il giocatore perde una vita quando la pallina tocca il fondo dello schermo; per evitare che ciò accada, il giocatore deve usare una barra mobile, situata in fondo alla finestra, per far rimbalzare la pallina verso l'alto. L'obiettivo del gioco è procedere attraverso i vari livelli distruggendo tutte le mattonelle in ciascuno, e cercare di arrivare un punteggio elevato. </para>
+
+<para
+>Alcune mattonelle hanno un comportamento particolare, o potrebbero far cadere un regalo quando sono colpite. I regali possono essere raccolti con la barra, e il loro comportamento può essere positivo o negativo. Per maggiori informazioni sui diversi tipi di mattonelle o regali, vedi il capitolo seguente. </para>
+
+<para
+>Per lanciare la pallina premi la barra spaziatrice, per spostare la barra usa il mouse o i tasti freccia. La pallina rimbalzerà nella direzione del lato della barra che ha colpito: più colpisce vicino al lato sinistro, più rimbalzerà verso sinistra, ed egualmente per il lato destro. Se rimbalza al centro, rimbalzerà dritta verso l'alto. </para>
+
+<para
+>Se abiliti l'opzione <guilabel
+>Lancia al clic del mouse</guilabel
+> nella finestra delle impostazioni, puoi usare il &LMB; per sparare. Abilitando questa opzione il gioco prenderà il controllo del puntatore del mouse, interrompendo il gioco per restituirlo. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Regole del gioco, strategie e suggerimenti</title>
+
+<sect1 id="rules">
+<title
+>Regole</title>
+<itemizedlist>
+<listitem
+><para
+>Passare un livello dà 300 punti al giocatore. Un livello viene passato quando tutte le mattonelle visibili e distruttibili sono distrutte, o in alternativa se viene preso il regalo per passare al prossimo livello. In quest'ultimo caso viene dato un punteggio aggiuntivo per tutti i blocchi rimanenti.</para
+></listitem>
+<listitem
+><para
+>Si dà un punteggio per ogni mattonella distrutta; tanto minore l'intervallo tra un colpo e il successivo, tanto maggiore sarà il punteggio.</para
+></listitem>
+<listitem
+><para
+>I regali nascosti in un certo livello sono sempre gli stessi, però la loro posizione è casuale.</para
+></listitem>
+<listitem
+><para
+>Per ogni regalo preso si danno 30 punti.</para
+></listitem>
+<listitem
+><para
+>Il giocatore perde una vita quando la pallina tocca il fondo del campo e non ci sono altre palline in gioco, o quando prende un regalo che fa perdere una vita. Quando si perde una vita vengono sottratti 1000 punti.</para
+></listitem>
+<listitem
+><para
+>Si possono guadagnare vite aggiuntive prendendo i regali per aggiungere vite.</para
+></listitem>
+<listitem
+><para
+>La partita finisce quando il giocatore perde la pallina senza avere altre vite a disposizione, o quando tutti i livelli sono stati completati.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tipi di mattonelle</title>
+<note>
+  <para
+>Le immagini delle mattonelle sotto sono prese dal tema predefinito di &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella semplice </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonelle semplici </term>
+    <listitem>
+      <para
+>Mattonelle semplici: anche se il loro aspetto può variare, si comportano tutte allo stesso modo: vengono distrutte al contatto con la pallina e possono contenere un regalo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella indistruttibile </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonella indistruttibile </term>
+    <listitem>
+      <para
+>Impossibile da distruggere a meno che venga colpita da una pallina infuocata o inarrestabile, o che venga colpita una mattonella esplosiva adiacente. Non è necessario distruggere queste mattonelle per vincere il livello. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella distruttibile </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonella distruttibile </term>
+    <listitem>
+      <para
+>Le mattonelle indistruttibili possono essere rese distruttibili con <link linkend="gift-magic-wand"
+>il regalo della bacchetta magica</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella nascosta </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonella nascosta </term>
+    <listitem>
+      <para
+>Questa mattonella non è inizialmente visibile al giocatore. Quando viene colpita per la prima volta diventa visibile, e si trasforma in una mattonella semplice. Se viene colpita da una pallina infuocata, o una mattonella esplosiva adiacente viene colpita, viene distrutta non appena compare. Finché rimane invisibile non è necessario distruggerla per passare al prossimo livello. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella multipla </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonella multipla </term>
+    <listitem>
+      <para
+>Deve essere colpita tre volte prima di venir distrutta, a meno di essere colpita da una pallina infuocata o inarrestabile, o che una mattonella esplosiva adiacente venga distrutta. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mattonella esplosiva </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mattonella esplosiva </term>
+    <listitem>
+      <para
+>Quando questa mattonella viene colpita, vengono distrutte anche le mattonelle a destra, sinistra, sopra e sotto di essa, indipendentemente dal tipo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Regali</title>
+<note>
+  <para
+>Le immagini dei regali sotto sono prese dal tema predefinito di &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo da 1000 punti </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regali di punteggio </term>
+    <listitem>
+      <para
+>Se presi, danno al giocatore il numero di punti scritti sul regalo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per aggiungere vite </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per aggiungere vite </term>
+    <listitem>
+      <para
+>Dà al giocatore una vita aggiuntiva. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo che fa perdere una vita </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo che fa perdere una vita </term>
+    <listitem>
+      <para
+>Fa perdere tutte le palline al giocatore e azzera la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per allargare la barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per allargare la barra </term>
+    <listitem>
+      <para
+>Ingrandisce la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per restringere la barra </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per restringere la barra </term>
+    <listitem>
+      <para
+>Rimpicciolisce la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per dividere le palline </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per dividere le palline </term>
+    <listitem>
+      <para
+>Raddoppia le palline. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per aggiungere palline </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per aggiungere palline </term>
+    <listitem>
+      <para
+>Dà al giocatore una pallina aggiuntiva attaccata alla barra, che può essere lanciata quando pare al giocatore. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo della barra appiccicosa </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo della barra appiccicosa </term>
+    <listitem>
+      <para
+>Dopo aver preso questo regalo, ogni volta che la pallina tocca la barra ci rimarrà attaccata, permettendo al giocatore di lanciarla di nuovo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per avere più mattonelle esplosive </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per avere più mattonelle esplosive </term>
+    <listitem>
+      <para
+>Rende esplosive tutte le mattonelle sopra, sotto, a destra e a sinistra delle mattonelle esplosive. Questo vale anche per le mattonelle nascoste e indistruttibili. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo della pallina infuocata </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo della pallina infuocata </term>
+    <listitem>
+      <para
+>Trasforma tutte le palline in palline infuocate. Quando una pallina infuocata colpisce una mattonella, vengono distrutte anche le mattonelle sopra, sotto, a destra e a sinistra di essa. Una pallina infuocata è inoltre in grado di distruggere tutti i tipi di mattonelle indipendentemente dal loro tipo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo della pallina inarrestabile </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo della pallina inarrestabile </term>
+    <listitem>
+      <para
+>Trasforma tutte le palline in palline inarrestabili. Una pallina inarrestabile distrugge tutte le mattonelle che incontra sul suo percorso, indipendentemente dal loro tipo, e non rimbalza mai contro di loro. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo dell'occhio magico </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo dell'occhio magico </term>
+    <listitem>
+      <para
+>Mostra tutte le mattonelle nascoste. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo della bacchetta magica </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo della bacchetta magica </term>
+    <listitem>
+      <para
+>Trasforma tutte le mattonelle multiple e indistruttibili in mattonelle semplici. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per aumentare la velocità </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per aumentare la velocità </term>
+    <listitem>
+      <para
+>Aumenta la velocità della pallina del 30%. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per ridurre la velocità </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per ridurre la velocità </term>
+    <listitem>
+      <para
+>Riduce la velocità della pallina dividendola per 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo per il prossimo livello </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo per il prossimo livello </term>
+    <listitem>
+      <para
+>Apre subito il prossimo livello di gioco. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Strategie e suggerimenti</title>
+<itemizedlist>
+<listitem
+><para
+>Se possibile, è di solito una buona idea mandare la pallina sopra le mattonelle: così facendo avrai una minore probabilità di perderla. A volte devi prima fare un piccolo buco nello strato di mattonelle per poterci riuscire. Più è piccolo il buco, minore è la probabilità che la pallina ritorni giù.</para
+></listitem>
+<listitem
+><para
+>Quando raccogli il regalo per aggiungere una pallina è una buona idea non lanciarla subito, ma invece tenerla nel caso che altre palline vadano perse. È anche consigliabile non raccogliere un regalo della barra appiccicosa in questo caso, perché farlo ti costringerebbe a lanciare tutte le palline.</para
+></listitem>
+<listitem
+><para
+>Quando ricevi un regalo per passare il livello potresti non volerlo prendere se sai che nel livello ci sono regali per aggiungere vite.</para
+></listitem>
+<listitem
+><para
+>Nei livelli dove ci sono molte mattonelle nascoste ci potrebbe essere un modo di vincere il livello senza doverne distruggere la maggior parte.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Panoramica dell'interfaccia</title>
+
+<sect1 id="menu">
+<title
+>Elementi dei menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Nuova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Comincia una nuova partita. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Metti in pausa e riprendi la partita. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Mostra la classifica</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Mostra una finestra contenente la classifica. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Esci</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Esce dal programma. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Visualizza</guimenu
+> <guimenuitem
+>Modalità a tutto schermo</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Gioca a &kbreakout; con tutto lo schermo. Si può uscire da questa modalità solo con la scorciatoia.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Inoltre, &kbreakout; ha i normali elementi dei menu di &kde; <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+>; per maggiori informazioni leggi le sezioni sul <ulink url="help:/fundamentals/menus.html#menus-settings"
+>menu Impostazioni</ulink
+> e sul <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei Fondamentali di &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Scorciatoie</title>
+
+<para
+>Le scorciatoie predefinite sono:</para>
+
+<table>
+<title
+>Scorciatoie</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Lancia</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Metti in pausa/Riprendi</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Comincia una nuova partita</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Mostra la classifica</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Esci</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Modalità a tutto schermo</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Aiuto</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Che cos'è?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Riconoscimenti e licenza</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Copyright del programma 2008 di Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Copyright della documentazione 2008 di Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Traduzione di Federico Zenith <email
+>federico.zenith@member.fsf.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

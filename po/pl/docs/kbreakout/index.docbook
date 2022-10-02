@@ -1,0 +1,615 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kbreakout "<application
+>KBreakout</application
+>">
+<!ENTITY kappname "&kbreakout;">
+<!ENTITY package "kdegames">
+<!ENTITY % Polish "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title
+>Podręcznik &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Krzysztof</firstname
+><surname
+>Woźniak</surname
+> <affiliation
+><address
+><email
+>wozniakk@ceti.pl</email
+></address
+> </affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2008-05-05</date>
+<releaseinfo
+>1.0.0</releaseinfo>
+
+<abstract>
+<para
+>&kappname; to gra podobna do Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>gra</keyword>
+<keyword
+>kbreakout</keyword>
+<keyword
+>breakout</keyword>
+<keyword
+>cegła</keyword>
+<keyword
+>cegły</keyword>
+<keyword
+>kula</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Wprowadzenie</title>
+
+<para
+>&kappname; to gra podobna do Breakout. </para>
+
+<para
+>Celem gry jest zniszczenie jak największej liczby cegieł bez utracenia kuli. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Jak grać</title>
+
+<para
+>Gracz widzi pole gry zawierające pewną ilość cegieł. Kula przemieszcza się po ekranie, odbijając się od górnej i bocznych ścian. Jeżeli kul trafi w cegłę, to odbija się od niej, a cegła jest niszczona. Gracz traci życie, jeżeli kula dotnie dolnej części pola. Aby temu zapobiec, gracz może używać ruchomej belki zlokalizowanej na dole okna aby odbijać kulę do góry. Celem gry jest przechodzenie przez kolejne poziomy niszcząc wszystkie zawarte na nich cegły i zdobywanie najlepszego wyniku. </para>
+
+<para
+>Niektóre z cegieł zachowują się w specjalny sposób lub mogą dawać prezenty, które spadają po uderzeniu kuli i mogą być złapane za pomocą belki. Działanie prezentów może być pozytywne ale też negatywne. Więcej informacji o rodzajach cegieł i prezentów znajduje się w następnym rozdziale. </para>
+
+<para
+>Aby wystrzelić kulę naciśnij spację, aby przesuwać belkę używaj myszki lub klawiszy strzałek. Kierunek odbicia piłki zależy na którą stronę belki upadnie, im dalej na lewo tym bardziej w lewo będzie się odbijać. Analogicznie dzieje się w przypadku prawej strony belki. Jeżeli odbije się dokładnie na środku belki, to poleci prosto do góry. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Zasady gry, strategia gry i sztuczki</title>
+
+<sect1 id="rules">
+<title
+>Zasady</title>
+<itemizedlist>
+<listitem
+><para
+>Przejście poziomu spowoduje dodanie do wyniku gracza 300 punktów. Poziom zostaje ukończony po zniszczeniu wszystkich widocznych dających się zniszczyć cegieł, lub jeżeli złapany zostanie prezent przejścia do następnego poziomu. W tym ostatnim przypadku przyznawane są dodatkowe punkty za każdą pozostałą niezniszczoną cegłę.</para
+></listitem>
+<listitem
+><para
+>Za każdą zniszczoną cegłę przyznawane są punkty, im krótszy czas pomiędzy zniszczeniem danej cegły i kolejnej, tym więcej punktów otrzymuje gracz.</para
+></listitem>
+<listitem
+><para
+>Ilość prezentów ukrytych na danym poziomie jest stała, jednak ich rozmieszczenie jest losowe.</para
+></listitem>
+<listitem
+><para
+>Za każdy złapany prezent przyznawanych jest 30 punktów.</para
+></listitem>
+<listitem
+><para
+>Gracz traci życie, gdy kula dotknie dolnego poziomu pola gry, a w grze nie ma żadnych innych dodatkowych kul, albo jeżeli złapie prezent utraty życia. Po utracie życia od wyniku odejmowanych jest 1000 punktów.</para
+></listitem>
+<listitem
+><para
+>Dodatkowe życia mogą być zdobywane przez złapanie prezentu dodania życia.</para
+></listitem>
+<listitem
+><para
+>Gra kończy się gdy gracz straci kulę nie mając żadnych dodatkowych żyć, lub jeżeli zakończone zostaną wszystkie poziomy.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Rodzaje cegieł</title>
+<variablelist>
+<varlistentry
+><term
+>Zwykłe cegły</term
+><listitem
+><para
+>Proste cegły, mimo że ich wygląd może się różnić, zachowują się wszystkie jednakowo, są niszczone wtedy gdy zostaną uderzone przez kulę i mogą zawierać prezent.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Niezniszczalne cegły</term
+><listitem
+><para
+>Nigdy nie są niszczone, chyba że zostaną trafione przez płonącą iniezatrzymywalną kulę, lub obok nich wybuchnie eksplodująca cegła. Te cegły nie muszą być zniszczone w celu przejścia poziomu.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Ukryte cegły</term
+><listitem
+><para
+>Tej cegły z początku gracz nie widzi. Staje się widoczna po pierwszym uderzeniu i zmienia się wtedy w zwykłą cegłę. Jeżeli zostanie trafiona przez płonącą kulę, lub obok wybuchnie eksplodująca cegła, zostaje zniszczona zaraz po pojawieniu się. Jak długo jest niewidoczna, nie musi być niszczona, aby przejść do następnego poziomu.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Wielokrotne cegły</term
+><listitem
+><para
+>Muszą być uderzone trzy razy zanim zostaną zniszczone, z wyjątkiem sytuacji uderzenia przez płonącą lub niezatrzymywalną kulę, lub kiedy obok wybuchnie eksplodująca cegła.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Eksplodujące cegły</term
+><listitem
+><para
+>Jeżeli ta cegła zostanie uderzona, to niszczone zostają także cegły u góry, dołu, po prawej i po lewej stronie, niezależnie od ich rodzaju.</para
+></listitem
+></varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Prezenty</title>
+<variablelist>
+<varlistentry
+><term
+>Prezenty punktowe</term
+><listitem
+><para
+>Po złapaniu, zwiększają wynik o liczbę punktów wypisaną na prezencie.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Dodatkowe życie</term
+><listitem
+><para
+>Dodaje graczowi jedno życie.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Utrata życia</term
+><listitem
+><para
+>Powoduje utratę wszystkich kul oraz resetuje belkę.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Powiększanie belki</term
+><listitem
+><para
+>Powiększa belkę.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Skrócenie belki</term
+><listitem
+><para
+>Pomniejsza belkę.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Podzielenie kuli</term
+><listitem
+><para
+>Podwaja liczbę kul na ekranie.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Dodatkowa kula</term
+><listitem
+><para
+>Dodaje graczowi jedną kulę przytwierdzoną do belki, może być ona wystrzelona w dowolnym momencie przez gracza.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Klejąca belka</term
+><listitem
+><para
+>Po złapaniu tego prezentu, zawsze gdy kula dotknie belki, przykleja się do niej, pozwalają graczowi na ponowne wystrzelenie kuli.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Więcej eksplodujących cegieł</term
+><listitem
+><para
+>Powoduje iż cegły u góry, u dołu, po prawej i po lewej stronie eksplodujących cegieł stają się też eksplodujące. Dotyczy to także cegieł ukrytych i niezniszczalnych.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Płonąca kula</term
+><listitem
+><para
+>Zmienia wszystkie kule w płonące kule. Jeżeli płonąca kula uderza cegłę, to zniszczone zostają także cegły u góry, u dołu, po prawej i po lewej stronie uderzonej cegły. Płonąca kula niszczy wszystkie cegły niezależnie od ich rodzaju.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Niezatrzymywalna kula</term
+><listitem
+><para
+>Zmienia wszystkie kule w niezatrzymywalne kule. Taka kula niszczy wszystkie cegły, które napotka na swojej drodze niezależnie od ich rodzaju, nie odbija się od nich.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Magiczne oko</term
+><listitem
+><para
+>Pokazuje wszystkie ukryte cegły.</para
+></listitem
+></varlistentry>
+<varlistentry
+><term
+>Magiczna różdżka</term
+><listitem
+><para
+>Zmienia wszystkie wielokrotne i niezniszczalne cegły w zwykłe cegły.</para
+></listitem
+></varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Strategia i wskazówki</title>
+<itemizedlist>
+<listitem
+><para
+>Jeżeli to możliwe, to najlepszym rozwiązaniem jest posłanie kuli nad cegły, dzięki temu jest mniejsza możliwość utraty życia. Czasami najpierw trzeba zrobić mały otwór w warstwie cegieł aby tego dokonać. Im mniejszy otwór tym mniejsza szansa, że kula powróci na dół.</para
+></listitem>
+<listitem
+><para
+>Po złapaniu prezentu dodającego kulę, mądrym działaniem jest zachowanie jej przez chwilę, na wypadek gdyby utracone zostały pozostałe kule. W takim przypadku staraj się też nie łapać prezentu klejącej belki, gdyż to zmusi cię do wystrzelenie wszystkich kul przyklejonych do belki.</para
+></listitem>
+<listitem
+><para
+>Jeżeli widzisz prezent przejścia do następnego poziomu, nie trzeba go łapać, jeżeli wiesz, że pozostały jeszcze prezenty dodatkowego życia w bieżącym poziomie.</para
+></listitem>
+<listitem
+><para
+>W poziomach zawierających dużo ukrytych cegieł, może być sposób zakończenia poziomu bez niszczenia ich wszystkich.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Przegląd interfejsu</title>
+
+<sect1 id="game-menu">
+<title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Nowa</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Rozpoczyna nową grę. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pokaż najlepsze wyniki</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Wyświetla okno dialogowe z listą najlepszych wyników. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zakończ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Kończy pracę programu. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+
+
+
+<sect1 id="settings-menu">
+<title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Otwiera okno, które pozwala Ci na zdefiniowanie wszystkich skrótów klawiszowych.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kappname;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Otwiera okno, które pozwala Ci na wybranie motywu wyglądu gry.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help">
+<title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Skróty klawiszowe</title>
+
+<para
+>Domyślne skróty to:</para>
+
+<table>
+<title
+>Skróty klawiszowe</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Wystrzał</entry>
+<entry>
+<keycap
+>Spacja</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Pauza/Wznowienie</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Rozpocznij nową grę</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Pokaż najlepsze wyniki</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Zakończenie programu</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Pomoc</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Co to jest?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Zasługi i licencje</title>
+
+<para
+>&kappname; </para>
+<para
+>Prawa autorskie do programu: (c) 2008 by Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Prawa autorskie do dokumentacji: (c) 2008 by Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Polskie tłumaczenie dokumentacji: Krzysztof Woźniak<email
+>wozniakk@ceti.pl</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalacja</title>
+
+<sect1 id="getting-kbreakout">
+<title
+>Jak zdobyć &kappname;</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

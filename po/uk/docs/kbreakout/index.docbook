@@ -1,0 +1,855 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Ukrainian "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Підручник з &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>25 червня 2021 року</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout; — це гра, схожа на Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>гра</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>блок</keyword>
+<keyword
+>блоки</keyword>
+<keyword
+>кулька</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+
+<para
+>&kbreakout; — це гра, схожа на Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ігрове поле &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Метою гри є знищити якомога більше блоків без втрати кульки. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Як грати</title>
+
+<para
+>Перед гравцем буде показано ігрове поле з декількома блоками. полем пересуватиметься кулька, яка відбиватиметься від бічних і верхньої стін. Якщо кулька влучить у блок, вона відіб’ється від нього, а сам блок буде зруйновано. Якщо кулька торкнеться нижньої стіни ігрового поля, гравець втратить одне життя. Щоб цього не сталося, гравцеві слід буде пересувати розташовану у нижній частині ігрового поля рисочку, якою можна відбивати кульку угору. Метою гри є просування рівнями шляхом руйнування всіх блоків на кожному з пройдених рівнів, а також збільшення очкового результату гри. </para>
+
+<para
+>Деякі з блоків поводяться особливим чином, або можуть після удару викинути подарунок. Подарунки можна підхоплювати за допомогою риски, результат такого підхоплення може бути як позитивним, так і негативним. Докладніші відомості щодо різних типів блоків і подарунків можна знайти у наступному розділі. </para>
+
+<para
+>Щоб запустити кульку натисніть клавішу-пробіл, для пересування риски скористайтеся клавішами зі стрілочками. Кулька відбиватиметься у напрямку сторони риски, від якої вона відбилася або з якої її було запущено, чим ближчою до лівого краю риски буде точка відбиття, тим більшим буде відхилення ліворуч, те саме стосується і правого краю риски. Якщо кульку буде відбито серединою риски, вона відіб’ється вертикально вгору. </para>
+
+<para
+>Якщо вами буде позначено пункт <guilabel
+>Стріляти за клацанням</guilabel
+> у діалоговому вікні параметрів програми, ви зможете стріляти клацанням лівою кнопкою миші. Позначення цього пункту призведе до «викрадення» грою вказівника миші. Призупиніть гру, щоб знову зробити вказівник видимим. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Правила гри, стратегія та поради</title>
+
+<sect1 id="rules">
+<title
+>Правила</title>
+<itemizedlist>
+<listitem
+><para
+>За проходження рівня гравцеві нараховуватиметься 300 очок. Рівень вважається пройденим, якщо на ньому знищено всі придатні до знищення і видимі блоки, або якщо буде спіймано подарунок переходу на наступний рівень. У останньому випадку буде додано очки за кожен блок, який не було знищено.</para
+></listitem>
+<listitem
+><para
+>Очки нараховуються за кожен зруйнований блок, чим меншим є час між повторними ударами у блоки, тим більше нараховується очок.</para
+></listitem>
+<listitem
+><para
+>Цей подарунок заховано на кожному з рівнів, але його розташування є випадковим.</para
+></listitem>
+<listitem
+><para
+>За кожен підібраний подарунок нараховується по 30 очок.</para
+></listitem>
+<listitem
+><para
+>Якщо кулька торкається нижньої стіни ігрового поля, а у грі більше не перебуває жодної кульки, гравець втрачає одне життя, те саме трапляється, якщо гравець спіймає подарунок з втратою життя. За втрату життя з рахунку знімається 1000 очок.</para
+></listitem>
+<listitem
+><para
+>Додаткові життя можна отримати, якщо підібрати подарунок з додатковим життям.</para
+></listitem>
+<listitem
+><para
+>Гра завершується, коли гравець, у якого не залишилося додаткових життів, втрачає кульку, або коли всі рівні буде пройдено.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Типи блоків</title>
+<note>
+  <para
+>Наведені нижче зображення блоків взято з типової теми &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Звичайний блок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Звичайні блоки </term>
+    <listitem>
+      <para
+>Прості блоки, хоча їх вигляд і може змінювати, поводяться однаково, вони руйнуються після влучання у них кульки і можуть містити подарунок. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Непробивний блок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Непробивний блок </term>
+    <listitem>
+      <para
+>Ці блоки неможливо зруйнувати у інший спосіб, ніж влучення палаючою або непереборною кулькою. Вони руйнуються також внаслідок влучення у вибуховий блок, який знаходиться поруч. Руйнування цих блоків для проходження рівня не потрібне. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Пробивний блок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Пробивний блок </term>
+    <listitem>
+      <para
+>Непробивні блоки можна перетворити на пробивні блоки за допомогою <link linkend="gift-magic-wand"
+>подарунка «Чарівна паличка»</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Прихований блок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Прихований блок </term>
+    <listitem>
+      <para
+>Спочатку ці блоки приховано від погляду гравця. Після першого влучання у них, ці блоки стають видимими, звичайними блоками. Якщо ви влучили у такий блок палаючою кулькою, або влучили у вибуховий блок, який розташовано поруч, прихований блок буде знищено одразу за появою. До того часу, доки такий блок залишається прихованим, його руйнування не потрібне для проходження рівня. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Мультиблок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Мультиблок </term>
+    <listitem>
+      <para
+>Для руйнування такого блоку слід влучити у нього три рази звичайною кулькою. Якщо влучити у мультиблок палаючою або непереборною кулькою, або влучити у вибуховий блок поряд з мультиблоком, мультиблок буде зруйновано. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Вибуховий блок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Вибуховий блок </term>
+    <listitem>
+      <para
+>Якщо влучити кулькою у такий блок, буде зруйновано всі блоки над, під, ліворуч і праворуч, незалежно від типу цих блоків. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Подарунки</title>
+<note>
+  <para
+>Наведені нижче зображення подарунків взято з типової теми &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок у 1000 очок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Очкові подарунки </term>
+    <listitem>
+      <para
+>Якщо буде спіймано такий подарунок, гравець отримує кількість очок написану на подарунку. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунки з додатковим життям </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунки з додатковим життям </term>
+    <listitem>
+      <para
+>Надає гравцеві додаткове життя. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок з втратою життя </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок з втратою життя </term>
+    <listitem>
+      <para
+>Робить так, що гравець втрачає всі свої кульки і відновлює початкові розміри рисочки. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок збільшення рисочки </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок збільшення рисочки </term>
+    <listitem>
+      <para
+>Збільшує розмір рисочки. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок зменшення рисочки </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок зменшення рисочки </term>
+    <listitem>
+      <para
+>Зменшує розмір рисочки. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок розділення кульок </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок розділення кульок </term>
+    <listitem>
+      <para
+>Подвоює кількість кульок. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок з додатковою кулькою </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок з додатковою кулькою </term>
+    <listitem>
+      <para
+>Надає гравцеві додаткову кульку, яку буде закріплено на рисочці. Запустити цю кульку можна у будь-який бажаний момент. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — липка риска </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — липка риска </term>
+    <listitem>
+      <para
+>Після підбирання цього подарунка кожного разу, коли кулька торкатиметься рисочки, відбуватиметься прилипання, яке надасть гравцеві можливість знову запустити кульку, що прилипла. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — збільшення кількості вибухових блоків </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — збільшення кількості вибухових блоків </term>
+    <listitem>
+      <para
+>Робить всі блоки, розташовані над, під, праворуч і ліворуч від вибухових блоків, вибуховими блоками. Це стосується і прихованих та непробивних блоків. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — палаюча кулька </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — палаюча кулька </term>
+    <listitem>
+      <para
+>Перетворює усі кульки на палаючі. Після влучання такою кулькою у блок буде знищено всі блоки над, під, ліворуч і праворуч від блоку, у який ви влучили. Палаюча кулька знищує всі блоки, незалежно від їх типу. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — непереборна кулька </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — непереборна кулька </term>
+    <listitem>
+      <para
+>Перетворює всі кульки на непереборні кульки. Непереборна кулька знищує всі блоки, які зустрічає на своєму шляху, незалежно від їх типу, і ніколи не відбивається від блоків. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — магічне око </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — магічне око </term>
+    <listitem>
+      <para
+>Показує всі приховані блоки. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок — чарівна паличка </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок — чарівна паличка </term>
+    <listitem>
+      <para
+>Перетворює всі мультиблоки і непробивні блоки на прості блоки </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Збільшити швидкість </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок зі збільшенням швидкості </term>
+    <listitem>
+      <para
+>Збільшує швидкість кульки на 30% від поточної швидкості. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок зі зменшенням швидкості </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок зі зменшенням швидкості </term>
+    <listitem>
+      <para
+>Зменшує швидкість кульки до швидкості, яка у 1,3 рази менша від поточної. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарунок з наступним рівнем </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарунок з наступним рівнем </term>
+    <listitem>
+      <para
+>Виконує негайний перехід до наступного рівня гри. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Стратегія та поради</title>
+<itemizedlist>
+<listitem
+><para
+>За можливості, слід намагатися закинути кульку у простір над блоками, такі дії зменшать імовірність втрати кульки. Іноді, для здійснення цього плану, вам слід зробити невеличку дірку у шарі блоків. Чим меншою буде дірка, тим меншим буде шанс на те, що кулька швидко повернеться вниз.</para
+></listitem>
+<listitem
+><para
+>Якщо вам вдасться спіймати подарунок — додаткову кульку, краще не запускати її одразу, а зберегти на випадок втрати інших кульок. Також радимо у таких випадках не ловити подарунків — липких рисок, оскільки у разі, якщо ви спіймаєте такий подарунок, вам доведеться запустити всі ваші кульки одночасно.</para
+></listitem>
+<listitem
+><para
+>За умови отримання подарунка — переходу на наступний рівень ви можете відмовитися від спроб спіймати цей подарунок, якщо знатимете, що на рівні ще залишилися подарунки — додаткові життя.</para
+></listitem>
+<listitem
+><para
+>На рівнях, де дуже багато прихованих блоків, має бути спосіб проходження без потреби у знищенні більшості з цих блоків.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Огляд інтерфейсу</title>
+
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Нова</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Починає нову гру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Призупинити або поновити поточну гру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати найкращі результати</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Показує діалогове вікно з найкращими результатами. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Завершує роботу програми. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Перегляд</guimenu
+> <guimenuitem
+>Повноекранний режим</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Грати у &kbreakout; у повноекранному режимі. Полишити такий режим можна лише за допомогою клавіатурного скорочення.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Крім того, у &kbreakout; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Клавіатурні скорочення</title>
+
+<para
+>Типові скорочення:</para>
+
+<table>
+<title
+>Клавіатурні скорочення</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Вогонь</entry>
+<entry
+>Пробіл </entry>
+</row>
+<row>
+<entry
+>Призупинити/Поновити</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Почати нову гру</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Показати рекорди</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Вийти</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Повноекранний режим</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Довідка</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Що це?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Подяки і ліцензія</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Авторські права на програму належать Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>, ©2008 </para>
+<para
+>Авторські права на документацію належать Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>, ©2008 </para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

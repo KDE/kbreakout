@@ -1,0 +1,871 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Spanish "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Manual de &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Santiago</firstname
+><surname
+>Fernández Sancho</surname
+><affiliation
+><address
+><email
+>santi@kde-es.org</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Kira</firstname
+><surname
+>J. Fernández</surname
+><affiliation
+><address
+><email
+>kirajfdez@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traductora</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, un juego similar al Breakout.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>juego</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>ladrillo</keyword>
+<keyword
+>ladrillos</keyword>
+<keyword
+>bola</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducción</title>
+
+<para
+>&kbreakout; es un juego similar al Breakout. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tablero de juego de &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>El objetivo del juego es destruir tantos ladrillos como sea posible sin perder la bola. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Cómo jugar</title>
+
+<para
+>Al jugador se le presenta un campo de juego que contiene un número de ladrillos. Una bola se desplaza por la pantalla, rebotando con el techo y las paredes de los lados. Cuando se golpea un ladrillo, la bola rebota y el ladrillo se destruye. El jugador pierde una vida cuando todas las bolas tocan la parte inferior del campo. Para evitar que esto pase, el jugador debe utilizar una barra móvil sobre la que rebotará la bola, y que está situada en la parte inferior de la ventana. El propósito del juego es avanzar a través de los niveles destruyendo todos los ladrillos de cada nivel, e intentar conseguir la mejor puntuación. </para>
+
+<para
+>Algunos ladrillos tienen un comportamiento especial, o puede darle algún regalo cuando los golpea. Los regalos puede conseguirse con la barra, y su comportamiento puede ser positivo o negativo. Para obtener más información sobre los diferentes tipos de ladrillo y regalos consulte el siguiente capítulo. </para>
+
+<para
+>Para lanzar la bola pulse la barra espaciadora, para mover la barra utilice el ratón o las teclas de las flechas. La bola rebotará en la dirección en que la barra la golpee, mientras más cerca del final izquierdo de la barra más rebotará hacia la izquierda, y lo mismo se aplica para el lado derecho, si se golpea en el centro de la barra rebotará hacia arriba. </para>
+
+<para
+>Si activa la opción <guilabel
+>Disparar al hacer clic con el ratón</guilabel
+> en el diálogo de preferencias, podrá hacer clic con el &LMB; para disparar. Al activar esta opción, el juego retendrá el cursor del ratón. Pause el juego para recuperar el control del cursor. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Reglas del juego, estrategias y trucos</title>
+
+<sect1 id="rules">
+<title
+>Reglas</title>
+<itemizedlist>
+<listitem
+><para
+>Pasar un nivel dará 300 puntos al jugador. Un nivel se pasa cuando se destruyen todos los ladrillos visibles que se pueden romper, o si se recoge un nivel de regalo. En el último caso habrá una puntuación adicional.</para
+></listitem>
+<listitem
+><para
+>Obtendrá puntuación por cada ladrillo destruido. Mientras más pequeño sea el intervalo entre un golpe y el siguiente, más alta será la puntuación.</para
+></listitem>
+<listitem
+><para
+>Los regalos ocultos en un nivel dado son fijos, su posición, sin embargo, es aleatoria.</para
+></listitem>
+<listitem
+><para
+>Obtendrá 30 puntos por cada regalo recogido.</para
+></listitem>
+<listitem
+><para
+>El jugador pierde una vida cuando la bola toca la parte inferior del campo y no hay más bolas en el juego, o cuando recoge un regalo con el que pierde una vida. Cuando pierde una vida se restarán 1.000 puntos de la puntuación.</para
+></listitem>
+<listitem
+><para
+>Pueden ganarse vidas adicionales recogiendo regalos de añadir vida.</para
+></listitem>
+<listitem
+><para
+>La partida finaliza cuando el jugador pierde la bola y no hay más vidas adicionales, o cuando ha conseguido ganar en todos los niveles.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Tipos de ladrillo</title>
+<note>
+  <para
+>Las siguientes imágenes de ladrillos pertenecen al tema por omisión de &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo plano </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo plano </term>
+    <listitem>
+      <para
+>Los ladrillos sencillos, aunque su aspecto puede variar, tienen siempre el mismo comportamiento: se destruirán cuando se golpea con una bola y puede contener un regalo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo irrompible </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo irrompible </term>
+    <listitem>
+      <para
+>No se pueden destruir a menos que los golpee con una bola de fuego o una bola imparable, o si explota un ladrillo a su lado. Estos ladrillos no necesitan destruirse para ganar el nivel. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo rompible </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo rompible </term>
+    <listitem>
+      <para
+>Los ladrillos irrompibles se pueden convertir en rompibles usando el <link linkend="gift-magic-wand"
+>regalo de la «Varita mágica»</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo oculto </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo oculto </term>
+    <listitem>
+      <para
+>Este ladrillo no se muestra inicialmente al jugador, y se convierte en un ladrillo sencillo. Cuando se golpea la primera vez se hace visible, y se convierte en un ladrillo sencillo. Si lo golpea con una bola de fuego, o con un ladrillo que explota a su lado se destruirá tan pronto como aparezca. Mientras permanezca oculta no necesita destruirlo para pasar al siguiente nivel. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo múltiple </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo múltiple </term>
+    <listitem>
+      <para
+>Necesita golpearse tres veces antes de destruirse, a menos que lo golpee con una bola en llamas o imparable, o si un ladrillo explota a su lado. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Ladrillo explosivo </phrase>
+	</textobject>
+      </inlinemediaobject
+>Ladrillo explosivo </term>
+    <listitem>
+      <para
+>Cuando se golpea este ladrillo los ladrillos que se encuentran arriba, debajo, a su izquierda y a su derecha se destruirán, con independencia de su tipo. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Regalos</title>
+<note>
+  <para
+>Las imágenes inferiores de regalos pertenecen al tema por omisión de &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «1000 puntos» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalos «Puntos» </term>
+    <listitem>
+      <para
+>Si los consigue proporcionarán al jugador el número de puntos escritos en el regalo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Añadir vida» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Añadir vida» </term>
+    <listitem>
+      <para
+>Otorga al jugador una vida adicional. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Perder vida» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Perder vida» </term>
+    <listitem>
+      <para
+>Hace que el jugador pierda todas las bolas y reinicia la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Alargar barra» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Alargar barra» </term>
+    <listitem>
+      <para
+>Agranda la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Reducir barra» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Reducir barra» </term>
+    <listitem>
+      <para
+>Reduce la barra. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Dividir bolas» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Dividir bolas» </term>
+    <listitem>
+      <para
+>Duplica las bolas. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Añadir bolas» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Añadir bolas» </term>
+    <listitem>
+      <para
+>Da al jugador una bola extra pegada a la barra, que puede dispararse cuando el jugador lo desee. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Barra adhesiva» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Barra adhesiva» </term>
+    <listitem>
+      <para
+>Después de recoger este regalo, cada vez que una bola toque la barra permanecerá pegada a ella, hasta que el jugador la dispare de nuevo. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Más ladrillos explosivos» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Más ladrillos explosivos» </term>
+    <listitem>
+      <para
+>Hace que todos los ladrillos situados encima, debajo, a la derecha y a la izquierda de los ladrillos explosivos se vuelven también explosivos. También se aplica a los ladrillos ocultos y a los irrompibles. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Bola de fuego» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Bola de fuego» </term>
+    <listitem>
+      <para
+>Transforma todos las bolas en bolas de fuego. Cuando una bola de fuego golpea un ladrillo también se destruyen todos los ladrillos situados arriba, debajo, a la izquierda o a la izquierda del destruido. Una bola de fuego destruye todos los tipos de ladrillo con independencia de sus tipos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Bola imparable» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Bola imparable» </term>
+    <listitem>
+      <para
+>Transforma todas las bolas en bolas imparables. Una bola imparable destruye todos los ladrillos que encuentre a su paso, con independencia del tipo, y nunca rebotará contra ellos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Ojo mágico» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Ojo mágico» </term>
+    <listitem>
+      <para
+>Muestra todos los ladrillos ocultos. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Varita mágica» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Varita mágica» </term>
+    <listitem>
+      <para
+>Transforma todos los ladrillos múltiples e irrompibles en ladrillos sencillos. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Aumentar velocidad» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Aumentar velocidad» </term>
+    <listitem>
+      <para
+>Aumenta la velocidad de la bola un 30% de la velocidad actual. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Reducir velocidad» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Reducir velocidad» </term>
+    <listitem>
+      <para
+>Reduce la velocidad de la bola dividiendo la velocidad actual por 1,3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Regalo «Siguiente nivel» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Regalo «Siguiente nivel» </term>
+    <listitem>
+      <para
+>Abre de forma inmediata el siguiente nivel del juego. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Estrategias y trucos</title>
+<itemizedlist>
+<listitem
+><para
+>Si es posible, suele ser buena idea enviar la bola por encima de los ladrillos, de forma que tenga menos posibilidades de perder la bola. Algunas veces necesitará hacer primero un pequeño agujero en la capa de ladrillos para conseguirlo. Mientras menor sea el agujero, más pequeña será la posibilidad de que la bola se caiga.</para
+></listitem>
+<listitem
+><para
+>Cuando se recoge el regalo «añadir bola» es aconsejable no dispararla y mantenerla, por si se pierden las demás bolas. También es aconsejable no recoger el regalo «Barra adhesiva», ya que en este caso estará obligado a disparar todas las bolas.</para
+></listitem>
+<listitem
+><para
+>Cuando se recibe el regalo «Siguiente nivel», no querrá cogerlo si sabe que hay regalos de «añadir vida» en el nivel actual.</para
+></listitem>
+<listitem
+><para
+>En los niveles en que hay muchos ladrillos ocultos, puede ser una forma para ganar el nivel sin tener que destruir ninguno de ellos.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Visión general de la interfaz</title>
+
+<sect1 id="menu">
+<title
+>Opciones del menú</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Nuevo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia una partida nueva. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Pausar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Pausar y continuar el juego actual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Mostrar mejores puntuaciones</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Muestra un diálogo conteniendo las mejores puntuaciones. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Salir</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sale del programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ver</guimenu
+> <guimenuitem
+>Modo de pantalla completa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Jugar &kbreakout; en modo de pantalla completa. Para salir de este modo solamente podrá usar el acceso rápido de teclado.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De forma adicional, &kbreakout; posee los elementos de menú comunes de &kde; <guimenu
+>Preferencias</guimenu
+> y <guimenu
+>Ayuda</guimenu
+>. Para más información, lea las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>menú Preferencias</ulink
+> y el <ulink url="help:/fundamentals/menus.html#menus-help"
+>menú Ayuda</ulink
+> de los principios fundamentales de &kde;. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Accesos rápidos</title>
+
+<para
+>Los accesos rápidos predeterminados son:</para>
+
+<table>
+<title
+>Accesos rápidos</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Fuego</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Pausa/Continuar</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Inicia una partida nueva</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Muestra las mejores puntuaciones</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Salir</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Modo de pantalla completa</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Ayuda</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>¿Qué es esto?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Créditos y licencia</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Derechos de autor del programa. 2008 de Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>. </para>
+<para
+>Derechos de autor de la documentación. 2008 de Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>. </para>
+
+<para
+>Traducido por Santiago Fernández Sancho<email
+>santi@kde-es.org</email
+> y Kira J. Fernández <email
+>kirajfdez@gmail.com</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

@@ -1,0 +1,939 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % German "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Das Handbuch zu &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Ingo</firstname
+><surname
+>Malchow</surname
+> <affiliation
+><address
+><email
+>ingomalchow@googlemail.com</email
+></address
+></affiliation
+> <contrib
+>Deutsche Übersetzung</contrib
+> </othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout;, ein Breakout-ähnliches Spiel.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>Spiel</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>Stein</keyword>
+<keyword
+>Steine</keyword>
+<keyword
+>Ball</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Einführung</title>
+
+<para
+>&kbreakout; ist ein Breakout-ähnliches Spiel. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&kbreakout;-Spielfeld</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Das Ziel des Spieles ist es, so viele Steine wie möglich zu zerstören, ohne den Ball zu verlieren. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Spielanleitung</title>
+
+<para
+>Dem Spieler wird ein Spielfeld mit einer Anzahl an Steinen präsentiert. Ein Ball wandert über den Bildschirm, springt dabei aber von der oberen und den seitlichen Wänden ab. Wenn ein Stein getroffen wird, springt der Ball ab und der Stein ist zerstört. Der Spieler verliert ein Leben, wenn der Ball das untere Ende des Feldes berührt. Um das zu verhindern, muss der Spieler den Ball mithilfe einer beweglichen Leiste am unteren Rand zurückspringen lassen. Das Ziel des Spieles ist es, die Ebenen zu durchlaufen, indem alle Steine darin zerstört werden, und dabei noch einen hohen Punktestand zu erreichen. </para>
+
+<para
+>Einige Steine haben ein spezielles Verhalten, oder es fällt ein Geschenk von ihnen herunter, sobald sie getroffen werden. Die Geschenke können mit der Leiste aufgefangen werden; ihr Verhalten kann entweder positiv oder negativ sein. Für weitere Informationen zu den verschiedenen Steinen und Geschenken lesen Sie das nächste Kapitel. </para>
+
+<para
+>Um den Ball abzufeuern, drücken Sie die Leertaste; um die Leiste zu bewegen, benutzen Sie die Maus oder die Pfeiltasten. Der Ball springt in die Richtung der Seite der Leiste ab, an der sie getroffen wurde, und je mehr die Leiste auf der linken Seite getroffen wurde, desto mehr springt der Ball in Richtung links ab, das gleiche gilt für die rechte Seite; falls der Ball aber die Mitte der Leiste trifft, so springt er gerade nach oben ab. </para>
+
+<para
+>Wenn Sie <guilabel
+>Mit Mausklick abschießen</guilabel
+> im Einrichtungsdialog aktivieren, können Sie mit der &LMBn; feuern. Dann steht der Mauszeiger nur noch für KBreakout zur Verfügung. Sie müssen dann das Spiel anhalten, um den Mauszeiger wieder für alle Anwendungen benutzen zu können. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Spielregeln, Spielstrategien und Tipps</title>
+
+<sect1 id="rules">
+<title
+>Spielregeln</title>
+<itemizedlist>
+<listitem
+><para
+>Eine Spielebene zu vollenden bedeutet 300 Punkte für den Spieler. Eine Spielebene ist bestanden, wenn alle zerstörbaren oder sichtbaren Steine zerstört sind, oder aber falls das <quote
+>Nächste Spielebene</quote
+>-Geschenk gefangen wurde. Im letzten Fall werden zusätzliche Punkte für jeden übriggebliebenen Stein vergeben.</para
+></listitem>
+<listitem
+><para
+>Es werden Punkte für jeden zerstörten Stein vergeben. Je kürzer die Zeit zwischen zwei verschiedenen Treffern, desto höher sind die Punkte.</para
+></listitem>
+<listitem
+><para
+>Diese Geschenke, versteckt in den einzelnen Spielebenen, sind fixiert;ihre Position aber ist zufällig.</para
+></listitem>
+<listitem
+><para
+>30 Punkte werden für jedes gefangene Geschenk vergeben.</para
+></listitem>
+<listitem
+><para
+>Der Spieler verliert ein Leben, sobald der Ball das untere Ende des Feldes berührt und keine weiteren Bälle im Spiel sind, oder wenn er das <quote
+>Verliere ein Leben</quote
+>-Geschenk fängt. Beim Verlieren eines Lebens werden 1000 Punkte vom Punktestand abgezogen.</para
+></listitem>
+<listitem
+><para
+>Zusätzliche Leben können durch Fangen des <quote
+>Schenke Leben</quote
+>-Geschenkes erreicht werden.</para
+></listitem>
+<listitem
+><para
+>Das Spiel endet, wenn der Spieler den Ball verliert und keine zusätzlichen Leben mehr hat oder wenn alle Spielebenen bestanden wurden.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Steinarten</title>
+<note>
+  <para
+>Die Symbole für die folgenden Steine stammen aus dem Standarddesign von &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Gewöhnlicher Stein </phrase>
+	</textobject>
+      </inlinemediaobject
+>Gewöhnlicher Stein </term>
+    <listitem>
+      <para
+>Einfache Steine verhalten sich alle gleich, obwohl ihr Äußeres variieren kann.Sie werden bei einem Treffer mit dem Ball zerstört und können ein Geschenk enthalten. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Unzerstörbarer Stein </phrase>
+	</textobject>
+      </inlinemediaobject
+>Unzerstörbarer Stein </term>
+    <listitem>
+      <para
+>Wird niemals zerstört, außer durch einen brennenden oder nicht-aufhaltbaren Ball, oder aber durch einen explodierenden Stein direkt daneben. Diese Steine müssen nicht zerstört werden, um die Spielebene zu gewinnen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Zerstörbarer Stein</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Zerstörbarer Stein</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Mit dem <link linkend="gift-magic-wand"
+><quote
+>Zauberstab</quote
+>-Geschenk</link
+> können unzerstörbare Steine in zerstörbare Steine verwandelt werden. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Versteckter Stein </phrase>
+	</textobject>
+      </inlinemediaobject
+>Versteckter Stein </term>
+    <listitem>
+      <para
+>Dieser Stein wird dem Spieler zunächst nicht gezeigt. Wenn er das erste Mal getroffen wird, wird er sichtbar und zu einem gewöhnlichen Stein. Falls er durch einen brennenden Ball oder einen explodierenden Stein daneben getroffen wird, wird er zerstört, sobald er erscheint. Solange dieser Stein unsichtbar ist, ist es nicht nötig, ihn zu zerstören, um die Spielebene zu bestehen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Mehrfach-Stein </phrase>
+	</textobject>
+      </inlinemediaobject
+>Mehrfach-Stein </term>
+    <listitem>
+      <para
+>Muss dreimal getroffen werden, bevor er zerstört wird - außer er wird durch einen brennenden Stein oder einen explodierenden Stein unmittelbar daneben getroffen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Explodierender Stein </phrase>
+	</textobject>
+      </inlinemediaobject
+>Explodierender Stein </term>
+    <listitem>
+      <para
+>Wenn dieser Stein getroffen wird, werden außerdem auch die Steine über, unter, links und rechts von ihm zerstört, egal, von welchem Typ sie sind. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Geschenke</title>
+<note>
+  <para
+>Die Symbole für die folgenden Geschenke stammen aus dem Standarddesign von &kbreakout;. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>100 Punkte</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Punkte</quote
+>-Geschenke </term>
+    <listitem>
+      <para
+>Wenn es gefangen wird, schenkt es dem Spieler die Anzahl Punkte, die darauf geschrieben sind. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Schenke Leben</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Schenke Leben</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Gibt dem Spieler ein zusätzliches Leben. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Verliere Leben</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Verliere Leben</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Veranlasst, dass der Spieler alle Bälle verliert und die Leiste zurückgesetzt wird. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Vergrößere Leiste</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Vergrößere Leiste</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Vergrößert die Leiste. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Verkleinere Leiste</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Verkleinere Leiste</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Verkleinert die Leiste. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Teile Bälle</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Teile Bälle</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Verdoppelt die Anzahl der Bälle. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Füge Ball hinzu</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Füge Ball hinzu</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Verleiht dem Spieler einen Extra-Ball direkt auf der Leiste, der abgeschossen werden kann, wann immer der Spieler möchte. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Klebrige Leiste</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Klebrige Leiste</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Nachdem dieses Geschenk gefangen wird, verbleibt der Ball, sobald er die Leiste trifft, auf dieser, und erlaubt dem Spieler, ihn erneut abzuschießen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Mehr explodierende Steine</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Mehr explodierende Steine</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Macht aus allen Steinen oberhalb, unterhalb, links und rechts von explodierenden Steinen selbst explodierende Steine. Das betrifft auch unsichtbare und unzerstörbare Steine. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Brennender Ball</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Brennender Ball</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Transformiert alle Bälle in brennende Bälle. Wenn ein brennender Ball einen Stein trifft, werden auch die Steine oberhalb, unterhalb, links und rechts von dem getroffenen Stein zerstört. Ein brennender Ball zerstört alle Steine unabhängig von ihrem Typ. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Nicht aufhaltbarer Ball</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Nicht aufhaltbarer Ball</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Macht aus allen Bällen nicht-aufhaltbare Bälle. Ein nicht-aufhaltbarer Ball zerstört alle Steine auf seiner Bahn - egal welchen Typs - und wird auch nicht von ihnen zurückgeworfen. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Magisches Auge</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Magisches Auge</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Zeigt alle versteckten Steine. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Zauberstab</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Zauberstab</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Macht aus allen Mehrfach- und unzerstörbaren Steinen einfache Steine. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Geschwindigkeit erhöhen</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Geschwindigkeit erhöhen</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Erhöht die aktuelle Geschwindigkeit des Balls um 30 %. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Geschwindigkeit verringern</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Geschwindigkeit verringern</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Verringert die aktuelle Geschwindigkeit um 30 %. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+><quote
+>Nächste Ebene</quote
+>-Geschenk </phrase>
+	</textobject>
+      </inlinemediaobject
+><quote
+>Nächste Ebene</quote
+>-Geschenk </term>
+    <listitem>
+      <para
+>Öffnet sofort die nächste Ebene des Spiels. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Spielstrategien und Tipps</title>
+<itemizedlist>
+<listitem
+><para
+>Falls möglich, ist es normalerweise eine gute Idee, den Ball über die Steine zu schicken; das verringert die Chance eines Ballverlustes. Es kann manchmal sein, dass Sie dafür erst ein kleines Loch in die Steinebene machen müssen. Je kleiner das Loch, desto kleiner ist die Chance, dass der Ball wieder runterkommt.</para
+></listitem>
+<listitem
+><para
+>Wenn sie das <quote
+>Füge Ball hinzu</quote
+>-Geschenk gefangen haben, ist es ratsam, diesen nicht sofort wieder abzuschießen, sondern ihn erst zu behalten, falls der andere Ball verloren geht. Außerdem ist es nicht ratsam in einem solchen Fall, das <quote
+>Klebrige Leiste</quote
+>-Geschenk zu fangen, da es Sie dazu bringen würde, alle Bälle gleichzeitig abfeuern zu müssen.</para
+></listitem>
+<listitem
+><para
+>Wenn das <quote
+>Nächste Spielebene</quote
+>-Geschenk erscheint, ist es nicht ratsam, dieses zu fangen, wenn Sie wissen, dass in der aktuellen Spielebene noch <quote
+>Schenke Leben</quote
+>-Geschenke sind.</para
+></listitem>
+<listitem
+><para
+>In Spielebenen mit vielen unsichtbaren Steinen ist möglich, die Spielebene zu bestehen, ohne die meisten von ihnen zu zerstören.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Die Benutzeroberfläche</title>
+
+<sect1 id="menu">
+<title
+>Menüeinträge</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Startet ein neues Spiel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Hält das aktuelle Spiel an oder setzt es fort. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Zeigt einen Dialog mit der Bestenliste. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Beendet das Programm. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ansicht</guimenu
+><guimenuitem
+>Vollbildmodus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>&kbreakout; im Vollbildmodus spielen. Dieser Modus kann nur mit dem Kurzbefehl verlassen werden.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Zusätzlich hat &kbreakout; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Kurzbefehle</title>
+
+<para
+>Folgende Tastenkürzel sind als Standard eingestellt:</para>
+
+<table>
+<title
+>Kurzbefehle</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Feuer</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Pause/Weiterspielen</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Ein neues Spiel starten</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Bestenliste anzeigen</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Beenden</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Vollbildmodus</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Hilfe</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Was ist das?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Danksagungen und Lizenz</title>
+
+<para
+>&kbreakout; </para>
+<para
+>Programm Copyright 2008 Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Dokumentation Copyright 2008 Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>Übersetzung Ingo Malchow <email
+>ingomalchow@googlemail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

@@ -1,0 +1,251 @@
+# translation of kbreakout.po to bosanski
+# Bosnian translation for kdegames
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the kdegames package.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# KDE 4 <megaribi@epn.ba>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: kbreakout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2013-10-18 20:27+0000\n"
+"Last-Translator: Samir Ribić <Unknown>\n"
+"Language-Team: bosanski <bs@li.org>\n"
+"Language: bs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Launchpad (build 17341)\n"
+"X-Launchpad-Export-Date: 2015-02-15 05:58+0000\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Muslimovic Jasmin,Samir Ribić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Mj@etf.ba,samir.ribic@etf.unsa.ba"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "Opšte postavke"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+"Omogučavanjem opcije gubite kursor miša, zaustavite igru kako bi dobili "
+"kursor nazad."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "Izbaci na klik miša"
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, fuzzy, kde-format
+#| msgid "A breakout like game for KDE"
+msgid "A Breakout like game by KDE"
+msgstr "Igra izbijanja za KDE"
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007-2008 Fela Winkelmolen"
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr "originalni autor i održavalac"
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr "ilustracije"
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr "Sean Wilson"
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "Lorenzo Bonomi"
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "testiranje"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr "Brian Croom"
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr "ulaz u KGameRenderer"
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr "Viranch Mehta"
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr "prebacivanje na QtQuick"
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "F"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr "Ispucaj loptu"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr ""
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr ""
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "P"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "Tema"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "Opšte"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   Vrijeme (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "Započinjanje nove igre će završiti trenutnu!"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "Nova igra"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "Započni novu igru"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "Igra je dobijena!"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "Vrijeme (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"Želite li izbaciti loptu klikom miša?\n"
+"Odgovarajući DA gubite \n"
+"kursor miša, zaustavite igru da dobijete\n"
+"kursor nazad."
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "Izbaci na klik?"
+
+#: mainwindow.cpp:305
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "Izbaci na klik miša"
+
+#: mainwindow.cpp:306
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "Izbaci na klik miša"
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr "Dobro urađeno! Pobijedili ste!"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "Nivo %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "Igra zaustavljena!"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "Ups! Izgubili ste loptu!"
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "Kraj igre!"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "Pritisnite %1 da biste izbacili loptu"

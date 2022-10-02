@@ -1,0 +1,240 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-08 00:43+0000\n"
+"PO-Revision-Date: 2022-09-20 01:55\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/kbreakout/kbreakout.pot\n"
+"X-Crowdin-File-ID: 5659\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-china@kde.org"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "常规设置"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr "启用下面的选项会使得本游戏强制夺取鼠标焦点，暂停游戏就可释放鼠标。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "用鼠标控制发射"
+
+#: main.cpp:38
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:39
+#, kde-format
+msgid "A Breakout like game by KDE"
+msgstr "由 KDE 打造的打砖块游戏"
+
+#: main.cpp:41
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007-2008 Fela Winkelmolen"
+
+#: main.cpp:42
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "Fela Winkelmolen"
+
+#: main.cpp:43
+#, kde-format
+msgid "original author and maintainer"
+msgstr "原作者及维护者"
+
+#: main.cpp:45
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:46 main.cpp:49
+#, kde-format
+msgid "artwork"
+msgstr "美工"
+
+#: main.cpp:48
+#, kde-format
+msgid "Sean Wilson"
+msgstr "Sean Wilson"
+
+#: main.cpp:51
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "Lorenzo Bonomi"
+
+#: main.cpp:52
+#, kde-format
+msgid "testing"
+msgstr "测试"
+
+#: main.cpp:54
+#, kde-format
+msgid "Brian Croom"
+msgstr "Brian Croom"
+
+#: main.cpp:55
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr "移植到 KGameRenderer"
+
+#: main.cpp:57
+#, kde-format
+msgid "Viranch Mehta"
+msgstr "Viranch Mehta"
+
+#: main.cpp:58
+#, kde-format
+msgid "port to QtQuick"
+msgstr "移植到 QtQuick"
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "F"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr "弹射"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr "跳过关卡"
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr "添加生命"
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "P"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "主题"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "常规"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   时间(小时:秒)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "开始新游戏将结束当前游戏！"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "新建游戏"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "开始新游戏"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "赢了！"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "时间(小时:秒)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"您想要通过鼠标点击发射弹球吗？\n"
+"如果选择是，会使得本游戏强制夺取鼠标焦点，暂停\n"
+"游戏就可释放鼠标。"
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "鼠标点击时发射吗？"
+
+#: mainwindow.cpp:305
+#, kde-format
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr ""
+
+#: mainwindow.cpp:306
+#, kde-format
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr ""
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr "干得好！您赢了"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "级别 %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "游戏已暂停！"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "哎呀！您失去了一次游戏机会！"
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "游戏结束！"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "按下 %1 将球弹射出去"
