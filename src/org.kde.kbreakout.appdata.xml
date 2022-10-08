@@ -20,6 +20,7 @@
   <name xml:lang="gl">KBreakOut</name>
   <name xml:lang="id">KBreakOut</name>
   <name xml:lang="it">KBreakOut</name>
+  <name xml:lang="ka">KBreakOut</name>
   <name xml:lang="ko">KBreakOut</name>
   <name xml:lang="nl">KBreakOut</name>
   <name xml:lang="nn">KBreakOut</name>
@@ -152,6 +153,7 @@
       <caption xml:lang="gl">Xogando a KBreakOut</caption>
       <caption xml:lang="id">Memainkan KBreakOut</caption>
       <caption xml:lang="it">Giocare a KBreakOut</caption>
+      <caption xml:lang="ka">KBreakOut-ის თამაში</caption>
       <caption xml:lang="ko">KBreakOut 플레이</caption>
       <caption xml:lang="nl">KBreakOut spelen</caption>
       <caption xml:lang="nn">Spelar KBreakOut</caption>
