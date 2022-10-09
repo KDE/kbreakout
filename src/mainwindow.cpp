@@ -18,6 +18,7 @@
 #include <KgThemeSelector>
 #include <KStandardGameAction>
 // KF
+#include <kwidgetsaddons_version.h>
 #include <KStandardAction>
 #include <KToggleFullScreenAction>
 #include <KActionCollection>
@@ -173,14 +174,22 @@ void MainWindow::showHighscores()
 
 void MainWindow::startNewGame()
 {
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+    int ret = KMessageBox::warningTwoActions(
+#else
     int ret = KMessageBox::warningYesNo(
+#endif
                   this,
                   i18n("Starting a new game will end the current one!"),
                   i18n("New Game"),
                   KGuiItem(i18n("Start a New Game")),
                   KStandardGuiItem::cancel());
 
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+    if (ret == KMessageBox::PrimaryAction) {
+#else
     if (ret == KMessageBox::Yes) {
+#endif
         pauseAction->setChecked(false);
         gameEngine->start(QStringLiteral("default"));
     }
@@ -295,7 +304,11 @@ void MainWindow::handleMousePressed()
 #endif
     if (dontAsk == false) {
         // ask the user if he wants to fire on mouse click
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+        int res = KMessageBox::questionTwoActions(
+#else
         int res = KMessageBox::questionYesNo(
+#endif
                       this,
                       i18n("Do you want to fire the ball on mouse click?\n"
                            "Answering Yes will make the game steal the\n"
@@ -307,7 +320,11 @@ void MainWindow::handleMousePressed()
                       QStringLiteral("dontAskFireOnClick") // doesntAskAgainName
                   );
 
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+        if (res == KMessageBox::PrimaryAction) {
+#else
         if (res == KMessageBox::Yes) {
+#endif
             Settings::setFireOnClick(true);
             Settings::self()->save();
         }
