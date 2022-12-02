@@ -51,6 +51,7 @@
   <summary xml:lang="gl">KBreakOut é un xogo de rachar bloques de KDE</summary>
   <summary xml:lang="id">KBreakOut adalah sebuah permainan seperti Breakout oleh KDE</summary>
   <summary xml:lang="it">KBreakOut è un gioco simile a Breakout della comunità KDE</summary>
+  <summary xml:lang="ka">KBreakOut გაღწევის მსგავსი თამაშია KDE-სგან</summary>
   <summary xml:lang="ko">KBreakOut은 KDE의 벽돌 깨기 게임입니다</summary>
   <summary xml:lang="nl">KBreakOut is een Breakout-achtig spel door KDE</summary>
   <summary xml:lang="nn">KBreakOut er eit Breakout-liknande spel frå KDE</summary>
@@ -84,6 +85,7 @@
     <p xml:lang="gl">O obxectivo de KBreakOut é destruír tantos bloques como for posíbel sen perder a bóla.</p>
     <p xml:lang="id">Sasaran KBreakOut adalah menghancurkan semua bata yang memungkinkan tanpa peluputan bola.</p>
     <p xml:lang="it">L'obiettivo di KBreakOut è quello di distruggere più mattonelle possibili senza perdere la palla.</p>
+    <p xml:lang="ka">KBreakOut -ის იდეაა ბურთის დაუკარგავად რაც შეიძლება მეტი კედელი დაანგრიოთ.</p>
     <p xml:lang="ko">KBreakOut의 목표는 공을 잃지 않고 최대한 많은 벽돌을 깨는 것입니다.</p>
     <p xml:lang="nl">Het doel van KBreakOut is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen.</p>
     <p xml:lang="nn">Målet i KBreakOut er å øydeleggja så mange brikker som mogleg utan å mista ballen.</p>
