@@ -51,6 +51,7 @@
   <summary xml:lang="gl">KBreakOut é un xogo de rachar bloques de KDE</summary>
   <summary xml:lang="id">KBreakOut adalah sebuah permainan seperti Breakout oleh KDE</summary>
   <summary xml:lang="it">KBreakOut è un gioco simile a Breakout della comunità KDE</summary>
+  <summary xml:lang="ka">KBreakOut გაღწევის მსგავსი თამაშია KDE-სგან</summary>
   <summary xml:lang="ko">KBreakOut은 KDE의 벽돌 깨기 게임입니다</summary>
   <summary xml:lang="nl">KBreakOut is een Breakout-achtig spel door KDE</summary>
   <summary xml:lang="nn">KBreakOut er eit Breakout-liknande spel frå KDE</summary>
@@ -84,6 +85,7 @@
     <p xml:lang="gl">O obxectivo de KBreakOut é destruír tantos bloques como for posíbel sen perder a bóla.</p>
     <p xml:lang="id">Sasaran KBreakOut adalah menghancurkan semua bata yang memungkinkan tanpa peluputan bola.</p>
     <p xml:lang="it">L'obiettivo di KBreakOut è quello di distruggere più mattonelle possibili senza perdere la palla.</p>
+    <p xml:lang="ka">KBreakOut -ის იდეაა ბურთის დაუკარგავად რაც შეიძლება მეტი კედელი დაანგრიოთ.</p>
     <p xml:lang="ko">KBreakOut의 목표는 공을 잃지 않고 최대한 많은 벽돌을 깨는 것입니다.</p>
     <p xml:lang="nl">Het doel van KBreakOut is om zoveel mogelijk bakstenen te vernietigen zonder de bal te verliezen.</p>
     <p xml:lang="nn">Målet i KBreakOut er å øydeleggja så mange brikker som mogleg utan å mista ballen.</p>
@@ -116,6 +118,7 @@
     <p xml:lang="gl">Ao xogador preséntaselle un campo de xogo que contén determinada cantidade de bloques. Unha bóla atravesa a pantalla, rebotando nas paredes superior e laterais. Cando bate nun bloque, a bóla rebota e o bloque é destruído. O xogador perde unha vida cando a bóla toca o fondo do campo. Para evitar que isto ocorra, o xogador ten que usar unha barra móbil para facer rebotar a bóla cara riba, situada no fondo da xanela. O obxectivo do xogo é avanzar polos niveis destruíndo todos os bloques que aparezan en cada un e intentando obter unha puntuación máxima.</p>
     <p xml:lang="id">Pemain disajikan dengan bidang permainan yang berisi sejumlah batu bata. Sebuah bola bergerak lalu-lalang melintasi layar, memantul dari atas dan samping dinding. Ketika batu bata terpukul bola yang memantul dan batu bata hancur. Pemain kehilangan nyawa ketika bola menyentuh bagian bawah bidang. Untuk mencegah ini dari yang terjadi, pemain harus menggunakan bilah yang bisa digerakkan untuk memantulkan bola ke atas, terletak di bagian bawah jendela. Tujuan dari permainan ini adalah progres melalui level menghancurkan semua batu bata yang ada di tempat masing-masing, dan mencoba untuk mendapatkan tingkat skor.</p>
     <p xml:lang="it">Al giocatore viene presentato un campo di gioco contenente un certo numero di mattonelle. Una pallina passa nello schermo, rimbalzando sui muri laterali e superiore. Quando una mattonella viene colpita, la pallina rimbalza e la mattonella viene distrutta. Il giocatore perde una vita quando la pallina tocca il fondo dello schermo; per evitare che ciò accada, il giocatore deve usare una barra mobile, situata in fondo alla finestra, per far rimbalzare la pallina verso l'alto. L'obiettivo del gioco è procedere attraverso i vari livelli distruggendo tutte le mattonelle in ciascuno, e cercare di ottenere un punteggio elevato.</p>
+    <p xml:lang="ka">KBreakOut -ის იდეაა ბურთის დაუკარგავად რაც შეიძლება მეტი კედელი დაანგრიოთ.</p>
     <p xml:lang="ko">벽돌이 있는 필드가 펼쳐집니다. 공은 화면 속에서 움직이며, 벽에 맞으면 반사됩니다. 벽돌에 맞았을 때에는 벽돌을 깨고 공은 다시 반사됩니다. 플레이어가 아래로 떨어지는 공을 잡지 못하면 목숨을 잃습니다. 창 아래에 있는 패드를 움직여서 공을 다시 위로 튕겨 올려야 합니다. 게임의 목표는 각 단계별 블록을 깨고 최대한 많은 점수를 얻는 것입니다.</p>
     <p xml:lang="nl">De speler krijgt een speelveld te zien met daarin een aantal bakstenen. Een bal verplaatst zich over het scherm, stuiterend tegen de bovenkant en de muren aan de zijkanten. Als het een baksteen raakt dan stuitert de bal weg en is de baksteen vernietigd. De speler verliest een leven als de bal de onderkant van het veld raakt. Om dit te voorkomen moet de speler een beweegbare speelbalk gebruiken om de de bal weer omhoog te stuiteren, die onderaan het venster te vinden is. Het doel van het spel is door de levels te gaan ondertussen alle aanwezige bakstenen vernietigend en een hoge score te krijgen.</p>
     <p xml:lang="nn">Spelet består av eit spelebrett med nokre brikker på. Ein ball sprett rundt på spelebrettet og knusar eventuelle brikker han kjem borti. Men viss denne ballen treff nedre skjermkant, mistar du eit liv. Du kan unngå dette ved å flytta på ein «rekkert» slik at ballen treff rekkerten og kan spretta opp att. Målet med spelet er å knusa alle brikkene på brettet og få ein høg poengsum.</p>
