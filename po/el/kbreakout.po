@@ -25,7 +25,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Σπύρος Γεωργαράς, Τούσης Μανώλης"
+msgstr "Σπύρος Γεωργαράς, Τούsης Μανώλης"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -212,18 +212,16 @@ msgid "Fire on click?"
 msgstr "Εκτόξευση με κλικ;"
 
 #: mainwindow.cpp:318
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "Εκτόξευση με κλικ ποντικιού"
+msgstr "Με κλικ του ποντικιού"
 
 #: mainwindow.cpp:319
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "Εκτόξευση με κλικ ποντικιού"
+msgstr "Να αγνοηθεί το κλικ του ποντικιού"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
