@@ -1,63 +1,104 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY % English "INCLUDE"> 
+<!ENTITY % German "INCLUDE"
+> 
 <!ENTITY % addindex "IGNORE">
 ]>
 
 <book id="kbreakout" lang="&language;">
 <bookinfo>
-<title>The &kbreakout; Handbook</title>
+<title
+>Das Handbuch zu &kbreakout;</title>
 
 <authorgroup>
-<author>
-<firstname>Fela</firstname>
-<surname>Winkelmolen</surname>
-<affiliation>
-<address><email>fela.kde@gmail.com</email></address></affiliation>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
 </author>
 
-<author>
-<firstname>Stephanie</firstname>
-<surname>Whiting</surname>
-<affiliation>
-<address><email>stephaniewhiting03@hotmail.com</email></address></affiliation>
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
 </author>
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<othercredit role="translator"
+> <firstname
+>Ingo</firstname
+><surname
+>Malchow</surname
+> <affiliation
+><address
+><email
+>ingomalchow@googlemail.com</email
+></address
+></affiliation
+> <contrib
+>Deutsche Übersetzung</contrib
+> </othercredit
+> 
 </authorgroup>
 
 <copyright>
-<year>2008</year>
-<holder>Fela Winkelmolen</holder>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
 </copyright>
     
-<legalnotice>&FDLNotice;</legalnotice>
+<legalnotice
+>&FDLNotice;</legalnotice>
 
-<date>2021-06-25</date>
-<releaseinfo>KDE Gear 21.04</releaseinfo>
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
 
 <abstract>
-<para>
-&kbreakout;, a Breakout-like game.</para>
+<para
+>&kbreakout;, ein Breakout-ähnliches Spiel.</para>
 </abstract>
 
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>kdegames</keyword>
-<keyword>game</keyword>
-<keyword>KBreakOut</keyword>
-<keyword>Breakout</keyword>
-<keyword>brick</keyword>
-<keyword>bricks</keyword>
-<keyword>ball</keyword>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>Spiel</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>Stein</keyword>
+<keyword
+>Steine</keyword>
+<keyword
+>Ball</keyword>
 </keywordset>
 </bookinfo>
 
 <chapter id="introduction">
-<title>Introduction</title>
+<title
+>Einführung</title>
 
-<para>
-&kbreakout; is a Breakout-like game.
-</para>
+<para
+>&kbreakout; ist ein Breakout-ähnliches Spiel. </para>
 
 <screenshot>
 <mediaobject>
@@ -65,669 +106,793 @@
 <imagedata fileref="gameboard.png" format="PNG"/>
 </imageobject>
 <textobject>
-<phrase>&kbreakout; gameboard</phrase>
+<phrase
+>&kbreakout;-Spielfeld</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
-<para>
-The object of the game is to destroy as many bricks as possible without losing the ball.
-</para>
+<para
+>Das Ziel des Spieles ist es, so viele Steine wie möglich zu zerstören, ohne den Ball zu verlieren. </para>
 </chapter>
 
 <chapter id="how-to-play">
-<title>How to Play</title>
+<title
+>Spielanleitung</title>
 
-<para>
-The player is presented with a game field containing a number of bricks. A ball travels across the screen, bouncing off the top and side walls. When a brick is hit, the ball bounces away and the brick is destroyed. The player loses a life when the ball touches the bottom of the field. To prevent this from happening, the player has to use a movable bar to bounce the ball upward, situated at the bottom of the window. The purpose of the game is to progress through the levels destroying all bricks present in each, and trying to get a highscore.
-</para>
+<para
+>Dem Spieler wird ein Spielfeld mit einer Anzahl an Steinen präsentiert. Ein Ball wandert über den Bildschirm, springt dabei aber von der oberen und den seitlichen Wänden ab. Wenn ein Stein getroffen wird, springt der Ball ab und der Stein ist zerstört. Der Spieler verliert ein Leben, wenn der Ball das untere Ende des Feldes berührt. Um das zu verhindern, muss der Spieler den Ball mithilfe einer beweglichen Leiste am unteren Rand zurückspringen lassen. Das Ziel des Spieles ist es, die Ebenen zu durchlaufen, indem alle Steine darin zerstört werden, und dabei noch einen hohen Punktestand zu erreichen. </para>
 
-<para>
-Some bricks have a special behavior, or may let a gift fall down when hit. The gifts can be caught with the bar, their behavior can be either positive or negative. For further information on the different types of bricks and gifts see the next chapter.
-</para>
+<para
+>Einige Steine haben ein spezielles Verhalten, oder es fällt ein Geschenk von ihnen herunter, sobald sie getroffen werden. Die Geschenke können mit der Leiste aufgefangen werden; ihr Verhalten kann entweder positiv oder negativ sein. Für weitere Informationen zu den verschiedenen Steinen und Geschenken lesen Sie das nächste Kapitel. </para>
 
-<para>
-To fire the ball press the spacebar, to move the bar use the mouse or the arrow keys. The ball will bounce in the direction of the side of the bar it bounced on hit, the more it bounces near the left end of the bar the more it will bounce toward the left, the same applies for the right side; if it bounces in the middle of the bar it will bounce straight toward the top.
-</para>
+<para
+>Um den Ball abzufeuern, drücken Sie die Leertaste; um die Leiste zu bewegen, benutzen Sie die Maus oder die Pfeiltasten. Der Ball springt in die Richtung der Seite der Leiste ab, an der sie getroffen wurde, und je mehr die Leiste auf der linken Seite getroffen wurde, desto mehr springt der Ball in Richtung links ab, das gleiche gilt für die rechte Seite; falls der Ball aber die Mitte der Leiste trifft, so springt er gerade nach oben ab. </para>
 
-<para>
-If you enable the option <guilabel>Fire on mouse click</guilabel> in the settings dialog, you can click with the &LMB; to fire.
-Enabling the option will make the game steal the mouse cursor, pause the game to get the cursor back.
-</para>
+<para
+>Wenn Sie <guilabel
+>Mit Mausklick abschießen</guilabel
+> im Einrichtungsdialog aktivieren, können Sie mit der &LMBn; feuern. Dann steht der Mauszeiger nur noch für KBreakout zur Verfügung. Sie müssen dann das Spiel anhalten, um den Mauszeiger wieder für alle Anwendungen benutzen zu können. </para>
 
 </chapter>
 
 <chapter id="rules-strategies-tips">
-<title>Game Rules, Strategies and Tips</title>
+<title
+>Spielregeln, Spielstrategien und Tipps</title>
 
 <sect1 id="rules">
-<title>Rules</title>
+<title
+>Spielregeln</title>
 <itemizedlist>
-<listitem><para>Passing a level awards 300 points to the player. A level is passed when all breakable and visible bricks are destroyed, or alternatively if the next level gift is caught. In the latter case an additional score for each remaining brick is awarded.</para></listitem>
-<listitem><para>A score is awarded for every brick destroyed, the smaller the interval between one hit and the following the higher this score.</para></listitem>
-<listitem><para>This gifts hidden in a given level are fixed, their position however is random.</para></listitem>
-<listitem><para>30 points are awarded for every gift caught.</para></listitem>
-<listitem><para>The player loses a life when the ball touches the bottom of the field and there are no other balls left in the game, or when he catches a lose life gift. When losing a life 1000 points are detracted from his score.</para></listitem>
-<listitem><para>Additional lives can be gained by catching the add life gifts.</para></listitem>
-<listitem><para>The game ends when the player loses the ball while not having any additional lives left, or when all levels have been won.</para></listitem>
+<listitem
+><para
+>Eine Spielebene zu vollenden bedeutet 300 Punkte für den Spieler. Eine Spielebene ist bestanden, wenn alle zerstörbaren oder sichtbaren Steine zerstört sind, oder aber falls das <quote
+>Nächste Spielebene</quote
+>-Geschenk gefangen wurde. Im letzten Fall werden zusätzliche Punkte für jeden übriggebliebenen Stein vergeben.</para
+></listitem>
+<listitem
+><para
+>Es werden Punkte für jeden zerstörten Stein vergeben. Je kürzer die Zeit zwischen zwei verschiedenen Treffern, desto höher sind die Punkte.</para
+></listitem>
+<listitem
+><para
+>Diese Geschenke, versteckt in den einzelnen Spielebenen, sind fixiert;ihre Position aber ist zufällig.</para
+></listitem>
+<listitem
+><para
+>30 Punkte werden für jedes gefangene Geschenk vergeben.</para
+></listitem>
+<listitem
+><para
+>Der Spieler verliert ein Leben, sobald der Ball das untere Ende des Feldes berührt und keine weiteren Bälle im Spiel sind, oder wenn er das <quote
+>Verliere ein Leben</quote
+>-Geschenk fängt. Beim Verlieren eines Lebens werden 1000 Punkte vom Punktestand abgezogen.</para
+></listitem>
+<listitem
+><para
+>Zusätzliche Leben können durch Fangen des <quote
+>Schenke Leben</quote
+>-Geschenkes erreicht werden.</para
+></listitem>
+<listitem
+><para
+>Das Spiel endet, wenn der Spieler den Ball verliert und keine zusätzlichen Leben mehr hat oder wenn alle Spielebenen bestanden wurden.</para
+></listitem>
 </itemizedlist>
 </sect1>
 
 <sect1 id="brick-types">
-<title>Brick Types</title>
+<title
+>Steinarten</title>
 <note>
-  <para>
-    Pictures for the bricks below are for the default theme of &kbreakout;.
-  </para>
+  <para
+>Die Symbole für die folgenden Steine stammen aus dem Standarddesign von &kbreakout;. </para>
 </note>
 <variablelist>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="PlainBrick1.png" format="PNG" />
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Plain Brick
-	  </phrase>
+	  <phrase
+>Gewöhnlicher Stein </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Plain Bricks
-    </term>
+      </inlinemediaobject
+>Gewöhnlicher Stein </term>
     <listitem>
-      <para>
-	Simple bricks, while their appearance may vary they all behave the same way, they get destroyed when hit by the ball and may contain a gift.
-      </para>
+      <para
+>Einfache Steine verhalten sich alle gleich, obwohl ihr Äußeres variieren kann.Sie werden bei einem Treffer mit dem Ball zerstört und können ein Geschenk enthalten. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="UnbreakableBrick.png" format="PNG" />
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Unbreakable Brick
-	  </phrase>
+	  <phrase
+>Unzerstörbarer Stein </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Unbreakable Brick
-    </term>
+      </inlinemediaobject
+>Unzerstörbarer Stein </term>
     <listitem>
-      <para>
-	Never gets destroyed unless hit by a burning or unstoppable ball, or an exploding brick next to it gets hit. These bricks do not need to be destroyed to win the level.
-      </para>
+      <para
+>Wird niemals zerstört, außer durch einen brennenden oder nicht-aufhaltbaren Ball, oder aber durch einen explodierenden Stein direkt daneben. Diese Steine müssen nicht zerstört werden, um die Spielebene zu gewinnen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="BreakableBrick.png" format="PNG" />
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Breakable Brick
-	  </phrase>
+	  <phrase
+><quote
+>Zerstörbarer Stein</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Breakable Brick
-    </term>
+      </inlinemediaobject
+><quote
+>Zerstörbarer Stein</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Unbreakable bricks can be turned into breakable bricks using <link linkend="gift-magic-wand">Magic Wand gift</link>.
-      </para>
+      <para
+>Mit dem <link linkend="gift-magic-wand"
+><quote
+>Zauberstab</quote
+>-Geschenk</link
+> können unzerstörbare Steine in zerstörbare Steine verwandelt werden. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="HiddenBrick.png" format="PNG" />
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Hidden Brick
-	  </phrase>
+	  <phrase
+>Versteckter Stein </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Hidden Brick
-    </term>
+      </inlinemediaobject
+>Versteckter Stein </term>
     <listitem>
-      <para>
-	This brick is not initially shown to the player. When hit for the fist time it becomes visible, and becomes a plain brick. If hit by a burning ball, or an exploding brick next to it gets hit it gets destroyed as soon as it appears. As long as it remains hidden it does not need to be destroyed to get to the next level.
-      </para>
+      <para
+>Dieser Stein wird dem Spieler zunächst nicht gezeigt. Wenn er das erste Mal getroffen wird, wird er sichtbar und zu einem gewöhnlichen Stein. Falls er durch einen brennenden Ball oder einen explodierenden Stein daneben getroffen wird, wird er zerstört, sobald er erscheint. Solange dieser Stein unsichtbar ist, ist es nicht nötig, ihn zu zerstören, um die Spielebene zu bestehen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="MultipleBrick3.png" format="PNG" />
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Multiple Brick
-	  </phrase>
+	  <phrase
+>Mehrfach-Stein </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Multiple Brick
-    </term>
+      </inlinemediaobject
+>Mehrfach-Stein </term>
     <listitem>
-      <para>
-	Needs to be hit three times before getting destroyed, unless hit by a burning or unstoppable ball, or an exploding brick next to it gets destroyed.
-      </para>
+      <para
+>Muss dreimal getroffen werden, bevor er zerstört wird - außer er wird durch einen brennenden Stein oder einen explodierenden Stein unmittelbar daneben getroffen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="ExplodingBrick.png" format="PNG" />
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Exploding Brick
-	  </phrase>
+	  <phrase
+>Explodierender Stein </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Exploding Brick
-    </term>
+      </inlinemediaobject
+>Explodierender Stein </term>
     <listitem>
-      <para>
-	When this brick gets hit also the bricks to the top, bottom, left and right of it will get destroyed, regardless of their type.
-      </para>
+      <para
+>Wenn dieser Stein getroffen wird, werden außerdem auch die Steine über, unter, links und rechts von ihm zerstört, egal, von welchem Typ sie sind. </para>
     </listitem>
   </varlistentry>
 </variablelist>
 </sect1>
 
 <sect1 id="gifts">
-<title>Gifts</title>
+<title
+>Geschenke</title>
 <note>
-  <para>
-    Pictures for the gifts below are for the default theme of &kbreakout;.
-  </para>
+  <para
+>Die Symbole für die folgenden Geschenke stammen aus dem Standarddesign von &kbreakout;. </para>
 </note>
 <variablelist>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="Gift1000Points.png" format="PNG" />
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Gift 1000 Points
-	  </phrase>
+	  <phrase
+><quote
+>100 Punkte</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Score Gifts
-    </term>
+      </inlinemediaobject
+><quote
+>Punkte</quote
+>-Geschenke </term>
     <listitem>
-      <para>
-	If caught they award the player the number of points written on the gift.
-      </para>
+      <para
+>Wenn es gefangen wird, schenkt es dem Spieler die Anzahl Punkte, die darauf geschrieben sind. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftAddLife.png" format="PNG" />
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Add Life Gift
-	  </phrase>
+	  <phrase
+><quote
+>Schenke Leben</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Add Life Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Schenke Leben</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Gives the player an additional life.
-      </para>
+      <para
+>Gibt dem Spieler ein zusätzliches Leben. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftLoseLife.png" format="PNG" />
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Lose Life Gift
-	  </phrase>
+	  <phrase
+><quote
+>Verliere Leben</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Lose Life Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Verliere Leben</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Makes the player lose all balls and resets the bar.
-      </para>
+      <para
+>Veranlasst, dass der Spieler alle Bälle verliert und die Leiste zurückgesetzt wird. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftEnlargeBar.png" format="PNG" />
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Enlarge Bar Gift
-	  </phrase>
+	  <phrase
+><quote
+>Vergrößere Leiste</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Enlarge Bar Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Vergrößere Leiste</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Enlarges the bar.
-      </para>
+      <para
+>Vergrößert die Leiste. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftShrinkBar.png" format="PNG" />
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Shrink Bar Gift
-	  </phrase>
+	  <phrase
+><quote
+>Verkleinere Leiste</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Shrink Bar Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Verkleinere Leiste</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Shrinks the bar.
-      </para>
+      <para
+>Verkleinert die Leiste. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftSplitBall.png" format="PNG" />
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Split Balls Gift
-	  </phrase>
+	  <phrase
+><quote
+>Teile Bälle</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Split Balls Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Teile Bälle</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Doubles the balls.
-      </para>
+      <para
+>Verdoppelt die Anzahl der Bälle. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftAddBall.png" format="PNG" />
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Add Balls Gift
-	  </phrase>
+	  <phrase
+><quote
+>Füge Ball hinzu</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Add Balls Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Füge Ball hinzu</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Gives the player an extra ball attached to the bar, which can be fired whenever the player wants.
-      </para>
+      <para
+>Verleiht dem Spieler einen Extra-Ball direkt auf der Leiste, der abgeschossen werden kann, wann immer der Spieler möchte. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftStickyBar.png" format="PNG" />
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Sticky Bar Gift
-	  </phrase>
+	  <phrase
+><quote
+>Klebrige Leiste</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Sticky Bar Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Klebrige Leiste</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	After catching this gift, every time a ball touches the bar it remains attached to it, allowing the player to fire again.
-      </para>
+      <para
+>Nachdem dieses Geschenk gefangen wird, verbleibt der Ball, sobald er die Leiste trifft, auf dieser, und erlaubt dem Spieler, ihn erneut abzuschießen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftMoreExplosion.png" format="PNG" />
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    More Exploding Bricks Gift
-	  </phrase>
+	  <phrase
+><quote
+>Mehr explodierende Steine</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      More Exploding Bricks Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Mehr explodierende Steine</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Makes all bricks to the top, bottom, right, and left of exploding bricks exploding bricks themselves. This also applies to hidden and unbreakable bricks.
-      </para>
+      <para
+>Macht aus allen Steinen oberhalb, unterhalb, links und rechts von explodierenden Steinen selbst explodierende Steine. Das betrifft auch unsichtbare und unzerstörbare Steine. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftBurningBall.png" format="PNG" />
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Burning Ball Gift
-	  </phrase>
+	  <phrase
+><quote
+>Brennender Ball</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Burning Ball Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Brennender Ball</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Transforms all the balls in burning balls. When a burning ball hits a brick also the bricks to the top, bottom, left and right of it get destroyed. A burning ball destroys all types of bricks regardless of their types.
-      </para>
+      <para
+>Transformiert alle Bälle in brennende Bälle. Wenn ein brennender Ball einen Stein trifft, werden auch die Steine oberhalb, unterhalb, links und rechts von dem getroffenen Stein zerstört. Ein brennender Ball zerstört alle Steine unabhängig von ihrem Typ. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG" />
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Unstoppable Ball Gift
-	  </phrase>
+	  <phrase
+><quote
+>Nicht aufhaltbarer Ball</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Unstoppable Ball Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Nicht aufhaltbarer Ball</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Transforms all the balls into unstoppable balls. An unstoppable ball destroys all bricks it encounters on it's path, regardless of their type, and never bouncing against them.
-      </para>
+      <para
+>Macht aus allen Bällen nicht-aufhaltbare Bälle. Ein nicht-aufhaltbarer Ball zerstört alle Steine auf seiner Bahn - egal welchen Typs - und wird auch nicht von ihnen zurückgeworfen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftMagicEye.png" format="PNG" />
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Magic Eye Gift
-	  </phrase>
+	  <phrase
+><quote
+>Magisches Auge</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Magic Eye Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Magisches Auge</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Shows all hidden bricks.
-      </para>
+      <para
+>Zeigt alle versteckten Steine. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term id="gift-magic-wand">
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftMagicWand.png" format="PNG" />
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Magic Wand Gift
-	  </phrase>
+	  <phrase
+><quote
+>Zauberstab</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Magic Wand Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Zauberstab</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Transforms all multiple and unbreakable bricks into simple bricks.
-      </para>
+      <para
+>Macht aus allen Mehrfach- und unzerstörbaren Steinen einfache Steine. </para>
     </listitem>
   </varlistentry>
     <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG" />
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Increase Speed Gift
-	  </phrase>
+	  <phrase
+><quote
+>Geschwindigkeit erhöhen</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Increase Speed Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Geschwindigkeit erhöhen</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Increases the speed of the ball by 30% of the current speed.
-      </para>
+      <para
+>Erhöht die aktuelle Geschwindigkeit des Balls um 30 %. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG" />
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Decrease Speed Gift
-	  </phrase>
+	  <phrase
+><quote
+>Geschwindigkeit verringern</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Decrease Speed Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Geschwindigkeit verringern</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Decreases the speed of the ball dividing the current speed by 1.3.
-      </para>
+      <para
+>Verringert die aktuelle Geschwindigkeit um 30 %. </para>
     </listitem>
   </varlistentry>
     <varlistentry>
     <term>
       <inlinemediaobject>
 	<imageobject>
-	  <imagedata fileref="GiftNextLevel.png" format="PNG" />
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
 	</imageobject>
 	<textobject>
-	  <phrase>
-	    Next Level Gift
-	  </phrase>
+	  <phrase
+><quote
+>Nächste Ebene</quote
+>-Geschenk </phrase>
 	</textobject>
-      </inlinemediaobject>
-      Next Level Gift
-    </term>
+      </inlinemediaobject
+><quote
+>Nächste Ebene</quote
+>-Geschenk </term>
     <listitem>
-      <para>
-	Opens the next level of the game immediately.
-      </para>
+      <para
+>Öffnet sofort die nächste Ebene des Spiels. </para>
     </listitem>
   </varlistentry>
 </variablelist>
 </sect1>
 
 <sect1 id="strategies-and-tips">
-<title>Strategies and Tips</title>
+<title
+>Spielstrategien und Tipps</title>
 <itemizedlist>
-<listitem><para>If possible, it is usually a good idea to send the ball above the bricks, doing so you will have a smaller chance of losing the ball. Sometimes you need to first make a small hole in the layer of brick to accomplish this. The smaller the hole, the smaller the chance the balls comes back down.</para></listitem>
-<listitem><para>When catching the add ball gift it is wise to not fire it right away but to keep in instead, in case the other balls are lost. It is also advisable to not catch a sticky bar gift in such a case, as doing so would force you to fire all balls.</para></listitem>
-<listitem><para>When receiving a next level gift you may not want to catch it if you know that there are add life gifts in the level.</para></listitem>
-<listitem><para>In levels where there are a lot of hidden bricks there may be a way to win the level without having to destroy most of them.</para></listitem>
+<listitem
+><para
+>Falls möglich, ist es normalerweise eine gute Idee, den Ball über die Steine zu schicken; das verringert die Chance eines Ballverlustes. Es kann manchmal sein, dass Sie dafür erst ein kleines Loch in die Steinebene machen müssen. Je kleiner das Loch, desto kleiner ist die Chance, dass der Ball wieder runterkommt.</para
+></listitem>
+<listitem
+><para
+>Wenn sie das <quote
+>Füge Ball hinzu</quote
+>-Geschenk gefangen haben, ist es ratsam, diesen nicht sofort wieder abzuschießen, sondern ihn erst zu behalten, falls der andere Ball verloren geht. Außerdem ist es nicht ratsam in einem solchen Fall, das <quote
+>Klebrige Leiste</quote
+>-Geschenk zu fangen, da es Sie dazu bringen würde, alle Bälle gleichzeitig abfeuern zu müssen.</para
+></listitem>
+<listitem
+><para
+>Wenn das <quote
+>Nächste Spielebene</quote
+>-Geschenk erscheint, ist es nicht ratsam, dieses zu fangen, wenn Sie wissen, dass in der aktuellen Spielebene noch <quote
+>Schenke Leben</quote
+>-Geschenke sind.</para
+></listitem>
+<listitem
+><para
+>In Spielebenen mit vielen unsichtbaren Steinen ist möglich, die Spielebene zu bestehen, ohne die meisten von ihnen zu zerstören.</para
+></listitem>
 </itemizedlist>
 </sect1>
 
 </chapter>
 
 <chapter id="interface-overview">
-<title>Interface Overview</title>
+<title
+>Die Benutzeroberfläche</title>
 
 <sect1 id="menu">
-<title>Menu Items</title>
+<title
+>Menüeinträge</title>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para>
-Starts a new game.
-</para>
+<para
+>Startet ein neues Spiel. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycap>P</keycap>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Pause</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para>
-Pause and resume the current game.
-</para>
+<para
+>Hält das aktuelle Spiel an oder setzt es fort. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Show High Scores</guimenuitem></menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+></menuchoice
+></term>
 <listitem>
-<para>
-Shows a dialog containing the High Scores.
-</para>
+<para
+>Zeigt einen Dialog mit der Bestenliste. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para>
-Quits the program.
-</para>
+<para
+>Beendet das Programm. </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo>
-</shortcut>
-<guimenu>View</guimenu>
-<guimenuitem>Full Screen Mode</guimenuitem>
-</menuchoice></term>
-<listitem><para>
-<action>Play the &kbreakout; game in full screen mode. Leaving this mode is only possible using the shortcut.</action>
-</para></listitem>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ansicht</guimenu
+><guimenuitem
+>Vollbildmodus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>&kbreakout; im Vollbildmodus spielen. Dieser Modus kann nur mit dem Kurzbefehl verlassen werden.</action>
+</para
+></listitem>
 </varlistentry>
 
 </variablelist>
 
-<para>
-Additionally &kbreakout; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
-menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings"
->Settings Menu</ulink> and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
-of the &kde; Fundamentals.
-</para>
+<para
+>Zusätzlich hat &kbreakout; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
 
 </sect1>
 
 <sect1 id="keybindings">
-<title id="keybindings-title">Shortcuts</title>
+<title id="keybindings-title"
+>Kurzbefehle</title>
 
-<para>The default shortcuts are:</para>
+<para
+>Folgende Tastenkürzel sind als Standard eingestellt:</para>
 
 <table>
-<title>Shortcuts</title>
+<title
+>Kurzbefehle</title>
 <tgroup cols="2">
 <tbody>
 <row>
-<entry>Fire</entry>
+<entry
+>Feuer</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Pause/Weiterspielen</entry>
 <entry>
-&Space;
+<keycap
+>P</keycap>
 </entry>
 </row>
 <row>
-<entry>Pause/Resume</entry>
+<entry
+>Ein neues Spiel starten</entry>
 <entry>
-<keycap>P</keycap>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
 </entry>
 </row>
 <row>
-<entry>Start a new game</entry>
+<entry
+>Bestenliste anzeigen</entry>
 <entry>
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
 </entry>
 </row>
 <row>
-<entry>Show High Scores</entry>
+<entry
+>Beenden</entry>
 <entry>
-<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
 </entry>
 </row>
 <row>
-<entry>Quit</entry>
+<entry
+>Vollbildmodus</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Hilfe</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Was ist das?</entry>
 <entry>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</entry>
-</row>
-<row>
-<entry>Full Screen Mode</entry>
-<entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F</keycap></keycombo></entry>
-</row>
-<row>
-<entry>Help</entry>
-<entry><keycap>F1</keycap></entry>
-</row>
-<row>
-<entry>What's this?</entry>
-<entry>
-<keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
 </entry>
 </row>
 </tbody>
@@ -739,24 +904,25 @@ of the &kde; Fundamentals.
 
 
 <chapter id="credits">
-<title>Credits and License</title>
+<title
+>Danksagungen und Lizenz</title>
 
-<para>
-&kbreakout;
-</para>
-<para>
-Program copyright 2008 by Fela Winkelmolen <email>fela.kde@gmail.com</email>
-</para>
-<para>
-Documentation copyright 2008 by Fela Winkelmolen <email>fela.kde@gmail.com</email>
-</para>
+<para
+>&kbreakout; </para>
+<para
+>Programm Copyright 2008 Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>Dokumentation Copyright 2008 Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;
-&underGPL;
-
-</chapter>
+<para
+>Übersetzung Ingo Malchow <email
+>ingomalchow@googlemail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
 
 &documentation.index; 
 </book>
