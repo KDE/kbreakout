@@ -78,9 +78,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->09/05/2016</date>
+>25/06/2021</date>
 <releaseinfo
->1.2.0 (Applications 16.04)</releaseinfo>
+>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 <para
@@ -95,9 +95,9 @@
 <keyword
 >jogo</keyword>
 <keyword
->kbreakout</keyword>
+>KBreakOut</keyword>
 <keyword
->breakout</keyword>
+>Breakout</keyword>
 <keyword
 >tijolo</keyword>
 <keyword
@@ -180,7 +180,7 @@
 ></listitem>
 <listitem
 ><para
->Vidas adicionais são obtidas pegando o presente de vida adicional.</para
+>Vidas adicionais são obtidas pegando os presentes de vida adicional.</para
 ></listitem>
 <listitem
 ><para
@@ -713,7 +713,7 @@
 ></keycombo
 > </shortcut
 > <guimenu
->Configurações</guimenu
+>Exibir</guimenu
 > <guimenuitem
 >Modo de tela inteira</guimenuitem
 > </menuchoice
@@ -756,10 +756,8 @@
 <row>
 <entry
 >Atirar</entry>
-<entry>
-<keycap
->Tecla espaço</keycap>
-</entry>
+<entry
+>&Space; </entry>
 </row>
 <row>
 <entry
