@@ -58,7 +58,7 @@ msgstr "الاختراق"
 #: main.cpp:39
 #, kde-format
 msgid "A Breakout like game by KDE"
-msgstr "لعبة شبيهة ببريك أوت من كدي"
+msgstr "لعبة شبيهة ببريك أوت من كِيدِي"
 
 #: main.cpp:41
 #, kde-format
