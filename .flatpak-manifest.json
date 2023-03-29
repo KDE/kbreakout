@@ -1,0 +1,38 @@
+{
+    "id": "org.kde.kbreakout",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "kbreakout",
+    "rename-icon": "kbreakout",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri"
+    ],
+    "modules": [
+        {
+            "name": "libkdegames",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/games/libkdegames",
+                    "branch": "master"
+
+                }
+            ]
+        },
+        {
+            "name": "kbreakout",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
+        }
+    ]
+}
