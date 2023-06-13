@@ -12,6 +12,7 @@
   <name xml:lang="de">KBreakOut</name>
   <name xml:lang="el">KBreakOut</name>
   <name xml:lang="en-GB">KBreakOut</name>
+  <name xml:lang="eo">KBreakOut</name>
   <name xml:lang="es">KBreakOut</name>
   <name xml:lang="et">KBreakOut</name>
   <name xml:lang="eu">KBreakOut</name>
@@ -43,6 +44,7 @@
   <summary xml:lang="de">KBreakOut ist ein Breakout-ähnliches Spiel von KDE</summary>
   <summary xml:lang="el">Το KBreakOut είναι ένα παιχνίδι από το KDE παρόμοιο με το BreakOut</summary>
   <summary xml:lang="en-GB">KBreakOut is a Breakout-like game by KDE</summary>
+  <summary xml:lang="eo">KBreakOut estas Breakout-simila ludo de KDE</summary>
   <summary xml:lang="es">KBreakOut es un juego semejante a Breakout creado por KDE</summary>
   <summary xml:lang="et">KBreakOut on KDE Breakouti moodi mäng</summary>
   <summary xml:lang="eu">KBreakOut KDEk egindako «Breakout» antzeko joko bat da</summary>
@@ -77,6 +79,7 @@
     <p xml:lang="de">Das Ziel des Spiels ist es, so viele Steine wie möglich zu zerstören, ohne den Ball zu verlieren.</p>
     <p xml:lang="el">Ο σκοπός του KBreakOut είναι να καταστρέψεις όσο το δυνατόν περισσότερα τουβλάκια χωρίς να χάσεις τη μπάλα.</p>
     <p xml:lang="en-GB">The objective of KBreakOut is to destroy as many bricks as possible without losing the ball.</p>
+    <p xml:lang="eo">La celo de KBreakOut estas detrui kiel eble plej multajn brikojn sen perdi la pilkon.</p>
     <p xml:lang="es">El objetivo de KBreakOut es destruir tantos ladrillos como sea posible sin perder la bola.</p>
     <p xml:lang="et">KBreakOuti siht on hävitada võimalikult palju telliseid ilma palli kaotamata.</p>
     <p xml:lang="eu">KBreakOut-en helburua, pilota galdu gabe ahalik adreilu gehien suntsitzea da.</p>
@@ -148,6 +151,7 @@
       <caption xml:lang="de">KBreakOut spielen</caption>
       <caption xml:lang="el">Παίζω KBreakOut</caption>
       <caption xml:lang="en-GB">Playing KBreakOut</caption>
+      <caption xml:lang="eo">Ludante KBreakOut</caption>
       <caption xml:lang="es">Jugando a KBreakOut</caption>
       <caption xml:lang="et">KBreakOuti mängimine</caption>
       <caption xml:lang="eu">Jokatu KBreakOut-era</caption>
