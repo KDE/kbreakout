@@ -60,3 +60,5 @@ inline void GameEngine::deleteAllObjects()
     qDeleteAll(m_gifts);
     m_gifts.clear();*/
 }
+
+#include "moc_gameengine.cpp"

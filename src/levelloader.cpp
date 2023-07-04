@@ -308,3 +308,5 @@ void LevelLoader::loadOldStyleLevel()
         Q_EMIT newGift(key, times, QString());
     }
 }
+
+#include "moc_levelloader.cpp"

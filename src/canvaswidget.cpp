@@ -168,3 +168,5 @@ void CanvasWidget::focusOutEvent(QFocusEvent *event)
     Q_EMIT focusLost();
     QQuickWidget::focusOutEvent(event);
 }
+
+#include "moc_canvaswidget.cpp"

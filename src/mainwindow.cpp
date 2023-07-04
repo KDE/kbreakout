@@ -332,3 +332,4 @@ void MainWindow::handleMousePressed()
 }
 
 #include "mainwindow.moc"
+#include "moc_mainwindow.cpp"
