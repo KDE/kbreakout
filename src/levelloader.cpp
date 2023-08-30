@@ -66,10 +66,15 @@ void LevelLoader::setLevelset(const QString &levelname)
         qCCritical(KBREAKOUT_General) << "Can't open file " << path;
     }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    const QDomDocument::ParseResult parseResult = m_levelset->setContent(&file);
+    if (!parseResult) {
+#else
     QString errorString;
     int errorLine;
     int errorColumn;
     if (!m_levelset->setContent(&file, false, &errorString, &errorLine, &errorColumn)) {
+#endif
         file.close();
         // Testing whether levelset is of old KConfig style
         KConfig kconfigfile(path, KConfig::SimpleConfig);
@@ -78,8 +83,13 @@ void LevelLoader::setLevelset(const QString &levelname)
             m_oldstyle = true;
             qCCritical(KBREAKOUT_General) << "Warning: Using deprecated KConfig-levelset. Please change to XML-Style.\n";
         } else {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            qCCritical(KBREAKOUT_General) << "Can't read levelset from " << path << "\nError: " << parseResult.errorMessage <<
+                                             " in Line " << parseResult.errorLine << ", Column " << parseResult.errorColumn;
+#else
             qCCritical(KBREAKOUT_General) << "Can't read levelset from " << path << "\nError: " << errorString <<
                                              " in Line " << errorLine << ", Column " << errorColumn;
+#endif
         }
     } else {
         // Successfully loaded QDom-style levelset
