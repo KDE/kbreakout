@@ -30,18 +30,13 @@ kconfig_add_kcfg_files(kbreakout settings.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../pics/*-apps-kbreakout.png")
 ecm_add_app_icon(kbreakout ICONS ${ICONS_SRCS})
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kbreakout KDEGames6)
-else()
-    target_link_libraries(kbreakout KF5KDEGames)
-endif()
-
 target_link_libraries(kbreakout
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::DBusAddons
-    KF${KF_MAJOR_VERSION}::XmlGui
-    KF${KF_MAJOR_VERSION}::Crash
-    Qt${QT_MAJOR_VERSION}::Xml
+    KDEGames6
+    KF6::CoreAddons
+    KF6::DBusAddons
+    KF6::XmlGui
+    KF6::Crash
+    Qt6::Xml
 )
 
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
