@@ -19,7 +19,7 @@ ecm_qt_declare_logging_category(kbreakout
     HEADER kbreakout_debug.h
     IDENTIFIER KBREAKOUT_General
     CATEGORY_NAME kbreakout
-    DESCRIPTION "KBreakout game"
+    DESCRIPTION "KBreakOut game"
     EXPORT KBREAKOUT
 )
 
