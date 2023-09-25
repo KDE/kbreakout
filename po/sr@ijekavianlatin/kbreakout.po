@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-11 03:19+0200\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2017-04-07 00:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -48,156 +48,157 @@ msgstr ""
 "Uključivanjem sljedeće opcije igra će zarobiti pokazivač miša. Pauzirajte da "
 "dobijete nazad pokazivač."
 
-#. i18n: ectx: label, entry (FireOnClick), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
 #: generalsettings.ui:38 kbreakout.kcfg:9
 #, kde-format
 msgid "Fire on mouse click"
 msgstr "Pucanje na klik mišem"
 
-#: main.cpp:41
+#: main.cpp:25
 #, kde-format
 msgid "KBreakOut"
 msgstr "K‑proboj"
 
-#: main.cpp:42
-#, kde-format
-msgid "A breakout like game by KDE"
+#: main.cpp:26
+#, fuzzy, kde-format
+#| msgid "A breakout like game by KDE"
+msgid "A Breakout like game by KDE"
 msgstr "Igra razbijanja blokova iz KDE‑a"
 
-#: main.cpp:44
+#: main.cpp:28
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
 msgstr "© 2007-2008, Fela Vinkelmolen"
 
-#: main.cpp:45
+#: main.cpp:29
 #, kde-format
 msgid "Fela Winkelmolen"
 msgstr "Fela Vinkelmolen"
 
-#: main.cpp:46
+#: main.cpp:30
 #, kde-format
 msgid "original author and maintainer"
 msgstr "prvobitni autor i održavalac"
 
-#: main.cpp:48
+#: main.cpp:32
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Jevgenij Trunjov"
 
-#: main.cpp:49 main.cpp:52
+#: main.cpp:33 main.cpp:36
 #, kde-format
 msgid "artwork"
 msgstr "grafika"
 
-#: main.cpp:51
+#: main.cpp:35
 #, kde-format
 msgid "Sean Wilson"
 msgstr "Šon Vilson"
 
-#: main.cpp:54
+#: main.cpp:38
 #, kde-format
 msgid "Lorenzo Bonomi"
 msgstr "Lorenco Bonomi"
 
-#: main.cpp:55
+#: main.cpp:39
 #, kde-format
 msgid "testing"
 msgstr "isprobavanje"
 
-#: main.cpp:57
+#: main.cpp:41
 #, kde-format
 msgid "Brian Croom"
 msgstr "Brajan Krum"
 
-#: main.cpp:58
+#: main.cpp:42
 #, kde-format
 msgid "port to KGameRenderer"
 msgstr "prenos na KGameRenderer"
 
-#: main.cpp:60
+#: main.cpp:44
 #, kde-format
 msgid "Viranch Mehta"
 msgstr "Viranč Mehta"
 
-#: main.cpp:61
+#: main.cpp:45
 #, kde-format
 msgid "port to QtQuick"
 msgstr "prenos na QtQuick"
 
-#: mainwindow.cpp:118
+#: mainwindow.cpp:107
 #, kde-format
 msgctxt "Key (shortcut) to toggle full screen"
 msgid "F"
 msgstr "F"
 
-#: mainwindow.cpp:121
+#: mainwindow.cpp:110
 #, kde-format
 msgid "Fire the ball"
 msgstr "Ispali loptu"
 
-#: mainwindow.cpp:130
+#: mainwindow.cpp:119
 #, kde-format
 msgid "Skip level"
 msgstr "Preskoči nivo"
 
-#: mainwindow.cpp:137
+#: mainwindow.cpp:126
 #, kde-format
 msgid "Add life"
 msgstr "Dodaj život"
 
-#: mainwindow.cpp:148
+#: mainwindow.cpp:136
 #, kde-format
 msgctxt "Key (shortcut) to pause the game"
 msgid "P"
 msgstr "P"
 
-#: mainwindow.cpp:168
+#: mainwindow.cpp:156
 #, kde-format
 msgid "Theme"
 msgstr "Tema"
 
-#: mainwindow.cpp:172
+#: mainwindow.cpp:160
 #, kde-format
 msgctxt "General settings"
 msgid "General"
 msgstr "Opšte"
 
 # well-spelled: чч, мм
-#: mainwindow.cpp:181
+#: mainwindow.cpp:169
 #, kde-format
 msgid "   Time (hh:mm)"
 msgstr "   vreme (čč:mm)"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:178
 #, kde-format
 msgid "Starting a new game will end the current one!"
 msgstr "Pokretanjem nove partije prekinućete tekuću!"
 
-#: mainwindow.cpp:191
+#: mainwindow.cpp:179
 #, kde-format
 msgid "New Game"
 msgstr "Nova igra"
 
-#: mainwindow.cpp:192
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Start a New Game"
 msgstr "Započni novu partiju"
 
 # rewrite-msgid: /Game won/Victory/
-#: mainwindow.cpp:226
+#: mainwindow.cpp:214
 #, kde-format
 msgid "Game won!"
 msgstr "Pobjeda!"
 
 # well-spelled: чч, мм
-#: mainwindow.cpp:233
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Time (hh:mm)"
 msgstr "vrijeme (čč:mm)"
 
 # skip-rule: t-cursor
-#: mainwindow.cpp:312
+#: mainwindow.cpp:300
 #, kde-format
 msgid ""
 "Do you want to fire the ball on mouse click?\n"
@@ -209,32 +210,46 @@ msgstr ""
 "će zarobiti pokazivač miša, a možete ga povratiti pauziranjem igre.</qt>"
 
 # >> @title:window
-#: mainwindow.cpp:316
+#: mainwindow.cpp:304
 #, kde-format
 msgid "Fire on click?"
 msgstr "Ispaljivanje na klik?"
 
-#: qml/logic.js:210
+#: mainwindow.cpp:305
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "Pucanje na klik mišem"
+
+#: mainwindow.cpp:306
+#, fuzzy, kde-format
+#| msgid "Fire on mouse click"
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "Pucanje na klik mišem"
+
+#: qml/logic.js:199
 msgid "Well done! You won the game"
 msgstr "Odlično! Dobili ste partiju."
 
-#: qml/logic.js:217 qml/main.qml:156
+#: qml/logic.js:206 qml/main.qml:145
 msgid "Level %1"
 msgstr "Nivo %1"
 
-#: qml/logic.js:358
+#: qml/logic.js:347
 msgid "Game Paused!"
 msgstr "Igra je pauzirana!"
 
 # well-spelled: Упс
-#: qml/logic.js:508
+#: qml/logic.js:497
 msgid "Oops! You have lost the ball!"
 msgstr "Ups! Izgubili ste loptu!"
 
-#: qml/logic.js:563
+#: qml/logic.js:552
 msgid "Game Over!"
 msgstr "Kraj igre!"
 
-#: qml/main.qml:126
+#: qml/main.qml:115
 msgid "Press %1 to fire the ball"
 msgstr "Pritisnite %1 da ispalite loptu"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:44+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2010-09-24 16:39+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -50,145 +50,145 @@ msgstr ""
 msgid "Fire on mouse click"
 msgstr ""
 
-#: main.cpp:38
+#: main.cpp:25
 #, kde-format
 msgid "KBreakOut"
 msgstr ""
 
-#: main.cpp:39
+#: main.cpp:26
 #, kde-format
 msgid "A Breakout like game by KDE"
 msgstr ""
 
-#: main.cpp:41
+#: main.cpp:28
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
 msgstr ""
 
-#: main.cpp:42
+#: main.cpp:29
 #, kde-format
 msgid "Fela Winkelmolen"
 msgstr ""
 
-#: main.cpp:43
+#: main.cpp:30
 #, kde-format
 msgid "original author and maintainer"
 msgstr ""
 
-#: main.cpp:45
+#: main.cpp:32
 #, kde-format
 msgid "Eugene Trounev"
 msgstr ""
 
-#: main.cpp:46 main.cpp:49
+#: main.cpp:33 main.cpp:36
 #, kde-format
 msgid "artwork"
 msgstr ""
 
-#: main.cpp:48
+#: main.cpp:35
 #, kde-format
 msgid "Sean Wilson"
 msgstr ""
 
-#: main.cpp:51
+#: main.cpp:38
 #, kde-format
 msgid "Lorenzo Bonomi"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:39
 #, kde-format
 msgid "testing"
 msgstr ""
 
-#: main.cpp:54
+#: main.cpp:41
 #, kde-format
 msgid "Brian Croom"
 msgstr ""
 
-#: main.cpp:55
+#: main.cpp:42
 #, kde-format
 msgid "port to KGameRenderer"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:44
 #, kde-format
 msgid "Viranch Mehta"
 msgstr ""
 
-#: main.cpp:58
+#: main.cpp:45
 #, kde-format
 msgid "port to QtQuick"
 msgstr ""
 
-#: mainwindow.cpp:108
+#: mainwindow.cpp:107
 #, kde-format
 msgctxt "Key (shortcut) to toggle full screen"
 msgid "F"
 msgstr "F"
 
-#: mainwindow.cpp:111
+#: mainwindow.cpp:110
 #, kde-format
 msgid "Fire the ball"
 msgstr ""
 
-#: mainwindow.cpp:120
+#: mainwindow.cpp:119
 #, kde-format
 msgid "Skip level"
 msgstr ""
 
-#: mainwindow.cpp:127
+#: mainwindow.cpp:126
 #, kde-format
 msgid "Add life"
 msgstr ""
 
-#: mainwindow.cpp:137
+#: mainwindow.cpp:136
 #, kde-format
 msgctxt "Key (shortcut) to pause the game"
 msgid "P"
 msgstr "P"
 
-#: mainwindow.cpp:157
+#: mainwindow.cpp:156
 #, kde-format
 msgid "Theme"
 msgstr "प्रसंग"
 
-#: mainwindow.cpp:161
+#: mainwindow.cpp:160
 #, kde-format
 msgctxt "General settings"
 msgid "General"
 msgstr "सामान्य"
 
-#: mainwindow.cpp:170
+#: mainwindow.cpp:169
 #, kde-format
 msgid "   Time (hh:mm)"
 msgstr ""
 
-#: mainwindow.cpp:183
+#: mainwindow.cpp:178
 #, kde-format
 msgid "Starting a new game will end the current one!"
 msgstr ""
 
-#: mainwindow.cpp:184
+#: mainwindow.cpp:179
 #, kde-format
 msgid "New Game"
 msgstr "नवीन खेल "
 
-#: mainwindow.cpp:185
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Start a New Game"
 msgstr ""
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:214
 #, kde-format
 msgid "Game won!"
 msgstr ""
 
-#: mainwindow.cpp:230
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Time (hh:mm)"
 msgstr ""
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:300
 #, kde-format
 msgid ""
 "Do you want to fire the ball on mouse click?\n"
@@ -197,18 +197,18 @@ msgid ""
 "the cursor back."
 msgstr ""
 
-#: mainwindow.cpp:317
+#: mainwindow.cpp:304
 #, kde-format
 msgid "Fire on click?"
 msgstr ""
 
-#: mainwindow.cpp:318
+#: mainwindow.cpp:305
 #, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
 msgstr ""
 
-#: mainwindow.cpp:319
+#: mainwindow.cpp:306
 #, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
