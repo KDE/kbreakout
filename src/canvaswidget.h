@@ -10,7 +10,7 @@
 // Qt
 #include <QQuickWidget>
 
-class KgThemeProvider;
+class KGameThemeProvider;
 
 class CanvasWidget : public QQuickWidget
 {
@@ -18,7 +18,7 @@ class CanvasWidget : public QQuickWidget
 public:
     explicit CanvasWidget(QWidget *parent = nullptr);
     ~CanvasWidget() override;
-    KgThemeProvider *getProvider()
+    KGameThemeProvider *getProvider()
     {
         return m_provider;
     }
@@ -57,7 +57,7 @@ private:
     // used to track which direction keys are pressed between key events
     bool m_rightPressed;
     bool m_leftPressed;
-    KgThemeProvider *m_provider;
+    KGameThemeProvider *m_provider;
 };
 
 #endif //CANVASWIDGET_H

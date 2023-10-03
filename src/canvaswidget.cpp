@@ -11,7 +11,7 @@
 #include "kbreakout_debug.h"
 #include "settings.h"
 // KDEGames
-#include <KgThemeProvider>
+#include <KGameThemeProvider>
 // KF
 #include <KLocalizedContext>
 // Qt
@@ -24,7 +24,7 @@
 
 CanvasWidget::CanvasWidget(QWidget *parent) :
     QQuickWidget(parent),
-    m_provider(new KgThemeProvider)
+    m_provider(new KGameThemeProvider)
 {
     QQmlEngine *engine = this->engine();
 

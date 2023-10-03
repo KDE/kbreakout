@@ -15,7 +15,7 @@
 #include "globals.h"
 // KDEGames
 #include <KScoreDialog>
-#include <KgThemeSelector>
+#include <KGameThemeSelector>
 #include <KStandardGameAction>
 // KF
 #include <KStandardAction>
@@ -152,7 +152,7 @@ void MainWindow::configureSettings()
             Settings::self());
     dialog->setModal(true);
 
-    dialog->addPage(new KgThemeSelector(canvasWidget->getProvider()),
+    dialog->addPage(new KGameThemeSelector(canvasWidget->getProvider()),
                     i18n("Theme"), QStringLiteral("games-config-theme"));
 
     // TODO: when will the page be destroyed?
