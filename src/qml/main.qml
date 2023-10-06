@@ -246,7 +246,7 @@ Item {
         enabled: false
         anchors.fill: parent
         hoverEnabled: true
-        onPositionChanged: {
+        onPositionChanged: mouse => {
             if (paused) return;
 
             // avoids accidentally moving the mouse while playing using the keys
@@ -262,7 +262,7 @@ Item {
         id: keyEventHandler
         focus: true
         anchors.fill: parent
-        Keys.onPressed: {
+        Keys.onPressed: event => {
             if (event.key == Qt.Key_Right) {
                 updateBarDirection(1);
             } else if (event.key == Qt.Key_Left) {
@@ -270,7 +270,7 @@ Item {
             }
         }
 
-        Keys.onReleased: {
+        Keys.onReleased: event => {
             if (event.key == Qt.Key_Right || event.key == Qt.Key_Left) {
                 updateBarDirection(0);
             }
