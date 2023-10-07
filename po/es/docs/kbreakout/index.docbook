@@ -721,7 +721,7 @@
 <listitem
 ><para>
 <action
->Jugar &kbreakout; en modo de pantalla completa. Para salir de este modo solamente podrá usar el acceso rápido de teclado.</action>
+>Jugar &kbreakout; en modo de pantalla completa. Para salir de este modo solamente podrá usar el atajo de teclado.</action>
 </para
 ></listitem>
 </varlistentry>
@@ -743,14 +743,14 @@
 
 <sect1 id="keybindings">
 <title id="keybindings-title"
->Accesos rápidos</title>
+>Atajos de teclado</title>
 
 <para
->Los accesos rápidos predeterminados son:</para>
+>Los atajos de teclado predeterminados son:</para>
 
 <table>
 <title
->Accesos rápidos</title>
+>Atajos de teclado</title>
 <tgroup cols="2">
 <tbody>
 <row>
