@@ -148,7 +148,7 @@
 ></listitem>
 <listitem
 ><para
->De speler verliest een leven als de bal de onderkant van het veld raakt en er geen andere ballen meer in het spel zijn, of wanneer hij een verlies van leven cadeau vangt. Bij het verlies van een leven raakt u 1000 punten kwijt.</para
+>De speler verliest een leven als de bal de onderkant van het veld raakt en er geen andere ballen meer in het spel zijn, of wanneer de speler een verlies van leven cadeau vangt. Bij het verlies van een leven raakt u 1000 punten kwijt.</para
 ></listitem>
 <listitem
 ><para
@@ -236,7 +236,7 @@
 >Verborgen baksteen </term>
     <listitem>
       <para
->Deze baksteen is in het begin niet zichtbaar voor de speler. pas nadat het voor de eerste keer is geraakt komt het zichtbaar en wordt het een gewone baksteen. Als een brandende bal het raakt of exploderende baksteen ernaast wordt geraakt dan zal deze vernietigd worden zodra het zichtbaar wordt. Zolang het verborgen is, hoeft u het niet te vernietigen en kunt u doorgaan naar de volgende level. </para>
+>Deze baksteen is in het begin niet zichtbaar voor de speler. Pas nadat deze voor de eerste keer is geraakt komt het zichtbaar en wordt het een gewone baksteen. Als een brandende bal het raakt of exploderende baksteen ernaast wordt geraakt dan zal deze vernietigd worden zodra het zichtbaar wordt. Zolang het verborgen is, hoeft u het niet te vernietigen en kunt u doorgaan naar de volgende level. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -468,7 +468,7 @@
 >Cadeau voor onstopbare ballen </term>
     <listitem>
       <para
->Verandert alle ballen in onstopbare ballen. Een onstopbare bal vernietigt alle bakstenen die het tegenkomt onafhankelijk van het soort, en stuitert nooit er tegen terug. </para>
+>Verandert alle ballen in niet te stoppen ballen. Een niet te stoppen bal vernietigt alle bakstenen die het tegenkomt onafhankelijk van het soort en stuitert er nooit tegen terug. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
