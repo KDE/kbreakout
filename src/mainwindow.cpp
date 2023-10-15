@@ -108,7 +108,7 @@ void MainWindow::setupActions()
     fullScreenAction->setShortcut(fullScreenShortcut);
     QAction *fireAction = new QAction(this);
     fireAction->setText(i18n("Fire the ball"));
-    actionCollection()->setDefaultShortcut(fireAction, Qt::Key_Space);
+    KActionCollection::setDefaultShortcut(fireAction, Qt::Key_Space);
     fireAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
     connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
     connect(fireAction, &QAction::changed, canvasWidget, &CanvasWidget::updateFireShortcut);
@@ -117,14 +117,14 @@ void MainWindow::setupActions()
     if (m_cheatsEnabled) {
         QAction *cheatSkipLevelAction = new QAction(this);
         cheatSkipLevelAction->setText(i18n("Skip level"));
-        actionCollection()->setDefaultShortcut(cheatSkipLevelAction, Qt::Key_S);
+        KActionCollection::setDefaultShortcut(cheatSkipLevelAction, Qt::Key_S);
         cheatSkipLevelAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatSkipLevelAction, &QAction::triggered, this, &MainWindow::cheatSkipLevel);
         actionCollection()->addAction(QStringLiteral("cheatSkipLevel"), cheatSkipLevelAction);
 
         QAction *cheatAddLifeAction = new QAction(this);
         cheatAddLifeAction->setText(i18n("Add life"));
-        actionCollection()->setDefaultShortcut(cheatAddLifeAction, Qt::Key_L);
+        KActionCollection::setDefaultShortcut(cheatAddLifeAction, Qt::Key_L);
         cheatAddLifeAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatAddLifeAction, &QAction::triggered, this, &MainWindow::cheatAddLife);
         actionCollection()->addAction(QStringLiteral("cheatAddLife"), cheatAddLifeAction);
