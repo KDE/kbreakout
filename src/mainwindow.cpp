@@ -16,7 +16,7 @@
 // KDEGames
 #include <KScoreDialog>
 #include <KGameThemeSelector>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 // KF
 #include <KStandardAction>
 #include <KToggleFullScreenAction>
@@ -92,11 +92,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupActions()
 {
-    KStandardGameAction::gameNew(this, &MainWindow::startNewGame, actionCollection());
+    KGameStandardAction::gameNew(this, &MainWindow::startNewGame, actionCollection());
 
-    KStandardGameAction::quit(this, &MainWindow::close, actionCollection());
+    KGameStandardAction::quit(this, &MainWindow::close, actionCollection());
 
-    KStandardGameAction::highscores(this, &MainWindow::showHighscores, actionCollection());
+    KGameStandardAction::highscores(this, &MainWindow::showHighscores, actionCollection());
 
     KStandardAction::preferences(this, &MainWindow::configureSettings, actionCollection());
 
@@ -130,7 +130,7 @@ void MainWindow::setupActions()
         actionCollection()->addAction(QStringLiteral("cheatAddLife"), cheatAddLifeAction);
     }
 
-    pauseAction = KStandardGameAction::pause(this, &MainWindow::setGamePaused, actionCollection());
+    pauseAction = KGameStandardAction::pause(this, &MainWindow::setGamePaused, actionCollection());
     // set custom keys
     QList<QKeySequence> keys;
     keys.append(i18nc("Key (shortcut) to pause the game", "P"));
