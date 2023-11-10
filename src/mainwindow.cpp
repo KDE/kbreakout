@@ -14,7 +14,7 @@
 #include "settings.h"
 #include "globals.h"
 // KDEGames
-#include <KScoreDialog>
+#include <KGameHighScoreDialog>
 #include <KGameThemeSelector>
 #include <KGameStandardAction>
 // KF
@@ -165,8 +165,8 @@ void MainWindow::configureSettings()
 
 void MainWindow::showHighscores()
 {
-    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog.addField(KScoreDialog::Custom1, i18n("   Time (hh:mm)"), QStringLiteral("moves"));
+    KGameHighScoreDialog ksdialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Level, this);
+    ksdialog.addField(KGameHighScoreDialog::Custom1, i18n("   Time (hh:mm)"), QStringLiteral("moves"));
 
     ksdialog.exec();
 }
@@ -207,18 +207,18 @@ void MainWindow::handleEndedGame(int score, int level, int time)
 
     const int ALL_LEVELS = -1;
 
-    KScoreDialog::FieldInfo scoreInfo;
-    scoreInfo[KScoreDialog::Score].setNum(score);
-    scoreInfo[KScoreDialog::Custom1] = timeString;
+    KGameHighScoreDialog::FieldInfo scoreInfo;
+    scoreInfo[KGameHighScoreDialog::Score].setNum(score);
+    scoreInfo[KGameHighScoreDialog::Custom1] = timeString;
     if (level == ALL_LEVELS) {
-        scoreInfo[KScoreDialog::Level] = i18n("Game won!");
+        scoreInfo[KGameHighScoreDialog::Level] = i18n("Game won!");
     } else {
-        scoreInfo[KScoreDialog::Level].setNum(level);
+        scoreInfo[KGameHighScoreDialog::Level].setNum(level);
     }
 
-    QPointer<KScoreDialog> ksdialog =
-        new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level, this);
-    ksdialog->addField(KScoreDialog::Custom1, i18n("Time (hh:mm)"), QStringLiteral("moves"));
+    QPointer<KGameHighScoreDialog> ksdialog =
+        new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Level, this);
+    ksdialog->addField(KGameHighScoreDialog::Custom1, i18n("Time (hh:mm)"), QStringLiteral("moves"));
     ksdialog->addScore(scoreInfo);
     ksdialog->exec();
 
