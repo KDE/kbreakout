@@ -1,23 +1,24 @@
 # translation of kbreakout.po to Chinese Traditional
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
+#
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2010, 2011, 2013.
 # Jeff Huang <s8321414@gmail.com>, 2016, 2017.
-#
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2008, 2009.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2017-07-03 20:36+0800\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
-"Language-Team: Chinese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-12-15 20:07+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 24.01.80\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -57,10 +58,9 @@ msgid "KBreakOut"
 msgstr "KBreakOut"
 
 #: main.cpp:26
-#, fuzzy, kde-format
-#| msgid "A breakout like game by KDE"
+#, kde-format
 msgid "A Breakout like game by KDE"
-msgstr "KDE 的 breakout 遊戲"
+msgstr "KDE 的 Breakout 遊戲"
 
 #: main.cpp:28
 #, kde-format
@@ -207,18 +207,16 @@ msgid "Fire on click?"
 msgstr "要用滑鼠鍵發射嗎？"
 
 #: mainwindow.cpp:305
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "用滑鼠鍵發射"
+msgstr "使用滑鼠點擊"
 
 #: mainwindow.cpp:306
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "用滑鼠鍵發射"
+msgstr "忽略滑鼠點擊"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
