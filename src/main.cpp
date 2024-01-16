@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("kbreakout");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kbreakout"));
 
     KAboutData aboutData(QStringLiteral("kbreakout"), i18n("KBreakOut"), QStringLiteral(KBREAKOUT_VERSION_STRING));
     aboutData.setShortDescription(i18n("A Breakout like game by KDE"));
