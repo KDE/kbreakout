@@ -46,16 +46,18 @@ int main(int argc, char *argv[])
                         QStringLiteral("viranch.mehta@gmail.com"));
     aboutData.setHomepage(QStringLiteral("https://apps.kde.org/kbreakout"));
 
-    QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
+
     KCrash::initialize();
+
+    QCommandLineParser parser;
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
-
     KDBusService service;
+
     MainWindow *window = new MainWindow();
     Q_UNUSED(window);
 
