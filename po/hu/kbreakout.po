@@ -4,30 +4,31 @@
 # Tamas Szanto <tszanto@interware.hu>, 2009.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2015.
+# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2015-09-04 14:17+0200\n"
-"Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
+"PO-Revision-Date: 2024-02-08 21:58+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Kiszel Kristóf,Szántó Tamás"
+msgstr "Kiszel Kristóf"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ulysses@kubuntu.org,taszanto@gmail.com"
+msgstr "ulysses@fsf.hu"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
 #: generalsettings.ui:13
@@ -58,10 +59,9 @@ msgid "KBreakOut"
 msgstr "KBreakOut"
 
 #: main.cpp:26
-#, fuzzy, kde-format
-#| msgid "A breakout like game for KDE"
+#, kde-format
 msgid "A Breakout like game by KDE"
-msgstr "KDE-alapú Breakout-szerű játék"
+msgstr "Breakout-szerű játék a KDE-től"
 
 #: main.cpp:28
 #, kde-format
@@ -210,18 +210,16 @@ msgid "Fire on click?"
 msgstr "Kilövés kattintásra?"
 
 #: mainwindow.cpp:305
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "Kilövés kattintásra"
+msgstr "Egérkattintással"
 
 #: mainwindow.cpp:306
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "Kilövés kattintásra"
+msgstr "Egérkattintás nélkül"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
