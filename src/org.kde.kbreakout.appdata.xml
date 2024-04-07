@@ -23,6 +23,7 @@
   <name xml:lang="fi">KBreakOut</name>
   <name xml:lang="fr">KBreakOut</name>
   <name xml:lang="gl">KBreakOut</name>
+  <name xml:lang="he">KBreakOut</name>
   <name xml:lang="hu">KBreakOut</name>
   <name xml:lang="ia">KBreakOut</name>
   <name xml:lang="id">KBreakOut</name>
@@ -58,6 +59,7 @@
   <summary xml:lang="fi">KBreakOut on Breakout-tyyppinen KDE-peli</summary>
   <summary xml:lang="fr">KBreakOut est un jeu de type Breakout par KDE</summary>
   <summary xml:lang="gl">KBreakOut é un xogo de rachar bloques de KDE</summary>
+  <summary xml:lang="he">KBreakOut הוא משחק דמוי Breakout מבית KDE</summary>
   <summary xml:lang="hu">A KBreakOut egy Breakout-szerű játék a KDE-től</summary>
   <summary xml:lang="id">KBreakOut adalah sebuah permainan seperti Breakout oleh KDE</summary>
   <summary xml:lang="it">KBreakOut è un gioco simile a Breakout della comunità KDE</summary>
@@ -95,6 +97,7 @@
     <p xml:lang="fi">KBreakOutin tavoitteena on tuhota niin monta tiiltä kuin mahdollista menettämättä palloa.</p>
     <p xml:lang="fr">L'objectif de KBreakOut est de casser le plus de briques possibles sans faire tomber la balle.</p>
     <p xml:lang="gl">O obxectivo de KBreakOut é destruír tantos bloques como for posíbel sen perder a bóla.</p>
+    <p xml:lang="he">המטרה של KBreakOut היא להשמיד כמה שיותר לבנים שניתן מבלי לאבד את הכדור.</p>
     <p xml:lang="hu">A KBreakOut célja minél több tégla megsemmisítése a labda elveszítése nélkül.</p>
     <p xml:lang="id">Sasaran KBreakOut adalah menghancurkan semua bata yang memungkinkan tanpa peluputan bola.</p>
     <p xml:lang="it">L'obiettivo di KBreakOut è quello di distruggere più mattonelle possibili senza perdere la palla.</p>
@@ -131,6 +134,7 @@
     <p xml:lang="fi">Pelaaja näkee pelikentän, joka koostuu joukosta tiiliä. Pallo kulkee näytön poikki kimpoillen ylä- ja sivuseinistä. Kun osutaan tiileen, pallo kimpoaa ja tiili tuhoutuu. Pelaaja kuolee pallon osuttua kentän alareunaan. Estääkseen tätä tapahtumasta pelaaja yrittää ikkunan alaosan liikkuvalla palkilla saada pallon kimpoamaan ylöspäin. Pelin tavoitteena on edetä tasolta toiselle tuhoten kustakin kaikki tiilet ja yrittää saada huippupisteet.</p>
     <p xml:lang="fr">Le joueur fait face à un mur comprenant un certain nombre de briques. Une balle traverse l'écran en rebondissant sur les murs latéraux et supérieurs. Lorsqu'une brique est touchée, la balle rebondit et la brique est détruite. Le joueur perd une vie si la balle touche le bas de l'écran. Pour survivre, le joueur doit utiliser une barre qui se déplace latéralement en bas de la fenêtre et faire rebondir la balle. L'objectif du jeu est de progresser vers les niveaux supérieurs en détruisant la totalité des briques afin de se hisser au palmarès des meilleurs scores.</p>
     <p xml:lang="gl">Ao xogador preséntaselle un campo de xogo que contén determinada cantidade de bloques. Unha bóla atravesa a pantalla, rebotando nas paredes superior e laterais. Cando bate nun bloque, a bóla rebota e o bloque é destruído. O xogador perde unha vida cando a bóla toca o fondo do campo. Para evitar que isto ocorra, o xogador ten que usar unha barra móbil para facer rebotar a bóla cara riba, situada no fondo da xanela. O obxectivo do xogo é avanzar polos niveis destruíndo todos os bloques que aparezan en cada un e intentando obter unha puntuación máxima.</p>
+    <p xml:lang="he">בפני השחקן מופיע שדה משחק שמכיל מספר לבנים. כדור מטייל על גבי המסך, מקפץ חזרה מקירות הצד והקיר העליון. פגיעה בלבנה משמידה אותה ומקפיצה את הכדור הרחק ממנה. השחקן מאבד נקודת חיים כאשר הכדור פוגש את תחתית השדה. כדי למנוע מזה לקרות, על השחקן להשתמש בפס נייד שנמצא בתחתית החלון כדי להקפיץ את הכדור חזרה כלפי מעלה. מטרת המשחק היא להתקדם בין השלבים ולהשמיד את כל הלבנים בכל אחד מהם תוך ניסיון לקבל את התוצאה הטובה ביותר.</p>
     <p xml:lang="hu">A játékos egy számos téglát tartalmazó mezőt lát. A labda ide-oda pattog a képernyő teteje és oldalai között. Ha eltalál egy téglát, lepattan róla és a tégla megsemmisül. A játékos elveszít egy életet, ha a labda megérinti a mező alját. Ezt úgy akadályozhatja meg, hogy az ablak alján található mozgatható sávval visszapattintja felfelé. A játék célja a szintek teljesítése az összes tégla megsemmisítésével, és minél nagyobb pontszám elérése.</p>
     <p xml:lang="id">Pemain disajikan dengan bidang permainan yang berisi sejumlah batu bata. Sebuah bola bergerak lalu-lalang melintasi layar, memantul dari atas dan samping dinding. Ketika batu bata terpukul bola yang memantul dan batu bata hancur. Pemain kehilangan nyawa ketika bola menyentuh bagian bawah bidang. Untuk mencegah ini dari yang terjadi, pemain harus menggunakan bilah yang bisa digerakkan untuk memantulkan bola ke atas, terletak di bagian bawah jendela. Tujuan dari permainan ini adalah progres melalui level menghancurkan semua batu bata yang ada di tempat masing-masing, dan mencoba untuk mendapatkan tingkat skor.</p>
     <p xml:lang="it">Al giocatore viene presentato un campo di gioco contenente un certo numero di mattonelle. Una pallina passa nello schermo, rimbalzando sui muri laterali e superiore. Quando una mattonella viene colpita, la pallina rimbalza e la mattonella viene distrutta. Il giocatore perde una vita quando la pallina tocca il fondo dello schermo; per evitare che ciò accada, il giocatore deve usare una barra mobile, situata in fondo alla finestra, per far rimbalzare la pallina verso l'alto. L'obiettivo del gioco è procedere attraverso i vari livelli distruggendo tutte le mattonelle in ciascuno, e cercare di ottenere un punteggio elevato.</p>
@@ -172,6 +176,7 @@
       <caption xml:lang="fi">KBreakOutin pelaaminen</caption>
       <caption xml:lang="fr">Partie de KBreakOut en cours</caption>
       <caption xml:lang="gl">Xogando a KBreakOut.</caption>
+      <caption xml:lang="he">משחק ב־KBreakOut</caption>
       <caption xml:lang="hu">KBreakOut játék közben</caption>
       <caption xml:lang="id">Memainkan KBreakOut</caption>
       <caption xml:lang="it">Giocare a KBreakOut</caption>
