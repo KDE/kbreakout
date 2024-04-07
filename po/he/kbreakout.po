@@ -1,0 +1,243 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kbreakout package.
+#
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: kbreakout\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"PO-Revision-Date: 2024-04-06 15:49+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "צוות התרגום של KDE ישראל"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-l10n-he@kde.org"
+
+#. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
+#: generalsettings.ui:13
+#, kde-format
+msgid "General Settings"
+msgstr "הגדרות כלליות"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: generalsettings.ui:28
+#, kde-format
+msgid ""
+"Enabling the following option will make the game steal the mouse cursor, "
+"pause the game to get the cursor back."
+msgstr ""
+"הפעלת האפשרות הבאה תגרום למשחק לחטוף את סמן העכב, יש להשהות את המשחק כדי "
+"לקבל את סמן העכבר בחזרה."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
+#. i18n: ectx: label, entry (FireOnClick), group (General)
+#: generalsettings.ui:38 kbreakout.kcfg:9
+#, kde-format
+msgid "Fire on mouse click"
+msgstr "ירייה בלחיצת כפתור עכבר"
+
+#: main.cpp:25
+#, kde-format
+msgid "KBreakOut"
+msgstr "KBreakOut"
+
+#: main.cpp:26
+#, kde-format
+msgid "A Breakout like game by KDE"
+msgstr "משחק Breakout מבית KDE"
+
+#: main.cpp:28
+#, kde-format
+msgid "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007‏-2008 פלה וינקלמולן"
+
+#: main.cpp:29
+#, kde-format
+msgid "Fela Winkelmolen"
+msgstr "פלה וינקלמולן"
+
+#: main.cpp:30
+#, kde-format
+msgid "original author and maintainer"
+msgstr "יוצר ומתחזק מקורי"
+
+#: main.cpp:32
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "יוג׳ין טרונב"
+
+#: main.cpp:33 main.cpp:36
+#, kde-format
+msgid "artwork"
+msgstr "אומנות"
+
+#: main.cpp:35
+#, kde-format
+msgid "Sean Wilson"
+msgstr "שון וילסון"
+
+#: main.cpp:38
+#, kde-format
+msgid "Lorenzo Bonomi"
+msgstr "לורנצו בונומי"
+
+#: main.cpp:39
+#, kde-format
+msgid "testing"
+msgstr "בדיקה"
+
+#: main.cpp:41
+#, kde-format
+msgid "Brian Croom"
+msgstr "בריאן קרום"
+
+#: main.cpp:42
+#, kde-format
+msgid "port to KGameRenderer"
+msgstr "הסבה ל־KGameRenderer"
+
+#: main.cpp:44
+#, kde-format
+msgid "Viranch Mehta"
+msgstr "ויראנץ׳ מהטה"
+
+#: main.cpp:45
+#, kde-format
+msgid "port to QtQuick"
+msgstr "הסבה ל־QtQuick"
+
+#: mainwindow.cpp:107
+#, kde-format
+msgctxt "Key (shortcut) to toggle full screen"
+msgid "F"
+msgstr "י"
+
+#: mainwindow.cpp:110
+#, kde-format
+msgid "Fire the ball"
+msgstr "ירי של הכדור"
+
+#: mainwindow.cpp:119
+#, kde-format
+msgid "Skip level"
+msgstr "דילוג על שלב"
+
+#: mainwindow.cpp:126
+#, kde-format
+msgid "Add life"
+msgstr "הוספת חיים"
+
+#: mainwindow.cpp:136
+#, kde-format
+msgctxt "Key (shortcut) to pause the game"
+msgid "P"
+msgstr "ה"
+
+#: mainwindow.cpp:156
+#, kde-format
+msgid "Theme"
+msgstr "ערכת עיצוב"
+
+#: mainwindow.cpp:160
+#, kde-format
+msgctxt "General settings"
+msgid "General"
+msgstr "כללי"
+
+#: mainwindow.cpp:169
+#, kde-format
+msgid "   Time (hh:mm)"
+msgstr "   זמן (hh:mm)"
+
+#: mainwindow.cpp:178
+#, kde-format
+msgid "Starting a new game will end the current one!"
+msgstr "התחלת משחק חדש יסיים את הנוכחי!"
+
+#: mainwindow.cpp:179
+#, kde-format
+msgid "New Game"
+msgstr "משחק חדש"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Start a New Game"
+msgstr "התחלת משחק חדש"
+
+#: mainwindow.cpp:214
+#, kde-format
+msgid "Game won!"
+msgstr "ניצחת במשחק!"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Time (hh:mm)"
+msgstr "זמן (hh:mm)"
+
+#: mainwindow.cpp:300
+#, kde-format
+msgid ""
+"Do you want to fire the ball on mouse click?\n"
+"Answering Yes will make the game steal the\n"
+"mouse cursor, pause the game to get\n"
+"the cursor back."
+msgstr ""
+"לירות את הכדור בלחיצה על כפתור?\n"
+"בחירה ב‚כן’ תגרום למשחק לגנוב\n"
+"את סמן העכבר, יש להשהות את המשחק\n"
+"כדי לקבל את הסמן בחזרה."
+
+#: mainwindow.cpp:304
+#, kde-format
+msgid "Fire on click?"
+msgstr "לירות בלחיצה?"
+
+#: mainwindow.cpp:305
+#, kde-format
+msgctxt "@action;button"
+msgid "Use Mouse Click"
+msgstr "להשתמש בלחיצת העכבר"
+
+#: mainwindow.cpp:306
+#, kde-format
+msgctxt "@action;button"
+msgid "Ignore Mouse Click"
+msgstr "התעלמות מלחיצת העכבר"
+
+#: qml/logic.js:199
+msgid "Well done! You won the game"
+msgstr "כל הכבוד! ניצחת במשחק"
+
+#: qml/logic.js:206 qml/main.qml:145
+msgid "Level %1"
+msgstr "שלב %1"
+
+#: qml/logic.js:347
+msgid "Game Paused!"
+msgstr "המשחק מושהה!"
+
+#: qml/logic.js:497
+msgid "Oops! You have lost the ball!"
+msgstr "אופס! איבדת את הכדור!"
+
+#: qml/logic.js:552
+msgid "Game Over!"
+msgstr "המשחק הסתיים!"
+
+#: qml/main.qml:115
+msgid "Press %1 to fire the ball"
+msgstr "לחיצה על %1 תירה את הכדור"
