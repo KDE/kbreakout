@@ -107,7 +107,7 @@ void MainWindow::setupActions()
     QKeySequence fullScreenShortcut(i18nc("Key (shortcut) to toggle full screen", "F"));
     fullScreenAction->setShortcut(fullScreenShortcut);
     QAction *fireAction = new QAction(this);
-    fireAction->setText(i18n("Fire the ball"));
+    fireAction->setText(i18nc("@action", "Fire the Ball"));
     KActionCollection::setDefaultShortcut(fireAction, Qt::Key_Space);
     fireAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
     connect(fireAction, &QAction::triggered, this, &MainWindow::fire);
@@ -116,14 +116,14 @@ void MainWindow::setupActions()
 
     if (m_cheatsEnabled) {
         QAction *cheatSkipLevelAction = new QAction(this);
-        cheatSkipLevelAction->setText(i18n("Skip level"));
+        cheatSkipLevelAction->setText(i18nc("@action", "Skip Level"));
         KActionCollection::setDefaultShortcut(cheatSkipLevelAction, Qt::Key_S);
         cheatSkipLevelAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatSkipLevelAction, &QAction::triggered, this, &MainWindow::cheatSkipLevel);
         actionCollection()->addAction(QStringLiteral("cheatSkipLevel"), cheatSkipLevelAction);
 
         QAction *cheatAddLifeAction = new QAction(this);
-        cheatAddLifeAction->setText(i18n("Add life"));
+        cheatAddLifeAction->setText(i18nc("@action", "Add Life"));
         KActionCollection::setDefaultShortcut(cheatAddLifeAction, Qt::Key_L);
         cheatAddLifeAction->setIcon(QIcon::fromTheme(QStringLiteral("kbreakout")));
         connect(cheatAddLifeAction, &QAction::triggered, this, &MainWindow::cheatAddLife);
@@ -153,11 +153,11 @@ void MainWindow::configureSettings()
     dialog->setModal(true);
 
     dialog->addPage(new KGameThemeSelector(canvasWidget->getProvider()),
-                    i18n("Theme"), QStringLiteral("games-config-theme"));
+                    i18nc("@title:tab", "Theme"), QStringLiteral("games-config-theme"));
 
     // TODO: when will the page be destroyed?
     dialog->addPage(new GeneralSettings(dialog),
-                    i18nc("General settings", "General"),
+                    i18nc("@title:tab", "General"),
                     QStringLiteral("games-config-options"));
 
     dialog->show();
@@ -176,8 +176,8 @@ void MainWindow::startNewGame()
     int ret = KMessageBox::warningTwoActions(
                   this,
                   i18n("Starting a new game will end the current one!"),
-                  i18n("New Game"),
-                  KGuiItem(i18n("Start a New Game")),
+                  i18nc("@title:window", "New Game"),
+                  KGuiItem(i18nc("@action:button", "Start a New Game"), QStringLiteral("document-new")),
                   KStandardGuiItem::cancel());
 
     if (ret == KMessageBox::PrimaryAction) {
@@ -301,7 +301,7 @@ void MainWindow::handleMousePressed()
                            "Answering Yes will make the game steal the\n"
                            "mouse cursor, pause the game to get\n"
                            "the cursor back."),
-                      i18n("Fire on click?"),
+                      i18nc("@title:window", "Fire on Click"),
                       KGuiItem(i18nc("@action;button", "Use Mouse Click"), QStringLiteral("input-mouse")),
                       KGuiItem(i18nc("@action;button", "Ignore Mouse Click"), QStringLiteral("dialog-cancel")),
                       QStringLiteral("dontAskFireOnClick") // doesntAskAgainName
