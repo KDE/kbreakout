@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2022-09-06 17:06+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -137,18 +137,24 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, kde-format
-msgid "Fire the ball"
+#, fuzzy, kde-format
+#| msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr "Запустить шарик"
 
 #: mainwindow.cpp:119
-#, kde-format
-msgid "Skip level"
+#, fuzzy, kde-format
+#| msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr "Пропустить уровень"
 
 #: mainwindow.cpp:126
-#, kde-format
-msgid "Add life"
+#, fuzzy, kde-format
+#| msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr "Добавить жизнь"
 
 #: mainwindow.cpp:136
@@ -158,13 +164,17 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Оформление"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Общие"
 
@@ -179,12 +189,16 @@ msgid "Starting a new game will end the current one!"
 msgstr "Начав новую игру, вы прервёте текущую!"
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "Новая игра"
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start a New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Начать новую игру"
 
@@ -212,8 +226,10 @@ msgstr ""
 "приостановите игру."
 
 #: mainwindow.cpp:304
-#, kde-format
-msgid "Fire on click?"
+#, fuzzy, kde-format
+#| msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr "Запускать по щелчку?"
 
 #: mainwindow.cpp:305

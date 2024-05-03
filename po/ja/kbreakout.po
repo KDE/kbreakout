@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2009-07-21 01:50+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -129,18 +129,22 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, kde-format
-msgid "Fire the ball"
+#, fuzzy, kde-format
+#| msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr "ボールを発射"
 
 #: mainwindow.cpp:119
 #, kde-format
-msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr ""
 
 #: mainwindow.cpp:126
 #, kde-format
-msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr ""
 
 #: mainwindow.cpp:136
@@ -150,13 +154,17 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "テーマ"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "全般"
 
@@ -171,12 +179,16 @@ msgid "Starting a new game will end the current one!"
 msgstr "新しいゲームを開始すると、現在のゲームは終了します。"
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "新しいゲーム"
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start a New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "新しいゲームを開始"
 
@@ -203,8 +215,10 @@ msgstr ""
 "カーソルを取り戻すにはゲームを一時停止します。"
 
 #: mainwindow.cpp:304
-#, kde-format
-msgid "Fire on click?"
+#, fuzzy, kde-format
+#| msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr "クリックで発射しますか？"
 
 #: mainwindow.cpp:305

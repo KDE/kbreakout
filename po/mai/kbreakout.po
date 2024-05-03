@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2010-09-24 16:39+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -128,17 +128,20 @@ msgstr "F"
 
 #: mainwindow.cpp:110
 #, kde-format
-msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr ""
 
 #: mainwindow.cpp:119
 #, kde-format
-msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr ""
 
 #: mainwindow.cpp:126
 #, kde-format
-msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr ""
 
 #: mainwindow.cpp:136
@@ -148,13 +151,17 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "प्रसंग"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "सामान्य"
 
@@ -169,14 +176,18 @@ msgid "Starting a new game will end the current one!"
 msgstr ""
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "नवीन खेल "
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr ""
+msgstr "नवीन खेल "
 
 #: mainwindow.cpp:214
 #, kde-format
@@ -199,7 +210,8 @@ msgstr ""
 
 #: mainwindow.cpp:304
 #, kde-format
-msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr ""
 
 #: mainwindow.cpp:305

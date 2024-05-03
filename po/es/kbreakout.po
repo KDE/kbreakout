@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2022-07-10 15:42+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -137,18 +137,24 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, kde-format
-msgid "Fire the ball"
+#, fuzzy, kde-format
+#| msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr "Disparar la bola"
 
 #: mainwindow.cpp:119
-#, kde-format
-msgid "Skip level"
+#, fuzzy, kde-format
+#| msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr "Omitir nivel"
 
 #: mainwindow.cpp:126
-#, kde-format
-msgid "Add life"
+#, fuzzy, kde-format
+#| msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr "Añadir vida"
 
 #: mainwindow.cpp:136
@@ -158,13 +164,17 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
 
@@ -179,12 +189,16 @@ msgid "Starting a new game will end the current one!"
 msgstr "¡Iniciar una partida nueva finalizará la actual!"
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "Nueva partida"
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start a New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Iniciar una partida nueva"
 
@@ -212,8 +226,10 @@ msgstr ""
 "cursor."
 
 #: mainwindow.cpp:304
-#, kde-format
-msgid "Fire on click?"
+#, fuzzy, kde-format
+#| msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr "¿Disparar al hacer clic?"
 
 #: mainwindow.cpp:305

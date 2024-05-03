@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -125,18 +125,24 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, kde-format
-msgid "Fire the ball"
+#, fuzzy, kde-format
+#| msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr "弹射"
 
 #: mainwindow.cpp:119
-#, kde-format
-msgid "Skip level"
+#, fuzzy, kde-format
+#| msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr "跳过关卡"
 
 #: mainwindow.cpp:126
-#, kde-format
-msgid "Add life"
+#, fuzzy, kde-format
+#| msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr "添加生命"
 
 #: mainwindow.cpp:136
@@ -146,13 +152,17 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "主题"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "常规"
 
@@ -167,12 +177,16 @@ msgid "Starting a new game will end the current one!"
 msgstr "开始新游戏将结束当前游戏！"
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "新建游戏"
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start a New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "开始新游戏"
 
@@ -199,8 +213,10 @@ msgstr ""
 "游戏就可释放鼠标。"
 
 #: mainwindow.cpp:304
-#, kde-format
-msgid "Fire on click?"
+#, fuzzy, kde-format
+#| msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr "鼠标点击时发射吗？"
 
 #: mainwindow.cpp:305

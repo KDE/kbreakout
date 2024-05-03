@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdereview/kbreakout.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-03 00:36+0000\n"
 "PO-Revision-Date: 2008-04-18 14:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -128,18 +128,22 @@ msgid "F"
 msgstr "L"
 
 #: mainwindow.cpp:110
-#, kde-format
-msgid "Fire the ball"
+#, fuzzy, kde-format
+#| msgid "Fire the ball"
+msgctxt "@action"
+msgid "Fire the Ball"
 msgstr "Caith an liathróid"
 
 #: mainwindow.cpp:119
 #, kde-format
-msgid "Skip level"
+msgctxt "@action"
+msgid "Skip Level"
 msgstr ""
 
 #: mainwindow.cpp:126
 #, kde-format
-msgid "Add life"
+msgctxt "@action"
+msgid "Add Life"
 msgstr ""
 
 #: mainwindow.cpp:136
@@ -149,13 +153,17 @@ msgid "P"
 msgstr "S"
 
 #: mainwindow.cpp:156
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Téama"
 
 #: mainwindow.cpp:160
-#, kde-format
-msgctxt "General settings"
+#, fuzzy, kde-format
+#| msgctxt "General settings"
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Ginearálta"
 
@@ -171,12 +179,16 @@ msgstr ""
 "Cuirfidh tú deireadh leis an gcluiche reatha má thosaíonn tú cluiche nua!"
 
 #: mainwindow.cpp:179
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "Cluiche Nua"
 
 #: mainwindow.cpp:180
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start a New Game"
+msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Tosaigh Cluiche Nua"
 
@@ -203,8 +215,10 @@ msgstr ""
 "Cuir an cluiche ar shos chun an cúrsóir a fháil ar ais."
 
 #: mainwindow.cpp:304
-#, kde-format
-msgid "Fire on click?"
+#, fuzzy, kde-format
+#| msgid "Fire on click?"
+msgctxt "@title:window"
+msgid "Fire on Click"
 msgstr "Caitheamh ar chliceáil?"
 
 #: mainwindow.cpp:305
