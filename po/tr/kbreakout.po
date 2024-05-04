@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:36+0000\n"
-"PO-Revision-Date: 2024-02-09 17:45+0300\n"
+"PO-Revision-Date: 2024-05-04 00:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -66,7 +66,7 @@ msgstr "KDE tarafından Breakout benzeri bir oyun"
 #: main.cpp:28
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
-msgstr "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007–2008 Fela Winkelmolen"
 
 #: main.cpp:29
 #, kde-format
@@ -76,7 +76,7 @@ msgstr "Fela Winkelmolen"
 #: main.cpp:30
 #, kde-format
 msgid "original author and maintainer"
-msgstr "Asıl yazar ve projeyi yürütenü"
+msgstr "Özgün yazar ve bakımcı"
 
 #: main.cpp:32
 #, kde-format
@@ -86,7 +86,7 @@ msgstr "Eugene Trounev"
 #: main.cpp:33 main.cpp:36
 #, kde-format
 msgid "artwork"
-msgstr "sanatsal işler"
+msgstr "Sanatsal işler"
 
 #: main.cpp:35
 #, kde-format
@@ -101,7 +101,7 @@ msgstr "Lorenzo Bonomi"
 #: main.cpp:39
 #, kde-format
 msgid "testing"
-msgstr "sınanıyor"
+msgstr "Sınama"
 
 #: main.cpp:41
 #, kde-format
@@ -111,62 +111,56 @@ msgstr "Brian Croom"
 #: main.cpp:42
 #, kde-format
 msgid "port to KGameRenderer"
-msgstr "KGameRenderer’e bağlantı"
+msgstr "KGameRenderer geçişi"
 
 #: main.cpp:44
 #, kde-format
 msgid "Viranch Mehta"
-msgstr "Viranch Mehta"
+msgstr "Viranç Mehta"
 
 #: main.cpp:45
 #, kde-format
 msgid "port to QtQuick"
-msgstr "QtQuick’e bağlantı"
+msgstr "QtQuick’e geçişi"
 
 #: mainwindow.cpp:107
 #, kde-format
 msgctxt "Key (shortcut) to toggle full screen"
 msgid "F"
-msgstr "F"
+msgstr "T"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr "Topu ateşle"
+msgstr "Topu Ateşle"
 
 #: mainwindow.cpp:119
-#, fuzzy, kde-format
-#| msgid "Skip level"
+#, kde-format
 msgctxt "@action"
 msgid "Skip Level"
-msgstr "Düzeyi atla"
+msgstr "Düzeyi Atla"
 
 #: mainwindow.cpp:126
-#, fuzzy, kde-format
-#| msgid "Add life"
+#, kde-format
 msgctxt "@action"
 msgid "Add Life"
-msgstr "Can ekle"
+msgstr "Can Ekle"
 
 #: mainwindow.cpp:136
 #, kde-format
 msgctxt "Key (shortcut) to pause the game"
 msgid "P"
-msgstr "P"
+msgstr "D"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Genel"
@@ -179,21 +173,19 @@ msgstr "   Zaman (ss:dd)"
 #: mainwindow.cpp:178
 #, kde-format
 msgid "Starting a new game will end the current one!"
-msgstr "Yeni bir oyun başlatmak şimdiki oyunu bitirecek!"
+msgstr "Yeni bir oyun başlatmak geçerli oyunu sonlandırır!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Yeni Oyun"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr "Yeni bir Oyun Başlat"
+msgstr "Yeni Bir Oyun Başlat"
 
 #: mainwindow.cpp:214
 #, kde-format
@@ -219,11 +211,10 @@ msgstr ""
 "duraklatın."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Tıklamayla ateşlensin mi?"
+msgstr "Tıklamada Ateşle"
 
 #: mainwindow.cpp:305
 #, kde-format
@@ -259,4 +250,4 @@ msgstr "Oyun Bitti!"
 
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
-msgstr "Topu yakmak için %1 düğmesine basın"
+msgstr "Topu ateşlemek için %1 düğmesine bas"

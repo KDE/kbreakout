@@ -1,24 +1,24 @@
 # Kristof Bal <kristof.bal@gmail.com>, 2008.
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2011, 2013, 2015, 2016, 2017, 2021, 2022.
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2013, 2015, 2016, 2017, 2021, 2022, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:36+0000\n"
-"PO-Revision-Date: 2022-07-09 00:11+0200\n"
+"PO-Revision-Date: 2024-05-03 11:09+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Kristof Bal,Freek de Kruijf - t/m 2022"
+msgstr "Kristof Bal,Freek de Kruijf - t/m 2024"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -125,22 +125,19 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
 msgstr "Bal lanceren"
 
 #: mainwindow.cpp:119
-#, fuzzy, kde-format
-#| msgid "Skip level"
+#, kde-format
 msgctxt "@action"
 msgid "Skip Level"
 msgstr "Niveau overslaan"
 
 #: mainwindow.cpp:126
-#, fuzzy, kde-format
-#| msgid "Add life"
+#, kde-format
 msgctxt "@action"
 msgid "Add Life"
 msgstr "Extra leven"
@@ -152,16 +149,13 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Thema"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Algemeen"
@@ -177,18 +171,16 @@ msgid "Starting a new game will end the current one!"
 msgstr "Een nieuw spel starten zal het huidige beëindigen!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Nieuw spel"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr "Een nieuw spel starten"
+msgstr "Start een nieuw spel"
 
 #: mainwindow.cpp:214
 #, kde-format
@@ -213,11 +205,10 @@ msgstr ""
 "pauseer het spel om de cursor terug te krijgen."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Afvuren door klikken?"
+msgstr "Afvuren door klikken"
 
 #: mainwindow.cpp:305
 #, kde-format

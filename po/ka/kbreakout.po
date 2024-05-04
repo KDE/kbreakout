@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:36+0000\n"
-"PO-Revision-Date: 2022-12-01 22:46+0100\n"
+"PO-Revision-Date: 2024-05-03 03:52+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -128,22 +128,19 @@ msgid "F"
 msgstr "პ"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
 msgstr "ბურთის სროლა"
 
 #: mainwindow.cpp:119
-#, fuzzy, kde-format
-#| msgid "Skip level"
+#, kde-format
 msgctxt "@action"
 msgid "Skip Level"
 msgstr "დონის გამოტოვება"
 
 #: mainwindow.cpp:126
-#, fuzzy, kde-format
-#| msgid "Add life"
+#, kde-format
 msgctxt "@action"
 msgid "Add Life"
 msgstr "სიცოცხლის დამატება"
@@ -155,19 +152,16 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "თემა"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "საერთო"
+msgstr "ზოგადი"
 
 #: mainwindow.cpp:169
 #, kde-format
@@ -180,15 +174,13 @@ msgid "Starting a new game will end the current one!"
 msgstr "ახალი თამაშის დაწყება მიმდინარეს დაასრულებს!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
-msgstr "დაიწყეთ ახალი თამაში"
+msgstr "ახალი თამაში"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "ახალი თამაშის დაწყება"
@@ -217,11 +209,10 @@ msgstr ""
 "თამაშის დაპაუზება დაგჭირდებათ."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "ცეცხლი თაგუნას წკაპით?"
+msgstr "სროლა წკაპით"
 
 #: mainwindow.cpp:305
 #, kde-format
