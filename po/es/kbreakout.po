@@ -5,7 +5,7 @@
 # Sofia Priego <spriego@darksylvania.net>, %Y.
 # Sofía Priego <spriego@darksylvania.net>, %Y.
 # Santi <santi@kde-es.org>, 2008.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2015, 2017, 2021, 2022.
+# SPDX-FileCopyrightText: 2009, 2015, 2017, 2021, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Kira J. Fernandez <kirajfdez@gmail.es>, 2011.
@@ -15,14 +15,14 @@ msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2022-07-10 15:42+0100\n"
+"PO-Revision-Date: 2024-05-03 20:02+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -50,15 +50,15 @@ msgid ""
 "Enabling the following option will make the game steal the mouse cursor, "
 "pause the game to get the cursor back."
 msgstr ""
-"Si activa la siguiente opción, el juego robará el cursor del ratón. Pause el "
-"juego para recuperar el cursor."
+"Si activas la siguiente opción, el juego robará el cursor del ratón. Pausa "
+"el juego para recuperar el cursor."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
 #. i18n: ectx: label, entry (FireOnClick), group (General)
 #: generalsettings.ui:38 kbreakout.kcfg:9
 #, kde-format
 msgid "Fire on mouse click"
-msgstr "Disparar al pulsar el ratón"
+msgstr "Lanzar al pulsar el ratón"
 
 #: main.cpp:25
 #, kde-format
@@ -176,7 +176,7 @@ msgstr "   Tiempo (hh:mm)"
 #: mainwindow.cpp:178
 #, kde-format
 msgid "Starting a new game will end the current one!"
-msgstr "¡Iniciar una partida nueva finalizará la actual!"
+msgstr "¡Empezar una partida nueva terminará la actual!"
 
 #: mainwindow.cpp:179
 #, kde-format
@@ -206,9 +206,9 @@ msgid ""
 "mouse cursor, pause the game to get\n"
 "the cursor back."
 msgstr ""
-"¿Quiere disparar la bola al pulsar el ratón?\n"
-"Si responde que sí, el juego robará el cursor\n"
-"del ratón. Pause el juego para recuperar el\n"
+"¿Quieres lanzar la bola al pulsar el ratón?\n"
+"Si respondes que sí, el juego robará el cursor\n"
+"del ratón. Pausa el juego para recuperar el\n"
 "cursor."
 
 #: mainwindow.cpp:304
@@ -230,7 +230,7 @@ msgstr "Ignorar el clic del ratón"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
-msgstr "¡Bien hecho! ¡Ha ganado el juego!"
+msgstr "¡Bien hecho! ¡Has ganado la partida!"
 
 #: qml/logic.js:206 qml/main.qml:145
 msgid "Level %1"
@@ -238,16 +238,16 @@ msgstr "Nivel %1"
 
 #: qml/logic.js:347
 msgid "Game Paused!"
-msgstr "¡Partida detenida!"
+msgstr "¡Partida en pausa!"
 
 #: qml/logic.js:497
 msgid "Oops! You have lost the ball!"
-msgstr "¡Huy! ¡Ha perdido la bola!"
+msgstr "¡Huy! ¡Has perdido la bola!"
 
 #: qml/logic.js:552
 msgid "Game Over!"
-msgstr "¡Fin de la partida!"
+msgstr "¡Partida terminada!"
 
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
-msgstr "Pulse %1 para lanzar la bola"
+msgstr "Pulsa %1 para lanzar la bola"
