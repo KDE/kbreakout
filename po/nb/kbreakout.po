@@ -130,7 +130,6 @@ msgstr "F"
 
 #: mainwindow.cpp:110
 #, fuzzy, kde-format
-#| msgid "Fire the ball"
 msgctxt "@action"
 msgid "Fire the Ball"
 msgstr "Skyt ballen"
@@ -155,15 +154,12 @@ msgstr "P"
 
 #: mainwindow.cpp:156
 #, fuzzy, kde-format
-#| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
 #: mainwindow.cpp:160
 #, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelt"
@@ -180,14 +176,12 @@ msgstr "Dette spillet avsluttes om et nytt spill startes!"
 
 #: mainwindow.cpp:179
 #, fuzzy, kde-format
-#| msgid "New Game"
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Nytt spill"
 
 #: mainwindow.cpp:180
 #, fuzzy, kde-format
-#| msgid "Start a New Game"
 msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Start nytt spill"
@@ -217,7 +211,6 @@ msgstr ""
 
 #: mainwindow.cpp:304
 #, fuzzy, kde-format
-#| msgid "Fire on click?"
 msgctxt "@title:window"
 msgid "Fire on Click"
 msgstr "Skyt ved klikk?"
