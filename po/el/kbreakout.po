@@ -213,11 +213,10 @@ msgstr ""
 "για την εμφάνιση ξανά του δρομέα."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Εκτόξευση με κλικ;"
+msgstr "Εκτόξευση με κλικ"
 
 #: mainwindow.cpp:305
 #, kde-format
