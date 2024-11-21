@@ -36,6 +36,7 @@ target_link_libraries(kbreakout
     KF6::DBusAddons
     KF6::XmlGui
     KF6::Crash
+    KF6::IconThemes
     KF6::I18n
     Qt6::QuickWidgets
     Qt6::Xml
