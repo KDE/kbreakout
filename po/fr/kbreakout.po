@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:36+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-11 11:05+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -56,72 +56,72 @@ msgstr ""
 msgid "Fire on mouse click"
 msgstr "Lancer au clic de souris"
 
-#: main.cpp:25
+#: main.cpp:43
 #, kde-format
 msgid "KBreakOut"
 msgstr "KBreakOut"
 
-#: main.cpp:26
+#: main.cpp:44
 #, kde-format
 msgid "A Breakout like game by KDE"
 msgstr "Un jeu de type « Breakout » par KDE"
 
-#: main.cpp:28
+#: main.cpp:46
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
 msgstr "(c) 2007-2008 Fela Winkelmolen"
 
-#: main.cpp:29
+#: main.cpp:47
 #, kde-format
 msgid "Fela Winkelmolen"
 msgstr "Fela Winkelmolen"
 
-#: main.cpp:30
+#: main.cpp:48
 #, kde-format
 msgid "original author and maintainer"
 msgstr "Auteur original et mainteneur"
 
-#: main.cpp:32
+#: main.cpp:50
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:33 main.cpp:36
+#: main.cpp:51 main.cpp:54
 #, kde-format
 msgid "artwork"
 msgstr "Graphisme"
 
-#: main.cpp:35
+#: main.cpp:53
 #, kde-format
 msgid "Sean Wilson"
 msgstr "Sean Wilson"
 
-#: main.cpp:38
+#: main.cpp:56
 #, kde-format
 msgid "Lorenzo Bonomi"
 msgstr "Lorenzo Bonomi"
 
-#: main.cpp:39
+#: main.cpp:57
 #, kde-format
 msgid "testing"
 msgstr "Test"
 
-#: main.cpp:41
+#: main.cpp:59
 #, kde-format
 msgid "Brian Croom"
 msgstr "Brian Croom"
 
-#: main.cpp:42
+#: main.cpp:60
 #, kde-format
 msgid "port to KGameRenderer"
 msgstr "Portage vers « KGameRenderer »"
 
-#: main.cpp:44
+#: main.cpp:62
 #, kde-format
 msgid "Viranch Mehta"
 msgstr "Viranch Mehta"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "port to QtQuick"
 msgstr "Portage vers « QtQuick »"

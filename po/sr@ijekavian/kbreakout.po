@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:36+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2017-04-07 00:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -55,73 +55,73 @@ msgstr ""
 msgid "Fire on mouse click"
 msgstr "Пуцање на клик мишем"
 
-#: main.cpp:25
+#: main.cpp:43
 #, kde-format
 msgid "KBreakOut"
 msgstr "К‑пробој"
 
-#: main.cpp:26
+#: main.cpp:44
 #, fuzzy, kde-format
 #| msgid "A breakout like game by KDE"
 msgid "A Breakout like game by KDE"
 msgstr "Игра разбијања блокова из КДЕ‑а"
 
-#: main.cpp:28
+#: main.cpp:46
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
 msgstr "© 2007-2008, Фела Винкелмолен"
 
-#: main.cpp:29
+#: main.cpp:47
 #, kde-format
 msgid "Fela Winkelmolen"
 msgstr "Фела Винкелмолен"
 
-#: main.cpp:30
+#: main.cpp:48
 #, kde-format
 msgid "original author and maintainer"
 msgstr "првобитни аутор и одржавалац"
 
-#: main.cpp:32
+#: main.cpp:50
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Јевгениј Труњов"
 
-#: main.cpp:33 main.cpp:36
+#: main.cpp:51 main.cpp:54
 #, kde-format
 msgid "artwork"
 msgstr "графика"
 
-#: main.cpp:35
+#: main.cpp:53
 #, kde-format
 msgid "Sean Wilson"
 msgstr "Шон Вилсон"
 
-#: main.cpp:38
+#: main.cpp:56
 #, kde-format
 msgid "Lorenzo Bonomi"
 msgstr "Лоренцо Бономи"
 
-#: main.cpp:39
+#: main.cpp:57
 #, kde-format
 msgid "testing"
 msgstr "испробавање"
 
-#: main.cpp:41
+#: main.cpp:59
 #, kde-format
 msgid "Brian Croom"
 msgstr "Брајан Крум"
 
-#: main.cpp:42
+#: main.cpp:60
 #, kde-format
 msgid "port to KGameRenderer"
 msgstr "пренос на KGameRenderer"
 
-#: main.cpp:44
+#: main.cpp:62
 #, kde-format
 msgid "Viranch Mehta"
 msgstr "Виранч Мехта"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "port to QtQuick"
 msgstr "пренос на QtQuick"
