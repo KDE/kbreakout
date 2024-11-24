@@ -4,37 +4,38 @@
 #
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
 # Einars Sprugis <einars8@gmail.com>, 2009, 2010.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2010-01-06 22:24+0200\n"
-"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2024-11-22 16:35+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Viesturs Zariņš, Einārs Sprūģis"
+msgstr "Viesturs Zariņš, Einārs Sprūģis, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "viesturs.zarins@mi.lu.lv, einars8@gmail.com"
+msgstr "viesturs.zarins@mi.lu.lv, einars8@gmail.com, toms.trasuns@posteo.net"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
 #: generalsettings.ui:13
 #, kde-format
 msgid "General Settings"
-msgstr "Vispārīgie iestatījumi"
+msgstr "Pamata iestatījumi"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: generalsettings.ui:28
@@ -43,8 +44,8 @@ msgid ""
 "Enabling the following option will make the game steal the mouse cursor, "
 "pause the game to get the cursor back."
 msgstr ""
-"Ieslēdzot sekojošo opciju, spēle 'nozags' peles kursoru. Nopauzē spēli, lai "
-"dabūtu kursoru atpakaļ."
+"Ieslēdzot šo opciju, spēle „nozags“ peles kursoru. Pauzējiet spēli, lai "
+"kursoru „atgūtu“."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
 #. i18n: ectx: label, entry (FireOnClick), group (General)
@@ -59,15 +60,14 @@ msgid "KBreakOut"
 msgstr "KBreakOut"
 
 #: main.cpp:44
-#, fuzzy, kde-format
-#| msgid "A breakout like game for KDE"
+#, kde-format
 msgid "A Breakout like game by KDE"
-msgstr "Klucīšu izsišanas ar bumbu KDE spēle"
+msgstr "Klucīšu izsišanas KDE spēle"
 
 #: main.cpp:46
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
-msgstr "(c) 2007-2008 Fela Winkelmolen"
+msgstr "(c) 2007—2008 Fela Winkelmolen"
 
 #: main.cpp:47
 #, kde-format
@@ -107,22 +107,22 @@ msgstr "testēšana"
 #: main.cpp:59
 #, kde-format
 msgid "Brian Croom"
-msgstr ""
+msgstr "Brian Croom"
 
 #: main.cpp:60
 #, kde-format
 msgid "port to KGameRenderer"
-msgstr ""
+msgstr "ports uz „KGameRenderer“"
 
 #: main.cpp:62
 #, kde-format
 msgid "Viranch Mehta"
-msgstr ""
+msgstr "Viranch Mehta"
 
 #: main.cpp:63
 #, kde-format
 msgid "port to QtQuick"
-msgstr ""
+msgstr "ports uz „QtQuick“"
 
 #: mainwindow.cpp:107
 #, kde-format
@@ -131,23 +131,22 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr "Palaist bumbu"
+msgstr "Palaist bumbiņu"
 
 #: mainwindow.cpp:119
 #, kde-format
 msgctxt "@action"
 msgid "Skip Level"
-msgstr ""
+msgstr "Izlaist līmeni"
 
 #: mainwindow.cpp:126
 #, kde-format
 msgctxt "@action"
 msgid "Add Life"
-msgstr ""
+msgstr "Pievienot dzīvību"
 
 #: mainwindow.cpp:136
 #, kde-format
@@ -156,19 +155,16 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr "Tēma"
+msgstr "Motīvs"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "Vispārīgi"
+msgstr "Pamata"
 
 #: mainwindow.cpp:169
 #, kde-format
@@ -178,18 +174,16 @@ msgstr "   Laiks (hh:mm)"
 #: mainwindow.cpp:178
 #, kde-format
 msgid "Starting a new game will end the current one!"
-msgstr "Jaunas spēles sākšana pārtrauks pašreizējo!"
+msgstr "Jaunas spēles sākšana izbeigs pašreizējo!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Jauna spēle"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Sākt jaunu spēli"
@@ -212,36 +206,31 @@ msgid ""
 "mouse cursor, pause the game to get\n"
 "the cursor back."
 msgstr ""
-"Vai vēlies palaist bumbu ar peles klikšķi?\n"
-"Atbildot 'Jā', spēle 'nozags' peles kursoru.\n"
-"Nopauzē spēli, lai dabūtu to atpakaļ."
+"Vai vēlies palaist bumbiņu ar peles klikšķi?\n"
+"Atbildot „Jā“, spēle „nozags“ peles kursoru.\n"
+"Pauzējiet spēli, lai to „atgūtu“."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Palaist ar klikšķi?"
+msgstr "Palaist ar klikšķi"
 
 #: mainwindow.cpp:305
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "Palaist ar klikšķi"
+msgstr "Izmantot peles klikšķi"
 
 #: mainwindow.cpp:306
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "Palaist ar klikšķi"
+msgstr "Ignorēt peles klikšķi"
 
 #: qml/logic.js:199
-#, fuzzy
-#| msgid "Well done! You won the game!"
 msgid "Well done! You won the game"
-msgstr "Labi padarīts! Tu uzvarēji šo spēli!"
+msgstr "Vareni! Tu uzvarēji!"
 
 #: qml/logic.js:206 qml/main.qml:145
 msgid "Level %1"
@@ -249,11 +238,11 @@ msgstr "%1. līmenis"
 
 #: qml/logic.js:347
 msgid "Game Paused!"
-msgstr "Spēle nopauzēta!"
+msgstr "Spēlei ir pauze!"
 
 #: qml/logic.js:497
 msgid "Oops! You have lost the ball!"
-msgstr "Ups! Bumba pazaudēta!"
+msgstr "Vai! Bumbiņa ir pazaudēta!"
 
 #: qml/logic.js:552
 msgid "Game Over!"
@@ -261,7 +250,7 @@ msgstr "Spēle galā!"
 
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
-msgstr "Lai palaistu bumbu, nospied '%1'"
+msgstr "Lai palaistu bumbiņu, spied „%1“"
 
 #~ msgid "The graphical theme to be used."
 #~ msgstr "Izmantojamā grafiskā tēma."
