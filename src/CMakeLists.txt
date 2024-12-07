@@ -7,10 +7,10 @@ add_executable(kbreakout)
 
 target_sources(kbreakout PRIVATE
     main.cpp
-    mainwindow.cpp
-    canvaswidget.cpp
-    gameengine.cpp
-    levelloader.cpp
+    mainwindow.cpp mainwindow.h
+    canvaswidget.cpp canvaswidget.h
+    gameengine.cpp gameengine.h
+    levelloader.cpp levelloader.h
 
     kbreakout.qrc
 )
