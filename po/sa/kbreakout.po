@@ -19,12 +19,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
 #: generalsettings.ui:13
@@ -123,43 +123,43 @@ msgstr "पोर्ट् to QtQuick"
 #, kde-format
 msgctxt "Key (shortcut) to toggle full screen"
 msgid "F"
-msgstr ""
+msgstr "च"
 
 #: mainwindow.cpp:110
 #, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr ""
+msgstr "कन्दुकं अग्निम् अयच्छतु"
 
 #: mainwindow.cpp:119
 #, kde-format
 msgctxt "@action"
 msgid "Skip Level"
-msgstr ""
+msgstr "स्तरं त्यजतु"
 
 #: mainwindow.cpp:126
 #, kde-format
 msgctxt "@action"
 msgid "Add Life"
-msgstr ""
+msgstr "जीवनं योजयतु"
 
 #: mainwindow.cpp:136
 #, kde-format
 msgctxt "Key (shortcut) to pause the game"
 msgid "P"
-msgstr ""
+msgstr "पु"
 
 #: mainwindow.cpp:156
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr ""
+msgstr "विषयवस्तु"
 
 #: mainwindow.cpp:160
 #, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: mainwindow.cpp:169
 #, kde-format
@@ -175,13 +175,13 @@ msgstr "नूतनं क्रीडां आरभ्य वर्तमा
 #, kde-format
 msgctxt "@title:window"
 msgid "New Game"
-msgstr ""
+msgstr "नवीन खेल"
 
 #: mainwindow.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr ""
+msgstr "नूतनं क्रीडां आरभत"
 
 #: mainwindow.cpp:214
 #, kde-format
@@ -210,19 +210,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr ""
+msgstr "क्लिक् इत्यत्र अग्निः"
 
 #: mainwindow.cpp:305
 #, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr ""
+msgstr "Mouse Click इत्यस्य उपयोगं कुर्वन्तु"
 
 #: mainwindow.cpp:306
 #, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr ""
+msgstr "मूषकस्य क्लिक् इत्यस्य अवहेलनां कुर्वन्तु"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
