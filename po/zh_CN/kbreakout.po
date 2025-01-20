@@ -128,19 +128,19 @@ msgstr "F"
 #, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr ""
+msgstr "发射球"
 
 #: mainwindow.cpp:119
 #, kde-format
 msgctxt "@action"
 msgid "Skip Level"
-msgstr ""
+msgstr "跳过关卡"
 
 #: mainwindow.cpp:126
 #, kde-format
 msgctxt "@action"
 msgid "Add Life"
-msgstr ""
+msgstr "添加生命值"
 
 #: mainwindow.cpp:136
 #, kde-format
@@ -208,7 +208,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr ""
+msgstr "单击时发射"
 
 #: mainwindow.cpp:305
 #, kde-format
