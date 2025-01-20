@@ -14,6 +14,10 @@
 #include <KGameThemeProvider>
 // KF
 #include <KLocalizedContext>
+#if KI18N_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#include <KLocalizedQmlContext>
+#endif
+
 // Qt
 #include <QAction>
 #include <QCursor>
@@ -28,8 +32,12 @@ CanvasWidget::CanvasWidget(QWidget *parent) :
 {
     QQmlEngine *engine = this->engine();
 
-    auto *localizedContextObject = new KLocalizedContext(engine);
-    engine->rootContext()->setContextObject(localizedContextObject);
+
+#if KI18N_VERSION < QT_VERSION_CHECK(6, 8, 0)
+    engine->rootContext()->setContextObject(new KLocalizedContext(engine));
+#else
+    engine->rootContext()->setContextObject(new KLocalizedQmlContext(engine));
+#endif
 
     setResizeMode(SizeRootObjectToView);
 

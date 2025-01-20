@@ -42,6 +42,10 @@ target_link_libraries(kbreakout
     Qt6::Xml
 )
 
+if(TARGET KF6::I18nQml)
+    target_link_libraries(kbreakout KF6::I18nQml)
+endif()
+
 install(TARGETS kbreakout ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/kbreakout)
 
