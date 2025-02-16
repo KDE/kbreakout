@@ -253,4 +253,4 @@ msgstr "Final de la partida!"
 
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
-msgstr "Premeu %1 per a disparar la bola"
+msgstr "Premeu «%1» per a disparar la bola"
