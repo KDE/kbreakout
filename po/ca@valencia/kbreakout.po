@@ -54,7 +54,7 @@ msgstr ""
 #: generalsettings.ui:38 kbreakout.kcfg:9
 #, kde-format
 msgid "Fire on mouse click"
-msgstr "Inicia en clicar"
+msgstr "Inicia quan es clique"
 
 #: main.cpp:43
 #, kde-format
@@ -208,7 +208,7 @@ msgid ""
 "mouse cursor, pause the game to get\n"
 "the cursor back."
 msgstr ""
-"Voleu iniciar la bola en clicar amb el ratolí?\n"
+"Voleu iniciar la bola quan es clique amb el ratolí?\n"
 "Si responeu sí, s'ocultarà el cursor del ratolí\n"
 "poseu el joc en pausa per a fer que el cursor\n"
 "torne a aparéixer."
@@ -217,7 +217,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Llançament en clicar"
+msgstr "Llançament quan es clique"
 
 #: mainwindow.cpp:305
 #, kde-format
