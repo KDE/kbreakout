@@ -1,11 +1,10 @@
 # Spanish translations for kbreakout.po package.
-# Copyright (C) 2008-2025 This_file_is_part_of_KDE
+# Copyright (C) 2008-2025 This file is copyright:
 # This file is distributed under the same license as the kbreakout package.
 #
 # SPDX-FileCopyrightText: 2008 Santi <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2009, 2015, 2017, 2021, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# SPDX-FileCopyrightText: 2010 Kira J. Fernandez <kirajfdez@gmail.com>
-# SPDX-FileCopyrightText: 2011 Kira J. Fernandez <kirajfdez@gmail.es>
+# SPDX-FileCopyrightText: 2010, 2011 Kira J. Fernandez <kirajfdez@gmail.com>
 # SPDX-FileCopyrightText: 2013 Rocio Gallego <traducciones@rociogallego.com>
 # SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
@@ -13,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2025-03-19 01:10+0100\n"
+"PO-Revision-Date: 2025-06-11 16:52+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
