@@ -11,6 +11,10 @@
         "--socket=wayland",
         "--device=dri"
     ],
+    "cleanup": [
+        "/include",
+        "/lib/cmake"
+    ],
     "modules": [
         {
             "name": "libkdegames",
@@ -20,7 +24,6 @@
                     "type": "git",
                     "url": "https://invent.kde.org/games/libkdegames",
                     "branch": "master"
-
                 }
             ]
         },
