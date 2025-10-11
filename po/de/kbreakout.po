@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2009, 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2011, 2013, 2015, 2017, 2021.
-# Linda-Maria Wirthmann <dont.breathe.today@googlemail.de>, 2009.
-# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2022.
+# SPDX-FileCopyrightText: 2008, 2011, 2013, 2015, 2017, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2009 Linda-Maria Wirthmann <dont.breathe.today@googlemail.de>
+# SPDX-FileCopyrightText: 2010, 2022 Frederik Schwarzer <schwarzer@kde.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
