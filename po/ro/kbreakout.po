@@ -1,7 +1,7 @@
 # translation of lskat.po to Romanian
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # Claudiu Costin <claudiuc@kde.org>, 2004.
-# Sergiu Bivol <sergiu@cip.md>, 2008, 2009, 2024.
+# SPDX-FileCopyrightText: 2008, 2009, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 # Laurenţiu Buzdugan <lbuz@rolix.org>, 2009.
 #
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lskat\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2024-03-02 16:04+0000\n"
+"PO-Revision-Date: 2025-11-28 13:03+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -130,22 +130,19 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
 msgstr "Lansează mingea"
 
 #: mainwindow.cpp:119
-#, fuzzy, kde-format
-#| msgid "Skip level"
+#, kde-format
 msgctxt "@action"
 msgid "Skip Level"
 msgstr "Sari nivelul"
 
 #: mainwindow.cpp:126
-#, fuzzy, kde-format
-#| msgid "Add life"
+#, kde-format
 msgctxt "@action"
 msgid "Add Life"
 msgstr "Adaugă viață"
@@ -157,19 +154,16 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tematică"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "General"
+msgstr "Generale"
 
 #: mainwindow.cpp:169
 #, kde-format
@@ -182,15 +176,13 @@ msgid "Starting a new game will end the current one!"
 msgstr "Începerea unui joc nou îl va încheia pe cel curent!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Joc nou"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Începe joc nou"
@@ -219,11 +211,10 @@ msgstr ""
 "a recupera cursorul."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Foc la clic?"
+msgstr "Foc la clic"
 
 #: mainwindow.cpp:305
 #, kde-format
