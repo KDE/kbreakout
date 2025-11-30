@@ -721,7 +721,7 @@
 <listitem
 ><para>
 <action
->Joga o &kbreakout; no modo em tela inteira. Só é possível sair deste modo com o uso da tecla de atalho.</action>
+>Joga o &kbreakout; no modo em tela cheia. Só é possível sair deste modo com o uso da tecla de atalho.</action>
 </para
 ></listitem>
 </varlistentry>
@@ -799,7 +799,7 @@
 </row>
 <row>
 <entry
->Modo de tela inteira</entry>
+>Modo de tela cheia</entry>
 <entry
 ><keycombo action="simul"
 >&Ctrl;&Shift;<keycap
