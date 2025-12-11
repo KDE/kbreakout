@@ -1,21 +1,22 @@
-# SPDX-FileCopyrightText: 2009, 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2008, 2011, 2013, 2015, 2017, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2009 Linda-Maria Wirthmann <dont.breathe.today@googlemail.de>
+# SPDX-FileCopyrightText: 2009, 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2010, 2022 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2024-08-25 21:32+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-12-03 21:58+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -41,15 +42,15 @@ msgid ""
 "pause the game to get the cursor back."
 msgstr ""
 "Ist diese Einstellung aktiviert, steht der Mauszeiger nur noch für KBreakout "
-"zur Verfügung. Sie müssen dann das Spiel anhalten, um ihn wieder für alle "
-"Anwendungen zur Verfügung zu stellen."
+"zur Verfügung. Halten Sie das Spiel an, um ihn wieder für andere Anwendungen "
+"verwenden zu können."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_FireOnClick)
 #. i18n: ectx: label, entry (FireOnClick), group (General)
 #: generalsettings.ui:38 kbreakout.kcfg:9
 #, kde-format
 msgid "Fire on mouse click"
-msgstr "Mit Mausklick abschießen"
+msgstr "Per Mausklick schießen"
 
 #: main.cpp:43
 #, kde-format
@@ -64,7 +65,7 @@ msgstr "Ein Breakout-Spiel von KDE"
 #: main.cpp:46
 #, kde-format
 msgid "(c) 2007-2008 Fela Winkelmolen"
-msgstr "© 2007–2008, Fela Winkelmolen"
+msgstr "© 2007–2008 Fela Winkelmolen"
 
 #: main.cpp:47
 #, kde-format
@@ -131,13 +132,13 @@ msgstr "F"
 #, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr "Den Ball abschießen"
+msgstr "Den Ball schießen"
 
 #: mainwindow.cpp:119
 #, kde-format
 msgctxt "@action"
 msgid "Skip Level"
-msgstr "Ebene überspringen"
+msgstr "Level überspringen"
 
 #: mainwindow.cpp:126
 #, kde-format
@@ -203,16 +204,16 @@ msgid ""
 "mouse cursor, pause the game to get\n"
 "the cursor back."
 msgstr ""
-"Möchten Sie den Ball mit einem Mausklick abschießen?\n"
+"Möchten Sie den Ball per Mausklick schießen?\n"
 "Mit „Ja“ steht der Mauszeiger nur noch für KBreakout zur\n"
-"Verfügung.Sie müssen dann das Spiel anhalten, um ihn\n"
-"wieder für alle Anwendungen zur Verfügung zu stellen."
+"Verfügung. Halten Sie das Spiel an, um ihn wieder für\n"
+"andere Anwendungen verwenden zu können."
 
 #: mainwindow.cpp:304
 #, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Mit Klicken den Ball abschießen"
+msgstr "Per Klick schießen"
 
 #: mainwindow.cpp:305
 #, kde-format
@@ -228,27 +229,27 @@ msgstr "Mausklick ignorieren"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
-msgstr "Sehr gut! Sie haben diese Spiel gewonnen"
+msgstr "Sehr gut! Sie haben das Spiel gewonnen"
 
 #: qml/logic.js:206 qml/main.qml:145
 msgid "Level %1"
-msgstr "Ebene %1"
+msgstr "Level %1"
 
 #: qml/logic.js:347
 msgid "Game Paused!"
-msgstr "Spiel angehalten."
+msgstr "Spiel pausiert!"
 
 #: qml/logic.js:497
 msgid "Oops! You have lost the ball!"
-msgstr "Hoppla! Sie haben den Ball verfehlt."
+msgstr "Hoppla! Sie haben den Ball verloren!"
 
 #: qml/logic.js:552
 msgid "Game Over!"
-msgstr "Spiel beendet."
+msgstr "Spiel verloren!"
 
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
-msgstr "Drücken Sie %1, um den Ball abzuschießen."
+msgstr "Drücken Sie %1, um den Ball zu schießen"
 
 #~ msgid "The graphical theme to be used."
 #~ msgstr "Grafikdesign"
