@@ -56,10 +56,9 @@ msgid "KBreakOut"
 msgstr "KBreakOut"
 
 #: main.cpp:44
-#, fuzzy, kde-format
-#| msgid "A breakout like game for KDE"
+#, kde-format
 msgid "A Breakout like game by KDE"
-msgstr "Cluiche cosúil le 'breakout' le haghaidh KDE"
+msgstr ""
 
 #: main.cpp:46
 #, kde-format
@@ -128,11 +127,10 @@ msgid "F"
 msgstr "L"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
-msgstr "Caith an liathróid"
+msgstr ""
 
 #: mainwindow.cpp:119
 #, kde-format
@@ -153,19 +151,16 @@ msgid "P"
 msgstr "S"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr "Téama"
+msgstr ""
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "Ginearálta"
+msgstr ""
 
 #: mainwindow.cpp:169
 #, kde-format
@@ -179,18 +174,16 @@ msgstr ""
 "Cuirfidh tú deireadh leis an gcluiche reatha má thosaíonn tú cluiche nua!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
-msgstr "Cluiche Nua"
+msgstr ""
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr "Tosaigh Cluiche Nua"
+msgstr ""
 
 #: mainwindow.cpp:214
 #, kde-format
@@ -215,25 +208,22 @@ msgstr ""
 "Cuir an cluiche ar shos chun an cúrsóir a fháil ar ais."
 
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Caitheamh ar chliceáil?"
+msgstr ""
 
 #: mainwindow.cpp:305
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "Caitheamh nuair a chliceáiltear an luch"
+msgstr ""
 
 #: mainwindow.cpp:306
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "Caitheamh nuair a chliceáiltear an luch"
+msgstr ""
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
@@ -258,12 +248,3 @@ msgstr "Cluiche Thart!"
 #: qml/main.qml:115
 msgid "Press %1 to fire the ball"
 msgstr "Brúigh %1 chun an liathróid a scaoileadh"
-
-#~ msgid "The graphical theme to be used."
-#~ msgstr "An téama grafach le húsáid."
-
-#~ msgid "Failed to load \"%1\" theme. Please check your installation."
-#~ msgstr "Níorbh fhéidir téama \"%1\" a luchtú.  Déan seiceáil ar do chóras."
-
-#~ msgid "Pause"
-#~ msgstr "Sos"
