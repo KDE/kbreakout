@@ -1,0 +1,855 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Arabic "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>دليل لعبة الاختراق</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>ترس كيدي 21.04</releaseinfo>
+
+<abstract>
+<para
+>الاختراق هي لعبة شبيهة بلعبة بريك أوت بواسطة كِيدِي.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>ألعاب كيدي</keyword>
+<keyword
+>لعبة</keyword>
+<keyword
+>الاختراق</keyword>
+<keyword
+>الاختراق</keyword>
+<keyword
+>طوب</keyword>
+<keyword
+>قرميد</keyword>
+<keyword
+>كرة</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+
+<para
+>الاختراق هي لعبة شبيهة بلعبة بريك أوت بواسطة كِيدِي. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>لوحة لعبة الاختراق</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>هدف اللعبة هو تدمير أكبر عدد ممكن من قطع الطوب دون فقدان الكرة. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>كيف تلعب</title>
+
+<para
+>يعطى اللاعب ملعبًا يحتوي على عدد من الطوب. وفيه تتحرك الكرة وترتد على السقف والحوائط الجانبية. عندما ترتطم بطوبة، ترتد الكرة بعيدًا عنها وتُدمَّر الطوبة. يخسر اللاعب حياةً عندما تلمس الكرة أرضية الملعب. لمنع هذا من الحدوث، يجب على اللاعب تحريك المنصة السفلية لترتد عنها الكرة للأعلى. الهدف من اللعبة هو إحراز التقدم في المستويات بتدمير كل الطوب في كل مستوى، مع محاولة تحقيق أعلى نتيجة. </para>
+
+<para
+>بعض قطع الطوب لها سلوك خاص، أو قد تسقط منها هدية عند ارتطام الكرة بها. يمكن التقاط الهدايا بواسطة المنصة، وسلوكها قد يكون إيجابيًا أو سلبيًا. لمزيد من المعلومات حول الأنواع المختلفة من الطوب والهدايا، انظر الفصل التالي. </para>
+
+<para
+>لإطلاق الكرة، اضغط على مسطرة المسافة، ولتحريك المنصة استخدم الفأرة أو مفاتيح الأسهم. سترتد الكرة في اتجاه جانب المنصة الذي ارتطمت به؛ فكلما كان الارتداد أقرب إلى الطرف الأيسر للمنصة، زاد ميل ارتدادها نحو اليسار، وينطبق الشيء نفسه على الجانب الأيمن؛ أما إذا ارتدت في منتصف المنصة، فسترتد مباشرة نحو الأعلى. </para>
+
+<para
+>إذا فعلت خيار <guilabel
+>أطلق عند نقر الفأرة</guilabel
+> في حوار الإعدادات، يمكنك النقر بزر الفأرة الأيسر للإطلاق. سيؤدي تفعيل هذا الخيار إلى حجز اللعبة لمؤشر الفأرة؛ البث اللعبة لاستعادة المؤشر. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title>
+
+<sect1 id="rules">
+<title
+>القواعد</title>
+<itemizedlist>
+<listitem
+><para
+>اجتياز المستوى يمنح اللاعب 300 نقطة. يُجتاز المستوى عند تدمير جميع قطع الطوب القابلة للكسر والمرئية، أو بدلاً من ذلك إذا التُقطت هدية المستوى التالي. في الحالة الأخيرة، تُمنح نتيجة إضافية عن كل طوبة متبقية.</para
+></listitem>
+<listitem
+><para
+>تُمنح نتيجة عن كل طوبة تُدمر؛ وكلما كان الفاصل الزمني بين ارتطام والآخر أقصر، كانت هذه النتيجة أعلى.</para
+></listitem>
+<listitem
+><para
+>الهدايا المخفية في مستوى معين ثابتة، لكن موقعها عشوائي.</para
+></listitem>
+<listitem
+><para
+>تُمنح 30 نقطة مقابل كل هدية تُلتلقط.</para
+></listitem>
+<listitem
+><para
+>يخسر اللاعب حياة عندما تلمس الكرة قاع الميدان ولا تتبقى كرات أخرى في اللعبة، أو عندما يلتقط اللاعب هدية خسارة الحياة. عند خسارة حياة، تُخصم 1000 نقطة من نتيجته.</para
+></listitem>
+<listitem
+><para
+>يمكن كسب أرواح إضافية عبر التقاط هدايا إضافة حياة.</para
+></listitem>
+<listitem
+><para
+>تنتهي اللعبة عندما يفقد اللاعب الكرة وهو لا يملك أي أرواح إضافية متبقية، أو عند الفوز بجميع المستويات.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>أنواع الطوب</title>
+<note>
+  <para
+>الصور لقطع الطوب أدناه مخصصة للسمة المبدئية للعبة الاختراق. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة عادية </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوب عادي </term>
+    <listitem>
+      <para
+>طوب بسيط، ورغم أن مظهرها قد يختلف إلا أنها جميعًا تتصرف بالطريقة نفسها، حيث تُدمر عند ارتطام الكرة بها وقد تحتوي على هدية. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة غير قابلة للكسر </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوبة غير قابلة للكسر </term>
+    <listitem>
+      <para
+>لا تُدمر أبدًا ما لم ترتطم بها كرة مشتعلة أو لا يمكن إيقافها، أو عند ارتطام طوبة متفجرة مجاورة لها. لا يلزم تدمير هذه القطع للفوز بالمستوى. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة قابلة للكسر </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوبة قابلة للكسر </term>
+    <listitem>
+      <para
+>يمكن تحويل الطوب غير القابل للكسر إلى طوب قابل للكسر باستخدام <link linkend="gift-magic-wand"
+>هدية العصا السحرية</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة مخفية </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوبة مخفية </term>
+    <listitem>
+      <para
+>هذه الطوبة لا تظهر للاعب في البداية. عند الارتطام بها لأول مرة تصبح مرئية، وتتحول إلى طوبة عادية. إذا ارتطمت بها كرة مشتعلة، أو طوبة متفجرة مجاورة، فإنها تُدمر بمجرد ظهورها. وطالما بقيت مخفية، فلا داعي لتدميرها للانتقال إلى المستوى التالي. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة متعددة </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوبة متعددة </term>
+    <listitem>
+      <para
+>تحتاج إلى الارتطام بها ثلاث مرات قبل تدميرها، ما لم ترتطم بها كرة مشتعلة أو لا يمكن إيقافها، أو تُدمر طوبة متفجرة مجاورة لها. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>طوبة متفجرة </phrase>
+	</textobject>
+      </inlinemediaobject
+>طوبة متفجرة </term>
+    <listitem>
+      <para
+>عند الارتطام بهذه الطوبة، سيُدمر أيضًا الطوب الموجود في أعلاها وأسفلها ويسارها ويمينها، بغض النظر عن نوعه. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>الهدايا</title>
+<note>
+  <para
+>الصور للهدايا أدناه مخصصة للسمة المبدئية للعبة الاختراق. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية 1000 نقطة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدايا النقاط </term>
+    <listitem>
+      <para
+>إذا التُقطت، فإنها تمنح اللاعب عدد النقاط المكتوب على الهدية. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية إضافة حياة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية إضافة حياة </term>
+    <listitem>
+      <para
+>تمنح اللاعب حياة إضافية. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية خسارة حياة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية خسارة حياة </term>
+    <listitem>
+      <para
+>تتسبب في فقدان اللاعب لجميع الكرات وتصفير المنصة. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية تكبير المنصة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية تكبير المنصة </term>
+    <listitem>
+      <para
+>تُكبر المنصة. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية تقليص المنصة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية تقليص المنصة </term>
+    <listitem>
+      <para
+>تُقلص المنصة. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية تقسيم الكرات </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية تقسيم الكرات </term>
+    <listitem>
+      <para
+>تُضاعف الكرات. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية إضافة كرات </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية إضافة كرات </term>
+    <listitem>
+      <para
+>تمنح اللاعب كرة إضافية ملتصقة بالمنصة، يمكن إطلاقها في أي وقت يريده اللاعب. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية المنصة اللاصقة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية المنصة اللاصقة </term>
+    <listitem>
+      <para
+>بعد التقاط هذه الهدية، في كل مرة تلمس فيها الكرة المنصة تبقى ملتصقة بها، مما يسمح للاعب بالإطلاق مرة أخرى. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية المزيد من الطوب المتفجر </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية المزيد من الطوب المتفجر </term>
+    <listitem>
+      <para
+>تجعل جميع قطع الطوب الموجودة في أعلى وأسفل ويمين ويسار الطوب المتفجر طوبًا متفجرًا أيضًا. ينطبق هذا أيضًا على الطوب المخفي وغير القابل للكسر. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية الكرة المشتعلة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية الكرة المشتعلة </term>
+    <listitem>
+      <para
+>تحول جميع الكرات إلى كرات مشتعلة. عندما ترتطم كرة مشتعلة بطوبة، يُدمر أيضًا الطوب الموجود في أعلاها وأسفلها ويسارها ويمينها. الكرة المشتعلة تدمر جميع أنواع الطوب بغض النظر عن نوعها. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية الكرة التي لا تقهر </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية الكرة التي لا تقهر </term>
+    <listitem>
+      <para
+>تحول جميع الكرات إلى كرات لا يمكن إيقافها. الكرة التي لا تتوقف تدمر كل الطوب الذي تواجهه في طريقها، بغض النظر عن نوعه، ولا ترتد عنه أبدًا. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية العين السحرية </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية العين السحرية </term>
+    <listitem>
+      <para
+>تُظهر جميع الطوب المخفي. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية العصا السحرية </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية العصا السحرية </term>
+    <listitem>
+      <para
+>تحول جميع الطوب المتعدد وغير القابل للكسر إلى طوب بسيط. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية زيادة السرعة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية زيادة السرعة </term>
+    <listitem>
+      <para
+>تزيد سرعة الكرة بنسبة 30% من السرعة الحالية. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية تقليل السرعة </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية تقليل السرعة </term>
+    <listitem>
+      <para
+>تقلل سرعة الكرة عبر قسمة السرعة الحالية على 1.3. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>هدية المستوى التالي </phrase>
+	</textobject>
+      </inlinemediaobject
+>هدية المستوى التالي </term>
+    <listitem>
+      <para
+>تفتح المستوى التالي من اللعبة فورًا. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>الاستراتيجيات والتلميحات</title>
+<itemizedlist>
+<listitem
+><para
+>إذا كان ذلك ممكنًا، فمن الجيد عادةً إرسال الكرة فوق الطوب، وبذلك ستقل فرصة فقدان الكرة. في بعض الأحيان تحتاج أولاً إلى عمل ثقب صغير في طبقة الطوب لتحقيق ذلك. وكلما كان الثقب أصغر، قلت فرصة عودة الكرات للأسفل.</para
+></listitem>
+<listitem
+><para
+>عند التقاط هدية إضافة كرة، من الحكمة عدم إطلاقها على الفور بل الاحتفاظ بها بدلاً من ذلك، في حال فُقدت الكرات الأخرى. يُنصح أيضًا بعدم التقاط هدية المنصة اللاصقة في مثل هذه الحالة، لأن ذلك سيجبرك على إطلاق جميع الكرات.</para
+></listitem>
+<listitem
+><para
+>عند الحصول على هدية المستوى التالي، قد لا ترغب في التقاطها إذا كنت تعلم بوجود هدايا إضافة حياة في المستوى.</para
+></listitem>
+<listitem
+><para
+>في المستويات التي يوجد بها الكثير من الطوب المخفي، قد تكون هناك طريقة للفوز بالمستوى دون الحاجة إلى تدمير معظمها.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>نظرة عامة على الواجهة</title>
+
+<sect1 id="menu">
+<title
+>عناصر القائمة</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يبدأ لعبة جديدة. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycap
+>P</keycap
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>لبث</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يلبث اللعبة الحالية ويستأنفها. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر أعلى النتائج</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>يُظهر حوارًا يحتوي على أعلى النتائج. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>الخروج من البرنامج. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></shortcut
+> <guimenu
+>عرض</guimenu
+> <guimenuitem
+>وضع ملء الشاشة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>شغل لعبة الاختراق في وضع ملء الشاشة. الخروج من هذا الوضع غير ممكن إلا باستخدام الاختصار.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>بالإضافة إلى ذلك، تملك الاختراق عناصر قائمة كيدي الشائعة <guimenu
+>الإعدادات</guimenu
+> و<guimenu
+>المساعدة</guimenu
+>، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و<ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات كيدي. </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>الاختصارات</title>
+
+<para
+>الاختصارات المبدئية هي:</para>
+
+<table>
+<title
+>الاختصارات</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>إطلاق</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>لبث/استئناف</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>ابدأ لعبة جديدة</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>أظهر أعلى النتائج</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>أنهِ</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>وضع ملء الشاشة</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>مساعدة</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>ما هذا؟</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>Shift+F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>الحقوق والترخيص</title>
+
+<para
+>الاختراق </para>
+<para
+>حقوق نشر البرنامج 2008 بواسطة Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+<para
+>حقوق نشر التوثيق 2008 بواسطة Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+> </para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
