@@ -8,24 +8,25 @@ msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-30 17:05-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
 #: generalsettings.ui:13
@@ -46,7 +47,7 @@ msgstr ""
 #: generalsettings.ui:38 kbreakout.kcfg:9
 #, kde-format
 msgid "Fire on mouse click"
-msgstr ""
+msgstr "چاشقىنەك چېكىلگەندە ئات"
 
 #: main.cpp:43
 #, kde-format
@@ -66,7 +67,7 @@ msgstr ""
 #: main.cpp:47
 #, kde-format
 msgid "Fela Winkelmolen"
-msgstr "Fela Winkelmolen"
+msgstr ""
 
 #: main.cpp:48
 #, kde-format
@@ -86,7 +87,7 @@ msgstr ""
 #: main.cpp:53
 #, kde-format
 msgid "Sean Wilson"
-msgstr "Sean Wilson"
+msgstr ""
 
 #: main.cpp:56
 #, kde-format
@@ -101,7 +102,7 @@ msgstr "سىناق"
 #: main.cpp:59
 #, kde-format
 msgid "Brian Croom"
-msgstr "Brian Croom"
+msgstr ""
 
 #: main.cpp:60
 #, kde-format
@@ -111,7 +112,7 @@ msgstr ""
 #: main.cpp:62
 #, kde-format
 msgid "Viranch Mehta"
-msgstr ""
+msgstr "Viranch Mehta"
 
 #: main.cpp:63
 #, kde-format
@@ -122,7 +123,7 @@ msgstr ""
 #, kde-format
 msgctxt "Key (shortcut) to toggle full screen"
 msgid "F"
-msgstr "F"
+msgstr ""
 
 #: mainwindow.cpp:110
 #, kde-format
@@ -149,16 +150,13 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ئۆرنەك"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "ئادەتتىكى"
@@ -174,18 +172,16 @@ msgid "Starting a new game will end the current one!"
 msgstr ""
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "يېڭى ئويۇن"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
-msgstr "يېڭى ئويۇن باشلايدۇ"
+msgstr ""
 
 #: mainwindow.cpp:214
 #, kde-format
