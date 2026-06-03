@@ -43,6 +43,7 @@
   <name xml:lang="sl">KBreakOut</name>
   <name xml:lang="sv">Utbrytning</name>
   <name xml:lang="tr">KBreakOut</name>
+  <name xml:lang="ug">KBreakOut</name>
   <name xml:lang="uk">KBreakOut</name>
   <name xml:lang="zh-CN">KBreakOut</name>
   <name xml:lang="zh-TW">KBreakOut</name>
@@ -203,6 +204,7 @@
       <caption xml:lang="sl">Igra KBreakOut</caption>
       <caption xml:lang="sv">Spela Utbrytning</caption>
       <caption xml:lang="tr">KBreakOut Oynarken</caption>
+      <caption xml:lang="ug">KBreakOut ئويناش</caption>
       <caption xml:lang="uk">Гра у KBreakOut</caption>
       <caption xml:lang="zh-CN">游玩 KBreakOut</caption>
       <caption xml:lang="zh-TW">KBreakOut 遊玩畫面</caption>
