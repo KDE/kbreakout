@@ -127,12 +127,12 @@
 >Einige Steine haben ein spezielles Verhalten, oder es fällt ein Geschenk von ihnen herunter, sobald sie getroffen werden. Die Geschenke können mit der Leiste aufgefangen werden; ihr Verhalten kann entweder positiv oder negativ sein. Für weitere Informationen zu den verschiedenen Steinen und Geschenken lesen Sie das nächste Kapitel. </para>
 
 <para
->Um den Ball abzufeuern, drücken Sie die Leertaste; um die Leiste zu bewegen, benutzen Sie die Maus oder die Pfeiltasten. Der Ball springt in die Richtung der Seite der Leiste ab, an der sie getroffen wurde, und je mehr die Leiste auf der linken Seite getroffen wurde, desto mehr springt der Ball in Richtung links ab, das gleiche gilt für die rechte Seite; falls der Ball aber die Mitte der Leiste trifft, so springt er gerade nach oben ab. </para>
+>Um den Ball abzufeuern, drücken Sie die Leertaste; um die Leiste zu bewegen, verwenden Sie die Maus oder die Pfeiltasten. Der Ball springt in die Richtung der Seite der Leiste ab, an der sie getroffen wurde, und je mehr die Leiste auf der linken Seite getroffen wurde, desto mehr springt der Ball in Richtung links ab, das gleiche gilt für die rechte Seite; falls der Ball aber die Mitte der Leiste trifft, so springt er gerade nach oben ab. </para>
 
 <para
 >Wenn Sie <guilabel
 >Mit Mausklick abschießen</guilabel
-> im Einrichtungsdialog aktivieren, können Sie mit der &LMBn; feuern. Dann steht der Mauszeiger nur noch für KBreakout zur Verfügung. Sie müssen dann das Spiel anhalten, um den Mauszeiger wieder für alle Anwendungen benutzen zu können. </para>
+> im Einrichtungsdialog aktivieren, können Sie mit der &LMBn; feuern. Dann steht der Mauszeiger nur noch für KBreakout zur Verfügung. Sie müssen dann das Spiel anhalten, um den Mauszeiger wieder für alle Anwendungen verwenden zu können. </para>
 
 </chapter>
 
@@ -156,7 +156,7 @@
 ></listitem>
 <listitem
 ><para
->Diese Geschenke, versteckt in den einzelnen Spielebenen, sind fixiert;ihre Position aber ist zufällig.</para
+>Die Geschenke, die in den einzelnen Spielebenen versteckt sind, sind immer gleich. Ihre Position ist jedoch zufällig.</para
 ></listitem>
 <listitem
 ><para
@@ -164,9 +164,7 @@
 ></listitem>
 <listitem
 ><para
->Der Spieler verliert ein Leben, sobald der Ball das untere Ende des Feldes berührt und keine weiteren Bälle im Spiel sind, oder wenn er das <quote
->Verliere ein Leben</quote
->-Geschenk fängt. Beim Verlieren eines Lebens werden 1000 Punkte vom Punktestand abgezogen.</para
+>Der Spieler verliert ein Leben, sobald der Ball das untere Ende des Feldes berührt und keine weiteren Bälle im Spiel sind, oder wenn der Spieler das „Verliere ein Leben“-Geschenk fängt. Beim Verlieren eines Lebens werden 1000 Punkte vom Punktestand abgezogen.</para
 ></listitem>
 <listitem
 ><para
@@ -220,7 +218,7 @@
 >Unzerstörbarer Stein </term>
     <listitem>
       <para
->Wird niemals zerstört, außer durch einen brennenden oder nicht-aufhaltbaren Ball, oder aber durch einen explodierenden Stein direkt daneben. Diese Steine müssen nicht zerstört werden, um die Spielebene zu gewinnen. </para>
+>Wird niemals zerstört, außer durch einen brennenden oder unaufhaltbaren Ball, oder aber wenn ein explodierender Stein direkt daneben getroffen wird. Diese Steine müssen nicht zerstört werden, um die Spielebene zu gewinnen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -279,7 +277,7 @@
 >Mehrfach-Stein </term>
     <listitem>
       <para
->Muss dreimal getroffen werden, bevor er zerstört wird - außer er wird durch einen brennenden Stein oder einen explodierenden Stein unmittelbar daneben getroffen. </para>
+>Muss dreimal getroffen werden, bevor er zerstört wird – außer er wird durch einen brennenden oder unaufhaltbaren Ball getroffen, oder ein benachbarter explodierender Stein wird zerstört. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -517,7 +515,7 @@
 >-Geschenk </term>
     <listitem>
       <para
->Transformiert alle Bälle in brennende Bälle. Wenn ein brennender Ball einen Stein trifft, werden auch die Steine oberhalb, unterhalb, links und rechts von dem getroffenen Stein zerstört. Ein brennender Ball zerstört alle Steine unabhängig von ihrem Typ. </para>
+>Verwandelt alle Bälle in brennende Bälle. Wenn ein brennender Ball einen Stein trifft, werden auch die Steine oberhalb, unterhalb, links und rechts von dem getroffenen Stein zerstört. Ein brennender Ball zerstört alle Steine unabhängig von ihrem Typ. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -538,7 +536,7 @@
 >-Geschenk </term>
     <listitem>
       <para
->Macht aus allen Bällen nicht-aufhaltbare Bälle. Ein nicht-aufhaltbarer Ball zerstört alle Steine auf seiner Bahn - egal welchen Typs - und wird auch nicht von ihnen zurückgeworfen. </para>
+>Verwandelt alle Bälle in unaufhaltbare Bälle. Ein unaufhaltbarer Ball zerstört alle Steine auf seiner Bahn – egal welchen Typs – und wird auch nicht von ihnen zurückgeworfen. </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -580,7 +578,7 @@
 >-Geschenk </term>
     <listitem>
       <para
->Macht aus allen Mehrfach- und unzerstörbaren Steinen einfache Steine. </para>
+>Verwandelt alle Mehrfach- und unzerstörbare Steine in einfache Steine. </para>
     </listitem>
   </varlistentry>
     <varlistentry>
@@ -910,11 +908,11 @@
 <para
 >&kbreakout; </para>
 <para
->Programm Copyright 2008 Fela Winkelmolen <email
+>Programm-Copyright 2008 Fela Winkelmolen <email
 >fela.kde@gmail.com</email
 > </para>
 <para
->Dokumentation Copyright 2008 Fela Winkelmolen <email
+>Dokumentation-Copyright 2008 Fela Winkelmolen <email
 >fela.kde@gmail.com</email
 > </para>
 
