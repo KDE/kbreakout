@@ -1,6 +1,6 @@
 # translation of desktop_extragear-base_plasma.po to Arabic
-# OsamaKhalid <osamak.wfm@gmail.com>, 2009.
 # SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# OsamaKhalid <osamak.wfm@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop_extragear-base_plasma\n"
