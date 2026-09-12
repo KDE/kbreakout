@@ -471,6 +471,8 @@ function intersectArea(r1, r2) {
 var firstTime = true;
 function detectBallCollisions(ball) {
     // bounce a little early in some cases so the average position is centered
+    ball.wallCollision = false;
+    ball.barCollision = false;
     var rect = createRect(ball);
     rect.left += ball.directionX/2;
     rect.top += ball.directionY/2;
@@ -481,11 +483,14 @@ function detectBallCollisions(ball) {
 
     // bounce against the wall
     if (x < 0 && ball.directionX < 0) {
+        ball.wallCollision = true;
         ball.directionX *= -1;
     } else if (x+ball.width > bgOverlay.width
                 && ball.directionX > 0) {
+        ball.wallCollision = true;
         ball.directionX *= -1;
     } else if (y < 0 && ball.directionY < 0) {
+        ball.wallCollision = true;
         ball.directionY *= -1;
     } else if (y+ball.height > bgOverlay.height
                 && ball.directionY > 0) {
@@ -511,7 +516,7 @@ function detectBallCollisions(ball) {
         if (ballCenter > bar.x &&
                 ballCenter < bar.x+bar.width) {
             // the bar has been hit
-
+            ball.barCollision = true;
             if (bar.type == "StickyBar") {
                 ball.toBeFired = true;
 

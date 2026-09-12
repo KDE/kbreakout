@@ -1,5 +1,21 @@
 <RCC>
-<qresource prefix="/kxmlgui5/kbreakout">
-<file>kbreakoutui.rc</file>
-</qresource>
+    <qresource prefix="/kxmlgui5/kbreakout">
+        <file>kbreakoutui.rc</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file alias="Ball.qml">qml/Ball.qml</file>
+        <file alias="Bar.qml">qml/Bar.qml</file>
+        <file alias="Brick.qml">qml/Brick.qml</file>
+        <file alias="CanvasItem.qml">qml/CanvasItem.qml</file>
+        <file alias="Gift.qml">qml/Gift.qml</file>
+        <file alias="Singleshot.qml">qml/Singleshot.qml</file>
+        <file alias="TextItem.qml">qml/TextItem.qml</file>
+        <file alias="globals.js">qml/globals.js</file>
+        <file alias="logic.js">qml/logic.js</file>
+        <file alias="main.qml">qml/main.qml</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file alias="ball-bounce-wall.wav">sounds/ball-bounce-wall.wav</file>
+        <file alias="ball-bounce.wav">sounds/ball-bounce.wav</file>
+    </qresource>
 </RCC>
