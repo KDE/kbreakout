@@ -1,0 +1,857 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Russian "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kbreakout" lang="&language;">
+<bookinfo>
+<title
+>Руководство пользователя &kbreakout;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fela</firstname
+> <surname
+>Winkelmolen</surname
+> <affiliation
+> <address
+><email
+>fela.kde@gmail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+><firstname
+>Stephanie</firstname
+> <surname
+>Whiting</surname
+> <affiliation
+> <address
+><email
+>stephaniewhiting03@hotmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Александр</firstname
+><surname
+>Яворский</surname
+><affiliation
+><address
+><email
+>kekcuha@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>Fela Winkelmolen</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-25</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kbreakout; — арканоидоподобная игра.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>игра</keyword>
+<keyword
+>KBreakOut</keyword>
+<keyword
+>Breakout</keyword>
+<keyword
+>кирпич</keyword>
+<keyword
+>кирпичи</keyword>
+<keyword
+>шарик</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>&kbreakout; — арканоидоподобная игра. </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Игровое поле &kbreakout;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Цель игры — разрушить как можно больше кирпичей, не потеряв шарик. </para>
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Правила игры</title>
+
+<para
+>Игроку предоставляется игровое поле с несколькими кирпичами. Шарик движется по экрану, отскакивая от верхней и боковых стенок. При попадании в кирпич шарик отскакивает, а кирпич разрушается. Игрок теряет жизнь, когда шарик касается нижней границы поля. Чтобы этого не произошло, игрок должен отбивать шарик вверх подвижной платформой, расположенной в нижней части окна. Цель игры — проходить уровни, разрушая все кирпичи на каждом из них, и стараться установить рекорд. </para>
+
+<para
+>Некоторые кирпичи ведут себя особым образом или при попадании могут выронить подарок. Подарок можно поймать платформой; действие у подарков бывает как полезным, так и вредным. Подробнее о типах кирпичей и подарков рассказано в следующей главе. </para>
+
+<para
+>Чтобы запустить шарик, нажмите пробел; для перемещения платформы используйте мышь или клавиши со стрелками. Шарик отскакивает в направлении той стороны платформы, по которой он ударился: чем ближе к левому краю платформы он ударяется, тем сильнее отскакивает влево; то же самое относится и к правой стороне. Если он ударяется в середину платформы, то отскакивает прямо вверх. </para>
+
+<para
+>Если в диалоге настройки включить параметр <guilabel
+>Запускать шарик по щелчку мышью</guilabel
+>, шарик можно будет запускать щелчком <mousebutton
+>левой</mousebutton
+> кнопкой мыши. При этом игра захватывает указатель мыши; чтобы вернуть указатель, приостановите игру. </para>
+
+</chapter>
+
+<chapter id="rules-strategies-tips">
+<title
+>Правила игры, стратегии и советы</title>
+
+<sect1 id="rules">
+<title
+>Правила</title>
+<itemizedlist>
+<listitem
+><para
+>За прохождение уровня игроку начисляется 300 очков. Уровень считается пройденным, когда разрушены все разрушаемые и видимые кирпичи, либо если пойман подарок следующего уровня. В последнем случае начисляются дополнительные очки за каждый оставшийся кирпич.</para
+></listitem>
+<listitem
+><para
+>За каждый разрушенный кирпич начисляются очки: чем меньше промежуток между ударами, тем больше очков.</para
+></listitem>
+<listitem
+><para
+>Подарки, спрятанные на уровне, заданы заранее, однако их расположение случайно.</para
+></listitem>
+<listitem
+><para
+>За каждый пойманный подарок начисляется 30 очков.</para
+></listitem>
+<listitem
+><para
+>Игрок теряет жизнь, когда шарик касается нижней границы игрового поля и в игре не осталось других шариков, либо когда игрок поймает подарок, отнимающий жизнь. При потере жизни из счёта вычитается 1000 очков.</para
+></listitem>
+<listitem
+><para
+>Дополнительные жизни можно получить, поймав подарки, добавляющие жизнь.</para
+></listitem>
+<listitem
+><para
+>Игра заканчивается, когда игрок теряет шарик, не имея в запасе дополнительных жизней, или когда пройдены все уровни.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="brick-types">
+<title
+>Типы кирпичей</title>
+<note>
+  <para
+>Изображения кирпичей ниже приведены для оформления &kbreakout; по умолчанию. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="PlainBrick1.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Обычный кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Обычные кирпичи </term>
+    <listitem>
+      <para
+>Обычные кирпичи: внешний вид у них может различаться, но ведут себя они одинаково — разрушаются от удара шарика и могут содержать подарок. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="UnbreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Неразрушаемый кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Неразрушаемый кирпич </term>
+    <listitem>
+      <para
+>Не разрушается, если только в него не попадёт горящий или неудержимый шарик либо не будет задет соседний взрывающийся кирпич. Для прохождения уровня эти кирпичи разрушать не требуется. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="BreakableBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Разрушаемый кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Разрушаемый кирпич </term>
+    <listitem>
+      <para
+>Неразрушаемые кирпичи превращаются в разрушаемые с помощью <link linkend="gift-magic-wand"
+>подарка «Волшебная палочка»</link
+>. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="HiddenBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Скрытый кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Скрытый кирпич </term>
+    <listitem>
+      <para
+>Этот кирпич изначально не показывается игроку. При первом попадании он становится видимым и превращается в обычный кирпич. Если в него попадёт горящий шарик или будет задет соседний взрывающийся кирпич, он разрушается, как только появится. Пока он остаётся скрытым, его не требуется разрушать для перехода на следующий уровень. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="MultipleBrick3.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Многослойный кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Многослойный кирпич </term>
+    <listitem>
+      <para
+>Для разрушения требуется три попадания, если только по нему не попал горящий или неудержимый шарик либо рядом с ним не разрушился взрывающийся кирпич. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="ExplodingBrick.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Взрывающийся кирпич </phrase>
+	</textobject>
+      </inlinemediaobject
+>Взрывающийся кирпич </term>
+    <listitem>
+      <para
+>При попадании в этот кирпич также разрушаются кирпичи сверху, снизу, слева и справа от него, независимо от их типа. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="gifts">
+<title
+>Подарки</title>
+<note>
+  <para
+>Изображения подарков ниже приведены для оформления &kbreakout; по умолчанию. </para>
+</note>
+<variablelist>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="Gift1000Points.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок на 1000 очков </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарки, дающие очки </term>
+    <listitem>
+      <para
+>Если подарок пойман, игроку начисляется столько очков, сколько написано на подарке. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, добавляющий жизнь </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, добавляющий жизнь </term>
+    <listitem>
+      <para
+>Даёт игроку дополнительную жизнь. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftLoseLife.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, отнимающий жизнь </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, отнимающий жизнь </term>
+    <listitem>
+      <para
+>Игрок теряет все шарики, а платформа возвращается в исходное состояние. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftEnlargeBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, увеличивающий платформу </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, увеличивающий платформу </term>
+    <listitem>
+      <para
+>Увеличивает платформу. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftShrinkBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, уменьшающий платформу </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, уменьшающий платформу </term>
+    <listitem>
+      <para
+>Уменьшает платформу. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftSplitBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, разделяющий шарики </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, разделяющий шарики </term>
+    <listitem>
+      <para
+>Удваивает количество шариков. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftAddBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, добавляющий шарики </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, добавляющий шарики </term>
+    <listitem>
+      <para
+>Даёт игроку дополнительный шарик, прикреплённый к платформе, который можно запустить в любой момент. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftStickyBar.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, делающий платформу липкой </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, делающий платформу липкой </term>
+    <listitem>
+      <para
+>После того как этот подарок пойман, при каждом касании платформы шарик остаётся прикреплённым к ней, что позволяет игроку снова его запустить. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMoreExplosion.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, добавляющий взрывающиеся кирпичи </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, добавляющий взрывающиеся кирпичи </term>
+    <listitem>
+      <para
+>Превращает во взрывающиеся кирпичи все кирпичи сверху, снизу, справа и слева от взрывающихся кирпичей. Это также относится к скрытым и неразрушаемым кирпичам. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftBurningBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, поджигающий шарики </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, поджигающий шарики </term>
+    <listitem>
+      <para
+>Превращает все шарики в горящие. При попадании горящего шарика в кирпич также разрушаются кирпичи сверху, снизу, слева и справа от него. Горящий шарик разрушает кирпичи любого типа. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftUnstoppableBall.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, делающий шарики неудержимыми </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, делающий шарики неудержимыми </term>
+    <listitem>
+      <para
+>Превращает все шарики в неудержимые. Неудержимый шарик разрушает все кирпичи на своём пути, независимо от их типа, и никогда от них не отскакивает. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicEye.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок «Волшебный глаз» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок «Волшебный глаз» </term>
+    <listitem>
+      <para
+>Показывает все скрытые кирпичи. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term id="gift-magic-wand">
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftMagicWand.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок «Волшебная палочка» </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок «Волшебная палочка» </term>
+    <listitem>
+      <para
+>Превращает все многослойные и неразрушаемые кирпичи в обычные. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftIncreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, увеличивающий скорость </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, увеличивающий скорость </term>
+    <listitem>
+      <para
+>Увеличивает скорость шарика на 30 % от текущей скорости. </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftDecreaseSpeed.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, уменьшающий скорость </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, уменьшающий скорость </term>
+    <listitem>
+      <para
+>Уменьшает скорость шарика в 1,3 раза. </para>
+    </listitem>
+  </varlistentry>
+    <varlistentry>
+    <term>
+      <inlinemediaobject>
+	<imageobject>
+	  <imagedata fileref="GiftNextLevel.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase
+>Подарок, переводящий на следующий уровень </phrase>
+	</textobject>
+      </inlinemediaobject
+>Подарок, переводящий на следующий уровень </term>
+    <listitem>
+      <para
+>Немедленно открывает следующий уровень игры. </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="strategies-and-tips">
+<title
+>Стратегии и советы</title>
+<itemizedlist>
+<listitem
+><para
+>По возможности шарик лучше направлять выше кирпичей — так вероятность потерять шарик снижается. Иногда для этого сначала требуется пробить небольшое отверстие в слое кирпичей. Чем меньше отверстие, тем меньше вероятность, что шарик вернётся вниз.</para
+></listitem>
+<listitem
+><para
+>Поймав подарок, добавляющий шарики, разумно не запускать новый шарик сразу, а придержать его на случай, если остальные шарики будут потеряны. В этой ситуации не стоит ловить и подарок, делающий платформу липкой: тогда придётся запустить все шарики.</para
+></listitem>
+<listitem
+><para
+>Если известно, что на уровне есть подарки, добавляющие жизнь, подарок, переводящий на следующий уровень, лучше не ловить.</para
+></listitem>
+<listitem
+><para
+>На уровнях, где много скрытых кирпичей, возможно, удастся пройти уровень, не разрушая большинство из них.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Обзор интерфейса</title>
+
+<sect1 id="menu">
+<title
+>Пункты меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Начать игру</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Начинает новую игру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Приостанавливает и возобновляет текущую игру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать лучшие результаты</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Показывает диалог с лучшими результатами. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Завершает работу программы. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Вид</guimenu
+> <guimenuitem
+>Полноэкранный режим</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Переключает &kbreakout; в полноэкранный режим. Выйти из него можно только комбинацией клавиш.</action>
+</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Кроме того, в &kbreakout; имеются общие пункты меню &kde; <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>; дополнительные сведения приведены в разделах <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+> руководства «Основы &kde;». </para>
+
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title"
+>Комбинации клавиш</title>
+
+<para
+>Комбинации клавиш по умолчанию:</para>
+
+<table>
+<title
+>Комбинации клавиш</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry
+>Запустить шарик</entry>
+<entry
+>&Space; </entry>
+</row>
+<row>
+<entry
+>Пауза/продолжение</entry>
+<entry>
+<keycap
+>P</keycap>
+</entry>
+</row>
+<row>
+<entry
+>Начать новую игру</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Показать лучшие результаты</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Выход</entry>
+<entry>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</entry>
+</row>
+<row>
+<entry
+>Полноэкранный режим</entry>
+<entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+></entry>
+</row>
+<row>
+<entry
+>Справка</entry>
+<entry
+><keycap
+>F1</keycap
+></entry>
+</row>
+<row>
+<entry
+>Что это?</entry>
+<entry>
+<keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+</sect1>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&kbreakout; </para>
+<para
+>© Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>, 2008 (программа) </para>
+<para
+>© Fela Winkelmolen <email
+>fela.kde@gmail.com</email
+>, 2008 (документация) </para>
+
+<para
+>Перевод на русский — Александр Яворский<email
+>kekcuha@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
