@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2009.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2011, 2013, 2015, 2017.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kbreakout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2017-04-07 00:52+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Слободан Симић"
+msgstr "Слободан Симић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com"
+msgstr "slsimic@gmail.com,nemhirsl@gmail.com"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, GeneralSettings)
 #: generalsettings.ui:13
@@ -61,8 +62,7 @@ msgid "KBreakOut"
 msgstr "К‑пробој"
 
 #: main.cpp:44
-#, fuzzy, kde-format
-#| msgid "A breakout like game by KDE"
+#, kde-format
 msgid "A Breakout like game by KDE"
 msgstr "Игра разбијања блокова из КДЕ‑а"
 
@@ -133,22 +133,19 @@ msgid "F"
 msgstr "F"
 
 #: mainwindow.cpp:110
-#, fuzzy, kde-format
-#| msgid "Fire the ball"
+#, kde-format
 msgctxt "@action"
 msgid "Fire the Ball"
 msgstr "Испали лопту"
 
 #: mainwindow.cpp:119
-#, fuzzy, kde-format
-#| msgid "Skip level"
+#, kde-format
 msgctxt "@action"
 msgid "Skip Level"
 msgstr "Прескочи ниво"
 
 #: mainwindow.cpp:126
-#, fuzzy, kde-format
-#| msgid "Add life"
+#, kde-format
 msgctxt "@action"
 msgid "Add Life"
 msgstr "Додај живот"
@@ -160,16 +157,13 @@ msgid "P"
 msgstr "P"
 
 #: mainwindow.cpp:156
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Тема"
 
 #: mainwindow.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "General settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Опште"
@@ -178,7 +172,7 @@ msgstr "Опште"
 #: mainwindow.cpp:169
 #, kde-format
 msgid "   Time (hh:mm)"
-msgstr "   време (чч:мм)"
+msgstr "   вријеме (чч:мм)"
 
 #: mainwindow.cpp:178
 #, kde-format
@@ -186,15 +180,13 @@ msgid "Starting a new game will end the current one!"
 msgstr "Покретањем нове партије прекинућете текућу!"
 
 #: mainwindow.cpp:179
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Нова игра"
 
 #: mainwindow.cpp:180
-#, fuzzy, kde-format
-#| msgid "Start a New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start a New Game"
 msgstr "Започни нову партију"
@@ -225,25 +217,22 @@ msgstr ""
 
 # >> @title:window
 #: mainwindow.cpp:304
-#, fuzzy, kde-format
-#| msgid "Fire on click?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Fire on Click"
-msgstr "Испаљивање на клик?"
+msgstr "Испаљивање на клик"
 
 #: mainwindow.cpp:305
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Use Mouse Click"
-msgstr "Пуцање на клик мишем"
+msgstr "Користи клик мишем"
 
 #: mainwindow.cpp:306
-#, fuzzy, kde-format
-#| msgid "Fire on mouse click"
+#, kde-format
 msgctxt "@action;button"
 msgid "Ignore Mouse Click"
-msgstr "Пуцање на клик мишем"
+msgstr "Игнориши клик мишем"
 
 #: qml/logic.js:199
 msgid "Well done! You won the game"
