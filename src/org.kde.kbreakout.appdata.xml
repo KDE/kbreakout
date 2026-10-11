@@ -41,6 +41,10 @@
   <name xml:lang="sa">KBreakOut इति</name>
   <name xml:lang="sk">KBreakOut</name>
   <name xml:lang="sl">KBreakOut</name>
+  <name xml:lang="sr">К‑пробој</name>
+  <name xml:lang="sr-Latn">K‑proboj</name>
+  <name xml:lang="sr-ijekavian">К‑пробој</name>
+  <name xml:lang="sr-ijekavianlatin">K‑proboj</name>
   <name xml:lang="sv">Utbrytning</name>
   <name xml:lang="tr">KBreakOut</name>
   <name xml:lang="uk">KBreakOut</name>
@@ -78,6 +82,10 @@
   <summary xml:lang="sa">KBreakOut इति KDE द्वारा Breakout-सदृशः क्रीडा</summary>
   <summary xml:lang="sk">KBreakOut je hra KDE podobná úteku</summary>
   <summary xml:lang="sl">KBreakOut je igra rušenja ovir in pobega v KDE</summary>
+  <summary xml:lang="sr">К‑пробој је игра налик на Пробој из КДЕ‑а</summary>
+  <summary xml:lang="sr-Latn">K‑proboj je igra nalik na Proboj iz KDE‑a</summary>
+  <summary xml:lang="sr-ijekavian">К‑пробој је игра налик на Пробој из КДЕ‑а</summary>
+  <summary xml:lang="sr-ijekavianlatin">K‑proboj je igra nalik na Proboj iz KDE‑a</summary>
   <summary xml:lang="sv">Utbrytning är ett spel som liknar Breakout av KDE</summary>
   <summary xml:lang="tr">KDE tarafından Breakout benzeri bir oyun</summary>
   <summary xml:lang="uk">KBreakOut — це гра, схожа на Breakout, від KDE</summary>
@@ -118,6 +126,10 @@
     <p xml:lang="sa">KBreakOut इत्यस्य उद्देश्यं कन्दुकस्य हानिम् अकुर्वन् यथासम्भवं अधिकानि इष्टकानां नाशः भवति ।</p>
     <p xml:lang="sk">Cieľom programu KBreakOut je zničiť čo najviac tehál bez straty lopty.</p>
     <p xml:lang="sl">Cilj igre KBreakOut je zdrobiti kar največ opek, ne da bi izgubili krogle.</p>
+    <p xml:lang="sr">Циљ К‑пробоја је да уништите што више цигли а да не изгубите лопту.</p>
+    <p xml:lang="sr-Latn">Cilj K‑proboja je da uništite što više cigli a da ne izgubite loptu.</p>
+    <p xml:lang="sr-ijekavian">Циљ К‑пробоја је да уништите што више цигли а да не изгубите лопту.</p>
+    <p xml:lang="sr-ijekavianlatin">Cilj K‑proboja je da uništite što više cigli a da ne izgubite loptu.</p>
     <p xml:lang="sv">Syftet med Utbrytning är att förstöra så många tegelstenar som möjligt utan att förlora bollen.</p>
     <p xml:lang="tr">KBreakOut’un amacı, topu kaybetmeden olabildiğince çok tuğla yok etmektir.</p>
     <p xml:lang="uk">Метою гри є знищити якомога більше блоків без втрати кульки.</p>
@@ -157,6 +169,10 @@
     <p xml:lang="sa">क्रीडकस्य कृते इष्टकानां संख्यायुक्तं क्रीडाक्षेत्रं प्रस्तुतं भवति । एकः कन्दुकः पटलस्य पारं गच्छति, उपरितन-पार्श्वभित्तिभ्यः उच्छिष्टः भवति । इष्टका आहते कन्दुकः उच्छिष्टः भवति, इष्टका च नश्यति । यदा कन्दुकः क्षेत्रस्य अधः स्पृशति तदा क्रीडकस्य जीवनं नष्टं भवति । एतत् न भवेत् इति कृत्वा खिडक्याः अधः स्थितं कन्दुकं ऊर्ध्वं उच्छ्वासयितुं चलपट्टिकायाः उपयोगः कर्तव्यः भवति । क्रीडायाः उद्देश्यं प्रत्येकस्मिन् वर्तमानाः सर्वाः इष्टकाः नाशयन् स्तरानाम् माध्यमेन प्रगतिः, उच्चाङ्कं प्राप्तुं च प्रयत्नः भवति ।</p>
     <p xml:lang="sk">Hráč dostane hracie pole obsahujúce množstvo tehál. Guľa putuje po obrazovke a odráža sa od hornej a bočnej steny. Keď je zasiahnutá tehla, lopta sa odrazí a tehla je zničená. Hráč sa stratí na živote, keď sa lopta dotkne spodnej časti ihriska. Aby sa tomu zabránilo, musí hráč použiť pohyblivú tyč na odrazenie lopty smerom nahor, ktorá sa nachádza v dolnej časti okna. Účelom hry je napredovať cez úrovne ničiac všetky tehly prítomné v každej z nich a snažiť sa získať čo najvyššie skóre.</p>
     <p xml:lang="sl">Igralec ima na voljo igralno polje, ki vsebuje številne opeke. Krogla potuje po zaslonu in se odbija od zgornje in stranske stene. Ko je opeka zadeta, se krogla odbije in opeka se uniči. Igralec izgubi življenje, če se krogla dotakne dna igrišča. Da se to ne bi zgodilo, mora igralec s premično palico na dnu okna odbijati kroglo navzgor. Namen igre je napredovanje igre skozi ravni z uničenjem opek v vsaki ravni in poskušati pridobiti kar najboljši rezultat.</p>
+    <p xml:lang="sr">Играч добија поље са одређеним бројем цигли. Лопта путује преко екрана и одбија се од горњег и бочних зидова. Кад погоди циглу, лопта се одбије, а цигла се уништи. Играч губи живот кад лопта дотакне дно поља. Да се то не би десило, играч покретном пречком на дну прозора одбија лопту навише. Сврха игре је да се напредује кроз нивое уништавањем свих цигли у сваком од њих, уз покушај да се постигне најрезултат.</p>
+    <p xml:lang="sr-Latn">Igrač dobija polje sa određenim brojem cigli. Lopta putuje preko ekrana i odbija se od gornjeg i bočnih zidova. Kad pogodi ciglu, lopta se odbije, a cigla se uništi. Igrač gubi život kad lopta dotakne dno polja. Da se to ne bi desilo, igrač pokretnom prečkom na dnu prozora odbija loptu naviše. Svrha igre je da se napreduje kroz nivoe uništavanjem svih cigli u svakom od njih, uz pokušaj da se postigne najrezultat.</p>
+    <p xml:lang="sr-ijekavian">Играч добија поље са одређеним бројем цигли. Лопта путује преко екрана и одбија се од горњег и бочних зидова. Кад погоди циглу, лопта се одбије, а цигла се уништи. Играч губи живот кад лопта дотакне дно поља. Да се то не би десило, играч покретном пречком на дну прозора одбија лопту навише. Сврха игре је да се напредује кроз нивое уништавањем свих цигли у сваком од њих, уз покушај да се постигне најрезултат.</p>
+    <p xml:lang="sr-ijekavianlatin">Igrač dobija polje sa određenim brojem cigli. Lopta putuje preko ekrana i odbija se od gornjeg i bočnih zidova. Kad pogodi ciglu, lopta se odbije, a cigla se uništi. Igrač gubi život kad lopta dotakne dno polja. Da se to ne bi desilo, igrač pokretnom prečkom na dnu prozora odbija loptu naviše. Svrha igre je da se napreduje kroz nivoe uništavanjem svih cigli u svakom od njih, uz pokušaj da se postigne najrezultat.</p>
     <p xml:lang="sv">Ett spelfält som innehåller ett antal tegelstenar visas för spelaren. En boll rör sig över skärmen, och studsar från väggarna längs överkanten och sidorna. När en tegelsten träffas, studsar bollen bort och tegelstenen förstörs. Spelaren förlorar ett liv när bollen rör vid fältets underkant. För att förhindra att det sker, måste spelaren använda en rörlig platta, som finns längst ner i fönstret, för att studsa bollen uppåt. Spelets syfte är att ta sig igenom alla nivåer, förstöra tegelstenarna som finns i varje nivå, och försöka uppnå bästa poäng.</p>
     <p xml:lang="tr">Oyuncuya bir dizi tuğla içeren bir oyun alanı sunulur. Bir top ekranda hareket ederek üst ve yan duvarlardan seker. Bir tuğlaya vurulduğunda, top sekerek uzaklaşır ve tuğla yok edilir. Top sahanın dibine değdiğinde oyuncu hayatını kaybeder. Bunun olmasını önlemek için oyuncu, pencerenin altında bulunan topu yukarı doğru sektirmek için hareketli bir çubuk kullanmalıdır. Oyunun amacı, her birinde bulunan tüm tuğlaları yok eden düzeylerde ilerlemek ve yüksek puanlar almaya çalışmaktır.</p>
     <p xml:lang="uk">Перед гравцем буде показано ігрове поле з декількома блоками. полем пересуватиметься кулька, яка відбиватиметься від бічних і верхньої стін. Якщо кулька влучить у блок, вона відіб’ється від нього, а сам блок буде зруйновано. Якщо кулька торкнеться нижньої стіни ігрового поля, гравець втратить одне життя. Щоб цього не сталося, гравцеві слід буде пересувати розташовану у нижній частині ігрового поля рисочку, якою можна відбивати кульку угору. Метою гри є просування рівнями шляхом руйнування всіх блоків на кожному з пройдених рівнів, а також збільшення очкового результату гри.</p>
@@ -201,6 +217,10 @@
       <caption xml:lang="sa">KBreakOut क्रीडन्</caption>
       <caption xml:lang="sk">Hranie KBreakOut</caption>
       <caption xml:lang="sl">Igra KBreakOut</caption>
+      <caption xml:lang="sr">Играње К‑пробоја</caption>
+      <caption xml:lang="sr-Latn">Igranje K‑proboja</caption>
+      <caption xml:lang="sr-ijekavian">Играње К‑пробоја</caption>
+      <caption xml:lang="sr-ijekavianlatin">Igranje K‑proboja</caption>
       <caption xml:lang="sv">Spela Utbrytning</caption>
       <caption xml:lang="tr">KBreakOut Oynarken</caption>
       <caption xml:lang="ug">KBreakOut ئويناش</caption>
